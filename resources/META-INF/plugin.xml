@@ -1,0 +1,47 @@
+<idea-plugin>
+  <id>lermitage.intellij.extra.icons</id>
+  <name>Extra Icons</name>
+  <version>0.1</version>
+  <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
+
+  <description><![CDATA[
+      Add icons for files like Travis YML, Appveyor YML, etc.
+    ]]>
+  </description>
+
+  <!-- tutorial:
+  https://www.jetbrains.org/intellij/sdk/docs/reference_guide/work_with_icons_and_images.html
+  https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/setting_up_environment.html
+  https://intellij-support.jetbrains.com/hc/en-us/community/posts/206783005-Project-view-file-type-icon-customization
+  -->
+
+  <change-notes><![CDATA[
+      <ul>
+        <li>0.1 (2018/08/23)
+          <ul>
+            <li>support Travis YML, Appveyor YML files.</li>
+          </ul>
+        </li>
+      </ul>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+    <iconProvider implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
