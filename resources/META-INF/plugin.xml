@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>lermitage.intellij.extra.icons</id>
   <name>Extra Icons</name>
-  <version>0.2</version>
+  <version>0.3</version>
   <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
 
   <description><![CDATA[
@@ -24,7 +24,7 @@
         </li>
         <li>0.1 (2018/08/23)
           <ul>
-            <li>support Travis "travis.yml", Appveyor "appveyor.yml" files.</li>
+            <li>support Travis ".travis.yml", Appveyor "appveyor.yml" files.</li>
           </ul>
         </li>
       </ul>
