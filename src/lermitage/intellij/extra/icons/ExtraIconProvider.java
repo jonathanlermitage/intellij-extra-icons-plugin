@@ -12,21 +12,29 @@ public class ExtraIconProvider extends IconProvider {
     
     private static final String TRAVIS_ICON = "/icons/travis.png";
     private static final String APPVEYOR_ICON = "/icons/appveyor.png";
+    private static final String JENKINS_ICON = "/icons/jenkins.png";
+    private static final String GITLAB_ICON = "/icons/gitlab.png";
     
     public Icon getIcon(@NotNull PsiElement psiElement, int flags) {
         PsiFile containingFile = psiElement.getContainingFile();
         if (containingFile != null) {
             String name = containingFile.getName().toUpperCase();
-    
-            if (name.endsWith("TRAVIS.YML") || name.endsWith("TRAVIS.YAML")) {
+            
+            if (name.equalsIgnoreCase(".travis.yml")) {
                 return IconLoader.getIcon(TRAVIS_ICON);
             }
-    
-            if (name.endsWith("APPVEYOR.YML") || name.endsWith("APPVEYOR.YAML")) {
+            
+            if (name.equalsIgnoreCase("appveyor.yml")) {
                 return IconLoader.getIcon(APPVEYOR_ICON);
             }
-    
-    
+            
+            if (name.equalsIgnoreCase("jenkinsfile")) {
+                return IconLoader.getIcon(JENKINS_ICON);
+            }
+            
+            if (name.equalsIgnoreCase(".gitlab-ci.yml")) {
+                return IconLoader.getIcon(GITLAB_ICON);
+            }
         }
         return null;
     }

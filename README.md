@@ -2,12 +2,13 @@
     Extra Icons
 </h1>
 
-Intellij IDEA (CE and Ultimate) plugins that adds icons for files like Travis YML, Appveyor YML, etc.
+Intellij IDEA (Community and Ultimate) plugin that adds icons for files like Travis YML, Appveyor YML, etc.
+
+Download plugin on [GitHub](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/releases), [JetBrains Plugins Repository](https://plugins.jetbrains.com/plugin/11058-extra-icons) or via IntelliJ IDEA (<kbd>File</kbd>, <kbd>Settings</kbd>, <kbd>Plugins</kbd>, <kbd>Browse repositories...</kbd>).
 
 ## Author
 
 Jonathan Lermitage (<jonathan.lermitage@gmail.com>)  
-**Your're Canadian or American and wanna hire an experienced French devops? Contact me! I'm okay to move.**  
 Linkedin profile: [jonathan-lermitage-092711142](https://www.linkedin.com/in/jonathan-lermitage-092711142/)
 
 ## License
