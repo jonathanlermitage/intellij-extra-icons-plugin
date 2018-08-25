@@ -17,6 +17,11 @@
 
   <change-notes><![CDATA[
       <ul>
+        <li>0.3 (2018/08/25)
+          <ul>
+            <li>support Windows script "*.cmd", "*.bat", Powershell "*.ps1", Bash "*.sh", Maven wrapper "mvnw", Gradle wrapper "gradlew" files.</li>
+          </ul>
+        </li>
         <li>0.2 (2018/08/25)
           <ul>
             <li>support Jenkins "jenkinsfile", Gitlab ".gitlab-ci.yml" files.</li>

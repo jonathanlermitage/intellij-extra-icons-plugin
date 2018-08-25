@@ -14,26 +14,26 @@ public class ExtraIconProvider extends IconProvider {
     private static final String APPVEYOR_ICON = "/icons/appveyor.png";
     private static final String JENKINS_ICON = "/icons/jenkins.png";
     private static final String GITLAB_ICON = "/icons/gitlab.png";
+    private static final String BASH_ICON = "/icons/bash.png";
+    private static final String CMD_ICON = "/icons/cmd.png";
     
     public Icon getIcon(@NotNull PsiElement psiElement, int flags) {
         PsiFile containingFile = psiElement.getContainingFile();
         if (containingFile != null) {
-            String name = containingFile.getName().toUpperCase();
+            String name = containingFile.getName().toLowerCase();
             
-            if (name.equalsIgnoreCase(".travis.yml")) {
+            if (name.equals(".travis.yml")) {
                 return IconLoader.getIcon(TRAVIS_ICON);
-            }
-            
-            if (name.equalsIgnoreCase("appveyor.yml")) {
+            } else if (name.equals("appveyor.yml")) {
                 return IconLoader.getIcon(APPVEYOR_ICON);
-            }
-            
-            if (name.equalsIgnoreCase("jenkinsfile")) {
+            } else if (name.equals("jenkinsfile")) {
                 return IconLoader.getIcon(JENKINS_ICON);
-            }
-            
-            if (name.equalsIgnoreCase(".gitlab-ci.yml")) {
+            } else if (name.equals(".gitlab-ci.yml")) {
                 return IconLoader.getIcon(GITLAB_ICON);
+            } else if (name.endsWith(".sh") || name.equals("gradlew") || name.equals("mvnw")) {
+                return IconLoader.getIcon(BASH_ICON);
+            } else if (name.endsWith(".cmd") || name.endsWith(".bat") || name.endsWith(".ps1")) {
+                return IconLoader.getIcon(CMD_ICON);
             }
         }
         return null;
