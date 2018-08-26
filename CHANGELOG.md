@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 0.4 (WIP)
+### 0.4 (2018/08/26)
 * enabled compatibility with all products (WebStorm, etc).
 * reworked Maven wrapper `mvnw`, Gradle wrapper `gradlew` files.
 * support `README`, `CHANGELOG`, `CHANGES`, `LICENSE`, `COPYING`, `CONTRIBUTING`, `AUTHORS` files (with `.md`, `.adoc`, `.txt` or no extension).
