@@ -16,30 +16,7 @@
   -->
 
   <change-notes><![CDATA[
-      <ul>
-        <li>0.4 (2018/08/26)
-          <ul>
-            <li>enabled compatibility with all products (WebStorm, etc).</li>
-            <li>reworked Maven wrapper "mvnw", Gradle wrapper "gradlew" files.</li>
-            <li>support "README", "CHANGELOG", "CHANGES", "LICENSE", "COPYING", "CONTRIBUTING", "AUTHORS" files (with ".md", ".adoc", ".txt" or no extension).</li>
-          </ul>
-        </li>
-        <li>0.3 (2018/08/25)
-          <ul>
-            <li>support Windows script "*.cmd", "*.bat", Powershell "*.ps1", Bash "*.sh", Maven wrapper "mvnw", Gradle wrapper "gradlew" files.</li>
-          </ul>
-        </li>
-        <li>0.2 (2018/08/25)
-          <ul>
-            <li>support Jenkins "jenkinsfile", Gitlab ".gitlab-ci.yml" files.</li>
-          </ul>
-        </li>
-        <li>0.1 (2018/08/23)
-          <ul>
-            <li>support Travis ".travis.yml", Appveyor "appveyor.yml" files.</li>
-          </ul>
-        </li>
-      </ul>
+      <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">See changelog on GitHub</a>
     ]]>
   </change-notes>
 
