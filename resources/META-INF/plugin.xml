@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>lermitage.intellij.extra.icons</id>
   <name>Extra Icons</name>
-  <version>0.4</version>
+  <version>0.5</version>
   <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
 
   <description><![CDATA[
@@ -17,7 +17,7 @@
 
   <change-notes><![CDATA[
       <ul>
-        <li>0.4 (WIP)
+        <li>0.4 (2018/08/26)
           <ul>
             <li>enabled compatibility with all products (WebStorm, etc).</li>
             <li>reworked Maven wrapper "mvnw", Gradle wrapper "gradlew" files.</li>
