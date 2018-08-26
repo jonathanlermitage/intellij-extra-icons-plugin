@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>lermitage.intellij.extra.icons</id>
   <name>Extra Icons</name>
-  <version>0.3.1</version>
+  <version>0.4</version>
   <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
 
   <description><![CDATA[
@@ -17,6 +17,12 @@
 
   <change-notes><![CDATA[
       <ul>
+        <li>0.4 (WIP)
+          <ul>
+            <li>reworked Maven wrapper "mvnw", Gradle wrapper "gradlew" files.</li>
+            <li>support "README", "CHANGELOG", "CHANGES", "LICENSE", "COPYING", "CONTRIBUTING", "AUTHORS" files (with ".md", ".adoc", ".txt" or no extension).</li>
+          </ul>
+        </li>
         <li>0.3 (2018/08/25)
           <ul>
             <li>support Windows script "*.cmd", "*.bat", Powershell "*.ps1", Bash "*.sh", Maven wrapper "mvnw", Gradle wrapper "gradlew" files.</li>

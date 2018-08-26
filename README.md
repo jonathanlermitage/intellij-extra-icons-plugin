@@ -17,4 +17,6 @@ MIT License. In other words, you can do what you want: this project is entirely 
 
 ## Screenshot
 
+![Dark Screenshot](https://raw.githubusercontent.com/jonathanlermitage/intellij-extra-icons-plugin/master/misc/screenshots/intellijidea-ce_dark.png)
+
 ![Screenshot](https://raw.githubusercontent.com/jonathanlermitage/intellij-extra-icons-plugin/master/misc/screenshots/intellijidea-ce.png)
