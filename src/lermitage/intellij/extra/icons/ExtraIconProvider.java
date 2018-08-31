@@ -7,99 +7,57 @@ import com.intellij.psi.PsiFile;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
+import java.util.Arrays;
+import java.util.List;
 
 public class ExtraIconProvider extends IconProvider {
     
-    private static final String TRAVIS_ICON = "/icons/travis.png";
-    private static final String APPVEYOR_ICON = "/icons/appveyor.png";
-    private static final String JENKINS_ICON = "/icons/jenkins.png";
-    private static final String GITLAB_ICON = "/icons/gitlab.png";
-    private static final String BASH_ICON = "/icons/bash.png";
-    private static final String BASH_GRADLEW_ICON = "/icons/bash-gradlew.png";
-    private static final String BASH_MVNW_ICON = "/icons/bash-mvnw.png";
-    private static final String CMD_ICON = "/icons/cmd.png";
-    private static final String CMD_GRADLEW_ICON = "/icons/cmd-gradlew.png";
-    private static final String CMD_MVNW_ICON = "/icons/cmd-mvnw.png";
-    private static final String README_ICON = "/icons/readme.png";
-    private static final String CHANGELOG_ICON = "/icons/changelog.png";
-    private static final String LICENSE_ICON = "/icons/license.png";
-    private static final String CONTRIBUTING_ICON = "/icons/contributing.png";
-    private static final String AUTHORS_ICON = "/icons/authors.png";
+    private final List<Model> models = Arrays.asList(
+            new Model("/icons/appveyor.png").willEqual("appveyor.yml"),
+            new Model("/icons/authors.png").willEqualAndMayEndWith("author", ".md", ".txt", ".adoc"),
+            new Model("/icons/authors.png").willEqualAndMayEndWith("authors", ".md", ".txt", ".adoc"),
+            new Model("/icons/bash-gradlew.png").willEqual("gradlew"),
+            new Model("/icons/bamboo.png").willEqual("bamboo.yml"),
+            new Model("/icons/bash-mvnw.png").willEqual("mvnw"),
+            new Model("/icons/changelog.png").willEqualAndMayEndWith("changelog", ".md", ".txt", ".adoc"),
+            new Model("/icons/changelog.png").willEqualAndMayEndWith("changes", ".md", ".txt", ".adoc"),
+            new Model("/icons/circleci.png").willEqual("circle.yml"),
+            new Model("/icons/codefresh.png").willEqual("codefresh.yml"),
+            new Model("/icons/codeship.png").willEqual("codeship-steps.yml"),
+            new Model("/icons/codeship.png").willEqualAndMayEndWith("codeship-steps", "json", "yml"),
+            new Model("/icons/cmd-gradlew.png").willEqual("gradlew.bat"),
+            new Model("/icons/cmd-gradlew.png").willEqual("gradlew.cmd"),
+            new Model("/icons/cmd-mvnw.png").willEqual("mvnw.bat"),
+            new Model("/icons/cmd-mvnw.png").willEqual("mvnw.cmd"),
+            new Model("/icons/contact.png").willEqualAndMayEndWith("contact", ".md", ".txt", ".adoc"),
+            new Model("/icons/contact.png").willEqualAndMayEndWith("contacts", ".md", ".txt", ".adoc"),
+            new Model("/icons/contributing.png").willEqualAndMayEndWith("contributing", ".md", ".txt", ".adoc"),
+            new Model("/icons/gitlab.png").willEqual(".gitlab-ci.yml"),
+            new Model("/icons/gocd.png").willEqualAndMayEndWith(".gocd", "yml", "yaml"),
+            new Model("/icons/jenkins.png").willEqual("jenkinsfile"),
+            new Model("/icons/jenkins.png").willEqualAndMayEndWith("jenkins", "txt", "yml"),
+            new Model("/icons/license.png").willEqualAndMayEndWith("license", ".md", ".txt", ".adoc"),
+            new Model("/icons/license.png").willEqualAndMayEndWith("copying", ".md", ".txt", ".adoc"),
+            new Model("/icons/notice.png").willEqualAndMayEndWith("notice", ".md", ".txt", ".adoc"),
+            new Model("/icons/packagejson.png").willEqual("package.json"),
+            new Model("/icons/packagejsonlock.png").willEqual("package-lock.json"),
+            new Model("/icons/readme.png").willEqualAndMayEndWith("readme", ".md", ".txt", ".adoc"),
+            new Model("/icons/travis.png").willEqual(".travis.yml"),
+        
+            new Model("/icons/bash.png").willEndWith(".sh"),
+            new Model("/icons/cmd.png").willEndWith(".cmd", ".bat", ".ps1")
+            );
     
     public Icon getIcon(@NotNull PsiElement psiElement, int flags) {
         PsiFile containingFile = psiElement.getContainingFile();
         if (containingFile != null) {
             String name = containingFile.getName().toLowerCase();
-            
-            if (name.equals(".travis.yml")) {
-                return IconLoader.getIcon(TRAVIS_ICON);
-                
-            } else if (name.equals("appveyor.yml")) {
-                return IconLoader.getIcon(APPVEYOR_ICON);
-                
-            } else if (name.equals("jenkinsfile")) {
-                return IconLoader.getIcon(JENKINS_ICON);
-                
-            } else if (name.equals(".gitlab-ci.yml")) {
-                return IconLoader.getIcon(GITLAB_ICON);
-                
-            } else if (name.equals("gradlew")) {
-                return IconLoader.getIcon(BASH_GRADLEW_ICON);
-                
-            } else if (name.equals("mvnw")) {
-                return IconLoader.getIcon(BASH_MVNW_ICON);
-                
-            } else if (name.endsWith(".sh")) {
-                return IconLoader.getIcon(BASH_ICON);
-                
-            } else if (name.equals("gradlew.cmd") || name.equals("gradlew.bat")) {
-                return IconLoader.getIcon(CMD_GRADLEW_ICON);
-                
-            } else if (name.equals("mvnw.cmd") || name.equals("mvnw.bat")) {
-                return IconLoader.getIcon(CMD_MVNW_ICON);
-                
-            } else if (endsWith(name, ".cmd", ".bat", ".ps1")) {
-                return IconLoader.getIcon(CMD_ICON);
-                
-            } else if (equalsAndEndsWith(name, "readme", ".md", ".txt", ".adoc")) {
-                return IconLoader.getIcon(README_ICON);
-                
-            } else if (equalsAndEndsWith(name, "changelog", ".md", ".txt", ".adoc") ||
-                    equalsAndEndsWith(name, "changes", ".md", ".txt", ".adoc")) {
-                return IconLoader.getIcon(CHANGELOG_ICON);
-                
-            } else if (equalsAndEndsWith(name, "license", ".md", ".txt", ".adoc") ||
-                    equalsAndEndsWith(name, "copying", ".md", ".txt", ".adoc")) {
-                return IconLoader.getIcon(LICENSE_ICON);
-                
-            } else if (equalsAndEndsWith(name, "contributing", ".md", ".txt", ".adoc")) {
-                return IconLoader.getIcon(CONTRIBUTING_ICON);
-                
-            } else if (equalsAndEndsWith(name, "authors", ".md", ".txt", ".adoc")) {
-                return IconLoader.getIcon(AUTHORS_ICON);
+            for (Model m : models) {
+                if (m.check(name)) {
+                    return IconLoader.getIcon(m.getIcon());
+                }
             }
         }
         return null;
-    }
-    
-    private boolean endsWith(String input, String... ends) {
-        for (String end : ends) {
-            if (input.endsWith(end)) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    private boolean equalsAndEndsWith(String input, String base, String... exts) {
-        if (input.equals(base)) {
-            return true;
-        }
-        for (String ext : exts) {
-            if (input.startsWith(base) && input.endsWith(ext)) {
-                return true;
-            }
-        }
-        return false;
     }
 }

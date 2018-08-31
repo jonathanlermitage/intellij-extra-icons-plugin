@@ -1,8 +1,9 @@
 ## Extra Icons Change Log
 
-### 0.5 (TODO)
+### 0.5 (2018/09/01)
 * some code refactoring.
-* support `bamboo.yml`, `circle.yml`, `codeship-steps.yml`, `codeship-steps.json`, `codefresh.yml`, `.gocd.yaml`, `package.json`, `package-lock.json`, `NOTICE`, files.
+* support `bamboo.yml`, `circle.yml`, `codeship-steps.yml`, `codeship-steps.json`, `codefresh.yml`, `.gocd.yaml`, `package.json`, `package-lock.json`, files.
+* support `jenkins`, `NOTICE`, `CONTACT` files (with `.md`, `.adoc`, `.txt` or no extension).
 
 ### 0.4 (2018/08/26)
 * enabled compatibility with all products (WebStorm, etc).
