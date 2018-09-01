@@ -1,7 +1,7 @@
 ## Extra Icons Change Log
 
 ### 0.6 (WIP)
-* reworked `NOTICE` icon.
+* reworked `appveyor.yml`, `NOTICE` files.
 
 ### 0.5 (2018/09/01)
 * some code refactoring.
