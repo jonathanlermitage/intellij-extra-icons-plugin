@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 0.6 (WIP)
+* reworked `NOTICE` icon.
+
 ### 0.5 (2018/09/01)
 * some code refactoring.
 * support `bamboo.yml`, `circle.yml`, `codeship-steps.yml`, `codeship-steps.json`, `codefresh.yml`, `.gocd.yaml`, `package.json`, `package-lock.json`, files.
