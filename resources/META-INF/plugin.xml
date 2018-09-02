@@ -5,7 +5,8 @@
   <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
 
   <description><![CDATA[
-      Add icons for files like Travis YML, Appveyor YML, etc.
+      Add icons for files like Travis YML, Appveyor YML, etc.<br/>
+      <img src="https://raw.githubusercontent.com/jonathanlermitage/intellij-extra-icons-plugin/master/misc/screenshots/css_sprites.png" alt="icons preview"/>
     ]]>
   </description>
 

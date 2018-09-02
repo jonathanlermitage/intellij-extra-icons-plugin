@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 0.6 (WIP)
+### 0.6 (2018/09/02)
 * reworked `.gitlab-ci.yml`, `appveyor.yml`, `NOTICE` files.
 * support `*.jar` files.
 
