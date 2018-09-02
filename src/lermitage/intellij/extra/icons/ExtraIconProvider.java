@@ -45,7 +45,8 @@ public class ExtraIconProvider extends IconProvider {
             new Model("/icons/travis.png").willEqual(".travis.yml"),
         
             new Model("/icons/bash.png").willEndWith(".sh"),
-            new Model("/icons/cmd.png").willEndWith(".cmd", ".bat", ".ps1")
+            new Model("/icons/cmd.png").willEndWith(".cmd", ".bat", ".ps1"),
+            new Model("/icons/jar.png").willEndWith(".jar")
             );
     
     public Icon getIcon(@NotNull PsiElement psiElement, int flags) {

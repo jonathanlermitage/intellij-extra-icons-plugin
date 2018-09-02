@@ -1,7 +1,8 @@
 ## Extra Icons Change Log
 
 ### 0.6 (WIP)
-* reworked `appveyor.yml`, `NOTICE` files.
+* reworked `.gitlab-ci.yml`, `appveyor.yml`, `NOTICE` files.
+* support `*.jar` files.
 
 ### 0.5 (2018/09/01)
 * some code refactoring.
