@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 0.7 (WIP)
+* support `vagrantfile`, `*.iml`, `.gitattributes`, `.gitignore`, `.editorconfig`, `berksfile`, `berksfile.lock`, `dockerfile`, `docker-compose.yml` files
+
 ### 0.6 (2018/09/02)
 * reworked `.gitlab-ci.yml`, `appveyor.yml`, `NOTICE` files.
 * support `*.jar` files.
