@@ -60,9 +60,11 @@ public class ExtraIconProvider extends IconProvider {
                 new Model("/icons/version.png").willEqualAndMayEndWith("version", ".md", ".txt", ".adoc"),
         
                 new Model("/icons/bash.png").willEndWith(".sh"),
+                new Model("/icons/certificate.png").willEndWith(".pem", ".crt", ".ca-bundle", ".cer", ".p7b", ".p7s", ".pfx"),
                 new Model("/icons/cmd.png").willEndWith(".cmd", ".bat", ".ps1"),
-                new Model("/icons/jar.png").willEndWith(".jar")
-        );
+                new Model("/icons/jar.png").willEndWith(".jar"),
+                new Model("/icons/keepass.png").willEndWith(".kdbx")
+                );
     }
     
     public Icon getIcon(@NotNull PsiElement psiElement, int flags) {
