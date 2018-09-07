@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### TODO, ideas
+* add a panel to select extra icons to activate.
+
 ### 0.8 (WIP)
 * support `.mailmap`, `version` (with `.md`, `.adoc`, `.txt` or no extension) files.
 * reworked `*.iml` file.
