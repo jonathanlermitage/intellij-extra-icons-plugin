@@ -30,7 +30,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
-    <iconProvider implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
+    <iconProvider implementation="lermitage.intellij.extra.icons.ExtraIconProvider" order="first"/>
   </extensions>
 
   <actions>
