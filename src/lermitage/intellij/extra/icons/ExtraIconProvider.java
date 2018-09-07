@@ -58,13 +58,14 @@ public class ExtraIconProvider extends IconProvider {
                 new Model("/icons/travis.png").willEqual(".travis.yml"),
                 new Model("/icons/vagrant.png").willEqual("vagrantfile"),
                 new Model("/icons/version.png").willEqualAndMayEndWith("version", ".md", ".txt", ".adoc"),
-        
+                
                 new Model("/icons/bash.png").willEndWith(".sh"),
                 new Model("/icons/certificate.png").willEndWith(".pem", ".crt", ".ca-bundle", ".cer", ".p7b", ".p7s", ".pfx"),
                 new Model("/icons/cmd.png").willEndWith(".cmd", ".bat", ".ps1"),
                 new Model("/icons/jar.png").willEndWith(".jar"),
-                new Model("/icons/keepass.png").willEndWith(".kdbx")
-                );
+                new Model("/icons/keepass.png").willEndWith(".kdbx"),
+                new Model("/icons/pdf.png").willEndWith(".pdf")
+        );
     }
     
     public Icon getIcon(@NotNull PsiElement psiElement, int flags) {
