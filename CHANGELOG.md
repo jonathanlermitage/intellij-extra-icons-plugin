@@ -5,7 +5,7 @@
 
 ### 0.8 (WIP)
 * support `.mailmap`, `version` (with `.md`, `.adoc`, `.txt` or no extension) files.
-* reworked `*.iml` file.
+* reworked `*.iml`, `NOTICE` files.
 
 ### 0.7 (2018/09/06)
 * support `vagrantfile`, `*.iml`, `.gitattributes`, `.gitignore`, `.editorconfig`, `berksfile`, `berksfile.lock`, `dockerfile`, `docker-compose.yml` files.
