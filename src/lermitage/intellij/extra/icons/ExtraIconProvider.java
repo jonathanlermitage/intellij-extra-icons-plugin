@@ -64,7 +64,14 @@ public class ExtraIconProvider extends IconProvider {
                 new Model("/icons/cmd.png").willEndWith(".cmd", ".bat", ".ps1"),
                 new Model("/icons/jar.png").willEndWith(".jar"),
                 new Model("/icons/keepass.png").willEndWith(".kdbx"),
-                new Model("/icons/pdf.png").willEndWith(".pdf")
+                new Model("/icons/pdf.png").willEndWith(".pdf"),
+                
+                new Model("/icons/officedocs/msexcel.png").willEndWith(".xls", ".xlsx"),
+                new Model("/icons/officedocs/msonenote.png").willEndWith(".one", ".onetoc2"),
+                new Model("/icons/officedocs/mspowerpoint.png").willEndWith(".ppt", ".pptx"),
+                new Model("/icons/officedocs/msproject.png").willEndWith(".mpd", ".mpp", ".mpt"),
+                new Model("/icons/officedocs/msvisio.png").willEndWith(".vsd", ".vsdx", ".vss", ".vssx", ".vst", ".vstx"),
+                new Model("/icons/officedocs/msword.png").willEndWith(".doc", ".docx")
         );
     }
     
