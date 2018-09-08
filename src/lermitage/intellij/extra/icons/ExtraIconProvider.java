@@ -65,7 +65,12 @@ public class ExtraIconProvider extends IconProvider {
                 new Model("/icons/jar.png").willEndWith(".jar"),
                 new Model("/icons/keepass.png").willEndWith(".kdbx"),
                 new Model("/icons/pdf.png").willEndWith(".pdf"),
-                
+        
+                new Model("/icons/officedocs/localc.png").willEndWith(".ods"),
+                new Model("/icons/officedocs/lodraw.png").willEndWith(".odg"),
+                new Model("/icons/officedocs/loimpress.png").willEndWith(".odp"),
+                new Model("/icons/officedocs/lomath.png").willEndWith(".odf"),
+                new Model("/icons/officedocs/lowriter.png").willEndWith(".odt"),
                 new Model("/icons/officedocs/msexcel.png").willEndWith(".xls", ".xlsx"),
                 new Model("/icons/officedocs/msonenote.png").willEndWith(".one", ".onetoc2"),
                 new Model("/icons/officedocs/mspowerpoint.png").willEndWith(".ppt", ".pptx"),
