@@ -3,6 +3,9 @@
 ### TODO, ideas
 * add a panel to select extra icons to activate.
 
+### 0.9 (WIP)
+* reworked Microsoft Word, Excel, PowerPoint, OneNote, Visio, Project files (added dark theme).
+
 ### 0.8 (2018/09/09)
 * some code refactoring.
 * reworked `*.iml`, `.travis.yml`, `jenkins`, `jenkinsfile`, `NOTICE` files.
