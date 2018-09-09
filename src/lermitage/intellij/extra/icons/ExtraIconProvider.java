@@ -44,6 +44,7 @@ public class ExtraIconProvider extends IconProvider {
                 new Model("/icons/email.png").willEqual(".mailmap"),
                 new Model("/icons/git.png").willEqual(".gitattributes"),
                 new Model("/icons/git.png").willEqual(".gitignore"),
+                new Model("/icons/git.png").willEqual(".gitmodules"),
                 new Model("/icons/gitlab.png").willEqual(".gitlab-ci.yml"),
                 new Model("/icons/gocd.png").willEqualAndMayEndWith(".gocd", "yml", "yaml"),
                 new Model("/icons/intellijidea.png").willEndWith("iml"),
