@@ -3,12 +3,12 @@ package lermitage.intellij.extra.icons;
 @SuppressWarnings("WeakerAccess")
 class Model {
     
-    private boolean doEquals = false;
-    private boolean doEqualsAndMayEndWith = false;
-    private boolean doEndsWith = false;
+    private boolean eq = false;
+    private boolean mayEnd = false;
+    private boolean end = false;
     
     private String icon;
-    private String base = "";
+    private String[] names = new String[0];
     private String[] extensions = new String[0];
     
     public Model(String icon) {
@@ -19,43 +19,45 @@ class Model {
         return icon;
     }
     
-    public Model willEqual(String base) {
-        this.doEquals = true;
-        this.base = base;
+    public Model eq(String... base) {
+        this.eq = true;
+        this.names = base;
         return this;
     }
     
-    public Model willEqualAndMayEndWith(String base, String... extensions) {
-        this.doEqualsAndMayEndWith = true;
-        this.base = base;
+    public Model mayEnd(String... extensions) {
+        this.mayEnd = true;
         this.extensions = extensions;
         return this;
     }
     
-    public Model willEndWith(String... extensions) {
-        this.doEndsWith = true;
+    public Model end(String... extensions) {
+        this.end = true;
         this.extensions = extensions;
         return this;
     }
     
     public boolean check(String name) {
-        if (doEquals) {
-            return name.equals(base);
-        }
-        if (doEndsWith) {
-            for (String ext : extensions) {
-                if (name.endsWith(ext)) {
+        if (eq) {
+            for (String n : names) {
+                if (name.equals(n)) {
                     return true;
                 }
             }
         }
-        if (doEqualsAndMayEndWith) {
-            if (name.equals(base)) {
-                return true;
-            }
-            for (String ext : extensions) {
-                if (name.startsWith(base) && name.endsWith(ext)) {
+        if (end) {
+            for (String e : extensions) {
+                if (name.endsWith(e)) {
                     return true;
+                }
+            }
+        }
+        if (mayEnd) {
+            for (String e : extensions) {
+                for (String n : names) {
+                    if (name.startsWith(n) && name.endsWith(e)) {
+                        return true;
+                    }
                 }
             }
         }

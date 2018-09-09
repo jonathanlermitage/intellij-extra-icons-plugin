@@ -7,8 +7,9 @@ import com.intellij.psi.PsiFile;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
-import java.util.Arrays;
 import java.util.List;
+
+import static java.util.Arrays.asList;
 
 public class ExtraIconProvider extends IconProvider {
     
@@ -16,68 +17,57 @@ public class ExtraIconProvider extends IconProvider {
     
     public ExtraIconProvider() {
         super();
-        models = Arrays.asList(
-                new Model("/icons/appveyor.png").willEqual("appveyor.yml"),
-                new Model("/icons/authors.png").willEqualAndMayEndWith("author", ".md", ".txt", ".adoc"),
-                new Model("/icons/authors.png").willEqualAndMayEndWith("authors", ".md", ".txt", ".adoc"),
-                new Model("/icons/bamboo.png").willEqual("bamboo.yml"),
-                new Model("/icons/bash-gradlew.png").willEqual("gradlew"),
-                new Model("/icons/bash-mvnw.png").willEqual("mvnw"),
-                new Model("/icons/berkshelf.png").willEqual("berksfile"),
-                new Model("/icons/berkshelf.png").willEqual("berksfile.lock"),
-                new Model("/icons/changelog.png").willEqualAndMayEndWith("changelog", ".md", ".txt", ".adoc"),
-                new Model("/icons/changelog.png").willEqualAndMayEndWith("changes", ".md", ".txt", ".adoc"),
-                new Model("/icons/circleci.png").willEqual("circle.yml"),
-                new Model("/icons/cmd-gradlew.png").willEqual("gradlew.bat"),
-                new Model("/icons/cmd-gradlew.png").willEqual("gradlew.cmd"),
-                new Model("/icons/cmd-mvnw.png").willEqual("mvnw.bat"),
-                new Model("/icons/cmd-mvnw.png").willEqual("mvnw.cmd"),
-                new Model("/icons/codefresh.png").willEqual("codefresh.yml"),
-                new Model("/icons/codeship.png").willEqual("codeship-steps.yml"),
-                new Model("/icons/codeship.png").willEqualAndMayEndWith("codeship-steps", "json", "yml"),
-                new Model("/icons/contact.png").willEqualAndMayEndWith("contact", ".md", ".txt", ".adoc"),
-                new Model("/icons/contact.png").willEqualAndMayEndWith("contacts", ".md", ".txt", ".adoc"),
-                new Model("/icons/contributing.png").willEqualAndMayEndWith("contributing", ".md", ".txt", ".adoc"),
-                new Model("/icons/docker.png").willEqual("dockerfile"),
-                new Model("/icons/docker.png").willEqual("docker-compose.yml"),
-                new Model("/icons/editorconfig.png").willEqual(".editorconfig"),
-                new Model("/icons/email.png").willEqual(".mailmap"),
-                new Model("/icons/git.png").willEqual(".gitattributes"),
-                new Model("/icons/git.png").willEqual(".gitignore"),
-                new Model("/icons/git.png").willEqual(".gitmodules"),
-                new Model("/icons/gitlab.png").willEqual(".gitlab-ci.yml"),
-                new Model("/icons/gocd.png").willEqualAndMayEndWith(".gocd", "yml", "yaml"),
-                new Model("/icons/intellijidea.png").willEndWith("iml"),
-                new Model("/icons/jenkins.png").willEqual("jenkinsfile"),
-                new Model("/icons/jenkins.png").willEqualAndMayEndWith("jenkins", "txt", "yml"),
-                new Model("/icons/license.png").willEqualAndMayEndWith("license", ".md", ".txt", ".adoc"),
-                new Model("/icons/license.png").willEqualAndMayEndWith("copying", ".md", ".txt", ".adoc"),
-                new Model("/icons/notice.png").willEqualAndMayEndWith("notice", ".md", ".txt", ".adoc"),
-                new Model("/icons/packagejson.png").willEqual("package.json"),
-                new Model("/icons/packagejsonlock.png").willEqual("package-lock.json"),
-                new Model("/icons/readme.png").willEqualAndMayEndWith("readme", ".md", ".txt", ".adoc"),
-                new Model("/icons/travis.png").willEqual(".travis.yml"),
-                new Model("/icons/vagrant.png").willEqual("vagrantfile"),
-                new Model("/icons/version.png").willEqualAndMayEndWith("version", ".md", ".txt", ".adoc"),
+        String[] txt = new String[]{".md", ".txt", ".adoc"};
+        models = asList(
+                m("/icons/appveyor.png").eq("appveyor.yml"),
+                m("/icons/authors.png").eq("author", "authors").mayEnd(txt),
+                m("/icons/bamboo.png").eq("bamboo.yml"),
+                m("/icons/bash-gradlew.png").eq("gradlew"),
+                m("/icons/bash-mvnw.png").eq("mvnw"),
+                m("/icons/berkshelf.png").eq("berksfile", "berksfile.lock"),
+                m("/icons/changelog.png").eq("changelog", "changes").mayEnd(txt),
+                m("/icons/circleci.png").eq("circle.yml"),
+                m("/icons/cmd-gradlew.png").eq("gradlew.bat", "gradlew.cmd"),
+                m("/icons/cmd-mvnw.png").eq("mvnw.bat", "mvnw.cmd"),
+                m("/icons/codefresh.png").eq("codefresh.yml"),
+                m("/icons/codeship.png").eq("codeship-steps").mayEnd(".json", ".yml"),
+                m("/icons/contact.png").eq("contact", "contacts").mayEnd(txt),
+                m("/icons/contributing.png").eq("contributing").mayEnd(txt),
+                m("/icons/docker.png").eq("dockerfile", "docker-compose.yml"),
+                m("/icons/editorconfig.png").eq(".editorconfig"),
+                m("/icons/email.png").eq(".mailmap"),
+                m("/icons/git.png").eq(".gitattributes", ".gitignore", ".gitmodules"),
+                m("/icons/gitlab.png").eq(".gitlab-ci.yml"),
+                m("/icons/gocd.png").eq(".gocd").mayEnd(".yml", ".yaml"),
+                m("/icons/jenkins.png").eq("jenkinsfile", "jenkins").mayEnd(".txt", ".yml"),
+                m("/icons/license.png").eq("license", "copying").mayEnd(txt),
+                m("/icons/notice.png").eq("notice").mayEnd(txt),
+                m("/icons/packagejson.png").eq("package.json"),
+                m("/icons/packagejsonlock.png").eq("package-lock.json"),
+                m("/icons/readme.png").eq("readme").mayEnd(txt),
+                m("/icons/travis.png").eq(".travis.yml"),
+                m("/icons/vagrant.png").eq("vagrantfile"),
+                m("/icons/version.png").eq("version").mayEnd(txt),
                 
-                new Model("/icons/bash.png").willEndWith(".sh"),
-                new Model("/icons/certificate.png").willEndWith(".pem", ".crt", ".ca-bundle", ".cer", ".p7b", ".p7s", ".pfx"),
-                new Model("/icons/cmd.png").willEndWith(".cmd", ".bat", ".ps1"),
-                new Model("/icons/jar.png").willEndWith(".jar"),
-                new Model("/icons/keepass.png").willEndWith(".kdbx"),
-                new Model("/icons/pdf.png").willEndWith(".pdf"),
-        
-                new Model("/icons/officedocs/localc.png").willEndWith(".ods"),
-                new Model("/icons/officedocs/lodraw.png").willEndWith(".odg"),
-                new Model("/icons/officedocs/loimpress.png").willEndWith(".odp"),
-                new Model("/icons/officedocs/lomath.png").willEndWith(".odf"),
-                new Model("/icons/officedocs/lowriter.png").willEndWith(".odt"),
-                new Model("/icons/officedocs/msexcel.png").willEndWith(".xls", ".xlsx"),
-                new Model("/icons/officedocs/msonenote.png").willEndWith(".one", ".onetoc2"),
-                new Model("/icons/officedocs/mspowerpoint.png").willEndWith(".ppt", ".pptx"),
-                new Model("/icons/officedocs/msproject.png").willEndWith(".mpd", ".mpp", ".mpt"),
-                new Model("/icons/officedocs/msvisio.png").willEndWith(".vsd", ".vsdx", ".vss", ".vssx", ".vst", ".vstx"),
-                new Model("/icons/officedocs/msword.png").willEndWith(".doc", ".docx")
+                m("/icons/bash.png").end(".sh"),
+                m("/icons/certificate.png").end(".pem", ".crt", ".ca-bundle", ".cer", ".p7b", ".p7s", ".pfx"),
+                m("/icons/cmd.png").end(".cmd", ".bat", ".ps1"),
+                m("/icons/intellijidea.png").end(".iml"),
+                m("/icons/jar.png").end(".jar"),
+                m("/icons/keepass.png").end(".kdbx"),
+                m("/icons/pdf.png").end(".pdf"),
+                
+                m("/icons/officedocs/localc.png").end(".ods"),
+                m("/icons/officedocs/lodraw.png").end(".odg"),
+                m("/icons/officedocs/loimpress.png").end(".odp"),
+                m("/icons/officedocs/lomath.png").end(".odf"),
+                m("/icons/officedocs/lowriter.png").end(".odt"),
+                m("/icons/officedocs/msexcel.png").end(".xls", ".xlsx"),
+                m("/icons/officedocs/msonenote.png").end(".one", ".onetoc2"),
+                m("/icons/officedocs/mspowerpoint.png").end(".ppt", ".pptx"),
+                m("/icons/officedocs/msproject.png").end(".mpd", ".mpp", ".mpt"),
+                m("/icons/officedocs/msvisio.png").end(".vsd", ".vsdx", ".vss", ".vssx", ".vst", ".vstx"),
+                m("/icons/officedocs/msword.png").end(".doc", ".docx")
         );
     }
     
@@ -92,5 +82,9 @@ public class ExtraIconProvider extends IconProvider {
             }
         }
         return null;
+    }
+    
+    private Model m(String icon) {
+        return new Model(icon);
     }
 }
