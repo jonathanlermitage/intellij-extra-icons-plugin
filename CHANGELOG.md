@@ -3,7 +3,7 @@
 ### TODO, ideas
 * add a panel to select extra icons to activate.
 
-### 0.8 (WIP)
+### 0.8 (2018/09/09)
 * some code refactoring.
 * reworked `*.iml`, `.travis.yml`, `jenkins`, `jenkinsfile`, `NOTICE` files.
 * support `.gitmodules`, `*.pdf`, `.mailmap`, `*.kdbx` (KeePass), `version` (with `.md`, `.adoc`, `.txt` or no extension) files.
