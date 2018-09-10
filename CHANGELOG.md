@@ -5,7 +5,7 @@
 
 ### 0.9 (WIP)
 * reworked Microsoft Word, Excel, PowerPoint, OneNote, Visio, Project files (added dark theme).
-* reworked `appveyor.yml`, `*.kdbx` files.
+* reworked `LICENSE`, `appveyor.yml`, `*.kdbx` files.
 
 ### 0.8 (2018/09/09)
 * some code refactoring.
