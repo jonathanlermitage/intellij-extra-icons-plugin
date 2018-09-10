@@ -18,6 +18,7 @@ public class ExtraIconProvider extends IconProvider {
     public ExtraIconProvider() {
         super();
         String[] txt = new String[]{".md", ".txt", ".adoc"};
+        String[] cfg = new String[]{".xml", ".yml", ".yaml", ".properties", ".json"};
         models = asList(
                 m("/icons/appveyor.png").eq("appveyor.yml"),
                 m("/icons/authors.png").eq("author", "authors").mayEnd(txt),
@@ -41,6 +42,8 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/gocd.png").eq(".gocd").mayEnd(".yml", ".yaml"),
                 m("/icons/jenkins.png").eq("jenkinsfile", "jenkins").mayEnd(".txt", ".yml"),
                 m("/icons/license.png").eq("license", "copying").mayEnd(txt),
+                m("/icons/log4j.png").eq("log4j", "log4j-test").mayEnd(cfg),
+                m("/icons/logback.png").eq("logback", "logback-test").mayEnd(cfg),
                 m("/icons/notice.png").eq("notice").mayEnd(txt),
                 m("/icons/packagejson.png").eq("package.json"),
                 m("/icons/packagejsonlock.png").eq("package-lock.json"),

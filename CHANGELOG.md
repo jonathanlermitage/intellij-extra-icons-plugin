@@ -3,6 +3,9 @@
 ### TODO, ideas
 * add a panel to select extra icons to activate.
 
+### 0.9 (WIP)
+* support `log4j`, `log4j-test`, `logback`, `logback-test` files with `.xml`, `.yml`, `yaml`, `.properties`, `.json` extensions.
+
 ### 0.8.1 (2018/09/10)
 * reworked Microsoft Word, Excel, PowerPoint, OneNote, Visio, Project files (added dark theme).
 * reworked `LICENSE`, `appveyor.yml`, `*.kdbx` files.
