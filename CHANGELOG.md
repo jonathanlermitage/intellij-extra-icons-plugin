@@ -4,6 +4,7 @@
 * add a panel to select extra icons to activate.
 
 ### 0.9 (WIP)
+* reworked `LICENSE` file.
 * support `log4j`, `log4j-test`, `logback`, `logback-test` files with `.xml`, `.yml`, `yaml`, `.properties`, `.json` extensions.
 
 ### 0.8.1 (2018/09/10)
