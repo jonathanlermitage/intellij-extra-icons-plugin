@@ -1,11 +1,13 @@
 ## Extra Icons Change Log
 
 ### TODO, ideas
-* add a panel to select extra icons to activate.
+* add a panel in `Settings > Other Settings` to select extra icons to activate.
 
 ### 0.9 (WIP)
-* reworked `LICENSE` file.
+* reworked `LICENSE`, `berksfile.lock` files.
 * support `log4j`, `log4j-test`, `logback`, `logback-test` files with `.xml`, `.yml`, `yaml`, `.properties`, `.json` extensions.
+* support `*.csv`, `*.md`, `*.adoc`, `*.cert` extensions.
+* support backup `*.versionBackup`, `*.back`, `*.backup`, `*.old`, `*.prev`, `*.revert` files.
 
 ### 0.8.1 (2018/09/10)
 * reworked Microsoft Word, Excel, PowerPoint, OneNote, Visio, Project files (added dark theme).
