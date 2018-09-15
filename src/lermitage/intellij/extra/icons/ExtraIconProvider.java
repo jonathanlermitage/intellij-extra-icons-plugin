@@ -60,7 +60,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/cmd.png").end(".cmd", ".bat", ".ps1"),
                 m("/icons/csv.png").end(".csv"),
                 m("/icons/form.png").end(".form"),
-                m("/icons/intellijidea.png").end(".iml"),
+                m("/icons/ijbeam.png").end(".iml"),
                 m("/icons/jar.png").end(".jar"),
                 m("/icons/keepass.png").end(".kdbx"),
                 m("/icons/markdown.png").end(".md"),

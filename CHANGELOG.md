@@ -3,6 +3,9 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
+### 0.10 (WIP)
+* reworked `*.iml` files.
+
 ### 0.9 (2018/09/15)
 * reworked `LICENSE`, `berksfile.lock` files.
 * support `log4j`, `log4j-test`, `logback`, `logback-test` files with `.xml`, `.yml`, `yaml`, `.properties`, `.json` extensions.
