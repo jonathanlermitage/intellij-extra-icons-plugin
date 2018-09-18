@@ -53,7 +53,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/vagrant.png").eq("vagrantfile"),
                 m("/icons/version.png").eq("version").mayEnd(txt),
                 
-                m("/icons/asciidoc.png").end(".adoc"),
+                m("/icons/asciidoc.png").end(".adoc", ".asciidoc"),
                 m("/icons/backup.png").end(".versionbackup", ".back", ".backup", ".old", ".prev", ".revert"),
                 m("/icons/bash.png").end(".sh"),
                 m("/icons/certificate.png").end(".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".p7b", ".p7s", ".pfx"),
