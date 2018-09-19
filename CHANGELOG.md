@@ -4,7 +4,7 @@
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
 ### 0.10 (WIP)
-* reworked `*.iml` files.
+* reworked `*.iml`, `*.war` files.
 * support `*.asciidoc`, `*.versionsbackup` files.
 
 ### 0.9 (2018/09/15)
