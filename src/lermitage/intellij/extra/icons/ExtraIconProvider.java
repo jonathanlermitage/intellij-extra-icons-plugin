@@ -18,8 +18,9 @@ public class ExtraIconProvider extends IconProvider {
     public ExtraIconProvider() {
         super();
         String[] txt = new String[]{".md", ".txt", ".adoc"};
-        String[] cfg = new String[]{".xml", ".yml", ".yaml", ".properties", ".json"};
+        String[] cfg = new String[]{".xml", ".yml", ".yaml", ".properties", ".json", ".conf", ".ini", ".txt"};
         models = asList(
+                m("/icons/apache.png").eq(".htaccess"),
                 m("/icons/appveyor.png").eq("appveyor.yml"),
                 m("/icons/authors.png").eq("author", "authors").mayEnd(txt),
                 m("/icons/bamboo.png").eq("bamboo.yml"),
@@ -32,7 +33,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/cmd-gradlew.png").eq("gradlew.bat", "gradlew.cmd"),
                 m("/icons/cmd-mvnw.png").eq("mvnw.bat", "mvnw.cmd"),
                 m("/icons/codefresh.png").eq("codefresh.yml"),
-                m("/icons/codeship.png").eq("codeship-steps").mayEnd(".json", ".yml"),
+                m("/icons/codeship.png").eq("codeship-steps").mayEnd(cfg),
                 m("/icons/contact.png").eq("contact", "contacts").mayEnd(txt),
                 m("/icons/contributing.png").eq("contributing").mayEnd(txt),
                 m("/icons/docker.png").eq("dockerfile", "docker-compose.yml"),
@@ -40,14 +41,17 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/email.png").eq(".mailmap"),
                 m("/icons/git.png").eq(".gitattributes", ".gitignore", ".gitmodules"),
                 m("/icons/gitlab.png").eq(".gitlab-ci.yml"),
-                m("/icons/gocd.png").eq(".gocd").mayEnd(".yml", ".yaml"),
-                m("/icons/jenkins.png").eq("jenkinsfile", "jenkins").mayEnd(".txt", ".yml"),
+                m("/icons/gocd.png").eq(".gocd").mayEnd(cfg),
+                m("/icons/jenkins.png").eq("jenkinsfile", "jenkins").mayEnd(cfg),
                 m("/icons/license.png").eq("license", "copying").mayEnd(txt),
                 m("/icons/log4j.png").eq("log4j", "log4j-test").mayEnd(cfg),
                 m("/icons/logback.png").eq("logback", "logback-test").mayEnd(cfg),
+                m("/icons/my.png").eq("my.ini"),
+                m("/icons/nginx.png").eq("nginx").mayEnd(cfg),
                 m("/icons/notice.png").eq("notice").mayEnd(txt),
                 m("/icons/packagejson.png").eq("package.json"),
                 m("/icons/packagejsonlock.png").eq("package-lock.json"),
+                m("/icons/puppet.png").eq("puppet").mayEnd(cfg),
                 m("/icons/readme.png").eq("readme").mayEnd(txt),
                 m("/icons/travis.png").eq(".travis.yml"),
                 m("/icons/vagrant.png").eq("vagrantfile"),
@@ -61,6 +65,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/csv.png").end(".csv"),
                 m("/icons/form.png").end(".form"),
                 m("/icons/ijbeam.png").end(".iml"),
+                m("/icons/ini.png").end(".ini", ".cfg", ".conf"),
                 m("/icons/jar.png").end(".jar"),
                 m("/icons/keepass.png").end(".kdbx"),
                 m("/icons/markdown.png").end(".md"),
