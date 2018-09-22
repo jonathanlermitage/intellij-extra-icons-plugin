@@ -65,6 +65,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/keepass.png").end(".kdbx"),
                 m("/icons/markdown.png").end(".md"),
                 m("/icons/pdf.png").end(".pdf"),
+                m("/icons/toml.png").end(".toml"),
                 m("/icons/war.png").end(".war"),
         
                 m("/icons/officedocs/localc.png").end(".ods"),

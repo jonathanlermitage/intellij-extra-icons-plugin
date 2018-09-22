@@ -5,7 +5,7 @@
 
 ### 0.10 (WIP)
 * reworked `*.iml`, `*.war` files.
-* support `*.asciidoc`, `*.versionsbackup` files.
+* support `*.toml`, `*.asciidoc`, `*.versionsbackup` files.
 
 ### 0.9 (2018/09/15)
 * reworked `LICENSE`, `berksfile.lock` files.
