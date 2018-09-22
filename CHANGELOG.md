@@ -3,7 +3,7 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
-### 0.10 (WIP)
+### 0.10 (2018/09/22)
 * reworked `*.iml`, `*.war` files.
 * support `nginx.conf`, `.htaccess`, `puppet.conf`, `my.ini`, `*.ini`, `*.cfg`, `*.conf`, `*.toml`, `*.asciidoc`, `*.versionsbackup` files.
 
