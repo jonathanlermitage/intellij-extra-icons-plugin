@@ -60,7 +60,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/asciidoc.png").end(".adoc", ".asciidoc"),
                 m("/icons/backup.png").end(".versionbackup", ".versionsbackup", ".back", ".backup", ".old", ".prev", ".revert"),
                 m("/icons/bash.png").end(".sh"),
-                m("/icons/certificate.png").end(".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".p7b", ".p7s", ".pfx"),
+                m("/icons/certificate.png").end(".jks", ".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".p7b", ".p7s", ".pfx"),
                 m("/icons/cmd.png").end(".cmd", ".bat", ".ps1"),
                 m("/icons/csv.png").end(".csv"),
                 m("/icons/form.png").end(".form"),
