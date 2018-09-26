@@ -2,6 +2,11 @@
     Extra Icons
 </h1>
 
+<p align="center">
+    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/LICENSE.txt"><img src="https://img.shields.io/github/license/jonathanlermitage/intellij-extra-icons-plugin.svg"/></a>
+    <a href="https://twitter.com/intent/follow?screen_name=JLermitage"><img src="https://img.shields.io/twitter/follow/JLermitage.svg?style=social" alt="follow on Twitter"></a>
+</p>
+
 Intellij IDEA (Community and Ultimate) plugin that adds icons for files like Travis YML, Appveyor YML, etc.  
 Starting from version 0.4, it works with all JetBrains products like WebStorm, DataGrip, etc.
 
