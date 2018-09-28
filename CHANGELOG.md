@@ -4,7 +4,7 @@
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
 ### 0.11 (WIP)
-* support `*.jks`, `BUILD`, `BUILDING`, `PRIVACY`, `ROADMAP`, `CONTRIBUTE`, `CONTRIBUTION`, `TODO`, `TEST`, `TESTING` files.
+* support `*.jks`, `BUILD`, `BUILDING`, `PRIVACY`, `ROADMAP`, `CONTRIBUTE`, `CONTRIBUTION`, `TODO`, `TEST`, `TESTING`, `LICENSE_INFO`, `ADDITIONAL_LICENSE_INFO` files.
 
 ### 0.10 (2018/09/22)
 * reworked `*.iml`, `*.war` files.
