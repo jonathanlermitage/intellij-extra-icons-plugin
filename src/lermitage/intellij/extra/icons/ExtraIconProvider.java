@@ -75,6 +75,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/keepass.png").end(".kdbx"),
                 m("/icons/markdown.png").end(".md"),
                 m("/icons/pdf.png").end(".pdf"),
+                m("/icons/terraform.png").end(".hcl", ".tf", ".tf.json"),
                 m("/icons/toml.png").end(".toml"),
                 m("/icons/war.png").end(".war"),
         
