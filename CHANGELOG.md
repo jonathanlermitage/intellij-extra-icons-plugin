@@ -4,7 +4,7 @@
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
 ### 0.12 (WIP)
-* reworked Maven wrapper `mvnw` files (the "m" letter is a bit nicer).
+* reworked Gitlab (reduced margin by 1px), Maven wrapper `mvnw` files (the "m" letter is a bit nicer).
 * support Terraform `*.hcl`, `*.tf`, `*.tf.json` files.
 
 ### 0.11 (2018/09/29)
