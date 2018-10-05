@@ -3,6 +3,8 @@
 </h1>
 
 <p align="center">
+    <a href="https://plugins.jetbrains.com/plugin/11058-extra-icons"><img src="https://img.shields.io/jetbrains/plugin/v/11058-extra-icons.svg"/></a>
+    <a href="https://plugins.jetbrains.com/plugin/11058-extra-icons"><img src="https://img.shields.io/jetbrains/plugin/d/11058-extra-icons.svg"/></a>
     <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/LICENSE.txt"><img src="https://img.shields.io/github/license/jonathanlermitage/intellij-extra-icons-plugin.svg"/></a>
     <a href="https://twitter.com/intent/follow?screen_name=JLermitage"><img src="https://img.shields.io/twitter/follow/JLermitage.svg?style=social" alt="follow on Twitter"></a>
 </p>
