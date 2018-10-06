@@ -7,6 +7,7 @@
 * reworked Gitlab (reduced margin by 1px), Maven wrapper `mvnw` files (the "m" letter is a bit nicer).
 * support Terraform `*.hcl`, `*.tf`, `*.tf.json` files.
 * support `*.rpm`, `*.deb`, `*.zip`, `*.7z`, `*.tar`, `*.gz`, `*.bz2` files.
+* support Cirrus `.cirrus.yml` files.
 
 ### 0.11 (2018/09/29)
 * support `*.jks`, `BUILD`, `BUILDING`, `PRIVACY`, `ROADMAP`, `CONTRIBUTE`, `CONTRIBUTION`, `TODO`, `TEST`, `TESTING`, `LICENSE_INFO`, `ADDITIONAL_LICENSE_INFO` files.
