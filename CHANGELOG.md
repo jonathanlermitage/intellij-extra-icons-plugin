@@ -4,10 +4,11 @@
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
 ### 0.12 (WIP)
-* reworked Gitlab (reduced margin by 1px), Maven wrapper `mvnw` files (the "m" letter is a bit nicer).
+* reworked Gitlab files (reduced margin by 1px).
+* reworked Maven and Gradle wrapper files (new icons).
 * support Terraform `*.hcl`, `*.tf`, `*.tf.json` files.
-* support `*.rpm`, `*.deb`, `*.zip`, `*.7z`, `*.tar`, `*.gz`, `*.bz2` files.
 * support Cirrus `.cirrus.yml` files.
+* support `*.rpm`, `*.deb`, `*.zip`, `*.7z`, `*.tar`, `*.gz`, `*.bz2` files.
 
 ### 0.11 (2018/09/29)
 * support `*.jks`, `BUILD`, `BUILDING`, `PRIVACY`, `ROADMAP`, `CONTRIBUTE`, `CONTRIBUTION`, `TODO`, `TEST`, `TESTING`, `LICENSE_INFO`, `ADDITIONAL_LICENSE_INFO` files.
