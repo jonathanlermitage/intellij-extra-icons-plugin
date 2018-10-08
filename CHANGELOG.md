@@ -6,6 +6,7 @@
 ### 0.12 (WIP)
 * reworked Gitlab files (reduced margin by 1px).
 * reworked Maven and Gradle wrapper files (new icons).
+* reworked `package.json`, `package-lock.json` files (new icons).
 * support Terraform `*.hcl`, `*.tf`, `*.tf.json` files.
 * support Cirrus `.cirrus.yml` files.
 * support `*.rpm`, `*.deb`, `*.zip`, `*.7z`, `*.tar`, `*.gz`, `*.bz2` files.
