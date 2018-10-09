@@ -10,6 +10,7 @@
 * support Terraform `*.hcl`, `*.tf`, `*.tf.json` files.
 * support Cirrus `.cirrus.yml` files.
 * support `*.rpm`, `*.deb`, `*.zip`, `*.7z`, `*.tar`, `*.gz`, `*.bz2` files.
+* support `bower.json`, `.bowerrc`, `.jsbeautifyrc`, `.jshintrc` files.
 
 ### 0.11 (2018/09/29)
 * support `*.jks`, `BUILD`, `BUILDING`, `PRIVACY`, `ROADMAP`, `CONTRIBUTE`, `CONTRIBUTION`, `TODO`, `TEST`, `TESTING`, `LICENSE_INFO`, `ADDITIONAL_LICENSE_INFO` files.
