@@ -3,7 +3,7 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
-### 0.12 (WIP)
+### 0.12 (2018/10/10)
 * reworked Gitlab files (reduced margin by 1px).
 * reworked Maven and Gradle wrapper files (new icons).
 * reworked `package.json`, `package-lock.json` files (new icons).
