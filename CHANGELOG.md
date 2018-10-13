@@ -3,6 +3,9 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
+### 0.13 (WIP)
+* detect more Docker and Docker Compose files.
+
 ### 0.12 (2018/10/10)
 * reworked Gitlab files (reduced margin by 1px).
 * reworked Maven and Gradle wrapper files (new icons).

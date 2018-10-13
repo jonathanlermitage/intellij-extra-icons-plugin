@@ -19,6 +19,7 @@ public class ExtraIconProvider extends IconProvider {
         super();
         String[] txt = new String[]{".md", ".txt", ".adoc"};
         String[] cfg = new String[]{".xml", ".yml", ".yaml", ".properties", ".json", ".conf", ".ini", ".txt"};
+        String[] yml = new String[]{".yaml", ".yml"};
         models = asList(
                 m("/icons/apache.png").eq(".htaccess"),
                 m("/icons/appveyor.png").eq("appveyor.yml"),
@@ -39,7 +40,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/codeship.png").eq("codeship-steps").mayEnd(cfg),
                 m("/icons/contact.png").eq("contact", "contacts").mayEnd(txt),
                 m("/icons/contributing.png").eq("contribute", "contributing", "contribution").mayEnd(txt),
-                m("/icons/docker.png").eq("dockerfile", "docker-compose.yml"),
+                m("/icons/docker.png").eq("dockerfile", "docker-compose").mayEnd(yml),
                 m("/icons/editorconfig.png").eq(".editorconfig"),
                 m("/icons/email.png").eq(".mailmap"),
                 m("/icons/git.png").eq(".gitattributes", ".gitignore", ".gitmodules"),
