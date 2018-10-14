@@ -36,6 +36,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/cirrus.png").eq(".cirrus.yml"),
                 m("/icons/cmd-gradlew.png").eq("gradlew.bat", "gradlew.cmd"),
                 m("/icons/cmd-mvnw.png").eq("mvnw.bat", "mvnw.cmd"),
+                m("/icons/codecov.png").eq(".codecov.yml", "codecov.yml"),
                 m("/icons/codefresh.png").eq("codefresh.yml"),
                 m("/icons/codeship.png").eq("codeship-steps").mayEnd(cfg),
                 m("/icons/contact.png").eq("contact", "contacts").mayEnd(txt),

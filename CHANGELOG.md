@@ -6,6 +6,7 @@
 ### 0.13 (WIP)
 * detect more Docker and Docker Compose files.
 * support [Zappr](https://zappr.opensource.zalan.do) `.zappr.yaml` files.
+* support [Codecov](https://docs.codecov.io/docs/codecov-yaml) `codecov.yml`, `.codecov.yml` files. 
 
 ### 0.12 (2018/10/10)
 * reworked Gitlab files (reduced margin by 1px).
