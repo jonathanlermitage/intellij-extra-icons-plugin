@@ -5,13 +5,14 @@
 
 ### 0.13 (WIP)
 * detect more Docker and Docker Compose files.
+* support [Zappr](https://zappr.opensource.zalan.do) `.zappr.yaml` files.
 
 ### 0.12 (2018/10/10)
 * reworked Gitlab files (reduced margin by 1px).
 * reworked Maven and Gradle wrapper files (new icons).
 * reworked `package.json`, `package-lock.json` files (new icons).
-* support Terraform `*.hcl`, `*.tf`, `*.tf.json` files.
-* support Cirrus `.cirrus.yml` files.
+* support [Terraform](https://www.terraform.io) `*.hcl`, `*.tf`, `*.tf.json` files.
+* support [Cirrus](https://cirrus-ci.org) `.cirrus.yml` files.
 * support `*.rpm`, `*.deb`, `*.zip`, `*.7z`, `*.tar`, `*.gz`, `*.bz2` files.
 * support `bower.json`, `.bowerrc`, `.jsbeautifyrc`, `.jshintrc` files.
 

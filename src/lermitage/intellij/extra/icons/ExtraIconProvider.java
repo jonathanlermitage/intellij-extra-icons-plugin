@@ -66,6 +66,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/travis.png").eq(".travis.yml"),
                 m("/icons/vagrant.png").eq("vagrantfile"),
                 m("/icons/version.png").eq("version").mayEnd(txt),
+                m("/icons/zalando.png").eq(".zappr.yaml"),
         
                 m("/icons/archive.png").end(".zip", ".7z", ".tar", ".gz", ".bz2"),
                 m("/icons/asciidoc.png").end(".adoc", ".asciidoc"),
