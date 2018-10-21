@@ -3,7 +3,7 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
-### 0.13 (WIP)
+### 0.13 (2018/10/21)
 * detect more Docker and Docker Compose files.
 * detect more Jenkins files.
 * support [Zappr](https://zappr.opensource.zalan.do) `.zappr.yaml` files.
