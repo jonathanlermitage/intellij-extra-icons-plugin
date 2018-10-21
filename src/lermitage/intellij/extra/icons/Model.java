@@ -3,6 +3,7 @@ package lermitage.intellij.extra.icons;
 @SuppressWarnings("WeakerAccess")
 class Model {
     
+    private boolean start = false;
     private boolean eq = false;
     private boolean mayEnd = false;
     private boolean end = false;
@@ -17,6 +18,12 @@ class Model {
     
     public String getIcon() {
         return icon;
+    }
+    
+    public Model start(String... base) {
+        this.start = true;
+        this.names = base;
+        return this;
     }
     
     public Model eq(String... base) {
@@ -41,6 +48,13 @@ class Model {
         if (eq) {
             for (String n : names) {
                 if (name.equals(n)) {
+                    return true;
+                }
+            }
+        }
+        if (start) {
+            for (String n : names) {
+                if (name.startsWith(n)) {
                     return true;
                 }
             }

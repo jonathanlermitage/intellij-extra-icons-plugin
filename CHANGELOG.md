@@ -5,6 +5,7 @@
 
 ### 0.13 (WIP)
 * detect more Docker and Docker Compose files.
+* detect more Jenkins files.
 * support [Zappr](https://zappr.opensource.zalan.do) `.zappr.yaml` files.
 * support [Codecov](https://docs.codecov.io/docs/codecov-yaml) `codecov.yml`, `.codecov.yml` files. 
 * support `.dockerignore` files.

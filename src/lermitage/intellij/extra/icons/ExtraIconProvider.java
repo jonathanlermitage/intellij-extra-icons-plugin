@@ -47,7 +47,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/git.png").eq(".gitattributes", ".gitignore", ".gitmodules"),
                 m("/icons/gitlab.png").eq(".gitlab-ci.yml"),
                 m("/icons/gocd.png").eq(".gocd").mayEnd(cfg),
-                m("/icons/jenkins.png").eq("jenkinsfile", "jenkins").mayEnd(cfg),
+                m("/icons/jenkins.png").start("jenkinsfile", "jenkins").mayEnd(cfg),
                 m("/icons/jsbeautify.png").eq(".jsbeautifyrc").mayEnd(cfg),
                 m("/icons/jshint.png").eq(".jshintrc").mayEnd(cfg),
                 m("/icons/license.png").eq("license", "copying", "license_info", "additional_license_info").mayEnd(txt),
