@@ -3,6 +3,9 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
+### 0.14 (WIP)
+* support [Codacy](https://support.codacy.com/hc/en-us/articles/115002130625-Codacy-Configuration-File) `.codacy.yaml`, `.codacy.yml` files.
+
 ### 0.13 (2018/10/21)
 * detect more Docker and Docker Compose files.
 * detect more Jenkins files.

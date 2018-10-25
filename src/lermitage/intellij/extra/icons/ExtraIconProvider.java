@@ -38,6 +38,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/cmd-mvnw.png").eq("mvnw.bat", "mvnw.cmd"),
                 m("/icons/codecov.png").eq(".codecov.yml", "codecov.yml"),
                 m("/icons/codefresh.png").eq("codefresh.yml"),
+                m("/icons/codacy.png").eq(".codacy").mayEnd(yml),
                 m("/icons/codeship.png").eq("codeship-steps").mayEnd(cfg),
                 m("/icons/contact.png").eq("contact", "contacts").mayEnd(txt),
                 m("/icons/contributing.png").eq("contribute", "contributing", "contribution").mayEnd(txt),
