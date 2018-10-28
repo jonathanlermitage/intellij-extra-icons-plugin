@@ -31,6 +31,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/berkshelflock.png").eq("berksfile.lock"),
                 m("/icons/bower.png").eq("bower.json", ".bowerrc"),
                 m("/icons/build.png").eq("build", "building").mayEnd(txt),
+                m("/icons/cassandra.png").start("cassandra").mayEnd(yml),
                 m("/icons/changelog.png").eq("changelog", "changes").mayEnd(txt),
                 m("/icons/circleci.png").eq("circle.yml"),
                 m("/icons/cirrus.png").eq(".cirrus.yml"),
