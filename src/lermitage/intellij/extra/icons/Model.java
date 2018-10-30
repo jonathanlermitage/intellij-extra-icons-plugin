@@ -46,32 +46,67 @@ class Model {
     
     public boolean check(String name) {
         if (eq) {
-            for (String n : names) {
-                if (name.equals(n)) {
-                    return true;
+            if (end) {
+                for (String n : names) {
+                    for (String e : extensions) {
+                        if (name.equals(n + e)) {
+                            return true;
+                        }
+                    }
+                }
+            } else if (mayEnd) {
+                for (String n : names) {
+                    if (name.equals(n)) {
+                        return true;
+                    }
+                    for (String e : extensions) {
+                        if (name.equals(n + e)) {
+                            return true;
+                        }
+                    }
+                }
+            } else {
+                for (String n : names) {
+                    if (name.equals(n)) {
+                        return true;
+                    }
                 }
             }
         }
+        
         if (start) {
-            for (String n : names) {
-                if (name.startsWith(n)) {
-                    return true;
+            if (end) {
+                for (String n : names) {
+                    for (String e : extensions) {
+                        if (name.startsWith(n) && name.endsWith(e)) {
+                            return true;
+                        }
+                    }
+                }
+            } else if (mayEnd) {
+                for (String n : names) {
+                    if (name.startsWith(n)) {
+                        return true;
+                    }
+                    for (String e : extensions) {
+                        if (name.startsWith(n) && name.endsWith(e)) {
+                            return true;
+                        }
+                    }
+                }
+            } else {
+                for (String n : names) {
+                    if (name.startsWith(n)) {
+                        return true;
+                    }
                 }
             }
         }
+        
         if (end) {
             for (String e : extensions) {
                 if (name.endsWith(e)) {
                     return true;
-                }
-            }
-        }
-        if (mayEnd) {
-            for (String e : extensions) {
-                for (String n : names) {
-                    if (name.startsWith(n) && name.endsWith(e)) {
-                        return true;
-                    }
                 }
             }
         }

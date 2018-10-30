@@ -4,6 +4,7 @@
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
 ### 0.15 (WIP)
+* improved file detection accuracy.
 * support Cassandra `cassandra*.yml` files.
 
 ### 0.14 (2018/10/28)
