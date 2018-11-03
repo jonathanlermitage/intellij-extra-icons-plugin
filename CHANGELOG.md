@@ -5,7 +5,7 @@
 
 ### 0.15 (WIP)
 * improved file detection accuracy.
-* support Cassandra `cassandra*.yml` files.
+* support Cassandra `cassandra*.yml`, Redis `redis*.conf` files.
 
 ### 0.14 (2018/10/28)
 * support [Codacy](https://support.codacy.com/hc/en-us/articles/115002130625-Codacy-Configuration-File) `.codacy.yaml`, `.codacy.yml` files.

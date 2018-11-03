@@ -66,6 +66,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/privacy.png").eq("privacy").mayEnd(txt),
                 m("/icons/puppet.png").start("puppet").mayEnd(cfg),
                 m("/icons/readme.png").eq("readme").mayEnd(txt),
+                m("/icons/redis.png").start("redis").mayEnd(cfg),
                 m("/icons/roadmap.png").eq("roadmap").mayEnd(txt),
                 m("/icons/testing.png").eq("test", "testing").mayEnd(txt),
                 m("/icons/todo.png").eq("todo").mayEnd(txt),
