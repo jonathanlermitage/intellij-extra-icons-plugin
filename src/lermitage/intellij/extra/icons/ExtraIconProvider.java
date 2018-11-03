@@ -47,6 +47,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/editorconfig.png").eq(".editorconfig"),
                 m("/icons/elasticsearch.png").start("elastic").mayEnd(yml),
                 m("/icons/email.png").eq(".mailmap"),
+                m("/icons/gatling.png").start("gatling").mayEnd(cfg),
                 m("/icons/git.png").eq(".gitattributes", ".gitignore", ".gitmodules"),
                 m("/icons/gitlab.png").eq(".gitlab-ci.yml"),
                 m("/icons/gocd.png").eq(".gocd").mayEnd(cfg),
