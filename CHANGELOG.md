@@ -3,7 +3,7 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
-### 0.15 (WIP)
+### 0.15 (2018/11/03)
 * improved file detection accuracy.
 * support Cassandra `cassandra*.yml`, Redis `redis*.conf` files.
 
