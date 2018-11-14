@@ -5,6 +5,7 @@
 
 ### 0.16 (WIP)
 * support Gatling `gatling*.conf` files.
+* support Lombok `lombok.config` files.
 
 ### 0.15 (2018/11/03)
 * improved file detection accuracy.

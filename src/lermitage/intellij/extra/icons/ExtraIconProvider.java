@@ -59,6 +59,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/log4j.png").eq("log4j", "log4j-test").mayEnd(cfg),
                 m("/icons/logback.png").eq("logback", "logback-test").mayEnd(cfg),
                 m("/icons/logstash.png").start("logstash").mayEnd(yml),
+                m("/icons/lombok.png").eq("lombok.config"),
                 m("/icons/my.png").eq("my.ini"),
                 m("/icons/nginx.png").start("nginx").mayEnd(cfg),
                 m("/icons/notice.png").eq("notice").mayEnd(txt),
