@@ -55,6 +55,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/jsbeautify.png").eq(".jsbeautifyrc").mayEnd(cfg),
                 m("/icons/jshint.png").eq(".jshintrc").mayEnd(cfg),
                 m("/icons/kibana.png").start("kibana").mayEnd(yml),
+                m("/icons/kubernetes.png").start("kubernetes").mayEnd(cfg),
                 m("/icons/license.png").eq("license", "copying", "license_info", "additional_license_info").mayEnd(txt),
                 m("/icons/log4j.png").eq("log4j", "log4j-test").mayEnd(cfg),
                 m("/icons/logback.png").eq("logback", "logback-test").mayEnd(cfg),
