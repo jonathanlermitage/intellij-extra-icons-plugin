@@ -3,6 +3,9 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
+### 0.17 (WIP)
+* support `gradle.properties`, `LISEZMOI.*` files.
+
 ### 0.16 (2018/11/15)
 * support Gatling `gatling*.conf` files.
 * support Lombok `lombok.config` files.
