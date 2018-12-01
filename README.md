@@ -19,6 +19,9 @@ Download plugin on [GitHub](https://github.com/jonathanlermitage/intellij-extra-
 Jonathan Lermitage (<jonathan.lermitage@gmail.com>)  
 Linkedin profile: [jonathan-lermitage-092711142](https://www.linkedin.com/in/jonathan-lermitage-092711142/)
 
+## Contributors
+Edoardo Luppi (<lp.edoardo@gmail.com>)
+
 ## License
 
 MIT License. In other words, you can do what you want: this project is entirely OpenSource, Free and Gratis.

@@ -1,0 +1,5 @@
+<idea-plugin>
+	<extensions defaultExtensionNs="com.intellij">
+		<iconProvider implementation="lermitage.intellij.extra.icons.Angular2IconProvider"/>
+	</extensions>
+</idea-plugin>
