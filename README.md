@@ -22,6 +22,12 @@ Linkedin profile: [jonathan-lermitage-092711142](https://www.linkedin.com/in/jon
 ## Contributors
 Edoardo Luppi (<lp.edoardo@gmail.com>)
 
+## Build
+
+Starting from version 0.17, you need JetBrains `AngularJS` plugin to build Extra Icons. Go to `Project Structure`, `SDKs`, select an IntelliJ platform (e.g. IntelliJ DIEA Ultimate) that bundles AngularJS plugin, then add `<thePlatform>/plugins/AngularJS/lib/AngularJS.jar!/` to classpath.
+
+AngularJS support is optional, so you still can install Extra Icons on IntelliJ IDEA Community edition.
+
 ## License
 
 MIT License. In other words, you can do what you want: this project is entirely OpenSource, Free and Gratis.
