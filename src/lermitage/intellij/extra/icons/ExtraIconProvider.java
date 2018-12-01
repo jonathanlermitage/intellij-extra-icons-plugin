@@ -87,6 +87,7 @@ public class ExtraIconProvider extends IconProvider {
                 m("/icons/csv.png").end(".csv"),
                 m("/icons/deb.png").end(".deb"),
                 m("/icons/form.png").end(".form"),
+                m("/icons/haxe.png").end(".hx", ".hxml"),
                 m("/icons/ijbeam.png").end(".iml"),
                 m("/icons/ini.png").end(".ini", ".cfg", ".conf"),
                 m("/icons/jar.png").end(".jar"),
