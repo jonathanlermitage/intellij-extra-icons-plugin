@@ -9,8 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -19,14 +17,14 @@ import java.util.Optional;
  * @author Edoardo Luppi
  */
 class Angular2IconProvider extends IconProvider {
-	private static final Collection<Model> MODELS =
-			Arrays.asList(
-					new Model("/icons/angular-module.svg").end(".module.ts"),
-					new Model("/icons/angular-component.svg").end(".component.ts"),
-					new Model("/icons/angular-service.svg").end(".service.ts"),
-					new Model("/icons/angular-pipe.svg").end(".pipe.ts"),
-					new Model("/icons/angular-directive.svg").end(".directive.ts"),
-					new Model("/icons/angular-guard.svg").end(".guard.ts"));
+	private static final Model[] MODELS = {
+			new Model("/icons/angular-module.svg").end(".module.ts"),
+			new Model("/icons/angular-component.svg").end(".component.ts"),
+			new Model("/icons/angular-service.svg").end(".service.ts"),
+			new Model("/icons/angular-pipe.svg").end(".pipe.ts"),
+			new Model("/icons/angular-directive.svg").end(".directive.ts"),
+			new Model("/icons/angular-guard.svg").end(".guard.ts")
+	};
 
 	@Nullable
 	@Override
