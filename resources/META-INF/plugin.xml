@@ -27,12 +27,24 @@
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
   <depends>com.intellij.modules.lang</depends>
-  <depends optional="true" config-file="angular2.xml">AngularJS</depends>
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
-    <iconProvider implementation="lermitage.intellij.extra.icons.ExtraIconProvider" order="first"/>
+    <iconProvider
+		    id="genericIconProvider"
+		    order="last"
+		    implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
   </extensions>
+
+  <!--
+    IMPORTANT
+    To override test-files icons the icon provider must be ordered as "first".
+    In this particular case I ordered first both the Javascript one and the Angular2+ one.
+    That's because both define a test-related icon and the order can be undefined between each other.
+  -->
+  <depends optional="true" config-file="sass.xml">org.jetbrains.plugins.sass</depends>
+  <depends optional="true" config-file="javascript.xml">JavaScript</depends>
+  <depends optional="true" config-file="angular2.xml">AngularJS</depends>
 
   <actions>
     <!-- Add your actions here -->

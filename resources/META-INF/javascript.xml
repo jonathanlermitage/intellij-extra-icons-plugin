@@ -1,8 +1,8 @@
 <idea-plugin>
 	<extensions defaultExtensionNs="com.intellij">
 		<iconProvider
-				id="angular2IconProvider"
+				id="javascriptIconProvider"
 				order="first"
-				implementation="lermitage.intellij.extra.icons.providers.Angular2IconProvider"/>
+				implementation="lermitage.intellij.extra.icons.providers.JavascriptIconProvider"/>
 	</extensions>
 </idea-plugin>
