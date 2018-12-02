@@ -1,7 +1,7 @@
 package lermitage.intellij.extra.icons;
 
 @SuppressWarnings("WeakerAccess")
-class Model {
+public class Model {
     
     private boolean start = false;
     private boolean eq = false;

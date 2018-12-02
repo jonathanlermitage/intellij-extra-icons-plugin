@@ -1,0 +1,8 @@
+<idea-plugin>
+	<extensions defaultExtensionNs="com.intellij">
+		<iconProvider
+				id="sassIconProvider"
+				order="before genericIconProvider"
+				implementation="lermitage.intellij.extra.icons.providers.SassIconProvider"/>
+	</extensions>
+</idea-plugin>
