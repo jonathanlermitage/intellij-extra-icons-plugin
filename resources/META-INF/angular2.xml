@@ -2,7 +2,7 @@
 	<extensions defaultExtensionNs="com.intellij">
 		<iconProvider
 				id="angular2IconProvider"
-				order="after genericIconProvider"
+				order="first"
 				implementation="lermitage.intellij.extra.icons.providers.Angular2IconProvider"/>
 	</extensions>
 </idea-plugin>
