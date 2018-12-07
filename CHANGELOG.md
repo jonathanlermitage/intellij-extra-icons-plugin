@@ -7,6 +7,7 @@
 * support `gradle.properties`, `LISEZMOI.*` files.
 * support AngularJS `*.module.ts`, `*.component.ts`, `*.service.ts`, `*.pipe.ts`, `*.directive.ts`, `*.guard.ts` files (optional, needs AngularJS plugin from IntelliJ Ultimate, WebStorm, PhpStorm). Enabled in AngularJS projects only. Thx to Edoardo Luppi.
 * support [Haxe](https://haxe.org) `*.hx`, `*.hxml` files.
+* support [Cerebro](https://github.com/lmenezes/cerebro) `cerebro*.conf` files.
 
 ### 0.16 (2018/11/15)
 * support Gatling `gatling*.conf` files.
