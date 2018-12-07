@@ -1,6 +1,7 @@
 package lermitage.intellij.extra.icons;
 
 import com.intellij.ide.IconProvider;
+import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -11,7 +12,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class ExtraIconProvider extends IconProvider {
+public class ExtraIconProvider extends IconProvider implements DumbAware {
     
     private List<Model> models;
     

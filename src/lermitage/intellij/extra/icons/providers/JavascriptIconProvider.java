@@ -1,5 +1,6 @@
 package lermitage.intellij.extra.icons.providers;
 
+import com.intellij.openapi.project.DumbAware;
 import com.intellij.psi.PsiFile;
 import lermitage.intellij.extra.icons.BaseIconProvider;
 import lermitage.intellij.extra.icons.Model;
@@ -11,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * @author Edoardo Luppi
  */
-class JavascriptIconProvider extends BaseIconProvider {
+class JavascriptIconProvider extends BaseIconProvider implements DumbAware {
 	@NotNull
 	@Override
 	protected Model[] getModels() {

@@ -32,7 +32,7 @@
     <!-- Add your extensions here -->
     <iconProvider
 		    id="genericIconProvider"
-		    order="last"
+		    order="first"
 		    implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
   </extensions>
 
