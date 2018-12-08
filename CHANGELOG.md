@@ -5,7 +5,8 @@
 
 ### 0.17 (2018/12/08)
 * support `gradle.properties`, `LISEZMOI.*` files.
-* support AngularJS `*.module.ts`, `*.component.ts`, `*.service.ts`, `*.pipe.ts`, `*.directive.ts`, `*.guard.ts` files (optional, needs AngularJS plugin from IntelliJ Ultimate, WebStorm, PhpStorm). Enabled in AngularJS projects only. Thx to Edoardo Luppi.
+* support AngularJS `*.module.ts`, `*.component.ts`, `*.service.ts`, `*.pipe.ts`, `*.directive.ts`, `*.guard.ts` files (optional, needs *AngularJS* plugin from IntelliJ Ultimate, WebStorm, PhpStorm). Enabled in AngularJS projects only. Thx to Edoardo Luppi.
+* support SASS files `*.sass`, `*.scss` files (optional, needs *Sass support* plugin) Thx to Edoardo Luppi.
 * support [Haxe](https://haxe.org) `*.hx`, `*.hxml` files.
 * support [Cerebro](https://github.com/lmenezes/cerebro) `cerebro*.conf` files.
 
