@@ -3,6 +3,9 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
+### 0.18 (2018/12/10)
+* plugin is no more compatible with 173.0 IDE builds: minimum version is now 183.0 (2018.3).
+
 ### 0.17 (2018/12/08)
 * support `gradle.properties`, `LISEZMOI.*` files.
 * support AngularJS `*.module.ts`, `*.component.ts`, `*.service.ts`, `*.pipe.ts`, `*.directive.ts`, `*.guard.ts` files (optional, needs *AngularJS* plugin from IntelliJ Ultimate, WebStorm, PhpStorm). Enabled in AngularJS projects only. Thx to Edoardo Luppi.
