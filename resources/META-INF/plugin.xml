@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>lermitage.intellij.extra.icons</id>
   <name>Extra Icons</name>
-  <version>0.18</version>
+  <version>0.20</version>
   <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
 
   <description><![CDATA[
@@ -17,7 +17,7 @@
   -->
 
   <change-notes><![CDATA[
-      <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">See changelog on GitHub</a>
+      Odd version number: compatible with 173.0 IDE builds (2018.2).<br>Even version number: compatible with 183.0+ IDE builds (2018.3).<br><a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">See changelog on GitHub</a> and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/README.md">readme</a>.
     ]]>
   </change-notes>
 

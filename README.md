@@ -13,6 +13,14 @@ Starting from version 0.4, it works with all JetBrains products like WebStorm, D
 
 Download plugin on [GitHub](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/releases), [JetBrains Plugins Repository](https://plugins.jetbrains.com/plugin/11058-extra-icons) or via IntelliJ IDEA (<kbd>File</kbd>, <kbd>Settings</kbd>, <kbd>Plugins</kbd>, <kbd>Browse repositories...</kbd>).
 
+## Version number
+
+* starting from 0.19, there are two builds:
+  * odd minor revision number (0.19, 0.21, 1.1, 1.3...): compatible with 173.0 IDE builds (aka 2018.2). This build doesn't bundles features that need 2018.3 IDE builds: AngularJS, SASS, Javascript. They're excluded because Extra Icons plugin reads project's type in order to activate some file recognition (AngularJS, SASS, Javascrip): it is based on 2018.3 IDE features. Other files detection is simply based on files pattern, that's why it works with older IDE builds, and I will maintain a branch (`ide173`) to keep support.
+  * even minor revision number (0.20, 0.22, 1.0, 1.2...): compatible with latest IDE builds (183.0, aka 2018.3).
+  
+This way, you simply have to download the latest version offered by the plugins manager: on older IDE, you'll get the latest odd minor revision number. On recent IDE, you'll get the latest even minor revision number that sheeps same features as odd version, plus features that comes with recent IDE builds.
+
 ## Author
 
 Jonathan Lermitage (<jonathan.lermitage@gmail.com>)  
