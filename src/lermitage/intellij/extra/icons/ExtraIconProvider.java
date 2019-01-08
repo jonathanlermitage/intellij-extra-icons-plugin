@@ -66,6 +66,7 @@ public class ExtraIconProvider extends IconProvider implements DumbAware {
                 m("/icons/my.png").eq("my.ini"),
                 m("/icons/nginx.png").start("nginx").mayEnd(cfg),
                 m("/icons/notice.png").eq("notice").mayEnd(txt),
+                m("/icons/packageinfojava.png").eq("package-info.java"),
                 m("/icons/packagejson.png").eq("package.json"),
                 m("/icons/packagejsonlock.png").eq("package-lock.json"),
                 m("/icons/privacy.png").eq("privacy").mayEnd(txt),
