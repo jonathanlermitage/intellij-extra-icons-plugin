@@ -6,6 +6,7 @@
 ### 0.21 and 0.22 (WIP)
 * reworked Haxe `*.hxml` files (new icons).
 * support `package-info.java` files.
+* support NSIS `*.nsi` files.
 * improved file detection accuracy.
 
 ### 0.19 and 0.20 (2018/12/21)
