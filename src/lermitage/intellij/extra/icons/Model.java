@@ -102,8 +102,8 @@ public class Model {
                 }
             }
         }
-        
-        if (end) {
+    
+        if (end & !eq & !start) {
             for (String e : extensions) {
                 if (name.endsWith(e)) {
                     return true;
