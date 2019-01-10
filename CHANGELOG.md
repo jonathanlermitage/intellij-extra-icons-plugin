@@ -3,7 +3,7 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
-### 0.21 and 0.22 (WIP)
+### 0.21 and 0.22 (2019/01/10)
 * reworked Haxe `*.hxml` files (new icons).
 * support `package-info.java` files.
 * support NSIS `*.nsi` files.
