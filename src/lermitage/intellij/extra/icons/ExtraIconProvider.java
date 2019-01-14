@@ -45,6 +45,7 @@ public class ExtraIconProvider extends IconProvider implements DumbAware {
                 m("/icons/codeship.png").eq("codeship-steps").mayEnd(cfg),
                 m("/icons/contact.png").eq("contact", "contacts").mayEnd(txt),
                 m("/icons/contributing.png").eq("contribute", "contributing", "contribution").mayEnd(txt),
+                m("/icons/deptective.png").eq("deptective.json"),
                 m("/icons/docker.png").eq("dockerfile", "docker-compose", ".dockerignore").mayEnd(cfg),
                 m("/icons/docker.png").start("dockerfile", "docker-compose", ".dockerignore").end(cfg),
                 m("/icons/editorconfig.png").eq(".editorconfig").mayEnd(cfg),
