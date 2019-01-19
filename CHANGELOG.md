@@ -3,7 +3,7 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
-### 0.23 and 0.24 (WIP)
+### 0.23 and 0.24 (2019/01/19)
 * support [ArchUnit](https://github.com/TNG/ArchUnit) `archunit.properties` files.
 * support [Deptective](https://github.com/moditect/deptective) `deptective.json` files.
 * improved Jenkins file detection accuracy.
