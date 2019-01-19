@@ -7,6 +7,7 @@ public class Model {
     private boolean eq = false;
     private boolean mayEnd = false;
     private boolean end = false;
+    private boolean noDot = false;
     
     private String icon;
     private String[] names = new String[0];
@@ -41,6 +42,11 @@ public class Model {
     public Model end(String... extensions) {
         this.end = true;
         this.extensions = extensions;
+        return this;
+    }
+    
+    public Model noDot() {
+        this.noDot = true;
         return this;
     }
     
@@ -94,6 +100,12 @@ public class Model {
                         }
                     }
                 }
+            } else if (noDot) {
+                for (String n : names) {
+                    if (name.startsWith(n) && !name.contains(".")) {
+                        return true;
+                    }
+                }
             } else {
                 for (String n : names) {
                     if (name.startsWith(n)) {
@@ -102,7 +114,7 @@ public class Model {
                 }
             }
         }
-    
+        
         if (end & !eq & !start) {
             for (String e : extensions) {
                 if (name.endsWith(e)) {

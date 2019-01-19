@@ -6,6 +6,7 @@
 ### 0.23 and 0.24 (WIP)
 * support [ArchUnit](https://github.com/TNG/ArchUnit) `archunit.properties` files.
 * support [Deptective](https://github.com/moditect/deptective) `deptective.json` files.
+* improved Jenkins file detection accuracy.
 
 ### 0.21 and 0.22 (2019/01/10)
 * reworked Haxe `*.hxml` files (new icons).
