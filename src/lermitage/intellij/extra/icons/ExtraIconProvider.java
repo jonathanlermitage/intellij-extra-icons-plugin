@@ -24,7 +24,7 @@ public class ExtraIconProvider extends IconProvider implements DumbAware {
         models = asList(
                 m("/icons/apache.png").eq(".htaccess"),
                 m("/icons/appveyor.png").eq("appveyor.yml"),
-                m("/icons/archunit.svg").eq("archunit.properties"),
+                m("/icons/archunit.png").eq("archunit.properties"),
                 m("/icons/authors.png").eq("author", "authors").mayEnd(txt),
                 m("/icons/bamboo.png").eq("bamboo.yml"),
                 m("/icons/bash-gradlew.png").eq("gradlew", "gradle.properties"),

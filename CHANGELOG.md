@@ -3,6 +3,9 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
+### 0.25 and 0.26 (WIP)
+* fixed ArchUnit files detection.
+
 ### 0.23 and 0.24 (2019/01/19)
 * support [ArchUnit](https://github.com/TNG/ArchUnit) `archunit.properties` files.
 * support [Deptective](https://github.com/moditect/deptective) `deptective.json` files.
