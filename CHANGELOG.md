@@ -5,6 +5,7 @@
 
 ### 0.25 and 0.26 (WIP)
 * fixed ArchUnit files detection.
+* support `jvm.properties` files.
 
 ### 0.23 and 0.24 (2019/01/19)
 * support [ArchUnit](https://github.com/TNG/ArchUnit) `archunit.properties` files.

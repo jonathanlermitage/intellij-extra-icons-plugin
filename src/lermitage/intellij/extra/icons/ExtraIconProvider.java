@@ -65,6 +65,7 @@ public class ExtraIconProvider extends IconProvider implements DumbAware {
                 m("/icons/jenkins.png").start("jenkins").noDot(),
                 m("/icons/jsbeautify.png").eq(".jsbeautifyrc").mayEnd(cfg),
                 m("/icons/jshint.png").eq(".jshintrc").mayEnd(cfg),
+                m("/icons/java.png").eq("jvm.properties"),
                 m("/icons/kibana.png").eq("kibana").mayEnd(yml),
                 m("/icons/kibana.png").start("kibana").end(yml),
                 m("/icons/kubernetes.png").eq("kubernetes").mayEnd(yml),
