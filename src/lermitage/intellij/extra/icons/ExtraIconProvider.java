@@ -118,8 +118,9 @@ public class ExtraIconProvider extends IconProvider implements DumbAware {
                 m("/icons/rpm.png").end(".rpm"),
                 m("/icons/terraform.png").end(".hcl", ".tf", ".tf.json"),
                 m("/icons/toml.png").end(".toml"),
+                m("/icons/video.png").end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
+                        ".m4v", ".mkv", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid"),
                 m("/icons/war.png").end(".war"),
-        
                 m("/icons/officedocs/localc.png").end(".ods"),
                 m("/icons/officedocs/lodraw.png").end(".odg"),
                 m("/icons/officedocs/loimpress.png").end(".odp"),
