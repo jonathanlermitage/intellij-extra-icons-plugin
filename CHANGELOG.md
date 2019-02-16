@@ -5,8 +5,9 @@
 
 ### 0.25 and 0.26 (WIP)
 * fixed ArchUnit files detection.
+* support GraphQL `*.graphqls` files.
 * support `jvm.properties` files.
-* support `junit-platform.properties` files.
+* support JUnit `junit-platform.properties` files.
 * support `*.3g2`, `*.3gp`, `*.avi`, `*.divx`, `*.f4a`, `*.f4b`, `*.f4p`, `*.f4v`, `*.flv`, `*.m4p`, `*.m4v`, `*.mkv`, `*.mp4`, `*.mpg`, `*.mpeg`, `*.mov`, `*.ogm`, `*.ogv`, `*.vob`, `*.webm`, `*.wmv`, `*.xvid` video files.
 
 ### 0.23 and 0.24 (2019/01/19)

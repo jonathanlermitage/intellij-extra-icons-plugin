@@ -107,6 +107,7 @@ public class ExtraIconProvider extends IconProvider implements DumbAware {
                 m("/icons/csv.png").end(".csv"),
                 m("/icons/deb.png").end(".deb"),
                 m("/icons/form.png").end(".form"),
+                m("/icons/graphql.png").end(".graphqls"),
                 m("/icons/haxe.png").end(".hx"),
                 m("/icons/haxehxml.png").end(".hxml"),
                 m("/icons/ijbeam.png").end(".iml"),
