@@ -59,6 +59,8 @@ public class ExtraIconProvider extends IconProvider implements DumbAware {
                 m("/icons/gatling.png").start("gatling").end(".conf"),
                 m("/icons/git.png").eq(".gitattributes", ".gitignore", ".gitmodules"),
                 m("/icons/gitlab.png").eq(".gitlab-ci.yml"),
+                m("/icons/graphql-config.png").eq("graphql.config.json"),
+                m("/icons/graphql-schema.png").eq("graphql.schema.json"),
                 m("/icons/gocd.png").eq(".gocd").mayEnd(cfg),
                 m("/icons/java.png").eq("jvm.properties"),
                 m("/icons/jenkins.png").eq("jenkinsfile", "jenkins").mayEnd(cfg),
