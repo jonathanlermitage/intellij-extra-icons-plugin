@@ -8,6 +8,7 @@
 * support GraphQL `*.graphqls`, `graphql.schema.json`, `graphql.config.json` files.
 * support `jvm.properties` files.
 * support JUnit `junit-platform.properties` files.
+* support SVG `*.svg` files.
 * support `*.3g2`, `*.3gp`, `*.avi`, `*.divx`, `*.f4a`, `*.f4b`, `*.f4p`, `*.f4v`, `*.flv`, `*.m4p`, `*.m4v`, `*.mkv`, `*.mp4`, `*.mpg`, `*.mpeg`, `*.mov`, `*.ogm`, `*.ogv`, `*.vob`, `*.webm`, `*.wmv`, `*.xvid` video files.
 
 ### 0.23 and 0.24 (2019/01/19)
