@@ -3,6 +3,9 @@
 ### TODO, ideas
 * add a panel in `Settings > Other Settings` to select extra icons to activate.
 
+### 0.27 and 0.28 (WIP)
+* support `*.http` files (requests to be played by IntelliJ HTTP client).
+
 ### 0.25 and 0.26 (2019/02/17)
 * fixed ArchUnit files detection.
 * support GraphQL `*.graphqls`, `graphql.schema.json`, `graphql.config.json` files.
