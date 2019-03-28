@@ -34,6 +34,7 @@
 		    id="genericIconProvider"
 		    order="first"
 		    implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
+    <applicationService serviceImplementation="lermitage.intellij.extra.icons.cfg.SettingsService"/>
   </extensions>
 
   <!--

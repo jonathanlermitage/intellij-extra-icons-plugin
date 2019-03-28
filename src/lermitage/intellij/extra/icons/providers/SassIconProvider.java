@@ -6,6 +6,9 @@ import lermitage.intellij.extra.icons.BaseIconProvider;
 import lermitage.intellij.extra.icons.Model;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Icon provider specific for SASS files.
  * This should be registered only if the bundled SASS plugin is enabled.
@@ -13,16 +16,16 @@ import org.jetbrains.annotations.NotNull;
  * @author Edoardo Luppi
  */
 class SassIconProvider extends BaseIconProvider implements DumbAware {
-	@NotNull
-	@Override
-	protected Model[] getModels() {
-		return new Model[]{
-				new Model("/icons/sass.svg").end(".sass", ".scss")
-		};
-	}
-
-	@Override
-	protected boolean isSupported(@NotNull final PsiFile psiFile) {
-		return true;
-	}
+    @NotNull
+    @Override
+    protected List<Model> getModels() {
+        return Collections.singletonList(
+                new Model("sass", "/icons/sass.svg").end(".sass", ".scss")
+        );
+    }
+    
+    @Override
+    protected boolean isSupported(@NotNull final PsiFile psiFile) {
+        return true;
+    }
 }

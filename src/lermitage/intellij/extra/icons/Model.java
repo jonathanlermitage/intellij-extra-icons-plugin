@@ -13,8 +13,15 @@ public class Model {
     private String[] names = new String[0];
     private String[] extensions = new String[0];
     
-    public Model(String icon) {
+    private String id;
+    
+    public Model(String id, String icon) {
+        this.id = id;
         this.icon = icon;
+    }
+    
+    public String getId() {
+        return id;
     }
     
     public String getIcon() {
