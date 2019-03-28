@@ -10,7 +10,6 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -28,7 +27,7 @@ public class ExtraIconProvider extends IconProvider implements DumbAware {
         String[] txt = new String[]{".md", ".txt", ".adoc"};
         String[] cfg = new String[]{".xml", ".yml", ".yaml", ".properties", ".json", ".cfg", ".conf", ".ini", ".txt"};
         String[] yml = new String[]{".yaml", ".yml"};
-        List<Model> allModels = asList(
+        models = asList(
                 m("htaccess", "/icons/apache.png").eq(".htaccess"),
                 m("appveyor", "/icons/appveyor.png").eq("appveyor.yml"),
                 m("archunit", "/icons/archunit.png").eq("archunit.properties"),
@@ -148,12 +147,7 @@ public class ExtraIconProvider extends IconProvider implements DumbAware {
         );
         
         List<String> disabledModelIds = SettingsService.getDisabledModelIds();
-        models = new ArrayList<>();
-        for (Model model : allModels) {
-            if (!disabledModelIds.contains(model.getId())) {
-                models.add(model);
-            }
-        }
+        models.forEach(model -> model.setEnabled(!disabledModelIds.contains(model.getId())));
     }
     
     public Icon getIcon(@NotNull PsiElement psiElement, int flags) {

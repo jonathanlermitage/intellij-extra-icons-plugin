@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,15 +58,9 @@ public abstract class BaseIconProvider extends IconProvider {
      */
     private List<Model> lazyGetModels() {
         if (models == null) {
-            List<Model> allModels = getModels();
+            models = getModels();
             List<String> disabledModelIds = SettingsService.getDisabledModelIds();
-            List<Model> activeModels = new ArrayList<>();
-            for (Model model : allModels) {
-                if (!disabledModelIds.contains(model.getId())) {
-                    activeModels.add(model);
-                }
-            }
-            models = activeModels;
+            models.forEach(model -> model.setEnabled(!disabledModelIds.contains(model.getId())));
         }
         return models;
     }

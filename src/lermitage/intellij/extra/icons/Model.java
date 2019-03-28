@@ -14,10 +14,12 @@ public class Model {
     private String[] extensions = new String[0];
     
     private String id;
+    private boolean enabled;
     
     public Model(String id, String icon) {
         this.id = id;
         this.icon = icon;
+        this.enabled = true;
     }
     
     public String getId() {
@@ -26,6 +28,14 @@ public class Model {
     
     public String getIcon() {
         return icon;
+    }
+    
+    public boolean isEnabled() {
+        return enabled;
+    }
+    
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
     
     public Model start(String... base) {
@@ -58,6 +68,9 @@ public class Model {
     }
     
     public boolean check(String name) {
+        if (!enabled) {
+            return false;
+        }
         if (eq) {
             if (end) {
                 for (String n : names) {
