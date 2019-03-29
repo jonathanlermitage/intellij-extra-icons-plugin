@@ -1,26 +1,33 @@
 package lermitage.intellij.extra.icons;
 
-import com.intellij.ide.IconProvider;
 import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.util.IconLoader;
-import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.Icon;
 import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class ExtraIconProvider extends IconProvider implements DumbAware {
+public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     
     private List<Model> models;
     
     public ExtraIconProvider() {
         super();
         load();
+    }
+    
+    @NotNull
+    @Override
+    protected List<Model> getModels() {
+        return models;
+    }
+    
+    @Override
+    protected boolean isSupported(@NotNull PsiFile psiFile) {
+        return true;
     }
     
     private void load() {
@@ -148,19 +155,6 @@ public class ExtraIconProvider extends IconProvider implements DumbAware {
         
         List<String> disabledModelIds = SettingsService.getDisabledModelIds();
         models.forEach(model -> model.setEnabled(!disabledModelIds.contains(model.getId())));
-    }
-    
-    public Icon getIcon(@NotNull PsiElement psiElement, int flags) {
-        PsiFile containingFile = psiElement.getContainingFile();
-        if (containingFile != null) {
-            String name = containingFile.getName().toLowerCase();
-            for (Model m : models) {
-                if (m.check(name)) {
-                    return IconLoader.getIcon(m.getIcon());
-                }
-            }
-        }
-        return null;
     }
     
     @NotNull
