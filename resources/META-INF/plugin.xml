@@ -1,54 +1,54 @@
 <idea-plugin>
-  <id>lermitage.intellij.extra.icons</id>
-  <name>Extra Icons</name>
-  <version>0.28</version>
-  <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
+    <id>lermitage.intellij.extra.icons</id>
+    <name>Extra Icons</name>
+    <version>0.28</version>
+    <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
       Add icons for files like Travis YML, Appveyor YML, etc.<br/>
       <img src="https://raw.githubusercontent.com/jonathanlermitage/intellij-extra-icons-plugin/master/misc/screenshots/css_sprites.png" alt="icons preview"/>
     ]]>
-  </description>
+    </description>
 
-  <!-- tutorial:
-  https://www.jetbrains.org/intellij/sdk/docs/reference_guide/work_with_icons_and_images.html
-  https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/setting_up_environment.html
-  https://intellij-support.jetbrains.com/hc/en-us/community/posts/206783005-Project-view-file-type-icon-customization
-  -->
+    <!-- tutorial:
+    https://www.jetbrains.org/intellij/sdk/docs/reference_guide/work_with_icons_and_images.html
+    https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/setting_up_environment.html
+    https://intellij-support.jetbrains.com/hc/en-us/community/posts/206783005-Project-view-file-type-icon-customization
+    -->
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
       Odd version number: compatible with 173.0 IDE builds (2017.3).<br>Even version number: compatible with 183.0+ IDE builds (2018.3).<br><a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">See changelog on GitHub</a> and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/README.md">readme</a>.
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="183.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="183.0"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <depends>com.intellij.modules.lang</depends>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.lang</depends>
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-    <iconProvider
-		    id="genericIconProvider"
-		    order="first"
-		    implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
-    <applicationService serviceImplementation="lermitage.intellij.extra.icons.cfg.SettingsService"/>
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <iconProvider
+                id="genericIconProvider"
+                order="first"
+                implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
+        <applicationService serviceImplementation="lermitage.intellij.extra.icons.cfg.SettingsService"/>
+    </extensions>
 
-  <!--
-    IMPORTANT
-    To override test-files icons the icon provider must be ordered as "first".
-    In this particular case I ordered first both the Javascript one and the Angular2+ one.
-    That's because both define a test-related icon and the order can be undefined between each other.
-  -->
-  <depends optional="true" config-file="sass.xml">org.jetbrains.plugins.sass</depends>
-  <depends optional="true" config-file="javascript.xml">JavaScript</depends>
-  <depends optional="true" config-file="angular2.xml">AngularJS</depends>
+    <!--
+      IMPORTANT
+      To override test-files icons the icon provider must be ordered as "first".
+      In this particular case I ordered first both the Javascript one and the Angular2+ one.
+      That's because both define a test-related icon and the order can be undefined between each other.
+    -->
+    <depends optional="true" config-file="sass.xml">org.jetbrains.plugins.sass</depends>
+    <depends optional="true" config-file="javascript.xml">JavaScript</depends>
+    <depends optional="true" config-file="angular2.xml">AngularJS</depends>
 
-  <actions>
-    <!-- Add your actions here -->
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
 
 </idea-plugin>
