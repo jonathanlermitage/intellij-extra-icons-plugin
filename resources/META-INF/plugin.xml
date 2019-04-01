@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>lermitage.intellij.extra.icons</id>
     <name>Extra Icons</name>
-    <version>0.28</version>
+    <version>1.0.0.183</version>
     <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
 
     <description><![CDATA[
@@ -17,7 +17,16 @@
     -->
 
     <change-notes><![CDATA[
-      Odd version number: compatible with 173.0 IDE builds (2017.3).<br>Even version number: compatible with 183.0+ IDE builds (2018.3).<br><a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">See changelog on GitHub</a> and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/README.md">readme</a>.
+    1.0.0 (2019/04/01)
+    <ul>
+        <li>add a graphical config panel to select extra icons to (de)activate. See <i>Settings &gt; Appearance &amp; Behavior >&gt; Extra Icons</i>.</li>
+        <li>changed version numbers: <i>x.y.z.173</i> plugins are compatible with 173.0+ IDE builds (2017.3 and newer), <i>x.y.z.183</i> plugins
+        are compatible with 183.0+ IDE builds (2018.3 and newer) and provide some additional icons.</li>
+    </ul>
+    <p>
+        See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">changelog</a>
+        and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/README.md">readme</a> on GitHub.
+    </p>
     ]]>
     </change-notes>
 
@@ -35,6 +44,7 @@
                 order="first"
                 implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <applicationService serviceImplementation="lermitage.intellij.extra.icons.cfg.SettingsService"/>
+        <applicationConfigurable instance="lermitage.intellij.extra.icons.cfg.SettingsForm" id="LermitageExtraIcons" displayName="Extra Icons" parentId="appearance"/>
     </extensions>
 
     <!--

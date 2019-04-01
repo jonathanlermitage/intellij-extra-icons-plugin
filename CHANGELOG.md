@@ -1,7 +1,13 @@
 ## Extra Icons Change Log
 
 ### TODO, ideas, ideal for contribution
-* add a panel in `Settings > Other Settings` to select extra icons to activate.
+* add an option to customize and/or add file detection patterns.
+* add an option to use your own icons.
+* add the hability to save settings at project level.
+
+### 1.0.0 (2019/04/01)
+* add a graphical config panel to select extra icons to (de)activate. See `Settings > Appearance & Behavior > Extra Icons`.
+* changed version numbers: `x.y.z.173` plugins are compatible with 173.0+ IDE builds (2017.3 and newer), `x.y.z.183` plugins are compatible with 183.0+ IDE builds (2018.3 and newer) and provide some additional icons.
 
 ### 0.27 and 0.28 (2019/03/29)
 * support `*.http` files (requests to be played by IntelliJ HTTP client).

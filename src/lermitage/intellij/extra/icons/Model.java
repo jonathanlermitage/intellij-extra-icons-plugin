@@ -14,24 +14,25 @@ public class Model {
     private String[] extensions = new String[0];
     
     private String id;
-    private boolean enabled;
+    private String description;
+    private boolean enabled = true;
     
-    public Model(String id, String icon) {
+    public Model(String id, String icon, String description) {
         this.id = id;
         this.icon = icon;
-        this.enabled = true;
+        this.description = description;
     }
     
     public String getId() {
         return id;
     }
     
-    public String getIcon() {
-        return icon;
+    public String getDescription() {
+        return description;
     }
     
-    public boolean isEnabled() {
-        return enabled;
+    public String getIcon() {
+        return icon;
     }
     
     public void setEnabled(boolean enabled) {
