@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>lermitage.intellij.extra.icons</id>
     <name>Extra Icons</name>
-    <version>1.0.0.183</version>
+    <version>1.0.1.183</version>
     <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
 
     <description><![CDATA[
@@ -17,6 +17,11 @@
     -->
 
     <change-notes><![CDATA[
+    1.0.1 (WIP)
+    <ul>
+        <li>improve setting table vertical scrolling.</li>
+        <li>fix detection of modifications in setting table.</li>
+    </ul>
     1.0.0 (2019/04/01)
     <ul>
         <li>add a graphical config panel to select extra icons to (de)activate. See <i>Settings &gt; Appearance &amp; Behavior >&gt; Extra Icons</i>.</li>

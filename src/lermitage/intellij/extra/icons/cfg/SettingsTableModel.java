@@ -28,6 +28,6 @@ public class SettingsTableModel extends DefaultTableModel {
     }
     
     SettingsTableModel() {
-        super(new Object[][]{}, new String[]{"Icon", "Enabled", "Description", "id"});
+        super(new Object[][]{}, new String[]{"", "", "Description", ""});
     }
 }

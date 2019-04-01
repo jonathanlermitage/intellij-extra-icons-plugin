@@ -16,20 +16,6 @@
           <text value="Label"/>
         </properties>
       </component>
-      <component id="3f5f0" class="javax.swing.JTable" binding="table">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-        </constraints>
-        <properties>
-          <cellSelectionEnabled value="false"/>
-          <enabled value="true"/>
-          <focusable value="false"/>
-          <showHorizontalLines value="false"/>
-          <showVerticalLines value="false"/>
-        </properties>
-      </component>
       <grid id="1503c" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
@@ -61,6 +47,25 @@
           </hspacer>
         </children>
       </grid>
+      <scrollpane id="af6f9">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="3f5f0" class="javax.swing.JTable" binding="table">
+            <constraints/>
+            <properties>
+              <cellSelectionEnabled value="false"/>
+              <enabled value="true"/>
+              <focusable value="false"/>
+              <showHorizontalLines value="false"/>
+              <showVerticalLines value="false"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
     </children>
   </grid>
 </form>

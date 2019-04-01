@@ -5,6 +5,10 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
+### 1.0.1 (WIP)
+* improve setting table vertical scrolling.
+* fix detection of modifications in setting table.
+
 ### 1.0.0 (2019/04/01)
 * add a graphical config panel to select extra icons to (de)activate. See `Settings > Appearance & Behavior > Extra Icons`.
 * changed version numbers: `x.y.z.173` plugins are compatible with 173.0+ IDE builds (2017.3 and newer), `x.y.z.183` plugins are compatible with 183.0+ IDE builds (2018.3 and newer) and provide some additional icons.

@@ -24,7 +24,7 @@ public class SettingsForm implements Configurable {
     private JButton buttonDisableAll;
     
     private SettingsTableModel settingsTableModel;
-    private boolean modified = true;
+    private boolean modified = false;
     
     public SettingsForm() {
         buttonEnableAll.addActionListener(e -> enableAll());
@@ -105,5 +105,7 @@ public class SettingsForm implements Configurable {
         table.getColumnModel().getColumn(SettingsTableModel.ICON_ENABLED_ROW_NUMBER).setMaxWidth(28);
         table.getColumnModel().getColumn(SettingsTableModel.ICON_LABEL_ROW_NUMBER).sizeWidthToFit();
         table.getColumnModel().removeColumn(table.getColumnModel().getColumn(SettingsTableModel.ICON_ID_ROW_NUMBER)); // set invisible but keep data
+        settingsTableModel.addTableModelListener(e -> modified = true);
+        modified = false;
     }
 }
