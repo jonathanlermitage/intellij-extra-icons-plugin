@@ -14,23 +14,32 @@ import java.util.Optional;
 
 /**
  * @author Edoardo Luppi
+ * @author Jonathan Lermitage
  */
 public abstract class BaseIconProvider extends IconProvider {
     
     private List<Model> models;
     
+    public BaseIconProvider() {
+        super();
+        this.models = getAllModels();
+        List<String> disabledModelIds = SettingsService.getDisabledModelIds();
+        models.forEach(model -> model.setEnabled(!disabledModelIds.contains(model.getId())));
+    }
+    
     /**
-     * Returns the Model(s) supported by this icon provider.
-     * This method will be called exactly once, so there is no need
-     * to provide a static array, as the array returned by this method is cached.
+     * Get list of all models managed by this icon provider. Their 'enabled' field doesn't matter.
+     * This list will be processed by constructor and models 'enabled' field updated according to running IDE configuration.
      */
-    @NotNull
-    protected abstract List<Model> getModels();
+    protected abstract List<Model> getAllModels();
     
     /**
      * Check whether this icon provider supports the input file.
+     * If not overridden, returns {@code true}.
      */
-    protected abstract boolean isSupported(@NotNull final PsiFile psiFile);
+    protected boolean isSupported(@NotNull final PsiFile psiFile) {
+        return true;
+    }
     
     @Nullable
     @Override
@@ -40,8 +49,6 @@ public abstract class BaseIconProvider extends IconProvider {
         
         if (optFile.isPresent() && isSupported(file = optFile.get())) {
             final String fileName = file.getName().toLowerCase();
-            final List<Model> models = lazyGetModels();
-            
             for (final Model model : models) {
                 if (model.check(fileName)) {
                     return IconLoader.getIcon(model.getIcon());
@@ -50,18 +57,5 @@ public abstract class BaseIconProvider extends IconProvider {
         }
         
         return null;
-    }
-    
-    /**
-     * Lazily computes the Model(s) used by this icon provider.
-     * This should be already thread safe in the IDEA platform context.
-     */
-    private List<Model> lazyGetModels() {
-        if (models == null) {
-            models = getModels();
-            List<String> disabledModelIds = SettingsService.getDisabledModelIds();
-            models.forEach(model -> model.setEnabled(!disabledModelIds.contains(model.getId())));
-        }
-        return models;
     }
 }

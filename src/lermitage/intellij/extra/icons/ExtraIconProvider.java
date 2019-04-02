@@ -1,8 +1,6 @@
 package lermitage.intellij.extra.icons;
 
 import com.intellij.openapi.project.DumbAware;
-import com.intellij.psi.PsiFile;
-import lermitage.intellij.extra.icons.cfg.SettingsService;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -10,8 +8,6 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
-    
-    private List<Model> models;
     
     private static final String[] TXT = new String[]{".md", ".txt", ".adoc"};
     private static final String[] CFG = new String[]{".xml", ".yml", ".yaml", ".properties", ".json", ".cfg", ".conf", ".ini", ".txt"};
@@ -255,19 +251,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     
     public ExtraIconProvider() {
         super();
-        models = allModels();
-        List<String> disabledModelIds = SettingsService.getDisabledModelIds();
-        models.forEach(model -> model.setEnabled(!disabledModelIds.contains(model.getId())));
-    }
-    
-    @NotNull
-    @Override
-    protected List<Model> getModels() {
-        return models;
     }
     
     @Override
-    protected boolean isSupported(@NotNull PsiFile psiFile) {
-        return true;
+    protected List<Model> getAllModels() {
+        return allModels();
     }
 }
