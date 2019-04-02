@@ -5,9 +5,10 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
-### 1.0.1 (WIP)
-* improve setting table vertical scrolling.
+### 1.1.0 (2019/04/xx)
+* rework setting table's vertical scrolling.
 * fix detection of modifications in setting table.
+* add plugin's icon (effective with 2019.1 IDE).
 
 ### 1.0.0 (2019/04/01)
 * add a graphical config panel to select extra icons to (de)activate. See `Settings > Appearance & Behavior > Extra Icons`.

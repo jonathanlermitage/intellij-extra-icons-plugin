@@ -17,10 +17,11 @@
     -->
 
     <change-notes><![CDATA[
-    1.0.1 (WIP)
+    1.0.1 (2019/04/xx)
     <ul>
-        <li>improve setting table vertical scrolling.</li>
+        <li>rework setting table's vertical scrolling.</li>
         <li>fix detection of modifications in setting table.</li>
+        <li>add plugin's icon (effective with 2019.1 IDE).</li>
     </ul>
     1.0.0 (2019/04/01)
     <ul>
