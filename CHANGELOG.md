@@ -16,7 +16,7 @@
 
 ### 0.27 and 0.28 (2019/03/29)
 * support `*.http` files (requests to be played by IntelliJ HTTP client).
-* plugin's configuration: you can now select extra icons to deactivate via a config file, see [CONFIG.md](CONFIG.md) for details. A future release will bring a graphical config panel (but contributions are welcome!).
+* plugin's configuration: you can now select extra icons to deactivate via a config file. A future release will bring a graphical config panel (but contributions are welcome!).
 
 ### 0.25 and 0.26 (2019/02/17)
 * fixed ArchUnit files detection.
