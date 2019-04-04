@@ -5,7 +5,7 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
-### 1.1.0 (2019/04/xx)
+### 1.1.0 (2019/04/05)
 * rework setting table's vertical scrolling.
 * fix detection of modifications in setting table.
 * add plugin's icon (effective with 2019.1 IDE).

@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>lermitage.intellij.extra.icons</id>
     <name>Extra Icons</name>
-    <version>1.0.1.183</version>
+    <version>1.1.0.183</version>
     <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
 
     <description><![CDATA[
@@ -17,7 +17,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.0.1 (2019/04/xx)
+    1.1.0 (2019/04/05)
     <ul>
         <li>rework setting table's vertical scrolling.</li>
         <li>fix detection of modifications in setting table.</li>
