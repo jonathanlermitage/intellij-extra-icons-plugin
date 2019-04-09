@@ -9,7 +9,6 @@ import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.providers.Angular2IconProvider;
 import lermitage.intellij.extra.icons.providers.JavascriptIconProvider;
-import lermitage.intellij.extra.icons.providers.SassIconProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -40,7 +39,6 @@ public class SettingsService implements PersistentStateComponent<SettingsService
         allModels.addAll(ExtraIconProvider.allModels());
         allModels.addAll(Angular2IconProvider.allModels());
         allModels.addAll(JavascriptIconProvider.allModels());
-        allModels.addAll(SassIconProvider.allModels());
         return allModels;
     }
     

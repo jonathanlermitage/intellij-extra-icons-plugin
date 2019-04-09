@@ -5,6 +5,11 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
+### 1.2.0 (WIP)
+* support `Gruntfile.js` files.
+* rework SASS `*.sass`, `*.scss` files. Also, they don't need *Sass support* plugin anymore.
+* support LESS `*.less` files.
+
 ### 1.1.0 (2019/04/05)
 * rework setting table's vertical scrolling.
 * fix detection of modifications in setting table.
@@ -50,7 +55,7 @@ This way, you simply have to download the latest version offered by the plugins 
 ### 0.17 (2018/12/08)
 * support `gradle.properties`, `LISEZMOI.*` files.
 * support AngularJS `*.module.ts`, `*.component.ts`, `*.service.ts`, `*.pipe.ts`, `*.directive.ts`, `*.guard.ts` files (optional, needs *AngularJS* plugin from IntelliJ Ultimate, WebStorm, PhpStorm). Enabled in AngularJS projects only. Thx to Edoardo Luppi.
-* support SASS files `*.sass`, `*.scss` files (optional, needs *Sass support* plugin) Thx to Edoardo Luppi.
+* support SASS `*.sass`, `*.scss` files (optional, needs *Sass support* plugin) Thx to Edoardo Luppi.
 * support [Haxe](https://haxe.org) `*.hx`, `*.hxml` files.
 * support [Cerebro](https://github.com/lmenezes/cerebro) `cerebro*.conf` files.
 

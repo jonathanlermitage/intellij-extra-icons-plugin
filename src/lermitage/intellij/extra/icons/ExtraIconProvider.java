@@ -86,6 +86,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .eq("gatling").mayEnd(".conf"),
                 new Model("gatling1", "/icons/gatling.png", "Gatling: start by 'gatling' and end by '.conf'")
                         .start("gatling").end(".conf"),
+                new Model("grunt", "/icons/grunt.png", "Grunt: Gruntfile.js")
+                        .eq("gruntfile.js"),
                 new Model("git", "/icons/git.png", "Git: .gitattributes, .gitignore, .gitmodules")
                         .eq(".gitattributes", ".gitignore", ".gitmodules"),
                 new Model("gitlab", "/icons/gitlab.png", "Gitlab: .gitlab-ci.yml")
@@ -213,6 +215,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .end(".pdf"),
                 new Model("ext_rpm", "/icons/rpm.png", "Red Hat package: *.rpm")
                         .end(".rpm"),
+                new Model("sass", "/icons/sass.png", "SASS: *.sass, *.scss")
+                        .end(".sass", ".scss"),
+                new Model("less", "/icons/less.png", "LESS CSS: *.less")
+                        .end(".less"),
                 new Model("ext_svg", "/icons/svg.png", "SVG: *.svg")
                         .end(".svg"),
                 new Model("ext_tf", "/icons/terraform.png", "Terraform: *.hcl, *.tf, *.tf.json")

@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>lermitage.intellij.extra.icons</id>
     <name>Extra Icons</name>
-    <version>1.1.0.183</version>
+    <version>1.2.0.183</version>
     <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
 
     <description><![CDATA[
@@ -17,6 +17,12 @@
     -->
 
     <change-notes><![CDATA[
+    1.2.0 (WIP)
+    <ul>
+        <li>support <i>Gruntfile.js</i> files</li>
+        <li>rework SASS <i>*.sass</i>, <i>*.scss</i> files. Also, they don't need <i>Sass support</i> plugin anymore.</li>
+        <li>support LESS <i>*.less</i> files.</li>
+    </ul>
     1.1.0 (2019/04/05)
     <ul>
         <li>rework setting table's vertical scrolling.</li>
@@ -59,7 +65,6 @@
       In this particular case I ordered first both the Javascript one and the Angular2+ one.
       That's because both define a test-related icon and the order can be undefined between each other.
     -->
-    <depends optional="true" config-file="sass.xml">org.jetbrains.plugins.sass</depends>
     <depends optional="true" config-file="javascript.xml">JavaScript</depends>
     <depends optional="true" config-file="angular2.xml">AngularJS</depends>
 
