@@ -20,8 +20,9 @@
     1.2.0 (WIP)
     <ul>
         <li>support <i>Gruntfile.js</i> files</li>
-        <li>rework SASS <i>*.sass</i>, <i>*.scss</i> files. Also, they don't need <i>Sass support</i> plugin anymore.</li>
         <li>support LESS <i>*.less</i> files.</li>
+        <li>rework SASS <i>*.sass</i>, <i>*.scss</i> files. Also, they don't need <i>Sass support</i> plugin anymore.</li>
+        <li>rework <i>.dockerignore</i> files</li>
     </ul>
     1.1.0 (2019/04/05)
     <ul>

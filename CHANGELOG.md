@@ -7,8 +7,9 @@
 
 ### 1.2.0 (WIP)
 * support `Gruntfile.js` files.
-* rework SASS `*.sass`, `*.scss` files. Also, they don't need *Sass support* plugin anymore.
 * support LESS `*.less` files.
+* rework SASS `*.sass`, `*.scss` files. Also, they don't need *Sass support* plugin anymore.
+* rework `.dockerignore` files.
 
 ### 1.1.0 (2019/04/05)
 * rework setting table's vertical scrolling.

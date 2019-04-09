@@ -66,10 +66,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .eq("contribute", "contributing", "contribution").mayEnd(TXT),
                 new Model("deptective", "/icons/deptective.png", "Deptective: deptective.json")
                         .eq("deptective.json"),
-                new Model("docker", "/icons/docker.png", "Docker: dockerfile(.xml,.yml,...), docker-compose, .dockerignore")
-                        .eq("dockerfile", "docker-compose", ".dockerignore").mayEnd(CFG),
+                new Model("docker", "/icons/docker.png", "Docker: dockerfile(.xml,.yml,...), docker-compose")
+                        .eq("dockerfile", "docker-compose").mayEnd(CFG),
                 new Model("docker1", "/icons/docker.png", "Docker: start by 'dockerfile', 'docker-compose', '.dockerignore' and end by '.xml,.yml,...'")
-                        .start("dockerfile", "docker-compose", ".dockerignore").end(CFG),
+                        .start("dockerfile", "docker-compose").end(CFG),
+                new Model("dockerignore", "/icons/dockerignore.png", "Docker: .dockerignore")
+                        .eq(".dockerignore"),
                 new Model("editorconfig", "/icons/editorconfig.png", "EditorConfig: .editorconfig")
                         .eq(".editorconfig").mayEnd(CFG),
                 new Model("elastic", "/icons/elasticsearch.png", "Elasticsearch: elastic(.yml,.yaml)")
