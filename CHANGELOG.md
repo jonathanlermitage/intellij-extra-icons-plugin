@@ -9,6 +9,7 @@
 * improved file detection capabilities.
 * support `Gruntfile.js` files.
 * support LESS `*.less` files.
+* support Visual Studio Code `.vscode/settings.json` files.
 * rework SASS `*.sass`, `*.scss` files. Also, they don't need *Sass support* plugin anymore.
 * rework `.dockerignore` files.
 
