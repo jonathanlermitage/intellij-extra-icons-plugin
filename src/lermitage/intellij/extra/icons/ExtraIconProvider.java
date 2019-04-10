@@ -18,7 +18,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
         return asList(
                 new Model("vscode_settings", "/icons/vscode.png", "Visual Studio Code: .vscode/settings.json")
                         .eq("settings.json").parents(".vscode"),
-        
+                
                 new Model("htaccess", "/icons/apache.png", "Apache: .htaccess")
                         .eq(".htaccess"),
                 new Model("appveyor", "/icons/appveyor.png", "Appveyor: appveyor.yml")
@@ -49,6 +49,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .eq("changelog", "changes").mayEnd(TXT),
                 new Model("circle", "/icons/circleci.png", "Circle CI: circle.yml")
                         .eq("circle.yml"),
+                new Model("circle1", "/icons/circleci.png", "Circle CI: .circleci/config.yml")
+                        .eq("config.yml").parents(".circleci"),
                 new Model("cirrus", "/icons/cirrus.png", "Cirrus CI: .cirrus.yml")
                         .eq(".cirrus.yml"),
                 new Model("gradlew", "/icons/cmd-gradlew.png", "Gradle (Windows): gradlew.bat, gradlew.cmd")

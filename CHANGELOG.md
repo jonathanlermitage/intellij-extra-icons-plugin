@@ -6,7 +6,8 @@
 * add the hability to save settings at project level.
 
 ### 1.2.0 (WIP)
-* improved file detection capabilities.
+* improve file detection capabilities.
+* improve CircleCI detection: add `.circleci/config.yml` files.
 * support `Gruntfile.js` files.
 * support LESS `*.less` files.
 * support Visual Studio Code `.vscode/settings.json` files.
