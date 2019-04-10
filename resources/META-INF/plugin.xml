@@ -19,6 +19,7 @@
     <change-notes><![CDATA[
     1.2.0 (WIP)
     <ul>
+        <li>improved file detection capabilities</li>
         <li>support <i>Gruntfile.js</i> files</li>
         <li>support LESS <i>*.less</i> files.</li>
         <li>rework SASS <i>*.sass</i>, <i>*.scss</i> files. Also, they don't need <i>Sass support</i> plugin anymore.</li>

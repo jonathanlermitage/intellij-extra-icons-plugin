@@ -48,9 +48,10 @@ public abstract class BaseIconProvider extends IconProvider {
         final PsiFile file;
         
         if (optFile.isPresent() && isSupported(file = optFile.get())) {
+            final String parentName = file.getParent() == null ? null : file.getParent().getName().toLowerCase();
             final String fileName = file.getName().toLowerCase();
             for (final Model model : models) {
-                if (model.check(fileName)) {
+                if (model.check(parentName, fileName)) {
                     return IconLoader.getIcon(model.getIcon());
                 }
             }

@@ -1,5 +1,10 @@
 package lermitage.intellij.extra.icons;
 
+import java.util.Collections;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 @SuppressWarnings("WeakerAccess")
 public class Model {
     
@@ -8,9 +13,11 @@ public class Model {
     private boolean mayEnd = false;
     private boolean end = false;
     private boolean noDot = false;
+    private boolean checkParent = false;
     
     private String icon;
     private String[] names = new String[0];
+    private Set<String> parentNames = Collections.emptySet();
     private String[] extensions = new String[0];
     
     private String id;
@@ -37,6 +44,12 @@ public class Model {
     
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+    
+    public Model parents(String... parents) {
+        this.checkParent = true;
+        this.parentNames = Stream.of(parents).collect(Collectors.toSet());
+        return this;
     }
     
     public Model start(String... base) {
@@ -68,33 +81,38 @@ public class Model {
         return this;
     }
     
-    public boolean check(String name) {
+    public boolean check(String parentName, String fileName) {
         if (!enabled) {
             return false;
+        }
+        if (checkParent) {
+            if (!parentNames.contains(parentName)) {
+                return false;
+            }
         }
         if (eq) {
             if (end) {
                 for (String n : names) {
                     for (String e : extensions) {
-                        if (name.equals(n + e)) {
+                        if (fileName.equals(n + e)) {
                             return true;
                         }
                     }
                 }
             } else if (mayEnd) {
                 for (String n : names) {
-                    if (name.equals(n)) {
+                    if (fileName.equals(n)) {
                         return true;
                     }
                     for (String e : extensions) {
-                        if (name.equals(n + e)) {
+                        if (fileName.equals(n + e)) {
                             return true;
                         }
                     }
                 }
             } else {
                 for (String n : names) {
-                    if (name.equals(n)) {
+                    if (fileName.equals(n)) {
                         return true;
                     }
                 }
@@ -105,31 +123,31 @@ public class Model {
             if (end) {
                 for (String n : names) {
                     for (String e : extensions) {
-                        if (name.startsWith(n) && name.endsWith(e)) {
+                        if (fileName.startsWith(n) && fileName.endsWith(e)) {
                             return true;
                         }
                     }
                 }
             } else if (mayEnd) {
                 for (String n : names) {
-                    if (name.startsWith(n)) {
+                    if (fileName.startsWith(n)) {
                         return true;
                     }
                     for (String e : extensions) {
-                        if (name.startsWith(n) && name.endsWith(e)) {
+                        if (fileName.startsWith(n) && fileName.endsWith(e)) {
                             return true;
                         }
                     }
                 }
             } else if (noDot) {
                 for (String n : names) {
-                    if (name.startsWith(n) && !name.contains(".")) {
+                    if (fileName.startsWith(n) && !fileName.contains(".")) {
                         return true;
                     }
                 }
             } else {
                 for (String n : names) {
-                    if (name.startsWith(n)) {
+                    if (fileName.startsWith(n)) {
                         return true;
                     }
                 }
@@ -138,7 +156,7 @@ public class Model {
         
         if (end & !eq & !start) {
             for (String e : extensions) {
-                if (name.endsWith(e)) {
+                if (fileName.endsWith(e)) {
                     return true;
                 }
             }

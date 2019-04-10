@@ -16,6 +16,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     @NotNull
     public static List<Model> allModels() {
         return asList(
+                new Model("vscode_settings", "/icons/vscode.png", "Visual Studio Code: .vscode/settings.json")
+                        .eq("settings.json").parents(".vscode"),
+        
                 new Model("htaccess", "/icons/apache.png", "Apache: .htaccess")
                         .eq(".htaccess"),
                 new Model("appveyor", "/icons/appveyor.png", "Appveyor: appveyor.yml")

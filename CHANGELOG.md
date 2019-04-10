@@ -6,6 +6,7 @@
 * add the hability to save settings at project level.
 
 ### 1.2.0 (WIP)
+* improved file detection capabilities.
 * support `Gruntfile.js` files.
 * support LESS `*.less` files.
 * rework SASS `*.sass`, `*.scss` files. Also, they don't need *Sass support* plugin anymore.
