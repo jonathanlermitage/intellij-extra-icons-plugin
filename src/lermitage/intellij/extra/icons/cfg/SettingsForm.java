@@ -3,6 +3,7 @@ package lermitage.intellij.extra.icons.cfg;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.util.IconLoader;
 import lermitage.intellij.extra.icons.Model;
+import lermitage.intellij.extra.icons.ModelType;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
@@ -12,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class SettingsForm implements Configurable {
@@ -89,7 +89,14 @@ public class SettingsForm implements Configurable {
     private void loadTable() {
         settingsTableModel = new SettingsTableModel();
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
-        allRegisteredModels.sort(Comparator.comparing(model -> model.getDescription().toLowerCase()));
+        allRegisteredModels.sort((o1, o2) -> {
+            // folders first, then compare descriptions
+            int typeComparison = ModelType.compare(o1.getModelType(), o2.getModelType());
+            if (typeComparison == 0) {
+                return o1.getDescription().compareToIgnoreCase(o2.getDescription());
+            }
+            return typeComparison;
+        });
         List<String> disabledModelIds = SettingsService.getDisabledModelIds();
         allRegisteredModels.forEach(m -> settingsTableModel.addRow(new Object[]{
                 IconLoader.getIcon(m.getIcon()),
