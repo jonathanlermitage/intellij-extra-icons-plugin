@@ -5,7 +5,7 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
-### 1.2.0 (WIP)
+### 1.2.0 (2019/04/12)
 * improve file detection capabilities: can work with folders.
 * improve CircleCI detection: add `.circleci/config.yml` files.
 * support `Gruntfile.js` files.
