@@ -20,6 +20,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
         return asList(
                 ofDir("dir_circleci", "/icons/folder_circleci.png", "Circle CI: .circleci folder")
                         .eq(".circleci"),
+                ofDir("dir_github", "/icons/folder_github.svg", "Github: .github folder")
+                        .eq(".github"),
+                ofDir("dir_gitlab", "/icons/folder_gitlab.svg", "Gitlab: .gitlab folder")
+                        .eq(".gitlab"),
                 ofDir("dir_gradle", "/icons/folder_gradle.svg", "Gradle: gradle folder")
                         .eq("gradle"),
                 ofDir("dir_idea", "/icons/folder_idea.png", "IntelliJ Idea: .idea folder")
@@ -100,6 +104,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .eq("cerebro").mayEnd(".conf"),
                 ofFile("cerebro1", "/icons/elastic-cerebro.png", "Cerebro: start by 'cerebro' and end by '.conf'")
                         .start("cerebro").end(".conf"),
+                ofFile("intellijcodestyle", "/icons/ijbeam.png", "IntelliJ: intellijcodestyle.xml")
+                        .eq("intellijcodestyle.xml"),
                 ofFile("mailmap", "/icons/email.png", "Mailmap: .mailmap")
                         .eq(".mailmap"),
                 ofFile("gatling", "/icons/gatling.png", "Gatling: gatling(.conf)")
