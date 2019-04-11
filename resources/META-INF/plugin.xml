@@ -6,6 +6,7 @@
 
     <description><![CDATA[
       Add icons for files like Travis YML, Appveyor YML, etc.<br/>
+      See <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate.<br/>
       <img src="https://raw.githubusercontent.com/jonathanlermitage/intellij-extra-icons-plugin/master/misc/screenshots/css_sprites.png" alt="icons preview"/>
     ]]>
     </description>
