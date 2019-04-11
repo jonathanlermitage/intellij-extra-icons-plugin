@@ -6,7 +6,7 @@
 * add the hability to save settings at project level.
 
 ### 1.2.0 (WIP)
-* improve file detection capabilities.
+* improve file detection capabilities: can work with folders.
 * improve CircleCI detection: add `.circleci/config.yml` files.
 * support `Gruntfile.js` files.
 * support LESS `*.less` files.

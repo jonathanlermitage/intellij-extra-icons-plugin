@@ -20,7 +20,7 @@
     <change-notes><![CDATA[
     1.2.0 (WIP)
     <ul>
-        <li>improved file detection capabilities.</li>
+        <li>improved file detection capabilities: can work with folders.</li>
         <li>improve CircleCI detection: add <i>.circleci/config.yml</i> files.</li>
         <li>support <i>Gruntfile.js</i> files.</li>
         <li>support LESS <i>*.less</i> files.</li>
