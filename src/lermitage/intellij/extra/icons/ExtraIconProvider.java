@@ -18,7 +18,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     @NotNull
     public static List<Model> allModels() {
         return asList(
-                ofDir("dir_circleci", "/icons/folder_circleci.png", "Circle CI: : .circleci folder")
+                ofDir("dir_circleci", "/icons/folder_circleci.png", "Circle CI: .circleci folder")
                         .eq(".circleci"),
                 ofDir("dir_gradle", "/icons/folder_gradle.svg", "Gradle: gradle folder")
                         .eq("gradle"),
