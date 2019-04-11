@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static lermitage.intellij.extra.icons.Model.ofFile;
 
 /**
  * Icon provider specific for Angular2+ modules.
@@ -22,23 +23,23 @@ public class Angular2IconProvider extends BaseIconProvider implements DumbAware 
     @NotNull
     public static List<Model> allModels() {
         return asList(
-                new Model("angular_module", "/icons/angular-module.svg", "AngularJS (in AngularJS projects only): *.module.ts")
+                ofFile("angular_module", "/icons/angular-module.svg", "AngularJS (in AngularJS projects only): *.module.ts")
                         .end(".module.ts"),
-                new Model("angular_component", "/icons/angular-component.svg", "AngularJS (in AngularJS projects only): *.component.ts")
+                ofFile("angular_component", "/icons/angular-component.svg", "AngularJS (in AngularJS projects only): *.component.ts")
                         .end(".component.ts"),
-                new Model("angular_service", "/icons/angular-service.svg", "AngularJS (in AngularJS projects only): *.service.ts")
+                ofFile("angular_service", "/icons/angular-service.svg", "AngularJS (in AngularJS projects only): *.service.ts")
                         .end(".service.ts"),
-                new Model("angular_pipe", "/icons/angular-pipe.svg", "AngularJS (in AngularJS projects only): *.pipe.ts")
+                ofFile("angular_pipe", "/icons/angular-pipe.svg", "AngularJS (in AngularJS projects only): *.pipe.ts")
                         .end(".pipe.ts"),
-                new Model("angular_directive", "/icons/angular-directive.svg", "AngularJS (in AngularJS projects only): *.directive.ts")
+                ofFile("angular_directive", "/icons/angular-directive.svg", "AngularJS (in AngularJS projects only): *.directive.ts")
                         .end(".directive.ts"),
-                new Model("angular_guard", "/icons/angular-guard.svg", "AngularJS (in AngularJS projects only): *.guard.ts")
+                ofFile("angular_guard", "/icons/angular-guard.svg", "AngularJS (in AngularJS projects only): *.guard.ts")
                         .end(".guard.ts"),
-                new Model("angular_resolver", "/icons/angular-resolver.svg", "AngularJS (in AngularJS projects only): *.resolver.ts")
+                ofFile("angular_resolver", "/icons/angular-resolver.svg", "AngularJS (in AngularJS projects only): *.resolver.ts")
                         .end(".resolver.ts"),
-                new Model("angular_spec", "/icons/test-ts.svg", "AngularJS (in AngularJS projects only): *.spec.ts")
+                ofFile("angular_spec", "/icons/test-ts.svg", "AngularJS (in AngularJS projects only): *.spec.ts")
                         .end(".spec.ts"),
-                new Model("angular_html", "/icons/html5.svg", "AngularJS (in AngularJS projects only): *.html")
+                ofFile("angular_html", "/icons/html5.svg", "AngularJS (in AngularJS projects only): *.html")
                         .end(".html")
         );
     }

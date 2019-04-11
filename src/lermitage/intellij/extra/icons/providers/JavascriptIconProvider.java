@@ -8,6 +8,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collections;
 import java.util.List;
 
+import static lermitage.intellij.extra.icons.Model.ofFile;
+
 /**
  * Icon provider specific for Javascript-related files.
  * This should be registered only if the bundled Javascript Support plugin is enabled.
@@ -19,7 +21,7 @@ public class JavascriptIconProvider extends BaseIconProvider implements DumbAwar
     @NotNull
     public static List<Model> allModels() {
         return Collections.singletonList(
-                new Model("typescript", "/icons/test-ts.svg", "Typescript: *.spec.ts")
+                ofFile("typescript", "/icons/test-ts.svg", "Typescript: *.spec.ts")
                         .end(".spec.ts")
         );
     }

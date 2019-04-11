@@ -11,6 +11,7 @@
 * support `Gruntfile.js` files.
 * support LESS `*.less` files.
 * support Visual Studio Code `.vscode/settings.json` files.
+* support `.circleci`, `gradle`, `.idea`, `.mvn`, `.vscode` folders.
 * rework SASS `*.sass`, `*.scss` files. Also, they don't need *Sass support* plugin anymore.
 * rework `.dockerignore` files.
 

@@ -2,6 +2,7 @@ package lermitage.intellij.extra.icons;
 
 import com.intellij.ide.IconProvider;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
@@ -44,15 +45,25 @@ public abstract class BaseIconProvider extends IconProvider {
     @Nullable
     @Override
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
-        final Optional<PsiFile> optFile = Optional.ofNullable(psiElement.getContainingFile());
-        final PsiFile file;
-        
-        if (optFile.isPresent() && isSupported(file = optFile.get())) {
-            final String parentName = file.getParent() == null ? null : file.getParent().getName().toLowerCase();
-            final String fileName = file.getName().toLowerCase();
+        if (psiElement instanceof PsiDirectory) {
+            PsiDirectory psiDirectory = (PsiDirectory) psiElement;
+            final String parentName = psiDirectory.getParent() == null ? null : psiDirectory.getParent().getName().toLowerCase();
+            final String folderName = psiDirectory.getName().toLowerCase();
             for (final Model model : models) {
-                if (model.check(parentName, fileName)) {
+                if (model.getModelType() == ModelType.DIR && model.check(parentName, folderName)) {
                     return IconLoader.getIcon(model.getIcon());
+                }
+            }
+        } else {
+            final PsiFile file;
+            final Optional<PsiFile> optFile = Optional.ofNullable(psiElement.getContainingFile());
+            if (optFile.isPresent() && isSupported(file = optFile.get())) {
+                final String parentName = file.getParent() == null ? null : file.getParent().getName().toLowerCase();
+                final String fileName = file.getName().toLowerCase();
+                for (final Model model : models) {
+                    if (model.getModelType() == ModelType.FILE && model.check(parentName, fileName)) {
+                        return IconLoader.getIcon(model.getIcon());
+                    }
                 }
             }
         }

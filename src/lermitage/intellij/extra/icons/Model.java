@@ -1,5 +1,8 @@
 package lermitage.intellij.extra.icons;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -23,11 +26,25 @@ public class Model {
     private String id;
     private String description;
     private boolean enabled = true;
+    private ModelType modelType;
     
-    public Model(String id, String icon, String description) {
+    @NotNull
+    @Contract("_, _, _ -> new")
+    public static Model ofFile(String id, String icon, String description) {
+        return new Model(id, icon, description, ModelType.FILE);
+    }
+    
+    @NotNull
+    @Contract("_, _, _ -> new")
+    public static Model ofDir(String id, String icon, String description) {
+        return new Model(id, icon, description, ModelType.DIR);
+    }
+    
+    private Model(String id, String icon, String description, ModelType modelType) {
         this.id = id;
         this.icon = icon;
         this.description = description;
+        this.modelType = modelType;
     }
     
     public String getId() {
@@ -40,6 +57,10 @@ public class Model {
     
     public String getIcon() {
         return icon;
+    }
+    
+    public ModelType getModelType() {
+        return modelType;
     }
     
     public void setEnabled(boolean enabled) {
