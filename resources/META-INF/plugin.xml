@@ -22,6 +22,7 @@
     <ul>
         <li>support Microsoft Azure <i>azure-pipelines.yml</i> files.</li>
         <li>support Dependabot <i>.dependabot/config.yml</i> files and <i>.dependabot</i> folders.</li>
+        <li>fix: Windows <i>mvnw.bat</i>, <i>mvnw.cmd</i> and Linux <i>mvnw</i> files were registered with the same id. That means disabling Windows icons disabled Linux icon too.</li>
     </ul>
     1.2.0 (2019/04/12)
     <ul>

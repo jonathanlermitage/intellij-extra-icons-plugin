@@ -4,6 +4,7 @@
 * add an option to customize and/or add file detection patterns.
 * add an option to use your own icons.
 * add the hability to save settings at project level.
+* fix: Windows `mvnw.bat`, `mvnw.cmd` and Linux `mvnw` files were registered with the same id. That means disabling Windows icons disabled Linux icon too. 
 
 ### 1.3.0 (WIP)
 * support Microsoft Azure `azure-pipelines.yml` files.

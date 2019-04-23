@@ -52,7 +52,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .eq("bamboo.yml"),
                 ofFile("gradle", "/icons/bash-gradlew.png", "Gradle: gradlew, gradle.properties")
                         .eq("gradlew", "gradle.properties"),
-                ofFile("mvnw", "/icons/bash-mvnw.png", "Maven: mvnw")
+                ofFile("mvnw_linux", "/icons/bash-mvnw.png", "Maven: mvnw")
                         .eq("mvnw"),
                 ofFile("berksfile", "/icons/berkshelf.png", "Berkshelf: berksfile")
                         .eq("berksfile"),
@@ -76,7 +76,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .eq(".cirrus.yml"),
                 ofFile("gradlew", "/icons/cmd-gradlew.png", "Gradle (Windows): gradlew.bat, gradlew.cmd")
                         .eq("gradlew.bat", "gradlew.cmd"),
-                ofFile("mvnw", "/icons/cmd-mvnw.png", "Maven (Windows): mvnw.bat, mvnw.cmd")
+                ofFile("mvnw_windows", "/icons/cmd-mvnw.png", "Maven (Windows): mvnw.bat, mvnw.cmd")
                         .eq("mvnw.bat", "mvnw.cmd"),
                 ofFile("codecov", "/icons/codecov.png", "CodeCov: .codecov.yml, codecov.yml")
                         .eq(".codecov.yml", "codecov.yml"),
