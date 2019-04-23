@@ -7,6 +7,7 @@
 
 ### 1.3.0 (WIP)
 * support Microsoft Azure `azure-pipelines.yml` files.
+* support Dependabot `.dependabot/config.yml` files and `.dependabot` folders.
 
 ### 1.2.0 (2019/04/12)
 * improve file detection capabilities: can work with folders.

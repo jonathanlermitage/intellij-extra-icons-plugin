@@ -21,6 +21,7 @@
     1.3.0 (WIP)
     <ul>
         <li>support Microsoft Azure <i>azure-pipelines.yml</i> files.</li>
+        <li>support Dependabot <i>.dependabot/config.yml</i> files and <i>.dependabot</i> folders.</li>
     </ul>
     1.2.0 (2019/04/12)
     <ul>

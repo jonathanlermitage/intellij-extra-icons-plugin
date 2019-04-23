@@ -20,6 +20,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
         return asList(
                 ofDir("dir_circleci", "/icons/folder_circleci.png", "Circle CI: .circleci folder")
                         .eq(".circleci"),
+                ofDir("dir_dependabot", "/icons/folder_dependabot.png", "Dependabot: .dependabot folder")
+                        .eq(".dependabot"),
                 ofDir("dir_github", "/icons/folder_github.svg", "Github: .github folder")
                         .eq(".github"),
                 ofDir("dir_gitlab", "/icons/folder_gitlab.svg", "Gitlab: .gitlab folder")
@@ -33,9 +35,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofDir("dir_vscode_settings", "/icons/folder_vscode.png", "Visual Studio Code: .vscode folder")
                         .eq(".vscode"),
         
+                ofFile("dependabot_config", "/icons/dependabot.png", "Dependabot: .dependabot/config.yml")
+                        .eq("config.yml").parents(".dependabot"),
                 ofFile("vscode_settings", "/icons/vscode.png", "Visual Studio Code: .vscode/settings.json")
                         .eq("settings.json").parents(".vscode"),
-                
+        
                 ofFile("htaccess", "/icons/apache.png", "Apache: .htaccess")
                         .eq(".htaccess"),
                 ofFile("appveyor", "/icons/appveyor.png", "Appveyor: appveyor.yml")
