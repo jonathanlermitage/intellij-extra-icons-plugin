@@ -5,7 +5,7 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
-### 1.3.0 (WIP)
+### 1.3.0 (2019/04/24)
 * support Microsoft Azure `azure-pipelines.yml` files.
 * support Dependabot `.dependabot/config.yml` files and `.dependabot` folders.
 * fix: Windows `mvnw.bat`, `mvnw.cmd` and Linux `mvnw` files were registered with the same id. That means disabling Windows icons disabled Linux icon too. 
