@@ -5,6 +5,9 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
+### 1.4.0 (WIP)
+* support Better Code Hub `.bettercodehub.yml` files. NB: I asked an icon to BetterCodeHub but got no response, so I registered a generic icon :-p
+
 ### 1.3.0 (2019/04/24)
 * support Microsoft Azure `azure-pipelines.yml` files.
 * support Dependabot `.dependabot/config.yml` files and `.dependabot` folders.
