@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -17,11 +18,13 @@ public class Model {
     private boolean end = false;
     private boolean noDot = false;
     private boolean checkParent = false;
+    private boolean regex = false;
     
     private String icon;
     private String[] names = new String[0];
     private Set<String> parentNames = Collections.emptySet();
     private String[] extensions = new String[0];
+    private Pattern pattern;
     
     private String id;
     private String description;
@@ -102,7 +105,13 @@ public class Model {
         return this;
     }
     
-    public boolean check(String parentName, String fileName) {
+    public Model regex(String regex) {
+        this.regex = true;
+        this.pattern = Pattern.compile(regex);
+        return this;
+    }
+    
+    public boolean check(String parentName, String fileName, String fullPath) {
         if (!enabled) {
             return false;
         }
@@ -111,6 +120,13 @@ public class Model {
                 return false;
             }
         }
+        
+        if (regex) {
+            if (pattern.matcher(fullPath).matches()) {
+                return true;
+            }
+        }
+        
         if (eq) {
             if (end) {
                 for (String n : names) {

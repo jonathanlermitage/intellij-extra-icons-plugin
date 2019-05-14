@@ -18,6 +18,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     @NotNull
     public static List<Model> allModels() {
         return asList(
+                
+                //
+                // directory
+                //
                 ofDir("dir_circleci", "/icons/folder_circleci.png", "Circle CI: .circleci folder")
                         .eq(".circleci"),
                 ofDir("dir_dependabot", "/icons/folder_dependabot.png", "Dependabot: .dependabot folder")
@@ -34,12 +38,24 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .eq(".mvn"),
                 ofDir("dir_vscode_settings", "/icons/folder_vscode.png", "Visual Studio Code: .vscode folder")
                         .eq(".vscode"),
-        
+                
+                //
+                // regex
+                //
+                ofFile("flyway", "/icons/flyway.png", "FlyWay (regex): '.*/db/migration/.*\\.sql'")
+                        .regex(".*/db/migration/.*\\.sql"),
+                
+                //
+                // file plus its containing folder
+                //
                 ofFile("dependabot_config", "/icons/dependabot.png", "Dependabot: .dependabot/config.yml")
                         .eq("config.yml").parents(".dependabot"),
                 ofFile("vscode_settings", "/icons/vscode.png", "Visual Studio Code: .vscode/settings.json")
                         .eq("settings.json").parents(".vscode"),
-        
+                
+                //
+                // file plus extension
+                //
                 ofFile("htaccess", "/icons/apache.png", "Apache: .htaccess")
                         .eq(".htaccess"),
                 ofFile("appveyor", "/icons/appveyor.png", "Appveyor: appveyor.yml")
@@ -207,6 +223,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("zalando", "/icons/zalando.png", "Zalando Zappr: .zappr.yaml")
                         .eq(".zappr.yaml"),
                 
+                //
+                // extension only
+                //
                 ofFile("ext_archive", "/icons/archive.png", "Archive: *.zip, *.7z, *.tar, *.gz, *.bz2")
                         .end(".zip", ".7z", ".tar", ".gz", ".bz2"),
                 ofFile("ext_adoc", "/icons/asciidoc.png", "Asciidoc: *.adoc, *.asciidoc")
@@ -287,6 +306,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_msoffice_word", "/icons/officedocs/msword.png", "MSOffice Word: *.doc, *.docx")
                         .end(".doc", ".docx"),
                 
+                //
+                // generic
+                //
                 ofFile("docker_generic", "/icons/docker.png", "Docker (generic): start by 'dockerfile'")
                         .start("dockerfile")
         );

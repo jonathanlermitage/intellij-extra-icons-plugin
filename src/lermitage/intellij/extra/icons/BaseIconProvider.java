@@ -49,8 +49,9 @@ public abstract class BaseIconProvider extends IconProvider {
             PsiDirectory psiDirectory = (PsiDirectory) psiElement;
             final String parentName = psiDirectory.getParent() == null ? null : psiDirectory.getParent().getName().toLowerCase();
             final String folderName = psiDirectory.getName().toLowerCase();
+            final String fullPath = psiDirectory.getVirtualFile().getPath().replaceAll("\\\\", "/");
             for (final Model model : models) {
-                if (model.getModelType() == ModelType.DIR && model.check(parentName, folderName)) {
+                if (model.getModelType() == ModelType.DIR && model.check(parentName, folderName, fullPath)) {
                     return IconLoader.getIcon(model.getIcon());
                 }
             }
@@ -60,8 +61,9 @@ public abstract class BaseIconProvider extends IconProvider {
             if (optFile.isPresent() && isSupported(file = optFile.get())) {
                 final String parentName = file.getParent() == null ? null : file.getParent().getName().toLowerCase();
                 final String fileName = file.getName().toLowerCase();
+                final String fullPath = file.getVirtualFile().getPath().replaceAll("\\\\", "/");
                 for (final Model model : models) {
-                    if (model.getModelType() == ModelType.FILE && model.check(parentName, fileName)) {
+                    if (model.getModelType() == ModelType.FILE && model.check(parentName, fileName, fullPath)) {
                         return IconLoader.getIcon(model.getIcon());
                     }
                 }

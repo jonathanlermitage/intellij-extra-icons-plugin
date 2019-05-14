@@ -6,8 +6,10 @@
 * add the hability to save settings at project level.
 
 ### 1.4.0 (WIP)
-* support Better Code Hub `.bettercodehub.yml` files. NB: I asked an icon to BetterCodeHub but got no response, so I registered a generic icon :-p
+* support Better Code Hub `.bettercodehub.yml` files.
+* support FlyWay SQL files `.*/db/migration/.*\.sql`.
 * detect more Docker files.
+* introduce regex support.
 
 ### 1.3.0 (2019/04/24)
 * support Microsoft Azure `azure-pipelines.yml` files.
