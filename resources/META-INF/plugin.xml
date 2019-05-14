@@ -21,6 +21,7 @@
     1.4.0 (WIP)
     <ul>
         <li>support Better Code Hub <i>.bettercodehub.yml</i> files. NB: I asked an icon to BetterCodeHub but got no response, so I registered a generic icon :-p</li>
+        <li>detect more Docker files.</li>
     </ul>
     1.3.0 (2019/04/24)
     <ul>

@@ -285,7 +285,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_msoffice_visio", "/icons/officedocs/msvisio.png", "MSOffice Visio: *.vsd, *.vsdx, *.vss, *.vssx, *.vst, *.vstx")
                         .end(".vsd", ".vsdx", ".vss", ".vssx", ".vst", ".vstx"),
                 ofFile("ext_msoffice_word", "/icons/officedocs/msword.png", "MSOffice Word: *.doc, *.docx")
-                        .end(".doc", ".docx")
+                        .end(".doc", ".docx"),
+                
+                ofFile("docker_generic", "/icons/docker.png", "Docker (generic): start by 'dockerfile'")
+                        .start("dockerfile")
         );
     }
     
