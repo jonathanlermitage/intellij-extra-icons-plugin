@@ -7,23 +7,67 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   viewBox="0 0 128 128"
+   height="100%"
+   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"
    version="1.1"
-   id="svg23"
+   viewBox="0 0 64 64"
+   width="100%"
+   xml:space="preserve"
+   id="svg17"
    sodipodi:docname="bettercodehub_dark.svg"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
-  <metadata
-     id="metadata27">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <sodipodi:namedview
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"><metadata
+     id="metadata23"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs21"><filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Invert"
+       id="filter539"><feColorMatrix
+         values="1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 -0.21 -0.72 -0.07 1.68 0 "
+         result="color2"
+         id="feColorMatrix537" /></filter><filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Invert"
+       id="filter543"><feColorMatrix
+         values="1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 -0.21 -0.72 -0.07 1.68 0 "
+         result="color2"
+         id="feColorMatrix541" /></filter><filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Invert"
+       id="filter547"><feColorMatrix
+         values="1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 -0.21 -0.72 -0.07 1.68 0 "
+         result="color2"
+         id="feColorMatrix545" /></filter><filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Invert"
+       id="filter551"><feColorMatrix
+         values="1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 -0.21 -0.72 -0.07 1.68 0 "
+         result="color2"
+         id="feColorMatrix549" /></filter><filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Invert"
+       id="filter555"><feColorMatrix
+         values="1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 -0.21 -0.72 -0.07 1.68 0 "
+         result="color2"
+         id="feColorMatrix553" /></filter><filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Invert"
+       id="filter559"><feColorMatrix
+         values="1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 -0.21 -0.72 -0.07 1.68 0 "
+         result="color2"
+         id="feColorMatrix557" /></filter><filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Invert"
+       id="filter563"><feColorMatrix
+         values="1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 -0.21 -0.72 -0.07 1.68 0 "
+         result="color2"
+         id="feColorMatrix561" /></filter><filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Invert"
+       id="filter567"><feColorMatrix
+         values="1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 -0.21 -0.72 -0.07 1.68 0 "
+         result="color2"
+         id="feColorMatrix565" /></filter></defs><sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1"
@@ -34,125 +78,39 @@
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
      inkscape:window-height="1001"
-     id="namedview25"
+     id="namedview19"
      showgrid="false"
-     inkscape:zoom="4.2273735"
-     inkscape:cx="22.366584"
-     inkscape:cy="64"
+     inkscape:zoom="3.6875"
+     inkscape:cx="32"
+     inkscape:cy="32"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
-     inkscape:current-layer="_23_Page_Rank_Badge" />
-  <defs
-     id="defs4">
-    <style
-       id="style2">.cls-1{fill:#4d91bb;}.cls-2{fill:#2175aa;}.cls-3{fill:#c3edf5;}.cls-4{fill:#7ad0cb;}.cls-5{fill:#4dbab4;}</style>
-    <filter
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Invert"
-       id="filter298">
-      <feColorMatrix
-         values="0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 -0.21 -0.72 -0.07 1.68 0 "
-         result="color2"
-         id="feColorMatrix296" />
-    </filter>
-    <filter
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Invert"
-       id="filter302">
-      <feColorMatrix
-         values="0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 -0.21 -0.72 -0.07 1.68 0 "
-         result="color2"
-         id="feColorMatrix300" />
-    </filter>
-    <filter
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Invert"
-       id="filter306">
-      <feColorMatrix
-         values="0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 -0.21 -0.72 -0.07 1.68 0 "
-         result="color2"
-         id="feColorMatrix304" />
-    </filter>
-    <filter
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Invert"
-       id="filter310">
-      <feColorMatrix
-         values="0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 -0.21 -0.72 -0.07 1.68 0 "
-         result="color2"
-         id="feColorMatrix308" />
-    </filter>
-    <filter
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Invert"
-       id="filter314">
-      <feColorMatrix
-         values="0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 -0.21 -0.72 -0.07 1.68 0 "
-         result="color2"
-         id="feColorMatrix312" />
-    </filter>
-    <filter
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Invert"
-       id="filter318">
-      <feColorMatrix
-         values="0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 -0.21 -0.72 -0.07 1.68 0 "
-         result="color2"
-         id="feColorMatrix316" />
-    </filter>
-  </defs>
-  <title
-     id="title6" />
-  <g
-     data-name="23 Page Rank Badge"
-     id="_23_Page_Rank_Badge"
-     transform="matrix(1.1558359,0,0,1.1169796,-10.328323,-6.7788537)">
-    <path
-       class="cls-1"
-       d="M 43.22,61 64,73 40,114.53 35.65,98.07 19.22,102.53 Z M 84.79,61 64,73 l 24,41.57 4.35,-16.46 16.43,4.46 z"
-       id="path8"
-       inkscape:connector-curvature="0"
-       style="fill:#4d91bb" />
-    <polygon
-       class="cls-2"
-       points="39.48,67.43 39.48,81.48 55.02,81.48 57.59,84.06 64,72.97 43.22,60.97 "
-       id="polygon10"
-       style="fill:#2175aa;filter:url(#filter298)" />
-    <polygon
-       class="cls-2"
-       points="92.52,74.36 84.78,60.97 64,72.97 71.87,86.6 76.98,81.48 92.52,81.48 "
-       id="polygon12"
-       style="fill:#2175aa;filter:url(#filter302)" />
-    <rect
-       class="cls-3"
-       height="53.029999"
-       width="53.029999"
-       x="37.48"
-       y="24.450001"
-       id="rect14"
-       style="fill:#c3edf5;filter:url(#filter306)" />
-    <rect
-       class="cls-3"
-       height="53.029999"
-       transform="rotate(45,64.001549,50.960309)"
-       width="53.029999"
-       x="37.48"
-       y="24.450001"
-       id="rect16"
-       style="fill:#c3edf5;filter:url(#filter310)" />
-    <circle
-       class="cls-4"
-       cx="64"
-       cy="50.970001"
-       r="15"
-       id="circle18"
-       style="fill:#7ad0cb;filter:url(#filter314)" />
-    <path
-       class="cls-5"
-       d="m 52.74,51 a 15,15 0 0 1 13.13,-14.91 15,15 0 1 0 0,29.74 A 15,15 0 0 1 52.74,51 Z"
-       id="path20"
-       inkscape:connector-curvature="0"
-       style="fill:#4dbab4;filter:url(#filter318)" />
-  </g>
-</svg>
+     inkscape:current-layer="svg17" /><rect
+     height="64"
+     id="comparison--statistics--score--percentage"
+     style="fill:none;filter:url(#filter539)"
+     width="64"
+     x="0"
+     y="0" /><path
+     d="M11,22c-0.552,0 -1,-0.448 -1,-1c0,-1.916 0,-6.084 0,-8c0,-0.552 0.448,-1 1,-1c4.3,0 21,0 21,0l0,10c0,0 -16.7,0 -21,0Z"
+     style="fill:#ccff90;filter:url(#filter543)"
+     id="path3" /><path
+     d="M42,42c0.552,0 1,0.448 1,1c0,1.916 0,6.084 0,8c0,0.552 -0.448,1 -1,1c-2.711,0 -10,0 -10,0l0,-10c0,0 7.289,0 10,0Z"
+     style="fill:#6ae573;filter:url(#filter547)"
+     id="path5" /><path
+     d="M18,37c-0.552,0 -1,-0.448 -1,-1c0,-1.916 0,-6.084 0,-8c0,-0.552 0.448,-1 1,-1c3.355,0 14,0 14,0l0,10c0,0 -10.645,0 -14,0Z"
+     style="fill:#ccff90;filter:url(#filter551)"
+     id="path7" /><path
+     d="M48,27c0.552,0 1,0.448 1,1c0,1.916 0,6.084 0,8c0,0.552 -0.448,1 -1,1c-3.644,0 -16,0 -16,0l0,-10c0,0 12.356,0 16,0Z"
+     style="fill:#6ae573;filter:url(#filter555)"
+     id="path9" /><path
+     d="M16,52c-0.552,0 -1,-0.448 -1,-1c0,-1.916 0,-6.084 0,-8c0,-0.552 0.448,-1 1,-1c3.644,0 16,0 16,0l0,10c0,0 -12.356,0 -16,0Z"
+     style="fill:#ccff90;filter:url(#filter559)"
+     id="path11" /><path
+     d="M51,12c0.552,0 1,0.448 1,1c0,1.916 0,6.084 0,8c0,0.552 -0.448,1 -1,1c-4.048,0 -19,0 -19,0l0,-10c0,0 14.952,0 19,0Z"
+     style="fill:#6ae573;filter:url(#filter563)"
+     id="path13" /><path
+     d="M31,56l0,-48l2,0l0,48l-2,0Z"
+     style="fill:#00c853;filter:url(#filter567)"
+     id="path15" /></svg>
