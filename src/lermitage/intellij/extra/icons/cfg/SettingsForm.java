@@ -1,17 +1,14 @@
 package lermitage.intellij.extra.icons.cfg;
 
-import com.intellij.openapi.options.Configurable;
-import com.intellij.openapi.util.IconLoader;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelType;
+
+import com.intellij.openapi.options.Configurable;
+import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTable;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 

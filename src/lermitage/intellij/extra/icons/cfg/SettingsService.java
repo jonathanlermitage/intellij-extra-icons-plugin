@@ -1,14 +1,15 @@
 package lermitage.intellij.extra.icons.cfg;
 
+import lermitage.intellij.extra.icons.ExtraIconProvider;
+import lermitage.intellij.extra.icons.Model;
+import lermitage.intellij.extra.icons.providers.Angular2IconProvider;
+import lermitage.intellij.extra.icons.providers.JavascriptIconProvider;
+
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.util.xmlb.XmlSerializerUtil;
-import lermitage.intellij.extra.icons.ExtraIconProvider;
-import lermitage.intellij.extra.icons.Model;
-import lermitage.intellij.extra.icons.providers.Angular2IconProvider;
-import lermitage.intellij.extra.icons.providers.JavascriptIconProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

@@ -1,6 +1,7 @@
-package lermitage.intellij.extra.icons.cfg;
+package lermitage.intellij.extra.icons;
 
-import lermitage.intellij.extra.icons.Model;
+import lermitage.intellij.extra.icons.cfg.SettingsService;
+
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -5,9 +5,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import static java.util.Arrays.asList;
 import static lermitage.intellij.extra.icons.Model.ofDir;
 import static lermitage.intellij.extra.icons.Model.ofFile;
+
+import static java.util.Arrays.asList;
 
 public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     

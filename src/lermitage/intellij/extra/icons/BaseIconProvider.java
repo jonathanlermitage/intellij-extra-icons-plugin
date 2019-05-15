@@ -1,12 +1,13 @@
 package lermitage.intellij.extra.icons;
 
+import lermitage.intellij.extra.icons.cfg.SettingsService;
+
 import com.intellij.ide.IconProvider;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileSystemItem;
-import lermitage.intellij.extra.icons.cfg.SettingsService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

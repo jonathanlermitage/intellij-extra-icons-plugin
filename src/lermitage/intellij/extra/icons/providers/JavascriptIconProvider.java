@@ -1,8 +1,9 @@
 package lermitage.intellij.extra.icons.providers;
 
-import com.intellij.openapi.project.DumbAware;
 import lermitage.intellij.extra.icons.BaseIconProvider;
 import lermitage.intellij.extra.icons.Model;
+
+import com.intellij.openapi.project.DumbAware;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;

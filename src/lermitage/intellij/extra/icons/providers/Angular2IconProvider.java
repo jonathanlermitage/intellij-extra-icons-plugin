@@ -1,16 +1,18 @@
 package lermitage.intellij.extra.icons.providers;
 
-import com.intellij.openapi.project.DumbAware;
-import com.intellij.psi.PsiFile;
 import lermitage.intellij.extra.icons.BaseIconProvider;
 import lermitage.intellij.extra.icons.Model;
+
+import com.intellij.openapi.project.DumbAware;
+import com.intellij.psi.PsiFile;
 import org.angular2.lang.Angular2LangUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import static java.util.Arrays.asList;
 import static lermitage.intellij.extra.icons.Model.ofFile;
+
+import static java.util.Arrays.asList;
 
 /**
  * Icon provider specific for Angular2+ modules.
