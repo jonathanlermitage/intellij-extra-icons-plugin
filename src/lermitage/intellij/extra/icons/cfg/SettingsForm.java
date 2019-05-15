@@ -36,6 +36,12 @@ public class SettingsForm implements Configurable {
 
     @Nullable
     @Override
+    public String getHelpTopic() {
+        return null;
+    }
+
+    @Nullable
+    @Override
     public JComponent createComponent() {
         initComponents();
         return pane;
