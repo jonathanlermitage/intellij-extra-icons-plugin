@@ -20,7 +20,7 @@
     <change-notes><![CDATA[
     1.4.0 (WIP)
     <ul>
-        <li>support Better Code Hub <i>.bettercodehub.yml</i> files.</li>
+        <li>support Better Code Hub <i>.bettercodehub.yml</i> files. I'd like to thank the Better Code Hub team for sending me SVG files!</li>
         <li>support FlyWay SQL files <i>.*/db/migration/.*\.sql</i>.</li>
         <li>detect more Docker files.</li>
         <li>introduce regex support.</li>

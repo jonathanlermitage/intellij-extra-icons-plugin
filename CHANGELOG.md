@@ -6,7 +6,7 @@
 * add the hability to save settings at project level.
 
 ### 1.4.0 (WIP)
-* support Better Code Hub `.bettercodehub.yml` files.
+* support [Better Code Hub](https://bettercodehub.com) `.bettercodehub.yml` files. I'd like to thank the Better Code Hub team for sending me SVG files!
 * support FlyWay SQL files `.*/db/migration/.*\.sql`.
 * detect more Docker files.
 * introduce regex support.
