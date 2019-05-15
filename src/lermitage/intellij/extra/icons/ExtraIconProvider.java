@@ -11,11 +11,11 @@ import static lermitage.intellij.extra.icons.Model.ofFile;
 import static java.util.Arrays.asList;
 
 public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
-    
+
     private static final String[] TXT = new String[]{".md", ".txt", ".adoc"};
     private static final String[] CFG = new String[]{".xml", ".yml", ".yaml", ".properties", ".json", ".cfg", ".conf", ".ini", ".txt"};
     private static final String[] YML = new String[]{".yaml", ".yml"};
-    
+
     @NotNull
     public static List<Model> allModels() {
         return asList(
@@ -39,13 +39,13 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .eq(".mvn"),
                 ofDir("dir_vscode_settings", "/icons/folder_vscode.png", "Visual Studio Code: .vscode folder")
                         .eq(".vscode"),
-                
+
                 //
                 // regex
                 //
                 ofFile("flyway", "/icons/flyway.png", "FlyWay (regex): '.*/db/migration/.*\\.sql'")
                         .regex(".*/db/migration/.*\\.sql"),
-                
+
                 //
                 // file plus its containing folder
                 //
@@ -53,10 +53,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .eq("config.yml").parents(".dependabot"),
                 ofFile("vscode_settings", "/icons/vscode.png", "Visual Studio Code: .vscode/settings.json")
                         .eq("settings.json").parents(".vscode"),
-                
+
                 //
                 // file plus extension
                 //
+
                 ofFile("htaccess", "/icons/apache.png", "Apache: .htaccess")
                         .eq(".htaccess"),
                 ofFile("appveyor", "/icons/appveyor.png", "Appveyor: appveyor.yml")
@@ -223,7 +224,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .eq("version").mayEnd(TXT),
                 ofFile("zalando", "/icons/zalando.png", "Zalando Zappr: .zappr.yaml")
                         .eq(".zappr.yaml"),
-                
+
                 //
                 // extension only
                 //
@@ -306,7 +307,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .end(".vsd", ".vsdx", ".vss", ".vssx", ".vst", ".vstx"),
                 ofFile("ext_msoffice_word", "/icons/officedocs/msword.png", "MSOffice Word: *.doc, *.docx")
                         .end(".doc", ".docx"),
-                
+
                 //
                 // generic
                 //
@@ -314,11 +315,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         .start("dockerfile")
         );
     }
-    
+
     public ExtraIconProvider() {
         super();
     }
-    
+
     @Override
     protected List<Model> getAllModels() {
         return allModels();

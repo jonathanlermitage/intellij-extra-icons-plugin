@@ -21,7 +21,7 @@ import static java.util.Arrays.asList;
  * @author Edoardo Luppi
  */
 public class Angular2IconProvider extends BaseIconProvider implements DumbAware {
-    
+
     @NotNull
     public static List<Model> allModels() {
         return asList(
@@ -45,16 +45,16 @@ public class Angular2IconProvider extends BaseIconProvider implements DumbAware 
                         .end(".html")
         );
     }
-    
+
     public Angular2IconProvider() {
         super();
     }
-    
+
     @Override
     protected List<Model> getAllModels() {
         return allModels();
     }
-    
+
     @Override
     protected boolean isSupported(@NotNull final PsiFile psiFile) {
         return Angular2LangUtil.isAngular2Context(psiFile);
