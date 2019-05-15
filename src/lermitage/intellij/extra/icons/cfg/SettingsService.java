@@ -17,8 +17,8 @@ import java.util.List;
 
 // see http://www.jetbrains.org/intellij/sdk/docs/basics/persisting_state_of_components.html
 @State(
-        name = "ExtraIconsSettings",
-        storages = @Storage("lermitage-extra-icons.xml")
+    name = "ExtraIconsSettings",
+    storages = @Storage("lermitage-extra-icons.xml")
 )
 public class SettingsService implements PersistentStateComponent<SettingsService> {
 

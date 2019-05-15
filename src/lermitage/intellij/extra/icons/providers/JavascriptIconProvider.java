@@ -22,8 +22,8 @@ public class JavascriptIconProvider extends BaseIconProvider implements DumbAwar
     @NotNull
     public static List<Model> allModels() {
         return Collections.singletonList(
-                ofFile("typescript", "/icons/test-ts.svg", "Typescript: *.spec.ts")
-                        .end(".spec.ts")
+            ofFile("typescript", "/icons/test-ts.svg", "Typescript: *.spec.ts")
+                .end(".spec.ts")
         );
     }
 
