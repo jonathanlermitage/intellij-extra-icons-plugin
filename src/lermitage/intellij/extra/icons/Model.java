@@ -4,6 +4,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
+import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -111,7 +112,8 @@ public class Model {
         return this;
     }
     
-    public boolean check(String parentName, String fileName, String fullPath) {
+    @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
+    public boolean check(String parentName, String fileName, Optional<String> fullPath) {
         if (!enabled) {
             return false;
         }
@@ -121,8 +123,8 @@ public class Model {
             }
         }
         
-        if (regex) {
-            if (pattern.matcher(fullPath).matches()) {
+        if (regex && fullPath.isPresent()) {
+            if (pattern.matcher(fullPath.get()).matches()) {
                 return true;
             }
         }

@@ -5,6 +5,7 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiFileSystemItem;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -49,7 +50,7 @@ public abstract class BaseIconProvider extends IconProvider {
             PsiDirectory psiDirectory = (PsiDirectory) psiElement;
             final String parentName = psiDirectory.getParent() == null ? null : psiDirectory.getParent().getName().toLowerCase();
             final String folderName = psiDirectory.getName().toLowerCase();
-            final String fullPath = psiDirectory.getVirtualFile().getPath().replaceAll("\\\\", "/");
+            final Optional<String> fullPath = getFullPath(psiDirectory);
             for (final Model model : models) {
                 if (model.getModelType() == ModelType.DIR && model.check(parentName, folderName, fullPath)) {
                     return IconLoader.getIcon(model.getIcon());
@@ -61,7 +62,7 @@ public abstract class BaseIconProvider extends IconProvider {
             if (optFile.isPresent() && isSupported(file = optFile.get())) {
                 final String parentName = file.getParent() == null ? null : file.getParent().getName().toLowerCase();
                 final String fileName = file.getName().toLowerCase();
-                final String fullPath = file.getVirtualFile().getPath().replaceAll("\\\\", "/");
+                final Optional<String> fullPath = getFullPath(file);
                 for (final Model model : models) {
                     if (model.getModelType() == ModelType.FILE && model.check(parentName, fileName, fullPath)) {
                         return IconLoader.getIcon(model.getIcon());
@@ -71,5 +72,12 @@ public abstract class BaseIconProvider extends IconProvider {
         }
         
         return null;
+    }
+    
+    private Optional<String> getFullPath(@NotNull PsiFileSystemItem file) {
+        if (file.getVirtualFile() != null) {
+            return Optional.of(file.getVirtualFile().getPath().toLowerCase());
+        }
+        return Optional.empty();
     }
 }
