@@ -23,9 +23,11 @@ Edoardo Luppi (<lp.edoardo@gmail.com>)
 
 ## Build
 
-Starting from version 0.17, you need JetBrains `AngularJS`, `JavaScript` and `Sass support` plugins to build Extra Icons. Go to `Project Structure`, `SDKs`, select an IntelliJ platform (e.g. IntelliJ IDEA Ultimate) that bundles these plugins, then add `<thePlatform>/plugins/AngularJS/lib/AngularJS.jar!/`, `<thePlatform>/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/`, `<thePlatform>/plugins/sass/lib/sass.jar!/` to classpath.
+Run `./gradlew build`.
 
-This support is optional, so you still can install Extra Icons on IntelliJ IDEA Community edition.
+## Run IDE
+
+Run `./gradlew runIde`.
 
 ## License
 

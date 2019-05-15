@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.8'
+}
+
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'org.jetbrains.intellij'
+
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+group 'lermitage.intellij.extra.icons'
+version version
+
+sourceSets {
+    main {
+        java.srcDir 'src'
+        resources.srcDir 'resources'
+    }
+    test {
+        java.srcDir 'test'
+    }
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    downloadSources Boolean.valueOf(downloadIdeaSources)
+    instrumentCode Boolean.valueOf(instrumentPluginCode)
+    pluginName 'Extra Icons'
+    plugins = ['AngularJS']
+    sandboxDirectory = "$project.buildDir/.sandbox"
+    version ideaVersion
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
