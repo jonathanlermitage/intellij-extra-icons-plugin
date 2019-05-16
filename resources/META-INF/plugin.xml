@@ -22,6 +22,7 @@
     <ul>
         <li>support Better Code Hub <i>.bettercodehub.yml</i> files. I'd like to thank the Better Code Hub team for sending me SVG files!</li>
         <li>support FlyWay SQL files <i>.*/db/migration/.*\.sql</i>.</li>
+        <li>support APK <i>.apk</i>, <i>.xapk</i> files.</li>
         <li>detect more Docker files.</li>
         <li>introduce regex support.</li>
         <li>switched from DevKit to Gradle workflow: you can now build plugin without IDE, and integration with online CI like Travis will be easy.</li>
