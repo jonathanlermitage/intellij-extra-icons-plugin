@@ -10,6 +10,7 @@
 * support FlyWay SQL files `.*/db/migration/.*\.sql`.
 * detect more Docker files.
 * introduce regex support.
+* switched from DevKit to Gradle workflow: you can now build plugin without IDE, and integration with online CI like Travis will be easy.
 
 ### 1.3.0 (2019/04/24)
 * support Microsoft Azure `azure-pipelines.yml` files.

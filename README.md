@@ -19,19 +19,15 @@ Jonathan Lermitage (<jonathan.lermitage@gmail.com>)
 Linkedin profile: [jonathan-lermitage-092711142](https://www.linkedin.com/in/jonathan-lermitage-092711142/)
 
 ## Contributors
-Edoardo Luppi (<lp.edoardo@gmail.com>)
 
-## Build
+* Edoardo Luppi (<lp.edoardo@gmail.com>)
+* Matthias Kunnen ([https://github.com/MatthiasKunnen](https://github.com/MatthiasKunnen))
 
-Run `./gradlew build`.
+## Gradle commands
 
-## Run IDE
-
-Run `./gradlew runIde`.
-
-## Package plugin
-
-Run `./gradlew buildPlugin`.
+* build plugin: `./gradlew buildPlugin`. See generated jar in `build/libs/`.
+* run IDE with plugin: `./gradlew runIde`.
+* check for dependencies updates: `./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=plain -DoutputDir=./build/`.
 
 ## License
 

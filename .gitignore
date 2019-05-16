@@ -1,9 +1,6 @@
 # IDEA project files
 .idea/
 
-# CMake
-cmake-build-*/
-
 # File-based project format
 *.iws
 
@@ -27,9 +24,10 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+# Where 'gradle runIde' stores config
+.idea-sandbox/
+
 ### Intellij+iml Patch ###
 # Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-249601023
 
 *.ipr
-
-/intellij-extra-icons.jar

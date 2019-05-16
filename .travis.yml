@@ -1,0 +1,35 @@
+language: java
+sudo: false
+
+matrix:
+  include:
+    - os: linux
+      jdk: openjdk8
+      env: IDEA_VERSION=IU-2019.1
+    - os: linux
+      jdk: openjdk8
+      env: IDEA_VERSION=IU-2018.3
+    - os: linux
+      jdk: openjdk11
+      env: IDEA_VERSION=IU-2019.1
+  allow_failures:
+    - os: linux
+      jdk: openjdk8
+      env: IDEA_VERSION=IU-LATEST-EAP-SNAPSHOT
+    - os: linux
+      jdk: openjdk11
+      env: IDEA_VERSION=IU-LATEST-EAP-SNAPSHOT
+
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+git:
+  depth: 3
+
+before_install:
+  - chmod +x gradlew
+
+script: "./gradlew clean buildPlugin test --warning-mode all"

@@ -1,6 +1,10 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.21.0'
     }
 }
 
@@ -12,6 +16,7 @@ plugins {
 apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'org.jetbrains.intellij'
+apply plugin: 'com.github.ben-manes.versions'
 
 sourceCompatibility = javaVersion
 targetCompatibility = javaVersion
@@ -35,13 +40,27 @@ intellij {
     instrumentCode Boolean.valueOf(instrumentPluginCode)
     pluginName 'Extra Icons'
     plugins = ['AngularJS']
-    sandboxDirectory = "$project.buildDir/.sandbox"
+    sandboxDirectory = "${rootProject.projectDir}/.idea-sandbox"
     updateSinceUntilBuild false
     version ideaVersion
 }
 
 repositories {
     mavenCentral()
+}
+
+// See https://github.com/ben-manes/gradle-versions-plugin
+dependencyUpdates.resolutionStrategy {
+    componentSelection { rules ->
+        rules.all { ComponentSelection selection ->
+            boolean rejected = ['alpha', 'Alpha', 'ALPHA', 'b', 'beta', 'Beta', 'BETA', 'rc', '‌RC', 'M', 'EA', 'pr', 'atlassian'].any { qualifier ->
+                selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+            }
+            if (rejected) {
+                selection.reject('Release candidate')
+            }
+        }
+    }
 }
 
 dependencies {
