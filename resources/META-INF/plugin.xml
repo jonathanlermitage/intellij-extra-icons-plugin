@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>lermitage.intellij.extra.icons</id>
     <name>Extra Icons</name>
-    <version>1.4.0.183</version>
+    <version>REPLACED_BY_GRADLE</version>
     <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
 
     <description><![CDATA[
@@ -72,9 +72,9 @@
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <iconProvider
-                id="genericIconProvider"
-                order="first"
-                implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
+            id="genericIconProvider"
+            order="first"
+            implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <applicationService serviceImplementation="lermitage.intellij.extra.icons.cfg.SettingsService"/>
         <applicationConfigurable instance="lermitage.intellij.extra.icons.cfg.SettingsForm" id="LermitageExtraIcons" displayName="Extra Icons" parentId="appearance"/>
     </extensions>
@@ -85,7 +85,6 @@
       In this particular case I ordered first both the Javascript one and the Angular2+ one.
       That's because both define a test-related icon and the order can be undefined between each other.
     -->
-    <depends optional="true" config-file="javascript.xml">JavaScript</depends>
     <depends optional="true" config-file="angular2.xml">AngularJS</depends>
 
     <actions>

@@ -1,9 +1,8 @@
 package lermitage.intellij.extra.icons.providers;
 
+import com.intellij.openapi.project.DumbAware;
 import lermitage.intellij.extra.icons.BaseIconProvider;
 import lermitage.intellij.extra.icons.Model;
-
-import com.intellij.openapi.project.DumbAware;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -18,7 +17,7 @@ import static lermitage.intellij.extra.icons.Model.ofFile;
  * @author Edoardo Luppi
  */
 public class JavascriptIconProvider extends BaseIconProvider implements DumbAware {
-
+    
     @NotNull
     public static List<Model> allModels() {
         return Collections.singletonList(
@@ -26,11 +25,11 @@ public class JavascriptIconProvider extends BaseIconProvider implements DumbAwar
                 .end(".spec.ts")
         );
     }
-
+    
     public JavascriptIconProvider() {
         super();
     }
-
+    
     @Override
     protected List<Model> getAllModels() {
         return allModels();

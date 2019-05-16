@@ -5,7 +5,7 @@ import org.jetbrains.annotations.Contract;
 public enum ModelType {
     FILE,
     DIR;
-
+    
     /**
      * {@link ModelType} comparator: {@link ModelType#DIR} before {@link ModelType#FILE}.
      */

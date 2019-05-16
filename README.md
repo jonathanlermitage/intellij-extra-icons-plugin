@@ -29,6 +29,10 @@ Run `./gradlew build`.
 
 Run `./gradlew runIde`.
 
+## Package plugin
+
+Run `./gradlew buildPlugin`.
+
 ## License
 
 MIT License. In other words, you can do what you want: this project is entirely OpenSource, Free and Gratis.

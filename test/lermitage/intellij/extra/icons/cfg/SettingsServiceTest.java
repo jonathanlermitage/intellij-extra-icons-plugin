@@ -1,7 +1,6 @@
-package lermitage.intellij.extra.icons;
+package lermitage.intellij.extra.icons.cfg;
 
-import lermitage.intellij.extra.icons.cfg.SettingsService;
-
+import lermitage.intellij.extra.icons.Model;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 public class SettingsServiceTest {
-
+    
     @Test
     public void registered_models_dhould_be_unique() {
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
