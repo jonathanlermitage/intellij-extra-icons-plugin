@@ -36,6 +36,7 @@ intellij {
     pluginName 'Extra Icons'
     plugins = ['AngularJS']
     sandboxDirectory = "$project.buildDir/.sandbox"
+    updateSinceUntilBuild false
     version ideaVersion
 }
 
