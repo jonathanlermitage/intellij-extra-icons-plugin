@@ -5,7 +5,7 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
-### 1.4.0 (WIP)
+### 1.4.0 (2019/05/18)
 * support [Better Code Hub](https://bettercodehub.com) `.bettercodehub.yml` files. I'd like to thank the Better Code Hub team for sending me SVG files!
 * support FlyWay SQL files `.*/db/migration/.*\.sql`.
 * support APK `.apk`, `.xapk` files.
