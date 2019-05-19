@@ -74,6 +74,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("bamboo.yml"),
             ofFile("gradle_main", "/icons/gradle.png", "Gradle: build.gradle, gradle.properties, settings.gradle")
                 .eq("build.gradle", "gradle.properties", "settings.gradle"),
+            ofFile("gradle_kotlin", "/icons/gradle.png", "Gradle (Kotlin DSL): build.gradle.kts, settings.gradle.kts")
+                .eq("build.gradle.kts", "settings.gradle.kts"),
             ofFile("gradle", "/icons/gradlew.svg", "Gradle: gradlew")
                 .eq("gradlew"),
             ofFile("gradlew", "/icons/gradlew.svg", "Gradle (Windows): gradlew.bat, gradlew.cmd")
