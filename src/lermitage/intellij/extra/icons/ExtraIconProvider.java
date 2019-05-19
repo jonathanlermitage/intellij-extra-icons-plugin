@@ -18,6 +18,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     @NotNull
     public static List<Model> allModels() {
         return asList(
+            
+            //
+            // custom
+            //
+            ofFile("custom_jle1", "/icons/bash.png", "Custom: do").eq("do"),
+    
             //
             // directory
             //
