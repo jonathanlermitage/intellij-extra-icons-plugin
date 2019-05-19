@@ -72,10 +72,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("author", "authors").mayEnd(TXT),
             ofFile("bamboo", "/icons/bamboo.png", "Bamboo: bamboo.yml")
                 .eq("bamboo.yml"),
-            ofFile("gradle_main", "/icons/gradle.svg", "Gradle: build.gradle, gradle.properties, settings.gradle")
+            ofFile("gradle_main", "/icons/gradle.png", "Gradle: build.gradle, gradle.properties, settings.gradle")
                 .eq("build.gradle", "gradle.properties", "settings.gradle"),
-            ofFile("gradle", "/icons/bash-gradlew.png", "Gradle: gradlew")
+            ofFile("gradle", "/icons/gradlew.svg", "Gradle: gradlew")
                 .eq("gradlew"),
+            ofFile("gradlew", "/icons/gradlew.svg", "Gradle (Windows): gradlew.bat, gradlew.cmd")
+                .eq("gradlew.bat", "gradlew.cmd"),
             ofFile("mvnw_linux", "/icons/bash-mvnw.png", "Maven: mvnw")
                 .eq("mvnw"),
             ofFile("berksfile", "/icons/berkshelf.png", "Berkshelf: berksfile")
@@ -100,8 +102,6 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("config.yml").parents(".circleci"),
             ofFile("cirrus", "/icons/cirrus.png", "Cirrus CI: .cirrus.yml")
                 .eq(".cirrus.yml"),
-            ofFile("gradlew", "/icons/cmd-gradlew.png", "Gradle (Windows): gradlew.bat, gradlew.cmd")
-                .eq("gradlew.bat", "gradlew.cmd"),
             ofFile("mvnw_windows", "/icons/cmd-mvnw.png", "Maven (Windows): mvnw.bat, mvnw.cmd")
                 .eq("mvnw.bat", "mvnw.cmd"),
             ofFile("codecov", "/icons/codecov.png", "CodeCov: .codecov.yml, codecov.yml")
