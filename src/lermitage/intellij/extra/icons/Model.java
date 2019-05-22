@@ -113,18 +113,18 @@ public class Model {
     }
     
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
-    public boolean check(String parentName, String fileName, Optional<String> fullPath) {
+    public boolean check(String containingFolderName, String fileName, Optional<String> filePathRelativeToProject) {
         if (!enabled) {
             return false;
         }
         if (checkParent) {
-            if (!parentNames.contains(parentName)) {
+            if (!parentNames.contains(containingFolderName)) {
                 return false;
             }
         }
         
-        if (regex && fullPath.isPresent()) {
-            if (pattern.matcher(fullPath.get()).matches()) {
+        if (regex && filePathRelativeToProject.isPresent()) {
+            if (pattern.matcher(filePathRelativeToProject.get()).matches()) {
                 return true;
             }
         }
