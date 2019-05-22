@@ -49,7 +49,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             ofFile("flyway", "/icons/flyway.png", "FlyWay (regex): '.*/db/migration/.*\\.sql'")
                 .regex(".*/db/migration/.*\\.sql"),
-            
+            ofDir("folder_docker", "/icons/folder_docker.svg", "Docker (regex): '^/docker$'")
+                .regex("^/docker$"),
+    
             //
             // file plus its containing folder
             //

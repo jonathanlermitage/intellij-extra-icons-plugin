@@ -7,6 +7,7 @@
 
 ### 1.5.0 (WIP)
 * rework Gradle files.
+* support `/docker` folders.
 
 ### 1.4.0 (2019/05/18)
 * support [Better Code Hub](https://bettercodehub.com) `.bettercodehub.yml` files. I'd like to thank the Better Code Hub team for sending me SVG files!
