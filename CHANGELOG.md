@@ -7,6 +7,7 @@
 
 ### 1.5.0 (WIP)
 * rework Gradle files.
+* rework folders detection.
 * support `/docker` folders.
 
 ### 1.4.0 (2019/05/18)

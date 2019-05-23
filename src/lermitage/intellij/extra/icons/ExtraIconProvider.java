@@ -23,35 +23,35 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             // custom
             //
             ofFile("custom_jle1", "/icons/bash.png", "Custom: do").eq("do"),
-    
-            //
-            // directory
-            //
-            ofDir("dir_circleci", "/icons/folder_circleci.png", "Circle CI: .circleci folder")
-                .eq(".circleci"),
-            ofDir("dir_dependabot", "/icons/folder_dependabot.png", "Dependabot: .dependabot folder")
-                .eq(".dependabot"),
-            ofDir("dir_github", "/icons/folder_github.svg", "Github: .github folder")
-                .eq(".github"),
-            ofDir("dir_gitlab", "/icons/folder_gitlab.svg", "Gitlab: .gitlab folder")
-                .eq(".gitlab"),
-            ofDir("dir_gradle", "/icons/folder_gradle.svg", "Gradle: gradle folder")
-                .eq("gradle"),
-            ofDir("dir_idea", "/icons/folder_idea.png", "IntelliJ Idea: .idea folder")
-                .eq(".idea"),
-            ofDir("dir_mvn", "/icons/folder_mvnw.png", "Maven: .mvn folder")
-                .eq(".mvn"),
-            ofDir("dir_vscode_settings", "/icons/folder_vscode.png", "Visual Studio Code: .vscode folder")
-                .eq(".vscode"),
             
             //
-            // regex
+            // regex (directory)
             //
-            ofFile("flyway", "/icons/flyway.png", "FlyWay (regex): '.*/db/migration/.*\\.sql'")
-                .regex(".*/db/migration/.*\\.sql"),
-            ofDir("folder_docker", "/icons/folder_docker.svg", "Docker (regex): '^/docker$'")
+            ofDir("dir_circleci", "/icons/folder_circleci.png", "Circle CI (regex): '^/\\.circleci$' folder")
+                .regex("^/\\.circleci$"),
+            ofDir("dir_dependabot", "/icons/folder_dependabot.png", "Dependabot (regex): '^/\\.dependabot$' folder")
+                .regex("^/\\.dependabot$"),
+            ofDir("dir_docker", "/icons/folder_docker.svg", "Docker (regex): '^/docker$' folder")
                 .regex("^/docker$"),
-    
+            ofDir("dir_github", "/icons/folder_github.svg", "Github (regex): '^/\\.github$' folder")
+                .regex("^/\\.github$"),
+            ofDir("dir_gitlab", "/icons/folder_gitlab.svg", "Gitlab (regex): '^/\\.gitlab$' folder")
+                .regex("^/\\.gitlab$"),
+            ofDir("dir_gradle", "/icons/folder_gradle.svg", "Gradle (regex): '^/gradle$' folder")
+                .regex("^/gradle$"),
+            ofDir("dir_idea", "/icons/folder_idea.png", "IntelliJ Idea (regex): '^/\\.idea$' folder")
+                .regex("^/\\.idea$"),
+            ofDir("dir_mvn", "/icons/folder_mvnw.png", "Maven (regex): '^/\\.mvn$' folder")
+                .regex("^/\\.mvn$"),
+            ofDir("dir_vscode_settings", "/icons/folder_vscode.png", "Visual Studio Code (regex): '^/\\.vscode$' folder")
+                .regex("^/\\.vscode$"),
+            
+            //
+            // regex (file)
+            //
+            ofFile("flyway", "/icons/flyway.png", "Flyway (regex): '.*/db/migration/.*\\.sql'")
+                .regex(".*/db/migration/.*\\.sql"),
+            
             //
             // file plus its containing folder
             //
