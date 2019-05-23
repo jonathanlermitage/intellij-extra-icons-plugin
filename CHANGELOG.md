@@ -5,7 +5,7 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
-### 1.5.0 (WIP)
+### 1.5.0 (2019/05/24)
 * rework Gradle files.
 * rework folders detection.
 * support `/docker` folders.

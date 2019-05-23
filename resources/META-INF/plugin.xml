@@ -18,7 +18,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.5.0 (WIP)
+    1.5.0 (2019/05/24)
     <ul>
         <li>rework Gradle files.</li>
         <li>rework folders detection.</li>
