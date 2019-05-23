@@ -23,6 +23,7 @@
         <li>rework Gradle files.</li>
         <li>rework folders detection.</li>
         <li>support <i>/docker</i> folders.</li>
+        <li>restore missing <i>test-ts.svg</i> icon in <a href=https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide173>ide173</a> branch.</li>
     </ul>
     1.4.0 (2019/05/18)
     <ul>

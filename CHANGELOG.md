@@ -9,6 +9,7 @@
 * rework Gradle files.
 * rework folders detection.
 * support `/docker` folders.
+* restore missing `test-ts.svg` icon in [ide173](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide173) branch.
 
 ### 1.4.0 (2019/05/18)
 * support [Better Code Hub](https://bettercodehub.com) `.bettercodehub.yml` files. I'd like to thank the Better Code Hub team for sending me SVG files!
