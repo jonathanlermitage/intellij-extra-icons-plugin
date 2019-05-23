@@ -63,7 +63,6 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             // file plus extension
             //
-            
             ofFile("htaccess", "/icons/apache.png", "Apache: .htaccess")
                 .eq(".htaccess"),
             ofFile("appveyor", "/icons/appveyor.png", "Appveyor: appveyor.yml")
@@ -292,6 +291,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".hcl", ".tf", ".tf.json"),
             ofFile("ext_toml", "/icons/toml.png", "TOML: *.toml")
                 .end(".toml"),
+            ofFile("typescript", "/icons/test-ts.svg", "Typescript: *.spec.ts")
+                .end(".spec.ts"),
             ofFile("ext_video", "/icons/video.png", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ...")
                 .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
                     ".m4v", ".mkv", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid"),
