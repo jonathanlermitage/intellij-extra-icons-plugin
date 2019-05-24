@@ -18,6 +18,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.5.1 (2019/05/25)
+    <ul>
+        <li>revert changes to folders detection (1.5.0) to fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/13">#13</a>: StringIndexOutOfBoundsException and NullPointerException errors.</li>
+    </ul>
     1.5.0 (2019/05/24)
     <ul>
         <li>rework Gradle files.</li>

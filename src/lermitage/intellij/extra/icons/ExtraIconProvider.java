@@ -28,23 +28,32 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             // regex (directory)
             //
             ofDir("dir_circleci", "/icons/folder_circleci.png", "Circle CI (regex): '^/\\.circleci$' folder")
-                .regex("^/\\.circleci$"),
+                .regex("^/\\.circleci$")
+                .eq(".circleci"), // FIXME #13 temp fix
             ofDir("dir_dependabot", "/icons/folder_dependabot.png", "Dependabot (regex): '^/\\.dependabot$' folder")
-                .regex("^/\\.dependabot$"),
+                .regex("^/\\.dependabot$")
+                .eq(".dependabot"), // FIXME #13 temp fix
             ofDir("dir_docker", "/icons/folder_docker.svg", "Docker (regex): '^/docker$' folder")
-                .regex("^/docker$"),
+                .regex("^/docker$")
+                .eq("docker"), // FIXME #13 temp fix
             ofDir("dir_github", "/icons/folder_github.svg", "Github (regex): '^/\\.github$' folder")
-                .regex("^/\\.github$"),
+                .regex("^/\\.github$")
+                .eq(".github"), // FIXME #13 temp fix
             ofDir("dir_gitlab", "/icons/folder_gitlab.svg", "Gitlab (regex): '^/\\.gitlab$' folder")
-                .regex("^/\\.gitlab$"),
+                .regex("^/\\.gitlab$")
+                .eq(".gitlab"), // FIXME #13 temp fix
             ofDir("dir_gradle", "/icons/folder_gradle.svg", "Gradle (regex): '^/gradle$' folder")
-                .regex("^/gradle$"),
+                .regex("^/gradle$")
+                .eq("gradle"), // FIXME #13 temp fix
             ofDir("dir_idea", "/icons/folder_idea.png", "IntelliJ Idea (regex): '^/\\.idea$' folder")
-                .regex("^/\\.idea$"),
+                .regex("^/\\.idea$")
+                .eq(".idea"), // FIXME #13 temp fix
             ofDir("dir_mvn", "/icons/folder_mvnw.png", "Maven (regex): '^/\\.mvn$' folder")
-                .regex("^/\\.mvn$"),
+                .regex("^/\\.mvn$")
+                .eq(".mvn"), // FIXME #13 temp fix
             ofDir("dir_vscode_settings", "/icons/folder_vscode.png", "Visual Studio Code (regex): '^/\\.vscode$' folder")
-                .regex("^/\\.vscode$"),
+                .regex("^/\\.vscode$")
+                .eq(".vscode"), // FIXME #13 temp fix
             
             //
             // regex (file)

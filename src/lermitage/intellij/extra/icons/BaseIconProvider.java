@@ -2,7 +2,6 @@ package lermitage.intellij.extra.icons;
 
 import com.intellij.ide.IconProvider;
 import com.intellij.openapi.util.IconLoader;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -49,11 +48,11 @@ public abstract class BaseIconProvider extends IconProvider {
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
         if (psiElement instanceof PsiDirectory) {
             PsiDirectory psiDirectory = (PsiDirectory) psiElement;
-            final String containingFolderName = psiDirectory.getParent() == null ? null : psiDirectory.getParent().getName().toLowerCase();
+            final String parentName = psiDirectory.getParent() == null ? null : psiDirectory.getParent().getName().toLowerCase();
             final String folderName = psiDirectory.getName().toLowerCase();
-            final Optional<String> filePathRelativeToProject = getPathRelativeToProject(psiDirectory, true, psiDirectory.getContext());
+            final Optional<String> fullPath = getFullPath(psiDirectory);
             for (final Model model : models) {
-                if (model.getModelType() == ModelType.DIR && model.check(containingFolderName, folderName, filePathRelativeToProject)) {
+                if (model.getModelType() == ModelType.DIR && model.check(parentName, folderName, fullPath)) {
                     return IconLoader.getIcon(model.getIcon());
                 }
             }
@@ -61,11 +60,11 @@ public abstract class BaseIconProvider extends IconProvider {
             final PsiFile file;
             final Optional<PsiFile> optFile = Optional.ofNullable(psiElement.getContainingFile());
             if (optFile.isPresent() && isSupported(file = optFile.get())) {
-                final String containingFolderName = file.getParent() == null ? null : file.getParent().getName().toLowerCase();
+                final String parentName = file.getParent() == null ? null : file.getParent().getName().toLowerCase();
                 final String fileName = file.getName().toLowerCase();
-                final Optional<String> filePathRelativeToProject = getPathRelativeToProject(file, false, file.getParent().getContext());
+                final Optional<String> fullPath = getFullPath(file);
                 for (final Model model : models) {
-                    if (model.getModelType() == ModelType.FILE && model.check(containingFolderName, fileName, filePathRelativeToProject)) {
+                    if (model.getModelType() == ModelType.FILE && model.check(parentName, fileName, fullPath)) {
                         return IconLoader.getIcon(model.getIcon());
                     }
                 }
@@ -75,15 +74,9 @@ public abstract class BaseIconProvider extends IconProvider {
         return null;
     }
     
-    private Optional<String> getPathRelativeToProject(@NotNull PsiFileSystemItem file, boolean isFolder, PsiElement context) {
-        VirtualFile virtualFile = file.getVirtualFile();
-        if (virtualFile != null) {
-            String projectAbsolutePath = context.getProject().getBasePath();
-            if (projectAbsolutePath != null) {
-                String absolutePath = isFolder ? virtualFile.getPath() : virtualFile.getPath() + "/" + file.getName();
-                String relativePath = absolutePath.substring(projectAbsolutePath.length()).toLowerCase();
-                return Optional.of(relativePath.replaceAll("\\\\", "/"));
-            }
+    private Optional<String> getFullPath(@NotNull PsiFileSystemItem file) {
+        if (file.getVirtualFile() != null) {
+            return Optional.of(file.getVirtualFile().getPath().toLowerCase());
         }
         return Optional.empty();
     }
