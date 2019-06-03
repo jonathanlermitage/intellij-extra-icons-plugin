@@ -6,7 +6,9 @@
 * add the hability to save settings at project level.
 
 ### 1.6.0 (WIP)
+* support [ImgBot](https://imgbot.net) `.imgbotconfig` files.
 * use icon from [IntelliJ Rust](https://github.com/intellij-rust/intellij-rust) for `cargo.toml` files.
+* rework Docker-compose files: Docker files remain blue, and Docker-compose files become pink.
 
 ### 1.5.1 (2019/05/25)
 * revert changes to folders detection (1.5.0) to fix [#13](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/13): StringIndexOutOfBoundsException and NullPointerException errors.

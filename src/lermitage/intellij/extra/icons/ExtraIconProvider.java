@@ -132,10 +132,14 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("contribute", "contributing", "contribution").mayEnd(TXT),
             ofFile("deptective", "/icons/deptective.png", "Deptective: deptective.json")
                 .eq("deptective.json"),
-            ofFile("docker", "/icons/docker.png", "Docker: dockerfile(.xml,.yml,...), docker-compose")
-                .eq("dockerfile", "docker-compose").mayEnd(CFG),
-            ofFile("docker1", "/icons/docker.png", "Docker: start by 'dockerfile', 'docker-compose' and end by '.xml,.yml,...'")
-                .start("dockerfile", "docker-compose").end(CFG),
+            ofFile("docker", "/icons/docker.png", "Docker: dockerfile(.xml,.yml,...)")
+                .eq("dockerfile").mayEnd(CFG),
+            ofFile("dockercompose", "/icons/dockercompose.png", "Docker: docker-compose")
+                .eq("docker-compose").mayEnd(CFG),
+            ofFile("docker1", "/icons/docker.png", "Docker: start by 'dockerfile' and end by '.xml,.yml,...'")
+                .start("dockerfile").end(CFG),
+            ofFile("dockercompose1", "/icons/dockercompose.png", "Docker: start by 'docker-compose' and end by '.xml,.yml,...'")
+                .start("docker-compose").end(CFG),
             ofFile("dockerignore", "/icons/dockerignore.png", "Docker: .dockerignore")
                 .eq(".dockerignore"),
             ofFile("editorconfig", "/icons/editorconfig.png", "EditorConfig: .editorconfig")
@@ -172,6 +176,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".gocd").mayEnd(CFG),
             ofFile("java", "/icons/java.png", "JVM properties (e.g. Tomcat configuration): jvm.properties")
                 .eq("jvm.properties"),
+            ofFile("imgbot", "/icons/imgbot.svg", "ImgBot: .imgbotconfig")
+                .eq(".imgbotconfig"),
             ofFile("jenkins", "/icons/jenkins.png", "Jenkins: jenkinsfile(.xml,.yml,...), jenkins")
                 .eq("jenkinsfile", "jenkins").mayEnd(CFG),
             ofFile("jenkins1", "/icons/jenkins.png", "Jenkins: start by 'jenkins and end by '.xml,.yml,...'")
