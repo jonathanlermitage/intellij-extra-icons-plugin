@@ -7,6 +7,7 @@
 
 ### 1.6.0 (WIP)
 * support [ImgBot](https://imgbot.net) `.imgbotconfig` files.
+* support `*.xz` archive files.
 * use icon from [IntelliJ Rust](https://github.com/intellij-rust/intellij-rust) for `cargo.toml` files.
 * rework Docker-compose files: Docker files remain blue, and Docker-compose files become pink.
 

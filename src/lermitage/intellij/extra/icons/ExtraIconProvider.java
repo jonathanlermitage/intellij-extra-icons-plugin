@@ -254,8 +254,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             // extension only
             //
-            ofFile("ext_archive", "/icons/archive.png", "Archive: *.zip, *.7z, *.tar, *.gz, *.bz2")
-                .end(".zip", ".7z", ".tar", ".gz", ".bz2"),
+            ofFile("ext_archive", "/icons/archive.png", "Archive: *.zip, *.7z, *.tar, *.gz, *.bz2, *.xz")
+                .end(".zip", ".7z", ".tar", ".gz", ".bz2", ".xz"),
             ofFile("ext_adoc", "/icons/asciidoc.png", "Asciidoc: *.adoc, *.asciidoc")
                 .end(".adoc", ".asciidoc"),
             ofFile("ext_apk", "/icons/apk.svg", "Android application package (APK): *.apk, *.xapk")
