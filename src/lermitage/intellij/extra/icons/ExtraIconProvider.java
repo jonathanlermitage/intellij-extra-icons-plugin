@@ -174,8 +174,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("graphql.schema.json"),
             ofFile("gocd", "/icons/gocd.png", "Gocd: .gocd(.xml,.yml,...)")
                 .eq(".gocd").mayEnd(CFG),
-            ofFile("java", "/icons/java.png", "JVM properties (e.g. Tomcat configuration): jvm.properties")
-                .eq("jvm.properties"),
+            ofFile("java", "/icons/java.png", "JVM properties (e.g. Tomcat or M ven JVM configuration): jvm.properties, jvm.config")
+                .eq("jvm.properties", "jvm.config"),
             ofFile("imgbot", "/icons/imgbot.svg", "ImgBot: .imgbotconfig")
                 .eq(".imgbotconfig"),
             ofFile("jenkins", "/icons/jenkins.png", "Jenkins: jenkinsfile(.xml,.yml,...), jenkins")
@@ -260,8 +260,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".adoc", ".asciidoc"),
             ofFile("ext_apk", "/icons/apk.svg", "Android application package (APK): *.apk, *.xapk")
                 .end(".apk", ".xapk"),
-            ofFile("ext_back", "/icons/backup.png", "Backup: *.versionbackup, *.versionsbackup, *.back, *.backup, *.old, *.prev, *.revert")
-                .end(".versionbackup", ".versionsbackup", ".back", ".backup", ".old", ".prev", ".revert"),
+            ofFile("ext_apk", "/icons/apk.svg", "Android application package (APK): *.apk, *.xapk")
+                .end(".apk", ".xapk"),
+            ofFile("ext_avro_avsc", "/icons/avro.svg", "Avro: *.avsc")
+                .end(".avsc"),
             ofFile("ext_sh", "/icons/bash.png", "Bash: *.sh")
                 .end(".sh"),
             ofFile("ext_cert", "/icons/certificate.png", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, *.p7b, *.p7s, *.pfx")

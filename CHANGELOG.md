@@ -8,7 +8,9 @@
 ### 1.6.0 (WIP)
 * support [ImgBot](https://imgbot.net) `.imgbotconfig` files.
 * support `*.xz` archive files.
-* use icon from [IntelliJ Rust](https://github.com/intellij-rust/intellij-rust) for `cargo.toml` files.
+* support `jvm.config` files.
+* support Avro `*.avsc` files.
+* use icon from [IntelliJ Rust](https://github.com/intellij-rust/intellij-rust) for `cargo.toml` files (a future update will introduce a white-list to ignore some file patterns).
 * rework Docker-compose files: Docker files remain blue, and Docker-compose files become pink.
 
 ### 1.5.1 (2019/05/25)
