@@ -5,7 +5,7 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
-### 1.6.0 (WIP)
+### 1.6.0 (2019/06/15)
 * support [ImgBot](https://imgbot.net) `.imgbotconfig` files.
 * support `*.xz` archive files.
 * support `jvm.config` files.
