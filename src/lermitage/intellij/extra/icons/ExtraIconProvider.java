@@ -66,6 +66,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             ofFile("dependabot_config", "/icons/dependabot.png", "Dependabot: .dependabot/config.yml")
                 .eq("config.yml").parents(".dependabot"),
+            ofFile("golwroot", "/icons/glowroot.png", "Glowroot: glowroot/amin.json and glowroot/config.json")
+                .eq("admin.json", "config.json").parents("glowroot"),
             ofFile("vscode_settings", "/icons/vscode.png", "Visual Studio Code: .vscode/settings.json")
                 .eq("settings.json").parents(".vscode"),
             
