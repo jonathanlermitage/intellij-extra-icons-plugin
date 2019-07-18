@@ -18,6 +18,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.7.0 (WIP)
+    <ul>
+      <li>support <a href="https://glowroot.org">Glowroot</a> <i>glowroot/admin.json</i>, <i>glowroot/config.json</i> files</li>
+    </ul>
     1.6.0 (2019/06/15)
     <ul>
         <li>support <a href="https://imgbot.net">ImgBot</a> <i>.imgbotconfig</i> files.</li>

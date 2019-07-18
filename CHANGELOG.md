@@ -5,6 +5,9 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
+### 1.7.0 (WIP)
+* support [Glowroot](https://glowroot.org) `glowroot/admin.json`, `glowroot/config.json` files.
+
 ### 1.6.0 (2019/06/15)
 * support [ImgBot](https://imgbot.net) `.imgbotconfig` files.
 * support `*.xz` archive files.
