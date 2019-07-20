@@ -5,7 +5,7 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
-### 1.7.0 (WIP)
+### 1.7.0 (2019/07/20)
 * support [Glowroot](https://glowroot.org) `glowroot/admin.json`, `glowroot/config.json` files.
 
 ### 1.6.0 (2019/06/15)
