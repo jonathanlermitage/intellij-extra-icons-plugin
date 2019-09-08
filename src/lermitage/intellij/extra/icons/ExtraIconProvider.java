@@ -300,6 +300,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".nsi"),
             ofFile("ext_pdf", "/icons/pdf.png", "PDF: *.pdf")
                 .end(".pdf"),
+            ofFile("ext_postmanconfig", "/icons/postman.svg", "Postman config: *.postman.json")
+                .end(".postman.json"),
             ofFile("ext_rpm", "/icons/rpm.png", "Red Hat package: *.rpm")
                 .end(".rpm"),
             ofFile("sass", "/icons/sass.png", "SASS: *.sass, *.scss")
