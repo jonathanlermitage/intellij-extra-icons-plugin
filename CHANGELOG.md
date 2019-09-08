@@ -5,6 +5,14 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
+### 1.8.0 (WIP)
+* support `.keep`, `.gitkeep`, `.hgkeep`, `.svnkeep` files used by various VCS.
+* improve Logback detection.
+* support `.pubkey` files.
+* support Postman `.postman.json` files.
+* restore support of backup `*.versionBackup`, `*.back`, `*.backup`, `*.old`, `*.prev`, `*.revert` files. Probably dropped by mistake.
+* rework `.mvn` folder icon.
+
 ### 1.7.0 (2019/07/20)
 * support [Glowroot](https://glowroot.org) `glowroot/admin.json`, `glowroot/config.json` files.
 
