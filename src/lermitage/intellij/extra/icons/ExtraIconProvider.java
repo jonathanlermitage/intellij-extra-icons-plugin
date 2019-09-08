@@ -206,8 +206,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("license", "copying", "license_info", "additional_license_info").mayEnd(TXT),
             ofFile("log4j", "/icons/log4j.png", "Log4j: log4j(.xml,.yml,...), log4j-test").eq("log4j", "log4j-test")
                 .mayEnd(CFG),
-            ofFile("logback", "/icons/logback.png", "Logback: logback(.xml,.yml,...), logback-test")
-                .eq("logback", "logback-test").mayEnd(CFG),
+            ofFile("logback", "/icons/logback.png", "Logback: logback(.xml,.yml,...)")
+                .eq("logback").mayEnd(CFG),
+            ofFile("logback1", "/icons/logback.png", "Logback: start by 'logback-' and end by '.xml,.yml,...'")
+                .start("logback-").mayEnd(CFG),
             ofFile("logstash", "/icons/logstash.png", "Logstash: logstash(.cfg,.conf,.yml,.yaml)")
                 .eq("logstash").mayEnd(".cfg", ".conf", ".yml", ".yaml"),
             ofFile("logstash1", "/icons/logstash.png", "Logstash: start by 'logstash' and end by '.cfg,.conf,.yml,.yaml'")
@@ -266,10 +268,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".apk", ".xapk"),
             ofFile("ext_avro_avsc", "/icons/avro.svg", "Avro: *.avsc")
                 .end(".avsc"),
+            ofFile("ext_back", "/icons/backup.png", "Backup: *.versionbackup, *.versionsbackup, *.back, *.backup, *.old, *.prev, *.revert")
+                .end(".versionbackup", ".versionsbackup", ".back", ".backup", ".old", ".prev", ".revert"),
             ofFile("ext_sh", "/icons/bash.png", "Bash: *.sh")
                 .end(".sh"),
-            ofFile("ext_cert", "/icons/certificate.png", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, *.p7b, *.p7s, *.pfx")
-                .end(".jks", ".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".p7b", ".p7s", ".pfx"),
+            ofFile("ext_cert", "/icons/certificate.png", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, *.p7b, *.p7s, *.pfx, *.pubkey")
+                .end(".jks", ".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".p7b", ".p7s", ".pfx", ".pubkey"),
             ofFile("ext_cmd", "/icons/cmd.png", "Windows script: *.cmd, *.bat, *.ps1")
                 .end(".cmd", ".bat", ".ps1"),
             ofFile("ext_csv", "/icons/csv.png", "CSV: *.csv")
