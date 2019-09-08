@@ -23,7 +23,7 @@
       <li>support <i>.keep</i>, <i>.gitkeep</i>, <i>.hgkeep</i>, <i>.svnkeep</i> files used by various VCS.</li>
       <li>improve Logback detection.</li>
       <li>support <i>.pubkey</i> files.</li>
-      <li>support Postman <i>.postman.json</i> files.</li>
+      <li>support Postman <i>*.postman.json</i> files.</li>
       <li>restore support of backup <i>*.versionBackup</i>, <i>*.back</i>, <i>*.backup</i>, <i>*.old</i>, <i>*.prev</i>, <i>*.revert</i> files. Probably dropped by mistake.</li>
       <li>rework <i>.mvn</i> folder icon.</li>
     </ul>

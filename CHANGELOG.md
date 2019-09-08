@@ -9,7 +9,7 @@
 * support `.keep`, `.gitkeep`, `.hgkeep`, `.svnkeep` files used by various VCS.
 * improve Logback detection.
 * support `.pubkey` files.
-* support Postman `.postman.json` files.
+* support Postman `*.postman.json` files.
 * restore support of backup `*.versionBackup`, `*.back`, `*.backup`, `*.old`, `*.prev`, `*.revert` files. Probably dropped by mistake.
 * rework `.mvn` folder icon.
 
