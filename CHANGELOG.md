@@ -5,7 +5,7 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
-### 1.8.0 (WIP)
+### 1.8.0 (2019/09/09)
 * support `.keep`, `.gitkeep`, `.hgkeep`, `.svnkeep` files used by various VCS.
 * improve Logback detection.
 * support `.pubkey` files.
