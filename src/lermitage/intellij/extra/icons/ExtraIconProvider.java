@@ -272,8 +272,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".versionbackup", ".versionsbackup", ".back", ".backup", ".old", ".prev", ".revert"),
             ofFile("ext_sh", "/icons/bash.png", "Bash: *.sh")
                 .end(".sh"),
-            ofFile("ext_cert", "/icons/certificate.png", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, *.p7b, *.p7s, *.pfx, *.pubkey")
-                .end(".jks", ".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".p7b", ".p7s", ".pfx", ".pubkey"),
+            ofFile("ext_cert", "/icons/certificate.png", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, *.p12, *.p7b, *.p7s, *.pfx, *.pubkey")
+                .end(".jks", ".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".p12", ".p7b", ".p7s", ".pfx", ".pubkey"),
             ofFile("ext_cmd", "/icons/cmd.png", "Windows script: *.cmd, *.bat, *.ps1")
                 .end(".cmd", ".bat", ".ps1"),
             ofFile("ext_csv", "/icons/csv.png", "CSV: *.csv")

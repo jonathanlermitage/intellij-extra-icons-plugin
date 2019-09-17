@@ -18,6 +18,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.9.0 (2019/09/09)
+    <ul>
+      <li>support <i>.p12</i> files.</li>
+    </ul>
     1.8.0 (2019/09/09)
     <ul>
       <li>support <i>.keep</i>, <i>.gitkeep</i>, <i>.hgkeep</i>, <i>.svnkeep</i> files used by various VCS.</li>
