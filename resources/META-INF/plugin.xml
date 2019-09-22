@@ -18,7 +18,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.9.0 (WIP)
+    1.9.0 (2019/09/22)
     <ul>
       <li>rework <i>azure-pipelines.yml</i> file icon (use official SVG icon).</li>
       <li>support <i>.p12</i> files.</li>
