@@ -6,6 +6,7 @@
 * add the hability to save settings at project level.
 
 ### 1.9.0 (WIP)
+* rework `azure-pipelines.yml` file icon (use official SVG icon).
 * support `.p12` files.
 
 ### 1.8.0 (2019/09/09)
