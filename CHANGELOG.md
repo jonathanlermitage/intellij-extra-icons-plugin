@@ -5,6 +5,9 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
+### 1.10.0 (WIP)
+* support Postman `*postman_collection.json`, `*postman_environment.json` files.
+
 ### 1.9.0 (2019/09/22)
 * rework `azure-pipelines.yml` file icon (use official SVG icon).
 * support `.p12` files.

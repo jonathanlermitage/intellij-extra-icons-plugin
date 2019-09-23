@@ -18,6 +18,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.10.0 (WIP)
+    <ul>
+      <li>support Postman <i>*postman_collection.json</i>, <i>*postman_environment.json</> files.</li>
+    </ul>
     1.9.0 (2019/09/22)
     <ul>
       <li>rework <i>azure-pipelines.yml</i> file icon (use official SVG icon).</li>
