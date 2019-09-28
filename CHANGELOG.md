@@ -8,6 +8,7 @@
 ### 1.10.0 (WIP)
 * support Postman `*postman_collection.json`, `*postman_environment.json` files.
 * support `.swagger-codegen-ignore` files.
+* support Diffusion Archive / XL Deploy Archive `*.dar` files.
 
 ### 1.9.0 (2019/09/22)
 * rework `azure-pipelines.yml` file icon (use official SVG icon).

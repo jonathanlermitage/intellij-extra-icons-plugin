@@ -22,6 +22,7 @@
     <ul>
       <li>support Postman <i>*postman_collection.json</i>, <i>*postman_environment.json</> files.</li>
       <li>support <i>.swagger-codegen-ignore</i> files.</li>
+      <li>support Diffusion Archive / XL Deploy Archive <i>*.dar</i> files.</li>
     </ul>
     1.9.0 (2019/09/22)
     <ul>
