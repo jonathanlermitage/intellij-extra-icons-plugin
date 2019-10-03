@@ -5,7 +5,7 @@
 * add an option to use your own icons.
 * add the hability to save settings at project level.
 
-### 1.10.0 (WIP)
+### 1.10.0 (2019/10/03)
 * support Postman `*postman_collection.json`, `*postman_environment.json` files.
 * support `.swagger-codegen-ignore` files.
 * support Diffusion Archive / XL Deploy Archive `*.dar` files.
