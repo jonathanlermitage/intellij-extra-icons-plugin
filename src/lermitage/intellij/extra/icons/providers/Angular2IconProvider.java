@@ -32,7 +32,7 @@ public class Angular2IconProvider extends BaseIconProvider implements DumbAware 
             ofFile("angular_pipe", "/icons/angular-pipe.svg", "AngularJS (in AngularJS projects only): *.pipe.(js|ts)")
                 .regex("pipe\\.(js|ts)"),
             ofFile("angular_directive", "/icons/angular-directive.svg", "AngularJS (in AngularJS projects only): *.directive.(js|ts)")
-                .regex("directive(s)+\\.(js|ts)"),
+                .regex("directive(s)?\\.(js|ts)"),
             ofFile("angular_guard", "/icons/angular-guard.svg", "AngularJS (in AngularJS projects only): *.guard.(js|ts)")
                 .regex("guard"),
             ofFile("angular_resolver", "/icons/angular-resolver.svg", "AngularJS (in AngularJS projects only): *.resolver.(js|ts)")
