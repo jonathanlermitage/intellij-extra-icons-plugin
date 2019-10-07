@@ -18,6 +18,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.11.0 (WIP)
+    <ul>
+      <li>improve AngularJS files support. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/16">diakovidis</a>.</li>
+    </ul>
     1.10.0 (2019/10/03)
     <ul>
       <li>support Postman <i>*postman_collection.json</i>, <i>*postman_environment.json</i> files.</li>
@@ -122,7 +126,8 @@
             order="first"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <applicationService serviceImplementation="lermitage.intellij.extra.icons.cfg.SettingsService"/>
-        <applicationConfigurable instance="lermitage.intellij.extra.icons.cfg.SettingsForm" id="LermitageExtraIcons" displayName="Extra Icons" parentId="appearance"/>
+        <applicationConfigurable instance="lermitage.intellij.extra.icons.cfg.SettingsForm" id="LermitageExtraIcons"
+                                 displayName="Extra Icons" parentId="appearance"/>
     </extensions>
 
     <!--

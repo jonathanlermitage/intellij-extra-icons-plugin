@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.11.0 (WIP)
+* improve AngularJS files support. Thx [diakovidis](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/16).
+
 ### 1.10.0 (2019/10/03)
 * support Postman `*postman_collection.json`, `*postman_environment.json` files.
 * support `.swagger-codegen-ignore` files.
