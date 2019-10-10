@@ -18,7 +18,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.11.0 (WIP)
+    1.11.0 (2019/10/10)
     <ul>
       <li>improve AngularJS files support. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/16">diakovidis</a>.</li>
     </ul>
