@@ -316,6 +316,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".ini", ".cfg", ".conf"),
             ofFile("ext_jar", "/icons/jar.png", "Java archive: *.jar")
                 .end(".jar"),
+            ofFile("ext_jaroriginal", "/icons/jar.png", "Java archive (copy): *.jar.original")
+                .end(".jar.original"),
             ofFile("ext_kdbx", "/icons/keepass.png", "KeePass: *.kdbx")
                 .end(".kdbx"),
             ofFile("ext_md", "/icons/markdown.png", "Markdown: *.md")
@@ -324,6 +326,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".nsi"),
             ofFile("ext_pdf", "/icons/pdf.png", "PDF: *.pdf")
                 .end(".pdf"),
+            ofFile("ext_pid", "/icons/pid.svg", "PID: *.pid")
+                .end(".pid"),
             ofFile("ext_postmanconfig", "/icons/postman.svg", "Postman config: *.postman.json, *postman_collection.json, *postman_environment.json")
                 .end(".postman.json", "postman_collection.json", "postman_environment.json"),
             ofFile("ext_rpm", "/icons/rpm.png", "Red Hat package: *.rpm")
