@@ -220,8 +220,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("kubernetes").end(YML),
             ofFile("license", "/icons/license.png", "License: license(.md,.txt,.adoc), copying, license_info, additional_license_info")
                 .eq("license", "copying", "license_info", "additional_license_info").mayEnd(TXT),
-            ofFile("log4j", "/icons/log4j.png", "Log4j: log4j(.xml,.yml,...), log4j-test").eq("log4j", "log4j-test")
-                .mayEnd(CFG),
+            ofFile("log4j", "/icons/log4j.png", "Log4j: log4j(.xml,.yml,...), log4j-test")
+                .eq("log4j", "log4j-test").mayEnd(CFG),
             ofFile("logback", "/icons/logback.png", "Logback: logback(.xml,.yml,...)")
                 .eq("logback").mayEnd(CFG),
             ofFile("logback1", "/icons/logback.png", "Logback: start by 'logback-' and end by '.xml,.yml,...'")
