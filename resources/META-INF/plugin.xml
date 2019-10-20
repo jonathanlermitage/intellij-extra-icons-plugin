@@ -24,6 +24,9 @@
       <li>support <i>.jar.original</i> files.</li>
       <li>support <i>.npmrc</i> files.</li>
       <li>support <i>.npmignore</i> files.</li>
+      <li>support <i>jest.config.js</i> files.</li>
+      <li>support <i>karma.conf.js</i> files.</li>
+      <li>rework many icons.</li>
     </ul>
     1.11.0 (2019/10/10)
     <ul>

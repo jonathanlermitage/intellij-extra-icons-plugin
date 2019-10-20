@@ -5,6 +5,9 @@
 * support `.jar.original` files.
 * support `.npmrc` files.
 * support `.npmignore` files.
+* support `jest.config.js` files.
+* support `karma.conf.js` files.
+* rework many icons.
 
 ### 1.11.0 (2019/10/10)
 * improve AngularJS files support. Thx [diakovidis](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/16).

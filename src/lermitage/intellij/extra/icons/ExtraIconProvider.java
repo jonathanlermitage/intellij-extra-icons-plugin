@@ -27,7 +27,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             // regex (directory)
             //
-            ofDir("dir_circleci", "/icons/folder_circleci.png", "Circle CI (regex): '^/\\.circleci$' folder")
+            ofDir("dir_circleci", "/icons/folder_circleci.svg", "Circle CI (regex): '^/\\.circleci$' folder")
                 .regex("^/\\.circleci$")
                 .eq(".circleci"), // FIXME #13 temp fix
             ofDir("dir_dependabot", "/icons/folder_dependabot.png", "Dependabot (regex): '^/\\.dependabot$' folder")
@@ -51,7 +51,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_mvn", "/icons/folder_mvnw.svg", "Maven (regex): '^/\\.mvn$' folder")
                 .regex("^/\\.mvn$")
                 .eq(".mvn"), // FIXME #13 temp fix
-            ofDir("dir_vscode_settings", "/icons/folder_vscode.png", "Visual Studio Code (regex): '^/\\.vscode$' folder")
+            ofDir("dir_vscode_settings", "/icons/folder_vscode.svg", "Visual Studio Code (regex): '^/\\.vscode$' folder")
                 .regex("^/\\.vscode$")
                 .eq(".vscode"), // FIXME #13 temp fix
             
@@ -84,12 +84,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("config.yml").parents(".dependabot"),
             ofFile("golwroot", "/icons/glowroot.png", "Glowroot: glowroot/admin.json and glowroot/config.json")
                 .eq("admin.json", "config.json").parents("glowroot"),
-            ofFile("vscode_settings", "/icons/vscode.png", "Visual Studio Code: .vscode/settings.json")
+            ofFile("vscode_settings", "/icons/vscode.svg", "Visual Studio Code: .vscode/settings.json")
                 .eq("settings.json").parents(".vscode"),
             
             //
             // file plus extension
-            //
+            //vscode.svg
             ofFile("vcskeep", "/icons/keep.svg", "Various VCS: .keep, .gitkeep, .hgkeep, .svnkeep")
                 .eq(".keep", ".gitkeep", ".hgkeep", ".svnkeep"),
             ofFile("htaccess", "/icons/apache.png", "Apache: .htaccess")
@@ -120,7 +120,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("berksfile.lock"),
             ofFile("bettercodehub", "/icons/bettercodehub.svg", "Better Code Hub: .bettercodehub.yml")
                 .eq(".bettercodehub.yml"),
-            ofFile("bower", "/icons/bower.png", "Bower: bower.json, .bowerrc")
+            ofFile("bower", "/icons/bower.svg", "Bower: bower.json, .bowerrc")
                 .eq("bower.json", ".bowerrc"),
             ofFile("build", "/icons/build.png", "Build: build(.md,.txt,.adoc), building")
                 .eq("build", "building").mayEnd(TXT),
@@ -130,9 +130,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("cassandra").end(YML),
             ofFile("changelog", "/icons/changelog.png", "Changelog: changelog(.md,.txt,.adoc), changes")
                 .eq("changelog", "changes").mayEnd(TXT),
-            ofFile("circle", "/icons/circleci.png", "Circle CI: circle.yml")
+            ofFile("circle", "/icons/circleci.svg", "Circle CI: circle.yml")
                 .eq("circle.yml"),
-            ofFile("circle1", "/icons/circleci.png", "Circle CI: .circleci/config.yml")
+            ofFile("circle1", "/icons/circleci.svg", "Circle CI: .circleci/config.yml")
                 .eq("config.yml").parents(".circleci"),
             ofFile("cirrus", "/icons/cirrus.png", "Cirrus CI: .cirrus.yml")
                 .eq(".cirrus.yml"),
@@ -172,7 +172,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("cerebro").mayEnd(".conf"),
             ofFile("cerebro1", "/icons/elastic-cerebro.png", "Cerebro: start by 'cerebro' and end by '.conf'")
                 .start("cerebro").end(".conf"),
-            ofFile("intellijcodestyle", "/icons/ijbeam.png", "IntelliJ: intellijcodestyle.xml")
+            ofFile("intellijcodestyle", "/icons/jetbrains.svg", "IntelliJ: intellijcodestyle.xml")
                 .eq("intellijcodestyle.xml"),
             ofFile("mailmap", "/icons/email.png", "Mailmap: .mailmap")
                 .eq(".mailmap"),
@@ -182,7 +182,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("gatling").mayEnd(".conf"),
             ofFile("gatling1", "/icons/gatling.png", "Gatling: start by 'gatling' and end by '.conf'")
                 .start("gatling").end(".conf"),
-            ofFile("grunt", "/icons/grunt.png", "Grunt: Gruntfile.js")
+            ofFile("grunt", "/icons/grunt.svg", "Grunt: Gruntfile.js")
                 .eq("gruntfile.js"),
             ofFile("git", "/icons/git.png", "Git: .gitattributes, .gitignore, .gitmodules")
                 .eq(".gitattributes", ".gitignore", ".gitmodules"),
@@ -204,12 +204,20 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("jenkins").end(CFG),
             ofFile("jenkins2", "/icons/jenkins.png", "Jenkins: start by 'jenkins' and contain no dot")
                 .start("jenkins").noDot(),
+            ofFile("jest_js", "/icons/jest.svg", "Jest: jest.config.js")
+                .eq("jest.config.js"),
+            ofFile("jest_ts", "/icons/jest.svg", "Jest: jest.config.ts")
+                .eq("jest.config.ts"),
             ofFile("jsbeautify", "/icons/jsbeautify.png", "JSBeautify: .jsbeautifyrc(.xml,.yml,...)")
                 .eq(".jsbeautifyrc").mayEnd(CFG),
             ofFile("jshint", "/icons/jshint.png", "JSHint: .jshintrc(.xml,.yml,...)")
                 .eq(".jshintrc").mayEnd(CFG),
             ofFile("junit", "/icons/junit5.png", "JUnit: junit-platform.properties")
                 .eq("junit-platform.properties"),
+            ofFile("karma_js", "/icons/karma.svg", "Karma: karma.conf.js")
+                .eq("karma.conf.js"),
+            ofFile("karma_ts", "/icons/karma.svg", "Karma: karma.conf.ts")
+                .eq("karma.conf.ts"),
             ofFile("kibana", "/icons/kibana.png", "Kibana: kibana(.xml,.yml,...)")
                 .eq("kibana").mayEnd(YML),
             ofFile("kibana1", "/icons/kibana.png", "Kibana: start by 'kibana' and end by '.xml,.yml,...'")
@@ -246,7 +254,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("notice").mayEnd(TXT),
             ofFile("packageinfojava", "/icons/packageinfojava.png", "Java package info: package-info.java")
                 .eq("package-info.java"),
-            ofFile("packagejson", "/icons/packagejson.png", "NPM: package.json")
+            ofFile("packagejson", "/icons/npm.svg", "NPM: package.json")
                 .eq("package.json"),
             ofFile("packagejsonlock", "/icons/packagejsonlock.png", "NPM: package-lock.json")
                 .eq("package-lock.json"),
@@ -314,7 +322,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".hxml"),
             ofFile("ext_http", "/icons/http.png", "HTTP (e.g. IntelliJ HTTP Client queries file): *.http")
                 .end(".http"),
-            ofFile("ext_iml", "/icons/ijbeam.png", "IntelliJ project: *.iml")
+            ofFile("ext_iml", "/icons/jetbrains.svg", "IntelliJ project: *.iml")
                 .end(".iml"),
             ofFile("ext_cfg", "/icons/ini.png", "Configuration: *.ini, *.cfg, *.conf")
                 .end(".ini", ".cfg", ".conf"),
@@ -334,7 +342,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".pid"),
             ofFile("ext_postmanconfig", "/icons/postman.svg", "Postman config: *.postman.json, *postman_collection.json, *postman_environment.json")
                 .end(".postman.json", "postman_collection.json", "postman_environment.json"),
-            ofFile("ext_rpm", "/icons/rpm.png", "Red Hat package: *.rpm")
+            ofFile("ext_rpm", "/icons/rpm.svg", "Red Hat package: *.rpm")
                 .end(".rpm"),
             ofFile("sass", "/icons/sass.png", "SASS: *.sass, *.scss")
                 .end(".sass", ".scss"),
@@ -348,10 +356,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".toml"),
             ofFile("typescript", "/icons/test-ts.svg", "Typescript: *.spec.ts")
                 .end(".spec.ts"),
-            ofFile("ext_video", "/icons/video.png", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ...")
+            ofFile("ext_video", "/icons/video.svg", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ...")
                 .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
                     ".m4v", ".mkv", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid"),
-            ofFile("ext_war", "/icons/war.png", "Java WAR: *.war")
+            ofFile("ext_war", "/icons/war.svg", "Java WAR: *.war")
                 .end(".war"),
             ofFile("ext_libreoffice_calc", "/icons/officedocs/localc.png", "LibreOffice Calc: *.ods")
                 .end(".ods"),
