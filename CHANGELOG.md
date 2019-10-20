@@ -3,6 +3,8 @@
 ### 1.12.0 (WIP)
 * support `.pid` files.
 * support `.jar.original` files.
+* support `.npmrc` files.
+* support `.npmignore` files.
 
 ### 1.11.0 (2019/10/10)
 * improve AngularJS files support. Thx [diakovidis](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/16).

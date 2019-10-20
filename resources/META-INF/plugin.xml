@@ -22,6 +22,8 @@
     <ul>
       <li>support <i>.pid</i> files.</li>
       <li>support <i>.jar.original</i> files.</li>
+      <li>support <i>.npmrc</i> files.</li>
+      <li>support <i>.npmignore</i> files.</li>
     </ul>
     1.11.0 (2019/10/10)
     <ul>

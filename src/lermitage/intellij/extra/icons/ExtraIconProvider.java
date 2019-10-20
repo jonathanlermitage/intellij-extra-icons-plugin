@@ -238,6 +238,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("nginx").mayEnd(".conf"),
             ofFile("nginx1", "/icons/nginx.png", "Nginx: start by 'nginx' and end by '.conf'")
                 .start("nginx").end(".conf"),
+            ofFile("npmrc", "/icons/npm.svg", "NPM: .npmrc")
+                .eq(".npmrc"),
+            ofFile("npmignore", "/icons/npmignore.svg", "NPM: .npmignore")
+                .eq(".npmignore"),
             ofFile("notice", "/icons/notice.png", "Notice: notice(.md,.txt,.adoc)")
                 .eq("notice").mayEnd(TXT),
             ofFile("packageinfojava", "/icons/packageinfojava.png", "Java package info: package-info.java")
