@@ -11,7 +11,7 @@ import java.util.Set;
 public class SettingsServiceTest {
     
     @Test
-    public void registered_models_dhould_be_unique() {
+    public void registered_models_should_be_unique() {
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
         Set<String> ids = new HashSet<>();
         Set<String> duplicatedIds = new HashSet<>();
