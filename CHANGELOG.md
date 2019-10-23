@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.12.0 (WIP)
+### 1.12.0 (2019/10/23)
 * support `.pid` files.
 * support `.jar.original` files.
 * support `.npmrc` files.
