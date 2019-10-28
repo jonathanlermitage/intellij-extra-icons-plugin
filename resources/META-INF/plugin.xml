@@ -18,6 +18,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.13.0 (WIP)
+    <ul>
+      <li>support Appveyor <i>.appveyor.yml</i> files.</li>
+    </ul>
     1.12.0 (2019/10/23)
     <ul>
       <li>support <i>.pid</i> files.</li>

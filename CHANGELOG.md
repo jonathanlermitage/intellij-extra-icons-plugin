@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.13.0 (WIP)
+* support Appveyor `.appveyor.yml` files.
+
 ### 1.12.0 (2019/10/23)
 * support `.pid` files.
 * support `.jar.original` files.
