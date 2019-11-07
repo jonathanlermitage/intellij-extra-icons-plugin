@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.13.0 (WIP)
+### 1.13.0 (2019/11/07)
 * support Appveyor `.appveyor.yml` files.
 
 ### 1.12.0 (2019/10/23)
