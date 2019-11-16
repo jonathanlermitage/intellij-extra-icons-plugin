@@ -15,6 +15,12 @@ matrix:
     - os: linux
       jdk: openjdk11
       env: IDEA_VERSION=IU-2019.1
+    - os: linux
+      jdk: openjdk8
+      env: IDEA_VERSION=IU-LATEST-EAP-SNAPSHOT
+    - os: linux
+      jdk: openjdk11
+      env: IDEA_VERSION=IU-LATEST-EAP-SNAPSHOT
   allow_failures:
     - os: linux
       jdk: openjdk8
