@@ -18,6 +18,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.14.0 (WIP)
+    <ul>
+      <li>rework <i>.idea</i> folder icon.</li>
+    </ul>
     1.13.0 (2019/11/07)
     <ul>
       <li>support Appveyor <i>.appveyor.yml</i> files.</li>

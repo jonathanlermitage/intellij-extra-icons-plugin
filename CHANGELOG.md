@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.14.0 (WIP)
+* rework `.idea` folder icon.
+
 ### 1.13.0 (2019/11/07)
 * support Appveyor `.appveyor.yml` files.
 

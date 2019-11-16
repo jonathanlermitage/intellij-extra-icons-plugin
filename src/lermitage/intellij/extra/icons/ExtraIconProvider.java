@@ -45,7 +45,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_gradle", "/icons/folder_gradle.svg", "Gradle (regex): '^/gradle$' folder")
                 .regex("^/gradle$")
                 .eq("gradle"), // FIXME #13 temp fix
-            ofDir("dir_idea", "/icons/folder_idea.png", "IntelliJ Idea (regex): '^/\\.idea$' folder")
+            ofDir("dir_idea", "/icons/folder_idea.svg", "IntelliJ Idea (regex): '^/\\.idea$' folder")
                 .regex("^/\\.idea$")
                 .eq(".idea"), // FIXME #13 temp fix
             ofDir("dir_mvn", "/icons/folder_mvnw.svg", "Maven (regex): '^/\\.mvn$' folder")
