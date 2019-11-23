@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.14.0 (WIP)
+### 1.14.0 (2019/11/23)
 * rework `.idea` folder icon.
 
 ### 1.13.0 (2019/11/07)
