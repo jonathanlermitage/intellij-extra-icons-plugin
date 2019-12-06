@@ -22,6 +22,7 @@
     <ul>
       <li>improve Logstash detection.</li>
       <li>support <i>.jceks</i> files.</li>
+      <li>support MySQL Workbench <i>.mwb</i> files.</li>
     </ul>
     1.14.0 (2019/11/23)
     <ul>

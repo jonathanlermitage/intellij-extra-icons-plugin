@@ -336,6 +336,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".kdbx"),
             ofFile("ext_md", "/icons/markdown.png", "Markdown: *.md")
                 .end(".md"),
+            ofFile("ext_mwb", "/icons/mysqlworkbench.png", "MySQL Workbench: *.mwb")
+                .end(".mwb"),
             ofFile("ext_nsi", "/icons/nsis.png", "NSIS Nullsoft Scriptable Install System: *.nsi")
                 .end(".nsi"),
             ofFile("ext_pdf", "/icons/pdf.png", "PDF: *.pdf")
