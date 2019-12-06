@@ -2,6 +2,7 @@
 
 ### 1.15.0 (WIP)
 * improve Logstash detection.
+* support `.jceks` files.
 
 ### 1.14.0 (2019/11/23)
 * rework `.idea` folder icon.

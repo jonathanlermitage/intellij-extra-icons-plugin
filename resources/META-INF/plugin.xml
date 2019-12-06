@@ -21,6 +21,7 @@
     1.145.0 (WIP)
     <ul>
       <li>improve Logstash detection.</li>
+      <li>support <i>.jceks</i> files.</li>
     </ul>
     1.14.0 (2019/11/23)
     <ul>
