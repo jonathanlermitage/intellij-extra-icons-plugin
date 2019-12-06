@@ -18,6 +18,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.145.0 (WIP)
+    <ul>
+      <li>improve Logstash detection.</li>
+    </ul>
     1.14.0 (2019/11/23)
     <ul>
       <li>rework <i>.idea</i> folder icon.</li>

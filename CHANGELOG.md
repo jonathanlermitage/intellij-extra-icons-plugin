@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.15.0 (WIP)
+* improve Logstash detection.
+
 ### 1.14.0 (2019/11/23)
 * rework `.idea` folder icon.
 
