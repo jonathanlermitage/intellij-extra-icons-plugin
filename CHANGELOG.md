@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.15.0 (WIP)
+### 1.15.0 (2019/12/07)
 * improve Logstash detection.
 * support `.jceks` files.
 * support MySQL Workbench `.mwb` files.

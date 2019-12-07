@@ -18,7 +18,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.15.0 (WIP)
+    1.15.0 (2019/12/07)
     <ul>
       <li>improve Logstash detection.</li>
       <li>support <i>.jceks</i> files.</li>
