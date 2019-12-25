@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.16.0 (WIP)
+* support Prometheus `prometheus.yml` files.
+
 ### 1.15.0 (2019/12/07)
 * improve Logstash detection.
 * support `.jceks` files.

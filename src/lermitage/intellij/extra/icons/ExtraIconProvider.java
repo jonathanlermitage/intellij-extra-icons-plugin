@@ -262,6 +262,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("package-lock.json"),
             ofFile("privacy", "/icons/privacy.png", "Privacy: privacy(.md,.txt,.adoc)")
                 .eq("privacy").mayEnd(TXT),
+            ofFile("prometheus", "/icons/prometheus.svg", "Prometheus: prometheus(.yml,.yaml)")
+                .eq("prometheus").end(YML),
             ofFile("puppet", "/icons/puppet.png", "Puppet: puppet(.conf)")
                 .eq("puppet").mayEnd(".conf"),
             ofFile("puppet1", "/icons/puppet.png", "Puppet: start by 'puppet' and end by '.conf'")

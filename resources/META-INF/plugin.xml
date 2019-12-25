@@ -18,6 +18,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.16.0 (WIP)
+    <ul>
+      <li>support Prometheus <i>prometheus.yml</i> files.</li>
+    </ul>
     1.15.0 (2019/12/07)
     <ul>
       <li>improve Logstash detection.</li>
