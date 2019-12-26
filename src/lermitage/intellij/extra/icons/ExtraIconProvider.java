@@ -190,6 +190,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".gitlab-ci.yml"),
             ofFile("graphqlconfig", "/icons/graphql-config.png", "GraphQL: graphql.config.json")
                 .eq("graphql.config.json"),
+            ofFile("grafana", "/icons/grafana.svg", "Grafana: grafana.ini")
+                .eq("grafana.ini"),
             ofFile("graphqlschema", "/icons/graphql-schema.png", "GraphQL: graphql.schema.json")
                 .eq("graphql.schema.json"),
             ofFile("gocd", "/icons/gocd.png", "Gocd: .gocd(.xml,.yml,...)")

@@ -20,6 +20,7 @@
     <change-notes><![CDATA[
     1.16.0 (WIP)
     <ul>
+      <li>support Grafana <i>grafana.ini</i> files.</li>
       <li>support Prometheus <i>prometheus.yml</i> files.</li>
     </ul>
     1.15.0 (2019/12/07)
