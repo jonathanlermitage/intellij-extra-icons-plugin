@@ -19,8 +19,10 @@
     <change-notes><![CDATA[
     1.16.0 (WIP)
     <ul>
+      <li>support Bitbucket <i>bitbucket-pipelines.yml</i> files.</li>
       <li>support Grafana <i>grafana.ini</i> files.</li>
       <li>support Prometheus <i>prometheus.yml</i> files.</li>
+      <li>rework SVG file icon</li>
     </ul>
     1.15.0 (2019/12/07)
     <ul>

@@ -1,8 +1,10 @@
 ## Extra Icons Change Log
 
 ### 1.16.0 (WIP)
+* support Bitbucket `bitbucket-pipelines.yml` files.
 * support Grafana `grafana.ini` files.
 * support Prometheus `prometheus.yml` files.
+* rework SVG file icon.
 
 ### 1.15.0 (2019/12/07)
 * improve Logstash detection.
