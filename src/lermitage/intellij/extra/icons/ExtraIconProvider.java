@@ -120,6 +120,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("berksfile.lock"),
             ofFile("bettercodehub", "/icons/bettercodehub.svg", "Better Code Hub: .bettercodehub.yml")
                 .eq(".bettercodehub.yml"),
+            ofFile("bitbucket", "/icons/bitbucket.svg", "Bitbucket: bitbucket-pipelines.yml")
+                .eq("bitbucket-pipelines").end(YML),
             ofFile("bower", "/icons/bower.svg", "Bower: bower.json, .bowerrc")
                 .eq("bower.json", ".bowerrc"),
             ofFile("build", "/icons/build.png", "Build: build(.md,.txt,.adoc), building")
