@@ -50,16 +50,19 @@ repositories {
 }
 
 // See https://github.com/ben-manes/gradle-versions-plugin
-dependencyUpdates.resolutionStrategy {
-    componentSelection { rules ->
-        rules.all { ComponentSelection selection ->
-            boolean rejected = ['alpha', 'Alpha', 'ALPHA', 'b', 'beta', 'Beta', 'BETA', 'rc', '‌RC', 'M', 'EA', 'pr', 'atlassian'].any { qualifier ->
-                selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
-            }
-            if (rejected) {
-                selection.reject('Release candidate')
-            }
-        }
+def versionIsNonStable = { String version ->
+    if (['RELEASE', 'FINAL', 'GA'].any { qualifier -> version.toUpperCase().endsWith(qualifier) }) {
+        return false
+    }
+    boolean isNonStable = ['alpha', 'Alpha', 'ALPHA', 'b', 'beta', 'Beta', 'BETA', 'rc', '‌RC', 'M', 'EA', 'pr', 'atlassian'].any { qualifier ->
+        version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+    }
+    return isNonStable
+}
+dependencyUpdates.gradleReleaseChannel = "current"
+dependencyUpdates {
+    rejectVersionIf {
+        versionIsNonStable(it.candidate.version)
     }
 }
 
