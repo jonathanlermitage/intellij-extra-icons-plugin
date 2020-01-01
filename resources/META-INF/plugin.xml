@@ -17,7 +17,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.16.0 (WIP)
+    1.16.0 (2020/01/01)
     <ul>
       <li>support Bitbucket <i>bitbucket-pipelines.yml</i> files.</li>
       <li>support Grafana <i>grafana.ini</i> files.</li>
@@ -29,28 +29,6 @@
       <li>improve Logstash detection.</li>
       <li>support <i>.jceks</i> files.</li>
       <li>support MySQL Workbench <i>.mwb</i> files.</li>
-    </ul>
-    1.14.0 (2019/11/23)
-    <ul>
-      <li>rework <i>.idea</i> folder icon.</li>
-    </ul>
-    1.13.0 (2019/11/07)
-    <ul>
-      <li>support Appveyor <i>.appveyor.yml</i> files.</li>
-    </ul>
-    1.12.0 (2019/10/23)
-    <ul>
-      <li>support <i>.pid</i> files.</li>
-      <li>support <i>.jar.original</i> files.</li>
-      <li>support <i>.npmrc</i> files.</li>
-      <li>support <i>.npmignore</i> files.</li>
-      <li>support <i>jest.config.js</i> files.</li>
-      <li>support <i>karma.conf.js</i> files.</li>
-      <li>rework many icons.</li>
-    </ul>
-    1.11.0 (2019/10/10)
-    <ul>
-      <li>improve AngularJS files support. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/16">diakovidis</a>.</li>
     </ul>
     <p>
         See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">changelog</a>

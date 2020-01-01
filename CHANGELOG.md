@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.16.0 (WIP)
+### 1.16.0 (2020/01/01)
 * support Bitbucket `bitbucket-pipelines.yml` files.
 * support Grafana `grafana.ini` files.
 * support Prometheus `prometheus.yml` files.
