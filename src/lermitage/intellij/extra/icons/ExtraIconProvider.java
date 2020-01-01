@@ -356,7 +356,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".sass", ".scss"),
             ofFile("less", "/icons/less.png", "LESS CSS: *.less")
                 .end(".less"),
-            ofFile("ext_svg", "/icons/svg.png", "SVG: *.svg")
+            ofFile("ext_svg", "/icons/svg.svg", "SVG: *.svg")
                 .end(".svg"),
             ofFile("ext_tf", "/icons/terraform.png", "Terraform: *.hcl, *.tf, *.tf.json")
                 .end(".hcl", ".tf", ".tf.json"),
