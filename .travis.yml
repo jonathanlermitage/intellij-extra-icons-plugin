@@ -5,29 +5,15 @@ matrix:
   include:
     - os: linux
       jdk: openjdk8
-      env: IDEA_VERSION=IU-2019.1
-    - os: linux
-      jdk: openjdk8
       env: IDEA_VERSION=IU-2018.3
     - os: linux
       jdk: openjdk11
-      env: IDEA_VERSION=IU-2019.2
-    - os: linux
-      jdk: openjdk11
-      env: IDEA_VERSION=IU-2019.1
-    - os: linux
-      jdk: openjdk8
-      env: IDEA_VERSION=IU-LATEST-EAP-SNAPSHOT
+      env: IDEA_VERSION=IU-2019.3
     - os: linux
       jdk: openjdk11
       env: IDEA_VERSION=IU-LATEST-EAP-SNAPSHOT
   allow_failures:
-    - os: linux
-      jdk: openjdk8
-      env: IDEA_VERSION=IU-LATEST-EAP-SNAPSHOT
-    - os: linux
-      jdk: openjdk11
-      env: IDEA_VERSION=IU-LATEST-EAP-SNAPSHOT
+    - env: IDEA_VERSION=IU-LATEST-EAP-SNAPSHOT
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
