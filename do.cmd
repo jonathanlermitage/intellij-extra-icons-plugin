@@ -6,7 +6,7 @@ if [%1] == [help] (
 )
 
 if [%1] == [w] (
-  gradle wrapper --gradle-version=%2 --distribution-type all --no-daemon
+  gradle wrapper --gradle-version=%2 --no-daemon
 )
 if [%1] == [fixgit] (
   echo git update-index --chmod=+x gradlew
