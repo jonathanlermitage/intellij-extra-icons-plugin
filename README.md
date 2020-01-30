@@ -23,6 +23,7 @@ Linkedin profile: [jonathan-lermitage-092711142](https://www.linkedin.com/in/jon
 
 * Edoardo Luppi (<lp.edoardo@gmail.com>)
 * Matthias Kunnen ([github.com/MatthiasKunnen](https://github.com/MatthiasKunnen))
+* Florian Böhm ([github.com/Sheigutn](https://github.com/Sheigutn))
 
 ## Build
 
