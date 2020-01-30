@@ -40,7 +40,7 @@ intellij {
     instrumentCode Boolean.valueOf(instrumentPluginCode)
     pluginName 'Extra Icons'
     plugins = ['AngularJS']
-    sandboxDirectory = "${rootProject.projectDir}/.idea-sandbox"
+    sandboxDirectory = "${rootProject.projectDir}/${ideaSandbox}-${ideaVersion}"
     updateSinceUntilBuild false
     version ideaVersion
 }
