@@ -17,18 +17,17 @@
     -->
 
     <change-notes><![CDATA[
+    1.17.0 (WIP)
+    <ul>
+      <li>make settings changes apply without having to restart. Thx Florian Böhm.</li>
+      <li>fix Angular icons size. Thx Florian Böhm.</li>
+    </ul>
     1.16.0 (2020/01/01)
     <ul>
       <li>support Bitbucket <i>bitbucket-pipelines.yml</i> files.</li>
       <li>support Grafana <i>grafana.ini</i> files.</li>
       <li>support Prometheus <i>prometheus.yml</i> files.</li>
       <li>rework SVG file icon</li>
-    </ul>
-    1.15.0 (2019/12/07)
-    <ul>
-      <li>improve Logstash detection.</li>
-      <li>support <i>.jceks</i> files.</li>
-      <li>support MySQL Workbench <i>.mwb</i> files.</li>
     </ul>
     <p>
         See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">changelog</a>

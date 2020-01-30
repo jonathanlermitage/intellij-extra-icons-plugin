@@ -1,5 +1,9 @@
 ## Extra Icons Change Log
 
+### 1.17.0 (WIP)
+* make settings changes apply without having to restart. Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/18).
+* fix Angular icons size. Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/17).
+
 ### 1.16.0 (2020/01/01)
 * support Bitbucket `bitbucket-pipelines.yml` files.
 * support Grafana `grafana.ini` files.
