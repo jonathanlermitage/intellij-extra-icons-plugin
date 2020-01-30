@@ -29,7 +29,6 @@ public class Model {
     
     private String id;
     private String description;
-    private boolean enabled = true;
     private ModelType modelType;
     
     @NotNull
@@ -66,11 +65,7 @@ public class Model {
     public ModelType getModelType() {
         return modelType;
     }
-    
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-    
+
     public Model parents(String... parents) {
         this.checkParent = true;
         this.parentNames = Stream.of(parents).collect(Collectors.toSet());
@@ -114,9 +109,6 @@ public class Model {
     
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     public boolean check(String parentName, String fileName, Optional<String> fullPath) {
-        if (!enabled) {
-            return false;
-        }
         if (checkParent) {
             if (!parentNames.contains(parentName)) {
                 return false;

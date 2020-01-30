@@ -25,8 +25,6 @@ public abstract class BaseIconProvider extends IconProvider {
     public BaseIconProvider() {
         super();
         this.models = getAllModels();
-        List<String> disabledModelIds = SettingsService.getDisabledModelIds();
-        models.forEach(model -> model.setEnabled(!disabledModelIds.contains(model.getId())));
     }
     
     /**
@@ -52,7 +50,7 @@ public abstract class BaseIconProvider extends IconProvider {
             final String folderName = psiDirectory.getName().toLowerCase();
             final Optional<String> fullPath = getFullPath(psiDirectory);
             for (final Model model : models) {
-                if (model.getModelType() == ModelType.DIR && model.check(parentName, folderName, fullPath)) {
+                if (model.getModelType() == ModelType.DIR && isModelEnabled(model) && model.check(parentName, folderName, fullPath)) {
                     return IconLoader.getIcon(model.getIcon());
                 }
             }
@@ -64,7 +62,7 @@ public abstract class BaseIconProvider extends IconProvider {
                 final String fileName = file.getName().toLowerCase();
                 final Optional<String> fullPath = getFullPath(file);
                 for (final Model model : models) {
-                    if (model.getModelType() == ModelType.FILE && model.check(parentName, fileName, fullPath)) {
+                    if (model.getModelType() == ModelType.FILE && isModelEnabled(model) && model.check(parentName, fileName, fullPath)) {
                         return IconLoader.getIcon(model.getIcon());
                     }
                 }
@@ -79,5 +77,9 @@ public abstract class BaseIconProvider extends IconProvider {
             return Optional.of(file.getVirtualFile().getPath().toLowerCase());
         }
         return Optional.empty();
+    }
+
+    private boolean isModelEnabled(Model model) {
+        return !SettingsService.getDisabledModelIds().contains(model.getId());
     }
 }

@@ -69,7 +69,7 @@ public class SettingsForm implements Configurable {
     }
     
     private void initComponents() {
-        title.setText("Select extra icons to activate, then hit OK or Apply button (changes take effect after restart):");
+        title.setText("Select extra icons to activate, then hit OK or Apply button:");
         buttonEnableAll.setText("Enable all");
         buttonDisableAll.setText("Disable all");
         loadTable();
