@@ -36,12 +36,12 @@ Linkedin profile: [jonathan-lermitage-092711142](https://www.linkedin.com/in/jon
 ### Branches
 
 * [master](https://github.com/jonathanlermitage/intellij-extra-icons-plugin): plugin is compatible with 183.0+ IDE builds (2018.3 and newer).
-* [ide173](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide173): plugin is compatible with 173.0+ IDE builds (2017.3 and newer), but doesn't support AngularJS icons.
+* [ide173](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide173): ~~plugin is compatible with 173.0+ IDE builds (2017.3 and newer), but doesn't support AngularJS icons.~~ this branch is terminated.
 
 ## Contribution
 
-Open an issue or a pull-request. Contributions should be tested on both [master](https://github.com/jonathanlermitage/intellij-extra-icons-plugin) and [ide173](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide173) branches, unless your code targets 183.0+ IDE builds.    
-Please reformat new and modified code only: do not reformat the whole project or entire existing file (in other words, try do limit the amount of changes in order to speed up code review).
+Open an issue or a pull-request. Contributions should be tested on [master](https://github.com/jonathanlermitage/intellij-extra-icons-plugin) branch.  
+Please reformat new and modified code only: do not reformat the whole project or entire existing file (in other words, try to limit the amount of changes in order to speed up code review).
 
 ## License
 
