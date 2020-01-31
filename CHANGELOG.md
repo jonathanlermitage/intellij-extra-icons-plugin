@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.17.0 (WIP)
+### 1.17.0 (2020/01/31)
 * make settings changes apply without having to restart. Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/18).
 * fix Angular icons size. Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/17).
 

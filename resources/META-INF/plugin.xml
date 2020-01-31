@@ -17,7 +17,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.17.0 (WIP)
+    1.17.0 (2020/01/31)
     <ul>
       <li>make settings changes apply without having to restart. Thx Florian Böhm.</li>
       <li>fix Angular icons size. Thx Florian Böhm.</li>
