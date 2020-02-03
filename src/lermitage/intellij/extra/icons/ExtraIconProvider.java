@@ -65,15 +65,15 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("angular_service_generic", "/icons/angular-service.svg", "AngularJS: *.service.(js|ts)")
                 .regex(".*\\.service\\.(js|ts)"),
             ofFile("angular_pipe_generic", "/icons/angular-pipe.svg", "AngularJS: *.pipe.(js|ts)")
-                .regex("pipe\\.(js|ts)"),
+                .regex(".*pipe\\.(js|ts)"),
             ofFile("angular_directive_generic", "/icons/angular-directive.svg", "AngularJS: *.directive.(js|ts)")
-                .regex("directive(s)?\\.(js|ts)"),
+                .regex(".*directive(s)?\\.(js|ts)"),
             ofFile("angular_guard_generic", "/icons/angular-guard.svg", "AngularJS: *.guard.(js|ts)")
-                .regex("guard"),
+                .regex(".*guard\\.(js|ts)"),
             ofFile("angular_resolver_generic", "/icons/angular-resolver.svg", "AngularJS: *.resolver.(js|ts)")
-                .regex("resolver"),
+                .regex(".*resolver\\.(js|ts)"),
             ofFile("angular_spec_generic", "/icons/test-ts.svg", "AngularJS: *.spec.(js|ts)")
-                .regex("spec"),
+                .regex(".*spec\\.(js|ts)"),
             ofFile("flyway", "/icons/flyway.png", "Flyway (regex): '.*/db/migration/.*\\.sql'")
                 .regex(".*/db/migration/.*\\.sql"),
 
@@ -112,6 +112,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("gradlew"),
             ofFile("gradlew", "/icons/gradlew.svg", "Gradle (Windows): gradlew.bat, gradlew.cmd")
                 .eq("gradlew.bat", "gradlew.cmd"),
+            ofFile("gradle_wrapper", "/icons/gradle.png", "Gradle Wrapper: gradle-wrapper.jar, gradle-wrapper.properties")
+                .eq("gradle-wrapper.jar", "gradle-wrapper.properties"),
             ofFile("mvnw_linux", "/icons/bash-mvnw.png", "Maven: mvnw")
                 .eq("mvnw"),
             ofFile("berksfile", "/icons/berkshelf.png", "Berkshelf: berksfile")
@@ -124,6 +126,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("bitbucket-pipelines").end(YML),
             ofFile("bower", "/icons/bower.svg", "Bower: bower.json, .bowerrc")
                 .eq("bower.json", ".bowerrc"),
+            ofFile("browserslist", "/icons/browserslist.svg", "Browserslist: browserslist, .browserslistrc")
+                .eq("browserslist", ".browserslistrc"),
             ofFile("build", "/icons/build.png", "Build: build(.md,.txt,.adoc), building")
                 .eq("build", "building").mayEnd(TXT),
             ofFile("cassandra", "/icons/cassandra.png", "Cassandra: cassandra(.yml,.yaml)")
@@ -354,7 +358,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".postman.json", "postman_collection.json", "postman_environment.json"),
             ofFile("ext_rpm", "/icons/rpm.svg", "Red Hat package: *.rpm")
                 .end(".rpm"),
-            ofFile("sass", "/icons/sass.png", "SASS: *.sass, *.scss")
+            ofFile("sass", "/icons/sass.svg", "SASS: *.sass, *.scss")
                 .end(".sass", ".scss"),
             ofFile("less", "/icons/less.png", "LESS CSS: *.less")
                 .end(".less"),
@@ -366,6 +370,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".toml"),
             ofFile("typescript", "/icons/test-ts.svg", "Typescript: *.spec.ts")
                 .end(".spec.ts"),
+            ofFile("typescript-ts", "/icons/typescript.svg", "Typescript: *.ts")
+                .end(".ts"),
             ofFile("ext_video", "/icons/video.svg", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ...")
                 .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
                     ".m4v", ".mkv", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid"),
