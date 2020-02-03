@@ -19,40 +19,42 @@ import static lermitage.intellij.extra.icons.Model.ofFile;
  * @author Edoardo Luppi
  */
 public class Angular2IconProvider extends BaseIconProvider implements DumbAware {
-    
+
     @NotNull
     public static List<Model> allModels() {
         return asList(
-            ofFile("angular_module", "/icons/angular-module.svg", "AngularJS (in AngularJS projects only): *.module.ts")
+            ofFile("angular_json", "/icons/angular-module.svg", "Angular (in Angular 2+ projects only): angular.json")
+                .eq("angular.json"),
+            ofFile("angular_module", "/icons/angular-module.svg", "Angular (in Angular 2+ projects only): *.module.ts")
                 .end(".module.ts"),
-            ofFile("angular_component", "/icons/angular-component.svg", "AngularJS (in AngularJS projects only): *.component.ts")
+            ofFile("angular_component", "/icons/angular-component.svg", "Angular (in Angular 2+ projects only): *.component.ts")
                 .end(".component.ts"),
-            ofFile("angular_service", "/icons/angular-service.svg", "AngularJS (in AngularJS projects only): *.service.ts")
+            ofFile("angular_service", "/icons/angular-service.svg", "Angular (in Angular 2+ projects only): *.service.ts")
                 .end(".service.ts"),
-            ofFile("angular_pipe", "/icons/angular-pipe.svg", "AngularJS (in AngularJS projects only): *.pipe.ts")
+            ofFile("angular_pipe", "/icons/angular-pipe.svg", "Angular (in Angular 2+ projects only): *.pipe.ts")
                 .end(".pipe.ts"),
-            ofFile("angular_directive", "/icons/angular-directive.svg", "AngularJS (in AngularJS projects only): *.directive.ts")
+            ofFile("angular_directive", "/icons/angular-directive.svg", "Angular (in Angular 2+ projects only): *.directive.ts")
                 .end(".directive.ts"),
-            ofFile("angular_guard", "/icons/angular-guard.svg", "AngularJS (in AngularJS projects only): *.guard.ts")
+            ofFile("angular_guard", "/icons/angular-guard.svg", "Angular (in Angular 2+ projects only): *.guard.ts")
                 .end(".guard.ts"),
-            ofFile("angular_resolver", "/icons/angular-resolver.svg", "AngularJS (in AngularJS projects only): *.resolver.ts")
+            ofFile("angular_resolver", "/icons/angular-resolver.svg", "Angular (in Angular 2+ projects only): *.resolver.ts")
                 .end(".resolver.ts"),
-            ofFile("angular_spec", "/icons/test-ts.svg", "AngularJS (in AngularJS projects only): *.spec.ts")
+            ofFile("angular_spec", "/icons/test-ts.svg", "Angular (in Angular 2+ projects only): *.spec.ts")
                 .end(".spec.ts"),
-            ofFile("angular_html", "/icons/html5.svg", "AngularJS (in AngularJS projects only): *.html")
+            ofFile("angular_html", "/icons/html5.svg", "Angular (in Angular 2+ projects only): *.html")
                 .end(".html")
         );
     }
-    
+
     public Angular2IconProvider() {
         super();
     }
-    
+
     @Override
     protected List<Model> getAllModels() {
         return allModels();
     }
-    
+
     @Override
     protected boolean isSupported(@NotNull final PsiFile psiFile) {
         return Angular2LangUtil.isAngular2Context(psiFile);
