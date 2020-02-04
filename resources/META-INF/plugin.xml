@@ -17,6 +17,15 @@
     -->
 
     <change-notes><![CDATA[
+    1.18.0 (WIP)
+    <ul>
+      <li>settings can now be overridden on project level. Thx Florian Böhm.</li>
+      <li>improve Angular files detection. Thx Florian Böhm.</li>
+      <li>improve Gradle Wrapper files detection. Thx Florian Böhm.</li>
+      <li>support Browserslist <i>browserslist</i>, <i>.browserslistrc</i> files. Thx Florian Böhm.</li>
+      <li>replace Typescript and SASS PNG icons by SVG. Thx Florian Böhm.</li>
+      <li>internal improvements. Thx Florian Böhm.</li>
+    </ul>
     1.17.0 (2020/01/31)
     <ul>
       <li>make settings changes apply without having to restart. Thx Florian Böhm.</li>

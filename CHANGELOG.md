@@ -1,5 +1,16 @@
 ## Extra Icons Change Log
 
+### 1.18.0 (WIP)
+
+Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/19) for his contributions:
+
+* settings can now be overridden on project level.
+* improve Angular files detection.
+* improve Gradle Wrapper files detection.
+* support Browserslist `browserslist`, `.browserslistrc` files.
+* replace Typescript and SASS PNG icons by SVG.
+* internal improvements.
+
 ### 1.17.0 (2020/01/31)
 * make settings changes apply without having to restart. Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/18).
 * fix Angular icons size. Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/17).
