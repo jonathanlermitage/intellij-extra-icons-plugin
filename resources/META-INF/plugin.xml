@@ -19,6 +19,7 @@
     <change-notes><![CDATA[
     1.18.0 (WIP)
     <ul>
+      <li>make Angular regexes more strict. Thx Bert Verhelst.</li>
       <li>settings can now be overridden on project level. Thx Florian Böhm.</li>
       <li>improve Angular files detection. Thx Florian Böhm.</li>
       <li>improve Gradle Wrapper files detection. Thx Florian Böhm.</li>

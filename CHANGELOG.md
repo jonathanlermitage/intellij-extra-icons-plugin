@@ -2,6 +2,8 @@
 
 ### 1.18.0 (WIP)
 
+* make Angular regexes more strict. Thx [Bert Verhelst](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/20).
+
 Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/19) for his contributions:
 
 * settings can now be overridden on project level.
