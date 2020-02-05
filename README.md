@@ -16,8 +16,7 @@ Download plugin on [GitHub](https://github.com/jonathanlermitage/intellij-extra-
 
 ## Author
 
-Jonathan Lermitage (<jonathan.lermitage@gmail.com>)  
-Linkedin profile: [jonathan-lermitage-092711142](https://www.linkedin.com/in/jonathan-lermitage-092711142/)
+Jonathan Lermitage (<jonathan.lermitage@gmail.com>, [linkedin](https://www.linkedin.com/in/jonathan-lermitage-092711142/))
 
 ## Contributors
 
@@ -41,7 +40,8 @@ Linkedin profile: [jonathan-lermitage-092711142](https://www.linkedin.com/in/jon
 ## Contribution
 
 Open an issue or a pull-request. Contributions should be tested on [master](https://github.com/jonathanlermitage/intellij-extra-icons-plugin) branch.  
-Please reformat new and modified code only: do not reformat the whole project or entire existing file (in other words, try to limit the amount of changes in order to speed up code review).
+Please reformat new and modified code only: do not reformat the whole project or entire existing file (in other words, try to limit the amount of changes in order to speed up code review).  
+To finish, don't hesitate to add your name or nickname to contributors list ;-)
 
 ## License
 
