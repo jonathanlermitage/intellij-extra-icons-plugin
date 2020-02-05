@@ -59,21 +59,21 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             // regex (file)
             //
             ofFile("angular_module_generic", "/icons/angular-module.svg", "AngularJS: *.module.(js|ts)")
-                .regex(".*module\\.(js|ts)"),
+                .regex(".*[^a-zA-Z0-9]module\\.(js|ts)"),
             ofFile("angular_component_generic", "/icons/angular-component.svg", "AngularJS: *.(component|controller).(js|ts)")
-                .regex(".*component\\.(js|ts)|.*controller\\.(js|ts)"),
+                .regex(".*[^a-zA-Z0-9]component\\.(js|ts)|.*controller\\.(js|ts)"),
             ofFile("angular_service_generic", "/icons/angular-service.svg", "AngularJS: *.service.(js|ts)")
-                .regex(".*\\.service\\.(js|ts)"),
+                .regex(".*[^a-zA-Z0-9]service\\.(js|ts)"),
             ofFile("angular_pipe_generic", "/icons/angular-pipe.svg", "AngularJS: *.pipe.(js|ts)")
-                .regex(".*pipe\\.(js|ts)"),
+                .regex(".*[^a-zA-Z0-9]pipe\\.(js|ts)"),
             ofFile("angular_directive_generic", "/icons/angular-directive.svg", "AngularJS: *.directive.(js|ts)")
-                .regex(".*directive(s)?\\.(js|ts)"),
+                .regex(".*[^a-zA-Z0-9]directive(s)?\\.(js|ts)"),
             ofFile("angular_guard_generic", "/icons/angular-guard.svg", "AngularJS: *.guard.(js|ts)")
-                .regex(".*guard\\.(js|ts)"),
+                .regex(".*[^a-zA-Z0-9]guard\\.(js|ts)"),
             ofFile("angular_resolver_generic", "/icons/angular-resolver.svg", "AngularJS: *.resolver.(js|ts)")
-                .regex(".*resolver\\.(js|ts)"),
+                .regex(".*[^a-zA-Z0-9]resolver\\.(js|ts)"),
             ofFile("angular_spec_generic", "/icons/test-ts.svg", "AngularJS: *.spec.(js|ts)")
-                .regex(".*spec\\.(js|ts)"),
+                .regex(".*[^a-zA-Z0-9]spec\\.(js|ts)"),
             ofFile("flyway", "/icons/flyway.png", "Flyway (regex): '.*/db/migration/.*\\.sql'")
                 .regex(".*/db/migration/.*\\.sql"),
 
