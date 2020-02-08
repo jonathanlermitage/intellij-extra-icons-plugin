@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.18.0 (WIP)
+### 1.18.0 (2020/02/08)
 
 * make Angular regexes more strict. Thx [Bert Verhelst](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/20).
 

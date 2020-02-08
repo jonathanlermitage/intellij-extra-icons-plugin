@@ -17,7 +17,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.18.0 (WIP)
+    1.18.0 (2020/02/08)
     <ul>
       <li>make Angular regexes more strict. Thx Bert Verhelst.</li>
       <li>settings can now be overridden on project level. Thx Florian Böhm.</li>
