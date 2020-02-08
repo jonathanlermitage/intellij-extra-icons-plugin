@@ -61,7 +61,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("angular_module_generic", "/icons/angular-module.svg", "AngularJS: *.module.(js|ts)")
                 .regex(".*[^a-zA-Z0-9]module\\.(js|ts)"),
             ofFile("angular_component_generic", "/icons/angular-component.svg", "AngularJS: *.(component|controller).(js|ts)")
-                .regex(".*[^a-zA-Z0-9]component\\.(js|ts)|.*controller\\.(js|ts)"),
+                .regex(".*[^a-zA-Z0-9](component|controller)\\.(js|ts)"),
             ofFile("angular_service_generic", "/icons/angular-service.svg", "AngularJS: *.service.(js|ts)")
                 .regex(".*[^a-zA-Z0-9]service\\.(js|ts)"),
             ofFile("angular_pipe_generic", "/icons/angular-pipe.svg", "AngularJS: *.pipe.(js|ts)")
