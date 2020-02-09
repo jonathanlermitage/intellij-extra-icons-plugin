@@ -23,6 +23,8 @@ public class SettingsForm implements Configurable {
     private JButton buttonEnableAll;
     private JButton buttonDisableAll;
     private JCheckBox overrideSettingsCheckbox;
+    private JTextField ignoredPatternTextField;
+    private JLabel ignoredPatternTitle;
 
     private SettingsTableModel settingsTableModel;
     private Project project;
@@ -79,6 +81,7 @@ public class SettingsForm implements Configurable {
             }
         }
         SettingsService.getInstance(project).setDisabledModelIds(disabledModelIds);
+        SettingsService.getInstance(project).setIgnoredPattern(ignoredPatternTextField.getText());
         modified = false;
     }
 
@@ -86,8 +89,10 @@ public class SettingsForm implements Configurable {
         title.setText("Select extra icons to activate, then hit OK or Apply button:");
         buttonEnableAll.setText("Enable all");
         buttonDisableAll.setText("Disable all");
+        ignoredPatternTitle.setText("<html><body>Regex to ignore paths (lowercased <i>parent/fileOrFolder</i>):</body></html>");
         initCheckbox();
         loadTable();
+        loadIgnoredPattern();
     }
 
     private void initCheckbox() {
@@ -117,6 +122,7 @@ public class SettingsForm implements Configurable {
     public void reset() {
         initCheckbox();
         loadTable();
+        loadIgnoredPattern();
     }
 
     private void enableAll() {
@@ -159,5 +165,10 @@ public class SettingsForm implements Configurable {
         table.getColumnModel().removeColumn(table.getColumnModel().getColumn(SettingsTableModel.ICON_ID_ROW_NUMBER)); // set invisible but keep data
         settingsTableModel.addTableModelListener(e -> modified = true);
         modified = false;
+    }
+
+    private void loadIgnoredPattern() {
+        ignoredPatternTextField.setText(SettingsService.getInstance(project).getIgnoredPattern());
+        ignoredPatternTextField.getDocument().addDocumentListener((SimpleDocumentListener) e -> modified = true);
     }
 }

@@ -7,13 +7,13 @@ import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileSystemItem;
+import lermitage.intellij.extra.icons.cfg.SettingsService;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsProjectService;
-import lermitage.intellij.extra.icons.cfg.SettingsService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.Icon;
+import javax.swing.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,13 +44,20 @@ public abstract class BaseIconProvider extends IconProvider {
         return true;
     }
 
+    private String parent(PsiFileSystemItem psiDirectory) {
+        return psiDirectory.getParent() == null ? null : psiDirectory.getParent().getName().toLowerCase();
+    }
+
     @Nullable
     @Override
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
         if (psiElement instanceof PsiDirectory) {
             PsiDirectory psiDirectory = (PsiDirectory) psiElement;
-            final String parentName = psiDirectory.getParent() == null ? null : psiDirectory.getParent().getName().toLowerCase();
+            final String parentName = parent(psiDirectory);
             final String folderName = psiDirectory.getName().toLowerCase();
+            if (isPatternIgnored(psiElement.getProject(), parentName, folderName)) {
+                return null;
+            }
             final Optional<String> fullPath = getFullPath(psiDirectory);
             for (final Model model : models) {
                 if (model.getModelType() == ModelType.DIR && isModelEnabled(psiElement.getProject(), model) && model.check(parentName, folderName, fullPath)) {
@@ -61,8 +68,11 @@ public abstract class BaseIconProvider extends IconProvider {
             final PsiFile file;
             final Optional<PsiFile> optFile = Optional.ofNullable(psiElement.getContainingFile());
             if (optFile.isPresent() && isSupported(file = optFile.get())) {
-                final String parentName = file.getParent() == null ? null : file.getParent().getName().toLowerCase();
+                final String parentName = parent(file);
                 final String fileName = file.getName().toLowerCase();
+                if (isPatternIgnored(psiElement.getProject(), parentName, fileName)) {
+                    return null;
+                }
                 final Optional<String> fullPath = getFullPath(file);
                 for (final Model model : models) {
                     if (model.getModelType() == ModelType.FILE && isModelEnabled(psiElement.getProject(), model) && model.check(parentName, fileName, fullPath)) {
@@ -88,5 +98,22 @@ public abstract class BaseIconProvider extends IconProvider {
             service = SettingsIDEService.getInstance();
         }
         return !service.getDisabledModelIds().contains(model.getId());
+    }
+
+    /**
+     * Indicates if given file/folder should be ignored.
+     * @param project project.
+     * @param parent optional parent.
+     * @param file current file or folder.
+     */
+    private boolean isPatternIgnored(Project project, String parent, String file) {
+        SettingsService service = SettingsService.getInstance(project);
+        if (!((SettingsProjectService) service).isOverrideIDESettings()) {
+            service = SettingsIDEService.getInstance();
+        }
+        if (service.getIgnoredPatternObj() == null || service.getIgnoredPattern().isEmpty()) {
+            return false;
+        }
+        return service.getIgnoredPatternObj().matcher(parent == null ? "" : parent + "/" + file).matches();
     }
 }
