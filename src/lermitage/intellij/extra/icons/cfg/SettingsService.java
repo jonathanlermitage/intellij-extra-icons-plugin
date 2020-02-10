@@ -59,7 +59,11 @@ public abstract class SettingsService {
 
     public void setIgnoredPattern(String ignoredPattern) {
         this.ignoredPattern = ignoredPattern;
-        this.ignoredPatternObj = compileRegex(ignoredPattern);
+        if (ignoredPattern == null || ignoredPattern.isEmpty()) {
+            this.ignoredPatternObj = null;
+        } else {
+            this.ignoredPatternObj = compileRegex(ignoredPattern);
+        }
     }
 
     @NotNull
