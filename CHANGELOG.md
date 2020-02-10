@@ -1,5 +1,9 @@
 ## Extra Icons Change Log
 
+### 1.19.0 (WIP)
+* add an option to ignore file/folder pattern.
+* rework MySQL Workbench dark icon.
+
 ### 1.18.0 (2020/02/08)
 
 * make Angular regexes more strict. Thx [Bert Verhelst](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/20).
