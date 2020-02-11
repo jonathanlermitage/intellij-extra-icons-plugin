@@ -28,9 +28,10 @@ public abstract class SettingsService {
     @SuppressWarnings("WeakerAccess")
     public List<String> disabledModelIds = new ArrayList<>();
     @SuppressWarnings("WeakerAccess")
-    public String ignoredPattern = "";
+    public String ignoredPattern;
 
     private Pattern ignoredPatternObj;
+    private Boolean isIgnoredPatternValid;
 
     public List<String> getDisabledModelIds() {
         if (disabledModelIds == null) { // a malformed xml file could make it null
@@ -40,17 +41,17 @@ public abstract class SettingsService {
     }
 
     public String getIgnoredPattern() {
-        return ignoredPattern == null ? "" : ignoredPattern;
+        return ignoredPattern;
     }
 
     public Pattern getIgnoredPatternObj() {
-        if (ignoredPatternObj != null) {
+        if (isIgnoredPatternValid == null) {
+            compileAndSetRegex(ignoredPattern);
+        }
+        if (isIgnoredPatternValid == Boolean.TRUE) {
             return ignoredPatternObj;
         }
-        if (ignoredPattern == null || ignoredPattern.isEmpty()) {
-            return null;
-        }
-        return ignoredPatternObj = compileRegex(ignoredPattern);
+        return null;
     }
 
     public void setDisabledModelIds(List<String> disabledModelIds) {
@@ -59,11 +60,7 @@ public abstract class SettingsService {
 
     public void setIgnoredPattern(String ignoredPattern) {
         this.ignoredPattern = ignoredPattern;
-        if (ignoredPattern == null || ignoredPattern.isEmpty()) {
-            this.ignoredPatternObj = null;
-        } else {
-            this.ignoredPatternObj = compileRegex(ignoredPattern);
-        }
+        compileAndSetRegex(ignoredPattern);
     }
 
     @NotNull
@@ -82,20 +79,24 @@ public abstract class SettingsService {
         return ServiceManager.getService(project, SettingsProjectService.class);
     }
 
-    private Pattern compileRegex(String regex) {
-        try {
-            return Pattern.compile(regex);
-        } catch (PatternSyntaxException e) {
-            Notification notification = new Notification(
-                Globals.PLUGIN_GROUP_DISPLAY_ID,
-                Globals.PLUGIN_NAME + " settings",
-                "Can't compile regex: '" + regex + "' (" + e.getMessage() + ")",
-                NotificationType.WARNING
-            );
-            notification.setImportant(true);
-            Notifications.Bus.notify(notification);
-            LOGGER.warn("Can't compile regex '" + regex + "'", e);
-            return null;
+    private void compileAndSetRegex(String regex) {
+        if (regex != null && !regex.isEmpty()) {
+            try {
+                ignoredPatternObj = Pattern.compile(regex);
+                isIgnoredPatternValid = true;
+            } catch (PatternSyntaxException e) {
+                Notification notification = new Notification(
+                    Globals.PLUGIN_GROUP_DISPLAY_ID,
+                    Globals.PLUGIN_NAME + " settings",
+                    "Can't compile regex: '" + regex + "' (" + e.getMessage() + ")",
+                    NotificationType.WARNING
+                );
+                notification.setImportant(true);
+                Notifications.Bus.notify(notification);
+                LOGGER.warn("Can't compile regex '" + regex + "'");
+                ignoredPatternObj = null;
+                isIgnoredPatternValid = false;
+            }
         }
     }
 }

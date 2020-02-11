@@ -111,7 +111,7 @@ public abstract class BaseIconProvider extends IconProvider {
         if (!((SettingsProjectService) service).isOverrideIDESettings()) {
             service = SettingsIDEService.getInstance();
         }
-        if (service.getIgnoredPatternObj() == null || service.getIgnoredPattern().isEmpty()) {
+        if (service.getIgnoredPatternObj() == null || service.getIgnoredPattern() == null || service.getIgnoredPattern().isEmpty()) {
             return false;
         }
         return service.getIgnoredPatternObj().matcher(parent == null ? "" : parent + "/" + file).matches();
