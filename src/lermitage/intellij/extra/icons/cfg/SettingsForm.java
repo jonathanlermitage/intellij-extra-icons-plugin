@@ -183,11 +183,12 @@ public class SettingsForm implements Configurable {
                 SettingsService.getInstance(project).getEditedModels().add(newModel);
             }
             setTableModel();
-        }).setButtonComparator("Edit").disableUpDownActions();
+        }).setButtonComparator("Edit");
         tablePanel.add(decorator.createPanel(), BorderLayout.CENTER);
     }
 
     private void setTableModel() {
+        int currentSelected = settingsTableModel != null ? table.getSelectedRow() : -1;
         settingsTableModel = new SettingsTableModel();
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
         allRegisteredModels.sort((o1, o2) -> {
@@ -225,6 +226,9 @@ public class SettingsForm implements Configurable {
         );
         table.setModel(settingsTableModel);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        if (currentSelected != -1) {
+            table.setRowSelectionInterval(currentSelected, currentSelected);
+        }
         table.setRowHeight(28);
         table.getColumnModel().getColumn(SettingsTableModel.ICON_ROW_NUMBER).setMaxWidth(28);
         table.getColumnModel().getColumn(SettingsTableModel.ICON_ROW_NUMBER).setWidth(28);

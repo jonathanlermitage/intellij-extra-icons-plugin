@@ -7,9 +7,13 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.ValidationInfo;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.ToolbarDecorator;
+import com.intellij.ui.components.JBTextField;
+import com.intellij.ui.table.JBTable;
 import com.intellij.util.IconUtil;
 import com.intellij.util.ImageLoader;
 import com.intellij.util.SVGLoader;
+import com.intellij.util.ui.ImageUtil;
 import com.intellij.util.ui.JBImageIcon;
 import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.InMemoryIconLoader;
@@ -33,14 +37,16 @@ import java.util.Objects;
 
 public class ModelEditor extends DialogWrapper {
 
+    private final JBTable conditionsTable = new JBTable();
     private JPanel pane;
-    private com.intellij.ui.components.JBTextField modelIDField;
-    private com.intellij.ui.components.JBTextField descriptionField;
+    private JBTextField modelIDField;
+    private JBTextField descriptionField;
     private JComboBox<String> typeComboBox;
     private JLabel iconLabel;
     private JButton chooseIconButton;
+    private JPanel conditionsPanel;
 
-    private List<String> extensions = Arrays.asList("svg", "png");
+    private final List<String> extensions = Arrays.asList("svg", "png");
     private Model underlyingModel;
 
     private InMemoryIconLoader.ImageWrapper customIconImage;
@@ -60,6 +66,8 @@ public class ModelEditor extends DialogWrapper {
                 Messages.showErrorDialog(ex.getMessage(), "Error While Loading Icon.");
             }
         });
+        conditionsTable.getEmptyText().setText("No conditions set.");
+        conditionsPanel.add(ToolbarDecorator.createDecorator(conditionsTable).createPanel(), BorderLayout.CENTER);
     }
 
     @Nullable
