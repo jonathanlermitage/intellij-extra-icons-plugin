@@ -30,6 +30,8 @@ public abstract class SettingsService {
     @SuppressWarnings("WeakerAccess")
     public String ignoredPattern = "";
 
+    public List<Model> editedModels = new ArrayList<>();
+
     private Pattern ignoredPatternObj;
 
     public List<String> getDisabledModelIds() {
@@ -64,6 +66,17 @@ public abstract class SettingsService {
         } else {
             this.ignoredPatternObj = compileRegex(ignoredPattern);
         }
+    }
+
+    public List<Model> getEditedModels() {
+        if (editedModels == null) { // a malformed xml file could make it null
+            editedModels = new ArrayList<>();
+        }
+        return editedModels;
+    }
+
+    public void setEditedModels(List<Model> editedModels) {
+        this.editedModels = editedModels;
     }
 
     @NotNull

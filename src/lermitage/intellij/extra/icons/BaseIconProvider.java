@@ -7,6 +7,7 @@ import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileSystemItem;
+import icons.AngularJSIcons;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsProjectService;
@@ -44,8 +45,8 @@ public abstract class BaseIconProvider extends IconProvider {
         return true;
     }
 
-    private String parent(PsiFileSystemItem psiDirectory) {
-        return psiDirectory.getParent() == null ? null : psiDirectory.getParent().getName().toLowerCase();
+    private String parent(@NotNull PsiFileSystemItem fileSystemItem) {
+        return fileSystemItem.getParent() == null ? null : fileSystemItem.getParent().getName().toLowerCase();
     }
 
     @Nullable
@@ -60,8 +61,10 @@ public abstract class BaseIconProvider extends IconProvider {
             }
             final Optional<String> fullPath = getFullPath(psiDirectory);
             for (final Model model : models) {
-                if (model.getModelType() == ModelType.DIR && isModelEnabled(psiElement.getProject(), model) && model.check(parentName, folderName, fullPath)) {
-                    return IconLoader.getIcon(model.getIcon());
+                Model editedModel = getEditedModel(psiElement.getProject(), model);
+                if (editedModel == null) editedModel = model;
+                if (editedModel.getModelType() == ModelType.DIR && isModelEnabled(psiElement.getProject(), editedModel) && editedModel.check(parentName, folderName, fullPath)) {
+                    return InMemoryIconLoader.getIcon(editedModel);
                 }
             }
         } else {
@@ -75,8 +78,10 @@ public abstract class BaseIconProvider extends IconProvider {
                 }
                 final Optional<String> fullPath = getFullPath(file);
                 for (final Model model : models) {
-                    if (model.getModelType() == ModelType.FILE && isModelEnabled(psiElement.getProject(), model) && model.check(parentName, fileName, fullPath)) {
-                        return IconLoader.getIcon(model.getIcon());
+                    Model editedModel = getEditedModel(psiElement.getProject(), model);
+                    if (editedModel == null) editedModel = model;
+                    if (editedModel.getModelType() == ModelType.FILE && isModelEnabled(psiElement.getProject(), editedModel) && editedModel.check(parentName, fileName, fullPath)) {
+                        return InMemoryIconLoader.getIcon(editedModel);
                     }
                 }
             }
@@ -92,11 +97,8 @@ public abstract class BaseIconProvider extends IconProvider {
         return Optional.empty();
     }
 
-    private boolean isModelEnabled(Project project, Model model) {
-        SettingsService service = SettingsService.getInstance(project);
-        if (!((SettingsProjectService) service).isOverrideIDESettings()) {
-            service = SettingsIDEService.getInstance();
-        }
+    private boolean isModelEnabled(@Nullable Project project, @NotNull Model model) {
+        SettingsService service = getSettingsService(project);
         return !service.getDisabledModelIds().contains(model.getId());
     }
 
@@ -106,14 +108,25 @@ public abstract class BaseIconProvider extends IconProvider {
      * @param parent optional parent.
      * @param file current file or folder.
      */
-    private boolean isPatternIgnored(Project project, String parent, String file) {
-        SettingsService service = SettingsService.getInstance(project);
-        if (!((SettingsProjectService) service).isOverrideIDESettings()) {
-            service = SettingsIDEService.getInstance();
-        }
+    private boolean isPatternIgnored(@Nullable Project project, @Nullable String parent, @NotNull String file) {
+        SettingsService service = getSettingsService(project);
         if (service.getIgnoredPatternObj() == null || service.getIgnoredPattern().isEmpty()) {
             return false;
         }
         return service.getIgnoredPatternObj().matcher(parent == null ? "" : parent + "/" + file).matches();
+    }
+
+    private Model getEditedModel(Project project, Model model) {
+        SettingsService service = getSettingsService(project);
+        Optional<Model> editedModel = service.getEditedModels().stream().filter(m -> m.getId().equals(model.getId())).findFirst();
+        return editedModel.orElse(null);
+    }
+
+    private SettingsService getSettingsService(Project project) {
+        SettingsService service = SettingsService.getInstance(project);
+        if (!((SettingsProjectService) service).isOverrideIDESettings()) {
+            service = SettingsIDEService.getInstance();
+        }
+        return service;
     }
 }

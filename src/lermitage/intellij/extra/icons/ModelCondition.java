@@ -1,5 +1,7 @@
 package lermitage.intellij.extra.icons;
 
+import com.intellij.util.xmlb.annotations.OptionTag;
+import com.intellij.util.xmlb.annotations.Tag;
 import org.intellij.lang.annotations.Language;
 
 import java.util.Collections;
@@ -10,19 +12,32 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
+@Tag
 public class ModelCondition {
 
+    @OptionTag
     private boolean start = false;
+    @OptionTag
     private boolean eq = false;
+    @OptionTag
     private boolean mayEnd = false;
+    @OptionTag
     private boolean end = false;
+    @OptionTag
     private boolean noDot = false;
+    @OptionTag
     private boolean checkParent = false;
-    private boolean regex = false;
+    @OptionTag
+    private boolean hasRegex = false;
 
+    @OptionTag
     private String[] names = new String[0];
+    @OptionTag
     private Set<String> parentNames = Collections.emptySet();
+    @OptionTag
     private String[] extensions = new String[0];
+    @OptionTag
+    private String regex;
     private Pattern pattern;
 
     public void setParents(String... parents) {
@@ -55,7 +70,8 @@ public class ModelCondition {
     }
 
     public void setRegex(@Language("RegExp") String regex) {
-        this.regex = true;
+        this.hasRegex = true;
+        this.regex = regex;
         this.pattern = Pattern.compile(regex);
     }
 
@@ -66,7 +82,10 @@ public class ModelCondition {
             }
         }
 
-        if (regex && fullPath.isPresent()) {
+        if (hasRegex && fullPath.isPresent()) {
+            if (pattern == null) {
+                pattern = Pattern.compile(regex);
+            }
             if (pattern.matcher(fullPath.get()).matches()) {
                 return true;
             }
