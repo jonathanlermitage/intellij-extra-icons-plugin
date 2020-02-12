@@ -6,6 +6,7 @@ import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +25,7 @@ public class Model {
     private ModelType modelType;
     @OptionTag
     private IconType iconType;
+    private Icon intelliJIcon;
     @XCollection
     private List<ModelCondition> conditions = new ArrayList<>(Collections.singletonList(new ModelCondition()));
 
@@ -35,8 +37,20 @@ public class Model {
 
     @NotNull
     @Contract("_, _, _ -> new")
+    public static Model ofFile(String id, Icon icon, String description) {
+        return new Model(id, icon, description, ModelType.FILE);
+    }
+
+    @NotNull
+    @Contract("_, _, _ -> new")
     public static Model ofDir(String id, String icon, String description) {
         return new Model(id, icon, description, ModelType.DIR, IconType.PATH);
+    }
+
+    @NotNull
+    @Contract("_, _, _ -> new")
+    public static Model ofDir(String id, Icon icon, String description) {
+        return new Model(id, icon, description, ModelType.DIR);
     }
 
     private Model() {
@@ -54,6 +68,11 @@ public class Model {
     public Model(String id, String icon, String description, ModelType modelType, IconType iconType, List<ModelCondition> conditions) {
         this(id, icon, description, modelType, iconType);
         this.conditions = conditions;
+    }
+
+    public Model(String id, Icon icon, String description, ModelType modelType) {
+        this(id, null, description, modelType, IconType.ICON);
+        this.intelliJIcon = icon;
     }
 
     public String getId() {
@@ -131,5 +150,9 @@ public class Model {
 
     public List<ModelCondition> getConditions() {
         return conditions;
+    }
+
+    public Icon getIntelliJIcon() {
+        return intelliJIcon;
     }
 }

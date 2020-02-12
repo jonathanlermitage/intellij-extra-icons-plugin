@@ -2,10 +2,7 @@ package lermitage.intellij.extra.icons;
 
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.util.Base64;
-import com.intellij.util.IconUtil;
-import com.intellij.util.ImageLoader;
-import com.intellij.util.SVGLoader;
+import com.intellij.util.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -20,6 +17,9 @@ public class InMemoryIconLoader {
     public static Icon getIcon(Model model) {
         if (model.getIconType() == IconType.PATH) {
             return IconLoader.getIcon(model.getIcon());
+        }
+        if (model.getIconType() == IconType.ICON) {
+            return model.getIntelliJIcon();
         }
         return IconUtil.createImageIcon(fromBase64(model.getIcon(), model.getIconType()).getImage());
     }
@@ -106,7 +106,29 @@ public class InMemoryIconLoader {
             throw new IllegalArgumentException("Width and height are unknown.");
         }
 
-        return ImageLoader.scaleImage(image, 16f / width);
+        if (width == 16) {
+            return image;
+        }
+
+        if (width == 32) {
+            return RetinaImage.createFrom(image);
+        }
+
+        float widthToScaleTo = 16f;
+        boolean retina = false;
+
+        if (width >= 32) {
+            widthToScaleTo = 32f;
+            retina = true;
+        }
+
+        Image scaledImage = ImageLoader.scaleImage(image, widthToScaleTo / width);
+
+        if (retina) {
+            return RetinaImage.createFrom(scaledImage);
+        }
+
+        return scaledImage;
     }
 
     public static class ImageWrapper {

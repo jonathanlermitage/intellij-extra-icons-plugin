@@ -72,14 +72,12 @@
               <text value="Label"/>
             </properties>
           </component>
-          <component id="6195a" class="com.intellij.ui.components.JBTextField" binding="ignoredPatternTextField">
+          <component id="e266" class="com.intellij.ui.EditorTextField" binding="ignoredPatternTextField" custom-create="true">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Monospaced"/>
+              <enabled value="true"/>
             </properties>
           </component>
         </children>

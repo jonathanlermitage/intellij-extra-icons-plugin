@@ -2,16 +2,17 @@ package lermitage.intellij.extra.icons.cfg;
 
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.IconLoader;
-import com.intellij.ui.SeparatorWithText;
+import com.intellij.openapi.project.ProjectManager;
+import com.intellij.ui.EditorTextField;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
-import com.intellij.ui.components.JBTextField;
 import com.intellij.ui.table.JBTable;
 import lermitage.intellij.extra.icons.InMemoryIconLoader;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelType;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsProjectService;
+import org.apache.commons.collections.CollectionUtils;
+import org.intellij.lang.regexp.RegExpFileType;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,9 +21,8 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class SettingsForm implements Configurable {
+public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private final JBTable table = new JBTable();
     private JPanel pane;
@@ -30,14 +30,14 @@ public class SettingsForm implements Configurable {
     private JButton buttonEnableAll;
     private JButton buttonDisableAll;
     private JCheckBox overrideSettingsCheckbox;
-    private JBTextField ignoredPatternTextField;
+    private EditorTextField ignoredPatternTextField;
     private JBLabel ignoredPatternTitle;
     private JPanel tablePanel;
 
     private SettingsTableModel settingsTableModel;
     private Project project;
     private boolean isProjectForm = false;
-    private boolean modified = false;
+    private List<Model> addedModels = new ArrayList<>();
 
     public SettingsForm() {
         buttonEnableAll.addActionListener(e -> enableAll());
@@ -72,15 +72,23 @@ public class SettingsForm implements Configurable {
 
     @Override
     public boolean isModified() {
-        return modified;
-    }
-
-    @Override
-    public void apply() {
+        SettingsService service = SettingsService.getInstance(project);
         if (isProjectForm) {
             boolean selected = overrideSettingsCheckbox.isSelected();
-            SettingsProjectService.getInstance(project).setOverrideIDESettings(selected);
+            if (((SettingsProjectService) service).isOverrideIDESettings() != selected) {
+                return true;
+            }
         }
+        if (!CollectionUtils.isEqualCollection(collectDisabledModelIds(), service.getDisabledModelIds())) {
+            return true;
+        }
+        if (service.getIgnoredPattern() == null && ignoredPatternTextField.getText().isEmpty()) {
+            return false;
+        }
+        return !ignoredPatternTextField.getText().equals(service.getIgnoredPattern());
+    }
+
+    private List<String> collectDisabledModelIds() {
         List<String> disabledModelIds = new ArrayList<>();
         for (int settingsTableRow = 0; settingsTableRow < settingsTableModel.getRowCount(); settingsTableRow++) {
             boolean iconEnabled = (boolean) settingsTableModel.getValueAt(settingsTableRow, SettingsTableModel.ICON_ENABLED_ROW_NUMBER);
@@ -88,17 +96,30 @@ public class SettingsForm implements Configurable {
                 disabledModelIds.add((String) settingsTableModel.getValueAt(settingsTableRow, SettingsTableModel.ICON_ID_ROW_NUMBER));
             }
         }
-        SettingsService.getInstance(project).setDisabledModelIds(disabledModelIds);
-        SettingsService.getInstance(project).setIgnoredPattern(ignoredPatternTextField.getText());
-        modified = false;
+        return disabledModelIds;
+    }
+
+    @Override
+    public void apply() {
+        SettingsService service = SettingsService.getInstance(project);
+        if (isProjectForm) {
+            boolean selected = overrideSettingsCheckbox.isSelected();
+            ((SettingsProjectService) service).setOverrideIDESettings(selected);
+        }
+        service.setDisabledModelIds(collectDisabledModelIds());
+        service.setIgnoredPattern(ignoredPatternTextField.getText());
+    }
+
+    @Nullable
+    public Project getProject() {
+        return this.project;
     }
 
     private void initComponents() {
         title.setText("Select extra icons to activate, then hit OK or Apply button:");
         buttonEnableAll.setText("Enable all");
         buttonDisableAll.setText("Disable all");
-        ignoredPatternTitle.setText("Regex to ignore paths:");
-        ignoredPatternTextField.getEmptyText().setText("Lowercased parent/fileOrFolder");
+        ignoredPatternTitle.setText("Regex to ignore relative paths:");
         table.setShowHorizontalLines(false);
         table.setShowVerticalLines(false);
         table.setFocusable(false);
@@ -122,7 +143,6 @@ public class SettingsForm implements Configurable {
         overrideSettingsCheckbox.addItemListener(item -> {
             boolean enabled = item.getStateChange() == ItemEvent.SELECTED;
             setComponentState(enabled);
-            modified = true;
         });
     }
 
@@ -140,7 +160,6 @@ public class SettingsForm implements Configurable {
         initCheckbox();
         setTableModel();
         loadIgnoredPattern();
-        modified = false;
     }
 
     private void enableAll() {
@@ -157,34 +176,7 @@ public class SettingsForm implements Configurable {
 
     private void loadTable() {
         setTableModel();
-        ToolbarDecorator decorator = ToolbarDecorator.createDecorator(table).setEditAction(anActionButton -> {
-            int selectedRow = table.getSelectedRow();
-            ModelEditor editor = new ModelEditor();
-            List<Model> modelList;
-            if ((boolean) settingsTableModel.getValueAt(selectedRow, SettingsTableModel.ICON_EDITED_ROW_NUMBER)) {
-                modelList = SettingsService.getInstance(project).getEditedModels();
-            }
-            else {
-                modelList = SettingsService.getAllRegisteredModels();
-            }
-            editor.setData(
-                modelList.stream()
-                    .filter(it -> it.getId().equals(settingsTableModel.getValueAt(selectedRow, SettingsTableModel.ICON_ID_ROW_NUMBER)))
-                    .findFirst()
-                    .get()
-            );
-            editor.show();
-            int exitCode = editor.getExitCode();
-            Model newModel = editor.getEditedModel();
-            if (exitCode == 0 || exitCode == 10) {
-                SettingsService.getInstance(project).getEditedModels().removeIf(model -> newModel.getId().equals(model.getId()));
-            }
-            if (exitCode == 0) {
-                SettingsService.getInstance(project).getEditedModels().add(newModel);
-            }
-            setTableModel();
-        }).setButtonComparator("Edit");
-        tablePanel.add(decorator.createPanel(), BorderLayout.CENTER);
+        tablePanel.add(createToolbarDecorator(), BorderLayout.CENTER);
     }
 
     private void setTableModel() {
@@ -200,29 +192,11 @@ public class SettingsForm implements Configurable {
             return typeComparison;
         });
         List<String> disabledModelIds = SettingsService.getInstance(project).getDisabledModelIds();
-        allRegisteredModels.forEach(m -> {
-                Optional<Model> editedModelOptional = SettingsService.getInstance(project)
-                    .getEditedModels()
-                    .stream()
-                    .filter(model -> model.getId().equals(m.getId()))
-                    .findFirst();
-                if (editedModelOptional.isPresent()) {
-                    Model editedModel = editedModelOptional.get();
-                    settingsTableModel.addRow(new Object[]{
-                        InMemoryIconLoader.getIcon(editedModel),
-                        !disabledModelIds.contains(m.getId()),
-                        editedModel.getDescription(),
-                        true,
-                        m.getId()});
-                } else {
-                    settingsTableModel.addRow(new Object[]{
-                        InMemoryIconLoader.getIcon(m),
-                        !disabledModelIds.contains(m.getId()),
-                        m.getDescription(),
-                        false,
-                        m.getId()});
-                }
-            }
+        allRegisteredModels.forEach(m -> settingsTableModel.addRow(new Object[]{
+                    InMemoryIconLoader.getIcon(m),
+                    !disabledModelIds.contains(m.getId()),
+                    m.getDescription(),
+                    m.getId()})
         );
         table.setModel(settingsTableModel);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -235,15 +209,29 @@ public class SettingsForm implements Configurable {
         table.getColumnModel().getColumn(SettingsTableModel.ICON_ENABLED_ROW_NUMBER).setWidth(28);
         table.getColumnModel().getColumn(SettingsTableModel.ICON_ENABLED_ROW_NUMBER).setMaxWidth(28);
         table.getColumnModel().getColumn(SettingsTableModel.ICON_LABEL_ROW_NUMBER).sizeWidthToFit();
-        table.getColumnModel().getColumn(SettingsTableModel.ICON_EDITED_ROW_NUMBER).setWidth(56);
-        table.getColumnModel().getColumn(SettingsTableModel.ICON_EDITED_ROW_NUMBER).setMaxWidth(56);
         table.getColumnModel().removeColumn(table.getColumnModel().getColumn(SettingsTableModel.ICON_ID_ROW_NUMBER)); // set invisible but keep data
-        settingsTableModel.addTableModelListener(e -> modified = true);
     }
 
+    protected List<Model> getAddedModels() {
+        return addedModels;
+    }
 
     private void loadIgnoredPattern() {
         ignoredPatternTextField.setText(SettingsService.getInstance(project).getIgnoredPattern());
-        ignoredPatternTextField.getDocument().addDocumentListener((SimpleDocumentListener) e -> modified = true);
+    }
+
+    private JComponent createToolbarDecorator() {
+        ToolbarDecorator decorator = ToolbarDecorator.createDecorator(table).setAddAction(anActionButton -> {
+            AddModelDialog editor = new AddModelDialog(this);
+            editor.showAndGet();
+            // TODO Add and save new model
+        }).setButtonComparator("Add");
+        return decorator.createPanel();
+    }
+
+    private void createUIComponents() {
+        // Use default project here because project is not available yet
+        ignoredPatternTextField = new EditorTextField("", ProjectManager.getInstance().getDefaultProject(), RegExpFileType.INSTANCE);
+        ignoredPatternTextField.setFontInheritedFromLAF(false);
     }
 }

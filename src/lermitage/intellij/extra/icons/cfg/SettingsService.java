@@ -12,6 +12,7 @@ import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsProjectService;
 import lermitage.intellij.extra.icons.providers.Angular2IconProvider;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -31,6 +32,7 @@ public abstract class SettingsService {
     public String ignoredPattern;
 
     public List<Model> editedModels = new ArrayList<>();
+    public List<Model> customModels = new ArrayList<>();
 
     private Pattern ignoredPatternObj;
     private Boolean isIgnoredPatternValid;
@@ -74,6 +76,17 @@ public abstract class SettingsService {
 
     public void setEditedModels(List<Model> editedModels) {
         this.editedModels = editedModels;
+    }
+
+    public List<Model> getCustomModels() {
+        if (customModels == null) { // a malformed xml file could make it null
+            customModels = new ArrayList<>();
+        }
+        return customModels;
+    }
+
+    public void setCustomModels(List<Model> customModels) {
+        this.customModels = customModels;
     }
 
     @NotNull

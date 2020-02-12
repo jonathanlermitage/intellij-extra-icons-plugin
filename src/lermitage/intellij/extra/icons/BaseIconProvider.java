@@ -2,7 +2,10 @@ package lermitage.intellij.extra.icons;
 
 import com.intellij.ide.IconProvider;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.openapi.vfs.VfsUtilCore;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -14,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,18 +55,19 @@ public abstract class BaseIconProvider extends IconProvider {
     @Nullable
     @Override
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
+        Project project = psiElement.getProject();
         if (psiElement instanceof PsiDirectory) {
             PsiDirectory psiDirectory = (PsiDirectory) psiElement;
             final String parentName = parent(psiDirectory);
             final String folderName = psiDirectory.getName().toLowerCase();
-            if (isPatternIgnored(psiElement.getProject(), parentName, folderName)) {
+            if (isPatternIgnored(project, psiDirectory.getVirtualFile())) {
                 return null;
             }
             final Optional<String> fullPath = getFullPath(psiDirectory);
             for (final Model model : models) {
-                Model editedModel = getEditedModel(psiElement.getProject(), model);
+                Model editedModel = getEditedModel(project, model);
                 if (editedModel == null) editedModel = model;
-                if (editedModel.getModelType() == ModelType.DIR && isModelEnabled(psiElement.getProject(), editedModel) && editedModel.check(parentName, folderName, fullPath)) {
+                if (editedModel.getModelType() == ModelType.DIR && isModelEnabled(project, editedModel) && editedModel.check(parentName, folderName, fullPath)) {
                     return InMemoryIconLoader.getIcon(editedModel);
                 }
             }
@@ -72,14 +77,14 @@ public abstract class BaseIconProvider extends IconProvider {
             if (optFile.isPresent() && isSupported(file = optFile.get())) {
                 final String parentName = parent(file);
                 final String fileName = file.getName().toLowerCase();
-                if (isPatternIgnored(psiElement.getProject(), parentName, fileName)) {
+                if (isPatternIgnored(project, file.getVirtualFile())) {
                     return null;
                 }
                 final Optional<String> fullPath = getFullPath(file);
                 for (final Model model : models) {
-                    Model editedModel = getEditedModel(psiElement.getProject(), model);
+                    Model editedModel = getEditedModel(project, model);
                     if (editedModel == null) editedModel = model;
-                    if (editedModel.getModelType() == ModelType.FILE && isModelEnabled(psiElement.getProject(), editedModel) && editedModel.check(parentName, fileName, fullPath)) {
+                    if (editedModel.getModelType() == ModelType.FILE && isModelEnabled(project, editedModel) && editedModel.check(parentName, fileName, fullPath)) {
                         return InMemoryIconLoader.getIcon(editedModel);
                     }
                 }
@@ -107,6 +112,11 @@ public abstract class BaseIconProvider extends IconProvider {
         return editedModel.orElse(null);
     }
 
+    private List<Model> getCustomModels(Project project) {
+        SettingsService service = getSettingsService(project);
+        return service.getCustomModels();
+    }
+
     private SettingsService getSettingsService(Project project) {
         SettingsService service = SettingsService.getInstance(project);
         if (!((SettingsProjectService) service).isOverrideIDESettings()) {
@@ -118,17 +128,21 @@ public abstract class BaseIconProvider extends IconProvider {
     /**
      * Indicates if given file/folder should be ignored.
      * @param project project.
-     * @param parent optional parent.
      * @param file current file or folder.
      */
-    private boolean isPatternIgnored(Project project, String parent, String file) {
-        SettingsService service = SettingsService.getInstance(project);
-        if (!((SettingsProjectService) service).isOverrideIDESettings()) {
-            service = SettingsIDEService.getInstance();
-        }
+    private boolean isPatternIgnored(Project project, VirtualFile file) {
+        SettingsService service = getSettingsService(project);
         if (service.getIgnoredPatternObj() == null || service.getIgnoredPattern() == null || service.getIgnoredPattern().isEmpty()) {
             return false;
         }
-        return service.getIgnoredPatternObj().matcher(parent == null ? "" : parent + "/" + file).matches();
+        VirtualFile contentRoot = ProjectFileIndex.SERVICE.getInstance(project).getContentRootForFile(file);
+        if (contentRoot == null) {
+            return false;
+        }
+        String relativePath = VfsUtilCore.getRelativePath(file, contentRoot);
+        if (relativePath == null) {
+            return false;
+        }
+        return service.getIgnoredPatternObj().matcher(relativePath).matches();
     }
 }
