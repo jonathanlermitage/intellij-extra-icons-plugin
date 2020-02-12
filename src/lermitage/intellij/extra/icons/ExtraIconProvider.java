@@ -310,8 +310,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".apk", ".xapk"),
             ofFile("ext_avro_avsc", "/icons/avro.svg", "Avro: *.avsc")
                 .end(".avsc"),
-            ofFile("ext_back", "/icons/backup.png", "Backup: *.versionbackup, *.versionsbackup, *.back, *.backup, *.old, *.prev, *.revert")
-                .end(".versionbackup", ".versionsbackup", ".back", ".backup", ".old", ".prev", ".revert"),
+            ofFile("ext_back", "/icons/backup.png", "Backup: *.versionbackup, *.versionsbackup, *.bak, *.back, *.backup, *.old, *.prev, *.revert")
+                .end(".versionbackup", ".versionsbackup", ".bak", ".back", ".backup", ".old", ".prev", ".revert"),
             ofFile("ext_sh", "/icons/bash.png", "Bash: *.sh")
                 .end(".sh"),
             ofFile("ext_cert", "/icons/certificate.png", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, ...")

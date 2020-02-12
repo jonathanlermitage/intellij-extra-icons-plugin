@@ -21,6 +21,7 @@
     <ul>
       <li>add an option to ignore file/folder pattern.</li>
       <li>rework MySQL Workbench dark icon.</li>
+      <li>support <i>.bak</i> files.</li>
     </ul>
     1.18.0 (2020/02/08)
     <ul>

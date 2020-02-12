@@ -7,7 +7,6 @@ import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileSystemItem;
-import icons.AngularJSIcons;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsProjectService;
@@ -102,20 +101,6 @@ public abstract class BaseIconProvider extends IconProvider {
         return !service.getDisabledModelIds().contains(model.getId());
     }
 
-    /**
-     * Indicates if given file/folder should be ignored.
-     * @param project project.
-     * @param parent optional parent.
-     * @param file current file or folder.
-     */
-    private boolean isPatternIgnored(@Nullable Project project, @Nullable String parent, @NotNull String file) {
-        SettingsService service = getSettingsService(project);
-        if (service.getIgnoredPatternObj() == null || service.getIgnoredPattern().isEmpty()) {
-            return false;
-        }
-        return service.getIgnoredPatternObj().matcher(parent == null ? "" : parent + "/" + file).matches();
-    }
-
     private Model getEditedModel(Project project, Model model) {
         SettingsService service = getSettingsService(project);
         Optional<Model> editedModel = service.getEditedModels().stream().filter(m -> m.getId().equals(model.getId())).findFirst();
@@ -128,5 +113,22 @@ public abstract class BaseIconProvider extends IconProvider {
             service = SettingsIDEService.getInstance();
         }
         return service;
+    }
+
+    /**
+     * Indicates if given file/folder should be ignored.
+     * @param project project.
+     * @param parent optional parent.
+     * @param file current file or folder.
+     */
+    private boolean isPatternIgnored(Project project, String parent, String file) {
+        SettingsService service = SettingsService.getInstance(project);
+        if (!((SettingsProjectService) service).isOverrideIDESettings()) {
+            service = SettingsIDEService.getInstance();
+        }
+        if (service.getIgnoredPatternObj() == null || service.getIgnoredPattern() == null || service.getIgnoredPattern().isEmpty()) {
+            return false;
+        }
+        return service.getIgnoredPatternObj().matcher(parent == null ? "" : parent + "/" + file).matches();
     }
 }

@@ -3,6 +3,7 @@
 ### 1.19.0 (WIP)
 * add an option to ignore file/folder pattern.
 * rework MySQL Workbench dark icon.
+* support `.bak` files.
 
 ### 1.18.0 (2020/02/08)
 
