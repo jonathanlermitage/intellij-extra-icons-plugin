@@ -7,6 +7,7 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.ValidationInfo;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.CheckBoxList;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.ui.table.JBTable;
@@ -15,10 +16,7 @@ import com.intellij.util.ImageLoader;
 import com.intellij.util.SVGLoader;
 import com.intellij.util.ui.ImageUtil;
 import com.intellij.util.ui.JBImageIcon;
-import lermitage.intellij.extra.icons.IconType;
-import lermitage.intellij.extra.icons.InMemoryIconLoader;
-import lermitage.intellij.extra.icons.Model;
-import lermitage.intellij.extra.icons.ModelType;
+import lermitage.intellij.extra.icons.*;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsProjectService;
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +37,7 @@ import java.util.stream.Stream;
 
 public class AddModelDialog extends DialogWrapper {
 
-    private final JBTable conditionsTable = new JBTable();
+    private final CheckBoxList<ModelCondition> conditionsCheckboxList = new CheckBoxList<>();
     private final SettingsForm settingsForm;
     private JPanel pane;
     private JBTextField modelIDField;
@@ -69,10 +67,11 @@ public class AddModelDialog extends DialogWrapper {
                 Messages.showErrorDialog(ex.getMessage(), "Could Not Load Icon.");
             }
         });
-        conditionsTable.getEmptyText().setText("No conditions set.");
-        conditionsPanel.add(ToolbarDecorator.createDecorator(conditionsTable).setAddAction(anActionButton -> {
+        conditionsCheckboxList.getEmptyText().setText("No conditions set.");
+        conditionsPanel.add(ToolbarDecorator.createDecorator(conditionsCheckboxList).setAddAction(anActionButton -> {
 
         }).setEditAction(anActionButton -> {}).setButtonComparator("Add", "Edit").createPanel(), BorderLayout.CENTER);
+        conditionsCheckboxList.addItem(new ModelCondition(), "8 possible extensions", true);
     }
 
     @Nullable
