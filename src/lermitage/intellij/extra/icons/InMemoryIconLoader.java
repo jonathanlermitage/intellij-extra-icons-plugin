@@ -83,7 +83,11 @@ public class InMemoryIconLoader {
             case IMG:
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 try {
-                    ImageIO.write((BufferedImage) imageWrapper.getImage(), "png", outputStream);
+                    Image image = imageWrapper.getImage();
+                    if (image instanceof JBHiDPIScaledImage) {
+                        image = ((JBHiDPIScaledImage) image).getDelegate();
+                    }
+                    ImageIO.write((BufferedImage) image, "png", outputStream);
                 }
                 catch (IOException ignored) {
 

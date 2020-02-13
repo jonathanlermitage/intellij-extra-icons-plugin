@@ -21,6 +21,7 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class SettingsForm implements Configurable, Configurable.NoScroll {
 
@@ -180,6 +181,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void setTableModel() {
+        setTableModel(false);
+    }
+
+    private void setTableModel(boolean addOne) {
         int currentSelected = settingsTableModel != null ? table.getSelectedRow() : -1;
         settingsTableModel = new SettingsTableModel();
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
@@ -192,15 +197,17 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             return typeComparison;
         });
         List<String> disabledModelIds = SettingsService.getInstance(project).getDisabledModelIds();
-        allRegisteredModels.forEach(m -> settingsTableModel.addRow(new Object[]{
-                    InMemoryIconLoader.getIcon(m),
-                    !disabledModelIds.contains(m.getId()),
-                    m.getDescription(),
-                    m.getId()})
-        );
+        Consumer<Model> addFunction = m -> settingsTableModel.addRow(new Object[]{
+            InMemoryIconLoader.getIcon(m),
+            !disabledModelIds.contains(m.getId()),
+            m.getDescription(),
+            m.getId()});
+        addedModels.forEach(addFunction);
+        allRegisteredModels.forEach(addFunction);
         table.setModel(settingsTableModel);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         if (currentSelected != -1) {
+            if (addOne) currentSelected++;
             table.setRowSelectionInterval(currentSelected, currentSelected);
         }
         table.setRowHeight(28);
@@ -222,8 +229,13 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private JComponent createToolbarDecorator() {
         ToolbarDecorator decorator = ToolbarDecorator.createDecorator(table).setAddAction(anActionButton -> {
-            ModelDialog editor = new ModelDialog(this);
-            editor.showAndGet();
+            ModelDialog modelDialog = new ModelDialog(this);
+            boolean wasOk = modelDialog.showAndGet();
+            if (wasOk) {
+                Model newModel = modelDialog.getModelFromInput();
+                addedModels.add(newModel);
+                setTableModel(true);
+            }
             // TODO Add and save new model
         }).setButtonComparator("Add");
         return decorator.createPanel();

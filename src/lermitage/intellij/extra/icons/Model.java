@@ -7,10 +7,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @SuppressWarnings({"WeakerAccess", "OptionalUsedAsFieldOrParameterType"})
 public class Model {
@@ -53,6 +50,7 @@ public class Model {
         return new Model(id, icon, description, ModelType.DIR);
     }
 
+    // For XML deserializer
     private Model() {
 
     }
@@ -154,5 +152,13 @@ public class Model {
 
     public Icon getIntelliJIcon() {
         return intelliJIcon;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Model model = (Model) o;
+        return id.equals(model.id);
     }
 }

@@ -2,7 +2,6 @@ package lermitage.intellij.extra.icons.cfg;
 
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
-import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.ValidationInfo;
@@ -18,7 +17,8 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -90,7 +90,7 @@ public class ModelDialog extends DialogWrapper {
             int selectedItem = conditionsCheckboxList.getSelectedIndex();
             conditions.remove(selectedItem);
             ListUtil.removeSelectedItems(conditionsCheckboxList);
-        }).setButtonComparator("Add", "Edit", "Remove").createPanel();
+        }).setButtonComparator("Add", "Edit", "Remove").disableUpDownActions().createPanel();
         conditionsPanel.add(toolbarPanel, BorderLayout.CENTER);
     }
 
@@ -119,7 +119,7 @@ public class ModelDialog extends DialogWrapper {
         VirtualFile[] virtualFiles = FileChooser.chooseFiles(
             new FileChooserDescriptor(true, false, false, false, false, false)
                 .withFileFilter(file -> extensions.contains(file.getExtension())),
-            settingsForm.getProject() == null ? ProjectManager.getInstance().getDefaultProject() : settingsForm.getProject(),
+            settingsForm.getProject(),
             null);
         if (virtualFiles.length > 0) {
             return InMemoryIconLoader.loadFromVirtualFile(virtualFiles[0]);
