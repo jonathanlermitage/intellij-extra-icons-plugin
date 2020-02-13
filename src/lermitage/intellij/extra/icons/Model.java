@@ -112,7 +112,7 @@ public class Model {
     }
 
     public Model end(String... extensions) {
-        getCurrentCondition().setExtensions(extensions);
+        getCurrentCondition().setEnd(extensions);
         return this;
     }
 

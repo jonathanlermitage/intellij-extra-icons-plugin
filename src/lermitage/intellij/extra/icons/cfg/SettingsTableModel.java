@@ -1,6 +1,6 @@
 package lermitage.intellij.extra.icons.cfg;
 
-import javax.swing.Icon;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class SettingsTableModel extends DefaultTableModel {

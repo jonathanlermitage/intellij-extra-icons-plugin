@@ -1,8 +1,6 @@
 package lermitage.intellij.extra.icons.cfg;
 
-import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationType;
-import com.intellij.notification.Notifications;
+import com.intellij.notification.*;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
@@ -12,7 +10,6 @@ import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.settings.SettingsProjectService;
 import lermitage.intellij.extra.icons.providers.Angular2IconProvider;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -31,7 +28,6 @@ public abstract class SettingsService {
     @SuppressWarnings("WeakerAccess")
     public String ignoredPattern;
 
-    public List<Model> editedModels = new ArrayList<>();
     public List<Model> customModels = new ArrayList<>();
 
     private Pattern ignoredPatternObj;
@@ -67,17 +63,6 @@ public abstract class SettingsService {
         compileAndSetRegex(ignoredPattern);
     }
 
-    public List<Model> getEditedModels() {
-        if (editedModels == null) { // a malformed xml file could make it null
-            editedModels = new ArrayList<>();
-        }
-        return editedModels;
-    }
-
-    public void setEditedModels(List<Model> editedModels) {
-        this.editedModels = editedModels;
-    }
-
     public List<Model> getCustomModels() {
         if (customModels == null) { // a malformed xml file could make it null
             customModels = new ArrayList<>();
@@ -111,9 +96,14 @@ public abstract class SettingsService {
                 ignoredPatternObj = Pattern.compile(regex);
                 isIgnoredPatternValid = true;
             } catch (PatternSyntaxException e) {
-                Notification notification = new Notification(
+                NotificationGroup notificationGroup = new NotificationGroup(
                     Globals.PLUGIN_GROUP_DISPLAY_ID,
+                    NotificationDisplayType.BALLOON,
+                    true
+                );
+                Notification notification = notificationGroup.createNotification(
                     Globals.PLUGIN_NAME + " settings",
+                    null,
                     "Can't compile regex: '" + regex + "' (" + e.getMessage() + ")",
                     NotificationType.WARNING
                 );

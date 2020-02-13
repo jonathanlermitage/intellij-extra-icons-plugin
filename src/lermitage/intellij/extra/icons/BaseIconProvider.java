@@ -3,7 +3,6 @@ package lermitage.intellij.extra.icons;
 import com.intellij.ide.IconProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
@@ -17,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,10 +63,8 @@ public abstract class BaseIconProvider extends IconProvider {
             }
             final Optional<String> fullPath = getFullPath(psiDirectory);
             for (final Model model : models) {
-                Model editedModel = getEditedModel(project, model);
-                if (editedModel == null) editedModel = model;
-                if (editedModel.getModelType() == ModelType.DIR && isModelEnabled(project, editedModel) && editedModel.check(parentName, folderName, fullPath)) {
-                    return InMemoryIconLoader.getIcon(editedModel);
+                if (model.getModelType() == ModelType.DIR && isModelEnabled(project, model) && model.check(parentName, folderName, fullPath)) {
+                    return InMemoryIconLoader.getIcon(model);
                 }
             }
         } else {
@@ -82,10 +78,8 @@ public abstract class BaseIconProvider extends IconProvider {
                 }
                 final Optional<String> fullPath = getFullPath(file);
                 for (final Model model : models) {
-                    Model editedModel = getEditedModel(project, model);
-                    if (editedModel == null) editedModel = model;
-                    if (editedModel.getModelType() == ModelType.FILE && isModelEnabled(project, editedModel) && editedModel.check(parentName, fileName, fullPath)) {
-                        return InMemoryIconLoader.getIcon(editedModel);
+                    if (model.getModelType() == ModelType.FILE && isModelEnabled(project, model) && model.check(parentName, fileName, fullPath)) {
+                        return InMemoryIconLoader.getIcon(model);
                     }
                 }
             }
@@ -104,17 +98,6 @@ public abstract class BaseIconProvider extends IconProvider {
     private boolean isModelEnabled(@Nullable Project project, @NotNull Model model) {
         SettingsService service = getSettingsService(project);
         return !service.getDisabledModelIds().contains(model.getId());
-    }
-
-    private Model getEditedModel(Project project, Model model) {
-        SettingsService service = getSettingsService(project);
-        Optional<Model> editedModel = service.getEditedModels().stream().filter(m -> m.getId().equals(model.getId())).findFirst();
-        return editedModel.orElse(null);
-    }
-
-    private List<Model> getCustomModels(Project project) {
-        SettingsService service = getSettingsService(project);
-        return service.getCustomModels();
     }
 
     private SettingsService getSettingsService(Project project) {

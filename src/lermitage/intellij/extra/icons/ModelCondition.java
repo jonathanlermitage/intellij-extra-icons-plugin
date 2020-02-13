@@ -1,12 +1,11 @@
 package lermitage.intellij.extra.icons;
 
+import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.util.xmlb.annotations.OptionTag;
 import com.intellij.util.xmlb.annotations.Tag;
 import org.intellij.lang.annotations.Language;
 
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -29,6 +28,8 @@ public class ModelCondition {
     private boolean checkParent = false;
     @OptionTag
     private boolean hasRegex = false;
+    @OptionTag
+    private boolean enabled = true;
 
     @OptionTag
     private String[] names = new String[0];
@@ -60,7 +61,7 @@ public class ModelCondition {
         this.extensions = extensions;
     }
 
-    public void setExtensions(String... extensions) {
+    public void setEnd(String... extensions) {
         this.end = true;
         this.extensions = extensions;
     }
@@ -76,9 +77,20 @@ public class ModelCondition {
     }
 
     public boolean check(String parentName, String fileName, Optional<String> fullPath) {
+        if (!enabled) {
+            return false;
+        }
+
         if (checkParent) {
-            if (!parentNames.contains(parentName)) {
-                return false;
+            if (!(start || eq || end || mayEnd)) {
+                if (parentNames.contains(parentName)) {
+                    return true; // To style all files in a subdirectory
+                }
+            }
+            else {
+                if (!parentNames.contains(parentName)) {
+                    return false;
+                }
             }
         }
 
@@ -163,5 +175,99 @@ public class ModelCondition {
             }
         }
         return false;
+    }
+
+    public boolean hasStart() {
+        return start;
+    }
+
+    public boolean hasEq() {
+        return eq;
+    }
+
+    public boolean hasMayEnd() {
+        return mayEnd;
+    }
+
+    public boolean hasEnd() {
+        return end;
+    }
+
+    public boolean hasNoDot() {
+        return noDot;
+    }
+
+    public boolean hasCheckParent() {
+        return checkParent;
+    }
+
+    public boolean hasRegex() {
+        return hasRegex;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public boolean isValid() {
+        return hasRegex || checkParent || start || eq || end || mayEnd;
+    }
+
+    public String[] getNames() {
+        return names;
+    }
+
+    public String[] getExtensions() {
+        return extensions;
+    }
+
+    public Set<String> getParents() {
+        return parentNames;
+    }
+
+    public String getRegex() {
+        return regex;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String asReadableString() {
+        ArrayList<String> parameters = new ArrayList<>();
+        if (hasRegex) {
+            parameters.add("regex: " + this.regex);
+        }
+
+        if (checkParent) {
+            parameters.add("parent(s): " + String.join(",", this.parentNames));
+        }
+
+        if (start || eq) {
+            String names = String.join(",", this.names);
+            if (start) {
+                names = "name starts with: " + names;
+                if (noDot) {
+                    names += " and does not contain a dot";
+                }
+            }
+            else {
+                names = "name equals: " + names;
+            }
+            parameters.add(names);
+        }
+
+        if (mayEnd || end) {
+            String extensions = String.join(",", this.extensions);
+            if (mayEnd) {
+                extensions = "name may end with: " + extensions;
+            }
+            else {
+                extensions = "name ends with: " + extensions;
+            }
+            parameters.add(extensions);
+        }
+
+        return StringUtil.capitalize(String.join(", ", parameters));
     }
 }

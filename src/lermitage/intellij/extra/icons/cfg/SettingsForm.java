@@ -222,7 +222,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private JComponent createToolbarDecorator() {
         ToolbarDecorator decorator = ToolbarDecorator.createDecorator(table).setAddAction(anActionButton -> {
-            AddModelDialog editor = new AddModelDialog(this);
+            ModelDialog editor = new ModelDialog(this);
             editor.showAndGet();
             // TODO Add and save new model
         }).setButtonComparator("Add");
