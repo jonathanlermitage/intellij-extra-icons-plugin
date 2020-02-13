@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.19.0 (WIP)
+### 1.19.0 (2020/02/13)
 * add an option to ignore file/folder pattern.
 * rework MySQL Workbench dark icon.
 * support `.bak` files.
