@@ -233,18 +233,18 @@ public class ModelCondition {
         this.enabled = enabled;
     }
 
-    public String asReadableString() {
+    public String asReadableString(String delimiter) {
         ArrayList<String> parameters = new ArrayList<>();
         if (hasRegex) {
             parameters.add("regex: " + this.regex);
         }
 
         if (checkParent) {
-            parameters.add("parent(s): " + String.join(",", this.parentNames));
+            parameters.add("parent(s): " + String.join(delimiter, this.parentNames));
         }
 
         if (start || eq) {
-            String names = String.join(",", this.names);
+            String names = String.join(delimiter, this.names);
             if (start) {
                 names = "name starts with: " + names;
                 if (noDot) {
@@ -258,7 +258,7 @@ public class ModelCondition {
         }
 
         if (mayEnd || end) {
-            String extensions = String.join(",", this.extensions);
+            String extensions = String.join(delimiter, this.extensions);
             if (mayEnd) {
                 extensions = "name may end with: " + extensions;
             }
@@ -269,5 +269,32 @@ public class ModelCondition {
         }
 
         return StringUtil.capitalize(String.join(", ", parameters));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ModelCondition that = (ModelCondition) o;
+        return start == that.start &&
+            eq == that.eq &&
+            mayEnd == that.mayEnd &&
+            end == that.end &&
+            noDot == that.noDot &&
+            checkParent == that.checkParent &&
+            hasRegex == that.hasRegex &&
+            enabled == that.enabled &&
+            Arrays.equals(names, that.names) &&
+            parentNames.equals(that.parentNames) &&
+            Arrays.equals(extensions, that.extensions) &&
+            Objects.equals(regex, that.regex);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(start, eq, mayEnd, end, noDot, checkParent, hasRegex, enabled, parentNames, regex);
+        result = 31 * result + Arrays.hashCode(names);
+        result = 31 * result + Arrays.hashCode(extensions);
+        return result;
     }
 }

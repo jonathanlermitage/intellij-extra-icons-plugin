@@ -9,18 +9,21 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.CheckBoxList;
 import com.intellij.ui.ListUtil;
 import com.intellij.ui.ToolbarDecorator;
+import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.IconUtil;
 import lermitage.intellij.extra.icons.*;
-import lermitage.intellij.extra.icons.cfg.settings.SettingsIDEService;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static lermitage.intellij.extra.icons.cfg.ModelConditionDialog.FIELD_SEPARATOR;
 
 public class ModelDialog extends DialogWrapper {
 
@@ -36,11 +39,12 @@ public class ModelDialog extends DialogWrapper {
     private JLabel iconLabel;
     private JButton chooseIconButton;
     private JPanel conditionsPanel;
+    private JBLabel idLabel;
 
     private CustomIconLoader.ImageWrapper customIconImage;
     private JPanel toolbarPanel;
 
-    private final List<ModelCondition> conditions = new ArrayList<>();
+    private Model modelToEdit;
 
     protected ModelDialog(SettingsForm settingsForm) {
         super(true);
@@ -51,10 +55,12 @@ public class ModelDialog extends DialogWrapper {
     }
 
     private void initComponents() {
+        setIdComponentsVisible(false);
         conditionsCheckboxList = new CheckBoxList<>((index, value) -> {
-            conditions.get(index).setEnabled(value);
+            //noinspection ConstantConditions
+            conditionsCheckboxList.getItemAt(index).setEnabled(value);
         });
-        chooseIconButton.addActionListener(e -> {
+        chooseIconButton.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             try {
                 customIconImage = loadCustomIcon();
                 if (customIconImage != null) {
@@ -64,7 +70,7 @@ public class ModelDialog extends DialogWrapper {
             catch (IllegalArgumentException ex) {
                 Messages.showErrorDialog(ex.getMessage(), "Could Not Load Icon.");
             }
-        });
+        }));
         conditionsCheckboxList.getEmptyText().setText("No conditions added.");
 
         toolbarPanel = ToolbarDecorator.createDecorator(conditionsCheckboxList).setAddAction(anActionButton -> {
@@ -72,25 +78,23 @@ public class ModelDialog extends DialogWrapper {
             boolean wasOk = modelConditionDialog.showAndGet();
             if (wasOk) {
                 ModelCondition modelCondition = modelConditionDialog.getModelConditionFromInput();
-                conditionsCheckboxList.addItem(modelCondition, modelCondition.asReadableString(), modelCondition.isEnabled());
-                conditions.add(modelCondition);
+                conditionsCheckboxList.addItem(modelCondition, modelCondition.asReadableString(FIELD_SEPARATOR), modelCondition.isEnabled());
             }
         }).setEditAction(anActionButton -> {
             int selectedItem = conditionsCheckboxList.getSelectedIndex();
+            ModelCondition selectedCondition = Objects.requireNonNull(conditionsCheckboxList.getItemAt(selectedItem));
+            boolean isEnabled = conditionsCheckboxList.isItemSelected(selectedCondition);
             ModelConditionDialog modelConditionDialog = new ModelConditionDialog();
-            modelConditionDialog.setCondition(conditionsCheckboxList.getItemAt(selectedItem));
+            modelConditionDialog.setCondition(selectedCondition);
             boolean wasOk = modelConditionDialog.showAndGet();
             if (wasOk) {
-                ModelCondition modelCondition = modelConditionDialog.getModelConditionFromInput();
-                conditions.set(selectedItem, modelCondition);
-                conditionsCheckboxList.setItems(conditions, ModelCondition::asReadableString);
-                conditions.forEach(condition -> conditionsCheckboxList.setItemSelected(condition, condition.isEnabled()));
+                ModelCondition newCondition = modelConditionDialog.getModelConditionFromInput();
+                conditionsCheckboxList.updateItem(selectedCondition, newCondition, newCondition.asReadableString(FIELD_SEPARATOR));
+                newCondition.setEnabled(isEnabled);
             }
         }).setRemoveAction(anActionButton -> {
-            int selectedItem = conditionsCheckboxList.getSelectedIndex();
-            conditions.remove(selectedItem);
             ListUtil.removeSelectedItems(conditionsCheckboxList);
-        }).setButtonComparator("Add", "Edit", "Remove").disableUpDownActions().createPanel();
+        }).setButtonComparator("Add", "Edit", "Remove").createPanel();
         conditionsPanel.add(toolbarPanel, BorderLayout.CENTER);
     }
 
@@ -107,12 +111,23 @@ public class ModelDialog extends DialogWrapper {
             icon = CustomIconLoader.toBase64(customIconImage);
             iconType = customIconImage.getIconType();
         }
-        return new Model(modelIDField.getText(),
+        else if (modelToEdit != null) {
+            icon = modelToEdit.getIcon();
+            iconType = modelToEdit.getIconType();
+        }
+        Model newModel = new Model(modelIDField.isVisible() ? modelIDField.getText() : null,
             icon,
             descriptionField.getText(),
             ModelType.valueOf(typeComboBox.getSelectedItem().toString()),
             iconType,
-            conditions);
+            IntStream.range(0, conditionsCheckboxList.getItemsCount())
+                .mapToObj(index -> conditionsCheckboxList.getItemAt(index))
+                .collect(Collectors.toList())
+        );
+        if (modelToEdit != null) {
+            newModel.setEnabled(modelToEdit.isEnabled());
+        }
+        return newModel;
     }
 
     private CustomIconLoader.ImageWrapper loadCustomIcon() {
@@ -127,33 +142,42 @@ public class ModelDialog extends DialogWrapper {
         return null;
     }
 
+    public void setModelToEdit(Model model) {
+        modelToEdit = model;
+        setTitle("Edit Model");
+        boolean hasModelId = model.getId() != null;
+        setIdComponentsVisible(hasModelId);
+        if (hasModelId) {
+            modelIDField.setText(model.getId());
+        }
+        descriptionField.setText(model.getDescription());
+        typeComboBox.setSelectedItem(model.getModelType().name());
+        SwingUtilities.invokeLater(() -> iconLabel.setIcon(CustomIconLoader.getIcon(model)));
+        model.getConditions().forEach(modelCondition -> {
+            conditionsCheckboxList.addItem(modelCondition, modelCondition.asReadableString(FIELD_SEPARATOR), modelCondition.isEnabled());
+        });
+    }
+
+    private void setIdComponentsVisible(boolean visible) {
+        idLabel.setVisible(visible);
+        modelIDField.setVisible(visible);
+    }
+
     @Nullable
     @Override
     protected ValidationInfo doValidate() {
-        if (modelIDField.getText().isEmpty()) {
+        if (modelIDField.isVisible() && modelIDField.getText().isEmpty()) {
             return new ValidationInfo("ID cannot be empty!", modelIDField);
-        }
-        String id = modelIDField.getText();
-        if (doesIdExist(id)) {
-            return new ValidationInfo("ID already exists!", modelIDField);
         }
         if (descriptionField.getText().isEmpty()) {
             return new ValidationInfo("Description cannot be empty!", descriptionField);
         }
-        if (customIconImage == null) {
+        if (customIconImage == null && modelToEdit == null) {
             return new ValidationInfo("Please add an icon!", chooseIconButton);
         }
-        if (conditions.isEmpty()) {
+        if (conditionsCheckboxList.isEmpty()) {
             return new ValidationInfo("Please add a condition to your model!", toolbarPanel);
         }
         return super.doValidate();
-    }
-
-    private boolean doesIdExist(String id) {
-        return Stream.concat(
-            Stream.concat(SettingsService.getAllRegisteredModels().stream(),
-                SettingsIDEService.getInstance().getCustomModels().stream()),
-            settingsForm.getAddedModels().stream())
-            .anyMatch(model -> model.getId().equals(id));
     }
 }

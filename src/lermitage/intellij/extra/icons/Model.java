@@ -22,6 +22,8 @@ public class Model {
     private ModelType modelType;
     @OptionTag
     private IconType iconType;
+    @OptionTag
+    private boolean enabled = true;
     private Icon intelliJIcon;
     @XCollection
     private List<ModelCondition> conditions = new ArrayList<>(Collections.singletonList(new ModelCondition()));
@@ -89,6 +91,10 @@ public class Model {
         return modelType;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
     public Model parents(String... parents) {
         getCurrentCondition().setParents(parents);
         return this;
@@ -134,6 +140,9 @@ public class Model {
     }
 
     public boolean check(String parentName, String fileName, Optional<String> fullPath) {
+        if (!enabled) {
+            return false;
+        }
         for (ModelCondition condition : conditions) {
             if (condition.check(parentName, fileName, fullPath)) {
                 return true;
@@ -154,11 +163,27 @@ public class Model {
         return intelliJIcon;
     }
 
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Model model = (Model) o;
-        return id.equals(model.id);
+        return enabled == model.enabled &&
+            Objects.equals(id, model.id) &&
+            Objects.equals(icon, model.icon) &&
+            description.equals(model.description) &&
+            modelType == model.modelType &&
+            iconType == model.iconType &&
+            Objects.equals(intelliJIcon, model.intelliJIcon) &&
+            conditions.equals(model.conditions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, icon, description, modelType, iconType, enabled, intelliJIcon, conditions);
     }
 }

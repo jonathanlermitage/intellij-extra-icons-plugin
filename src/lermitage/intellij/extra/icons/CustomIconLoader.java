@@ -21,7 +21,11 @@ public class CustomIconLoader {
         if (model.getIconType() == IconType.ICON) {
             return model.getIntelliJIcon();
         }
-        return IconUtil.createImageIcon(fromBase64(model.getIcon(), model.getIconType()).getImage());
+        ImageWrapper fromBase64 = fromBase64(model.getIcon(), model.getIconType());
+        if (fromBase64 == null) {
+            return null;
+        }
+        return IconUtil.createImageIcon(fromBase64.getImage());
     }
 
     public static ImageWrapper loadFromVirtualFile(VirtualFile virtualFile) throws IllegalArgumentException {
@@ -45,7 +49,6 @@ public class CustomIconLoader {
             if (image == null) {
                 throw new IllegalArgumentException("Could not load image properly.");
             }
-
             return new ImageWrapper(iconType, scaleImage(image), fileContents);
         }
         return null;

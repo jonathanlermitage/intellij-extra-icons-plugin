@@ -31,6 +31,8 @@ public abstract class SettingsService {
     private Pattern ignoredPatternObj;
     private Boolean isIgnoredPatternValid;
 
+    public List<Model> customModels = new ArrayList<>();
+
     public List<String> getDisabledModelIds() {
         if (disabledModelIds == null) { // a malformed xml file could make it null
             disabledModelIds = new ArrayList<>();
@@ -59,6 +61,17 @@ public abstract class SettingsService {
     public void setIgnoredPattern(String ignoredPattern) {
         this.ignoredPattern = ignoredPattern;
         compileAndSetRegex(ignoredPattern);
+    }
+
+    public List<Model> getCustomModels() {
+        if (customModels == null) { // a malformed xml file could make it null
+            customModels = new ArrayList<>();
+        }
+        return customModels;
+    }
+
+    public void setCustomModels(List<Model> customModels) {
+        this.customModels = customModels;
     }
 
     @NotNull

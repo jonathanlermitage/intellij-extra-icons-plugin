@@ -15,13 +15,27 @@ import org.jetbrains.annotations.NotNull;
 public class SettingsProjectService extends SettingsService implements PersistentStateComponent<SettingsProjectService> {
 
     public boolean overrideIDESettings = false;
+    public boolean addToIDEUserIcons = true;
+
+    @NotNull
+    public static SettingsProjectService getInstance(Project project) {
+        return ServiceManager.getService(project, SettingsProjectService.class);
+    }
+
+    public boolean isOverrideIDESettings() {
+        return overrideIDESettings;
+    }
 
     public void setOverrideIDESettings(boolean overrideIDESettings) {
         this.overrideIDESettings = overrideIDESettings;
     }
 
-    public boolean isOverrideIDESettings() {
-        return overrideIDESettings;
+    public boolean isAddToIDEUserIcons() {
+        return addToIDEUserIcons;
+    }
+
+    public void setAddToIDEUserIcons(boolean addToIDEUserIcons) {
+        this.addToIDEUserIcons = addToIDEUserIcons;
     }
 
     @Override
@@ -32,10 +46,5 @@ public class SettingsProjectService extends SettingsService implements Persisten
     @Override
     public void loadState(@NotNull SettingsProjectService state) {
         XmlSerializerUtil.copyBean(state, this);
-    }
-
-    @NotNull
-    public static SettingsProjectService getInstance(Project project) {
-        return ServiceManager.getService(project, SettingsProjectService.class);
     }
 }

@@ -5,12 +5,8 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.util.xmlb.XmlSerializerUtil;
-import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.List;
 
 // see http://www.jetbrains.org/intellij/sdk/docs/basics/persisting_state_of_components.html
 @State(
@@ -19,17 +15,8 @@ import java.util.List;
 )
 public class SettingsIDEService extends SettingsService implements PersistentStateComponent<SettingsIDEService> {
 
-    public List<Model> customModels = new ArrayList<>();
-
-    public List<Model> getCustomModels() {
-        if (customModels == null) { // a malformed xml file could make it null
-            customModels = new ArrayList<>();
-        }
-        return customModels;
-    }
-
-    public void setCustomModels(List<Model> customModels) {
-        this.customModels = customModels;
+    public static SettingsIDEService getInstance() {
+        return ServiceManager.getService(SettingsIDEService.class);
     }
 
     @Override
@@ -40,9 +27,5 @@ public class SettingsIDEService extends SettingsService implements PersistentSta
     @Override
     public void loadState(@NotNull SettingsIDEService state) {
         XmlSerializerUtil.copyBean(state, this);
-    }
-
-    public static SettingsIDEService getInstance() {
-        return ServiceManager.getService(SettingsIDEService.class);
     }
 }

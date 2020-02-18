@@ -16,7 +16,7 @@ import java.util.regex.PatternSyntaxException;
 
 public class ModelConditionDialog extends DialogWrapper {
 
-    private static final String FIELD_SEPARATOR = ";";
+    public static final String FIELD_SEPARATOR = ";";
 
     private JPanel dialogPanel;
     private JCheckBox regexCheckBox;

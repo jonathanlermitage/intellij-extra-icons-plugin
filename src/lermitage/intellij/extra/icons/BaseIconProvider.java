@@ -18,6 +18,8 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Edoardo Luppi
@@ -62,7 +64,7 @@ public abstract class BaseIconProvider extends IconProvider {
                 return null;
             }
             final Optional<String> fullPath = getFullPath(psiDirectory);
-            for (final Model model : models) {
+            for (final Model model : getModelsIncludingUserModels(project)) {
                 if (model.getModelType() == ModelType.DIR && isModelEnabled(project, model) && model.check(parentName, folderName, fullPath)) {
                     return CustomIconLoader.getIcon(model);
                 }
@@ -77,7 +79,7 @@ public abstract class BaseIconProvider extends IconProvider {
                     return null;
                 }
                 final Optional<String> fullPath = getFullPath(file);
-                for (final Model model : models) {
+                for (final Model model : getModelsIncludingUserModels(project)) {
                     if (model.getModelType() == ModelType.FILE && isModelEnabled(project, model) && model.check(parentName, fileName, fullPath)) {
                         return CustomIconLoader.getIcon(model);
                     }
@@ -86,6 +88,27 @@ public abstract class BaseIconProvider extends IconProvider {
         }
 
         return null;
+    }
+
+    private List<Model> getModelsIncludingUserModels(@Nullable Project project) {
+        SettingsService service = SettingsService.getInstance(project);
+        SettingsProjectService projectService = (SettingsProjectService) service;
+        Stream<Model> customModelsStream;
+
+        if (projectService.isOverrideIDESettings()) {
+            if (projectService.isAddToIDEUserIcons()) {
+                customModelsStream = Stream.concat(SettingsIDEService.getInstance().getCustomModels().stream(),
+                    projectService.getCustomModels().stream());
+            }
+            else {
+                customModelsStream = projectService.getCustomModels().stream();
+            }
+        }
+        else {
+            customModelsStream = SettingsIDEService.getInstance().getCustomModels().stream();
+        }
+
+        return Stream.concat(customModelsStream, models.stream()).collect(Collectors.toList());
     }
 
     private Optional<String> getFullPath(@NotNull PsiFileSystemItem file) {
