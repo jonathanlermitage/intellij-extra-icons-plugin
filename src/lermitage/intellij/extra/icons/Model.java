@@ -140,9 +140,6 @@ public class Model {
     }
 
     public boolean check(String parentName, String fileName, Optional<String> fullPath) {
-        if (!enabled) {
-            return false;
-        }
         for (ModelCondition condition : conditions) {
             if (condition.check(parentName, fileName, fullPath)) {
                 return true;

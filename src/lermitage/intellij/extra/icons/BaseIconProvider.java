@@ -124,7 +124,7 @@ public abstract class BaseIconProvider extends IconProvider {
 
     private boolean isModelEnabled(@Nullable Project project, @NotNull Model model) {
         SettingsService service = getSettingsService(project);
-        return !service.getDisabledModelIds().contains(model.getId());
+        return !service.getDisabledModelIds().contains(model.getId()) && model.isEnabled();
     }
 
     /**
