@@ -118,7 +118,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private List<Boolean> collectUserIconEnabledStates() {
         return IntStream.range(0, userIconsSettingsTableModel.getRowCount()).mapToObj(
-            index -> ((boolean) userIconsSettingsTableModel.getValueAt(index, 1))
+            index -> ((boolean) userIconsSettingsTableModel.getValueAt(index, UserIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER))
         ).collect(Collectors.toList());
     }
 
@@ -217,11 +217,11 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         userIconsTable.setModel(userIconsSettingsTableModel);
         userIconsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         userIconsTable.setRowHeight(28);
-        userIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ROW_NUMBER).setMaxWidth(28);
-        userIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ROW_NUMBER).setWidth(28);
-        userIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER).setWidth(28);
-        userIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER).setMaxWidth(28);
-        userIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_LABEL_ROW_NUMBER).sizeWidthToFit();
+        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_ROW_NUMBER).setMaxWidth(28);
+        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_ROW_NUMBER).setWidth(28);
+        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER).setWidth(28);
+        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER).setMaxWidth(28);
+        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_LABEL_ROW_NUMBER).sizeWidthToFit();
         if (currentSelected != -1 && currentSelected < userIconsTable.getRowCount()) {
             userIconsTable.setRowSelectionInterval(currentSelected, currentSelected);
         }
@@ -230,14 +230,14 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private void enableAll() {
         DefaultTableModel tableModel = iconsTabbedPane.getSelectedIndex() == 0 ? pluginIconsSettingsTableModel : userIconsSettingsTableModel;
         for (int settingsTableRow = 0; settingsTableRow < tableModel.getRowCount(); settingsTableRow++) {
-            tableModel.setValueAt(true, settingsTableRow, PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER);
+            tableModel.setValueAt(true, settingsTableRow, PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER); // Enabled row number is the same for both models
         }
     }
 
     private void disableAll() {
         DefaultTableModel tableModel = iconsTabbedPane.getSelectedIndex() == 0 ? pluginIconsSettingsTableModel : userIconsSettingsTableModel;
         for (int settingsTableRow = 0; settingsTableRow < tableModel.getRowCount(); settingsTableRow++) {
-            tableModel.setValueAt(false, settingsTableRow, PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER);
+            tableModel.setValueAt(false, settingsTableRow, PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER); // Enabled row number is the same for both models
         }
     }
 
@@ -273,29 +273,30 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private JComponent createToolbarDecorator() {
-        ToolbarDecorator decorator = ToolbarDecorator.createDecorator(userIconsTable).setAddAction(anActionButton -> {
-            ModelDialog modelDialog = new ModelDialog(this);
-            boolean wasOk = modelDialog.showAndGet();
-            if (wasOk) {
-                Model newModel = modelDialog.getModelFromInput();
-                customModels.add(newModel);
-                sortModels(customModels);
+        ToolbarDecorator decorator = ToolbarDecorator.createDecorator(userIconsTable)
+            .setAddAction(anActionButton -> {
+                ModelDialog modelDialog = new ModelDialog(this);
+                boolean wasOk = modelDialog.showAndGet();
+                if (wasOk) {
+                    Model newModel = modelDialog.getModelFromInput();
+                    customModels.add(newModel);
+                    sortModels(customModels);
+                    setUserIconsTableModel();
+                }
+            }).setEditAction(anActionButton -> {
+                int currentSelected = userIconsTable.getSelectedRow();
+                ModelDialog modelDialog = new ModelDialog(this);
+                modelDialog.setModelToEdit(customModels.get(currentSelected));
+                boolean wasOk = modelDialog.showAndGet();
+                if (wasOk) {
+                    Model newModel = modelDialog.getModelFromInput();
+                    customModels.set(currentSelected, newModel);
+                    setUserIconsTableModel();
+                }
+            }).setRemoveAction(anActionButton -> {
+                customModels.remove(userIconsTable.getSelectedRow());
                 setUserIconsTableModel();
-            }
-        }).setEditAction(anActionButton -> {
-            int currentSelected = userIconsTable.getSelectedRow();
-            ModelDialog modelDialog = new ModelDialog(this);
-            modelDialog.setModelToEdit(customModels.get(currentSelected));
-            boolean wasOk = modelDialog.showAndGet();
-            if (wasOk) {
-                Model newModel = modelDialog.getModelFromInput();
-                customModels.set(currentSelected, newModel);
-                setUserIconsTableModel();
-            }
-        }).setRemoveAction(anActionButton -> {
-            customModels.remove(userIconsTable.getSelectedRow());
-            setUserIconsTableModel();
-        }).setButtonComparator("Add", "Edit", "Remove");
+            }).setButtonComparator("Add", "Edit", "Remove");
         return decorator.createPanel();
     }
 

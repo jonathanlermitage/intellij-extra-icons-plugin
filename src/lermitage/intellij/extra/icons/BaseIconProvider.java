@@ -90,6 +90,10 @@ public abstract class BaseIconProvider extends IconProvider {
         return null;
     }
 
+    /**
+     * Depending on whether the checkbox in the settings is checked, this method appends
+     * the user added models to the model list.
+     */
     private List<Model> getModelsIncludingUserModels(@Nullable Project project) {
         SettingsService service = SettingsService.getInstance(project);
         SettingsProjectService projectService = (SettingsProjectService) service;
@@ -123,6 +127,10 @@ public abstract class BaseIconProvider extends IconProvider {
         return !service.getDisabledModelIds().contains(model.getId());
     }
 
+    /**
+     * Returns the project service if the checkbox in the project settings was checked,
+     * otherwise returns the IDE settings service.
+     */
     private SettingsService getSettingsService(Project project) {
         SettingsService service = SettingsService.getInstance(project);
         if (!((SettingsProjectService) service).isOverrideIDESettings()) {
