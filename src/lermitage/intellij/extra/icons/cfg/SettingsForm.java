@@ -184,7 +184,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             boolean enabled = item.getStateChange() == ItemEvent.SELECTED;
             setComponentState(enabled);
         });
-        addToIDEUserIconsCheckbox.setText("Add project user icons to IDE user icons");
+        addToIDEUserIconsCheckbox.setText("Don't overwrite IDE user icons");
         addToIDEUserIconsCheckbox.setToolTipText("If unchecked, project user icons will overwrite IDE user icons");
         boolean shouldAdd = SettingsProjectService.getInstance(project).isAddToIDEUserIcons();
         addToIDEUserIconsCheckbox.setSelected(shouldAdd);
