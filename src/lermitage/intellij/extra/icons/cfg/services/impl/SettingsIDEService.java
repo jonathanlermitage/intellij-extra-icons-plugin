@@ -1,4 +1,4 @@
-package lermitage.intellij.extra.icons.cfg.settings;
+package lermitage.intellij.extra.icons.cfg.services.impl;
 
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;

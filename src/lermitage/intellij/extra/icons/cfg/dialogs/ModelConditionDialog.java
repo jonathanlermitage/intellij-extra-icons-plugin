@@ -1,4 +1,4 @@
-package lermitage.intellij.extra.icons.cfg;
+package lermitage.intellij.extra.icons.cfg.dialogs;
 
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.ui.DialogWrapper;
@@ -40,11 +40,6 @@ public class ModelConditionDialog extends DialogWrapper {
         setTitle("Add Condition");
     }
 
-    private void createUIComponents() {
-        regexTextField = new EditorTextField("", ProjectManager.getInstance().getDefaultProject(), RegExpFileType.INSTANCE);
-        regexTextField.setFontInheritedFromLAF(false);
-    }
-
     @Nullable
     @Override
     protected JComponent createCenterPanel() {
@@ -52,7 +47,7 @@ public class ModelConditionDialog extends DialogWrapper {
         return dialogPanel;
     }
 
-    public void initComponents() {
+    private void initComponents() {
         ButtonGroup endButtonGroup = new ButtonGroup();
         endButtonGroup.add(endsWithRadioButton);
         endButtonGroup.add(mayEndWithRadioButton);
@@ -109,6 +104,11 @@ public class ModelConditionDialog extends DialogWrapper {
         separatorLabel.setText("Use " + FIELD_SEPARATOR + " as a separator for multiple values");
     }
 
+    private void createUIComponents() {
+        regexTextField = new EditorTextField("", ProjectManager.getInstance().getDefaultProject(), RegExpFileType.INSTANCE);
+        regexTextField.setFontInheritedFromLAF(false);
+    }
+
     @Nullable
     @Override
     protected ValidationInfo doValidate() {
@@ -155,6 +155,9 @@ public class ModelConditionDialog extends DialogWrapper {
         return null;
     }
 
+    /**
+     * Creates a {@link ModelCondition} object from the user input.
+     */
     public ModelCondition getModelConditionFromInput() {
         ModelCondition modelCondition = new ModelCondition();
 
@@ -193,6 +196,9 @@ public class ModelConditionDialog extends DialogWrapper {
         return modelCondition;
     }
 
+    /**
+     * Sets a condition that can be edited using this dialog.
+     */
     public void setCondition(ModelCondition modelCondition) {
         setTitle("Edit Condition");
 
@@ -222,6 +228,9 @@ public class ModelConditionDialog extends DialogWrapper {
         }
     }
 
+    /**
+     * Tries to compile a given regex and returns an exception if it failed.
+     */
     @Nullable
     private PatternSyntaxException tryCompileRegex(String regex) {
         try {

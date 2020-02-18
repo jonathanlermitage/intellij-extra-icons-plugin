@@ -1,4 +1,4 @@
-package lermitage.intellij.extra.icons.cfg.provider;
+package lermitage.intellij.extra.icons.cfg.providers;
 
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.ConfigurableProvider;

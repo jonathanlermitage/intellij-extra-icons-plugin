@@ -10,8 +10,8 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileSystemItem;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
-import lermitage.intellij.extra.icons.cfg.settings.SettingsIDEService;
-import lermitage.intellij.extra.icons.cfg.settings.SettingsProjectService;
+import lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService;
+import lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

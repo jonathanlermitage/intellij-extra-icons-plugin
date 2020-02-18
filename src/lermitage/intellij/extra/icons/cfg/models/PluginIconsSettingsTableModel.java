@@ -1,14 +1,14 @@
-package lermitage.intellij.extra.icons.cfg;
+package lermitage.intellij.extra.icons.cfg.models;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class PluginIconsSettingsTableModel extends DefaultTableModel {
 
-    static int ICON_ROW_NUMBER = 0;
-    static int ICON_ENABLED_ROW_NUMBER = 1;
-    static int ICON_LABEL_ROW_NUMBER = 2;
-    static int ICON_ID_ROW_NUMBER = 3;
+    public static int ICON_ROW_NUMBER = 0;
+    public static int ICON_ENABLED_ROW_NUMBER = 1;
+    public static int ICON_LABEL_ROW_NUMBER = 2;
+    public static int ICON_ID_ROW_NUMBER = 3;
 
     /**
      * Table columns type.
@@ -21,7 +21,7 @@ public class PluginIconsSettingsTableModel extends DefaultTableModel {
      */
     private final boolean[] canEdit = new boolean[]{false, true, false, false};
 
-    PluginIconsSettingsTableModel() {
+    public PluginIconsSettingsTableModel() {
         super(new Object[][]{}, new String[]{"", "", "Description", ""});
     }
 

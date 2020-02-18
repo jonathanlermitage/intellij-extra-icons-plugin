@@ -1,4 +1,4 @@
-package lermitage.intellij.extra.icons.cfg;
+package lermitage.intellij.extra.icons.cfg.dialogs;
 
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
@@ -13,6 +13,7 @@ import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.IconUtil;
 import lermitage.intellij.extra.icons.*;
+import lermitage.intellij.extra.icons.cfg.SettingsForm;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -23,7 +24,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static lermitage.intellij.extra.icons.cfg.ModelConditionDialog.FIELD_SEPARATOR;
+import static lermitage.intellij.extra.icons.cfg.dialogs.ModelConditionDialog.FIELD_SEPARATOR;
 
 public class ModelDialog extends DialogWrapper {
 
@@ -46,12 +47,18 @@ public class ModelDialog extends DialogWrapper {
 
     private Model modelToEdit;
 
-    protected ModelDialog(SettingsForm settingsForm) {
+    public ModelDialog(SettingsForm settingsForm) {
         super(true);
         this.settingsForm = settingsForm;
         init();
         setTitle("Add New Model");
         initComponents();
+    }
+
+    @Nullable
+    @Override
+    protected JComponent createCenterPanel() {
+        return pane;
     }
 
     private void initComponents() {
@@ -72,38 +79,13 @@ public class ModelDialog extends DialogWrapper {
             }
         }));
         conditionsCheckboxList.getEmptyText().setText("No conditions added.");
-
-        toolbarPanel = ToolbarDecorator.createDecorator(conditionsCheckboxList).setAddAction(anActionButton -> {
-            ModelConditionDialog modelConditionDialog = new ModelConditionDialog();
-            boolean wasOk = modelConditionDialog.showAndGet();
-            if (wasOk) {
-                ModelCondition modelCondition = modelConditionDialog.getModelConditionFromInput();
-                conditionsCheckboxList.addItem(modelCondition, modelCondition.asReadableString(FIELD_SEPARATOR), modelCondition.isEnabled());
-            }
-        }).setEditAction(anActionButton -> {
-            int selectedItem = conditionsCheckboxList.getSelectedIndex();
-            ModelCondition selectedCondition = Objects.requireNonNull(conditionsCheckboxList.getItemAt(selectedItem));
-            boolean isEnabled = conditionsCheckboxList.isItemSelected(selectedCondition);
-            ModelConditionDialog modelConditionDialog = new ModelConditionDialog();
-            modelConditionDialog.setCondition(selectedCondition);
-            boolean wasOk = modelConditionDialog.showAndGet();
-            if (wasOk) {
-                ModelCondition newCondition = modelConditionDialog.getModelConditionFromInput();
-                conditionsCheckboxList.updateItem(selectedCondition, newCondition, newCondition.asReadableString(FIELD_SEPARATOR));
-                newCondition.setEnabled(isEnabled);
-            }
-        }).setRemoveAction(anActionButton -> {
-            ListUtil.removeSelectedItems(conditionsCheckboxList);
-        }).setButtonComparator("Add", "Edit", "Remove").createPanel();
+        toolbarPanel = createConditionsListToolbar();
         conditionsPanel.add(toolbarPanel, BorderLayout.CENTER);
     }
 
-    @Nullable
-    @Override
-    protected JComponent createCenterPanel() {
-        return pane;
-    }
-
+    /**
+     * Creates a new model from the user input.
+     */
     public Model getModelFromInput() {
         String icon = null;
         IconType iconType = null;
@@ -130,18 +112,9 @@ public class ModelDialog extends DialogWrapper {
         return newModel;
     }
 
-    private CustomIconLoader.ImageWrapper loadCustomIcon() {
-        VirtualFile[] virtualFiles = FileChooser.chooseFiles(
-            new FileChooserDescriptor(true, false, false, false, false, false)
-                .withFileFilter(file -> extensions.contains(file.getExtension())),
-            settingsForm.getProject(),
-            null);
-        if (virtualFiles.length > 0) {
-            return CustomIconLoader.loadFromVirtualFile(virtualFiles[0]);
-        }
-        return null;
-    }
-
+    /**
+     * Sets a model that will be edited using this dialog.
+     */
     public void setModelToEdit(Model model) {
         modelToEdit = model;
         setTitle("Edit Model");
@@ -156,6 +129,48 @@ public class ModelDialog extends DialogWrapper {
         model.getConditions().forEach(modelCondition -> {
             conditionsCheckboxList.addItem(modelCondition, modelCondition.asReadableString(FIELD_SEPARATOR), modelCondition.isEnabled());
         });
+    }
+
+    /**
+     * Adds a toolbar with add, edit and remove actions to the CheckboxList.
+     */
+    private JPanel createConditionsListToolbar() {
+        return ToolbarDecorator.createDecorator(conditionsCheckboxList).setAddAction(anActionButton -> {
+            ModelConditionDialog modelConditionDialog = new ModelConditionDialog();
+            if (modelConditionDialog.showAndGet()) {
+                ModelCondition modelCondition = modelConditionDialog.getModelConditionFromInput();
+                conditionsCheckboxList.addItem(modelCondition, modelCondition.asReadableString(FIELD_SEPARATOR), modelCondition.isEnabled());
+            }
+        }).setEditAction(anActionButton -> {
+            int selectedItem = conditionsCheckboxList.getSelectedIndex();
+            ModelCondition selectedCondition = Objects.requireNonNull(conditionsCheckboxList.getItemAt(selectedItem));
+            boolean isEnabled = conditionsCheckboxList.isItemSelected(selectedCondition);
+
+            ModelConditionDialog modelConditionDialog = new ModelConditionDialog();
+            modelConditionDialog.setCondition(selectedCondition);
+            if (modelConditionDialog.showAndGet()) {
+                ModelCondition newCondition = modelConditionDialog.getModelConditionFromInput();
+                conditionsCheckboxList.updateItem(selectedCondition, newCondition, newCondition.asReadableString(FIELD_SEPARATOR));
+                newCondition.setEnabled(isEnabled);
+            }
+        }).setRemoveAction(anActionButton -> {
+            ListUtil.removeSelectedItems(conditionsCheckboxList);
+        }).setButtonComparator("Add", "Edit", "Remove").createPanel();
+    }
+
+    /**
+     * Opens a file chooser dialog and loads the icon.
+     */
+    private CustomIconLoader.ImageWrapper loadCustomIcon() {
+        VirtualFile[] virtualFiles = FileChooser.chooseFiles(
+            new FileChooserDescriptor(true, false, false, false, false, false)
+                .withFileFilter(file -> extensions.contains(file.getExtension())),
+            settingsForm.getProject(),
+            null);
+        if (virtualFiles.length > 0) {
+            return CustomIconLoader.loadFromVirtualFile(virtualFiles[0]);
+        }
+        return null;
     }
 
     private void setIdComponentsVisible(boolean visible) {

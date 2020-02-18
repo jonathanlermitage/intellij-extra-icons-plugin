@@ -10,7 +10,10 @@ import com.intellij.ui.table.JBTable;
 import lermitage.intellij.extra.icons.CustomIconLoader;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelType;
-import lermitage.intellij.extra.icons.cfg.settings.SettingsProjectService;
+import lermitage.intellij.extra.icons.cfg.dialogs.ModelDialog;
+import lermitage.intellij.extra.icons.cfg.models.PluginIconsSettingsTableModel;
+import lermitage.intellij.extra.icons.cfg.models.UserIconsSettingsTableModel;
+import lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService;
 import org.apache.commons.collections.CollectionUtils;
 import org.intellij.lang.regexp.RegExpFileType;
 import org.jetbrains.annotations.Nls;
@@ -161,6 +164,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         loadIgnoredPattern();
     }
 
+    private void createUIComponents() {
+        // Use default project here because project is not available yet
+        ignoredPatternTextField = new EditorTextField("", ProjectManager.getInstance().getDefaultProject(), RegExpFileType.INSTANCE);
+        ignoredPatternTextField.setFontInheritedFromLAF(false);
+    }
+
     private void initCheckbox() {
         if (!isProjectForm) {
             overrideSettingsPanel.setVisible(false);
@@ -276,8 +285,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         ToolbarDecorator decorator = ToolbarDecorator.createDecorator(userIconsTable)
             .setAddAction(anActionButton -> {
                 ModelDialog modelDialog = new ModelDialog(this);
-                boolean wasOk = modelDialog.showAndGet();
-                if (wasOk) {
+                if (modelDialog.showAndGet()) {
                     Model newModel = modelDialog.getModelFromInput();
                     customModels.add(newModel);
                     sortModels(customModels);
@@ -287,8 +295,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 int currentSelected = userIconsTable.getSelectedRow();
                 ModelDialog modelDialog = new ModelDialog(this);
                 modelDialog.setModelToEdit(customModels.get(currentSelected));
-                boolean wasOk = modelDialog.showAndGet();
-                if (wasOk) {
+                if (modelDialog.showAndGet()) {
                     Model newModel = modelDialog.getModelFromInput();
                     customModels.set(currentSelected, newModel);
                     setUserIconsTableModel();
@@ -309,11 +316,5 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             }
             return typeComparison;
         });
-    }
-
-    private void createUIComponents() {
-        // Use default project here because project is not available yet
-        ignoredPatternTextField = new EditorTextField("", ProjectManager.getInstance().getDefaultProject(), RegExpFileType.INSTANCE);
-        ignoredPatternTextField.setFontInheritedFromLAF(false);
     }
 }
