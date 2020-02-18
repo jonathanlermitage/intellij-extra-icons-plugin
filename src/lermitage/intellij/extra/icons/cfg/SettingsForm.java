@@ -194,6 +194,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         buttonEnableAll.setEnabled(enabled);
         buttonDisableAll.setEnabled(enabled);
         pluginIconsTable.setEnabled(enabled);
+        userIconsTable.setEnabled(enabled);
         ignoredPatternTitle.setEnabled(enabled);
         ignoredPatternTextField.setEnabled(enabled);
         title.setEnabled(enabled);
@@ -210,7 +211,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void loadUserIconsTable() {
-        this.customModels = new ArrayList<>(SettingsService.getInstance(project).getCustomModels());
+        customModels = new ArrayList<>(SettingsService.getInstance(project).getCustomModels());
+        sortModels(customModels);
         setUserIconsTableModel();
     }
 
