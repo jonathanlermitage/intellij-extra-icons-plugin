@@ -12,7 +12,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class InMemoryIconLoader {
+public class CustomIconLoader {
 
     public static Icon getIcon(Model model) {
         if (model.getIconType() == IconType.PATH) {

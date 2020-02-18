@@ -37,7 +37,7 @@ public class ModelDialog extends DialogWrapper {
     private JButton chooseIconButton;
     private JPanel conditionsPanel;
 
-    private InMemoryIconLoader.ImageWrapper customIconImage;
+    private CustomIconLoader.ImageWrapper customIconImage;
     private JPanel toolbarPanel;
 
     private final List<ModelCondition> conditions = new ArrayList<>();
@@ -104,7 +104,7 @@ public class ModelDialog extends DialogWrapper {
         String icon = null;
         IconType iconType = null;
         if (customIconImage != null) {
-            icon = InMemoryIconLoader.toBase64(customIconImage);
+            icon = CustomIconLoader.toBase64(customIconImage);
             iconType = customIconImage.getIconType();
         }
         return new Model(modelIDField.getText(),
@@ -115,14 +115,14 @@ public class ModelDialog extends DialogWrapper {
             conditions);
     }
 
-    private InMemoryIconLoader.ImageWrapper loadCustomIcon() {
+    private CustomIconLoader.ImageWrapper loadCustomIcon() {
         VirtualFile[] virtualFiles = FileChooser.chooseFiles(
             new FileChooserDescriptor(true, false, false, false, false, false)
                 .withFileFilter(file -> extensions.contains(file.getExtension())),
             settingsForm.getProject(),
             null);
         if (virtualFiles.length > 0) {
-            return InMemoryIconLoader.loadFromVirtualFile(virtualFiles[0]);
+            return CustomIconLoader.loadFromVirtualFile(virtualFiles[0]);
         }
         return null;
     }

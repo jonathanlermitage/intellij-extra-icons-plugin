@@ -64,7 +64,7 @@ public abstract class BaseIconProvider extends IconProvider {
             final Optional<String> fullPath = getFullPath(psiDirectory);
             for (final Model model : models) {
                 if (model.getModelType() == ModelType.DIR && isModelEnabled(project, model) && model.check(parentName, folderName, fullPath)) {
-                    return InMemoryIconLoader.getIcon(model);
+                    return CustomIconLoader.getIcon(model);
                 }
             }
         } else {
@@ -79,7 +79,7 @@ public abstract class BaseIconProvider extends IconProvider {
                 final Optional<String> fullPath = getFullPath(file);
                 for (final Model model : models) {
                     if (model.getModelType() == ModelType.FILE && isModelEnabled(project, model) && model.check(parentName, fileName, fullPath)) {
-                        return InMemoryIconLoader.getIcon(model);
+                        return CustomIconLoader.getIcon(model);
                     }
                 }
             }

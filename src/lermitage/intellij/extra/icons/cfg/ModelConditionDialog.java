@@ -195,6 +195,7 @@ public class ModelConditionDialog extends DialogWrapper {
 
     public void setCondition(ModelCondition modelCondition) {
         setTitle("Edit Condition");
+
         if (modelCondition.hasRegex()) {
             regexCheckBox.setSelected(true);
             regexTextField.setText(modelCondition.getRegex());
@@ -221,6 +222,7 @@ public class ModelConditionDialog extends DialogWrapper {
         }
     }
 
+    @Nullable
     private PatternSyntaxException tryCompileRegex(String regex) {
         try {
             Pattern.compile(regex);

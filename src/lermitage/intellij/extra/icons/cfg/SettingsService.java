@@ -28,8 +28,6 @@ public abstract class SettingsService {
     @SuppressWarnings("WeakerAccess")
     public String ignoredPattern;
 
-    public List<Model> customModels = new ArrayList<>();
-
     private Pattern ignoredPatternObj;
     private Boolean isIgnoredPatternValid;
 
@@ -61,17 +59,6 @@ public abstract class SettingsService {
     public void setIgnoredPattern(String ignoredPattern) {
         this.ignoredPattern = ignoredPattern;
         compileAndSetRegex(ignoredPattern);
-    }
-
-    public List<Model> getCustomModels() {
-        if (customModels == null) { // a malformed xml file could make it null
-            customModels = new ArrayList<>();
-        }
-        return customModels;
-    }
-
-    public void setCustomModels(List<Model> customModels) {
-        this.customModels = customModels;
     }
 
     @NotNull
