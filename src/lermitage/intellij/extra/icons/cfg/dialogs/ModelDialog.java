@@ -81,6 +81,10 @@ public class ModelDialog extends DialogWrapper {
         conditionsCheckboxList.getEmptyText().setText("No conditions added.");
         toolbarPanel = createConditionsListToolbar();
         conditionsPanel.add(toolbarPanel, BorderLayout.CENTER);
+
+        for (ModelType value : ModelType.values()) {
+            typeComboBox.addItem(value.getFriendlyName());
+        }
     }
 
     /**
@@ -100,7 +104,7 @@ public class ModelDialog extends DialogWrapper {
         Model newModel = new Model(modelIDField.isVisible() ? modelIDField.getText() : null,
             icon,
             descriptionField.getText(),
-            ModelType.valueOf(typeComboBox.getSelectedItem().toString()),
+            ModelType.getByFriendlyName(typeComboBox.getSelectedItem().toString()),
             iconType,
             IntStream.range(0, conditionsCheckboxList.getItemsCount())
                 .mapToObj(index -> conditionsCheckboxList.getItemAt(index))
