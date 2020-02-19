@@ -3,9 +3,16 @@ package lermitage.intellij.extra.icons;
 import org.jetbrains.annotations.Contract;
 
 public enum ModelType {
-    FILE,
-    DIR;
-    
+    FILE("File"),
+    DIR("Directory");
+
+
+    private final String friendlyName;
+
+    ModelType(String friendlyName) {
+        this.friendlyName = friendlyName;
+    }
+
     /**
      * {@link ModelType} comparator: {@link ModelType#DIR} before {@link ModelType#FILE}.
      */
@@ -24,5 +31,16 @@ public enum ModelType {
             return -1;
         }
         return 1;
+    }
+
+    public String getFriendlyName() {
+        return friendlyName;
+    }
+
+    public static ModelType getByFriendlyName(String friendlyName) {
+        for (ModelType modelType : ModelType.values()) {
+            if (modelType.friendlyName.equals(friendlyName)) return modelType;
+        }
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-package lermitage.intellij.extra.icons.cfg.settings;
+package lermitage.intellij.extra.icons.cfg.services.impl;
 
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
@@ -15,6 +15,10 @@ import org.jetbrains.annotations.NotNull;
 )
 public class SettingsIDEService extends SettingsService implements PersistentStateComponent<SettingsIDEService> {
 
+    public static SettingsIDEService getInstance() {
+        return ServiceManager.getService(SettingsIDEService.class);
+    }
+
     @Override
     public SettingsIDEService getState() {
         return this;
@@ -23,9 +27,5 @@ public class SettingsIDEService extends SettingsService implements PersistentSta
     @Override
     public void loadState(@NotNull SettingsIDEService state) {
         XmlSerializerUtil.copyBean(state, this);
-    }
-
-    public static SettingsIDEService getInstance() {
-        return ServiceManager.getService(SettingsIDEService.class);
     }
 }

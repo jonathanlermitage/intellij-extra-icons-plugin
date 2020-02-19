@@ -1,28 +1,44 @@
 package lermitage.intellij.extra.icons;
 
+import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.util.xmlb.annotations.OptionTag;
+import com.intellij.util.xmlb.annotations.Tag;
 import org.intellij.lang.annotations.Language;
 
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
+@Tag
 public class ModelCondition {
 
+    @OptionTag
     private boolean start = false;
+    @OptionTag
     private boolean eq = false;
+    @OptionTag
     private boolean mayEnd = false;
+    @OptionTag
     private boolean end = false;
+    @OptionTag
     private boolean noDot = false;
+    @OptionTag
     private boolean checkParent = false;
-    private boolean regex = false;
+    @OptionTag
+    private boolean hasRegex = false;
+    @OptionTag
+    private boolean enabled = true;
 
+    @OptionTag
     private String[] names = new String[0];
+    @OptionTag
     private Set<String> parentNames = Collections.emptySet();
+    @OptionTag
     private String[] extensions = new String[0];
+    @OptionTag
+    private String regex;
     private Pattern pattern;
 
     public void setParents(String... parents) {
@@ -45,7 +61,7 @@ public class ModelCondition {
         this.extensions = extensions;
     }
 
-    public void setExtensions(String... extensions) {
+    public void setEnd(String... extensions) {
         this.end = true;
         this.extensions = extensions;
     }
@@ -55,18 +71,33 @@ public class ModelCondition {
     }
 
     public void setRegex(@Language("RegExp") String regex) {
-        this.regex = true;
+        this.hasRegex = true;
+        this.regex = regex;
         this.pattern = Pattern.compile(regex);
     }
 
     public boolean check(String parentName, String fileName, Optional<String> fullPath) {
+        if (!enabled) {
+            return false;
+        }
+
         if (checkParent) {
-            if (!parentNames.contains(parentName)) {
-                return false;
+            if (!(start || eq || end || mayEnd)) {
+                if (parentNames.contains(parentName)) {
+                    return true; // To style all files in a subdirectory
+                }
+            }
+            else {
+                if (!parentNames.contains(parentName)) {
+                    return false;
+                }
             }
         }
 
-        if (regex && fullPath.isPresent()) {
+        if (hasRegex && fullPath.isPresent()) {
+            if (pattern == null) {
+                pattern = Pattern.compile(regex);
+            }
             if (pattern.matcher(fullPath.get()).matches()) {
                 return true;
             }
@@ -144,5 +175,126 @@ public class ModelCondition {
             }
         }
         return false;
+    }
+
+    public boolean hasStart() {
+        return start;
+    }
+
+    public boolean hasEq() {
+        return eq;
+    }
+
+    public boolean hasMayEnd() {
+        return mayEnd;
+    }
+
+    public boolean hasEnd() {
+        return end;
+    }
+
+    public boolean hasNoDot() {
+        return noDot;
+    }
+
+    public boolean hasCheckParent() {
+        return checkParent;
+    }
+
+    public boolean hasRegex() {
+        return hasRegex;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public boolean isValid() {
+        return hasRegex || checkParent || start || eq || end || mayEnd;
+    }
+
+    public String[] getNames() {
+        return names;
+    }
+
+    public String[] getExtensions() {
+        return extensions;
+    }
+
+    public Set<String> getParents() {
+        return parentNames;
+    }
+
+    public String getRegex() {
+        return regex;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String asReadableString(String delimiter) {
+        ArrayList<String> parameters = new ArrayList<>();
+        if (hasRegex) {
+            parameters.add("regex: " + this.regex);
+        }
+
+        if (checkParent) {
+            parameters.add("parent(s): " + String.join(delimiter, this.parentNames));
+        }
+
+        if (start || eq) {
+            String names = String.join(delimiter, this.names);
+            if (start) {
+                names = "name starts with: " + names;
+                if (noDot) {
+                    names += " and does not contain a dot";
+                }
+            }
+            else {
+                names = "name equals: " + names;
+            }
+            parameters.add(names);
+        }
+
+        if (mayEnd || end) {
+            String extensions = String.join(delimiter, this.extensions);
+            if (mayEnd) {
+                extensions = "name may end with: " + extensions;
+            }
+            else {
+                extensions = "name ends with: " + extensions;
+            }
+            parameters.add(extensions);
+        }
+
+        return StringUtil.capitalize(String.join(", ", parameters));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ModelCondition that = (ModelCondition) o;
+        return start == that.start &&
+            eq == that.eq &&
+            mayEnd == that.mayEnd &&
+            end == that.end &&
+            noDot == that.noDot &&
+            checkParent == that.checkParent &&
+            hasRegex == that.hasRegex &&
+            enabled == that.enabled &&
+            Arrays.equals(names, that.names) &&
+            parentNames.equals(that.parentNames) &&
+            Arrays.equals(extensions, that.extensions) &&
+            Objects.equals(regex, that.regex);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(start, eq, mayEnd, end, noDot, checkParent, hasRegex, enabled, parentNames, regex);
+        result = 31 * result + Arrays.hashCode(names);
+        result = 31 * result + Arrays.hashCode(extensions);
+        return result;
     }
 }

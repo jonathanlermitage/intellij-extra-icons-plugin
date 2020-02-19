@@ -58,12 +58,12 @@
             id="genericIconProvider"
             order="first"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
-        <applicationService serviceImplementation="lermitage.intellij.extra.icons.cfg.settings.SettingsIDEService" />
-        <projectService serviceImplementation="lermitage.intellij.extra.icons.cfg.settings.SettingsProjectService"/>
+        <applicationService serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService" />
+        <projectService serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService"/>
 
-        <applicationConfigurable provider="lermitage.intellij.extra.icons.cfg.provider.IDEConfigurableProvider" id="LermitageExtraIcons"
+        <applicationConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.IDEConfigurableProvider" id="LermitageExtraIcons"
                                  displayName="Extra Icons" parentId="appearance"/>
-        <projectConfigurable provider="lermitage.intellij.extra.icons.cfg.provider.ProjectConfigurableProvider" id="LermitageExtraIcons-Project"
+        <projectConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.ProjectConfigurableProvider" id="LermitageExtraIcons-Project"
                              displayName="Project" parentId="LermitageExtraIcons"/>
     </extensions>
 
