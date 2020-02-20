@@ -17,6 +17,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.20.0 (WIP)
+    <ul>
+      <li>user can now add custom icons, path ignore regex now works on relative path to project base dir. Thx Florian Böhm.</li>
+    </ul>
     1.19.0 (2020/02/13)
     <ul>
       <li>add an option to ignore file/folder pattern.</li>
@@ -32,11 +36,6 @@
       <li>support Browserslist <i>browserslist</i>, <i>.browserslistrc</i> files. Thx Florian Böhm.</li>
       <li>replace Typescript and SASS PNG icons by SVG. Thx Florian Böhm.</li>
       <li>internal improvements. Thx Florian Böhm.</li>
-    </ul>
-    1.17.0 (2020/01/31)
-    <ul>
-      <li>make settings changes apply without having to restart. Thx Florian Böhm.</li>
-      <li>fix Angular icons size. Thx Florian Böhm.</li>
     </ul>
     <p>
         See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">changelog</a>
