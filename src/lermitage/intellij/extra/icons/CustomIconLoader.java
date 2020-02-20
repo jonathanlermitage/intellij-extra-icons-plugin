@@ -3,11 +3,14 @@ package lermitage.intellij.extra.icons;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.*;
+import com.intellij.util.ui.UIUtil;
+import sun.awt.image.ToolkitImage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -90,7 +93,15 @@ public class CustomIconLoader {
                     if (image instanceof JBHiDPIScaledImage) {
                         image = ((JBHiDPIScaledImage) image).getDelegate();
                     }
-                    ImageIO.write((BufferedImage) image, "png", outputStream);
+                    if (image instanceof ToolkitImage) {
+                        image = ((ToolkitImage) image).getBufferedImage();
+                    }
+                    if (!(image instanceof RenderedImage)) {
+                        BufferedImage bufferedImage = UIUtil.createImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+                        bufferedImage.getGraphics().drawImage(image, 0, 0, null);
+                        image = bufferedImage;
+                    }
+                    ImageIO.write((RenderedImage) image, "png", outputStream);
                 }
                 catch (IOException ignored) {
 
