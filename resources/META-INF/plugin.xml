@@ -17,7 +17,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.20.0 (WIP)
+    1.20.0 (2020/02/21)
     <ul>
       <li>user can now add custom icons, path ignore regex now works on relative path to project base dir. Thx Florian Böhm.</li>
     </ul>

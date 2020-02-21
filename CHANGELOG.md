@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.20.0 (WIP)
+### 1.20.0 (2020/02/21)
 * user can now add custom icons, path ignore regex now works on relative path to project base dir. Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/21).
 
 ### 1.19.0 (2020/02/13)
