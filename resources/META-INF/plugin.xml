@@ -17,6 +17,11 @@
     -->
 
     <change-notes><![CDATA[
+    1.21.0 (WIP)
+    <ul>
+      <li>fix model type selection when edit dialog is opened. Thx Florian Böhm.</li>
+      <li>support Liquibase files. Thx Mateusz Bajorek.</li>
+    </ul>
     1.20.0 (2020/02/21)
     <ul>
       <li>user can now add custom icons, path ignore regex now works on relative path to project base dir. Thx Florian Böhm.</li>
@@ -26,16 +31,6 @@
       <li>add an option to ignore file/folder pattern.</li>
       <li>rework MySQL Workbench dark icon.</li>
       <li>support <i>.bak</i> files.</li>
-    </ul>
-    1.18.0 (2020/02/08)
-    <ul>
-      <li>make Angular regexes more strict. Thx Bert Verhelst.</li>
-      <li>settings can now be overridden on project level. Thx Florian Böhm.</li>
-      <li>improve Angular files detection. Thx Florian Böhm.</li>
-      <li>improve Gradle Wrapper files detection. Thx Florian Böhm.</li>
-      <li>support Browserslist <i>browserslist</i>, <i>.browserslistrc</i> files. Thx Florian Böhm.</li>
-      <li>replace Typescript and SASS PNG icons by SVG. Thx Florian Böhm.</li>
-      <li>internal improvements. Thx Florian Böhm.</li>
     </ul>
     <p>
         See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">changelog</a>

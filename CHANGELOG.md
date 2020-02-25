@@ -1,5 +1,9 @@
 ## Extra Icons Change Log
 
+### 1.21.0 (WIP)
+* fix model type selection when edit dialog is opened. Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/25).
+* support Liquibase files. Thx [Mateusz Bajorek](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/24).
+
 ### 1.20.0 (2020/02/21)
 * user can now add custom icons, path ignore regex now works on relative path to project base dir. Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/21).
 
