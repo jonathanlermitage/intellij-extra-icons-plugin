@@ -128,7 +128,8 @@ public class ModelDialog extends DialogWrapper {
             modelIDField.setText(model.getId());
         }
         descriptionField.setText(model.getDescription());
-        typeComboBox.setSelectedItem(model.getModelType().name());
+        typeComboBox.setSelectedItem(model.getModelType().getFriendlyName());
+        typeComboBox.updateUI();
         SwingUtilities.invokeLater(() -> iconLabel.setIcon(CustomIconLoader.getIcon(model)));
         model.getConditions().forEach(modelCondition -> {
             conditionsCheckboxList.addItem(modelCondition, modelCondition.asReadableString(FIELD_SEPARATOR), modelCondition.isEnabled());
