@@ -23,6 +23,7 @@ Jonathan Lermitage (<jonathan.lermitage@gmail.com>, [linkedin](https://www.linke
 * Edoardo Luppi (<lp.edoardo@gmail.com>)
 * Matthias Kunnen ([github.com/MatthiasKunnen](https://github.com/MatthiasKunnen))
 * Florian Böhm ([github.com/Sheigutn](https://github.com/Sheigutn))
+* Mateusz Bajorek (<mateusz.bajorek@gmail.com>)
 
 ## Build
 
