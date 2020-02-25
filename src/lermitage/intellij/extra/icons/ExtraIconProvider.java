@@ -76,6 +76,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*[^a-zA-Z0-9]spec\\.(js|ts)"),
             ofFile("flyway", "/icons/flyway.png", "Flyway (regex): '.*/db/migration/.*\\.sql'")
                 .regex(".*/db/migration/.*\\.sql"),
+            ofFile("liquibase", "/icons/liquibase.png", "Liquibase (regex): '.*/db/changelog/.*\\.(sql|xml)'")
+                .regex(".*/db/changelog/.*\\.(sql|xml)"),
 
             //
             // file plus its containing folder
