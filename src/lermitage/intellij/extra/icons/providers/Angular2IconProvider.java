@@ -2,7 +2,6 @@ package lermitage.intellij.extra.icons.providers;
 
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.psi.PsiFile;
-import icons.AngularJSIcons;
 import lermitage.intellij.extra.icons.BaseIconProvider;
 import lermitage.intellij.extra.icons.Model;
 import org.angular2.lang.Angular2LangUtil;
@@ -24,7 +23,7 @@ public class Angular2IconProvider extends BaseIconProvider implements DumbAware 
     @NotNull
     public static List<Model> allModels() {
         return asList(
-            ofFile("angular_json", AngularJSIcons.Angular2, "Angular (in Angular 2+ projects only): angular.json")
+            ofFile("angular_json", "/icons/angular2.svg", "Angular (in Angular 2+ projects only): angular.json")
                 .eq("angular.json"),
             ofFile("angular_module", "/icons/angular-module.svg", "Angular (in Angular 2+ projects only): *.module.ts")
                 .end(".module.ts"),
