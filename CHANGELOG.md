@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.21.0 (WIP)
+### 1.21.0 (2020/02/27)
 * fix model type selection when edit dialog is opened. Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/25).
 * support Liquibase files. Thx [Mateusz Bajorek](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/24).
 
