@@ -4,6 +4,9 @@
 * fix model type selection when edit dialog is opened. Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/25).
 * support Liquibase files. Thx [Mateusz Bajorek](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/24).
 
+### 1.20.2 (2020/02/27)
+* restore missing Angular icon.
+
 ### 1.20.1 (2020/02/26)
 * fix [issue 26](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/26): can't open the Extra Icons settings if Angular plugin is disabled (or not installed, so IJ Community was affected too). Thx contributors!
 
