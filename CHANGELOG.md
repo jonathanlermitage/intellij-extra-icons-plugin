@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.22.0 (WIP)
+* internal: fix usage of a `UIUtil.createImage` method deprecated in IDE 193.
+
 ### 1.21.1 (2020/03/13)
 * fix background color of regex field with non-dark theme.
 

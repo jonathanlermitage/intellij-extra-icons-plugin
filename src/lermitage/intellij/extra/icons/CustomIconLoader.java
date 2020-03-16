@@ -2,7 +2,13 @@ package lermitage.intellij.extra.icons;
 
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.util.*;
+import com.intellij.ui.paint.PaintUtil;
+import com.intellij.util.Base64;
+import com.intellij.util.IconUtil;
+import com.intellij.util.ImageLoader;
+import com.intellij.util.JBHiDPIScaledImage;
+import com.intellij.util.RetinaImage;
+import com.intellij.util.SVGLoader;
 import com.intellij.util.ui.UIUtil;
 import sun.awt.image.ToolkitImage;
 
@@ -16,6 +22,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class CustomIconLoader {
+
+    private static final GraphicsConfiguration GRAPHICS_CFG = GraphicsEnvironment.isHeadless() ? null // some Gradle tasks run IDE in headless
+        : GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
 
     public static Icon getIcon(Model model) {
         if (model.getIconType() == IconType.PATH) {
@@ -70,8 +79,7 @@ public class CustomIconLoader {
                     image = ImageLoader.loadFromStream(byteArrayInputStream);
                     break;
             }
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             return null;
         }
         if (image == null) {
@@ -97,13 +105,17 @@ public class CustomIconLoader {
                         image = ((ToolkitImage) image).getBufferedImage();
                     }
                     if (!(image instanceof RenderedImage)) {
-                        BufferedImage bufferedImage = UIUtil.createImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+                        BufferedImage bufferedImage = UIUtil.createImage(
+                            GRAPHICS_CFG,
+                            image.getWidth(null),
+                            image.getHeight(null),
+                            BufferedImage.TYPE_INT_RGB,
+                            PaintUtil.RoundingMode.ROUND);
                         bufferedImage.getGraphics().drawImage(image, 0, 0, null);
                         image = bufferedImage;
                     }
                     ImageIO.write((RenderedImage) image, "png", outputStream);
-                }
-                catch (IOException ignored) {
+                } catch (IOException ignored) {
 
                 }
                 base64 = Base64.encode(outputStream.toByteArray());

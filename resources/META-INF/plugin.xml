@@ -17,6 +17,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.22.0 (WIP)
+    <ul>
+      <li>internal: fix usage of a <i>UIUtil.createImage</i> method deprecated in IDE 193.</li>
+    </ul>
     1.21.1 (2020/03/13)
     <ul>
       <li>fix background color of regex field with non-dark theme.</li>
