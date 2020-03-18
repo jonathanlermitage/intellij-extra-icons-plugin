@@ -91,7 +91,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
 
             //
             // file plus extension
-            //vscode.svg
+            //
             ofFile("vcskeep", "/icons/keep.svg", "Various VCS: .keep, .gitkeep, .hgkeep, .svnkeep")
                 .eq(".keep", ".gitkeep", ".hgkeep", ".svnkeep"),
             ofFile("htaccess", "/icons/apache.png", "Apache: .htaccess")
