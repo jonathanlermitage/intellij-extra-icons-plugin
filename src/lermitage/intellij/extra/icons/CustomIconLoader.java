@@ -1,5 +1,6 @@
 package lermitage.intellij.extra.icons;
 
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.paint.PaintUtil;
@@ -22,6 +23,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class CustomIconLoader {
+
+    private static final Logger LOGGER = Logger.getInstance(CustomIconLoader.class);
 
     private static final GraphicsConfiguration GRAPHICS_CFG = GraphicsEnvironment.isHeadless() ? null // some Gradle tasks run IDE in headless
         : GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
@@ -80,6 +83,7 @@ public class CustomIconLoader {
                     break;
             }
         } catch (IOException ex) {
+            LOGGER.info("Can't load " + iconType + " icon: " + ex.getMessage(), ex);
             return null;
         }
         if (image == null) {
@@ -90,7 +94,8 @@ public class CustomIconLoader {
 
     public static String toBase64(ImageWrapper imageWrapper) {
         String base64 = null;
-        switch (imageWrapper.getIconType()) {
+        IconType iconType = imageWrapper.getIconType();
+        switch (iconType) {
             case SVG:
                 base64 = Base64.encode(imageWrapper.getImageAsByteArray());
                 break;
@@ -115,8 +120,8 @@ public class CustomIconLoader {
                         image = bufferedImage;
                     }
                     ImageIO.write((RenderedImage) image, "png", outputStream);
-                } catch (IOException ignored) {
-
+                } catch (IOException ex) {
+                    LOGGER.info("Can't load " + iconType + " icon: " + ex.getMessage(), ex);
                 }
                 base64 = Base64.encode(outputStream.toByteArray());
                 break;
