@@ -2,6 +2,7 @@
 
 ### 1.22.0 (WIP)
 * internal: fix usage of a `UIUtil.createImage` method deprecated in IDE 193.
+* internal: log (at INFO level) some ignored errors while loading icon.
 * rework Browserslist icon.
 
 ### 1.21.1 (2020/03/13)
