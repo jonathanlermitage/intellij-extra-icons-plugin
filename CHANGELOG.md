@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.22.0 (WIP)
+### 1.22.0 (2020/03/19)
 * internal: fix usage of a `UIUtil.createImage` method deprecated in IDE 193.
 * internal: log (at INFO level) some ignored errors while loading icon.
 * rework Browserslist icon.
