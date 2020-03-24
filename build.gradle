@@ -15,8 +15,8 @@ plugins {
 
 apply plugin: 'idea'
 apply plugin: 'java'
-apply plugin: 'org.jetbrains.intellij'
-apply plugin: 'com.github.ben-manes.versions'
+apply plugin: 'org.jetbrains.intellij' // https://github.com/JetBrains/gradle-intellij-plugin
+apply plugin: 'com.github.ben-manes.versions' // https://github.com/ben-manes/gradle-versions-plugin
 
 sourceCompatibility = javaVersion
 targetCompatibility = javaVersion
