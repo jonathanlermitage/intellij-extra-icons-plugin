@@ -1,5 +1,9 @@
 ## Extra Icons Change Log
 
+### 1.23.0 (2020/03/28)
+* replace Travis PNG icon by SVG.
+* new plugin icon.
+
 ### 1.22.0 (2020/03/19)
 * internal: fix usage of a `UIUtil.createImage` method deprecated in IDE 193.
 * internal: log (at INFO level) some ignored errors while loading icon.

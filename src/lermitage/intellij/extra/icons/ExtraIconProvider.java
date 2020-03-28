@@ -292,7 +292,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("test", "testing").mayEnd(TXT),
             ofFile("todo", "/icons/todo.png", "To-Do: todo(.md,.txt,.adoc)")
                 .eq("todo").mayEnd(TXT),
-            ofFile("travis", "/icons/travis.png", "Travis CI: .travis.yml")
+            ofFile("travis", "/icons/travis.svg", "Travis CI: .travis.yml")
                 .eq(".travis.yml"),
             ofFile("vagrant", "/icons/vagrant.png", "Vagrant: vagrantfile")
                 .eq("vagrantfile"),

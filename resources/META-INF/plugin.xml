@@ -17,6 +17,11 @@
     -->
 
     <change-notes><![CDATA[
+    1.23.0 (2020/03/28)
+    <ul>
+      <li>replace Travis PNG icon by SVG.</li>
+      <li>new plugin icon.</li>
+    </ul>
     1.22.0 (2020/03/19)
     <ul>
       <li>internal: fix usage of a <i>UIUtil.createImage</i> method deprecated in IDE 193.</li>
@@ -26,11 +31,6 @@
     1.21.1 (2020/03/13)
     <ul>
       <li>fix background color of regex field with non-dark theme.</li>
-    </ul>
-    1.21.0 (2020/02/27)
-    <ul>
-      <li>fix model type selection when edit dialog is opened. Thx Florian Böhm.</li>
-      <li>support Liquibase files. Thx Mateusz Bajorek.</li>
     </ul>
     <p>
         See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">changelog</a>
