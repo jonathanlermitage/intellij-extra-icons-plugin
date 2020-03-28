@@ -4,10 +4,10 @@ matrix:
   include:
     - os: linux
       jdk: openjdk8
-      env: IDEA_VERSION=IU-2018.3
+      env: IDEA_VERSION=IU-2018.3.6
     - os: linux
       jdk: openjdk11
-      env: IDEA_VERSION=IU-2019.3
+      env: IDEA_VERSION=IU-2019.3.4
     - os: linux
       jdk: openjdk11
       env: IDEA_VERSION=IU-LATEST-EAP-SNAPSHOT

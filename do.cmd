@@ -22,7 +22,7 @@ if [%1] == [run] (
   gradlew buildPlugin runIde --warning-mode all
 )
 if [%1] == [run2019] (
-  gradlew buildPlugin runIde --warning-mode all -PideaVersion=IU-2019.3
+  gradlew buildPlugin runIde --warning-mode all -PideaVersion=IU-2019.3.4
 )
 if [%1] == [runeap] (
   gradlew buildPlugin runIde --warning-mode all -PideaVersion=IU-LATEST-EAP-SNAPSHOT
