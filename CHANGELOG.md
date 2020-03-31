@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.24.0 (WIP)
+* support Webpack `webpack.config.js` files.
+
 ### 1.23.0 (2020/03/28)
 * replace Travis PNG icon by SVG.
 * new plugin icon.
