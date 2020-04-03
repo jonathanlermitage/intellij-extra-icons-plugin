@@ -190,6 +190,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("gatling").mayEnd(".conf"),
             ofFile("gatling1", "/icons/gatling.png", "Gatling: start by 'gatling' and end by '.conf'")
                 .start("gatling").end(".conf"),
+            ofFile("gitpod", "/icons/gitpod.svg", "Gitpod: .gitpod.yml")
+                .start(".gitpod").end(YML),
             ofFile("grunt", "/icons/grunt.svg", "Grunt: Gruntfile.js")
                 .eq("gruntfile.js"),
             ofFile("git", "/icons/git.png", "Git: .gitattributes, .gitignore, .gitmodules")

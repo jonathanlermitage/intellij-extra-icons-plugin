@@ -20,6 +20,7 @@
     1.24.0 (WIP)
     <ul>
       <li>support Webpack <i>webpack.config.js</i> files.</li>
+      <li>support Gitpod <i>.gitpod.yml</i> files.</li>
     </ul>
     1.23.0 (2020/03/28)
     <ul>

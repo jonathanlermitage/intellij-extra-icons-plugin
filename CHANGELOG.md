@@ -2,6 +2,7 @@
 
 ### 1.24.0 (WIP)
 * support Webpack `webpack.config.js` files.
+* support Gitpod `.gitpod.yml` files.
 
 ### 1.23.0 (2020/03/28)
 * replace Travis PNG icon by SVG.
