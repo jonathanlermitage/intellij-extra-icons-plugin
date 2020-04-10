@@ -6,7 +6,10 @@
 
     <description><![CDATA[
       Add icons for files like Travis YML, Appveyor YML, etc.<br/>
-      See <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate.
+      See <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate.<br/>
+      If you find this plugin helpful, you can <a href="http://buymeacoff.ee/jlermitage">buy me a coffee</a>. Thank you! 👍<br/><br/>
+      See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">changelog</a>
+      and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/README.md">readme</a> on GitHub.
     ]]>
     </description>
 
@@ -37,10 +40,6 @@
     <ul>
       <li>fix background color of regex field with non-dark theme.</li>
     </ul>
-    <p>
-        See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">changelog</a>
-        and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/README.md">readme</a> on GitHub.
-    </p>
     ]]>
     </change-notes>
 
