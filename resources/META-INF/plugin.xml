@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.24.0 (WIP)
+    1.24.0 (2020/04/10)
     <ul>
       <li>support Webpack <i>webpack.config.js</i> files.</li>
       <li>support Gitpod <i>.gitpod.yml</i> files.</li>

@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.24.0 (WIP)
+### 1.24.0 (2020/04/10)
 * support Webpack `webpack.config.js` files.
 * support Gitpod `.gitpod.yml` files.
 
