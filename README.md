@@ -19,7 +19,7 @@ Download plugin on [GitHub](https://github.com/jonathanlermitage/intellij-extra-
 
 ## Author
 
-Jonathan Lermitage (<jonathan.lermitage@gmail.com>, [linkedin](https://www.linkedin.com/in/jonathan-lermitage-092711142/))
+Jonathan Lermitage (<jonathan.lermitage@gmail.com>, [linkedin](https://www.linkedin.com/in/jonathan-lermitage-092711142/), [buymeacoff.ee](http://buymeacoff.ee/jlermitage))
 
 ## Contributors
 
