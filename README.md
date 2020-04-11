@@ -48,7 +48,7 @@ To finish, don't hesitate to add your name or nickname to contributors list ;-)
 
 MIT License. In other words, you can do what you want: this project is entirely OpenSource, Free and Gratis.
 
-## Screenshot
+## Screenshots
 
 ![Dark Screenshot](misc/screenshots/intellijidea-ce_dark.png)
 
