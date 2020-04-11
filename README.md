@@ -1,4 +1,7 @@
 <h1 align="center">
+    <a href="https://travis-ci.org/jonathanlermitage/intellij-extra-icons-plugin">
+      <img src="./resources/META-INF/pluginIcon.svg" width="84" height="84" alt="logo"/>
+    </a><br/>
     Extra Icons
 </h1>
 
