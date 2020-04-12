@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.25.0 (WIP)
+    <ul>
+      <li>support Epub <i>.epub</i>, <i>.mobi</i>, <i>.azw</i>, <i>.azw3</i> files.</li>
+    </ul>
     1.24.0 (2020/04/10)
     <ul>
       <li>support Webpack <i>webpack.config.js</i> files.</li>
@@ -36,10 +40,6 @@
       <li>internal: fix usage of a <i>UIUtil.createImage</i> method deprecated in IDE 193.</li>
       <li>internal: log (at INFO level) some ignored errors while loading icon.</li>
       <li>rework Browserslist icon.</li>
-    </ul>
-    1.21.1 (2020/03/13)
-    <ul>
-      <li>fix background color of regex field with non-dark theme.</li>
     </ul>
     ]]>
     </change-notes>

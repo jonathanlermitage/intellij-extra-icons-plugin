@@ -330,6 +330,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".dar"),
             ofFile("ext_deb", "/icons/deb.png", "Debian package: *.deb")
                 .end(".deb"),
+            ofFile("ext_epub", "/icons/epub.svg", "Epub: *.epub, *.mobi, *.azw, *.azw3")
+                .end(".epub", ".mobi", ".azw", ".azw3"),
             ofFile("ext_form", "/icons/form.png", "Form (e.g. IntelliJ Swing xml form): *.form")
                 .end(".form"),
             ofFile("ext_graphqls", "/icons/graphql.png", "GraphQL: *.graphqls")

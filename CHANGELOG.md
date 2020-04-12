@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.25.0 (WIP)
+* support Epub `.epub`, `.mobi`, `.azw`, `.azw3` files.
+
 ### 1.24.0 (2020/04/10)
 * support Webpack `webpack.config.js` files.
 * support Gitpod `.gitpod.yml` files.
