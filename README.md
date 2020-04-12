@@ -17,16 +17,22 @@ Starting from version 0.4, it works with all JetBrains products like WebStorm, D
 
 Download plugin on [GitHub](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/releases), [JetBrains Plugins Repository](https://plugins.jetbrains.com/plugin/11058-extra-icons) or via IntelliJ IDEA (<kbd>File</kbd>, <kbd>Settings</kbd>, <kbd>Plugins</kbd>, <kbd>Browse repositories...</kbd>).
 
-## Author
+## Credits
+
+### Author
 
 Jonathan Lermitage (<jonathan.lermitage@gmail.com>, [linkedin](https://www.linkedin.com/in/jonathan-lermitage-092711142/), [buymeacoff.ee](http://buymeacoff.ee/jlermitage))
 
-## Contributors
+### 🤝 Contributors
 
 * Edoardo Luppi (<lp.edoardo@gmail.com>)
 * Matthias Kunnen ([github.com/MatthiasKunnen](https://github.com/MatthiasKunnen))
 * Florian Böhm ([github.com/Sheigutn](https://github.com/Sheigutn))
 * Mateusz Bajorek (<mateusz.bajorek@gmail.com>)
+
+### 🤝 JetBrains
+
+Thanks for their Open-Source licence to their amazing IDEs.
 
 ## Build
 
