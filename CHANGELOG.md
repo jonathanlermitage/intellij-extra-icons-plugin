@@ -3,6 +3,7 @@
 ### 1.25.0 (WIP)
 * support Epub `.epub`, `.mobi`, `.azw`, `.azw3` files.
 * support [Rollup](https://github.com/rollup/rollup) `rollup.config.js` files.
+* support Prettier `.prettierrc` files.
 
 ### 1.24.0 (2020/04/10)
 * support Webpack `webpack.config.js` files.

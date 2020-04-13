@@ -25,6 +25,7 @@
     <ul>
       <li>support Epub <i>.epub</i>, <i>.mobi</i>, <i>.azw</i>, <i>.azw3</i> files.</li>
       <li>support <a href="https://github.com/rollup/rollup">Rollup</a> <i>rollup.config.js</i> files.</li>
+      <li>support Prettier <i>.prettierrc</i> files.</li>
     </ul>
     1.24.0 (2020/04/10)
     <ul>
