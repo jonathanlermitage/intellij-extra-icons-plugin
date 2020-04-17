@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.25.0 (WIP)
+### 1.25.0 (2020/04/18)
 * support Epub `.epub`, `.mobi`, `.azw`, `.azw3` files.
 * support [Rollup](https://github.com/rollup/rollup) `rollup.config.js` files.
 * support Prettier `.prettierrc` files.

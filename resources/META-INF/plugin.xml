@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.25.0 (WIP)
+    1.25.0 (2020/04/18)
     <ul>
       <li>support Epub <i>.epub</i>, <i>.mobi</i>, <i>.azw</i>, <i>.azw3</i> files.</li>
       <li>support <a href="https://github.com/rollup/rollup">Rollup</a> <i>rollup.config.js</i> files.</li>
