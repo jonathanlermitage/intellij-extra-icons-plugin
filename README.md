@@ -30,7 +30,7 @@ Jonathan Lermitage (<jonathan.lermitage@gmail.com>, [linkedin](https://www.linke
 * Florian Böhm ([github.com/Sheigutn](https://github.com/Sheigutn))
 * Mateusz Bajorek (<mateusz.bajorek@gmail.com>)
 
-### 🤝 JetBrains
+### 🤝 [JetBrains](https://www.jetbrains.com/idea/)
 
 Thanks for their Open-Source licence to their amazing IDEs.
 
