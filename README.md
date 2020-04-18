@@ -34,6 +34,10 @@ Jonathan Lermitage (<jonathan.lermitage@gmail.com>, [linkedin](https://www.linke
 
 Thanks for their Open-Source licence to their amazing IDEs.
 
+### 🤝 [Syntevo](https://www.syntevo.com/smartgit/)
+
+Thanks for their licence for **SmartGit** (an excellent graphical Git client, free for non-commercial projects).
+
 ## Build
 
 ### Gradle commands
