@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.26.0 (WIP)
+    <ul>
+      <li>support <a href="https://github.com/intuit/karate">Karate</a> <i>karate-config.js</i> files.</li>
+    </ul>
     1.25.0 (2020/04/18)
     <ul>
       <li>support Epub <i>.epub</i>, <i>.mobi</i>, <i>.azw</i>, <i>.azw3</i> files.</li>
@@ -36,12 +40,6 @@
     <ul>
       <li>replace Travis PNG icon by SVG.</li>
       <li>new plugin icon.</li>
-    </ul>
-    1.22.0 (2020/03/19)
-    <ul>
-      <li>internal: fix usage of a <i>UIUtil.createImage</i> method deprecated in IDE 193.</li>
-      <li>internal: log (at INFO level) some ignored errors while loading icon.</li>
-      <li>rework Browserslist icon.</li>
     </ul>
     ]]>
     </change-notes>

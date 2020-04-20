@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.26.0 (WIP)
+* support [Karate](https://github.com/intuit/karate) `karate-config.js` files.
+
 ### 1.25.0 (2020/04/18)
 * support Epub `.epub`, `.mobi`, `.azw`, `.azw3` files.
 * support [Rollup](https://github.com/rollup/rollup) `rollup.config.js` files.

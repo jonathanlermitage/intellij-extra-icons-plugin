@@ -228,6 +228,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("junit-platform.properties"),
             ofFile("karma_js", "/icons/karma.svg", "Karma: karma.conf.js")
                 .eq("karma.conf.js"),
+            ofFile("karate", "/icons/karate.svg", "Karate: karate-config.js")
+                .eq("karate-config.js"),
             ofFile("karma_ts", "/icons/karma.svg", "Karma: karma.conf.ts")
                 .eq("karma.conf.ts"),
             ofFile("kibana", "/icons/kibana.png", "Kibana: kibana(.xml,.yml,...)")
