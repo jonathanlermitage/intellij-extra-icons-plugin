@@ -24,6 +24,7 @@
     1.26.0 (WIP)
     <ul>
       <li>support <a href="https://github.com/intuit/karate">Karate</a> <i>karate-config.js</i> files.</li>
+      <li>rework 16x16 icon for <i>package-info.java</i> files.</li>
     </ul>
     1.25.0 (2020/04/18)
     <ul>

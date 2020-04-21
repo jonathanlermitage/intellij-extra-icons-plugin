@@ -2,6 +2,7 @@
 
 ### 1.26.0 (WIP)
 * support [Karate](https://github.com/intuit/karate) `karate-config.js` files.
+* rework 16x16 icon for `package-info.java` files.
 
 ### 1.25.0 (2020/04/18)
 * support Epub `.epub`, `.mobi`, `.azw`, `.azw3` files.
