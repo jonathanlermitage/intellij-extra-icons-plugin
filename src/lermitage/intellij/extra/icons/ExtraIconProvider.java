@@ -54,6 +54,36 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_vscode_settings", "/icons/folder_vscode.svg", "Visual Studio Code (regex): '^/\\.vscode$' folder")
                 .regex("^/\\.vscode$")
                 .eq(".vscode"), // FIXME #13 temp fix
+            // - Flyway databases
+            ofDir("dir_flyway_mariadb", "/icons/folder_mariadb.svg", "Flyway, MariaDB database folder (regex): '.*/db/migration/maria[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/migration/maria[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_flyway_mysql", "/icons/folder_mysql.svg", "Flyway, MySQL database folder (regex): '.*/db/migration/mysql[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/migration/mysql[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_flyway_postgresql", "/icons/folder_postgresql.svg", "Flyway, PostgreSQL database folder (regex): '.*/db/migration/postgre[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/migration/postgre[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_flyway_sqlite", "/icons/folder_sqlite.svg", "Flyway, Sqlite database folder (regex): '.*/db/migration/sqlite[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/migration/sqlite[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_flyway_oracle", "/icons/folder_oracle.svg", "Flyway, Oracle database folder (regex): '.*/db/migration/oracle[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/migration/oracle[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_flyway_sqlserver", "/icons/folder_sqlserver.svg", "Flyway, MS SQL Server database folder (regex): '.*/db/migration/sqlserver[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/migration/sqlserver[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_flyway_mssql", "/icons/folder_sqlserver.svg", "Flyway, MS SQL Server database folder (regex): '.*/db/migration/mssql[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/migration/mssql[a-zA-Z0-9._\\-]*"),
+            // - Liquibase databases
+            ofDir("dir_liquibase_mariadb", "/icons/folder_mariadb.svg", "Liquibase, MariaDB database folder (regex): '.*/db/changelog/maria[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/changelog/maria[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_liquibase_mysql", "/icons/folder_mysql.svg", "Liquibase, MySQL database folder (regex): '.*/db/changelog/mysql[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/changelog/mysql[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_liquibase_postgresql", "/icons/folder_postgresql.svg", "Liquibase, PostgreSQL database folder (regex): '.*/db/changelog/postgre[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/changelog/postgre[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_liquibase_sqlite", "/icons/folder_sqlite.svg", "Liquibase, Sqlite database folder (regex): '.*/db/changelog/sqlite[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/changelog/sqlite[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_liquibase_oracle", "/icons/folder_oracle.svg", "Liquibase, Oracle database folder (regex): '.*/db/changelog/oracle[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/changelog/oracle[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_liquibase_sqlserver", "/icons/folder_sqlserver.svg", "Liquibase, MS SQL Server database folder (regex): '.*/db/changelog/sqlserver[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/changelog/sqlserver[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_liquibase_mssql", "/icons/folder_sqlserver.svg", "Liquibase, MS SQL Server database folder (regex): '.*/db/changelog/mssql[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/changelog/mssql[a-zA-Z0-9._\\-]*"),
 
             //
             // regex (file)
