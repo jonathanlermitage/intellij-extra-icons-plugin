@@ -2,6 +2,7 @@
 
 ### 1.26.0 (WIP)
 * support [Karate](https://github.com/intuit/karate) `karate-config.js` files.
+* support [Crowdin](https://crowdin.com) `.crowdin.yml` files.
 * rework 16x16 icon for `package-info.java` files.
 * improve FlyWay and Liquibase support: detect some databases (MariaDB, MySQL, Oracle, PostgreSQL, Sqlite, MS SQL Server) in FlyWay and Liquibase locations path, e.g., customize `mysql` folder icon in `db/migration/mysql/`.
 
