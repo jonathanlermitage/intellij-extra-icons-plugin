@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 package lermitage.intellij.extra.icons.cfg.services.impl;
 
 import com.intellij.openapi.components.PersistentStateComponent;

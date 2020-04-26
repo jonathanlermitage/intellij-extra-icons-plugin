@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 package lermitage.intellij.extra.icons.cfg;
 
 import lermitage.intellij.extra.icons.Model;
@@ -9,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 public class SettingsServiceTest {
-    
+
     @Test
     public void registered_models_should_be_unique() {
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();

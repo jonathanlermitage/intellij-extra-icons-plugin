@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 package lermitage.intellij.extra.icons;
 
 import com.intellij.util.xmlb.annotations.OptionTag;

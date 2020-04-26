@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 package lermitage.intellij.extra.icons.cfg.dialogs;
 
 import com.intellij.openapi.project.ProjectManager;
