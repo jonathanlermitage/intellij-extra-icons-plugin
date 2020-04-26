@@ -32,3 +32,7 @@ fabric.properties
 
 *.ipr
 .DS_Store
+
+!/.idea/copyright/profiles_settings.xml
+!/.idea/copyright/SPDX_License_Identifier__MIT.xml
+!/.idea/scopes/sources.xml
