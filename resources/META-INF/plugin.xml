@@ -23,6 +23,7 @@
     <change-notes><![CDATA[
     1.26.0 (WIP)
     <ul>
+      <li>settings: refresh project views on icons list update.</li>
       <li>support <a href="https://github.com/intuit/karate">Karate</a> <i>karate-config.js</i> files.</li>
       <li>support <a href="https://crowdin.com">Crowdin</a> <i>.crowdin.yml</i> files.</li>
       <li>rework 16x16 icon for <i>package-info.java</i> files.</li>

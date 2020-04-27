@@ -10,6 +10,7 @@ import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.table.JBTable;
 import lermitage.intellij.extra.icons.CustomIconLoader;
+import lermitage.intellij.extra.icons.IJUtils;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelType;
 import lermitage.intellij.extra.icons.cfg.dialogs.ModelDialog;
@@ -143,6 +144,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             model.setEnabled(enabledStates.get(i));
         }
         service.setCustomModels(customModels);
+
+        if (isProjectForm) {
+            IJUtils.refresh(project);
+        } else {
+            IJUtils.refreshOpenedProjects();
+        }
     }
 
     @Nullable
@@ -221,7 +228,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private void setUserIconsTableModel() {
         int currentSelected = userIconsSettingsTableModel != null ? userIconsTable.getSelectedRow() : -1;
         userIconsSettingsTableModel = new UserIconsSettingsTableModel();
-        customModels.forEach(m -> userIconsSettingsTableModel.addRow(new Object[] {
+        customModels.forEach(m -> userIconsSettingsTableModel.addRow(new Object[]{
                 CustomIconLoader.getIcon(m),
                 m.isEnabled(),
                 m.getDescription()
@@ -260,7 +267,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
         sortModels(allRegisteredModels);
         List<String> disabledModelIds = SettingsService.getInstance(project).getDisabledModelIds();
-        allRegisteredModels.forEach(m -> pluginIconsSettingsTableModel.addRow(new Object[] {
+        allRegisteredModels.forEach(m -> pluginIconsSettingsTableModel.addRow(new Object[]{
                 CustomIconLoader.getIcon(m),
                 !disabledModelIds.contains(m.getId()),
                 m.getDescription(),
