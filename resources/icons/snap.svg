@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   id="svg3750"
+   version="1.1"
+   sodipodi:docname="snap.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata21">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     id="namedview19"
+     showgrid="false"
+     inkscape:zoom="11.620223"
+     inkscape:cx="14.126379"
+     inkscape:cy="13.666148"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g3921" />
+  <defs
+     id="defs3754">
+    <style
+       id="style3870">.cls-1{fill:#464646}.cls-2{fill:#82bea0}</style>
+  </defs>
+  <g
+     transform="translate(-25.38 -12)"
+     id="g3921">
+    <path
+       class="cls-2"
+       id="polygon3894"
+       d="m 37.909363,17.651476 -3.185643,-1.44069 v 4.685167 z"
+       inkscape:connector-curvature="0"
+       style="fill:#82bea0;stroke-width:0.38687429" />
+    <path
+       class="cls-2"
+       id="polygon3896"
+       d="M 34.259866,21.364469 32.54629,19.630958 28.639949,27.088181 Z"
+       inkscape:connector-curvature="0"
+       style="fill:#82bea0;stroke-width:0.38687429" />
+    <path
+       class="cls-2"
+       id="polygon3898"
+       d="m 34.451542,21.169254 v -5.177109 l -8.03886,-2.959463 z"
+       inkscape:connector-curvature="0"
+       style="fill:#82bea0;stroke-width:0.38687429" />
+    <path
+       id="polygon3900"
+       d="m 34.907728,15.992145 5.9496,2.693972 -1.318726,-2.693972 z"
+       inkscape:connector-curvature="0"
+       style="fill:#fa6441;stroke-width:0.38687429" />
+  </g>
+</svg>
