@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   version="1.1"
+   id="svg50"
+   sodipodi:docname="stacksmith_dark.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata54">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     id="namedview52"
+     showgrid="false"
+     inkscape:zoom="20.85965"
+     inkscape:cx="11.622595"
+     inkscape:cy="6.019533"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg50" />
+  <title
+     id="title2">Bitnami-Logo-Full-Color</title>
+  <defs
+     id="defs16">
+    <path
+       d="M7.244 76.155C2.72 73.543.304 70.957.304 65.835v-58.3c0-2.664.71-5.061 1.858-7.09l24.537 14.1V87.39L7.244 76.155z"
+       id="bma" />
+    <linearGradient
+       x1="18.01%"
+       y1="80.098%"
+       x2="77.804%"
+       y2="28.779%"
+       id="c">
+      <stop
+         stop-color="#00437C"
+         offset="0%"
+         id="stop5" />
+      <stop
+         stop-color="#093266"
+         offset="100%"
+         id="stop7" />
+    </linearGradient>
+    <path
+       d="M8.741 48.056L.453 43.271V12.79l15.349 8.861L52.318.571V.436l24.635 14.156c-1.188 2.158-2.96 3.944-5.292 5.29L22.878 48.047a14.114 14.114 0 0 1-7.075 1.917 14.11 14.11 0 0 1-7.062-1.908"
+       id="d" />
+    <linearGradient
+       x1="0%"
+       y1="50%"
+       y2="50%"
+       id="f">
+      <stop
+         stop-color="#00437C"
+         offset="0%"
+         id="stop11" />
+      <stop
+         stop-color="#3984B5"
+         offset="100%"
+         id="stop13" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#c"
+       id="linearGradient56"
+       x1="9.1794773"
+       y1="38.616336"
+       x2="37.823943"
+       y2="14.03184"
+       gradientTransform="scale(0.55098342,1.8149367)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#c"
+       id="linearGradient58"
+       x1="9.1794773"
+       y1="38.616336"
+       x2="37.823943"
+       y2="14.03184"
+       gradientTransform="scale(0.55098342,1.8149367)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#f"
+       id="linearGradient60"
+       x1="0.3644961"
+       y1="31.318854"
+       y2="31.318854"
+       gradientTransform="scale(1.2428117,0.80462714)"
+       x2="61.918472"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#f"
+       id="linearGradient62"
+       x1="0.3644961"
+       y1="31.318854"
+       y2="31.318854"
+       gradientTransform="scale(1.2428117,0.80462714)"
+       x2="61.918472"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Fluorescence"
+       id="filter886"
+       inkscape:menu="Color"
+       inkscape:menu-tooltip="Oversaturate colors which can be fluorescent in real world">
+      <feColorMatrix
+         values="0.536458 0 0 0 0.463542 0 0.536458 0 0 0.463542 0 0 0.536458 0 0.463542 0 0 0 1 0"
+         id="feColorMatrix884"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix888" />
+      <feColorMatrix
+         id="feColorMatrix890"
+         type="hueRotate"
+         values="0"
+         in="fbSourceGraphic" />
+      <feColorMatrix
+         id="feColorMatrix892"
+         type="saturate"
+         values="1" />
+      <feColorMatrix
+         id="feColorMatrix894"
+         type="matrix"
+         values="2 -1 0 0 0 0 2 -1 0 0 -1 0 2 0 0 0 0 0 1 0 " />
+    </filter>
+  </defs>
+  <g
+     id="g48"
+     transform="matrix(0.1084649,0,0,0.09841731,1.1535984,1.0900453)"
+     style="fill:none;fill-rule:evenodd;filter:url(#filter886)">
+    <path
+       d="M 79.05,62.437 63.724,53.59 48.398,62.438 63.724,71.373 Z"
+       id="path18"
+       inkscape:connector-curvature="0"
+       style="fill:#00577b" />
+    <path
+       d="M 63.724,88.989 79.05,80.138 v -17.7 l -15.326,8.85 z"
+       id="path20"
+       inkscape:connector-curvature="0"
+       style="fill:#1e384b" />
+    <path
+       d="M 63.724,88.989 48.398,80.138 v -17.7 l 15.326,8.85 z"
+       id="path22"
+       inkscape:connector-curvature="0"
+       style="fill:#15211f" />
+    <path
+       d="M 100.24,50.419 V 92.45 L 63.724,113.533 27.204,92.45 v -0.063 l -24.536,14.1 c 1.286,2.27 3.121,4.075 5.153,5.249 16.194,9.348 32.385,18.699 48.58,28.047 4.753,2.745 9.868,2.758 14.594,0.03 l 48.698,-28.117 c 4.546,-2.624 6.943,-6.789 6.943,-12.085 v -56.03 c 0,-2.756 -0.602,-5.214 -1.761,-7.32 L 100.24,50.42 Z"
+       id="path24"
+       inkscape:connector-curvature="0"
+       style="fill:#00437c;fill-rule:nonzero" />
+    <g
+       id="g35">
+      <g
+         transform="matrix(1,0,0,-1,0.506,106.933)"
+         id="g33">
+        <mask
+           id="bmb"
+           fill="#fff">
+          <use
+             xlink:href="#bma"
+             id="use26"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+        </mask>
+        <g
+           mask="url(#bmb)"
+           id="g31"
+           style="fill:url(#linearGradient58);fill-rule:nonzero">
+          <path
+             d="M 7.244,76.155 C 2.72,73.543 0.304,70.957 0.304,65.835 v -58.3 c 0,-2.664 0.71,-5.061 1.858,-7.09 l 24.537,14.1 V 87.39 Z"
+             id="path29"
+             style="fill:url(#linearGradient56)"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g46">
+      <g
+         transform="matrix(1,0,0,-1,47.922,50.854)"
+         id="g44">
+        <mask
+           id="e"
+           fill="#fff">
+          <use
+             xlink:href="#d"
+             id="use37"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+        </mask>
+        <g
+           mask="url(#e)"
+           id="g42"
+           style="fill:url(#linearGradient62);fill-rule:nonzero">
+          <path
+             d="M 8.741,48.056 0.453,43.271 V 12.79 L 15.802,21.651 52.318,0.571 V 0.436 l 24.635,14.156 c -1.188,2.158 -2.96,3.944 -5.292,5.29 L 22.878,48.047 a 14.114,14.114 0 0 1 -7.075,1.917 14.11,14.11 0 0 1 -7.062,-1.908"
+             id="path40"
+             style="fill:url(#linearGradient60)"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

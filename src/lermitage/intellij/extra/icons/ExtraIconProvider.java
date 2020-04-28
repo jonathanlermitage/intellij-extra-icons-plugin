@@ -334,6 +334,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("security").mayEnd(TXT),
             ofFile("snapcraft", "/icons/snap.svg", "Snapcraft: snapcraft.yaml")
                 .eq("snapcraft.yaml"),
+            ofFile("stacksmith", "/icons/stacksmith.svg", "Bitnami Stacksmith: stackerfile.yml")
+                .eq("stackerfile.yml"),
             ofFile("swaggerignore", "/icons/swaggerignore.svg", "Swagger: .swagger-codegen-ignore")
                 .eq(".swagger-codegen-ignore"),
             ofFile("testing", "/icons/testing.png", "Test: test(.md,.txt,.adoc), testing")
