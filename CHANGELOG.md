@@ -2,6 +2,7 @@
 
 ### 1.26.0 (WIP)
 * settings: refresh project views on icons list update.
+* support Prettier `.prettierignore` files.
 * support [Karate](https://github.com/intuit/karate) `karate-config.js` files.
 * support [Crowdin](https://crowdin.com) `.crowdin.yml` files.
 * rework 16x16 icon for `package-info.java` files.

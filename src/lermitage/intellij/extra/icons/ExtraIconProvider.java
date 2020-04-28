@@ -308,6 +308,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("package-lock.json"),
             ofFile("prettier", "/icons/prettier.svg", "Prettier: .prettierrc")
                 .eq(".prettierrc"),
+            ofFile("prettierignore", "/icons/prettierignore.svg", "Prettier: .prettierignore")
+                .eq(".prettierignore"),
             ofFile("privacy", "/icons/privacy.png", "Privacy: privacy(.md,.txt,.adoc)")
                 .eq("privacy").mayEnd(TXT),
             ofFile("prometheus", "/icons/prometheus.svg", "Prometheus: prometheus(.yml,.yaml)")
