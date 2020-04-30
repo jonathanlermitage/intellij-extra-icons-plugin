@@ -6,6 +6,8 @@ import com.intellij.ide.FileIconProvider;
 import com.intellij.ide.IconProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
+import com.intellij.openapi.vcs.FilePath;
+import com.intellij.openapi.vcs.changes.FilePathIconProvider;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
@@ -29,7 +31,10 @@ import java.util.stream.Stream;
  * @author Edoardo Luppi
  * @author Jonathan Lermitage
  */
-public abstract class BaseIconProvider extends IconProvider implements FileIconProvider {
+public abstract class BaseIconProvider
+    extends IconProvider /* to override icons in Project view */
+    implements FilePathIconProvider, /* to override icons in VCS (Git, etc.) views */
+    FileIconProvider {
 
     private final List<Model> models;
 
@@ -56,6 +61,26 @@ public abstract class BaseIconProvider extends IconProvider implements FileIconP
         return fileSystemItem.getParent() == null ? null : fileSystemItem.getParent().getName().toLowerCase();
     }
 
+    @Nullable
+    @Override
+    public Icon getIcon(@NotNull FilePath filePath, @Nullable Project project) {
+        if (project != null) {
+            VirtualFile file = filePath.getVirtualFile();
+            if (file == null) {
+                return null;
+            }
+            PsiFileSystemItem psiFileSystemItem;
+            if (file.isDirectory()) {
+                psiFileSystemItem = PsiManager.getInstance(project).findDirectory(file);
+            } else {
+                psiFileSystemItem = PsiManager.getInstance(project).findFile(file);
+            }
+            if (psiFileSystemItem != null) {
+                return getIcon(psiFileSystemItem, 0 /* flags are ignored */);
+            }
+        }
+        return null;
+    }
     @Nullable
     @Override
     public Icon getIcon(@NotNull VirtualFile file, int flags, @Nullable Project project) {
