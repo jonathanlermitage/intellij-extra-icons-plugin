@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.26.0 (WIP)
+### 1.26.0 (2020/05/01)
 * settings: refresh project views on icons list update.
 * support Prettier `.prettierignore` files.
 * support Scalingo `scalingo.json` files.
