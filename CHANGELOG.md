@@ -2,6 +2,7 @@
 
 ### 1.27.0 (WIP)
 * support `svgo.yml` files.
+* optimized SVG logos with [SVGO](https://github.com/svg/svgo).
 
 ### 1.26.0 (2020/05/01)
 * settings: refresh project views on icons list update.

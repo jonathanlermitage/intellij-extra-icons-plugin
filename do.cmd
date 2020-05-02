@@ -10,6 +10,7 @@ if [%1] == [help] (
   echo  release: package plugin
   echo  test:    run unit tests
   echo  cv:      check dependencies and Gradle updates
+  echo  svgo:    optimize SVG icons with SGVO. SVGO must be present, type 'npm install -g svgo' if needed)
 )
 
 if [%1] == [w] (
@@ -39,4 +40,7 @@ if [%1] == [test] (
 )
 if [%1] == [cv] (
   gradlew dependencyUpdates -Drevision=release -DoutputFormatter=plain -DoutputDir=./build/ --warning-mode all
+)
+if [%1] == [svgo] (
+  svgo --folder=resources/icons/ --multipass --config=svgo.yml
 )
