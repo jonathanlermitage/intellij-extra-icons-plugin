@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.27.0 (WIP)
+    <ul>
+      <li>support <i>svgo.yml</i> files.</li>
+    </ul>
     1.26.0 (2020/05/01)
     <ul>
       <li>settings: refresh project views on icons list update.</li>
@@ -44,11 +48,6 @@
     <ul>
       <li>support Webpack <i>webpack.config.js</i> files.</li>
       <li>support Gitpod <i>.gitpod.yml</i> files.</li>
-    </ul>
-    1.23.0 (2020/03/28)
-    <ul>
-      <li>replace Travis PNG icon by SVG.</li>
-      <li>new plugin icon.</li>
     </ul>
     ]]>
     </change-notes>

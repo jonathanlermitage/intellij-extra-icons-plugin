@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.27.0 (WIP)
+* support `svgo.yml` files.
+
 ### 1.26.0 (2020/05/01)
 * settings: refresh project views on icons list update.
 * support Prettier `.prettierignore` files.
