@@ -34,7 +34,7 @@ public class ModelConditionDialog extends DialogWrapper {
     private JRadioButton startsWithRadioButton;
     private JRadioButton equalsRadioButton;
     private JCheckBox noDotCheckBox;
-    private JBLabel separatorLabel;
+    private JBLabel tipsLabel;
 
     public ModelConditionDialog() {
         super(false);
@@ -103,7 +103,9 @@ public class ModelConditionDialog extends DialogWrapper {
         namesTextField.setEnabled(false);
         extensionsTextField.setEnabled(false);
 
-        separatorLabel.setText("Use " + FIELD_SEPARATOR + " as a separator for multiple values");
+        tipsLabel.setText("<html><br>Extensions: use <b>" + FIELD_SEPARATOR + "</b> as a separator for multiple values.<br>" +
+            "Regex is a <b>Java regex</b>.<br>" +
+            "File path is <b>lowercased</b> before check.</html>");
     }
 
     private void createUIComponents() {

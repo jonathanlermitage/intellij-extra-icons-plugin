@@ -46,6 +46,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JBTable userIconsTable = new JBTable();
     private JPanel overrideSettingsPanel;
     private JCheckBox addToIDEUserIconsCheckbox;
+    private JBLabel tipsLabel;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -162,6 +163,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         buttonEnableAll.setText("Enable all");
         buttonDisableAll.setText("Disable all");
         ignoredPatternTitle.setText("Regex to ignore relative paths:");
+        tipsLabel.setText("<html>Regex is a <b>Java regex</b>, and file path is <b>lowercased</b> before check.</html>");
         initCheckbox();
         loadPluginIconsTable();
         userIconsTable.setShowHorizontalLines(false);
@@ -209,6 +211,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         title.setEnabled(enabled);
         iconsTabbedPane.setEnabled(enabled);
         addToIDEUserIconsCheckbox.setEnabled(enabled);
+        tipsLabel.setVisible(enabled);
     }
 
     @Override
