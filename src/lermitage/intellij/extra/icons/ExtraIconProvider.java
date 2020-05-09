@@ -13,7 +13,7 @@ import static lermitage.intellij.extra.icons.Model.ofFile;
 
 public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
 
-    private static final String[] TXT = new String[]{".md", ".txt", ".adoc"};
+    private static final String[] TXT = new String[]{".md", ".txt", ".adoc", ".rst"};
     private static final String[] CFG = new String[]{".xml", ".yml", ".yaml", ".properties", ".json", ".cfg", ".conf", ".ini", ".txt"};
     private static final String[] YML = new String[]{".yaml", ".yml"};
 
