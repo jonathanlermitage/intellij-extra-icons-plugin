@@ -6,6 +6,7 @@
 * fix [issue 35](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/35): clarify usage of regex. 
 * support some [RST](https://en.wikipedia.org/wiki/ReStructuredText) files: `README.rst`, `CHANGELOG.rst`, etc.
 * support `.run` folder used by IntelliJ IDEA 2020+ to store Run/Debug Configurations.
+* support [Draw.io](https://app.diagrams.net) `.drawio` and `.dio` files.
 
 ### 1.26.0 (2020/05/01)
 * settings: refresh project views on icons list update.

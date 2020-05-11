@@ -28,6 +28,7 @@
       <li>fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/35">issue 35</a>: clarify usage of regex. </li>
       <li>support some <a href="https://en.wikipedia.org/wiki/ReStructuredText">RST</a> files: <i>README.rst</i>, <i>CHANGELOG.rst</i>, etc.</li>
       <li>support <i>.run</i> folder used by IntelliJ IDEA 2020+ to store Run/Debug Configurations.</li>
+      <li>support <a href="https://app.diagrams.net">Draw.io</a> <i>.drawio</i> and <i>.dio</i> files.</li>
     </ul>
     1.26.0 (2020/05/01)
     <ul>
