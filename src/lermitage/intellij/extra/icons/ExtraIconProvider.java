@@ -135,7 +135,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("appveyor.yml", ".appveyor.yml"),
             ofFile("archunit", "/icons/archunit.png", "ArchUnit: archunit.properties")
                 .eq("archunit.properties"),
-            ofFile("author", "/icons/authors.png", "Author: author(.md,.txt,.adoc), authors")
+            ofFile("author", "/icons/authors.png", "Author: author(.md,.txt,.adoc,.rst), authors")
                 .eq("author", "authors").mayEnd(TXT),
             ofFile("bamboo", "/icons/bamboo.png", "Bamboo: bamboo.yml")
                 .eq("bamboo.yml"),
@@ -165,13 +165,13 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("bower.json", ".bowerrc"),
             ofFile("browserslist", "/icons/browserslist.svg", "Browserslist: browserslist, .browserslistrc")
                 .eq("browserslist", ".browserslistrc"),
-            ofFile("build", "/icons/build.png", "Build: build(.md,.txt,.adoc), building")
+            ofFile("build", "/icons/build.png", "Build: build(.md,.txt,.adoc,.rst), building")
                 .eq("build", "building").mayEnd(TXT),
             ofFile("cassandra", "/icons/cassandra.png", "Cassandra: cassandra(.yml,.yaml)")
                 .eq("cassandra").mayEnd(YML),
             ofFile("cassandra1", "/icons/cassandra.png", "Cassandra: start by 'cassandra' and end by '.yml,.yaml'")
                 .start("cassandra").end(YML),
-            ofFile("changelog", "/icons/changelog.png", "Changelog: changelog(.md,.txt,.adoc), changes")
+            ofFile("changelog", "/icons/changelog.png", "Changelog: changelog(.md,.txt,.adoc,.rst), changes")
                 .eq("changelog", "changes").mayEnd(TXT),
             ofFile("circle", "/icons/circleci.svg", "Circle CI: circle.yml")
                 .eq("circle.yml"),
@@ -189,9 +189,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".codacy").mayEnd(YML),
             ofFile("codeship", "/icons/codeship.png", "Codeship steps: codeship-steps(.xml,.yml,...)")
                 .eq("codeship-steps").mayEnd(CFG),
-            ofFile("contact", "/icons/contact.png", "Contact: contact(.md,.txt,.adoc), contacts")
+            ofFile("contact", "/icons/contact.png", "Contact: contact(.md,.txt,.adoc,.rst), contacts")
                 .eq("contact", "contacts").mayEnd(TXT),
-            ofFile("contribute", "/icons/contributing.png", "Contribution: contribute(.md,.txt,.adoc), contributing, contribution")
+            ofFile("contribute", "/icons/contributing.png", "Contribution: contribute(.md,.txt,.adoc,.rst), contributing, contribution")
                 .eq("contribute", "contributing", "contribution").mayEnd(TXT),
             ofFile("crowdin", "/icons/crowdin.svg", "Crowdin: .crowdin.yml")
                 .eq(".crowdin.yml"),
@@ -275,7 +275,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("kubernetes").mayEnd(YML),
             ofFile("kubernetes1", "/icons/kubernetes.png", "Kubernetes: start by 'kubernetes' and end by '.xml,.yml,...'")
                 .start("kubernetes").end(YML),
-            ofFile("license", "/icons/license.png", "License: license(.md,.txt,.adoc), copying, license_info, additional_license_info")
+            ofFile("license", "/icons/license.png", "License: license(.md,.txt,.adoc,.rst), copying, license_info, additional_license_info")
                 .eq("license", "copying", "license_info", "additional_license_info").mayEnd(TXT),
             ofFile("log4j", "/icons/log4j.png", "Log4j: log4j(.xml,.yml,...), log4j-test")
                 .eq("log4j", "log4j-test").mayEnd(CFG),
@@ -301,7 +301,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".npmrc"),
             ofFile("npmignore", "/icons/npmignore.svg", "NPM: .npmignore")
                 .eq(".npmignore"),
-            ofFile("notice", "/icons/notice.png", "Notice: notice(.md,.txt,.adoc)")
+            ofFile("notice", "/icons/notice.png", "Notice: notice(.md,.txt,.adoc,.rst)")
                 .eq("notice").mayEnd(TXT),
             ofFile("packageinfojava", "/icons/packageinfojava.png", "Java package info: package-info.java")
                 .eq("package-info.java"),
@@ -313,7 +313,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".prettierrc"),
             ofFile("prettierignore", "/icons/prettierignore.svg", "Prettier: .prettierignore")
                 .eq(".prettierignore"),
-            ofFile("privacy", "/icons/privacy.png", "Privacy: privacy(.md,.txt,.adoc)")
+            ofFile("privacy", "/icons/privacy.png", "Privacy: privacy(.md,.txt,.adoc,.rst)")
                 .eq("privacy").mayEnd(TXT),
             ofFile("prometheus", "/icons/prometheus.svg", "Prometheus: prometheus(.yml,.yaml)")
                 .eq("prometheus").end(YML),
@@ -321,19 +321,19 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("puppet").mayEnd(".conf"),
             ofFile("puppet1", "/icons/puppet.png", "Puppet: start by 'puppet' and end by '.conf'")
                 .start("puppet").end(".conf"),
-            ofFile("readme", "/icons/readme.png", "Readme: readme(.md,.txt,.adoc), lisezmoi")
+            ofFile("readme", "/icons/readme.png", "Readme: readme(.md,.txt,.adoc,.rst), lisezmoi")
                 .eq("readme", "lisezmoi").mayEnd(TXT),
             ofFile("redis", "/icons/redis.png", "Redis: redis(.conf)")
                 .eq("redis").mayEnd(".conf"),
             ofFile("redis1", "/icons/redis.png", "Redis: start by 'redis' and end by '.conf'")
                 .start("redis").end(".conf"),
-            ofFile("roadmap", "/icons/roadmap.png", "Roadmap: roadmap(.md,.txt,.adoc)")
+            ofFile("roadmap", "/icons/roadmap.png", "Roadmap: roadmap(.md,.txt,.adoc,.rst)")
                 .eq("roadmap").mayEnd(TXT),
             ofFile("rollup", "/icons/rollup.png", "Rollup: rollup.config.js")
                 .eq("rollup.config.js"),
             ofFile("scalingo", "/icons/scalingo.svg", "Scalingo: scalingo.json")
                 .eq("scalingo.json"),
-            ofFile("security", "/icons/security.svg", "Security: security(.md,.txt,.adoc)")
+            ofFile("security", "/icons/security.svg", "Security: security(.md,.txt,.adoc,.rst)")
                 .eq("security").mayEnd(TXT),
             ofFile("snapcraft", "/icons/snap.svg", "Snapcraft: snapcraft.yaml")
                 .eq("snapcraft.yaml"),
@@ -343,15 +343,15 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("svgo").end(YML),
             ofFile("swaggerignore", "/icons/swaggerignore.svg", "Swagger: .swagger-codegen-ignore")
                 .eq(".swagger-codegen-ignore"),
-            ofFile("testing", "/icons/testing.png", "Test: test(.md,.txt,.adoc), testing")
+            ofFile("testing", "/icons/testing.png", "Test: test(.md,.txt,.adoc,.rst), testing")
                 .eq("test", "testing").mayEnd(TXT),
-            ofFile("todo", "/icons/todo.png", "To-Do: todo(.md,.txt,.adoc)")
+            ofFile("todo", "/icons/todo.png", "To-Do: todo(.md,.txt,.adoc,.rst)")
                 .eq("todo").mayEnd(TXT),
             ofFile("travis", "/icons/travis.svg", "Travis CI: .travis.yml")
                 .eq(".travis.yml"),
             ofFile("vagrant", "/icons/vagrant.png", "Vagrant: vagrantfile")
                 .eq("vagrantfile"),
-            ofFile("version", "/icons/version.png", "Version: version(.md,.txt,.adoc)")
+            ofFile("version", "/icons/version.png", "Version: version(.md,.txt,.adoc,.rst)")
                 .eq("version").mayEnd(TXT),
             ofFile("webpack", "/icons/webpack.svg", "Webpack: webpack.conf.js")
                 .eq("webpack.config.js"),
