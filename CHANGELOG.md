@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.27.0 (WIP)
+### 1.27.0 (2020/05/15)
 * support `svgo.yml` files.
 * optimized SVG logos with [SVGO](https://github.com/svg/svgo).
 * fix [issue 35](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/35): clarify usage of regex. 
