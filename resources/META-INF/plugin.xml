@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.28.0 (WIP)
+    <ul>
+      <li>support Composer <i>composer.json</i> and <i>composer.lock</i> files.</li>
+    </ul>
     1.27.0 (2020/05/15)
     <ul>
       <li>support <i>svgo.yml</i> files.</li>

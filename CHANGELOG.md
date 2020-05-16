@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.28.0 (WIP)
+* support Composer `composer.json` and `composer.lock` files.
+
 ### 1.27.0 (2020/05/15)
 * support `svgo.yml` files.
 * optimized SVG logos with [SVGO](https://github.com/svg/svgo).
