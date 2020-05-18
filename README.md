@@ -40,7 +40,7 @@ Open an issue or a pull-request:
 * feature request -> support new icons: please provide SVG or 32x32 PNG (with transparency) file(s) and filename patterns.
 * contributions: they should be tested.      
   Please reformat new and modified code only: do not reformat the whole project or entire existing file (in other words, try to limit the amount of changes in order to speed up code review).  
-  To finish, don't hesitate to add your name or nickname to contributors list ;-)
+  To finish, don't hesitate to add your name or nickname (and LinkedIn profile, etc.) to contributors list ;-)
 
 ## License
 
@@ -50,7 +50,7 @@ MIT License. In other words, you can do what you want: this project is entirely 
 
 ### 🤝 Contributors
 
-* (author) Jonathan Lermitage (<jonathan.lermitage@gmail.com>, [linkedin](https://www.linkedin.com/in/jonathan-lermitage-092711142/), [buymeacoff.ee](http://buymeacoff.ee/jlermitage))
+* (author) Jonathan Lermitage (<jonathan.lermitage@gmail.com>, [![linkedin](misc/linkedin_profile_badge.png)](https://www.linkedin.com/in/jonathan-lermitage-092711142/), [buymeacoff.ee](http://buymeacoff.ee/jlermitage))
 * Edoardo Luppi (<lp.edoardo@gmail.com>)
 * Matthias Kunnen ([github.com/MatthiasKunnen](https://github.com/MatthiasKunnen))
 * Florian Böhm ([github.com/Sheigutn](https://github.com/Sheigutn))
