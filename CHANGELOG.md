@@ -35,6 +35,7 @@
 
 ### 1.28.0 (2020/05/23)
 * support Composer `composer.json` and `composer.lock` files.
+* *IDE 2020.1+ (201.5239+ builds):* implement [#28](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/28) show customized icons in Repositories tool window.
 
 ### 1.27.0 (2020/05/15)
 * support `svgo.yml` files.
