@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.28.0 (WIP)
+    1.28.0 (2020/05/23)
     <ul>
       <li>support Composer <i>composer.json</i> and <i>composer.lock</i> files.</li>
     </ul>
