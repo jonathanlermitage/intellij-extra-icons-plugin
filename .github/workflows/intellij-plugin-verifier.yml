@@ -16,6 +16,4 @@ jobs:
         with:
           plugin: '/home/runner/work/intellij-extra-icons-plugin/intellij-extra-icons-plugin/build/distributions/*'
           versions: |
-            2018.3.6
-            2019.3.4
             2020.1
