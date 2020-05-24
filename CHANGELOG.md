@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.29.0 (WIP)
+* support `.teamcity` folder.
+
 ### 1.28.0 (2020/05/23)
 * support Composer `composer.json` and `composer.lock` files.
 
