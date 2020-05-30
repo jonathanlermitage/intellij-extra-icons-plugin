@@ -25,6 +25,7 @@
     <ul>
       <li>support <i>.teamcity</i> folder.</li>
       <li>support <i>.exe</i> files.</li>
+      <li>rework <i>LICENSE</i> icon.</li>
     </ul>
     1.28.0 (2020/05/23)
     <ul>
