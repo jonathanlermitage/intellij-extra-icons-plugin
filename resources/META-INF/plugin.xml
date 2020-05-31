@@ -27,6 +27,7 @@
       <li>support <i>.exe</i> files.</li>
       <li>rework <i>LICENSE</i> icon.</li>
       <li>rework certificate icon.</li>
+      <li>restore missing Deptective icon. Probably dropped by mistake.</li>
     </ul>
     1.28.0 (2020/05/23)
     <ul>
