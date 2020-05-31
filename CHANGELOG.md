@@ -4,6 +4,7 @@
 * support `.teamcity` folder.
 * support `.exe` files.
 * rework `LICENSE` icon.
+* rework certificate icon.
 
 ### 1.28.0 (2020/05/23)
 * support Composer `composer.json` and `composer.lock` files.
