@@ -56,6 +56,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_mvn", "/icons/folder_mvnw.svg", "Maven (regex): '^/\\.mvn$' folder")
                 .regex("^/\\.mvn$")
                 .eq(".mvn"), // FIXME #13 temp fix
+            ofDir("dir_nuget", "/icons/folder_nuget.svg", "Nuget (regex): '^/\\.nuget$' folder")
+                .regex("^/\\.nuget")
+                .eq(".nuget"), // FIXME #13 temp fix
             ofDir("dir_teamcity", "/icons/folder_teamcity.svg", "TeamCity (regex): '^/\\.teamcity$' folder")
                 .regex("^/\\.teamcity")
                 .eq(".teamcity"), // FIXME #13 temp fix
@@ -124,6 +127,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("config.yml").parents(".dependabot"),
             ofFile("golwroot", "/icons/glowroot.png", "Glowroot: glowroot/admin.json and glowroot/config.json")
                 .eq("admin.json", "config.json").parents("glowroot"),
+            ofFile("nuget", "/icons/nuget.svg", "Nuget: .nuget/packages.config")
+                .eq("packages.config").parents(".nuget"),
             ofFile("vscode_settings", "/icons/vscode.svg", "Visual Studio Code: .vscode/settings.json")
                 .eq("settings.json").parents(".vscode"),
 
@@ -410,8 +415,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".http"),
             ofFile("ext_iml", "/icons/jetbrains.svg", "IntelliJ project: *.iml")
                 .end(".iml"),
-            ofFile("ext_cfg", "/icons/ini.png", "Configuration: *.ini, *.cfg, *.conf")
-                .end(".ini", ".cfg", ".conf"),
+            ofFile("ext_cfg", "/icons/ini.png", "Configuration: *.ini, *.cfg, *.conf, *.config")
+                .end(".ini", ".cfg", ".conf", ".config"),
             ofFile("ext_jar", "/icons/jar.png", "Java archive: *.jar")
                 .end(".jar"),
             ofFile("ext_jaroriginal", "/icons/jar.png", "Java archive (copy): *.jar.original")

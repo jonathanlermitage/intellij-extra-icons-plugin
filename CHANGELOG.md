@@ -3,10 +3,12 @@
 ### 1.29.0 (WIP)
 * support `.teamcity` folder.
 * support `.exe` files.
+* support NuGet `.nuget` folder and `.nuget/packages.config` file.
 * rework `LICENSE` icon.
 * rework certificate icon.
 * rework Gradle folder icon.
 * restore missing Deptective icon. Probably dropped by mistake.
+* improve Config files support.
 * improve Microsoft Azure support.
 
 ### 1.28.0 (2020/05/23)
