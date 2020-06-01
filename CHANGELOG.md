@@ -5,6 +5,7 @@
 * support `.exe` files.
 * rework `LICENSE` icon.
 * rework certificate icon.
+* rework Gradle folder icon.
 * restore missing Deptective icon. Probably dropped by mistake.
 
 ### 1.28.0 (2020/05/23)
