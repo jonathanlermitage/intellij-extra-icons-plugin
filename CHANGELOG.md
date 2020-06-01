@@ -7,6 +7,7 @@
 * rework certificate icon.
 * rework Gradle folder icon.
 * restore missing Deptective icon. Probably dropped by mistake.
+* improve Microsoft Azure support.
 
 ### 1.28.0 (2020/05/23)
 * support Composer `composer.json` and `composer.lock` files.

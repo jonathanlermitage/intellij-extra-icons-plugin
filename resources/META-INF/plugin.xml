@@ -29,6 +29,7 @@
       <li>rework certificate icon.</li>
       <li>rework Gradle folder icon.</li>
       <li>restore missing Deptective icon. Probably dropped by mistake.</li>
+      <li>improve Microsoft Azure support.</li>
     </ul>
     1.28.0 (2020/05/23)
     <ul>

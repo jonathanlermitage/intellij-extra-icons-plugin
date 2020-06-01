@@ -228,6 +228,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".mailmap"),
             ofFile("msazure", "/icons/msazure.svg", "Microsoft Azure: azure-pipelines.yml")
                 .eq("azure-pipelines.yml"),
+            ofFile("msazure1", "/icons/msazure.svg", "Microsoft Azure: start by 'azure-pipelines' and end by '.yml'")
+                .start("azure-pipelines").end(".yml"),
             ofFile("gatling", "/icons/gatling.png", "Gatling: gatling(.conf)")
                 .eq("gatling").mayEnd(".conf"),
             ofFile("gatling1", "/icons/gatling.png", "Gatling: start by 'gatling' and end by '.conf'")
