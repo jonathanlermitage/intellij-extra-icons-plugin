@@ -27,6 +27,7 @@
       <li>support <i>.exe</i> files.</li>
       <li>support NuGet <i>.nuget</i> folder and <i>.nuget/packages.config</li> file.</li>
       <li>rework <i>LICENSE</i> icon.</li>
+      <li>rework <i>NOTICE</i> icon.</li>
       <li>rework certificate icon.</li>
       <li>rework Gradle folder icon.</li>
       <li>restore missing Deptective icon. Probably dropped by mistake.</li>

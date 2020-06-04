@@ -5,6 +5,7 @@
 * support `.exe` files.
 * support NuGet `.nuget` folder and `.nuget/packages.config` file.
 * rework `LICENSE` icon.
+* rework `NOTICE` icon.
 * rework certificate icon.
 * rework Gradle folder icon.
 * restore missing Deptective icon. Probably dropped by mistake.
