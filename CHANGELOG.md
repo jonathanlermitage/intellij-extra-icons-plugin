@@ -4,6 +4,7 @@
 * support `.teamcity` folder.
 * support `.exe` files.
 * support NuGet `.nuget` folder and `.nuget/packages.config` file.
+* support [Tox](https://github.com/tox-dev/tox) `tox.ini` files.
 * rework `LICENSE` icon.
 * rework `NOTICE` icon.
 * rework certificate icon.
