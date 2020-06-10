@@ -25,7 +25,7 @@
     <ul>
       <li>support <i>.teamcity</i> folder.</li>
       <li>support <i>.exe</i> files.</li>
-      <li>support NuGet <i>.nuget</i> folder and <i>.nuget/packages.config</li> file.</li>
+      <li>support NuGet <i>.nuget</i> folder and <i>.nuget/packages.config</i> file.</li>
       <li>support <a href="https://github.com/tox-dev/tox">Tox</a> <i>tox.ini</i> files.</li>
       <li>rework <i>LICENSE</i> icon.</li>
       <li>rework <i>NOTICE</i> icon.</li>
