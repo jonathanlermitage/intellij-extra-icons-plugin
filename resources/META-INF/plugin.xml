@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.29.0 (WIP)
+    1.29.0 (2020/06/10)
     <ul>
       <li>support <i>.teamcity</i> folder.</li>
       <li>support <i>.exe</i> files.</li>

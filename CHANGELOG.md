@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.29.0 (WIP)
+### 1.29.0 (2020/06/10)
 * support `.teamcity` folder.
 * support `.exe` files.
 * support NuGet `.nuget` folder and `.nuget/packages.config` file.
