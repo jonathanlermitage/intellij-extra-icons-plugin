@@ -24,7 +24,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             // custom
             //
-            ofFile("custom_jle1", "/icons/bash.png", "Custom: do").eq("do"),
+            ofFile("custom_jle1", "/icons/bash.svg", "Custom: do").eq("do"),
 
             //
             // regex (directory)
@@ -387,11 +387,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".avsc"),
             ofFile("ext_back", "/icons/backup.png", "Backup: *.versionbackup, *.versionsbackup, *.bak, *.back, *.backup, *.old, *.prev, *.revert")
                 .end(".versionbackup", ".versionsbackup", ".bak", ".back", ".backup", ".old", ".prev", ".revert"),
-            ofFile("ext_sh", "/icons/bash.png", "Bash: *.sh")
+            ofFile("ext_sh", "/icons/bash.svg", "Bash: *.sh")
                 .end(".sh"),
             ofFile("ext_cert", "/icons/certificate.svg", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, ...")
                 .end(".jks", ".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".jceks", ".p12", ".p7b", ".p7s", ".pfx", ".pubkey"),
-            ofFile("ext_cmd", "/icons/cmd.png", "Windows script: *.cmd, *.bat, *.ps1")
+            ofFile("ext_cmd", "/icons/cmd.svg", "Windows script: *.cmd, *.bat, *.ps1")
                 .end(".cmd", ".bat", ".ps1"),
             ofFile("ext_csv", "/icons/csv.png", "CSV: *.csv")
                 .end(".csv"),

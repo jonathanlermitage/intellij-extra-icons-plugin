@@ -1,5 +1,9 @@
 ## Extra Icons Change Log
 
+### 1.30.0 (WIP)
+* rework Bash terminal icon.
+* rework Windows terminal icon.
+
 ### 1.29.0 (2020/06/10)
 * support `.teamcity` folder.
 * support `.exe` files.
