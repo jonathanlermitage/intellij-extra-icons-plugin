@@ -26,6 +26,7 @@
       <li>rework Bash terminal icon.</li>
       <li>rework Windows terminal icon.</li>
       <li>support <i>hibernate.properties</i> files.</li>
+      <li>support <a href="http://www.rultor.com">Rultor</a> <i>.rultor.yml</i> files.</li>
     </ul>
     1.29.0 (2020/06/10)
     <ul>

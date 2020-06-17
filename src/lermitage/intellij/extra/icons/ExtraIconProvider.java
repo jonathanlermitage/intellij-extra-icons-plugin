@@ -347,6 +347,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("roadmap").mayEnd(TXT),
             ofFile("rollup", "/icons/rollup.png", "Rollup: rollup.config.js")
                 .eq("rollup.config.js"),
+            ofFile("rultor", "/icons/rultor.svg", "Rultor: .rultor.yml")
+                .eq(".rultor.yml"),
             ofFile("scalingo", "/icons/scalingo.svg", "Scalingo: scalingo.json")
                 .eq("scalingo.json"),
             ofFile("security", "/icons/security.svg", "Security: security(.md,.txt,.adoc,.rst)")

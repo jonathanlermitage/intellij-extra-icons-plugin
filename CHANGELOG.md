@@ -4,6 +4,7 @@
 * rework Bash terminal icon.
 * rework Windows terminal icon.
 * support `hibernate.properties` files.
+* support [Rultor](http://www.rultor.com) `.rultor.yml` files.
 
 ### 1.29.0 (2020/06/10)
 * support `.teamcity` folder.
