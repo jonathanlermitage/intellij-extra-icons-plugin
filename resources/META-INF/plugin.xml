@@ -25,6 +25,7 @@
     <ul>
       <li>rework Bash terminal icon.</li>
       <li>rework Windows terminal icon.</li>
+      <li>support <i>hibernate.properties</i> files.</li>
     </ul>
     1.29.0 (2020/06/10)
     <ul>

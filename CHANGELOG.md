@@ -3,6 +3,7 @@
 ### 1.30.0 (WIP)
 * rework Bash terminal icon.
 * rework Windows terminal icon.
+* support `hibernate.properties` files.
 
 ### 1.29.0 (2020/06/10)
 * support `.teamcity` folder.
