@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.30.0 (WIP)
+### 1.30.0 (2020/06/18)
 * rework Bash terminal icon.
 * rework Windows terminal icon.
 * support `hibernate.properties` files.
