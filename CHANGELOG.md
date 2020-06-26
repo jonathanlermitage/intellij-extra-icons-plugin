@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.31.0 (WIP)
+* improve CHANGELOG and VERSION files detection.
+
 ### 1.30.0 (2020/06/18)
 * rework Bash terminal icon.
 * rework Windows terminal icon.
