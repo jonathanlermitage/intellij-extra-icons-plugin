@@ -179,8 +179,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("cassandra").mayEnd(YML),
             ofFile("cassandra1", "/icons/cassandra.png", "Cassandra: start by 'cassandra' and end by '.yml,.yaml'")
                 .start("cassandra").end(YML),
-            ofFile("changelog", "/icons/changelog.png", "Changelog: changelog(.md,.txt,.adoc,.rst), changes")
-                .eq("changelog", "changes").mayEnd(TXT),
+            ofFile("changelog", "/icons/changelog.png", "Changelog: changelog(.md,.txt,.adoc,.rst), changes, release-notes, release_notes")
+                .eq("changelog", "changes", "release-notes", "release_notes").mayEnd(TXT),
             ofFile("circle", "/icons/circleci.svg", "Circle CI: circle.yml")
                 .eq("circle.yml"),
             ofFile("circle1", "/icons/circleci.svg", "Circle CI: .circleci/config.yml")
@@ -371,8 +371,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".travis.yml"),
             ofFile("vagrant", "/icons/vagrant.png", "Vagrant: vagrantfile")
                 .eq("vagrantfile"),
-            ofFile("version", "/icons/version.png", "Version: version(.md,.txt,.adoc,.rst)")
-                .eq("version").mayEnd(TXT),
+            ofFile("version", "/icons/version.png", "Version: (.)version(s)(.md,.txt,.adoc,.rst)")
+                .eq("version", ".version", "versions", ".versions").mayEnd(TXT),
+            ofFile("version_json", "/icons/version.png", "Version: (.)version(s).json")
+                .eq("version", ".version", "versions", ".versions").end(".json"),
             ofFile("webpack", "/icons/webpack.svg", "Webpack: webpack.conf.js")
                 .eq("webpack.config.js"),
             ofFile("zalando", "/icons/zalando.png", "Zalando Zappr: .zappr.yaml")
