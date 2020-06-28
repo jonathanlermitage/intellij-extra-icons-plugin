@@ -15,7 +15,7 @@
 Intellij IDEA (Community and Ultimate) plugin that adds icons for files like Travis YML, Appveyor YML, etc.  
 Starting from version 0.4, it works with all JetBrains products like WebStorm, DataGrip, etc.
 
-Download plugin on [GitHub](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/releases), [JetBrains Plugins Repository](https://plugins.jetbrains.com/plugin/11058-extra-icons) or via IntelliJ IDEA (<kbd>File</kbd>, <kbd>Settings</kbd>, <kbd>Plugins</kbd>, <kbd>Browse repositories...</kbd>).
+Download plugin from [JetBrains Plugins Repository](https://plugins.jetbrains.com/plugin/11058-extra-icons) or via your JetBrains IDE (<kbd>File</kbd>, <kbd>Settings</kbd>, <kbd>Plugins</kbd>, <kbd>Browse repositories...</kbd>).
 
 ## Build
 
