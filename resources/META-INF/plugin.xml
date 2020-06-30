@@ -24,6 +24,7 @@
     1.31.0 (WIP)
     <ul>
       <li>improve <i>CHANGELOG</i> and <i>VERSION</i> files detection.</li>
+      <li>support <i>.gitreview</i> files.</li>
     </ul>
     1.30.0 (2020/06/18)
     <ul>
