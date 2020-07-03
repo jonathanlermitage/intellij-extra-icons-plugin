@@ -25,6 +25,7 @@
     <ul>
       <li>improve <i>CHANGELOG</i> and <i>VERSION</i> files detection.</li>
       <li>support <i>.gitreview</i> files.</li>
+      <li>support some <a href="https://wiki.onap.org/display/DW/Modeling+Concepts">ONAP Controller Blueprint Archive (CBA)</a> files</li>
     </ul>
     1.30.0 (2020/06/18)
     <ul>
