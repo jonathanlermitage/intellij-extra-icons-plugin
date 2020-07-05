@@ -129,11 +129,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("admin.json", "config.json").parents("glowroot"),
             ofFile("nuget", "/icons/nuget.svg", "Nuget: .nuget/packages.config")
                 .eq("packages.config").parents(".nuget"),
-            ofFile("onap_cba_blueprint", "/icons/onap-cba-blueprint.svg", "ONAP CBA: Definitions/blueprint.json")
+            ofFile("onap_cba_blueprint", "/icons/onap-cba-blueprint.svg", "ONAP CBA: Definitions/*blueprint.json")
                 .end("blueprint.json").parents("definitions"),
-            ofFile("onap_cba_definitions", "/icons/onap-cba-definitions.svg", "ONAP CBA: Definitions/(artifact_types, data_types, node_types, relationship_types, resources_definition_types).json")
+            ofFile("onap_cba_definitions", "/icons/onap-cba-definitions.svg", "ONAP CBA: Definitions/*(artifact_types, data_types, node_types, relationship_types, resources_definition_types).json")
                 .end("artifact_types.json", "data_types.json", "node_types.json", "relationship_types.json", "resources_definition_types.json").parents("definitions"),
-            ofFile("onap_cba_tosca", "/icons/onap-cba-tosca.svg", "ONAP CBA: TOSCA-Metadata/TOSCA.meta")
+            ofFile("onap_cba_tosca", "/icons/onap-cba-tosca.svg", "ONAP CBA: TOSCA-Metadata/*TOSCA.meta")
                 .end("tosca.meta").parents("tosca-metadata"),
             ofFile("vscode_settings", "/icons/vscode.svg", "Visual Studio Code: .vscode/settings.json")
                 .eq("settings.json").parents(".vscode"),
