@@ -19,7 +19,7 @@ Download plugin from [JetBrains Plugins Repository](https://plugins.jetbrains.co
 
 ## Build
 
-Install JDK8+ and Gradle. Gradle version doesn't matter, at least it should be able to start Gradle Wrapper (`gradlew`).
+Install JDK8+. You should be able to start Gradle Wrapper (`gradlew`).
 
 ### Gradle commands
 
