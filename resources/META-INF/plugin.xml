@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.32.0 (WIP)
+    <ul>
+      <li>improve <i>VERSION</i> files detection.</li>
+    </ul>
     1.31.0 (2020/07/05)
     <ul>
       <li>improve <i>CHANGELOG</i> and <i>VERSION</i> files detection.</li>
@@ -47,10 +51,6 @@
       <li>restore missing Deptective icon. Probably dropped by mistake.</li>
       <li>improve Config files support.</li>
       <li>improve Microsoft Azure support.</li>
-    </ul>
-    1.28.0 (2020/05/23)
-    <ul>
-      <li>support Composer <i>composer.json</i> and <i>composer.lock</i> files.</li>
     </ul>
     ]]>
     </change-notes>
