@@ -6,7 +6,7 @@
 ### 1.31.0 (2020/07/05)
 * improve CHANGELOG and VERSION files detection.
 * support `.gitreview` files.
-* support some [ONAP Controller Blueprint Archive (CBA)](https://wiki.onap.org/display/DW/Modeling+Concepts) files.
+* support some [ONAP Controller Blueprint Archive (CBA)](https://wiki.onap.org/display/DW/Modeling+Concepts) files. Full ONAP support will be implemented in a separate plugin.
 
 ### 1.30.0 (2020/06/18)
 * rework Bash terminal icon.
