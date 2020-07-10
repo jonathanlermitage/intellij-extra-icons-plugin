@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.32.0 (WIP)
+### 1.32.0 (2020/07/11)
 * improve VERSION files detection.
 * rework ONAP files.
 
