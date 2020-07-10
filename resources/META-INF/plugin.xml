@@ -24,6 +24,7 @@
     1.32.0 (WIP)
     <ul>
       <li>improve <i>VERSION</i> files detection.</li>
+      <li>rework ONAP files.</li>
     </ul>
     1.31.0 (2020/07/05)
     <ul>

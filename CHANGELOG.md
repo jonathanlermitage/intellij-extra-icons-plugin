@@ -2,6 +2,7 @@
 
 ### 1.32.0 (WIP)
 * improve VERSION files detection.
+* rework ONAP files.
 
 ### 1.31.0 (2020/07/05)
 * improve CHANGELOG and VERSION files detection.
