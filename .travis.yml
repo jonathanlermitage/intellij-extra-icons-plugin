@@ -10,7 +10,7 @@ matrix:
       env: IDEA_VERSION=IU-2019.3.4
     - os: linux
       jdk: openjdk11
-      env: IDEA_VERSION=IU-2020.1.2
+      env: IDEA_VERSION=IU-2020.1.4
     - os: linux
       jdk: openjdk11
       env: IDEA_VERSION=IU-LATEST-EAP-SNAPSHOT
