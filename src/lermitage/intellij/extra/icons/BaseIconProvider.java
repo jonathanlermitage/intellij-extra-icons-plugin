@@ -2,6 +2,7 @@
 
 package lermitage.intellij.extra.icons;
 
+import com.intellij.ide.FileIconProvider;
 import com.intellij.ide.IconProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
@@ -11,13 +12,14 @@ import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileSystemItem;
+import com.intellij.psi.PsiManager;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
 import lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
+import javax.swing.Icon;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,9 +29,9 @@ import java.util.stream.Stream;
  * @author Edoardo Luppi
  * @author Jonathan Lermitage
  */
-public abstract class BaseIconProvider extends IconProvider {
+public abstract class BaseIconProvider extends IconProvider implements FileIconProvider {
 
-    private List<Model> models;
+    private final List<Model> models;
 
     public BaseIconProvider() {
         super();
@@ -52,6 +54,23 @@ public abstract class BaseIconProvider extends IconProvider {
 
     private String parent(@NotNull PsiFileSystemItem fileSystemItem) {
         return fileSystemItem.getParent() == null ? null : fileSystemItem.getParent().getName().toLowerCase();
+    }
+
+    @Nullable
+    @Override
+    public Icon getIcon(@NotNull VirtualFile file, int flags, @Nullable Project project) {
+        if (project != null) {
+            PsiFileSystemItem psiFileSystemItem;
+            if (file.isDirectory()) {
+                psiFileSystemItem = PsiManager.getInstance(project).findDirectory(file);
+            } else {
+                psiFileSystemItem = PsiManager.getInstance(project).findFile(file);
+            }
+            if (psiFileSystemItem != null) {
+                return getIcon(psiFileSystemItem, flags);
+            }
+        }
+        return null;
     }
 
     @Nullable
@@ -105,12 +124,10 @@ public abstract class BaseIconProvider extends IconProvider {
             if (projectService.isAddToIDEUserIcons()) {
                 customModelsStream = Stream.concat(SettingsIDEService.getInstance().getCustomModels().stream(),
                     projectService.getCustomModels().stream());
-            }
-            else {
+            } else {
                 customModelsStream = projectService.getCustomModels().stream();
             }
-        }
-        else {
+        } else {
             customModelsStream = SettingsIDEService.getInstance().getCustomModels().stream();
         }
 
