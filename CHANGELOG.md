@@ -2,6 +2,7 @@
 
 ### 1.33.0 (WIP)
 * support Robot Framework `.robot` files.
+* try to fix [issue #32](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/32): Markdown file icons are overridden by Markdown Navigator plugin.
 
 ### 1.32.0 (2020/07/11)
 * improve VERSION files detection.
