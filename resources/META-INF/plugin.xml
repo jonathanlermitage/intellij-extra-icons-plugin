@@ -57,11 +57,11 @@
         <!-- Add your extensions here -->
         <fileIconProvider
             id="genericFileIconProvider"
-            order="first, before com.vladsch.idea.multimarkdown"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <iconProvider
             id="genericIconProvider"
-            order="first, before com.vladsch.idea.multimarkdown"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <applicationService serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService" />
         <projectService serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService"/>
