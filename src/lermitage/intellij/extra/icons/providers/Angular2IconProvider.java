@@ -2,7 +2,6 @@
 
 package lermitage.intellij.extra.icons.providers;
 
-import com.intellij.ide.FileIconProvider;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.psi.PsiFile;
 import lermitage.intellij.extra.icons.BaseIconProvider;
@@ -21,7 +20,7 @@ import static lermitage.intellij.extra.icons.Model.ofFile;
  *
  * @author Edoardo Luppi
  */
-public class Angular2IconProvider extends BaseIconProvider implements DumbAware, FileIconProvider {
+public class Angular2IconProvider extends BaseIconProvider implements DumbAware {
 
     @NotNull
     public static List<Model> allModels() {
