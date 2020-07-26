@@ -237,6 +237,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         iconsTabbedPane.setEnabled(enabled);
         addToIDEUserIconsCheckbox.setEnabled(enabled);
         tipsLabel.setVisible(enabled);
+        filterTextField.setEnabled(enabled);
+        filterApplyBtn.setEnabled(enabled);
+        filteResetBtn.setEnabled(enabled);
     }
 
     @Override
