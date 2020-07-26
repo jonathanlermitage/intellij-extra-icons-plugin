@@ -34,7 +34,7 @@ import java.util.stream.Stream;
 public abstract class BaseIconProvider
     extends IconProvider /* to override icons in Project view */
     implements FilePathIconProvider, /* to override icons in VCS (Git, etc.) views */
-    FileIconProvider {
+    FileIconProvider /* to override icons in Project view */ {
 
     private final List<Model> models;
 
@@ -81,6 +81,7 @@ public abstract class BaseIconProvider
         }
         return null;
     }
+
     @Nullable
     @Override
     public Icon getIcon(@NotNull VirtualFile file, int flags, @Nullable Project project) {
