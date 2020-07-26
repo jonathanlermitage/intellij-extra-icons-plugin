@@ -2,9 +2,11 @@
 
 package lermitage.intellij.extra.icons.cfg;
 
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.ui.EditorTextField;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
@@ -22,15 +24,26 @@ import org.intellij.lang.regexp.RegExpFileType;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class SettingsForm implements Configurable, Configurable.NoScroll {
+
+    private static final Logger LOGGER = Logger.getInstance(SettingsForm.class);
 
     private JPanel pane;
     private JBLabel title;
@@ -47,6 +60,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JPanel overrideSettingsPanel;
     private JCheckBox addToIDEUserIconsCheckbox;
     private JBLabel tipsLabel;
+    private JLabel filterLabel;
+    private EditorTextField filterTextField;
+    private JButton filterApplyBtn;
+    private JButton filteResetBtn;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -57,6 +74,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     public SettingsForm() {
         buttonEnableAll.addActionListener(e -> enableAll());
         buttonDisableAll.addActionListener(e -> disableAll());
+        filterApplyBtn.addActionListener(e -> applyFilter());
+        filteResetBtn.addActionListener(e -> resetFilter());
     }
 
     @SuppressWarnings("UnusedDeclaration")
@@ -164,6 +183,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         buttonDisableAll.setText("Disable all");
         ignoredPatternTitle.setText("Regex to ignore relative paths:");
         tipsLabel.setText("<html>Regex is a <b>Java regex</b>, and file path is <b>lowercased</b> before check.</html>");
+        filterLabel.setText("Regex to filter Plugin icons table by:");
+        filterTextField.setText("");
+        filterApplyBtn.setText("Apply");
+        filteResetBtn.setText("Reset");
         initCheckbox();
         loadPluginIconsTable();
         userIconsTable.setShowHorizontalLines(false);
@@ -179,6 +202,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         // Use default project here because project is not available yet
         ignoredPatternTextField = new EditorTextField("", ProjectManager.getInstance().getDefaultProject(), RegExpFileType.INSTANCE);
         ignoredPatternTextField.setFontInheritedFromLAF(false);
+        filterTextField = new EditorTextField("", ProjectManager.getInstance().getDefaultProject(), RegExpFileType.INSTANCE);
+        filterTextField.setFontInheritedFromLAF(false);
     }
 
     private void initCheckbox() {
@@ -262,6 +287,25 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         for (int settingsTableRow = 0; settingsTableRow < tableModel.getRowCount(); settingsTableRow++) {
             tableModel.setValueAt(false, settingsTableRow, PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER); // Enabled row number is the same for both models
         }
+    }
+
+    private void applyFilter() {
+        String filter = filterTextField.getText();
+        TableRowSorter<PluginIconsSettingsTableModel> sorter = new TableRowSorter<>(((PluginIconsSettingsTableModel) pluginIconsTable.getModel()));
+        if (StringUtil.isEmpty(filter)) {
+            filter = ".*";
+        }
+        try {
+            sorter.setRowFilter(RowFilter.regexFilter(filter));
+            pluginIconsTable.setRowSorter(sorter);
+        } catch (PatternSyntaxException pse) {
+            LOGGER.warn(pse);
+        }
+    }
+
+    private void resetFilter() {
+        filterTextField.setText("");
+        applyFilter();
     }
 
     private void loadPluginIconsTable() {
