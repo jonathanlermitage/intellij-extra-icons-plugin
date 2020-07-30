@@ -29,8 +29,8 @@ Install JDK8+. You should be able to start Gradle Wrapper (`gradlew`).
 
 ### Branches
 
-* [master](https://github.com/jonathanlermitage/intellij-extra-icons-plugin): plugin is compatible with 183.0+ IDE builds (2018.3 and newer).
-* [ide201](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide201): plugin is compatible with 201.0+ IDE builds (2020.1 and newer). Contains features that need capabilities introduced in IntelliJ 2020.1. Will be merged into master once IntelliJ 2020.2 is released: I don't want to force users to install latest IDE, I'd like to keep compatibility with previous IDE version.
+* [ide201](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide201): plugin is compatible with 201.0+ IDE builds (2020.1 and newer). Contains features that need capabilities introduced in IntelliJ 2020.1.
+* [master](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/master): ~~plugin is compatible with 183.0+ IDE builds (2018.3 and newer).~~ this branch is terminated.
 * [ide173](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide173): ~~plugin is compatible with 173.0+ IDE builds (2017.3 and newer), but doesn't support AngularJS icons.~~ this branch is terminated.
 
 ## Contribution
