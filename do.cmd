@@ -3,7 +3,7 @@
 if [%1] == [help] (
   echo  w $V:    set gradle wrapper
   echo  fixgit:  fix permission flag on git index for required files
-  echo  run :    run plugin in IntelliJ Ultimate 2020
+  echo  run :    run plugin in IntelliJ Ultimate 2020.2
   echo  runeap:  run plugin in latest IntelliJ Ultimate EAP Snapshot
   echo  release: package plugin
   echo  test:    run unit tests
