@@ -143,7 +143,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             ofFile("vcskeep", "/icons/keep.svg", "Various VCS: .keep, .gitkeep, .hgkeep, .svnkeep")
                 .eq(".keep", ".gitkeep", ".hgkeep", ".svnkeep"),
-            ofFile("htaccess", "/icons/apache.png", "Apache: .htaccess")
+            ofFile("htaccess", "/icons/apache.svg", "Apache: .htaccess")
                 .eq(".htaccess"),
             ofFile("appveyor", "/icons/appveyor.png", "Appveyor: appveyor.yml, .appveyor.yml")
                 .eq("appveyor.yml", ".appveyor.yml"),
