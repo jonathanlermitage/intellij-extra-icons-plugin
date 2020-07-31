@@ -32,6 +32,7 @@
       <li>rework Vagrant files (PNG icon to SVG).</li>
       <li>rework Puppet files (PNG icon to SVG).</li>
       <li>rework Security files.</li>
+      <li>rework Redis files (PNG icon to SVG).</li>
     </ul>
     1.32.0 (2020/07/11)
     <ul>

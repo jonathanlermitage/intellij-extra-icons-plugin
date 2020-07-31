@@ -11,6 +11,7 @@
 * rework Puppet files (PNG icon to SVG).
 * rework Privacy files.
 * rework Security files.
+* rework Redis files (PNG icon to SVG).
 
 ### 1.32.0 (2020/07/11)
 * improve VERSION files detection.
