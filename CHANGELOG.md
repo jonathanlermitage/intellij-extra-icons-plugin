@@ -8,6 +8,7 @@
 * rework `kubernetes*.yml` files (PNG icon to SVG).
 * rework `*.toml` files (PNG icon to SVG).
 * rework Vagrant files (PNG icon to SVG).
+* rework Puppet files (PNG icon to SVG).
 
 ### 1.32.0 (2020/07/11)
 * improve VERSION files detection.
