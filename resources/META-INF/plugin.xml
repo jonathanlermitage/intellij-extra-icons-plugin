@@ -31,6 +31,7 @@
       <li>rework <i>*.toml</i> files (PNG icon to SVG).</li>
       <li>rework Vagrant files (PNG icon to SVG).</li>
       <li>rework Puppet files (PNG icon to SVG).</li>
+      <li>rework Privacy files.</li>
       <li>rework Security files.</li>
       <li>rework Redis files (PNG icon to SVG).</li>
       <li>support <i>(.)version(s).xml</i> files.</li>
