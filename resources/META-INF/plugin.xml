@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.33.0 (WIP)
+    1.33.0 (2020/07/31)
     <ul>
       <li>support Robot Framework <i>.robot</i> files.</li>
       <li>try to fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/32">issue #32</a>: Markdown file icons are overridden by Markdown Navigator plugin.</li>
@@ -33,7 +33,7 @@
       <li>rework Puppet files (PNG icon to SVG).</li>
       <li>rework Security files.</li>
       <li>rework Redis files (PNG icon to SVG).</li>
-      <li>rework <i>(.)version(s).xml</i> files (PNG icon to SVG).</li>
+      <li>support <i>(.)version(s).xml</i> files.</li>
     </ul>
     1.32.0 (2020/07/11)
     <ul>
