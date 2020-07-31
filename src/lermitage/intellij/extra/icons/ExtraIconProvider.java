@@ -375,7 +375,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("tox.ini"),
             ofFile("travis", "/icons/travis.svg", "Travis CI: .travis.yml")
                 .eq(".travis.yml"),
-            ofFile("vagrant", "/icons/vagrant.png", "Vagrant: vagrantfile")
+            ofFile("vagrant", "/icons/vagrant.svg", "Vagrant: vagrantfile")
                 .eq("vagrantfile"),
             ofFile("version", "/icons/version.png", "Version: (.)version(s)(.md,.txt,.adoc,.rst)")
                 .eq("version", ".version", "versions", ".versions").mayEnd(TXT),

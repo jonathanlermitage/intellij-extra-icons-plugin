@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="vagrant.svg"
+   id="svg68"
+   version="1.1"
+   width="16"
+   viewBox="0 0 16 16"
+   height="16">
+  <metadata
+     id="metadata72">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="svg68"
+     inkscape:cy="9.9074965"
+     inkscape:cx="17.391995"
+     inkscape:zoom="36.816567"
+     showgrid="false"
+     id="namedview70"
+     inkscape:window-height="480"
+     inkscape:window-width="640"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <defs
+     id="defs5">
+    <polygon
+       points="0 .685 32 .685 32 33 0 33"
+       id="vagrant-a" />
+    <polygon
+       points="0 .996 17.987 .996 17.987 30.983 0 30.983"
+       id="vagrant-c" />
+    <polygon
+       points=".004 .685 31.978 .685 31.978 7.616 .004 7.616"
+       id="vagrant-e" />
+  </defs>
+  <g
+     id="g66"
+     transform="matrix(0.4454992,0,0,0.44241713,0.86650385,0.45870068)"
+     fill-rule="evenodd"
+     fill="none">
+    <g
+       id="g12"
+       transform="translate(0,0.315)">
+      <mask
+         fill="#ffffff"
+         id="vagrant-b">
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           id="use7"
+           xlink:href="#vagrant-a" />
+      </mask>
+      <path
+         id="path10"
+         mask="url(#vagrant-b)"
+         d="M 31.9785,3.002 C 31.7485,2.813 29.9345,1.84 29.9345,1.84 l -1.935,1.125 -0.001,-10e-4 1.934,-1.124 -1.933,-1.153 -0.001,2.277 -2.019,-1.129 c 0,0 -1.65,0.964 -2.452,1.427 -1.009,0.582 -3.484,2.056 -3.484,2.056 v 2.176 l -2.039,5.311 v 2.884 l -1.43,0.835 -0.57,1.489 L 11.9935,7.606 11.9945,5.323 3.9985,0.685 0.0035,2.997 -5e-4,2.996 v 2.352 l 2.492,5.999 1.513,0.891 10e-4,2.736 6,14.574 5.997,3.432 V 33 l 5.99,-3.465 L 31.9995,5.3 31.9785,3.002"
+         fill="#3185b8" />
+    </g>
+    <g
+       id="g19"
+       transform="translate(0,2.315)">
+      <mask
+         fill="#ffffff"
+         id="vagrant-d">
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           id="use14"
+           xlink:href="#vagrant-c" />
+      </mask>
+      <polygon
+         id="polygon17"
+         mask="url(#vagrant-d)"
+         points="2.491,9.347 0,3.348 0,0.996 1.971,2.145 1.971,4.46 4.008,5.642 4.008,3.313 7.988,5.616 8.18,7.896 13.966,22.915 17.987,25.256 17.987,29.85 16.002,28.682 16.008,30.983 10.006,27.548 4.006,12.974 4.005,10.238 "
+         fill="#3185b8" />
+    </g>
+    <path
+       id="path21"
+       d="m 1.9707,4.4599 v 2.315 l 2.037,-1.147 z m 10.022,3.461 4.012,10.408 -0.008,5.733 -2.034,1.156 -5.783,-15.024 -0.191,-2.262 4.005,-2.294 z"
+       fill="#61a5ce" />
+    <polygon
+       id="polygon23"
+       points="4.008,5.628 1.971,6.776 4.008,7.957 "
+       fill="#eae9e6" />
+    <polygon
+       id="polygon25"
+       points="21.955,15.253 22.504,13.955 23.968,14.813 23.968,12.541 21.975,11.383 23.978,10.22 22.008,9.084 22.003,6.775 20.044,5.633 20.044,7.809 18.005,13.12 18.005,16.004 16.574,16.839 16.005,18.329 15.997,24.062 18.002,25.209 20.235,19.603 21.955,20.626 "
+       fill="#3185b8" />
+    <polyline
+       id="polyline27"
+       points="15.969 26.409 17.988 27.572 17.977 32.167 21.992 29.85 32 5.616 31.979 3.318 25.98 6.776 25.98 11.388 23.968 12.542 23.968 14.813 22.504 13.955 21.955 15.253 21.955 20.615 19.169 22.254 18.002 25.21 15.97 26.409"
+       fill="#61a5ce" />
+    <polygon
+       id="polygon29"
+       points="9.989,9.067 9.989,11.38 7.976,10.236 "
+       fill="#eae9e6" />
+    <polygon
+       id="polygon31"
+       points="9.988,11.38 11.983,12.507 11.983,10.236 9.988,9.067 "
+       fill="#3185b8" />
+    <polygon
+       id="polygon33"
+       points="5.993,18.303 8.009,17.143 5.993,15.973 "
+       fill="#61a5ce" />
+    <polygon
+       id="polygon35"
+       points="10.02,18.314 7.998,19.492 5.994,18.303 8.008,17.144 "
+       fill="#eae9e6" />
+    <polygon
+       id="polygon37"
+       points="9.992,27.586 12.018,26.414 9.992,25.235 "
+       fill="#61a5ce" />
+    <polygon
+       id="polygon39"
+       points="16.011,31.025 16.018,28.638 13.97,29.839 "
+       fill="#eae9e6" />
+    <polygon
+       id="polygon41"
+       points="16.011,31.025 17.977,32.167 16.003,33.315 "
+       fill="#61a5ce" />
+    <polygon
+       id="polygon43"
+       points="15.997,24.062 13.963,25.218 15.97,26.409 18.002,25.209 "
+       fill="#eae9e6" />
+    <polygon
+       id="polygon45"
+       points="22.008,9.084 25.98,11.388 25.98,6.775 23.994,5.644 23.994,7.943 "
+       fill="#3185b8" />
+    <polygon
+       id="polygon47"
+       points="21.975,11.383 23.979,10.219 25.98,11.388 23.968,12.541 "
+       fill="#eae9e6" />
+    <polygon
+       id="polygon49"
+       points="22.008,9.084 23.994,7.943 23.994,5.645 22.003,6.775 "
+       fill="#61a5ce" />
+    <polygon
+       id="polygon51"
+       points="27.999,1.003 29.933,2.155 27.998,3.28 "
+       fill="#3185b8" />
+    <g
+       id="g58"
+       transform="translate(0,0.315)">
+      <mask
+         fill="#ffffff"
+         id="vagrant-f">
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           id="use53"
+           xlink:href="#vagrant-e" />
+      </mask>
+      <path
+         id="path56"
+         mask="url(#vagrant-f)"
+         d="m 11.9932,5.3228 -4.005,2.293 -7.984,-4.619 3.994,-2.312 7.995,4.638 m 19.985,-2.321 -5.999,3.458 -1.985,-1.131 -1.991,1.131 -1.959,-1.142 c 0,0 2.474,-1.474 3.483,-2.056 0.802,-0.462 2.452,-1.427 2.452,-1.427 l 2.02,1.13 1.935,-1.124 c 0,0 1.814,0.972 2.044,1.161 -0.546,0.319 0,0 0,0"
+         fill="#eae9e6" />
+    </g>
+    <path
+       id="path60"
+       d="m 24.0488,17.1562 1.942,-1.114 v 2.235 z m 5.916,-10.434 v -2.244 l -1.952,1.126 z"
+       fill="#3185b8" />
+    <polygon
+       id="polygon62"
+       points="19.99,28.708 22.013,27.539 19.99,26.393 "
+       fill="#eae9e6" />
+    <polygon
+       id="polygon64"
+       points="22.001,25.241 19.99,26.392 22.026,27.538 "
+       fill="#3185b8" />
+  </g>
+</svg>
