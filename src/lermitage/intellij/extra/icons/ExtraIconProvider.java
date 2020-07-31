@@ -385,6 +385,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("version", ".version", "versions", ".versions").end(".properties"),
             ofFile("version_yml", "/icons/version.png", "Version: (.)version(s).y(a)ml")
                 .eq("version", ".version", "versions", ".versions").end(YML),
+            ofFile("version_xml", "/icons/version.png", "Version: (.)version(s).xml")
+                .eq("version", ".version", "versions", ".versions").end(".xml"),
             ofFile("webpack", "/icons/webpack.svg", "Webpack: webpack.conf.js")
                 .eq("webpack.config.js"),
             ofFile("zalando", "/icons/zalando.png", "Zalando Zappr: .zappr.yaml")

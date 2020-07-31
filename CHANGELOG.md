@@ -12,6 +12,7 @@
 * rework Privacy files.
 * rework Security files.
 * rework Redis files (PNG icon to SVG).
+* support `(.)version(s).xml` files.
 
 ### 1.32.0 (2020/07/11)
 * improve VERSION files detection.
