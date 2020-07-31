@@ -9,7 +9,8 @@
 * rework `*.toml` files (PNG icon to SVG).
 * rework Vagrant files (PNG icon to SVG).
 * rework Puppet files (PNG icon to SVG).
-* rework Privacy files (PNG icon to SVG).
+* rework Privacy files.
+* rework Security files.
 
 ### 1.32.0 (2020/07/11)
 * improve VERSION files detection.

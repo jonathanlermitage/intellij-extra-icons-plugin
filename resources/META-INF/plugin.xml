@@ -31,7 +31,7 @@
       <li>rework <i>*.toml</i> files (PNG icon to SVG).</li>
       <li>rework Vagrant files (PNG icon to SVG).</li>
       <li>rework Puppet files (PNG icon to SVG).</li>
-      <li>rework Privacy files (PNG icon to SVG).</li>
+      <li>rework Security files.</li>
     </ul>
     1.32.0 (2020/07/11)
     <ul>
