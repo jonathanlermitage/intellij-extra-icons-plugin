@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.34.0 (WIP)
+    <ul>
+      <li>?</li>
+    </ul>
     1.33.0 (2020/07/31)
     <ul>
       <li>support Robot Framework <i>.robot</i> files.</li>
@@ -46,13 +50,6 @@
       <li>improve <i>CHANGELOG</i> and <i>VERSION</i> files detection.</li>
       <li>support <i>.gitreview</i> files.</li>
       <li>support some <a href="https://wiki.onap.org/display/DW/Modeling+Concepts">ONAP Controller Blueprint Archive (CBA)</a> files. Full ONAP support will be implemented in a separate plugin.</li>
-    </ul>
-    1.30.0 (2020/06/18)
-    <ul>
-      <li>rework Bash terminal icon.</li>
-      <li>rework Windows terminal icon.</li>
-      <li>support <i>hibernate.properties</i> files.</li>
-      <li>support <a href="http://www.rultor.com">Rultor</a> <i>.rultor.yml</i> files.</li>
     </ul>
     ]]>
     </change-notes>
