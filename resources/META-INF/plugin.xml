@@ -28,6 +28,7 @@
       <li>add a filter to Plugin icons table.</li>
       <li>rework <i>.htaccess</i> files (PNG icon to SVG).</li>
       <li>rework <i>kubernetes*.yml</i> files (PNG icon to SVG).</li>
+      <li>rework <i>*.toml</i> files (PNG icon to SVG).</li>
     </ul>
     1.32.0 (2020/07/11)
     <ul>

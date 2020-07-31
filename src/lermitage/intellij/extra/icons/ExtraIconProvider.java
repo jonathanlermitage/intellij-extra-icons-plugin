@@ -465,7 +465,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".svg"),
             ofFile("ext_tf", "/icons/terraform.png", "Terraform: *.hcl, *.tf, *.tf.json")
                 .end(".hcl", ".tf", ".tf.json"),
-            ofFile("ext_toml", "/icons/toml.png", "TOML: *.toml")
+            ofFile("ext_toml", "/icons/toml.svg", "TOML: *.toml")
                 .end(".toml"),
             ofFile("typescript", "/icons/test-ts.svg", "Typescript: *.spec.ts")
                 .end(".spec.ts"),
