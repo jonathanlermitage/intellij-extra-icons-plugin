@@ -27,6 +27,7 @@
       <li>try to fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/32">issue #32</a>: Markdown file icons are overridden by Markdown Navigator plugin.</li>
       <li>add a filter to Plugin icons table.</li>
       <li>rework <i>.htaccess</i> files (PNG icon to SVG).</li>
+      <li>rework <i>kubernetes*.yml</i> files (PNG icon to SVG).</li>
     </ul>
     1.32.0 (2020/07/11)
     <ul>
