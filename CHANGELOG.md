@@ -2,6 +2,7 @@
 
 ### 1.34.0 (WIP)
 * rework Git files (PNG icon to SVG).
+* rework Gradle files (PNG icon to SVG).
 
 ### 1.33.0 (2020/07/31)
 * support Robot Framework `.robot` files.

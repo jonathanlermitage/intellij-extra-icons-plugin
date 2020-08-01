@@ -155,15 +155,15 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("bamboo.yml"),
             ofFile("cargo", "/icons/cargo.png", "Cargo: cargo.toml")
                 .eq("cargo.toml"),
-            ofFile("gradle_main", "/icons/gradle.png", "Gradle: build.gradle, gradle.properties, settings.gradle")
+            ofFile("gradle_main", "/icons/gradle.svg", "Gradle: build.gradle, gradle.properties, settings.gradle")
                 .eq("build.gradle", "gradle.properties", "settings.gradle"),
-            ofFile("gradle_kotlin", "/icons/gradle.png", "Gradle (Kotlin DSL): build.gradle.kts, settings.gradle.kts")
+            ofFile("gradle_kotlin", "/icons/gradle.svg", "Gradle (Kotlin DSL): build.gradle.kts, settings.gradle.kts")
                 .eq("build.gradle.kts", "settings.gradle.kts"),
             ofFile("gradle", "/icons/gradlew.svg", "Gradle: gradlew")
                 .eq("gradlew"),
             ofFile("gradlew", "/icons/gradlew.svg", "Gradle (Windows): gradlew.bat, gradlew.cmd")
                 .eq("gradlew.bat", "gradlew.cmd"),
-            ofFile("gradle_wrapper", "/icons/gradle.png", "Gradle Wrapper: gradle-wrapper.jar, gradle-wrapper.properties")
+            ofFile("gradle_wrapper", "/icons/gradle.svg", "Gradle Wrapper: gradle-wrapper.jar, gradle-wrapper.properties")
                 .eq("gradle-wrapper.jar", "gradle-wrapper.properties"),
             ofFile("mvnw_linux", "/icons/bash-mvnw.png", "Maven: mvnw")
                 .eq("mvnw"),
