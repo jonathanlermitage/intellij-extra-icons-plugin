@@ -33,6 +33,7 @@
       <li>rework HTML5 files.</li>
       <li>rework PID files.</li>
       <li>improve FlyWay and Liquibase support: detect HSQLDB and IBM DB2 databases.</li>
+      <li>rework Angular files.</li>
     </ul>
     1.33.0 (2020/07/31)
     <ul>
