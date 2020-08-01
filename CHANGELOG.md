@@ -9,6 +9,7 @@
 * rework Gitlab files (PNG icon to SVG).
 * rework Apache htaccess files.
 * rework HTML5 files.
+* rework PID files.
 
 ### 1.33.0 (2020/07/31)
 * support Robot Framework `.robot` files.
