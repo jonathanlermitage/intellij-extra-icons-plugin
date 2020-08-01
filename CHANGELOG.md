@@ -10,6 +10,7 @@
 * rework Apache htaccess files.
 * rework HTML5 files.
 * rework PID files.
+* improve FlyWay and Liquibase support: detect HSQLDB and IBM DB2 databases.
 
 ### 1.33.0 (2020/07/31)
 * support Robot Framework `.robot` files.

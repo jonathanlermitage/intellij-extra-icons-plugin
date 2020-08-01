@@ -66,6 +66,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex("^/\\.vscode$")
                 .eq(".vscode"), // FIXME #13 temp fix
             // - Flyway databases
+            ofDir("dir_flyway_db2", "/icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/migration/db2[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_flyway_hsqldb", "/icons/folder_hsqldb.svg", "Flyway, HSQLDB database folder (regex): '.*/db/migration/hsqldb[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/migration/hsqldb[a-zA-Z0-9._\\-]*"),
             ofDir("dir_flyway_mariadb", "/icons/folder_mariadb.svg", "Flyway, MariaDB database folder (regex): '.*/db/migration/maria[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/migration/maria[a-zA-Z0-9._\\-]*"),
             ofDir("dir_flyway_mysql", "/icons/folder_mysql.svg", "Flyway, MySQL database folder (regex): '.*/db/migration/mysql[a-zA-Z0-9._\\-]*'")
@@ -81,6 +85,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_flyway_mssql", "/icons/folder_sqlserver.svg", "Flyway, MS SQL Server database folder (regex): '.*/db/migration/mssql[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/migration/mssql[a-zA-Z0-9._\\-]*"),
             // - Liquibase databases
+            ofDir("dir_liquibase_db2", "/icons/folder_db2.svg", "Liquibase, IBM DB2 database folder (regex): '.*/db/changelog/db2[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/changelog/db2[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_liquibase_hsqldb", "/icons/folder_hsqldb.svg", "Liquibase, HSQLDB database folder (regex): '.*/db/changelog/hsqldb[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/changelog/hsqldb[a-zA-Z0-9._\\-]*"),
             ofDir("dir_liquibase_mariadb", "/icons/folder_mariadb.svg", "Liquibase, MariaDB database folder (regex): '.*/db/changelog/maria[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/changelog/maria[a-zA-Z0-9._\\-]*"),
             ofDir("dir_liquibase_mysql", "/icons/folder_mysql.svg", "Liquibase, MySQL database folder (regex): '.*/db/changelog/mysql[a-zA-Z0-9._\\-]*'")
