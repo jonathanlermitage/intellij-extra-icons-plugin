@@ -143,7 +143,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             ofFile("vcskeep", "/icons/keep.svg", "Various VCS: .keep, .gitkeep, .hgkeep, .svnkeep")
                 .eq(".keep", ".gitkeep", ".hgkeep", ".svnkeep"),
-            ofFile("htaccess", "/icons/apache.svg", "Apache: .htaccess")
+            ofFile("htaccess", "/icons/htaccess.svg", "Apache: .htaccess")
                 .eq(".htaccess"),
             ofFile("appveyor", "/icons/appveyor.png", "Appveyor: appveyor.yml, .appveyor.yml")
                 .eq("appveyor.yml", ".appveyor.yml"),
@@ -165,7 +165,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("gradlew.bat", "gradlew.cmd"),
             ofFile("gradle_wrapper", "/icons/gradle.svg", "Gradle Wrapper: gradle-wrapper.jar, gradle-wrapper.properties")
                 .eq("gradle-wrapper.jar", "gradle-wrapper.properties"),
-            ofFile("mvnw_linux", "/icons/bash-mvnw.png", "Maven: mvnw")
+            ofFile("mvnw_linux", "/icons/mvnw.svg", "Maven: mvnw")
                 .eq("mvnw"),
             ofFile("berksfile", "/icons/berkshelf.png", "Berkshelf: berksfile")
                 .eq("berksfile"),
@@ -195,7 +195,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".cirrus.yml"),
             ofFile("composer", "/icons/composer.svg", "Composer: composer.json, composer.lock")
                 .eq("composer.json", "composer.lock"),
-            ofFile("mvnw_windows", "/icons/cmd-mvnw.png", "Maven (Windows): mvnw.bat, mvnw.cmd")
+            ofFile("mvnw_windows", "/icons/mvnw.svg", "Maven (Windows): mvnw.bat, mvnw.cmd")
                 .eq("mvnw.bat", "mvnw.cmd"),
             ofFile("codecov", "/icons/codecov.png", "CodeCov: .codecov.yml, codecov.yml")
                 .eq(".codecov.yml", "codecov.yml"),

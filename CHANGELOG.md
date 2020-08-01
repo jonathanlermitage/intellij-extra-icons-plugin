@@ -3,6 +3,12 @@
 ### 1.34.0 (WIP)
 * rework Git files (PNG icon to SVG).
 * rework Gradle files (PNG icon to SVG).
+* rework Archive files.
+* rework Maven wrapper files (PNG icon to SVG).
+* rework Gradle wrapper files (PNG icon to SVG).
+* rework Gitlab files (PNG icon to SVG).
+* rework Apache htaccess files.
+* rework HTML5 files.
 
 ### 1.33.0 (2020/07/31)
 * support Robot Framework `.robot` files.

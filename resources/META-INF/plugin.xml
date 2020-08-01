@@ -25,6 +25,12 @@
     <ul>
       <li>rework Git files (PNG icon to SVG).</li>
       <li>rework Gradle files (PNG icon to SVG).</li>
+      <li>rework Archive files.</li>
+      <li>rework Maven wrapper files (PNG icon to SVG).</li>
+      <li>rework Gradle wrapper files (PNG icon to SVG).</li>
+      <li>rework Gitlab files (PNG icon to SVG).</li>
+      <li>rework Apache htaccess files.</li>
+      <li>rework HTML5 files.</li>
     </ul>
     1.33.0 (2020/07/31)
     <ul>
