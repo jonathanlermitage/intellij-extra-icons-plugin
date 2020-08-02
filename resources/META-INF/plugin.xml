@@ -85,15 +85,15 @@
         <!-- Add your extensions here -->
         <fileIconProvider
             id="genericFileIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <iconProvider
             id="extraIconsIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <openapi.vcs.changes.ui.filePathIconProvider
             id="extraIconsFilePathIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <applicationService serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService" />
         <projectService serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService"/>
