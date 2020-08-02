@@ -44,6 +44,7 @@
     <p>
       Some icons come from the <a href="https://github.com/hiberbee/jetbrains-ide-theme">Hiberbee Theme family</a> project.
     </p>
+    <br/>
     1.33.0 (2020/07/31)
     <ul>
       <li>support Robot Framework <i>.robot</i> files.</li>
