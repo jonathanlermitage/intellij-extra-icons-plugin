@@ -12,6 +12,14 @@
 * rework PID files.
 * improve FlyWay and Liquibase support: detect HSQLDB and IBM DB2 databases.
 * rework Angular files.
+* rework Appveyor files.
+* rework Asciidoc files.
+* rework GitHub files.
+* rework SASS files (PNG icon to SVG).
+* rework Terraform files (PNG icon to SVG).
+* rework Typescript files.
+
+Some icons come from the [Hiberbee Theme family](https://github.com/hiberbee/jetbrains-ide-theme) project.
 
 ### 1.33.0 (2020/07/31)
 * support Robot Framework `.robot` files.

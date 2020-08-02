@@ -153,7 +153,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".keep", ".gitkeep", ".hgkeep", ".svnkeep"),
             ofFile("htaccess", "/icons/htaccess.svg", "Apache: .htaccess")
                 .eq(".htaccess"),
-            ofFile("appveyor", "/icons/appveyor.png", "Appveyor: appveyor.yml, .appveyor.yml")
+            ofFile("appveyor", "/icons/appveyor.svg", "Appveyor: appveyor.yml, .appveyor.yml")
                 .eq("appveyor.yml", ".appveyor.yml"),
             ofFile("archunit", "/icons/archunit.png", "ArchUnit: archunit.properties")
                 .eq("archunit.properties"),
@@ -405,7 +405,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             ofFile("ext_archive", "/icons/archive.png", "Archive: *.zip, *.7z, *.tar, *.gz, *.bz2, *.xz")
                 .end(".zip", ".7z", ".tar", ".gz", ".bz2", ".xz"),
-            ofFile("ext_adoc", "/icons/asciidoc.png", "Asciidoc: *.adoc, *.asciidoc")
+            ofFile("ext_adoc", "/icons/asciidoc.svg", "Asciidoc: *.adoc, *.asciidoc")
                 .end(".adoc", ".asciidoc"),
             ofFile("ext_apk", "/icons/apk.svg", "Android application package (APK): *.apk, *.xapk")
                 .end(".apk", ".xapk"),
@@ -467,13 +467,15 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".rpm"),
             ofFile("ext_robotframework", "/icons/robotframework.svg", "Robot Framework: *.robot")
                 .end(".robot"),
-            ofFile("sass", "/icons/sass.svg", "SASS: *.sass, *.scss")
-                .end(".sass", ".scss"),
+            ofFile("sass", "/icons/sass.svg", "SASS: *.sass")
+                .end(".sass"),
+            ofFile("scss", "/icons/scss.svg", "SASS: *.scss")
+                .end(".scss"),
             ofFile("less", "/icons/less.png", "LESS CSS: *.less")
                 .end(".less"),
             ofFile("ext_svg", "/icons/svg.svg", "SVG: *.svg")
                 .end(".svg"),
-            ofFile("ext_tf", "/icons/terraform.png", "Terraform: *.hcl, *.tf, *.tf.json")
+            ofFile("ext_tf", "/icons/terraform.svg", "Terraform: *.hcl, *.tf, *.tf.json")
                 .end(".hcl", ".tf", ".tf.json"),
             ofFile("ext_toml", "/icons/toml.svg", "TOML: *.toml")
                 .end(".toml"),
