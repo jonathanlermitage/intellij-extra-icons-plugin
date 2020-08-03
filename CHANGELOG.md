@@ -19,6 +19,7 @@
 * rework Terraform files (PNG icon to SVG).
 * rework Typescript files.
 * rework Liquibase files.
+* rework Swagger files.
 
 Some icons come from the [Hiberbee Theme family](https://github.com/hiberbee/jetbrains-ide-theme) project.
 
