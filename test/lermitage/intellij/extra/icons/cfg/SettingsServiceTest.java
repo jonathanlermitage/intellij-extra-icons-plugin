@@ -51,4 +51,44 @@ public class SettingsServiceTest {
             Assert.assertFalse(svgIconName, pngIconNames.contains(svgIconName + "@2x_dark"));
         }
     }
+
+    @Test
+    public void png_icons_should_have_2x_definition() {
+        File iconsFolder = new File("resources/icons/");
+        File[] pngIcons = iconsFolder.listFiles((dir, name) -> name.endsWith(".png"));
+        Set<String> pngIconNames = Stream.of(pngIcons)
+            .map(file -> file.getName().replace(".png", ""))
+            .collect(Collectors.toSet());
+
+        for (String icon : pngIconNames) {
+            if (icon.endsWith("_dark")) {
+                if (icon.endsWith("@2x_dark")) {
+                    Assert.assertTrue(icon, pngIconNames.contains(icon.replace("@2x_dark", "_dark")));
+                } else {
+                    Assert.assertTrue(icon, pngIconNames.contains(icon.replace("_dark", "@2x_dark")));
+                }
+            } else {
+                if (icon.endsWith("@2x")) {
+                    Assert.assertTrue(icon, pngIconNames.contains(icon.substring(0, icon.length() - "@2x".length())));
+                } else {
+                    Assert.assertTrue(icon, pngIconNames.contains(icon + "@2x"));
+                }
+            }
+        }
+    }
+
+    @Test
+    public void dark_icon_should_be_coupled_with_light_icon() {
+        File iconsFolder = new File("resources/icons/");
+        File[] icons = iconsFolder.listFiles((dir, name) -> name.endsWith(".png") || name.endsWith(".svg"));
+        Set<String> iconNames = Stream.of(icons)
+            .map(File::getName)
+            .collect(Collectors.toSet());
+
+        for (String icon : iconNames) {
+            if (icon.contains("_dark")) {
+                Assert.assertTrue(icon, iconNames.contains(icon.replace("_dark", "")));
+            }
+        }
+    }
 }
