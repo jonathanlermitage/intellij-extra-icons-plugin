@@ -40,6 +40,7 @@
       <li>rework SASS files (PNG icon to SVG.</li>
       <li>rework Terraform files (PNG icon to SVG).</li>
       <li>rework Typescript files.</li>
+      <li>rework Liquibase files.</li>
     </ul>
     <p>
       Some icons come from the <a href="https://github.com/hiberbee/jetbrains-ide-theme">Hiberbee Theme family</a> project.

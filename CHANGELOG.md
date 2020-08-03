@@ -18,6 +18,7 @@
 * rework SASS files (PNG icon to SVG).
 * rework Terraform files (PNG icon to SVG).
 * rework Typescript files.
+* rework Liquibase files.
 
 Some icons come from the [Hiberbee Theme family](https://github.com/hiberbee/jetbrains-ide-theme) project.
 
