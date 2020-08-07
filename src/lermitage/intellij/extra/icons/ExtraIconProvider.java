@@ -68,6 +68,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             // - Flyway databases
             ofDir("dir_flyway_db2", "/icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/migration/db2[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_flyway_h2", "/icons/folder_h2.svg", "Flyway, H2 database folder (regex): '.*/db/migration/h2[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/migration/h2[a-zA-Z0-9._\\-]*"),
             ofDir("dir_flyway_hsqldb", "/icons/folder_hsqldb.svg", "Flyway, HSQLDB database folder (regex): '.*/db/migration/hsqldb[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/migration/hsqldb[a-zA-Z0-9._\\-]*"),
             ofDir("dir_flyway_mariadb", "/icons/folder_mariadb.svg", "Flyway, MariaDB database folder (regex): '.*/db/migration/maria[a-zA-Z0-9._\\-]*'")
@@ -87,6 +89,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             // - Liquibase databases
             ofDir("dir_liquibase_db2", "/icons/folder_db2.svg", "Liquibase, IBM DB2 database folder (regex): '.*/db/changelog/db2[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/changelog/db2[a-zA-Z0-9._\\-]*"),
+            ofDir("dir_liquibase_h2", "/icons/folder_h2.svg", "Liquibase, H2 database folder (regex): '.*/db/changelog/h2[a-zA-Z0-9._\\-]*'")
+                .regex(".*/db/changelog/h2[a-zA-Z0-9._\\-]*"),
             ofDir("dir_liquibase_hsqldb", "/icons/folder_hsqldb.svg", "Liquibase, HSQLDB database folder (regex): '.*/db/changelog/hsqldb[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/changelog/hsqldb[a-zA-Z0-9._\\-]*"),
             ofDir("dir_liquibase_mariadb", "/icons/folder_mariadb.svg", "Liquibase, MariaDB database folder (regex): '.*/db/changelog/maria[a-zA-Z0-9._\\-]*'")
@@ -193,7 +197,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("cassandra").mayEnd(YML),
             ofFile("cassandra1", "/icons/cassandra.png", "Cassandra: start by 'cassandra' and end by '.yml,.yaml'")
                 .start("cassandra").end(YML),
-            ofFile("changelog", "/icons/changelog.png", "Changelog: changelog(.md,.txt,.adoc,.rst), changes, release-notes, release_notes")
+            ofFile("changelog", "/icons/changelog.svg", "Changelog: changelog(.md,.txt,.adoc,.rst), changes, release-notes, release_notes")
                 .eq("changelog", "changes", "release-notes", "release_notes").mayEnd(TXT),
             ofFile("circle", "/icons/circleci.svg", "Circle CI: circle.yml")
                 .eq("circle.yml"),
@@ -205,7 +209,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("composer.json", "composer.lock"),
             ofFile("mvnw_windows", "/icons/mvnw.svg", "Maven (Windows): mvnw.bat, mvnw.cmd")
                 .eq("mvnw.bat", "mvnw.cmd"),
-            ofFile("codecov", "/icons/codecov.png", "CodeCov: .codecov.yml, codecov.yml")
+            ofFile("codecov", "/icons/codecov.svg", "CodeCov: .codecov.yml, codecov.yml")
                 .eq(".codecov.yml", "codecov.yml"),
             ofFile("codefresh", "/icons/codefresh.png", "Codefresh: codefresh.yml")
                 .eq("codefresh.yml"),
@@ -243,7 +247,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("cerebro").end(".conf"),
             ofFile("intellijcodestyle", "/icons/jetbrains.svg", "IntelliJ: intellijcodestyle.xml")
                 .eq("intellijcodestyle.xml"),
-            ofFile("mailmap", "/icons/email.png", "Mailmap: .mailmap")
+            ofFile("mailmap", "/icons/email.svg", "Mailmap: .mailmap")
                 .eq(".mailmap"),
             ofFile("msazure", "/icons/msazure.svg", "Microsoft Azure: azure-pipelines.yml")
                 .eq("azure-pipelines.yml"),
@@ -341,6 +345,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("package-lock.json"),
             ofFile("prettier", "/icons/prettier.svg", "Prettier: .prettierrc")
                 .eq(".prettierrc"),
+            ofFile("pdd", "/icons/pdd.svg", "Puzzle Driven Development: .pdd")
+                .eq(".pdd"),
+            ofFile("pdd_yml", "/icons/pdd.svg", "Puzzle Driven Development: .0pdd.yml")
+                .eq(".0pdd.yml"),
             ofFile("prettierignore", "/icons/prettierignore.svg", "Prettier: .prettierignore")
                 .eq(".prettierignore"),
             ofFile("privacy", "/icons/privacy.svg", "Privacy: privacy(.md,.txt,.adoc,.rst)")
@@ -431,7 +439,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".epub", ".mobi", ".azw", ".azw3"),
             ofFile("ext_exe", "/icons/msexe.png", "MS Winows: *.exe")
                 .end(".exe"),
-            ofFile("ext_form", "/icons/form.png", "Form (e.g. IntelliJ Swing xml form): *.form")
+            ofFile("ext_form", "/icons/form.svg", "Form (e.g. IntelliJ Swing xml form): *.form")
                 .end(".form"),
             ofFile("ext_graphqls", "/icons/graphql.png", "GraphQL: *.graphqls")
                 .end(".graphqls"),
@@ -443,8 +451,16 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".http"),
             ofFile("ext_iml", "/icons/jetbrains.svg", "IntelliJ project: *.iml")
                 .end(".iml"),
-            ofFile("ext_cfg", "/icons/ini.png", "Configuration: *.ini, *.cfg, *.conf, *.config")
-                .end(".ini", ".cfg", ".conf", ".config"),
+            ofFile("ext_jinja", "/icons/jinja.svg", "Jinja: *.jinja, *.jinja2")
+                .end(".jinja", ".jinja2"),
+            ofFile("ext_cfg_ini", "/icons/config.svg", "Configuration: *.ini")
+                .end(".ini"),
+            ofFile("ext_cfg_cfg", "/icons/config.svg", "Configuration: *.cfg")
+                .end(".cfg"),
+            ofFile("ext_cfg_conf", "/icons/config.svg", "Configuration: *.conf")
+                .end(".conf"),
+            ofFile("ext_cfg_config", "/icons/config.svg", "Configuration: *.config")
+                .end(".config"),
             ofFile("ext_jar", "/icons/jar.png", "Java archive: *.jar")
                 .end(".jar"),
             ofFile("ext_jaroriginal", "/icons/jar.png", "Java archive (copy): *.jar.original")
@@ -471,7 +487,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".sass"),
             ofFile("scss", "/icons/scss.svg", "SASS: *.scss")
                 .end(".scss"),
-            ofFile("less", "/icons/less.png", "LESS CSS: *.less")
+            ofFile("less", "/icons/less.svg", "LESS CSS: *.less")
                 .end(".less"),
             ofFile("ext_svg", "/icons/svg.svg", "SVG: *.svg")
                 .end(".svg"),
@@ -486,6 +502,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("ext_video", "/icons/video.svg", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ...")
                 .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
                     ".m4v", ".mkv", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid"),
+            ofFile("ext_velocity", "/icons/velocity.svg", "Velocity: *.vtl")
+                .end(".vtl"),
             ofFile("ext_war", "/icons/war.svg", "Java WAR: *.war")
                 .end(".war"),
             ofFile("ext_libreoffice_calc", "/icons/officedocs/localc.png", "LibreOffice Calc: *.ods")

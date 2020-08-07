@@ -33,7 +33,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.table.TableStringConverter;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -299,6 +301,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             filter = ".*";
         }
         try {
+            sorter.setStringConverter(new TableStringConverter() {
+                @Override
+                public String toString(TableModel model, int row, int column) {
+                    return model.getValueAt(row, PluginIconsSettingsTableModel.ICON_LABEL_ROW_NUMBER).toString();
+                }
+            });
             sorter.setRowFilter(RowFilter.regexFilter(filter));
             pluginIconsTable.setRowSorter(sorter);
         } catch (PatternSyntaxException pse) {

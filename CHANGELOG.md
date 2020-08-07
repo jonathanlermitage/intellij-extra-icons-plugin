@@ -10,7 +10,7 @@
 * rework Apache htaccess files.
 * rework HTML5 files.
 * rework PID files.
-* improve FlyWay and Liquibase support: detect HSQLDB and IBM DB2 databases.
+* improve FlyWay and Liquibase support: detect HSQLDB, H2 and IBM DB2 databases.
 * rework Angular files.
 * rework Appveyor files.
 * rework Asciidoc files.
@@ -20,6 +20,20 @@
 * rework Typescript files.
 * rework Liquibase files.
 * rework Swagger files.
+* support PDD (Puzzle Driven Development) `.pdd` and `.0pdd.yml` files.
+* rework and ungroup `*.ini`, `*.cfg`, `*.conf`, `*.config` Configuration files support: users may prefer icons provided by the [Ini plugin](https://plugins.jetbrains.com/plugin/6981-ini/).
+* rework Postman files (improve dark icon).
+* rework Codecov files (PNG icon to SVG).
+* rework `.mailmap` files (PNG icon to SVG).
+* rework LESS files (PNG icon to SVG).
+* support Velocity `*.vtl` files.
+* rework CHANGELOG files (PNG icon to SVG).
+* support Jinja `*.jinja` and `*.jinja2` files.
+* Plugin icons table filter now filters on label column only.
+* rework Jest files.
+* rework WAR files.
+* rework TESTING files (PNG icon to SVG).
+* rework `.form` files (PNG icon to SVG).
 
 Some icons come from the [Hiberbee Theme family](https://github.com/hiberbee/jetbrains-ide-theme) project.
 

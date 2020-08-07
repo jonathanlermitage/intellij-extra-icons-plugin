@@ -3,8 +3,7 @@
 package lermitage.intellij.extra.icons.cfg;
 
 import lermitage.intellij.extra.icons.Model;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.util.HashSet;
@@ -12,6 +11,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class SettingsServiceTest {
 
@@ -28,7 +31,7 @@ public class SettingsServiceTest {
             ids.add(id);
         }
         if (!duplicatedIds.isEmpty()) {
-            Assert.fail("model ids are registered more than once: " + duplicatedIds);
+            fail("model ids are registered more than once: " + duplicatedIds);
         }
     }
 
@@ -40,15 +43,15 @@ public class SettingsServiceTest {
         Set<String> pngIconNames = Stream.of(pngIcons)
             .map(file -> file.getName().replace(".png", ""))
             .collect(Collectors.toSet());
-        Assert.assertTrue(svgIcons.length > 0);
-        Assert.assertTrue(pngIcons.length > 0);
+        assertTrue(svgIcons.length > 0);
+        assertTrue(pngIcons.length > 0);
 
         for (File svgIcon : svgIcons) {
             String svgIconName = svgIcon.getName().replace(".svg", "");
-            Assert.assertFalse(svgIconName, pngIconNames.contains(svgIconName));
-            Assert.assertFalse(svgIconName, pngIconNames.contains(svgIconName + "_dark"));
-            Assert.assertFalse(svgIconName, pngIconNames.contains(svgIconName + "@2x"));
-            Assert.assertFalse(svgIconName, pngIconNames.contains(svgIconName + "@2x_dark"));
+            assertFalse(pngIconNames.contains(svgIconName), svgIconName);
+            assertFalse(pngIconNames.contains(svgIconName + "_dark"), svgIconName);
+            assertFalse(pngIconNames.contains(svgIconName + "@2x"), svgIconName);
+            assertFalse(pngIconNames.contains(svgIconName + "@2x_dark"), svgIconName);
         }
     }
 
@@ -63,15 +66,15 @@ public class SettingsServiceTest {
         for (String icon : pngIconNames) {
             if (icon.endsWith("_dark")) {
                 if (icon.endsWith("@2x_dark")) {
-                    Assert.assertTrue(icon, pngIconNames.contains(icon.replace("@2x_dark", "_dark")));
+                    assertTrue(pngIconNames.contains(icon.replace("@2x_dark", "_dark")), icon);
                 } else {
-                    Assert.assertTrue(icon, pngIconNames.contains(icon.replace("_dark", "@2x_dark")));
+                    assertTrue(pngIconNames.contains(icon.replace("_dark", "@2x_dark")), icon);
                 }
             } else {
                 if (icon.endsWith("@2x")) {
-                    Assert.assertTrue(icon, pngIconNames.contains(icon.substring(0, icon.length() - "@2x".length())));
+                    assertTrue(pngIconNames.contains(icon.substring(0, icon.length() - "@2x".length())), icon);
                 } else {
-                    Assert.assertTrue(icon, pngIconNames.contains(icon + "@2x"));
+                    assertTrue(pngIconNames.contains(icon + "@2x"), icon);
                 }
             }
         }
@@ -87,7 +90,7 @@ public class SettingsServiceTest {
 
         for (String icon : iconNames) {
             if (icon.contains("_dark")) {
-                Assert.assertTrue(icon, iconNames.contains(icon.replace("_dark", "")));
+                assertTrue(iconNames.contains(icon.replace("_dark", "")), icon);
             }
         }
     }
