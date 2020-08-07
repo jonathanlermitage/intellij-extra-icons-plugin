@@ -39,6 +39,7 @@ import javax.swing.table.TableStringConverter;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -304,7 +305,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             sorter.setStringConverter(new TableStringConverter() {
                 @Override
                 public String toString(TableModel model, int row, int column) {
-                    return model.getValueAt(row, PluginIconsSettingsTableModel.ICON_LABEL_ROW_NUMBER).toString();
+                    String desc = model.getValueAt(row, PluginIconsSettingsTableModel.ICON_LABEL_ROW_NUMBER).toString();
+                    return desc + " " + desc.toLowerCase(Locale.ENGLISH) + " " + desc.toUpperCase(Locale.ENGLISH);
                 }
             });
             sorter.setRowFilter(RowFilter.regexFilter(filter));
