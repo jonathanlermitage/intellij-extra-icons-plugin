@@ -57,6 +57,7 @@
       <li>rework TESTING files (PNG icon to SVG).</li>
       <li>rework <i>.form</i> files (PNG icon to SVG).</li>
       <li>rework NSIS files (PNG icon to SVG).</li>
+      <li>support <i>swagger-config.yaml</i> files.</li>
     </ul>
     <p>
       Some icons come from the <a href="https://github.com/hiberbee/jetbrains-ide-theme">Hiberbee Theme family</a> project.

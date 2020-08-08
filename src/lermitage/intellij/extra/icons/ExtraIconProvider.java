@@ -381,6 +381,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("stackerfile.yml"),
             ofFile("svgo", "/icons/svgo.svg", "SVGO: svgo(.yml,.yaml)")
                 .eq("svgo").end(YML),
+            ofFile("swaggerconfig", "/icons/swagger.svg", "Swagger: swagger-config.yaml")
+                .eq("swagger-config.yaml"),
             ofFile("swaggerignore", "/icons/swaggerignore.svg", "Swagger: .swagger-codegen-ignore")
                 .eq(".swagger-codegen-ignore"),
             ofFile("testing", "/icons/testing.svg", "Test: test(.md,.txt,.adoc,.rst), testing")
