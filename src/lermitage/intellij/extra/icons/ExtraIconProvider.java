@@ -129,7 +129,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*[^a-zA-Z0-9]spec\\.(js|ts)"),
             ofFile("flyway", "/icons/flyway.png", "Flyway (regex): '.*/db/migration/.*\\.sql'")
                 .regex(".*/db/migration/.*\\.sql"),
-            ofFile("liquibase", "/icons/liquibase.png", "Liquibase (regex): '.*/db/changelog/.*\\.(sql|xml)'")
+            ofFile("liquibase", "/icons/liquibase.svg", "Liquibase (regex): '.*/db/changelog/.*\\.(sql|xml)'")
                 .regex(".*/db/changelog/.*\\.(sql|xml)"),
 
             //
@@ -263,7 +263,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("gruntfile.js"),
             ofFile("git", "/icons/git.svg", "Git: .gitattributes, .gitignore, .gitmodules, .gitreview")
                 .eq(".gitattributes", ".gitignore", ".gitmodules", ".gitreview"),
-            ofFile("gitlab", "/icons/gitlab.png", "Gitlab: .gitlab-ci.yml")
+            ofFile("gitlab", "/icons/gitlab.svg", "Gitlab: .gitlab-ci.yml")
                 .eq(".gitlab-ci.yml"),
             ofFile("graphqlconfig", "/icons/graphql-config.png", "GraphQL: graphql.config.json")
                 .eq("graphql.config.json"),
@@ -367,7 +367,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("redis").end(".conf"),
             ofFile("roadmap", "/icons/roadmap.png", "Roadmap: roadmap(.md,.txt,.adoc,.rst)")
                 .eq("roadmap").mayEnd(TXT),
-            ofFile("rollup", "/icons/rollup.png", "Rollup: rollup.config.js")
+            ofFile("rollup", "/icons/rollup.svg", "Rollup: rollup.config.js")
                 .eq("rollup.config.js"),
             ofFile("rultor", "/icons/rultor.svg", "Rultor: .rultor.yml")
                 .eq(".rultor.yml"),
@@ -411,7 +411,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             // extension only
             //
-            ofFile("ext_archive", "/icons/archive.png", "Archive: *.zip, *.7z, *.tar, *.gz, *.bz2, *.xz")
+            ofFile("ext_archive", "/icons/archive.svg", "Archive: *.zip, *.7z, *.tar, *.gz, *.bz2, *.xz")
                 .end(".zip", ".7z", ".tar", ".gz", ".bz2", ".xz"),
             ofFile("ext_adoc", "/icons/asciidoc.svg", "Asciidoc: *.adoc, *.asciidoc")
                 .end(".adoc", ".asciidoc"),
