@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.34.0 (WIP)
+### 1.34.0 (2020/08/08)
 * rework Git files (PNG icon to SVG).
 * rework Gradle files (PNG icon to SVG).
 * rework Archive files.
