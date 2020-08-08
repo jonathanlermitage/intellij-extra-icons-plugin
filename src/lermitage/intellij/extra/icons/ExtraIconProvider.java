@@ -383,7 +383,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("svgo").end(YML),
             ofFile("swaggerignore", "/icons/swaggerignore.svg", "Swagger: .swagger-codegen-ignore")
                 .eq(".swagger-codegen-ignore"),
-            ofFile("testing", "/icons/testing.png", "Test: test(.md,.txt,.adoc,.rst), testing")
+            ofFile("testing", "/icons/testing.svg", "Test: test(.md,.txt,.adoc,.rst), testing")
                 .eq("test", "testing").mayEnd(TXT),
             ofFile("todo", "/icons/todo.png", "To-Do: todo(.md,.txt,.adoc,.rst)")
                 .eq("todo").mayEnd(TXT),
