@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         mavenCentral()
+        mavenLocal()
         jcenter()
     }
     dependencies {
@@ -47,6 +48,7 @@ intellij {
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 // See https://github.com/ben-manes/gradle-versions-plugin
