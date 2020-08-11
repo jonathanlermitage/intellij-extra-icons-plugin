@@ -56,7 +56,7 @@ def versionIsNonStable = { String version ->
     if (['RELEASE', 'FINAL', 'GA'].any { qualifier -> version.toUpperCase().endsWith(qualifier) }) {
         return false
     }
-    boolean isNonStable = ['alpha', 'Alpha', 'ALPHA', 'b', 'beta', 'Beta', 'BETA', 'rc', '‌RC', 'M', 'EA', 'pr', 'atlassian'].any { qualifier ->
+    boolean isNonStable = ['alpha', 'Alpha', 'ALPHA', 'b', 'beta', 'Beta', 'BETA', 'rc', 'RC', 'M', 'EA', 'pr', 'atlassian'].any { qualifier ->
         version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
     }
     return isNonStable
