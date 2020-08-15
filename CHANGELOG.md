@@ -2,6 +2,7 @@
 
 ### 1.35.0 (WIP)
 * rework Nginx files.
+* rework Better Code Hub files.
 
 ### 1.34.0 (2020/08/08)
 * rework Git files (PNG icon to SVG).
