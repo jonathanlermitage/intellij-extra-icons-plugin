@@ -1,6 +1,6 @@
 ## Extra Icons Change Log
 
-### 1.35.0 (WIP)
+### 1.35.0 (2020/08/22)
 * rework Nginx files.
 * rework Better Code Hub files.
 

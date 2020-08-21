@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.35.0 (WIP)
+    1.35.0 (2020/08/22)
     <ul>
       <li>rework Nginx files.</li>
       <li>rework Better Code Hub files.</li>
