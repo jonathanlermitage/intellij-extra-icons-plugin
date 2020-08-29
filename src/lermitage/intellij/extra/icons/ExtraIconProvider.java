@@ -365,6 +365,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("puppet").end(".conf"),
             ofFile("readme", "/icons/readme.png", "Readme: readme(.md,.txt,.adoc,.rst), lisezmoi")
                 .eq("readme", "lisezmoi").mayEnd(TXT),
+            ofFile("readme_alt", "/icons/readme_alt.svg", "Readme: readme(.md,.txt,.adoc,.rst), lisezmoi (alternative)")
+                .eq("readme", "lisezmoi").mayEnd(TXT),
             ofFile("redis", "/icons/redis.svg", "Redis: redis(.conf)")
                 .eq("redis").mayEnd(".conf"),
             ofFile("redis1", "/icons/redis.svg", "Redis: start by 'redis' and end by '.conf'")
