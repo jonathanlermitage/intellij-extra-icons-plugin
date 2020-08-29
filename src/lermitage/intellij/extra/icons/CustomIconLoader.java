@@ -13,7 +13,6 @@ import com.intellij.util.JBHiDPIScaledImage;
 import com.intellij.util.RetinaImage;
 import com.intellij.util.SVGLoader;
 import com.intellij.util.ui.UIUtil;
-import sun.awt.image.ToolkitImage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -108,9 +107,9 @@ public class CustomIconLoader {
                     if (image instanceof JBHiDPIScaledImage) {
                         image = ((JBHiDPIScaledImage) image).getDelegate();
                     }
-                    if (image instanceof ToolkitImage) {
-                        image = ((ToolkitImage) image).getBufferedImage();
-                    }
+                    //if (image instanceof ToolkitImage) { TODO uncomment if IJ (or IDE like PyCharm) still returns sun.awt.image.ToolkitImage objects
+                    //    image = ((ToolkitImage) image).getBufferedImage();
+                    //}
                     if (!(image instanceof RenderedImage)) {
                         BufferedImage bufferedImage = UIUtil.createImage(
                             GRAPHICS_CFG,
