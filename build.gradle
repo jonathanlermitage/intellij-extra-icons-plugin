@@ -46,6 +46,8 @@ intellij {
     version ideaVersion
 }
 
+buildSearchableOptions.enabled = Boolean.valueOf(enableBuildSearchableOptions)
+
 repositories {
     mavenCentral()
     mavenLocal()
