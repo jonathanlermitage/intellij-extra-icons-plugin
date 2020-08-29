@@ -67,6 +67,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private EditorTextField filterTextField;
     private JButton filterApplyBtn;
     private JButton filteResetBtn;
+    private JBLabel bottomTip;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -190,6 +191,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         filterTextField.setText("");
         filterApplyBtn.setText("Apply");
         filteResetBtn.setText("Reset");
+        bottomTip.setText("<html><b>Icons are ordered by priority</b>. To use an <i>alternative</i> icon (as for Markdown files), deactivate the icon(s) above.</html>");
         initCheckbox();
         loadPluginIconsTable();
         userIconsTable.setShowHorizontalLines(false);
