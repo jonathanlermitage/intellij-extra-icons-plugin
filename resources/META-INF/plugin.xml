@@ -21,6 +21,19 @@
     -->
 
     <change-notes><![CDATA[
+    1.36.0 (WIP)
+    <ul>
+      <li>rework Markdown files (PNG icon to SVG) and provide 2 alternative icons. To use an alternative icon, simply deactivate the other(s).</li>
+      <li>Provide some alternative icons for Video files.</li>
+      <li>provide an alternative icon for EditorConfig files.</li>
+      <li>provide an alternative icon for Swagger files.</li>
+      <li>provide an alternative icon for Asciidoc files.</li>
+      <li>provide an alternative icon for Certificate files.</li>
+      <li>provide an alternative icon for License files.</li>
+      <li>add new configuration condition: facets. You can now choose to activate a custom icon if a specific facet is ativated in project (as in <code>Project Structure &gt; Project Settings &gt; Facets</code>), like "Spring", "JPA", etc. This condition must be associated with an other condition like "Names", "Regex", etc.</li>
+      <li>removed usage of <code>sun.awt.image.ToolkitImage</code>. It will fix some Gradle build errors with JDK9+, but some IDE like PyCharm <i>may</i> (I did not reproduce) not display a few icons. If it doesn't work for you, please open an issue (and attach IDE logs) and I will probably revert this change.</li>
+      <li>support <a href="https://tinylog.org">Tinylog</a> <i>tinylog.properties</i> files.</li>
+    </ul>
     1.35.0 (2020/08/22)
     <ul>
       <li>rework Nginx files.</li>
@@ -67,22 +80,6 @@
     <p>
       Some icons come from the <a href="https://github.com/hiberbee/jetbrains-ide-theme">Hiberbee Theme family</a> project.
     </p>
-    <br/>
-    1.33.0 (2020/07/31)
-    <ul>
-      <li>support Robot Framework <i>.robot</i> files.</li>
-      <li>try to fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/32">issue #32</a>: Markdown file icons are overridden by Markdown Navigator plugin.</li>
-      <li>add a filter to Plugin icons table.</li>
-      <li>rework <i>.htaccess</i> files (PNG icon to SVG).</li>
-      <li>rework <i>kubernetes*.yml</i> files (PNG icon to SVG).</li>
-      <li>rework <i>*.toml</i> files (PNG icon to SVG).</li>
-      <li>rework Vagrant files (PNG icon to SVG).</li>
-      <li>rework Puppet files (PNG icon to SVG).</li>
-      <li>rework Privacy files.</li>
-      <li>rework Security files.</li>
-      <li>rework Redis files (PNG icon to SVG).</li>
-      <li>support <i>(.)version(s).xml</i> files.</li>
-    </ul>
     ]]>
     </change-notes>
 
