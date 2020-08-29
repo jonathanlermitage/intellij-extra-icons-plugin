@@ -11,7 +11,7 @@ jobs:
         with:
           java-version: 11.x.x
       - name: Build the plugin using Gradle
-        run: ./gradlew buildPlugin -PdownloadIdeaSources=false
+        run: ./gradlew buildPlugin -PdownloadIdeaSources=false -PenableBuildSearchableOptions=false --warning-mode all
       - uses: thepieterdc/intellij-plugin-verifier-action@v1.1.2
         with:
           plugin: '/home/runner/work/intellij-extra-icons-plugin/intellij-extra-icons-plugin/build/distributions/*'
