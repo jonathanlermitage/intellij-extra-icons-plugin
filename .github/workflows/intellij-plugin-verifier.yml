@@ -15,7 +15,7 @@ jobs:
           java-version: ${{ matrix.java }}
       - name: Build the plugin using Gradle
         run: ./gradlew buildPlugin -PdownloadIdeaSources=false --warning-mode all
-      - uses: thepieterdc/intellij-plugin-verifier-action@v1.1.2
+      - uses: thepieterdc/intellij-plugin-verifier-action@v1.2.0
         with:
           plugin: '/home/runner/work/intellij-extra-icons-plugin/intellij-extra-icons-plugin/build/distributions/*'
           versions: |
