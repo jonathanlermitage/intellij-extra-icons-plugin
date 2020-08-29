@@ -7,7 +7,12 @@ import com.intellij.util.xmlb.annotations.OptionTag;
 import com.intellij.util.xmlb.annotations.Tag;
 import org.intellij.lang.annotations.Language;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -32,6 +37,8 @@ public class ModelCondition {
     private boolean hasRegex = false;
     @OptionTag
     private boolean enabled = true;
+    @OptionTag
+    private boolean checkFacets = false;
 
     @OptionTag
     private String[] names = new String[0];
@@ -41,6 +48,8 @@ public class ModelCondition {
     private String[] extensions = new String[0];
     @OptionTag
     private String regex;
+    @OptionTag
+    private String[] facets = new String[0];
     private Pattern pattern;
 
     public void setParents(String... parents) {
@@ -78,9 +87,33 @@ public class ModelCondition {
         this.pattern = Pattern.compile(regex);
     }
 
-    public boolean check(String parentName, String fileName, Optional<String> fullPath) {
+    public void setFacets(String[] facets) {
+        this.checkFacets = true;
+        this.facets = facets;
+    }
+
+    public boolean check(String parentName, String fileName, Optional<String> fullPath, Set<String> prjFacets) {
         if (!enabled) {
             return false;
+        }
+
+        // facet is a pre-condition, should always be associated with other conditions
+        if (checkFacets) {
+            boolean facetMatched = false;
+            for (String modelFacet : facets) {
+                for (String prjFacet : prjFacets) {
+                    if (modelFacet.equalsIgnoreCase(prjFacet)) {
+                        facetMatched = true;
+                        break;
+                    }
+                }
+                if (facetMatched) {
+                    break;
+                }
+            }
+            if (!facetMatched) {
+                return false;
+            }
         }
 
         if (checkParent) {
@@ -88,8 +121,7 @@ public class ModelCondition {
                 if (parentNames.contains(parentName)) {
                     return true; // To style all files in a subdirectory
                 }
-            }
-            else {
+            } else {
                 if (!parentNames.contains(parentName)) {
                     return false;
                 }
@@ -176,6 +208,7 @@ public class ModelCondition {
                 }
             }
         }
+
         return false;
     }
 
@@ -207,6 +240,10 @@ public class ModelCondition {
         return hasRegex;
     }
 
+    public boolean hasFacets() {
+        return checkFacets;
+    }
+
     public boolean isEnabled() {
         return enabled;
     }
@@ -231,6 +268,10 @@ public class ModelCondition {
         return regex;
     }
 
+    public String[] getFacets() {
+        return facets;
+    }
+
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
@@ -252,8 +293,7 @@ public class ModelCondition {
                 if (noDot) {
                     names += " and does not contain a dot";
                 }
-            }
-            else {
+            } else {
                 names = "name equals: " + names;
             }
             parameters.add(names);
@@ -263,11 +303,14 @@ public class ModelCondition {
             String extensions = String.join(delimiter, this.extensions);
             if (mayEnd) {
                 extensions = "name may end with: " + extensions;
-            }
-            else {
+            } else {
                 extensions = "name ends with: " + extensions;
             }
             parameters.add(extensions);
+        }
+
+        if (checkFacets) {
+            parameters.add("facets: " + Arrays.toString(this.facets));
         }
 
         return StringUtil.capitalize(String.join(", ", parameters));
@@ -289,7 +332,8 @@ public class ModelCondition {
             Arrays.equals(names, that.names) &&
             parentNames.equals(that.parentNames) &&
             Arrays.equals(extensions, that.extensions) &&
-            Objects.equals(regex, that.regex);
+            Objects.equals(regex, that.regex) &&
+            Arrays.equals(facets, that.facets);
     }
 
     @Override
@@ -297,6 +341,7 @@ public class ModelCondition {
         int result = Objects.hash(start, eq, mayEnd, end, noDot, checkParent, hasRegex, enabled, parentNames, regex);
         result = 31 * result + Arrays.hashCode(names);
         result = 31 * result + Arrays.hashCode(extensions);
+        result = 31 * result + Arrays.hashCode(facets);
         return result;
     }
 }

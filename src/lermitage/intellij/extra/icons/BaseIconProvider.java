@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.Icon;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -103,37 +104,36 @@ public abstract class BaseIconProvider
     @Override
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
         Project project = psiElement.getProject();
+        ModelType currentModelType;
+        PsiFileSystemItem currentPsiFileItem;
         if (psiElement instanceof PsiDirectory) {
-            PsiDirectory psiDirectory = (PsiDirectory) psiElement;
-            final String parentName = parent(psiDirectory);
-            final String folderName = psiDirectory.getName().toLowerCase();
-            if (isPatternIgnored(project, psiDirectory.getVirtualFile())) {
+            currentPsiFileItem = (PsiFileSystemItem) psiElement;
+            if (isPatternIgnored(project, currentPsiFileItem.getVirtualFile())) {
                 return null;
             }
-            final Optional<String> fullPath = getFullPath(psiDirectory);
-            for (final Model model : getModelsIncludingUserModels(project)) {
-                if (model.getModelType() == ModelType.DIR && isModelEnabled(project, model) && model.check(parentName, folderName, fullPath)) {
-                    return CustomIconLoader.getIcon(model);
-                }
-            }
+            currentModelType = ModelType.DIR;
         } else {
             final PsiFile file;
             final Optional<PsiFile> optFile = Optional.ofNullable(psiElement.getContainingFile());
             if (optFile.isPresent() && isSupported(file = optFile.get())) {
-                final String parentName = parent(file);
-                final String fileName = file.getName().toLowerCase();
                 if (isPatternIgnored(project, file.getVirtualFile())) {
                     return null;
                 }
-                final Optional<String> fullPath = getFullPath(file);
-                for (final Model model : getModelsIncludingUserModels(project)) {
-                    if (model.getModelType() == ModelType.FILE && isModelEnabled(project, model) && model.check(parentName, fileName, fullPath)) {
-                        return CustomIconLoader.getIcon(model);
-                    }
-                }
+                currentPsiFileItem = file;
+                currentModelType = ModelType.FILE;
+            } else {
+                return null;
             }
         }
-
+        String parentName = parent(currentPsiFileItem);
+        String currentFileName = currentPsiFileItem.getName().toLowerCase();
+        Optional<String> fullPath = getFullPath(currentPsiFileItem);
+        Set<String> facets = IJUtils.getFacets(project);
+        for (final Model model : getModelsIncludingUserModels(project)) {
+            if (model.getModelType() == currentModelType && isModelEnabled(project, model) && model.check(parentName, currentFileName, fullPath, facets)) {
+                return CustomIconLoader.getIcon(model);
+            }
+        }
         return null;
     }
 

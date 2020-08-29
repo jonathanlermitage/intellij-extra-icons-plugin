@@ -11,7 +11,12 @@ import lermitage.intellij.extra.icons.ModelCondition;
 import org.intellij.lang.regexp.RegExpFileType;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import java.awt.event.ItemEvent;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -35,6 +40,8 @@ public class ModelConditionDialog extends DialogWrapper {
     private JRadioButton equalsRadioButton;
     private JCheckBox noDotCheckBox;
     private JBLabel tipsLabel;
+    private JCheckBox facetsCheckBox;
+    private JTextField facetsTextField;
 
     public ModelConditionDialog() {
         super(false);
@@ -94,18 +101,25 @@ public class ModelConditionDialog extends DialogWrapper {
             noDotCheckBox.setEnabled(selected);
         });
 
-        startsWithRadioButton.addPropertyChangeListener("enabled", propertyChange -> {
-            noDotCheckBox.setEnabled((boolean) propertyChange.getNewValue());
+        startsWithRadioButton.addPropertyChangeListener("enabled", propertyChange ->
+            noDotCheckBox.setEnabled((boolean) propertyChange.getNewValue())
+        );
+
+        facetsCheckBox.addItemListener(item -> {
+            boolean selected = item.getStateChange() == ItemEvent.SELECTED;
+            facetsTextField.setEnabled(selected);
         });
 
         regexTextField.setEnabled(false);
         parentsTextField.setEnabled(false);
         namesTextField.setEnabled(false);
         extensionsTextField.setEnabled(false);
+        facetsTextField.setEnabled(false);
 
         tipsLabel.setText("<html><br>Extensions: use <b>" + FIELD_SEPARATOR + "</b> as a separator for multiple values.<br>" +
             "Regex is a <b>Java regex</b>.<br>" +
-            "File path is <b>lowercased</b> before check.</html>");
+            "File path is <b>lowercased</b> before check.<br>" +
+            "Facets can't be used alone, combine them with other condition(s).</html>");
     }
 
     private void createUIComponents() {
@@ -152,8 +166,14 @@ public class ModelConditionDialog extends DialogWrapper {
             }
         }
 
+        if (facetsCheckBox.isSelected()) {
+            if (facetsTextField.getText().isEmpty()) {
+                return new ValidationInfo("Please specify at least one facet.", facetsTextField);
+            }
+        }
+
         if (!getModelConditionFromInput().isValid()) {
-            return new ValidationInfo("Please select at least one checkbox.");
+            return new ValidationInfo("Please select at least one checkbox from Regex, Parents, Names or Extensions.");
         }
 
         return null;
@@ -197,6 +217,11 @@ public class ModelConditionDialog extends DialogWrapper {
             }
         }
 
+        if (facetsCheckBox.isSelected()) {
+            String[] facets = facetsTextField.getText().split(FIELD_SEPARATOR);
+            modelCondition.setFacets(facets);
+        }
+
         return modelCondition;
     }
 
@@ -229,6 +254,11 @@ public class ModelConditionDialog extends DialogWrapper {
             extensionsTextField.setText(String.join(FIELD_SEPARATOR, modelCondition.getExtensions()));
             endsWithRadioButton.setSelected(modelCondition.hasEnd());
             mayEndWithRadioButton.setSelected(modelCondition.hasMayEnd());
+        }
+
+        if (modelCondition.hasFacets()) {
+            facetsCheckBox.setSelected(true);
+            facetsTextField.setText(String.join(FIELD_SEPARATOR, modelCondition.getFacets()));
         }
     }
 

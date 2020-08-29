@@ -132,6 +132,11 @@ public class Model {
         return this;
     }
 
+    public Model facets(String... facets) {
+        getCurrentCondition().setFacets(facets);
+        return this;
+    }
+
     public Model or() {
         this.conditions.add(new ModelCondition());
         return this;
@@ -141,9 +146,9 @@ public class Model {
         return conditions.get(conditions.size() - 1);
     }
 
-    public boolean check(String parentName, String fileName, Optional<String> fullPath) {
+    public boolean check(String parentName, String fileName, Optional<String> fullPath, Set<String> facets) {
         for (ModelCondition condition : conditions) {
-            if (condition.check(parentName, fileName, fullPath)) {
+            if (condition.check(parentName, fileName, fullPath, facets)) {
                 return true;
             }
         }
