@@ -237,6 +237,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".dockerignore"),
             ofFile("editorconfig", "/icons/editorconfig.png", "EditorConfig: .editorconfig")
                 .eq(".editorconfig").mayEnd(CFG),
+            ofFile("editorconfig_alt", "/icons/editorconfig_alt.svg", "EditorConfig: .editorconfig (alternative 1)")
+                .eq(".editorconfig").mayEnd(CFG),
             ofFile("elastic", "/icons/elasticsearch.png", "Elasticsearch: elastic(.yml,.yaml)")
                 .eq("elastic").mayEnd(YML),
             ofFile("elastic1", "/icons/elasticsearch.png", "Elasticsearch: start by 'elastic' and end by '.yml,.yaml'")
@@ -311,6 +313,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("kubernetes").end(YML),
             ofFile("license", "/icons/license.svg", "License: license(.md,.txt,.adoc,.rst), copying, license_info, additional_license_info")
                 .eq("license", "copying", "license_info", "additional_license_info").mayEnd(TXT),
+            ofFile("license_alt", "/icons/license_alt.png", "License: license(.md,.txt,.adoc,.rst), copying, license_info, additional_license_info (alternative)")
+                .eq("license", "copying", "license_info", "additional_license_info").mayEnd(TXT),
             ofFile("log4j", "/icons/log4j.png", "Log4j: log4j(.xml,.yml,...), log4j-test")
                 .eq("log4j", "log4j-test").mayEnd(CFG),
             ofFile("logback", "/icons/logback.png", "Logback: logback(.xml,.yml,...)")
@@ -383,8 +387,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("svgo").end(YML),
             ofFile("swaggerconfig", "/icons/swagger.svg", "Swagger: swagger-config.yaml")
                 .eq("swagger-config.yaml"),
+            ofFile("swaggerconfig_alt", "/icons/swagger_alt.svg", "Swagger: swagger-config.yaml (alternative 1)")
+                .eq("swagger-config.yaml"),
             ofFile("swaggerignore", "/icons/swaggerignore.svg", "Swagger: .swagger-codegen-ignore")
                 .eq(".swagger-codegen-ignore"),
+            ofFile("tinylogproperties", "/icons/tinylog_properties.svg", "Tinylog: tinylog.properties")
+                .eq("tinylog.properties"),
             ofFile("testing", "/icons/testing.svg", "Test: test(.md,.txt,.adoc,.rst), testing")
                 .eq("test", "testing").mayEnd(TXT),
             ofFile("todo", "/icons/todo.png", "To-Do: todo(.md,.txt,.adoc,.rst)")
@@ -417,6 +425,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".zip", ".7z", ".tar", ".gz", ".bz2", ".xz"),
             ofFile("ext_adoc", "/icons/asciidoc.svg", "Asciidoc: *.adoc, *.asciidoc")
                 .end(".adoc", ".asciidoc"),
+            ofFile("ext_adoc_alt", "/icons/asciidoc_alt.png", "Asciidoc: *.adoc, *.asciidoc (alternative)")
+                .end(".adoc", ".asciidoc"),
             ofFile("ext_apk", "/icons/apk.svg", "Android application package (APK): *.apk, *.xapk")
                 .end(".apk", ".xapk"),
             ofFile("ext_avro_avsc", "/icons/avro.svg", "Avro: *.avsc")
@@ -426,6 +436,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("ext_sh", "/icons/bash.svg", "Bash: *.sh")
                 .end(".sh"),
             ofFile("ext_cert", "/icons/certificate.svg", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, ...")
+                .end(".jks", ".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".jceks", ".p12", ".p7b", ".p7s", ".pfx", ".pubkey"),
+            ofFile("ext_cert_alt", "/icons/certificate_alt.png", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, ... (alternative)")
                 .end(".jks", ".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".jceks", ".p12", ".p7b", ".p7s", ".pfx", ".pubkey"),
             ofFile("ext_cmd", "/icons/cmd.svg", "Windows script: *.cmd, *.bat, *.ps1")
                 .end(".cmd", ".bat", ".ps1"),
@@ -469,7 +481,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".jar.original"),
             ofFile("ext_kdbx", "/icons/keepass.png", "KeePass: *.kdbx")
                 .end(".kdbx"),
-            ofFile("ext_md", "/icons/markdown.png", "Markdown: *.md")
+            ofFile("ext_md", "/icons/markdown.svg", "Markdown: *.md")
+                .end(".md"),
+            ofFile("ext_md_alt", "/icons/markdown_alt.svg", "Markdown: *.md (alternative 1)")
+                .end(".md"),
+            ofFile("ext_md_alt2", "/icons/markdown_alt2.svg", "Markdown: *.md (alternative 2)")
                 .end(".md"),
             ofFile("ext_mwb", "/icons/mysqlworkbench.png", "MySQL Workbench: *.mwb")
                 .end(".mwb"),
@@ -502,6 +518,15 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("typescript-ts", "/icons/typescript.svg", "Typescript: *.ts")
                 .end(".ts"),
             ofFile("ext_video", "/icons/video.svg", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ...")
+                .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
+                    ".m4v", ".mkv", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid"),
+            ofFile("ext_video_alt", "/icons/video_alt.svg", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ... (alternative 1)")
+                .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
+                    ".m4v", ".mkv", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid"),
+            ofFile("ext_video_alt2", "/icons/video_alt2.svg", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ... (alternative 2)")
+                .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
+                    ".m4v", ".mkv", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid"),
+            ofFile("ext_video_alt3", "/icons/video_alt3.svg", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ... (alternative 3)")
                 .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
                     ".m4v", ".mkv", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid"),
             ofFile("ext_velocity", "/icons/velocity.svg", "Velocity: *.vtl")
