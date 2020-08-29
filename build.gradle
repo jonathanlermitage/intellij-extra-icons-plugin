@@ -48,6 +48,11 @@ intellij {
 
 buildSearchableOptions.enabled = Boolean.valueOf(enableBuildSearchableOptions)
 
+runIde {
+    jvmArgs '-Xms768m'
+    jvmArgs '-Xmx2048m'
+}
+
 repositories {
     mavenCentral()
     mavenLocal()
