@@ -237,7 +237,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".dockerignore"),
             ofFile("editorconfig", "/icons/editorconfig.png", "EditorConfig: .editorconfig")
                 .eq(".editorconfig").mayEnd(CFG),
-            ofFile("editorconfig_alt", "/icons/editorconfig_alt.svg", "EditorConfig: .editorconfig (alternative 1)")
+            ofFile("editorconfig_alt", "/icons/editorconfig_alt.svg", "EditorConfig: .editorconfig (alternative)")
                 .eq(".editorconfig").mayEnd(CFG),
             ofFile("elastic", "/icons/elasticsearch.png", "Elasticsearch: elastic(.yml,.yaml)")
                 .eq("elastic").mayEnd(YML),
@@ -395,7 +395,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("svgo").end(YML),
             ofFile("swaggerconfig", "/icons/swagger.svg", "Swagger: swagger-config.yaml")
                 .eq("swagger-config.yaml"),
-            ofFile("swaggerconfig_alt", "/icons/swagger_alt.svg", "Swagger: swagger-config.yaml (alternative 1)")
+            ofFile("swaggerconfig_alt", "/icons/swagger_alt.svg", "Swagger: swagger-config.yaml (alternative)")
                 .eq("swagger-config.yaml"),
             ofFile("swaggerignore", "/icons/swaggerignore.svg", "Swagger: .swagger-codegen-ignore")
                 .eq(".swagger-codegen-ignore"),

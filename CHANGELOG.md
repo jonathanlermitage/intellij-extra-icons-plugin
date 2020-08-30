@@ -1,7 +1,7 @@
 ## Extra Icons Change Log
 
 ### 1.37.0 (WIP)
-* support Resyled `.restyled.yaml` files.
+* support Restyled `.restyled.yaml` files.
 
 ### 1.36.0 (2020/08/30)
 * rework Markdown files (PNG icon to SVG) and provide 2 alternative icons. To use an alternative icon, simply deactivate the other(s).
