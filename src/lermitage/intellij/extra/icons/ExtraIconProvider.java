@@ -371,6 +371,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("redis").mayEnd(".conf"),
             ofFile("redis1", "/icons/redis.svg", "Redis: start by 'redis' and end by '.conf'")
                 .start("redis").end(".conf"),
+            ofFile("restyled", "/icons/restyled.svg", "Restyled: .restyled.yaml")
+                .eq(".restyled.yaml"),
+            ofFile("restyled_alt", "/icons/restyled_alt.svg", "Restyled: .restyled.yaml (alternative 1)")
+                .eq(".restyled.yaml"),
+            ofFile("restyled_alt2", "/icons/restyled_alt2.svg", "Restyled: .restyled.yaml (alternative 2)")
+                .eq(".restyled.yaml"),
             ofFile("roadmap", "/icons/roadmap.png", "Roadmap: roadmap(.md,.txt,.adoc,.rst)")
                 .eq("roadmap").mayEnd(TXT),
             ofFile("rollup", "/icons/rollup.svg", "Rollup: rollup.config.js")
