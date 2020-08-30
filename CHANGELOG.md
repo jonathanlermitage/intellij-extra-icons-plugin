@@ -2,7 +2,7 @@
 
 ### 1.36.0 (2020/08/30)
 * rework Markdown files (PNG icon to SVG) and provide 2 alternative icons. To use an alternative icon, simply deactivate the other(s).
-* Provide some alternative icons for Video files.
+* provide some alternative icons for Video files.
 * provide an alternative icon for EditorConfig files.
 * provide an alternative icon for Swagger files.
 * provide an alternative icon for Asciidoc files.
