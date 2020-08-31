@@ -2,6 +2,7 @@
 
 ### 1.37.0 (WIP)
 * support Restyled `.restyled.yaml` files.
+* provide an alternative icon for Robot Framework files (based on GitLab Robot icon).
 
 ### 1.36.0 (2020/08/30)
 * rework Markdown files (PNG icon to SVG) and provide 2 alternative icons. To use an alternative icon, simply deactivate the other(s).

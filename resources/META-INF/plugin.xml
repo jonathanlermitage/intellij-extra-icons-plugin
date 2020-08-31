@@ -24,6 +24,7 @@
     1.37.0 (WIP)
     <ul>
       <li>support Restyled <i>.restyled.yaml</i> files.</li>
+      <li>provide an alternative icon for Robot Framework files (based on GitLab Robot icon).</li>
     </ul>
     1.36.0 (2020/08/30)
     <ul>

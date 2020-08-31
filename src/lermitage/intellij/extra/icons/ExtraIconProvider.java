@@ -509,6 +509,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".rpm"),
             ofFile("ext_robotframework", "/icons/robotframework.svg", "Robot Framework: *.robot")
                 .end(".robot"),
+            ofFile("ext_robotframework_alt", "/icons/robotframework_alt.svg", "Robot Framework: *.robot (alternative)")
+                .end(".robot"),
             ofFile("sass", "/icons/sass.svg", "SASS: *.sass")
                 .end(".sass"),
             ofFile("scss", "/icons/scss.svg", "SASS: *.scss")
