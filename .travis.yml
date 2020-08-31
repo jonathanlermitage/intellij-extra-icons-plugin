@@ -26,4 +26,4 @@ git:
 before_install:
   - chmod +x gradlew
 
-script: "./gradlew clean buildPlugin test --warning-mode all -PdownloadIdeaSources=false"
+script: "./gradlew clean buildPlugin test verifyPlugin --warning-mode all -PdownloadIdeaSources=false"
