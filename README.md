@@ -19,6 +19,13 @@ Starting from version 0.4, it works with all JetBrains products like WebStorm, D
 
 Download plugin from [JetBrains Plugins Repository](https://plugins.jetbrains.com/plugin/11058-extra-icons) or via your JetBrains IDE (<kbd>File</kbd>, <kbd>Settings</kbd>, <kbd>Plugins</kbd>, <kbd>Browse repositories...</kbd>).
 
+1. [Build](#build)  
+2. [Contribution](#contribution)  
+3. [Known issues](#known-issues)  
+4. [License](#license)  
+5. [Credits](#credits)  
+6. [Screenshots](#screenshots)  
+
 ## Build
 
 Install JDK8+. You should be able to start Gradle Wrapper (`gradlew`).
@@ -43,6 +50,10 @@ Open an issue or a pull-request:
 * contributions: they should be tested.      
   Please reformat new and modified code only: do not reformat the whole project or entire existing file (in other words, try to limit the amount of changes in order to speed up code review).  
   To finish, don't hesitate to add your name or nickname (and LinkedIn profile, etc.) to contributors list ;-)
+
+## Known issues
+
+* Python icon (`.py` files) can't be customized in PyCharm Community and Professional: it seems to be a limitation of this IDE. Issue not reproduced in IntelliJ IDEA.
 
 ## License
 
