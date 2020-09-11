@@ -23,6 +23,7 @@
     <change-notes><![CDATA[
     1.37.0 (WIP)
     <ul>
+      <li>bugfix: NPE while refreshing project panel icons.</li>
       <li>support Restyled <i>.restyled.yaml</i> files.</li>
       <li>provide an alternative icon for Robot Framework files (based on GitLab Robot icon).</li>
       <li>support Weblate <i>.weblate</i> files.</li>

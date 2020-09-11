@@ -1,6 +1,7 @@
 ## Extra Icons Change Log
 
 ### 1.37.0 (WIP)
+* bugfix: NPE while refreshing project panel icons.
 * support Restyled `.restyled.yaml` files.
 * provide an alternative icon for Robot Framework files (based on GitLab Robot icon).
 * support Weblate `.weblate` files.

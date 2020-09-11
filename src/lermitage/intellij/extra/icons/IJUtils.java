@@ -27,8 +27,10 @@ public class IJUtils {
     public static void refresh(Project project) {
         if (project != null) {
             ProjectView view = ProjectView.getInstance(project);
-            view.refresh();
-            view.getCurrentProjectViewPane().updateFromRoot(true);
+            if (view != null) {
+                view.refresh();
+                view.getCurrentProjectViewPane().updateFromRoot(true);
+            }
         }
     }
 
