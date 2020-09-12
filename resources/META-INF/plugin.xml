@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.37.0 (WIP)
+    1.37.0 (2020/09/12)
     <ul>
       <li>bugfix: NPE while refreshing project panel icons.</li>
       <li>support Restyled <i>.restyled.yaml</i> files.</li>
