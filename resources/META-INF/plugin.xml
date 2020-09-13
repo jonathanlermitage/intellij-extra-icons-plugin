@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.37.1 (2020/09/13)
+    <ul>
+      <li>bugfix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39">#39</a>: Exception when plugin tries to load icons in a project that is being disposed or is already disposed.</li>
+    </ul>
     1.37.0 (2020/09/12)
     <ul>
       <li>bugfix: NPE while refreshing project panel icons.</li>

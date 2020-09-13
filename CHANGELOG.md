@@ -1,5 +1,8 @@
 ## Extra Icons Change Log
 
+### 1.37.1 (2020/09/13)
+* bugfix [#39](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39): Exception when plugin tries to load icons in a project that is being disposed or is already disposed.
+
 ### 1.37.0 (2020/09/12)
 * bugfix: NPE while refreshing project panel icons.
 * support Restyled `.restyled.yaml` files.

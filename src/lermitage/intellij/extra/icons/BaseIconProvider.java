@@ -4,6 +4,8 @@ package lermitage.intellij.extra.icons;
 
 import com.intellij.ide.FileIconProvider;
 import com.intellij.ide.IconProvider;
+import com.intellij.openapi.diagnostic.ControlFlowException;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.vcs.FilePath;
@@ -37,6 +39,8 @@ public abstract class BaseIconProvider
     implements FilePathIconProvider, /* to override icons in VCS (Git, etc.) views */
     FileIconProvider /* to override icons in Project view */ {
 
+    private static final Logger LOGGER = Logger.getInstance(BaseIconProvider.class);
+
     private final List<Model> models;
 
     public BaseIconProvider() {
@@ -62,23 +66,41 @@ public abstract class BaseIconProvider
         return fileSystemItem.getParent() == null ? null : fileSystemItem.getParent().getName().toLowerCase();
     }
 
+    private void logError(@NotNull Throwable e) {
+        if (e instanceof ControlFlowException) {
+            // Control-flow exceptions should never be logged.
+            return;
+        }
+        // Workaround for https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39
+        // Plugin may want to reload icon on closed or disposed project. Just ignore it
+        if (e.getMessage() != null && (e.getMessage().contains("DISPOSE_IN_PROGRESS") || e.getMessage().contains("Project is already disposed"))) {
+            LOGGER.debug(e);
+        } else {
+            LOGGER.warn(e);
+        }
+    }
+
     @Nullable
     @Override
     public Icon getIcon(@NotNull FilePath filePath, @Nullable Project project) {
-        if (project != null) {
-            VirtualFile file = filePath.getVirtualFile();
-            if (file == null) {
-                return null;
+        try {
+            if (project != null) {
+                VirtualFile file = filePath.getVirtualFile();
+                if (file == null) {
+                    return null;
+                }
+                PsiFileSystemItem psiFileSystemItem;
+                if (file.isDirectory()) {
+                    psiFileSystemItem = PsiManager.getInstance(project).findDirectory(file);
+                } else {
+                    psiFileSystemItem = PsiManager.getInstance(project).findFile(file);
+                }
+                if (psiFileSystemItem != null) {
+                    return getIcon(psiFileSystemItem, 0 /* flags are ignored */);
+                }
             }
-            PsiFileSystemItem psiFileSystemItem;
-            if (file.isDirectory()) {
-                psiFileSystemItem = PsiManager.getInstance(project).findDirectory(file);
-            } else {
-                psiFileSystemItem = PsiManager.getInstance(project).findFile(file);
-            }
-            if (psiFileSystemItem != null) {
-                return getIcon(psiFileSystemItem, 0 /* flags are ignored */);
-            }
+        } catch (Throwable e) {
+            logError(e);
         }
         return null;
     }
@@ -86,16 +108,20 @@ public abstract class BaseIconProvider
     @Nullable
     @Override
     public Icon getIcon(@NotNull VirtualFile file, int flags, @Nullable Project project) {
-        if (project != null) {
-            PsiFileSystemItem psiFileSystemItem;
-            if (file.isDirectory()) {
-                psiFileSystemItem = PsiManager.getInstance(project).findDirectory(file);
-            } else {
-                psiFileSystemItem = PsiManager.getInstance(project).findFile(file);
+        try {
+            if (project != null) {
+                PsiFileSystemItem psiFileSystemItem;
+                if (file.isDirectory()) {
+                    psiFileSystemItem = PsiManager.getInstance(project).findDirectory(file);
+                } else {
+                    psiFileSystemItem = PsiManager.getInstance(project).findFile(file);
+                }
+                if (psiFileSystemItem != null) {
+                    return getIcon(psiFileSystemItem, flags);
+                }
             }
-            if (psiFileSystemItem != null) {
-                return getIcon(psiFileSystemItem, flags);
-            }
+        } catch (Throwable e) {
+            logError(e);
         }
         return null;
     }
@@ -103,36 +129,40 @@ public abstract class BaseIconProvider
     @Nullable
     @Override
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
-        Project project = psiElement.getProject();
-        ModelType currentModelType;
-        PsiFileSystemItem currentPsiFileItem;
-        if (psiElement instanceof PsiDirectory) {
-            currentPsiFileItem = (PsiFileSystemItem) psiElement;
-            if (isPatternIgnored(project, currentPsiFileItem.getVirtualFile())) {
-                return null;
-            }
-            currentModelType = ModelType.DIR;
-        } else {
-            final PsiFile file;
-            final Optional<PsiFile> optFile = Optional.ofNullable(psiElement.getContainingFile());
-            if (optFile.isPresent() && isSupported(file = optFile.get())) {
-                if (isPatternIgnored(project, file.getVirtualFile())) {
+        try {
+            Project project = psiElement.getProject();
+            ModelType currentModelType;
+            PsiFileSystemItem currentPsiFileItem;
+            if (psiElement instanceof PsiDirectory) {
+                currentPsiFileItem = (PsiFileSystemItem) psiElement;
+                if (isPatternIgnored(project, currentPsiFileItem.getVirtualFile())) {
                     return null;
                 }
-                currentPsiFileItem = file;
-                currentModelType = ModelType.FILE;
+                currentModelType = ModelType.DIR;
             } else {
-                return null;
+                final PsiFile file;
+                final Optional<PsiFile> optFile = Optional.ofNullable(psiElement.getContainingFile());
+                if (optFile.isPresent() && isSupported(file = optFile.get())) {
+                    if (isPatternIgnored(project, file.getVirtualFile())) {
+                        return null;
+                    }
+                    currentPsiFileItem = file;
+                    currentModelType = ModelType.FILE;
+                } else {
+                    return null;
+                }
             }
-        }
-        String parentName = parent(currentPsiFileItem);
-        String currentFileName = currentPsiFileItem.getName().toLowerCase();
-        Optional<String> fullPath = getFullPath(currentPsiFileItem);
-        Set<String> facets = IJUtils.getFacets(project);
-        for (final Model model : getModelsIncludingUserModels(project)) {
-            if (model.getModelType() == currentModelType && isModelEnabled(project, model) && model.check(parentName, currentFileName, fullPath, facets)) {
-                return CustomIconLoader.getIcon(model);
+            String parentName = parent(currentPsiFileItem);
+            String currentFileName = currentPsiFileItem.getName().toLowerCase();
+            Optional<String> fullPath = getFullPath(currentPsiFileItem);
+            Set<String> facets = IJUtils.getFacets(project);
+            for (final Model model : getModelsIncludingUserModels(project)) {
+                if (model.getModelType() == currentModelType && isModelEnabled(project, model) && model.check(parentName, currentFileName, fullPath, facets)) {
+                    return CustomIconLoader.getIcon(model);
+                }
             }
+        } catch (Throwable e) {
+            logError(e);
         }
         return null;
     }
