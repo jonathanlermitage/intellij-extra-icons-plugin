@@ -21,7 +21,7 @@ Download plugin from [JetBrains Plugins Repository](https://plugins.jetbrains.co
 
 1. [Build](#build)  
 2. [Contribution](#contribution)  
-3. [Known issues](#known-issues)  
+3. [Known issues (and possible fixes or workarounds)](#known-issues-and-possible-fixes-or-workarounds)  
 4. [License](#license)  
 5. [Credits](#credits)  
 6. [Screenshots](#screenshots)  
@@ -51,9 +51,11 @@ Open an issue or a pull-request:
   Please reformat new and modified code only: do not reformat the whole project or entire existing file (in other words, try to limit the amount of changes in order to speed up code review).  
   To finish, don't hesitate to add your name or nickname (and LinkedIn profile, etc.) to contributors list ;-)
 
-## Known issues
+## Known issues (and possible fixes or workarounds)
 
-* Python icon (`.py` files) can't be customized in PyCharm Community and Professional: it seems to be a limitation of this IDE. Issue not reproduced in IntelliJ IDEA.
+* [ ] Python icon (`.py` files) can't be customized in PyCharm Community and Professional: it seems to be a limitation of this IDE. Issue not reproduced in IntelliJ IDEA.
+* [X] IDE hangs when closing a project.
+  * Solution: this issue is fixed (at least highly mitigated) in release 1.37.1. Please upgrade Extra Icons plugin to latest vesion.
 
 ## License
 
