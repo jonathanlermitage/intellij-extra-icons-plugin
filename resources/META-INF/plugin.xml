@@ -25,6 +25,7 @@
     <ul>
       <li>rework <i>package-info.java</i> files.</li>
       <li>support <i>module-info.java</i> files.</li>
+      <li>provide some alternative icons for <i>AUTHORS</i> files.</li>
     </ul>
     1.37.1 (2020/09/13)
     <ul>

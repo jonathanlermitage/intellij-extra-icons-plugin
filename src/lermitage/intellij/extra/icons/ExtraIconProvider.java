@@ -163,6 +163,14 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("archunit.properties"),
             ofFile("author", "/icons/authors.png", "Author: author(.md,.txt,.adoc,.rst), authors")
                 .eq("author", "authors").mayEnd(TXT),
+            ofFile("author_alt", "/icons/authors_alt.svg", "Author: author(.md,.txt,.adoc,.rst), authors (alternative 1)")
+                .eq("author", "authors").mayEnd(TXT),
+            ofFile("author_alt2", "/icons/authors_alt2.svg", "Author: author(.md,.txt,.adoc,.rst), authors (alternative 2)")
+                .eq("author", "authors").mayEnd(TXT),
+            ofFile("author_alt3", "/icons/authors_alt3.svg", "Author: author(.md,.txt,.adoc,.rst), authors (alternative 3)")
+                .eq("author", "authors").mayEnd(TXT),
+            ofFile("author_alt4", "/icons/authors_alt4.svg", "Author: author(.md,.txt,.adoc,.rst), authors (alternative 4)")
+                .eq("author", "authors").mayEnd(TXT),
             ofFile("bamboo", "/icons/bamboo.png", "Bamboo: bamboo.yml")
                 .eq("bamboo.yml"),
             ofFile("cargo", "/icons/cargo.png", "Cargo: cargo.toml")
