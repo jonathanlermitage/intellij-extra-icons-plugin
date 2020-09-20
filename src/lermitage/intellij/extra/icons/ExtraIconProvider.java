@@ -341,7 +341,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".npmignore"),
             ofFile("notice", "/icons/notice.svg", "Notice: notice(.md,.txt,.adoc,.rst)")
                 .eq("notice").mayEnd(TXT),
-            ofFile("packageinfojava", "/icons/packageinfojava.png", "Java package info: package-info.java")
+            ofFile("packageinfojava", "/icons/packageinfojava.svg", "Java package info: package-info.java")
                 .eq("package-info.java"),
             ofFile("packagejson", "/icons/npm.svg", "NPM: package.json")
                 .eq("package.json"),
