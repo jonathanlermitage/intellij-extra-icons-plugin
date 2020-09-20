@@ -343,6 +343,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("module-info.java"),
             ofFile("mysql", "/icons/my.png", "MySQL: my.ini")
                 .eq("my.ini"),
+            ofFile("netlify", "/icons/netlify.svg", "Netlify: netlify.toml")
+                .eq("netlify.toml"),
             ofFile("nginx", "/icons/nginx.png", "Nginx: nginx(.conf)")
                 .eq("nginx").mayEnd(".conf"),
             ofFile("nginx1", "/icons/nginx.png", "Nginx: start by 'nginx' and end by '.conf'")
