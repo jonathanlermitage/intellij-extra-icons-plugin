@@ -329,6 +329,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("logstash-").end(".cfg", ".conf", ".yml", ".yaml", ".txt"),
             ofFile("lombok", "/icons/lombok.png", "Lombok: lombok.config")
                 .eq("lombok.config"),
+            ofFile("moduleinfojava", "/icons/moduleinfo.svg", "Java module: module-info.java")
+                .eq("module-info.java"),
+            ofFile("moduleinfojava_alt", "/icons/moduleinfo_alt.svg", "Java module: module-info.java (alternative)")
+                .eq("module-info.java"),
             ofFile("mysql", "/icons/my.png", "MySQL: my.ini")
                 .eq("my.ini"),
             ofFile("nginx", "/icons/nginx.png", "Nginx: nginx(.conf)")
