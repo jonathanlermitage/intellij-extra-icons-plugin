@@ -201,9 +201,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("browserslist", ".browserslistrc"),
             ofFile("build", "/icons/build.png", "Build: build(.md,.txt,.adoc,.rst), building")
                 .eq("build", "building").mayEnd(TXT),
-            ofFile("cassandra", "/icons/cassandra.png", "Cassandra: cassandra(.yml,.yaml)")
+            ofFile("cassandra", "/icons/cassandra.svg", "Cassandra: cassandra(.yml,.yaml)")
                 .eq("cassandra").mayEnd(YML),
-            ofFile("cassandra1", "/icons/cassandra.png", "Cassandra: start by 'cassandra' and end by '.yml,.yaml'")
+            ofFile("cassandra1", "/icons/cassandra.svg", "Cassandra: start by 'cassandra' and end by '.yml,.yaml'")
                 .start("cassandra").end(YML),
             ofFile("changelog", "/icons/changelog.svg", "Changelog: changelog(.md,.txt,.adoc,.rst), changes, release-notes, release_notes")
                 .eq("changelog", "changes", "release-notes", "release_notes").mayEnd(TXT),

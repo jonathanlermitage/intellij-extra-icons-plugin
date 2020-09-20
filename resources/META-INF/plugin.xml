@@ -27,6 +27,7 @@
       <li>support <i>module-info.java</i> files.</li>
       <li>provide some alternative icons for <i>AUTHORS</i> files.</li>
       <li>support <i>netlify.toml</i> files.</li>
+      <li>rework Cassandra files (PNG icon to SVG).</li>
     </ul>
     1.37.1 (2020/09/13)
     <ul>

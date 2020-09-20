@@ -5,6 +5,7 @@
 * support `module-info.java` files.
 * provide some alternative icons for `AUTHORS` files.
 * support `netlify.toml` files.
+* rework Cassandra files (PNG icon to SVG).
 
 ## 1.37.1 (2020/09/13)
 * bugfix [#39](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39): Exception when plugin tries to load icons in a project that is being disposed or is already disposed.
