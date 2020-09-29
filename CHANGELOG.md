@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.38.0 (WIP)
+## 1.38.0 (2020/09/30)
 * rework `package-info.java` files.
 * support `module-info.java` files.
 * provide some alternative icons for `AUTHORS` files.
