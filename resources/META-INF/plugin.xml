@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.39.0 (WIP)
+    <ul>
+      <li>support <a href="https://mockk.io/#settings-file">Mockk</a> <i>io/mockk/settings.properties</i> files. </li>
+    </ul>
     1.38.0 (2020/09/30)
     <ul>
       <li>rework <i>package-info.java</i> files.</li>

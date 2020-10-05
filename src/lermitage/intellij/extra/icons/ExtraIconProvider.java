@@ -131,6 +131,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*/db/migration/.*\\.sql"),
             ofFile("liquibase", "/icons/liquibase.svg", "Liquibase (regex): '.*/db/changelog/.*\\.(sql|xml)'")
                 .regex(".*/db/changelog/.*\\.(sql|xml)"),
+            ofFile("mockk", "/icons/mockk.svg", "Mockk: io/mockk/settings.properties")
+                .regex(".*/io/mockk/settings\\.properties"),
 
             //
             // file plus its containing folder
