@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ij: [ 2020.1.4, 2020.2.2 ]
+        ij: [ 2020.1.4, 2020.2.3 ]
     steps:
       - uses: actions/checkout@master
       - name: Setup Java
@@ -13,4 +13,4 @@ jobs:
         with:
           java-version: 11
       - name: Build and verify
-        run: ./gradlew clean buildPlugin test verifyPlugin -PideaVersion=IU-${{ matrix.ij }} -PdownloadIdeaSources=false --warning-mode all
+        run: ./gradlew clean buildPlugin test verifyPlugin -PpluginIdeaVersion=IU-${{ matrix.ij }} -PdownloadIdeaSources=false --warning-mode all
