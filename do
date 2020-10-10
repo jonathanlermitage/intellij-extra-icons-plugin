@@ -34,7 +34,7 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
         ;;
 
     "runeap")
-        ./gradlew buildPlugin runIde --warning-mode all -PideaVersion=IU-LATEST-EAP-SNAPSHOT
+        ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT
         ;;
 
     "release")
@@ -50,7 +50,7 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
         ;;
 
     "svgo")
-        svgo --folder=resources/icons/ --multipass --config=svgo.yml
+        svgo --folder=src/main/resources/icons/ --multipass --config=svgo.yml
         ;;
 
     esac

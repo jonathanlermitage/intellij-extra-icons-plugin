@@ -24,7 +24,7 @@ if [%1] == [run] (
   gradlew buildPlugin runIde --warning-mode all
 )
 if [%1] == [runeap] (
-  gradlew buildPlugin runIde --warning-mode all -PideaVersion=IU-LATEST-EAP-SNAPSHOT
+  gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT
 )
 if [%1] == [release] (
   gradlew clean buildPlugin test verifyPlugin --warning-mode all
@@ -36,5 +36,5 @@ if [%1] == [cv] (
   gradlew dependencyUpdates -Drevision=release -DoutputFormatter=plain -DoutputDir=./build/ --warning-mode all
 )
 if [%1] == [svgo] (
-  svgo --folder=resources/icons/ --multipass --config=svgo.yml
+  svgo --folder=src/main/resources/icons/ --multipass --config=svgo.yml
 )

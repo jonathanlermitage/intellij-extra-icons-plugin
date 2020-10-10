@@ -39,7 +39,7 @@ public class SettingsServiceTest {
         List<String> errors = new ArrayList<>();
 
         allRegisteredModels.forEach(model -> {
-            if (!new File("resources", model.getIcon()).exists()) {
+            if (!new File("src/main/resources", model.getIcon()).exists()) {
                 errors.add(model.getId() + ": " + model.getIcon());
             }
         });

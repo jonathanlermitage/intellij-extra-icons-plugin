@@ -27,7 +27,7 @@ public class ResourcesTest {
 
     @BeforeAll
     static void setUp() {
-        File iconsFolder = new File("resources/icons/");
+        File iconsFolder = new File("src/main/resources/icons/");
         icons = Arrays.asList(iconsFolder.listFiles((dir, name) -> name.endsWith(".png") || name.endsWith(".svg")));
         pngIcons = icons.stream().filter(file -> file.getName().endsWith(".png")).collect(Collectors.toList());
         svgIcons = icons.stream().filter(file -> file.getName().endsWith(".svg")).collect(Collectors.toList());
