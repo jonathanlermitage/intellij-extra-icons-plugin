@@ -11,7 +11,7 @@ matrix:
     - name: IDEA IU-LATEST-EAP-SNAPSHOT
       script: ./gradlew clean buildPlugin test verifyPlugin --warning-mode all -PpluginDownloadIdeaSources=false -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT
   allow_failures:
-    - env: IDEA_VERSION=IU-LATEST-EAP-SNAPSHOT
+    - name: IDEA IU-LATEST-EAP-SNAPSHOT
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
