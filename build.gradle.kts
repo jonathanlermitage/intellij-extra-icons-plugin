@@ -13,7 +13,6 @@ val pluginDownloadIdeaSources: String by project
 val pluginInstrumentPluginCode: String by project
 val pluginVersion: String by project
 val pluginJavaVersion: String by project
-val pluginIdeaSandbox: String by project
 val pluginEnableBuildSearchableOptions: String by project
 
 println("Will use IDEA version: $pluginIdeaVersion")
@@ -37,7 +36,7 @@ intellij {
     instrumentCode = pluginInstrumentPluginCode.toBoolean()
     pluginName = "Extra Icons"
     setPlugins("AngularJS")
-    sandboxDirectory = "${rootProject.projectDir}/${pluginIdeaSandbox}-${pluginIdeaVersion}"
+    sandboxDirectory = "${rootProject.projectDir}/.idea-sandbox/${pluginIdeaVersion}"
     updateSinceUntilBuild = false
     version = pluginIdeaVersion
 }
