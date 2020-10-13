@@ -3,6 +3,8 @@
 ## 1.39.0 (WIP)
 * support [Mockk](https://mockk.io/#settings-file) `io/mockk/settings.properties` files. 
 * support [gradle-intellij-plugin](https://github.com/JetBrains/gradle-intellij-plugin) `idea-sandbox` folders.
+* internal: improve Gradle build performance.
+* internal: migrate Gradle build to Kotlin DSL.
 
 ## 1.38.0 (2020/09/30)
 * rework `package-info.java` files.

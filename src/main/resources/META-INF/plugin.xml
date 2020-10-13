@@ -25,6 +25,8 @@
     <ul>
       <li>support <a href="https://mockk.io/#settings-file">Mockk</a> <i>io/mockk/settings.properties</i> files. </li>
       <li>support <a href="https://github.com/JetBrains/gradle-intellij-plugin">gradle-intellij-plugin</a> <i>idea-sandbox</i> folders.</li>
+      <li>internal: improve Gradle build performance.</li>
+      <li>internal: migrate Gradle build to Kotlin DSL.</li>
     </ul>
     1.38.0 (2020/09/30)
     <ul>
