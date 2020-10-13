@@ -58,10 +58,11 @@ tasks {
         revision = "release"
     }
     runIde {
-        jvmArgs = listOf("-Xms768m", "-Xmx2048m", "--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
+        jvmArgs = listOf("-Xms768m", "-Xmx2048m")
     }
     buildSearchableOptions {
         enabled = pluginEnableBuildSearchableOptions.toBoolean()
+        jvmArgs = listOf("--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
     }
 }
 
