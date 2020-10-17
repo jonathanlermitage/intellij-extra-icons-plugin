@@ -28,6 +28,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.ListSelectionModel;
@@ -62,12 +63,15 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JBTable userIconsTable = new JBTable();
     private JPanel overrideSettingsPanel;
     private JCheckBox addToIDEUserIconsCheckbox;
-    private JBLabel tipsLabel;
+    private JBLabel ignoredPatternTips;
     private JLabel filterLabel;
     private EditorTextField filterTextField;
     private JButton filterApplyBtn;
     private JButton filteResetBtn;
     private JBLabel bottomTip;
+    private JLabel additionalUIScaleTitle;
+    private EditorTextField additionalUIScaleTextField;
+    private JBLabel additionalUIScaleTip;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -132,7 +136,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         if (service.getIgnoredPattern() == null && ignoredPatternTextField.getText().isEmpty()) {
             return false;
         }
-        return !ignoredPatternTextField.getText().equals(service.getIgnoredPattern());
+        return !ignoredPatternTextField.getText().equals(service.getIgnoredPattern())
+            || !additionalUIScaleTextField.getText().equals(Double.toString(service.additionalUIScale));
     }
 
     private List<String> collectDisabledModelIds() {
@@ -162,6 +167,15 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         }
         service.setDisabledModelIds(collectDisabledModelIds());
         service.setIgnoredPattern(ignoredPatternTextField.getText());
+        try {
+            service.setAdditionalUIScale(Double.valueOf(additionalUIScaleTextField.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null,
+                "Ignoring invalid value '" + additionalUIScaleTextField.getText() + "' for User Icons Additional UI Scale Factor.\n" +
+                    "Please use a valid Float value next time, like 1 or 1.25.",
+                "Invalid Additional UI Scale Factor",
+                JOptionPane.WARNING_MESSAGE);
+        }
         List<Boolean> enabledStates = collectUserIconEnabledStates();
         for (int i = 0; i < customModels.size(); i++) {
             Model model = customModels.get(i);
@@ -186,7 +200,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         buttonEnableAll.setText("Enable all");
         buttonDisableAll.setText("Disable all");
         ignoredPatternTitle.setText("Regex to ignore relative paths:");
-        tipsLabel.setText("<html>Regex is a <b>Java regex</b>, and file path is <b>lowercased</b> before check.</html>");
+        additionalUIScaleTitle.setText("Additional UI Scale Factor to adjust user icons size (float value):");
+        additionalUIScaleTip.setText("<html>Useful if you run IDE with <b>-Dsun.java2d.uiScale.enabled=false</b> flag and <b>user icons are too small</b>.</html>");
+        ignoredPatternTips.setText("<html>Regex is a <b>Java regex</b>, and file path is <b>lowercased</b> before check.</html>");
         filterLabel.setText("Regex to filter Plugin icons table by:");
         filterTextField.setText("");
         filterApplyBtn.setText("Apply");
@@ -201,6 +217,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         userIconsTablePanel.add(createToolbarDecorator());
         loadUserIconsTable();
         loadIgnoredPattern();
+        loadAdditionalUIScale();
+        if (isProjectForm) {
+            additionalUIScaleTitle.setVisible(false);
+            additionalUIScaleTextField.setVisible(false);
+            additionalUIScaleTip.setVisible(false);
+        }
     }
 
     private void createUIComponents() {
@@ -238,10 +260,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         userIconsTable.setEnabled(enabled);
         ignoredPatternTitle.setEnabled(enabled);
         ignoredPatternTextField.setEnabled(enabled);
+        additionalUIScaleTitle.setEnabled(enabled);
+        additionalUIScaleTextField.setEnabled(enabled);
         title.setEnabled(enabled);
         iconsTabbedPane.setEnabled(enabled);
         addToIDEUserIconsCheckbox.setEnabled(enabled);
-        tipsLabel.setVisible(enabled);
+        ignoredPatternTips.setVisible(enabled);
         filterTextField.setEnabled(enabled);
         filterApplyBtn.setEnabled(enabled);
         filteResetBtn.setEnabled(enabled);
@@ -253,6 +277,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         loadPluginIconsTable();
         loadUserIconsTable();
         loadIgnoredPattern();
+        loadAdditionalUIScale();
     }
 
     private void loadUserIconsTable() {
@@ -264,8 +289,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private void setUserIconsTableModel() {
         int currentSelected = userIconsSettingsTableModel != null ? userIconsTable.getSelectedRow() : -1;
         userIconsSettingsTableModel = new UserIconsSettingsTableModel();
+        Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
         customModels.forEach(m -> userIconsSettingsTableModel.addRow(new Object[]{
-                CustomIconLoader.getIcon(m),
+                CustomIconLoader.getIcon(m, additionalUIScale),
                 m.isEnabled(),
                 m.getDescription()
             })
@@ -329,8 +355,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
         sortModels(allRegisteredModels);
         List<String> disabledModelIds = SettingsService.getInstance(project).getDisabledModelIds();
+        Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
         allRegisteredModels.forEach(m -> pluginIconsSettingsTableModel.addRow(new Object[]{
-                CustomIconLoader.getIcon(m),
+                CustomIconLoader.getIcon(m, additionalUIScale),
                 !disabledModelIds.contains(m.getId()),
                 m.getDescription(),
                 m.getId()
@@ -352,6 +379,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private void loadIgnoredPattern() {
         ignoredPatternTextField.setText(SettingsService.getInstance(project).getIgnoredPattern());
+    }
+
+    private void loadAdditionalUIScale() {
+        additionalUIScaleTextField.setText(Double.toString(SettingsService.getIDEInstance().getAdditionalUIScale()));
     }
 
     private JComponent createToolbarDecorator() {

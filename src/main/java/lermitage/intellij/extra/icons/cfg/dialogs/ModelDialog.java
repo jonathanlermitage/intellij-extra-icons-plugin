@@ -16,6 +16,7 @@ import com.intellij.ui.components.JBTextField;
 import com.intellij.util.IconUtil;
 import lermitage.intellij.extra.icons.*;
 import lermitage.intellij.extra.icons.cfg.SettingsForm;
+import lermitage.intellij.extra.icons.cfg.SettingsService;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -132,7 +133,8 @@ public class ModelDialog extends DialogWrapper {
         descriptionField.setText(model.getDescription());
         typeComboBox.setSelectedItem(model.getModelType().getFriendlyName());
         typeComboBox.updateUI();
-        SwingUtilities.invokeLater(() -> iconLabel.setIcon(CustomIconLoader.getIcon(model)));
+        Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
+        SwingUtilities.invokeLater(() -> iconLabel.setIcon(CustomIconLoader.getIcon(model, additionalUIScale)));
         model.getConditions().forEach(modelCondition -> {
             conditionsCheckboxList.addItem(modelCondition, modelCondition.asReadableString(FIELD_SEPARATOR), modelCondition.isEnabled());
         });

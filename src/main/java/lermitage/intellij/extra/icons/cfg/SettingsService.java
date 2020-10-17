@@ -29,11 +29,13 @@ public abstract class SettingsService {
     public List<String> disabledModelIds = new ArrayList<>();
     @SuppressWarnings("WeakerAccess")
     public String ignoredPattern;
+    @SuppressWarnings("WeakerAccess")
+    public List<Model> customModels = new ArrayList<>();
+    @SuppressWarnings("WeakerAccess")
+    public Double additionalUIScale;
 
     private Pattern ignoredPatternObj;
     private Boolean isIgnoredPatternValid;
-
-    public List<Model> customModels = new ArrayList<>();
 
     public List<String> getDisabledModelIds() {
         if (disabledModelIds == null) { // a malformed xml file could make it null
@@ -76,6 +78,17 @@ public abstract class SettingsService {
         this.customModels = customModels;
     }
 
+    public Double getAdditionalUIScale() {
+        if (additionalUIScale == null) {
+            additionalUIScale = (double) 1.0f;
+        }
+        return additionalUIScale;
+    }
+
+    public void setAdditionalUIScale(Double additionalUIScale) {
+        this.additionalUIScale = additionalUIScale;
+    }
+
     @NotNull
     public static List<Model> getAllRegisteredModels() {
         List<Model> allModels = new ArrayList<>();
@@ -90,6 +103,11 @@ public abstract class SettingsService {
             return ServiceManager.getService(SettingsIDEService.class);
         }
         return ServiceManager.getService(project, SettingsProjectService.class);
+    }
+
+    @NotNull
+    public static SettingsService getIDEInstance() {
+        return ServiceManager.getService(SettingsIDEService.class);
     }
 
     private void compileAndSetRegex(String regex) {

@@ -27,6 +27,7 @@
       <li>support <a href="https://github.com/JetBrains/gradle-intellij-plugin">gradle-intellij-plugin</a> <i>idea-sandbox</i> folders.</li>
       <li>internal: improve Gradle build performance.</li>
       <li>internal: migrate Gradle build to Kotlin DSL.</li>
+      <li>add an option to adjust UI Scale Factor for user icons. Useful if you run IDE with <i>-Dsun.java2d.uiScale.enabled=false</i> flag.</li>
     </ul>
     1.38.0 (2020/09/30)
     <ul>

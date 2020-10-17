@@ -156,9 +156,10 @@ public abstract class BaseIconProvider
             String currentFileName = currentPsiFileItem.getName().toLowerCase();
             Optional<String> fullPath = getFullPath(currentPsiFileItem);
             Set<String> facets = IJUtils.getFacets(project);
+            Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
             for (final Model model : getModelsIncludingUserModels(project)) {
                 if (model.getModelType() == currentModelType && isModelEnabled(project, model) && model.check(parentName, currentFileName, fullPath, facets)) {
-                    return CustomIconLoader.getIcon(model);
+                    return CustomIconLoader.getIcon(model, additionalUIScale);
                 }
             }
         } catch (Throwable e) {

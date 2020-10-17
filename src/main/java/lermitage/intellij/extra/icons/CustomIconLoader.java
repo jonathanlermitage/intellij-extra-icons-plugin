@@ -32,14 +32,14 @@ public class CustomIconLoader {
     private static final GraphicsConfiguration GRAPHICS_CFG = GraphicsEnvironment.isHeadless() ? null // some Gradle tasks run IDE in headless
         : GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
 
-    public static Icon getIcon(Model model) {
+    public static Icon getIcon(Model model, Double additionalUIScale) {
         if (model.getIconType() == IconType.PATH) {
             return IconLoader.getIcon(model.getIcon());
         }
         if (model.getIconType() == IconType.ICON) {
             return model.getIntelliJIcon();
         }
-        ImageWrapper fromBase64 = fromBase64(model.getIcon(), model.getIconType());
+        ImageWrapper fromBase64 = fromBase64(model.getIcon(), model.getIconType(), additionalUIScale);
         if (fromBase64 == null) {
             return null;
         }
@@ -72,7 +72,7 @@ public class CustomIconLoader {
         return null;
     }
 
-    public static ImageWrapper fromBase64(String base64, IconType iconType) {
+    public static ImageWrapper fromBase64(String base64, IconType iconType, double additionalUIScale) {
         byte[] decodedBase64 = Base64.decode(base64);
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(decodedBase64);
         Image image = null;
@@ -92,7 +92,11 @@ public class CustomIconLoader {
         if (image == null) {
             return null;
         }
-        return new ImageWrapper(iconType, scaleImage(image), decodedBase64);
+        Image scaledImage = scaleImage(image);
+        if (additionalUIScale != 1f) {
+            scaledImage = ImageLoader.scaleImage(scaledImage, additionalUIScale);
+        }
+        return new ImageWrapper(iconType, scaledImage, decodedBase64);
     }
 
     public static String toBase64(ImageWrapper imageWrapper) {
