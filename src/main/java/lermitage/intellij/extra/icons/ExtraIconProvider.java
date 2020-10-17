@@ -22,6 +22,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
         return asList(
 
             //
+            // custom
+            //
+            ofFile("custom_jle1", "/icons/bash.svg", "Custom: do").eq("do"),
+
+            //
             // regex (directory)
             //
             ofDir("dir_circleci", "/icons/folder_circleci.svg", "Circle CI (regex): '^/\\.circleci$' folder")
