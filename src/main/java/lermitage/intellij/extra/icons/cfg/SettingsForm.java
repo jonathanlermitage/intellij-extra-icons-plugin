@@ -171,7 +171,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             service.setAdditionalUIScale(Double.valueOf(additionalUIScaleTextField.getText()));
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null,
-                "Ignoring invalid value '" + additionalUIScaleTextField.getText() + "' for User Icons Additional UI Scale Factor.\n" +
+                "Ignoring invalid value '" + additionalUIScaleTextField.getText() + "' for Additional UI Scale Factor.\n" +
                     "Please use a valid Float value next time, like 1 or 1.25.",
                 "Invalid Additional UI Scale Factor",
                 JOptionPane.WARNING_MESSAGE);
