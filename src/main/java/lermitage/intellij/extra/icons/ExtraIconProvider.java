@@ -320,6 +320,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("kibana").mayEnd(YML),
             ofFile("kibana1", "/icons/kibana.png", "Kibana: start by 'kibana' and end by '.xml,.yml,...'")
                 .start("kibana").end(YML),
+            ofFile("knownissues", "/icons/bug.svg", "Known issues: known_issues(.md,.txt,.adoc,.rst)")
+                .start("known_issues").mayEnd(TXT),
             ofFile("kubernetes", "/icons/kubernetes.svg", "Kubernetes: kubernetes(.xml,.yml,...)")
                 .eq("kubernetes").mayEnd(YML),
             ofFile("kubernetes1", "/icons/kubernetes.svg", "Kubernetes: start by 'kubernetes' and end by '.xml,.yml,...'")
@@ -360,6 +362,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".npmignore"),
             ofFile("notice", "/icons/notice.svg", "Notice: notice(.md,.txt,.adoc,.rst)")
                 .eq("notice").mayEnd(TXT),
+            ofFile("openissues", "/icons/bug.svg", "Open issues: open_issues(.md,.txt,.adoc,.rst)")
+                .start("open_issues").mayEnd(TXT),
             ofFile("packageinfojava", "/icons/packageinfojava.svg", "Java package info: package-info.java")
                 .eq("package-info.java"),
             ofFile("packagejson", "/icons/npm.svg", "NPM: package.json")
