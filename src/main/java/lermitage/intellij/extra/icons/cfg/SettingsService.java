@@ -100,7 +100,7 @@ public abstract class SettingsService {
     @NotNull
     public static SettingsService getInstance(@Nullable Project project) {
         if (project == null) {
-            return ServiceManager.getService(SettingsIDEService.class);
+            return getIDEInstance();
         }
         return ServiceManager.getService(project, SettingsProjectService.class);
     }
