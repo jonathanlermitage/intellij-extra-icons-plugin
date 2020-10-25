@@ -21,7 +21,7 @@ Download plugin from [JetBrains Plugins Repository](https://plugins.jetbrains.co
 
 1. [Build](#build)  
 2. [Contribution](#contribution)  
-3. [Known issues (and possible fixes or workarounds)](#known-issues-and-possible-fixes-or-workarounds)  
+3. [Known issues](#known-issues)  
 4. [License](#license)  
 5. [Credits](#credits)  
 6. [Screenshots](#screenshots)  
@@ -33,7 +33,7 @@ Install JDK8+. You should be able to start Gradle Wrapper (`gradlew`).
 ### Gradle commands
 
 * build plugin: `./gradlew buildPlugin`. See generated ZIP in: `build/distributions/`.
-* run IDE with plugin: `./gradlew runIde`.
+* try plugin in a standalone IDE: `./gradlew runIde`.
 * check for dependencies updates: `./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=plain -DoutputDir=./build/`.
 
 ### Branches
@@ -51,11 +51,9 @@ Open an issue or a pull-request:
   Please reformat new and modified code only: do not reformat the whole project or entire existing file (in other words, try to limit the amount of changes in order to speed up code review).  
   To finish, don't hesitate to add your name or nickname (and LinkedIn profile, etc.) to contributors list ;-)
 
-## Known issues (and possible fixes or workarounds)
+## Known issues
 
-* [ ] Python icon (`.py` files) can't be customized in PyCharm Community and Professional: it seems to be a limitation of this IDE. Issue not reproduced in IntelliJ IDEA.
-* [X] IDE hangs when closing a project.
-  * Solution: this issue is fixed (at least highly mitigated) in release 1.37.1. Please upgrade Extra Icons plugin to latest vesion.
+See [KNOWN_ISSUES.md](KNOWN_ISSUES.md) and [GitHub open issues](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues).
 
 ## License
 
