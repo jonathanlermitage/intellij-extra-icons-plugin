@@ -63,7 +63,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JBTable userIconsTable = new JBTable();
     private JPanel overrideSettingsPanel;
     private JCheckBox addToIDEUserIconsCheckbox;
-    private JBLabel ignoredPatternTips;
     private JLabel filterLabel;
     private EditorTextField filterTextField;
     private JButton filterApplyBtn;
@@ -71,7 +70,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JBLabel bottomTip;
     private JLabel additionalUIScaleTitle;
     private EditorTextField additionalUIScaleTextField;
-    private JBLabel additionalUIScaleTip;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -200,9 +198,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         buttonEnableAll.setText("Enable all");
         buttonDisableAll.setText("Disable all");
         ignoredPatternTitle.setText("Regex to ignore relative paths:");
-        additionalUIScaleTitle.setText("Additional UI Scale Factor to adjust user icons size (float value):");
-        additionalUIScaleTip.setText("<html>Useful if you run IDE with <b>-Dsun.java2d.uiScale.enabled=false</b> flag and <b>user icons are too small</b>.</html>");
-        ignoredPatternTips.setText("<html>Regex is a <b>Java regex</b>, and file path is <b>lowercased</b> before check.</html>");
+        ignoredPatternTextField.setToolTipText("<html>Regex is a <b>Java regex</b>, and file path is <b>lowercased</b> before check.</html>");
+        additionalUIScaleTitle.setText("Additional UI Scale Factor to adjust user icons size:");
+        additionalUIScaleTextField.setToolTipText("<html>Useful if you run IDE with <b>-Dsun.java2d.uiScale.enabled=false</b> " +
+            "flag and <b>user icons are too small</b>.<br>Float value. Defaults to <b>1.0</b>.</html>");
         filterLabel.setText("Regex to filter Plugin icons table by:");
         filterTextField.setText("");
         filterApplyBtn.setText("Apply");
@@ -221,7 +220,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         if (isProjectForm) {
             additionalUIScaleTitle.setVisible(false);
             additionalUIScaleTextField.setVisible(false);
-            additionalUIScaleTip.setVisible(false);
         }
     }
 
@@ -265,7 +263,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         title.setEnabled(enabled);
         iconsTabbedPane.setEnabled(enabled);
         addToIDEUserIconsCheckbox.setEnabled(enabled);
-        ignoredPatternTips.setVisible(enabled);
         filterTextField.setEnabled(enabled);
         filterApplyBtn.setEnabled(enabled);
         filteResetBtn.setEnabled(enabled);
