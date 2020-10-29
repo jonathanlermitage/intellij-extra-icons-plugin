@@ -204,6 +204,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             "flag and <b>user icons are too small</b>.<br>Float value. Defaults to <b>1.0</b>.</html>");
         filterLabel.setText("Regex to filter Plugin icons table by:");
         filterTextField.setText("");
+        filterTextField.setToolTipText("<html>Regex is a <b>Java regex</b> and <b>is not case-sensitive</b>.</html>");
         filterApplyBtn.setText("Apply");
         filteResetBtn.setText("Reset");
         bottomTip.setText("<html><b>Icons are ordered by priority</b>. To use an <i>alternative</i> icon (as for Markdown files), deactivate the icon(s) above.</html>");
