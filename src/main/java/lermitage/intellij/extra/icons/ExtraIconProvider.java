@@ -164,6 +164,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".htaccess"),
             ofFile("appveyor", "/icons/appveyor.svg", "Appveyor: appveyor.yml, .appveyor.yml")
                 .eq("appveyor.yml", ".appveyor.yml"),
+            ofFile("allcontributors", "/icons/allcontributors.svg", "All Contributors: .all-contributorsrc")
+                .eq(".all-contributorsrc"),
             ofFile("archunit", "/icons/archunit.png", "ArchUnit: archunit.properties")
                 .eq("archunit.properties"),
             ofFile("author", "/icons/authors.png", "Author: author(.md,.txt,.adoc,.rst), authors")

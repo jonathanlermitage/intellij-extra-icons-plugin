@@ -21,9 +21,13 @@
     -->
 
     <change-notes><![CDATA[
+    1.40.0 (WIP)
+    <ul>
+      <li>support <a href="https://github.com/all-contributors/all-contributors">All Contributors</a> <i>.all-contributorsrc</i> files.</li>
+    </ul>
     1.39.0 (2020/10/30)
     <ul>
-      <li>support <a href="https://mockk.io/#settings-file">Mockk</a> <i>io/mockk/settings.properties</i> files. </li>
+      <li>support <a href="https://mockk.io/#settings-file">Mockk</a> <i>io/mockk/settings.properties</i> files.</li>
       <li>support <a href="https://github.com/JetBrains/gradle-intellij-plugin">gradle-intellij-plugin</a> <i>idea-sandbox</i> folders.</li>
       <li>internal: improve Gradle build performance.</li>
       <li>internal: migrate Gradle build to Kotlin DSL.</li>
@@ -31,85 +35,6 @@
       <li>support <i>KNOWN_ISSUES</i> and <i>OPEN_ISSUES</i> files.</li>
       <li>settings: minor UI improvements.</li>
     </ul>
-    1.38.0 (2020/09/30)
-    <ul>
-      <li>rework <i>package-info.java</i> files.</li>
-      <li>support <i>module-info.java</i> files.</li>
-      <li>provide some alternative icons for <i>AUTHORS</i> files.</li>
-      <li>support <i>netlify.toml</i> files.</li>
-      <li>rework Cassandra files (PNG icon to SVG).</li>
-    </ul>
-    1.37.1 (2020/09/13)
-    <ul>
-      <li>bugfix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39">#39</a>: Exception when plugin tries to load icons in a project that is being disposed or is already disposed.</li>
-    </ul>
-    1.37.0 (2020/09/12)
-    <ul>
-      <li>bugfix: NPE while refreshing project panel icons.</li>
-      <li>support Restyled <i>.restyled.yaml</i> files.</li>
-      <li>provide an alternative icon for Robot Framework files (based on GitLab Robot icon).</li>
-      <li>support Weblate <i>.weblate</i> files.</li>
-    </ul>
-    1.36.0 (2020/08/30)
-    <ul>
-      <li>rework Markdown files (PNG icon to SVG) and provide 2 alternative icons. To use an alternative icon, simply deactivate the other(s).</li>
-      <li>provide some alternative icons for Video files.</li>
-      <li>provide an alternative icon for EditorConfig files.</li>
-      <li>provide an alternative icon for Swagger files.</li>
-      <li>provide an alternative icon for Asciidoc files.</li>
-      <li>provide an alternative icon for Certificate files.</li>
-      <li>provide an alternative icon for License files.</li>
-      <li>provide an alternative icon for Readme files (based on GitHub Readme icon).</li>
-      <li>add new configuration condition: facets. You can now choose to activate a custom icon if a specific facet is ativated in project (as in <code>Project Structure &gt; Project Settings &gt; Facets</code>), like "Spring", "JPA", etc. This condition must be associated with an other condition like "Names", "Regex", etc.</li>
-      <li>removed usage of <code>sun.awt.image.ToolkitImage</code>. It will fix some Gradle build errors with JDK9+, but some IDE like PyCharm <i>may</i> (I did not reproduce) not display a few icons. If it doesn't work for you, please open an issue (and attach IDE logs) and I will probably revert this change.</li>
-      <li>support <a href="https://tinylog.org">Tinylog</a> <i>tinylog.properties</i> files.</li>
-    </ul>
-    1.35.0 (2020/08/22)
-    <ul>
-      <li>rework Nginx files.</li>
-      <li>rework Better Code Hub files.</li>
-    </ul>
-    1.34.0 (2020/08/08)
-    <ul>
-      <li>rework Git files (PNG icon to SVG).</li>
-      <li>rework Gradle files (PNG icon to SVG).</li>
-      <li>rework Archive files.</li>
-      <li>rework Maven wrapper files (PNG icon to SVG).</li>
-      <li>rework Gradle wrapper files (PNG icon to SVG).</li>
-      <li>rework Gitlab files (PNG icon to SVG).</li>
-      <li>rework Apache htaccess files.</li>
-      <li>rework HTML5 files.</li>
-      <li>rework PID files.</li>
-      <li>improve FlyWay and Liquibase support: detect HSQLDB, H2 and IBM DB2 databases.</li>
-      <li>rework Angular files.</li>
-      <li>rework Appveyor files.</li>
-      <li>rework Asciidoc files.</li>
-      <li>rework GitHub files.</li>
-      <li>rework SASS files (PNG icon to SVG).</li>
-      <li>rework Terraform files (PNG icon to SVG).</li>
-      <li>rework Typescript files.</li>
-      <li>rework Liquibase files.</li>
-      <li>rework Swagger files.</li>
-      <li>support PDD (Puzzle Driven Development) <i>.pdd</i> and <i>.0pdd.yml</i> files.</li>
-      <li>rework and ungroup <i>*.ini</i>, <i>*.cfg</i>, <i>*.conf</i>, <i>*.config</i> Configuration files support: users may prefer icons provided by the <a href="https://plugins.jetbrains.com/plugin/6981-ini/">Ini plugin</a>.</li>
-      <li>rework Postman files (improve dark icon).</li>
-      <li>rework Codecov files (PNG icon to SVG).</li>
-      <li>rework <i>.mailmap</i> files (PNG icon to SVG).</li>
-      <li>rework LESS files (PNG icon to SVG).</li>
-      <li>support Velocity <i>*.vtl</i> files.</li>
-      <li>rework CHANGELOG files (PNG icon to SVG).</li>
-      <li>support Jinja <i>*.jinja</i> and <i>*.jinja2</i> files.</li>
-      <li>Plugin icons table filter now filters on label column only.</li>
-      <li>rework Jest files.</li>
-      <li>rework WAR files.</li>
-      <li>rework TESTING files (PNG icon to SVG).</li>
-      <li>rework <i>.form</i> files (PNG icon to SVG).</li>
-      <li>rework NSIS files (PNG icon to SVG).</li>
-      <li>support <i>swagger-config.yaml</i> files.</li>
-    </ul>
-    <p>
-      Some icons come from the <a href="https://github.com/hiberbee/jetbrains-ide-theme">Hiberbee Theme family</a> project.
-    </p>
     ]]>
     </change-notes>
 

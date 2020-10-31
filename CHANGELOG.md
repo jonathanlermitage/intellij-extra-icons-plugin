@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.40.0 (WIP)
+* support [All Contributors](https://github.com/all-contributors/all-contributors) `.all-contributorsrc` files.
+
 ## 1.39.0 (2020/10/30)
 * support [Mockk](https://mockk.io/#settings-file) `io/mockk/settings.properties` files. 
 * support [gradle-intellij-plugin](https://github.com/JetBrains/gradle-intellij-plugin) `idea-sandbox` folders.
