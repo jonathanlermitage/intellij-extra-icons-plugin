@@ -56,6 +56,18 @@ tasks {
         outputDir = "build"
         reportfileName = "dependencyUpdatesReport"
         revision = "release"
+        resolutionStrategy {
+            componentSelection {
+                all {
+                    if (isNonStable(candidate.version)) {
+                        println(" - [ ] ${candidate.module}:${candidate.version} candidate rejected")
+                        reject("Not stable")
+                    } else {
+                        println(" - [X] ${candidate.module}:${candidate.version} candidate accepted")
+                    }
+                }
+            }
+        }
     }
     runIde {
         jvmArgs = listOf("-Xms768m", "-Xmx2048m", "--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
@@ -72,20 +84,5 @@ fun isNonStable(version: String): Boolean {
     }
     return listOf("alpha", "Alpha", "ALPHA", "b", "beta", "Beta", "BETA", "rc", "RC", "M", "EA", "pr", "atlassian").any {
         "(?i).*[.-]${it}[.\\d-]*$".toRegex().matches(version)
-    }
-}
-
-tasks.named("dependencyUpdates", DependencyUpdatesTask::class.java).configure {
-    resolutionStrategy {
-        componentSelection {
-            all {
-                if (isNonStable(candidate.version)) {
-                    println(" - [ ] ${candidate.module}:${candidate.version} candidate rejected")
-                    reject("Not stable")
-                } else {
-                    println(" - [X] ${candidate.module}:${candidate.version} candidate accepted")
-                }
-            }
-        }
     }
 }

@@ -34,7 +34,7 @@ Install JDK8+. You should be able to start Gradle Wrapper (`gradlew`).
 
 * build plugin: `./gradlew buildPlugin`. See generated ZIP in: `build/distributions/`.
 * try plugin in a standalone IDE: `./gradlew runIde`.
-* check for dependencies updates: `./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=plain -DoutputDir=./build/`.
+* check for dependencies updates: `./gradlew dependencyUpdates`.
 
 ### Branches
 

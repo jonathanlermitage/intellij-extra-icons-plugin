@@ -46,7 +46,7 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
         ;;
 
     "cv")
-        ./gradlew dependencyUpdates -Drevision=release -DoutputFormatter=plain -DoutputDir=./build/ --warning-mode all
+        ./gradlew dependencyUpdates --warning-mode all
         ;;
 
     "svgo")

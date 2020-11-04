@@ -33,7 +33,7 @@ if [%1] == [test] (
   gradlew cleanTest test verifyPlugin --warning-mode all
 )
 if [%1] == [cv] (
-  gradlew dependencyUpdates -Drevision=release -DoutputFormatter=plain -DoutputDir=./build/ --warning-mode all
+  gradlew dependencyUpdates --warning-mode all
 )
 if [%1] == [svgo] (
   svgo --folder=src/main/resources/icons/ --multipass --config=svgo.yml
