@@ -24,6 +24,7 @@
     1.40.0 (WIP)
     <ul>
       <li>support <a href="https://github.com/all-contributors/all-contributors">All Contributors</a> <i>.all-contributorsrc</i> files.</li>
+      <li>provide an alternative icon for Contribution files.</li>
     </ul>
     1.39.0 (2020/10/30)
     <ul>

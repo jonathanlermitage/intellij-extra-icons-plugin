@@ -2,6 +2,7 @@
 
 ## 1.40.0 (WIP)
 * support [All Contributors](https://github.com/all-contributors/all-contributors) `.all-contributorsrc` files.
+* provide an alternative icon for Contribution files.
 
 ## 1.39.0 (2020/10/30)
 * support [Mockk](https://mockk.io/#settings-file) `io/mockk/settings.properties` files. 
