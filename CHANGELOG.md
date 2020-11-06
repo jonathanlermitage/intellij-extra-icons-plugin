@@ -38,7 +38,7 @@
 * provide an alternative icon for Certificate files.
 * provide an alternative icon for License files.
 * provide an alternative icon for Readme files (based on GitHub Readme icon).
-* add new configuration condition: facets. You can now choose to activate a custom icon if a specific facet is ativated in project (as in `Project Structure > Project Settings > Facets`), like "Spring", "JPA", etc. This condition must be associated with an other condition like "Names", "Regex", etc.
+* add new configuration condition: facets. You can now choose to activate a custom icon if a specific facet is activated in project (as in `Project Structure > Project Settings > Facets`), like "Spring", "JPA", etc. This condition must be associated with an other condition like "Names", "Regex", etc.
 * removed usage of `sun.awt.image.ToolkitImage`. It will fix some Gradle build errors with JDK9+, but some IDE like PyCharm *may* (I did not reproduce) not display a few icons. If it doesn't work for you, please open an issue (and attach IDE logs) and I will probably revert this change.
 * support [Tinylog](https://tinylog.org) `tinylog.properties` files.
 
