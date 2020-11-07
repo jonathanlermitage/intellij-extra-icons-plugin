@@ -8,7 +8,8 @@
 <p align="center">
     <a href="https://plugins.jetbrains.com/plugin/11058-extra-icons"><img src="https://img.shields.io/jetbrains/plugin/v/11058-extra-icons.svg"/></a>
     <a href="https://plugins.jetbrains.com/plugin/11058-extra-icons"><img src="https://img.shields.io/jetbrains/plugin/d/11058-extra-icons.svg"/></a>
-    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/LICENSE.txt"><img src="https://img.shields.io/github/license/jonathanlermitage/intellij-extra-icons-plugin.svg"/></a><br>
+    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/LICENSE.txt"><img src="https://img.shields.io/github/license/jonathanlermitage/intellij-extra-icons-plugin.svg"/></a>
+    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/graphs/contributors"><img src="https://img.shields.io/github/contributors/jonathanlermitage/intellij-extra-icons-plugin"/></a><br>
     <a href="https://travis-ci.org/jonathanlermitage/intellij-extra-icons-plugin"><img src="https://img.shields.io/travis/jonathanlermitage/intellij-extra-icons-plugin/ide201.svg?logo=travis"/></a>
     <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/actions?query=workflow%3A%22Build+and+verify%22"><img src="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/workflows/Build%20and%20verify/badge.svg"/></a>
     <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/actions?query=workflow%3A%22Validate+Gradle+Wrapper%22"><img src="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/workflows/Validate%20Gradle%20Wrapper/badge.svg"/></a>    
