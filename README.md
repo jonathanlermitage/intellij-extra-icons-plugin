@@ -79,6 +79,10 @@ Thanks for their Open-Source licence to their amazing IDEs.
 
 Thanks for their licence for **SmartGit** (an excellent graphical Git client, free for non-commercial projects).
 
+### 🤝 [Travis CI](https://travis-ci.com)
+
+My favorite CI!
+
 ## Screenshots
 
 ![Dark Screenshot](misc/screenshots/intellijidea-ce_dark.png)
