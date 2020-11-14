@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.40.0 (WIP)
+    1.40.0 (2020/11/15)
     <ul>
       <li>support <a href="https://github.com/all-contributors/all-contributors">All Contributors</a> <i>.all-contributorsrc</i> files.</li>
       <li>provide an alternative icon for Contribution files.</li>

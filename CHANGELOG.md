@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.40.0 (WIP)
+## 1.40.0 (2020/11/15)
 * support [All Contributors](https://github.com/all-contributors/all-contributors) `.all-contributorsrc` files.
 * provide an alternative icon for Contribution files.
 
