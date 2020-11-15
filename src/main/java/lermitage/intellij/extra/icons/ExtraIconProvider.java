@@ -436,6 +436,34 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("tox.ini"),
             ofFile("travis", "/icons/travis.svg", "Travis CI: .travis.yml")
                 .eq(".travis.yml"),
+            ofFile("travis_alt", "/icons/travis_alt.svg", "Travis CI: .travis.yml (alternative 01)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt02", "/icons/travis_alt02.svg", "Travis CI: .travis.yml (alternative 02)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt03", "/icons/travis_alt03.svg", "Travis CI: .travis.yml (alternative 03)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt04", "/icons/travis_alt04.svg", "Travis CI: .travis.yml (alternative 04)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt05", "/icons/travis_alt05.svg", "Travis CI: .travis.yml (alternative 05)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt06", "/icons/travis_alt06.svg", "Travis CI: .travis.yml (alternative 06)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt07", "/icons/travis_alt07.svg", "Travis CI: .travis.yml (alternative 07)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt08", "/icons/travis_alt08.svg", "Travis CI: .travis.yml (alternative 08)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt09", "/icons/travis_alt09.svg", "Travis CI: .travis.yml (alternative 09)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt10", "/icons/travis_alt10.svg", "Travis CI: .travis.yml (alternative 10)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt11", "/icons/travis_alt11.svg", "Travis CI: .travis.yml (alternative 11)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt12", "/icons/travis_alt12.svg", "Travis CI: .travis.yml (alternative 12)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt13", "/icons/travis_alt13.svg", "Travis CI: .travis.yml (alternative 13)")
+                .eq(".travis.yml"),
+            ofFile("travis_alt14", "/icons/travis_alt14.svg", "Travis CI: .travis.yml (alternative 14)")
+                .eq(".travis.yml"),
             ofFile("vagrant", "/icons/vagrant.svg", "Vagrant: vagrantfile")
                 .eq("vagrantfile"),
             ofFile("version", "/icons/version.png", "Version: (.)version(s)(.md,.txt,.adoc,.rst)")
