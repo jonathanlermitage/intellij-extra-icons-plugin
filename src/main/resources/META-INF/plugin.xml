@@ -24,6 +24,7 @@
     1.41.0 (WIP)
     <ul>
       <li>provide some alternative icons for <i>.travis.yml</i> files (<a href="https://travis-ci.com/logo">official logos</a>).</li>
+      <li>support <i>.coveragerc</i> files.</li>
     </ul>
     1.40.0 (2020/11/15)
     <ul>

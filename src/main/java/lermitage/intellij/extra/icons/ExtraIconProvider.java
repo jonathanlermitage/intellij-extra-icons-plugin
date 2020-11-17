@@ -238,6 +238,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("contribute", "contributing", "contribution").mayEnd(TXT),
             ofFile("contribute_alt", "/icons/contributing_alt.svg", "Contribution: contribute(.md,.txt,.adoc,.rst), contributing, contribution (alternative)")
                 .eq("contribute", "contributing", "contribution").mayEnd(TXT),
+            ofFile("coveragerc", "/icons/coveragerc.svg", "Python coverage: .coveragerc")
+                .eq(".coveragerc"),
             ofFile("crowdin", "/icons/crowdin.svg", "Crowdin: .crowdin.yml")
                 .eq(".crowdin.yml"),
             ofFile("deptective", "/icons/deptective.png", "Deptective: deptective.json")
