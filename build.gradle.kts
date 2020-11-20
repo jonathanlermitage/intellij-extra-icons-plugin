@@ -3,7 +3,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 plugins {
     id("java")
     id("idea")
-    id("org.jetbrains.intellij") version "0.6.3" // https://github.com/JetBrains/gradle-intellij-plugin
+    id("org.jetbrains.intellij") version "0.6.4" // https://github.com/JetBrains/gradle-intellij-plugin
     id("com.github.ben-manes.versions") version "0.36.0" // https://github.com/ben-manes/gradle-versions-plugin
 }
 
