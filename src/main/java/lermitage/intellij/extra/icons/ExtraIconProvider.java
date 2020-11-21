@@ -246,13 +246,33 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("deptective.json"),
             ofFile("docker", "/icons/docker.png", "Docker: dockerfile(.xml,.yml,...)")
                 .eq("dockerfile").mayEnd(CFG),
+            ofFile("docker_alt", "/icons/docker_alt.png", "Docker: dockerfile(.xml,.yml,...) (alternative 1)")
+                .eq("dockerfile").mayEnd(CFG),
+            ofFile("docker_alt2", "/icons/docker_alt2.svg", "Docker: dockerfile(.xml,.yml,...) (alternative 2)")
+                .eq("dockerfile").mayEnd(CFG),
             ofFile("dockercompose", "/icons/dockercompose.png", "Docker: docker-compose")
+                .eq("docker-compose").mayEnd(CFG),
+            ofFile("dockercompose_alt", "/icons/dockercompose_alt.png", "Docker: docker-compose (alternative 1)")
+                .eq("docker-compose").mayEnd(CFG),
+            ofFile("dockercompose_alt2", "/icons/dockercompose_alt2.svg", "Docker: docker-compose (alternative 2)")
                 .eq("docker-compose").mayEnd(CFG),
             ofFile("docker1", "/icons/docker.png", "Docker: start by 'dockerfile' and end by '.xml,.yml,...'")
                 .start("dockerfile").end(CFG),
+            ofFile("docker1_alt", "/icons/docker_alt.png", "Docker: start by 'dockerfile' and end by '.xml,.yml,...' (alternative 1)")
+                .start("dockerfile").end(CFG),
+            ofFile("docker1_alt2", "/icons/docker_alt2.svg", "Docker: start by 'dockerfile' and end by '.xml,.yml,...' (alternative 2)")
+                .start("dockerfile").end(CFG),
             ofFile("dockercompose1", "/icons/dockercompose.png", "Docker: start by 'docker-compose' and end by '.xml,.yml,...'")
                 .start("docker-compose").end(CFG),
+            ofFile("dockercompose1_alt", "/icons/dockercompose_alt.png", "Docker: start by 'docker-compose' and end by '.xml,.yml,...' (alternative 1)")
+                .start("docker-compose").end(CFG),
+            ofFile("dockercompose1_alt2", "/icons/dockercompose_alt2.svg", "Docker: start by 'docker-compose' and end by '.xml,.yml,...' (alternative 2)")
+                .start("docker-compose").end(CFG),
             ofFile("dockerignore", "/icons/dockerignore.png", "Docker: .dockerignore")
+                .eq(".dockerignore"),
+            ofFile("dockerignore_alt", "/icons/dockerignore_alt.png", "Docker: .dockerignore (alternative 1)")
+                .eq(".dockerignore"),
+            ofFile("dockerignore_alt2", "/icons/dockerignore_alt2.svg", "Docker: .dockerignore (alternative 2)")
                 .eq(".dockerignore"),
             ofFile("editorconfig", "/icons/editorconfig.png", "EditorConfig: .editorconfig")
                 .eq(".editorconfig").mayEnd(CFG),
@@ -629,6 +649,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             // generic
             //
             ofFile("docker_generic", "/icons/docker.png", "Docker (generic): start by 'dockerfile'")
+                .start("dockerfile"),
+            ofFile("docker_generic_alt", "/icons/docker_alt.png", "Docker (generic): start by 'dockerfile' (alternative 1)")
+                .start("dockerfile"),
+            ofFile("docker_generic_alt2", "/icons/docker_alt2.svg", "Docker (generic): start by 'dockerfile' (alternative 2)")
                 .start("dockerfile")
         );
     }

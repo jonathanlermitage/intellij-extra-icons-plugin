@@ -27,6 +27,7 @@
       <li>support <i>.coveragerc</i> files.</li>
       <li>rework TypeScript files.</li>
       <li>rework CHANGELOG dark icon.</li>
+      <li>provide alternative icons for Dockerfile, Docker Compose and Docker Ignore files.</li>
     </ul>
     1.40.0 (2020/11/15)
     <ul>

@@ -5,6 +5,7 @@
 * support `.coveragerc` files.
 * rework TypeScript files.
 * rework CHANGELOG dark icon.
+* provide alternative icons for Dockerfile, Docker Compose and Docker Ignore files.
 
 ## 1.40.0 (2020/11/15)
 * support [All Contributors](https://github.com/all-contributors/all-contributors) `.all-contributorsrc` files.
