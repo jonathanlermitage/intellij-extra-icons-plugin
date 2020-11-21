@@ -26,6 +26,7 @@
       <li>provide some alternative icons for <i>.travis.yml</i> files (<a href="https://travis-ci.com/logo">official logos</a>).</li>
       <li>support <i>.coveragerc</i> files.</li>
       <li>rework TypeScript files.</li>
+      <li>rework CHANGELOG dark icon.</li>
     </ul>
     1.40.0 (2020/11/15)
     <ul>
