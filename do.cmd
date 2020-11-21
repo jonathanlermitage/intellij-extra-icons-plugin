@@ -24,7 +24,7 @@ if [%1] == [run] (
   gradlew buildPlugin runIde --warning-mode all
 )
 if [%1] == [runeap] (
-  gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT
+  gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
 )
 if [%1] == [release] (
   gradlew clean buildPlugin test verifyPlugin --warning-mode all
