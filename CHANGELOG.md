@@ -3,6 +3,7 @@
 ## 1.41.0 (WIP)
 * provide some alternative icons for `.travis.yml` files ([official logos](https://travis-ci.com/logo)).
 * support `.coveragerc` files.
+* rework TypeScript files.
 
 ## 1.40.0 (2020/11/15)
 * support [All Contributors](https://github.com/all-contributors/all-contributors) `.all-contributorsrc` files.
