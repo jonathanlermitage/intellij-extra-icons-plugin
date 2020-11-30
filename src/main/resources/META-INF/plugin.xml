@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.41.0 (WIP)
+    1.41.0 (2020/11/30)
     <ul>
       <li>provide some alternative icons for <i>.travis.yml</i> files (<a href="https://travis-ci.com/logo">official logos</a>).</li>
       <li>support <i>.coveragerc</i> files.</li>

@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.41.0 (WIP)
+## 1.41.0 (2020/11/30)
 * provide some alternative icons for `.travis.yml` files ([official logos](https://travis-ci.com/logo)).
 * support `.coveragerc` files.
 * rework TypeScript files.
