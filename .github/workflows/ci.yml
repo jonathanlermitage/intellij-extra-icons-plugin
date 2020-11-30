@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ij: [ 2020.1.4, 2020.2.3 ]
+        ij: [ 2020.1.4, 2020.2.4 ]
     steps:
       - uses: actions/checkout@master
       - name: Setup Java
