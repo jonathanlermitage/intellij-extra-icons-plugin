@@ -6,7 +6,7 @@ matrix:
   include:
     - name: IDEA IU-2020.1.4
       script: ./gradlew clean buildPlugin test verifyPlugin --warning-mode all -PpluginDownloadIdeaSources=false -PpluginIdeaVersion=IU-2020.1.4
-    - name: IDEA IU-2020.2.4
+    - name: IDEA IU-2020.3
       script: ./gradlew clean buildPlugin test verifyPlugin --warning-mode all -PpluginDownloadIdeaSources=false -PpluginIdeaVersion=IU-2020.2.3
     - name: IDEA IU-LATEST-EAP-SNAPSHOT
       script: ./gradlew clean buildPlugin test verifyPlugin --warning-mode all -PpluginDownloadIdeaSources=false -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT
