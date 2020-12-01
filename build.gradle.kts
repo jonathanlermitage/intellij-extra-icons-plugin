@@ -45,6 +45,7 @@ tasks {
     withType<JavaCompile> {
         sourceCompatibility = pluginJavaVersion
         targetCompatibility = pluginJavaVersion
+        options.compilerArgs = listOf("-Xlint:deprecation")
     }
     withType<Test> {
         useJUnitPlatform()
