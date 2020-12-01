@@ -56,6 +56,7 @@ public class CustomIconLoader {
                 ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(fileContents);
                 if (virtualFile.getExtension().equals("svg") && new String(fileContents).startsWith("<")) {
                     iconType = IconType.SVG;
+                    // TODO find a stable API, maybe TwelveMonkeys? SVGLoader is marked as Internal
                     image = SVGLoader.load(byteArrayInputStream, 1.0f);
                 } else {
                     iconType = IconType.IMG;
