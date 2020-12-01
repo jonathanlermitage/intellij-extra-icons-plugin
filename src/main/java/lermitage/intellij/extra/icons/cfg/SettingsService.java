@@ -116,6 +116,9 @@ public abstract class SettingsService {
                 ignoredPatternObj = Pattern.compile(regex);
                 isIgnoredPatternValid = true;
             } catch (PatternSyntaxException e) {
+                // TODO when switching to 2020.3 as minimal version: rework NotificationGroup creation
+                //  https://jetbrains.org/intellij/sdk/docs/user_interface_components/notifications.html
+                //  (see "NotificationGroup (2020.3 and later)")
                 NotificationGroup notificationGroup = new NotificationGroup(
                     Globals.PLUGIN_GROUP_DISPLAY_ID,
                     NotificationDisplayType.BALLOON,
