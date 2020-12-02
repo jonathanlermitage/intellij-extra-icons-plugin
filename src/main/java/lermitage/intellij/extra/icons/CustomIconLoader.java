@@ -34,7 +34,7 @@ public class CustomIconLoader {
 
     public static Icon getIcon(Model model, Double additionalUIScale) {
         if (model.getIconType() == IconType.PATH) {
-            return IconLoader.getIcon(model.getIcon());
+            return IconLoader.getIcon(model.getIcon(), CustomIconLoader.class);
         }
         if (model.getIconType() == IconType.ICON) {
             return model.getIntelliJIcon();
