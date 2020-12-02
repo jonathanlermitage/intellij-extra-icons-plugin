@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.42.0 (WIP)
+* support `RELEASENOTES` files.
+
 ## 1.41.0 (2020/11/30)
 * provide some alternative icons for `.travis.yml` files ([official logos](https://travis-ci.com/logo)).
 * support `.coveragerc` files.

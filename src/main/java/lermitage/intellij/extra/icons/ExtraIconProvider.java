@@ -212,8 +212,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("cassandra").mayEnd(YML),
             ofFile("cassandra1", "/icons/cassandra.svg", "Cassandra: start by 'cassandra' and end by '.yml,.yaml'")
                 .start("cassandra").end(YML),
-            ofFile("changelog", "/icons/changelog.svg", "Changelog: changelog(.md,.txt,.adoc,.rst), changes, release-notes, release_notes")
-                .eq("changelog", "changes", "release-notes", "release_notes").mayEnd(TXT),
+            ofFile("changelog", "/icons/changelog.svg", "Changelog: changelog(.md,.txt,.adoc,.rst), changes, release-notes, release_notes, releasenotes")
+                .eq("changelog", "changes", "release-notes", "release_notes", "releasenotes").mayEnd(TXT),
             ofFile("circle", "/icons/circleci.svg", "Circle CI: circle.yml")
                 .eq("circle.yml"),
             ofFile("circle1", "/icons/circleci.svg", "Circle CI: .circleci/config.yml")
