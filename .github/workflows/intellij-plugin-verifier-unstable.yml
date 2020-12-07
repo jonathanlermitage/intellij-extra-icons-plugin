@@ -1,0 +1,19 @@
+#see https://github.com/ChrisCarini/intellij-platform-plugin-verifier-action
+name: Plugin compatibility (EAP)
+on: [ push, pull_request ]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11.x.x
+      - name: Build the plugin using Gradle
+        run: ./gradlew buildPlugin -PdownloadIdeaSources=false
+      - uses: ChrisCarini/intellij-platform-plugin-verifier-action@v1.0.3
+        with:
+          ide-versions: |
+            ideaIC:LATEST-EAP-SNAPSHOT
+            ideaIU:LATEST-EAP-SNAPSHOT
