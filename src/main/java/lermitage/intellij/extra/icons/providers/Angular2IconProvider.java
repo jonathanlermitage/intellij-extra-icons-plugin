@@ -25,25 +25,25 @@ public class Angular2IconProvider extends BaseIconProvider implements DumbAware 
     @NotNull
     public static List<Model> allModels() {
         return asList(
-            ofFile("angular_json", "/icons/angular2.svg", "Angular (in Angular 2+ projects only): angular.json")
+            ofFile("angular_json", "/extra-icons/angular2.svg", "Angular (in Angular 2+ projects only): angular.json")
                 .eq("angular.json"),
-            ofFile("angular_module", "/icons/angular-module.svg", "Angular (in Angular 2+ projects only): *.module.ts")
+            ofFile("angular_module", "/extra-icons/angular-module.svg", "Angular (in Angular 2+ projects only): *.module.ts")
                 .end(".module.ts"),
-            ofFile("angular_component", "/icons/angular-component.svg", "Angular (in Angular 2+ projects only): *.component.ts")
+            ofFile("angular_component", "/extra-icons/angular-component.svg", "Angular (in Angular 2+ projects only): *.component.ts")
                 .end(".component.ts"),
-            ofFile("angular_service", "/icons/angular-service.svg", "Angular (in Angular 2+ projects only): *.service.ts")
+            ofFile("angular_service", "/extra-icons/angular-service.svg", "Angular (in Angular 2+ projects only): *.service.ts")
                 .end(".service.ts"),
-            ofFile("angular_pipe", "/icons/angular-pipe.svg", "Angular (in Angular 2+ projects only): *.pipe.ts")
+            ofFile("angular_pipe", "/extra-icons/angular-pipe.svg", "Angular (in Angular 2+ projects only): *.pipe.ts")
                 .end(".pipe.ts"),
-            ofFile("angular_directive", "/icons/angular-directive.svg", "Angular (in Angular 2+ projects only): *.directive.ts")
+            ofFile("angular_directive", "/extra-icons/angular-directive.svg", "Angular (in Angular 2+ projects only): *.directive.ts")
                 .end(".directive.ts"),
-            ofFile("angular_guard", "/icons/angular-guard.svg", "Angular (in Angular 2+ projects only): *.guard.ts")
+            ofFile("angular_guard", "/extra-icons/angular-guard.svg", "Angular (in Angular 2+ projects only): *.guard.ts")
                 .end(".guard.ts"),
-            ofFile("angular_resolver", "/icons/angular-resolver.svg", "Angular (in Angular 2+ projects only): *.resolver.ts")
+            ofFile("angular_resolver", "/extra-icons/angular-resolver.svg", "Angular (in Angular 2+ projects only): *.resolver.ts")
                 .end(".resolver.ts"),
-            ofFile("angular_spec", "/icons/test-ts.svg", "Angular (in Angular 2+ projects only): *.spec.ts")
+            ofFile("angular_spec", "/extra-icons/test-ts.svg", "Angular (in Angular 2+ projects only): *.spec.ts")
                 .end(".spec.ts"),
-            ofFile("angular_html", "/icons/html5.svg", "Angular (in Angular 2+ projects only): *.html")
+            ofFile("angular_html", "/extra-icons/html5.svg", "Angular (in Angular 2+ projects only): *.html")
                 .end(".html")
         );
     }

@@ -3,6 +3,7 @@
 ## 1.42.0 (WIP)
 * support `RELEASENOTES` files.
 * bugfix [#43](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/43): restore compatibility with IDE running on JRE8.
+* apply a workaround for a bug in IJ 2020.3 that makes IDE loading icons from bundled plugins (like Lombok) instead of ExtraIcons.
 
 ## 1.41.0 (2020/11/30)
 * provide some alternative icons for `.travis.yml` files ([official logos](https://travis-ci.com/logo)).
