@@ -15,7 +15,7 @@ val pluginVersion: String by project
 val pluginJavaVersion: String by project
 val pluginEnableBuildSearchableOptions: String by project
 
-println("Will use IDEA version: $pluginIdeaVersion")
+println("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion")
 
 group = "lermitage.intellij.extra.icons"
 version = pluginVersion

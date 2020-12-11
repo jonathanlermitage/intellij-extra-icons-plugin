@@ -2,6 +2,7 @@
 
 ## 1.42.0 (WIP)
 * support `RELEASENOTES` files.
+* bugfix [#43](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/43): restore compatibility with IDE running on JRE8.
 
 ## 1.41.0 (2020/11/30)
 * provide some alternative icons for `.travis.yml` files ([official logos](https://travis-ci.com/logo)).
