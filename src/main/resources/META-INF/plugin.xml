@@ -24,7 +24,7 @@
     1.42.0 (WIP)
     <ul>
       <li>support <i>RELEASENOTES</i> files.</li>
-      <li>bugfix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/43">#43</a>: restore compatibility with IDE running on JRE8.</li>
+      <li>fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/43">#43</a>: restore compatibility with IDE running on JRE8.</li>
       <li>apply a workaround for a bug in IJ 2020.3 that makes IDE loading icons from bundled plugins (like Lombok) instead of ExtraIcons.</li>
       <li>rework Lombok files (PNG icon to SVG).</li>
     </ul>
