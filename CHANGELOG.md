@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.42.0 (WIP)
+## 1.42.0 (2020/12/12)
 * support `RELEASENOTES` files.
 * fix [#43](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/43): restore compatibility with IDE running on JRE8.
 * apply a workaround for a bug in IJ 2020.3 that makes IDE loading icons from bundled plugins (like Lombok) instead of ExtraIcons.
