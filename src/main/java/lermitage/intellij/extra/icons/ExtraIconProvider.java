@@ -3,6 +3,7 @@
 package lermitage.intellij.extra.icons;
 
 import com.intellij.openapi.project.DumbAware;
+import lermitage.intellij.extra.icons.enablers.IconEnablers;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -653,7 +654,13 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("docker_generic_alt", "/extra-icons/docker_alt.png", "Docker (generic): start by 'dockerfile' (alternative 1)")
                 .start("dockerfile"),
             ofFile("docker_generic_alt2", "/extra-icons/docker_alt2.svg", "Docker (generic): start by 'dockerfile' (alternative 2)")
-                .start("dockerfile")
+                .start("dockerfile"),
+
+            //
+            // programmable
+            //
+            ofDir("gitsubmodule", "/extra-icons/git_submodule.svg", "Git sub-module containing folder")
+                .iconEnabler(IconEnablers.GIT_SUBMODULE_FOLDER)
         );
     }
 

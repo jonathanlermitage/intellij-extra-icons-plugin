@@ -2,8 +2,10 @@
 
 package lermitage.intellij.extra.icons;
 
+import com.intellij.openapi.project.Project;
 import com.intellij.util.xmlb.annotations.OptionTag;
 import com.intellij.util.xmlb.annotations.XCollection;
+import lermitage.intellij.extra.icons.enablers.IconEnablers;
 import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -137,6 +139,11 @@ public class Model {
         return this;
     }
 
+    public Model iconEnabler(IconEnablers iconEnablers) {
+        getCurrentCondition().setIconEnabler(iconEnablers);
+        return this;
+    }
+
     public Model or() {
         this.conditions.add(new ModelCondition());
         return this;
@@ -146,9 +153,9 @@ public class Model {
         return conditions.get(conditions.size() - 1);
     }
 
-    public boolean check(String parentName, String fileName, Optional<String> fullPath, Set<String> facets) {
+    public boolean check(String parentName, String fileName, Optional<String> fullPath, Set<String> facets, Project project) {
         for (ModelCondition condition : conditions) {
-            if (condition.check(parentName, fileName, fullPath, facets)) {
+            if (condition.check(parentName, fileName, fullPath, facets, project)) {
                 return true;
             }
         }

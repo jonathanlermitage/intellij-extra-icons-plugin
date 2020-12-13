@@ -158,7 +158,7 @@ public abstract class BaseIconProvider
             Set<String> facets = IJUtils.getFacets(project);
             Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
             for (final Model model : getModelsIncludingUserModels(project)) {
-                if (model.getModelType() == currentModelType && isModelEnabled(project, model) && model.check(parentName, currentFileName, fullPath, facets)) {
+                if (model.getModelType() == currentModelType && isModelEnabled(project, model) && model.check(parentName, currentFileName, fullPath, facets, project)) {
                     return CustomIconLoader.getIcon(model, additionalUIScale);
                 }
             }

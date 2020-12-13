@@ -2,9 +2,12 @@
 
 package lermitage.intellij.extra.icons;
 
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.util.xmlb.annotations.OptionTag;
 import com.intellij.util.xmlb.annotations.Tag;
+import lermitage.intellij.extra.icons.enablers.IconEnabler;
+import lermitage.intellij.extra.icons.enablers.IconEnablers;
 import org.intellij.lang.annotations.Language;
 
 import java.util.ArrayList;
@@ -39,6 +42,8 @@ public class ModelCondition {
     private boolean enabled = true;
     @OptionTag
     private boolean checkFacets = false;
+    @OptionTag
+    private boolean hasIconEnabler = false;
 
     @OptionTag
     private String[] names = new String[0];
@@ -51,6 +56,7 @@ public class ModelCondition {
     @OptionTag
     private String[] facets = new String[0];
     private Pattern pattern;
+    private IconEnablers iconEnabler;
 
     public void setParents(String... parents) {
         this.checkParent = true;
@@ -92,9 +98,21 @@ public class ModelCondition {
         this.facets = facets;
     }
 
-    public boolean check(String parentName, String fileName, Optional<String> fullPath, Set<String> prjFacets) {
+    public void setIconEnabler(IconEnablers iconEnabler) {
+        this.hasIconEnabler = true;
+        this.iconEnabler = iconEnabler;
+    }
+
+    public boolean check(String parentName, String fileName, Optional<String> fullPath, Set<String> prjFacets, Project project) {
         if (!enabled) {
             return false;
+        }
+
+        if (hasIconEnabler && fullPath.isPresent()) {
+            Optional<IconEnabler> iconEnabler = this.iconEnabler.getIconEnabler(project);
+            if (iconEnabler.isPresent()) {
+                return iconEnabler.get().verify(project, fullPath.get());
+            }
         }
 
         // facet is a pre-condition, should always be associated with other conditions
