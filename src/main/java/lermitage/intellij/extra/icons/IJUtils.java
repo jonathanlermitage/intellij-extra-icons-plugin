@@ -66,8 +66,8 @@ public class IJUtils {
             LOGGER.error(e);
         }
         long execTime = System.currentTimeMillis() - t1;
-        if (execTime > 10) { // should be instant
-            LOGGER.warn("Found facets " + facets + " for project " + project + " in " + execTime + "ms");
+        if (execTime > 50) { // should be instant
+            LOGGER.warn("Found facets " + facets + " for project " + project + " in " + execTime + "ms (it should be instant)");
         }
         return facets;
     }
