@@ -5,13 +5,18 @@ package lermitage.intellij.extra.icons;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.xmlb.annotations.OptionTag;
 import com.intellij.util.xmlb.annotations.XCollection;
-import lermitage.intellij.extra.icons.enablers.IconEnablers;
+import lermitage.intellij.extra.icons.enablers.IconEnablerType;
 import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-import java.util.*;
+import javax.swing.Icon;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
 @SuppressWarnings({"WeakerAccess", "OptionalUsedAsFieldOrParameterType"})
 public class Model {
@@ -139,8 +144,8 @@ public class Model {
         return this;
     }
 
-    public Model iconEnabler(IconEnablers iconEnablers) {
-        getCurrentCondition().setIconEnabler(iconEnablers);
+    public Model iconEnabler(IconEnablerType type) {
+        getCurrentCondition().setIconEnablerType(type);
         return this;
     }
 

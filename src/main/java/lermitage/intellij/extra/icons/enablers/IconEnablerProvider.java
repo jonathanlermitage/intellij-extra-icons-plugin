@@ -8,19 +8,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public enum IconEnablers {
-
-    GIT_SUBMODULE_FOLDER;
+public class IconEnablerProvider {
 
     // one icon enabler per project
-    private final Map<Project, GitSubmoduleFolderEnabler> gitSubmoduleFolderIconEnablersCache = new HashMap<>();
+    private static final Map<Project, GitSubmoduleFolderEnabler> gitSubmoduleFolderIconEnablersCache = new HashMap<>();
 
-    public Optional<IconEnabler> getIconEnabler(Project project) {
+    public static Optional<IconEnabler> getIconEnabler(Project project, IconEnablerType type) {
         if (project == null) {
             return Optional.empty();
         }
         //noinspection SwitchStatementWithTooFewBranches
-        switch (this) {
+        switch (type) {
             case GIT_SUBMODULE_FOLDER:
                 if (gitSubmoduleFolderIconEnablersCache.containsKey(project)) {
                     return Optional.of(gitSubmoduleFolderIconEnablersCache.get(project));
@@ -29,7 +27,7 @@ public enum IconEnablers {
                 gitSubmoduleFolderIconEnablersCache.put(project, iconEnabler);
                 return Optional.of(iconEnabler);
             default:
-                return Optional.empty();
+                throw new IllegalArgumentException("Invalid IconEnablerType: " + type);
         }
     }
 }

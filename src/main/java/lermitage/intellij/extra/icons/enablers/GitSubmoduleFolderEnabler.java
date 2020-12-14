@@ -7,9 +7,7 @@ import com.intellij.openapi.project.Project;
 import lermitage.intellij.extra.icons.utils.GitSubmoduleUtils;
 
 import java.io.FileNotFoundException;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -18,17 +16,17 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
     private static final Logger LOGGER = Logger.getInstance(GitSubmoduleFolderEnabler.class);
 
     private static final long INIT_TTL_MS = 300_000L;
-    private final Map<Project, Boolean> initialized = new HashMap<>();
-    private final Map<Project, Long> lastInit = new HashMap<>();
+    private boolean initialized = false;
+    private long lastInit = -1;
     private Set<String> submoduleFolders;
 
     @Override
     public synchronized void init(Project project) {
         long t1 = System.currentTimeMillis();
         submoduleFolders = findGitmodulesFiles(project);
-        initialized.put(project, true);
+        initialized = true;
         long t2 = System.currentTimeMillis();
-        lastInit.put(project, t2);
+        lastInit = t2;
         LOGGER.info("Initialized " + this.getClass().getSimpleName() + " for project " + project.getBasePath() + " in " + (t2 - t1) + " ms");
     }
 
@@ -72,10 +70,7 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
 
     /** Should (Re)Init if initialization never occurred or if latest initialization is too old. */
     private boolean shouldInit(Project project) {
-        return !initialized.containsKey(project)
-            || !initialized.get(project)
-            || !lastInit.containsKey(project)
-            || (System.currentTimeMillis() - lastInit.get(project)) > INIT_TTL_MS;
+        return !initialized || (System.currentTimeMillis() - lastInit) > INIT_TTL_MS;
     }
 
     @Override

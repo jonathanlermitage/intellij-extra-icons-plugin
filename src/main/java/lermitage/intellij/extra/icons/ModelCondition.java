@@ -7,7 +7,8 @@ import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.util.xmlb.annotations.OptionTag;
 import com.intellij.util.xmlb.annotations.Tag;
 import lermitage.intellij.extra.icons.enablers.IconEnabler;
-import lermitage.intellij.extra.icons.enablers.IconEnablers;
+import lermitage.intellij.extra.icons.enablers.IconEnablerProvider;
+import lermitage.intellij.extra.icons.enablers.IconEnablerType;
 import org.intellij.lang.annotations.Language;
 
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class ModelCondition {
     @OptionTag
     private String[] facets = new String[0];
     private Pattern pattern;
-    private IconEnablers iconEnabler;
+    private IconEnablerType iconEnablerType;
 
     public void setParents(String... parents) {
         this.checkParent = true;
@@ -98,9 +99,9 @@ public class ModelCondition {
         this.facets = facets;
     }
 
-    public void setIconEnabler(IconEnablers iconEnabler) {
+    public void setIconEnablerType(IconEnablerType iconEnablerType) {
         this.hasIconEnabler = true;
-        this.iconEnabler = iconEnabler;
+        this.iconEnablerType = iconEnablerType;
     }
 
     public boolean check(String parentName, String fileName, Optional<String> fullPath, Set<String> prjFacets, Project project) {
@@ -109,7 +110,7 @@ public class ModelCondition {
         }
 
         if (hasIconEnabler && fullPath.isPresent()) {
-            Optional<IconEnabler> iconEnabler = this.iconEnabler.getIconEnabler(project);
+            Optional<IconEnabler> iconEnabler = IconEnablerProvider.getIconEnabler(project, iconEnablerType);
             if (iconEnabler.isPresent()) {
                 return iconEnabler.get().verify(project, fullPath.get());
             }

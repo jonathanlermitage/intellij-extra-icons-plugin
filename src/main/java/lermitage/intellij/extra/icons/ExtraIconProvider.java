@@ -3,7 +3,7 @@
 package lermitage.intellij.extra.icons;
 
 import com.intellij.openapi.project.DumbAware;
-import lermitage.intellij.extra.icons.enablers.IconEnablers;
+import lermitage.intellij.extra.icons.enablers.IconEnablerType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -660,7 +660,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             // programmable
             //
             ofDir("gitsubmodule", "/extra-icons/git_submodule.svg", "Git sub-module containing folder")
-                .iconEnabler(IconEnablers.GIT_SUBMODULE_FOLDER)
+                .iconEnabler(IconEnablerType.GIT_SUBMODULE_FOLDER)
         );
     }
 
