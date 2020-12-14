@@ -660,6 +660,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             // programmable
             //
             ofDir("gitsubmodule", "/extra-icons/git_submodule.svg", "Git sub-module containing folder")
+                .iconEnabler(IconEnablerType.GIT_SUBMODULE_FOLDER),
+            ofDir("gitsubmodule_alt", "/extra-icons/git_submodule_alt.svg", "Git sub-module containing folder (alternative)")
                 .iconEnabler(IconEnablerType.GIT_SUBMODULE_FOLDER)
         );
     }
