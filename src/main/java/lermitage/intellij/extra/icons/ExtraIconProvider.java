@@ -581,6 +581,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".nsi"),
             ofFile("ext_pdf", "/extra-icons/pdf.png", "PDF: *.pdf")
                 .end(".pdf"),
+            ofFile("ext_pdf_alt", "/extra-icons/pdf_alt.svg", "PDF: *.pdf  (alternative 1)")
+                .end(".pdf"),
+            ofFile("ext_pdf_alt2", "/extra-icons/pdf_alt2.svg", "PDF: *.pdf  (alternative 2)")
+                .end(".pdf"),
             ofFile("ext_pid", "/extra-icons/pid.svg", "PID: *.pid")
                 .end(".pid"),
             ofFile("ext_postmanconfig", "/extra-icons/postman.svg", "Postman config: *.postman.json, *postman_collection.json, *postman_environment.json")
