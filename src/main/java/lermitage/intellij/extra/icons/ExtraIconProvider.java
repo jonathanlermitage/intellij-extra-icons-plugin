@@ -319,6 +319,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("hibernate.properties"),
             ofFile("java", "/extra-icons/java.png", "JVM properties (e.g. Tomcat or Maven JVM configuration): jvm.properties, jvm.config")
                 .eq("jvm.properties", "jvm.config"),
+            ofFile("java_alt", "/extra-icons/java_alt.svg", "JVM properties (e.g. Tomcat or Maven JVM configuration): jvm.properties, jvm.config (alternative)")
+                .eq("jvm.properties", "jvm.config"),
             ofFile("imgbot", "/extra-icons/imgbot.svg", "ImgBot: .imgbotconfig")
                 .eq(".imgbotconfig"),
             ofFile("jenkins", "/extra-icons/jenkins.png", "Jenkins: jenkinsfile(.xml,.yml,...), jenkins")

@@ -3,6 +3,7 @@
 ## 1.43.0 (WIP)
 * support Git Submodules: `.gitmodules` files can be parsed to customize icon of Submodules folders. Nested Submodules are also supported.
 * provide some alternative icons for PDF files.
+* provide an alternative icons for JVM files.
 
 ## 1.42.0 (2020/12/12)
 * support `RELEASENOTES` files.

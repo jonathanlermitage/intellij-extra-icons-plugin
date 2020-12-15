@@ -25,6 +25,7 @@
     <ul>
       <li>support Git Submodules: <i>.gitmodules</i> files can be parsed to customize icon of Submodules folders. Nested Submodules are also supported.</li>
       <li>provide some alternative icons for PDF files.</li>
+      <li>provide an alternative icons for JVM files.</li>
     </ul>
     1.42.0 (2020/12/12)
     <ul>
