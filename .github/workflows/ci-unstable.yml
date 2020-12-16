@@ -1,4 +1,4 @@
-name: Build and verify (EAP)
+name: Build and verify EAP
 on: [ push, pull_request ]
 jobs:
   run:
