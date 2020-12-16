@@ -21,11 +21,11 @@
     -->
 
     <change-notes><![CDATA[
-    1.43.0 (WIP)
+    1.43.0 (2020/12/16)
     <ul>
       <li>support Git Submodules: <i>.gitmodules</i> files can be parsed to customize icon of Submodules folders. Nested Submodules are also supported.</li>
       <li>provide some alternative icons for PDF files.</li>
-      <li>provide an alternative icons for JVM files.</li>
+      <li>provide an alternative icon for JVM files.</li>
       <li>adjust the red color of Git files to make them less eye-catching.</li>
     </ul>
     1.42.0 (2020/12/12)
