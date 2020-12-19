@@ -18,6 +18,11 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
 
     private static final Logger LOGGER = Logger.getInstance(GitSubmoduleFolderEnabler.class);
 
+    /**
+     * Initialization ({@link #init(Project)}) is done once at project opening and at least every {@value}ms (if needed) to avoid
+     * parsing {@code .gitmodule} files for every folder in the project.
+     * Useful if you add a new git submodule: user will wait up to {@value}ms to see the corresponding git submodule icon.
+     */
     private static final long INIT_TTL_MS = 300_000L;
     private boolean initialized = false;
     private long lastInit = -1;

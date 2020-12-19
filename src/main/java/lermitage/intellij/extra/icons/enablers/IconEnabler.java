@@ -3,8 +3,9 @@
 package lermitage.intellij.extra.icons.enablers;
 
 import com.intellij.openapi.project.Project;
+import org.jetbrains.annotations.NotNull;
 
 public interface IconEnabler {
 
-    boolean verify(Project project, String absolutePathToVerify);
+    boolean verify(@NotNull Project project, @NotNull String absolutePathToVerify);
 }
