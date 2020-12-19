@@ -5,10 +5,13 @@ package lermitage.intellij.extra.icons.enablers;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import lermitage.intellij.extra.icons.utils.GitSubmoduleUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.FileNotFoundException;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class GitSubmoduleFolderEnabler implements IconEnabler {
@@ -20,7 +23,19 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
     private long lastInit = -1;
     private Set<String> submoduleFolders;
 
-    private synchronized void init(Project project) {
+    // one icon enabler per project
+    private static final Map<Project, IconEnabler> iconEnablersCache = new ConcurrentHashMap<>();
+
+    public static IconEnabler getIntance(@NotNull Project project) {
+        if (iconEnablersCache.containsKey(project)) {
+            return iconEnablersCache.get(project);
+        }
+        GitSubmoduleFolderEnabler iconEnabler = new GitSubmoduleFolderEnabler();
+        iconEnablersCache.put(project, iconEnabler);
+        return iconEnabler;
+    }
+
+    private synchronized void init(@NotNull Project project) {
         long t1 = System.currentTimeMillis();
         submoduleFolders = findGitmodulesFiles(project);
         initialized = true;
@@ -29,7 +44,7 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
         LOGGER.info("Initialized " + this.getClass().getSimpleName() + " for project " + project.getBasePath() + " in " + (t2 - t1) + " ms");
     }
 
-    private Set<String> findGitmodulesFiles(Project project) {
+    private Set<String> findGitmodulesFiles(@NotNull Project project) {
         Set<String> submoduleFoldersFound = new HashSet<>();
         String basePath = project.getBasePath();
         // find .gitmodules at root, then find every nested .gitmodules for every module (don't have to explore the whole project files)
@@ -47,7 +62,7 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
         return submoduleFoldersFound;
     }
 
-    private Set<String> findNestedGitmodulesFiles(Set<String> parentModules) { // TODO should do some refactoring
+    private Set<String> findNestedGitmodulesFiles(@NotNull Set<String> parentModules) { // TODO should do some refactoring
         Set<String> nestedModules = new HashSet<>();
         for (String parentModule : parentModules) {
             try {
@@ -68,12 +83,12 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
     }
 
     /** Should (Re)Init if initialization never occurred or if latest initialization is too old. */
-    private boolean shouldInit(Project project) {
+    private boolean shouldInit(@NotNull Project project) {
         return !initialized || (System.currentTimeMillis() - lastInit) > INIT_TTL_MS;
     }
 
     @Override
-    public boolean verify(Project project, String absolutePathToVerify) {
+    public boolean verify(@NotNull Project project, @NotNull String absolutePathToVerify) {
         if (shouldInit(project)) {
             init(project);
         }
