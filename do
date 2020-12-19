@@ -10,7 +10,7 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
     "help")
         echo "w \$V:    set gradle wrapper"
         echo "fixgit:  fix permission flag on git index for required files"
-        echo "run :    run plugin in IntelliJ Ultimate 2020.2"
+        echo "run :    run plugin in IntelliJ Ultimate"
         echo "runeap:  run plugin in latest IntelliJ Ultimate EAP Snapshot"
         echo "release: package plugin"
         echo "test:    run unit tests"

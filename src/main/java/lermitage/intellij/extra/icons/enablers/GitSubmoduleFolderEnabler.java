@@ -20,8 +20,7 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
     private long lastInit = -1;
     private Set<String> submoduleFolders;
 
-    @Override
-    public synchronized void init(Project project) {
+    private synchronized void init(Project project) {
         long t1 = System.currentTimeMillis();
         submoduleFolders = findGitmodulesFiles(project);
         initialized = true;
