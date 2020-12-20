@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.44.0 (WIP)
+    <ul>
+      <li>internal: minor code optimization.</li>
+    </ul>
     1.43.0 (2020/12/16)
     <ul>
       <li>support Git Submodules: <i>.gitmodules</i> files can be parsed to customize icon of Submodules folders. Nested Submodules are also supported.</li>
@@ -34,29 +38,6 @@
       <li>fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/43">#43</a>: restore compatibility with IDE running on JRE8.</li>
       <li>apply a workaround for a bug in IJ 2020.3 that makes IDE loading icons from bundled plugins (like Lombok) instead of ExtraIcons.</li>
       <li>rework Lombok files (PNG icon to SVG).</li>
-    </ul>
-    1.41.0 (2020/11/30)
-    <ul>
-      <li>provide some alternative icons for <i>.travis.yml</i> files (<a href="https://travis-ci.com/logo">official logos</a>).</li>
-      <li>support <i>.coveragerc</i> files.</li>
-      <li>rework TypeScript files.</li>
-      <li>rework CHANGELOG dark icon.</li>
-      <li>provide alternative icons for Dockerfile, Docker Compose and Docker Ignore files.</li>
-    </ul>
-    1.40.0 (2020/11/15)
-    <ul>
-      <li>support <a href="https://github.com/all-contributors/all-contributors">All Contributors</a> <i>.all-contributorsrc</i> files.</li>
-      <li>provide an alternative icon for Contribution files.</li>
-    </ul>
-    1.39.0 (2020/10/30)
-    <ul>
-      <li>support <a href="https://mockk.io/#settings-file">Mockk</a> <i>io/mockk/settings.properties</i> files.</li>
-      <li>support <a href="https://github.com/JetBrains/gradle-intellij-plugin">gradle-intellij-plugin</a> <i>idea-sandbox</i> folders.</li>
-      <li>internal: improve Gradle build performance.</li>
-      <li>internal: migrate Gradle build to Kotlin DSL.</li>
-      <li>add an option to adjust UI Scale Factor for user icons. Useful if you run IDE with <i>-Dsun.java2d.uiScale.enabled=false</i> flag.</li>
-      <li>support <i>KNOWN_ISSUES</i> and <i>OPEN_ISSUES</i> files.</li>
-      <li>settings: minor UI improvements.</li>
     </ul>
     ]]>
     </change-notes>
