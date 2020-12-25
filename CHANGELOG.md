@@ -3,6 +3,7 @@
 ## 1.44.0 (WIP)
 * internal: minor code optimization.
 * support [Semaphore](https://semaphoreci.com) `.semaphore` folders and `.semaphore/semaphore.yml` files.
+* support `*.bin` files.
 
 ## 1.43.0 (2020/12/16)
 * support Git Submodules: `.gitmodules` files can be parsed to customize icon of Submodules folders. Nested Submodules are also supported.

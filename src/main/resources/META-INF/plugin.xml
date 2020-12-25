@@ -25,6 +25,7 @@
     <ul>
       <li>internal: minor code optimization.</li>
       <li>support <a href="https://semaphoreci.com">Semaphore</a> <i>.semaphore</i> folders and <i>.semaphore/semaphore.yml</i> files.</li>
+      <li>support <i>*.bin</i> files.</li>
     </ul>
     1.43.0 (2020/12/16)
     <ul>
