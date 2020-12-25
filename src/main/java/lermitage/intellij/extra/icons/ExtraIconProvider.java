@@ -69,6 +69,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_vscode_settings", "/extra-icons/folder_vscode.svg", "Visual Studio Code (regex): '^/\\.vscode$' folder")
                 .regex("^/\\.vscode$")
                 .eq(".vscode"), // FIXME #13 temp fix
+            ofDir("dir_semaphoreci", "/extra-icons/folder_semaphoreci.svg", "Semaphore (regex): '^/\\.semaphore' folder")
+                .regex("^/\\.semaphore$")
+                .eq(".semaphore"), // FIXME #13 temp fix
             // - Flyway databases
             ofDir("dir_flyway_db2", "/extra-icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/migration/db2[a-zA-Z0-9._\\-]*"),
@@ -153,6 +156,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end("artifact_types.json", "data_types.json", "node_types.json", "relationship_types.json", "resources_definition_types.json").parents("definitions"),
             ofFile("onap_cba_tosca", "/extra-icons/onap-cba-tosca.svg", "ONAP CBA: TOSCA-Metadata/*TOSCA.meta")
                 .end("tosca.meta").parents("tosca-metadata"),
+            ofFile("semaphoreci", "/extra-icons/semaphoreci.svg", "Semaphore: .semaphore/semaphore.yml")
+                .eq("semaphore.yml").parents(".semaphore"),
             ofFile("vscode_settings", "/extra-icons/vscode.svg", "Visual Studio Code: .vscode/settings.json")
                 .eq("settings.json").parents(".vscode"),
 
