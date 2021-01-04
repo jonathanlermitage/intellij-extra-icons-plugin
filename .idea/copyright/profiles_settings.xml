@@ -1,7 +1,7 @@
 <component name="CopyrightManager">
   <settings default="SPDX-License-Identifier: MIT">
-    <LanguageOptions name="__TEMPLATE__">
-      <option name="block" value="false" />
-    </LanguageOptions>
+    <module2copyright>
+      <element module="sources" copyright="SPDX-License-Identifier: MIT" />
+    </module2copyright>
   </settings>
 </component>
