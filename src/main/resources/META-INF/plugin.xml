@@ -26,6 +26,9 @@
       <li>internal: minor code optimization.</li>
       <li>support <a href="https://semaphoreci.com">Semaphore</a> <i>.semaphore</i> folders and <i>.semaphore/semaphore.yml</i> files.</li>
       <li>support <i>*.bin</i> files.</li>
+      <li>support LGTM yml files.</li>
+      <li>support <a href="https://www.jetbrains.com/mps/">MPS</a> <i>.mps</i> folders.</li>
+      <li>support <a href="https://docs.renovatebot.com/configuration-options/">Renovate</a> files.</li>
     </ul>
     1.43.0 (2020/12/16)
     <ul>

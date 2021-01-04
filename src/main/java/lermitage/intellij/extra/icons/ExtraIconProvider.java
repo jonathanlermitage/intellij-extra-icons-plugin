@@ -57,6 +57,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_idearun", "/extra-icons/folder_idea.svg", "IntelliJ IDEA 2020+ Run/Debug Configurations (regex): '^/\\.run' folder")
                 .regex("^/\\.run$")
                 .eq(".run"), // FIXME #13 temp fix
+            ofDir("dir_mps", "/extra-icons/folder_idea.svg", "JetBrains MPS (regex): '^/\\.mps$' folder")
+                .regex("^/\\.mps$")
+                .eq(".mps"), // FIXME #13 temp fix
             ofDir("dir_mvn", "/extra-icons/folder_mvnw.svg", "Maven (regex): '^/\\.mvn$' folder")
                 .regex("^/\\.mvn$")
                 .eq(".mvn"), // FIXME #13 temp fix
@@ -360,6 +363,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("kubernetes").mayEnd(YML),
             ofFile("kubernetes1", "/extra-icons/kubernetes.svg", "Kubernetes: start by 'kubernetes' and end by '.xml,.yml,...'")
                 .start("kubernetes").end(YML),
+            ofFile("lgtm", "/extra-icons/lgtm.svg", "LGTM: .lgtm.yml, lgtm.yml")
+                .eq("lgtm", ".lgtm").end(YML),
+            ofFile("lgtm_alt", "/extra-icons/lgtm_alt.svg", "LGTM: .lgtm.yml, lgtm.yml (alternative)")
+                .eq("lgtm", ".lgtm").end(YML),
             ofFile("license", "/extra-icons/license.svg", "License: license(.md,.txt,.adoc,.rst), copying, license_info, additional_license_info")
                 .eq("license", "copying", "license_info", "additional_license_info").mayEnd(TXT),
             ofFile("license_alt", "/extra-icons/license_alt.png", "License: license(.md,.txt,.adoc,.rst), copying, license_info, additional_license_info (alternative)")
@@ -428,6 +435,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("redis").mayEnd(".conf"),
             ofFile("redis1", "/extra-icons/redis.svg", "Redis: start by 'redis' and end by '.conf'")
                 .start("redis").end(".conf"),
+            ofFile("renovate", "/extra-icons/renovate.svg", "Renovate: renovate.json, renovate.json5, .renovaterc.json, .renovaterc")
+                .eq("renovate.json", "renovate.json5", ".renovaterc.json", ".renovaterc"),
             ofFile("restyled", "/extra-icons/restyled.svg", "Restyled: .restyled.yaml")
                 .eq(".restyled.yaml"),
             ofFile("restyled_alt", "/extra-icons/restyled_alt.svg", "Restyled: .restyled.yaml (alternative 1)")

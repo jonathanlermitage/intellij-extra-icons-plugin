@@ -4,6 +4,9 @@
 * internal: minor code optimization.
 * support [Semaphore](https://semaphoreci.com) `.semaphore` folders and `.semaphore/semaphore.yml` files.
 * support `*.bin` files.
+* support LGTM yml files.
+* support [MPS](https://www.jetbrains.com/mps/) `.mps` folders.
+* support [Renovate](https://docs.renovatebot.com/configuration-options/) files.
 
 ## 1.43.0 (2020/12/16)
 * support Git Submodules: `.gitmodules` files can be parsed to customize icon of Submodules folders. Nested Submodules are also supported.
