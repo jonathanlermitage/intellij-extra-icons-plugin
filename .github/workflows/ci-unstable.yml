@@ -1,5 +1,9 @@
-name: Build and verify EAP
-on: [ push, pull_request ]
+name: Build EAP
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * 3'
 jobs:
   run:
     runs-on: ubuntu-latest

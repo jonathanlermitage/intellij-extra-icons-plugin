@@ -1,6 +1,11 @@
 #see https://github.com/ChrisCarini/intellij-platform-plugin-verifier-action
-name: Plugin compatibility EAP
-on: [ push, pull_request ]
+#see https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions https://crontab.guru
+name: Compatibility EAP
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * 3'
 jobs:
   run:
     runs-on: ubuntu-latest

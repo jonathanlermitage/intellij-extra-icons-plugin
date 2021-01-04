@@ -1,5 +1,5 @@
 #see https://github.com/ChrisCarini/intellij-platform-plugin-verifier-action
-name: Plugin compatibility
+name: Compatibility
 on: [ push, pull_request ]
 jobs:
   run:
@@ -17,5 +17,5 @@ jobs:
           ide-versions: |
             ideaIC:2020.1.4
             ideaIU:2020.1.4
-            ideaIC:2020.3
-            ideaIU:2020.3
+            ideaIC:2020.3.1
+            ideaIU:2020.3.1

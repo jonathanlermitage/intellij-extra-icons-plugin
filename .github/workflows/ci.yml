@@ -1,11 +1,11 @@
-name: Build and verify
+name: Build
 on: [ push, pull_request ]
 jobs:
   run:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ij: [ 2020.1.4, 2020.3 ]
+        ij: [ 2020.1.4, 2020.3.1 ]
     steps:
       - uses: actions/checkout@master
       - name: Setup Java

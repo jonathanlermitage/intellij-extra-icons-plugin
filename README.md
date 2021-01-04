@@ -11,11 +11,10 @@
     <a href="https://plugins.jetbrains.com/plugin/11058-extra-icons"><img src="https://img.shields.io/jetbrains/plugin/r/rating/11058-extra-icons"/></a>
     <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/LICENSE.txt"><img src="https://img.shields.io/github/license/jonathanlermitage/intellij-extra-icons-plugin.svg"/></a>
     <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/graphs/contributors"><img src="https://img.shields.io/github/contributors/jonathanlermitage/intellij-extra-icons-plugin"/></a><br>
-    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/actions?query=workflow%3A%22Build+and+verify%22"><img src="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/workflows/Build%20and%20verify/badge.svg"/></a>
-    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/actions?query=workflow%3A%22Plugin+compatibility%22"><img src="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/workflows/Plugin%20compatibility/badge.svg"/></a>
-    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/actions?query=workflow%3A%22Validate+Gradle+Wrapper%22"><img src="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/workflows/Validate%20Gradle%20Wrapper/badge.svg"/></a><br>
-    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/actions?query=workflow%3A%22Build+and+verify+EAP%22"><img src="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/workflows/Build%20and%20verify%20EAP/badge.svg"/></a>
-    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/actions?query=workflow%3A%22Plugin+compatibility+EAP%22"><img src="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/workflows/Plugin%20compatibility%20EAP/badge.svg"/></a>
+    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/actions?query=workflow%3A%22Build%22"><img src="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/workflows/Build/badge.svg"/></a>
+    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/actions?query=workflow%3A%22Compatibility%22"><img src="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/workflows/Compatibility/badge.svg"/></a><br>
+    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/actions?query=workflow%3A%22Build+EAP%22"><img src="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/workflows/Build%20EAP/badge.svg"/></a>
+    <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/actions?query=workflow%3A%22Compatibility+EAP%22"><img src="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/workflows/Compatibility%20EAP/badge.svg"/></a>
 </p>
 
 Intellij IDEA (Community and Ultimate) plugin that adds icons for files like Travis YML, Appveyor YML, etc.  
