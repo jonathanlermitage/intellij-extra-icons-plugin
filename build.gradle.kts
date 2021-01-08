@@ -15,6 +15,8 @@ val pluginVersion: String by project
 val pluginJavaVersion: String by project
 val pluginEnableBuildSearchableOptions: String by project
 
+val inCI = System.getenv("CI") != null
+
 println("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion")
 
 group = "lermitage.intellij.extra.icons"
@@ -32,7 +34,7 @@ dependencies {
 }
 
 intellij {
-    downloadSources = pluginDownloadIdeaSources.toBoolean()
+    downloadSources = pluginDownloadIdeaSources.toBoolean() && !inCI
     instrumentCode = pluginInstrumentPluginCode.toBoolean()
     pluginName = "Extra Icons"
     setPlugins("AngularJS")
