@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.44.0 (WIP)
+    1.44.0 (2021/01/16)
     <ul>
       <li>internal: minor code optimization.</li>
       <li>support <a href="https://semaphoreci.com">Semaphore</a> <i>.semaphore</i> folders and <i>.semaphore/semaphore.yml</i> files.</li>

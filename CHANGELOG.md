@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.44.0 (WIP)
+## 1.44.0 (2021/01/16)
 * internal: minor code optimization.
 * support [Semaphore](https://semaphoreci.com) `.semaphore` folders and `.semaphore/semaphore.yml` files.
 * support `*.bin` files.
