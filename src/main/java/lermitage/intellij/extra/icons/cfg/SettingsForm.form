@@ -115,7 +115,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="8fc9a" binding="pluginIconsTablePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="8fc9a" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <tabbedpane title="Plugin icons"/>
             </constraints>

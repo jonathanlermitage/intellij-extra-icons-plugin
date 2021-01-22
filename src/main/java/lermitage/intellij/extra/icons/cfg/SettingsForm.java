@@ -57,10 +57,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private EditorTextField ignoredPatternTextField;
     private JBLabel ignoredPatternTitle;
     private JTabbedPane iconsTabbedPane;
-    private JPanel pluginIconsTablePanel;
     private JBTable pluginIconsTable;
     private JPanel userIconsTablePanel;
-    private JBTable userIconsTable = new JBTable();
+    private final JBTable userIconsTable = new JBTable();
     private JPanel overrideSettingsPanel;
     private JCheckBox addToIDEUserIconsCheckbox;
     private JLabel filterLabel;
@@ -207,7 +206,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         filterTextField.setToolTipText("<html>Regex is a <b>Java regex</b> and <b>is not case-sensitive</b>.</html>");
         filterApplyBtn.setText("Apply");
         filteResetBtn.setText("Reset");
-        bottomTip.setText("<html><b>Icons are ordered by priority</b>. To use an <i>alternative</i> icon (as for Markdown files), deactivate the icon(s) above.</html>");
+        bottomTip.setText("<html><b>Icons are ordered by priority</b>. To use an <i>alternative</i> icon (as for Markdown files), " +
+            "deactivate the icon(s) with higher priority.</html>");
         initCheckbox();
         loadPluginIconsTable();
         userIconsTable.setShowHorizontalLines(false);

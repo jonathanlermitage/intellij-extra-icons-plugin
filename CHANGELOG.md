@@ -1,5 +1,9 @@
 # Extra Icons Change Log
 
+## 1.45.0 (WIP)
+* internal: minor code cleanup.
+* rework a help message about icons priority.
+
 ## 1.44.0 (2021/01/16)
 * internal: minor code optimization.
 * support [Semaphore](https://semaphoreci.com) `.semaphore` folders and `.semaphore/semaphore.yml` files.
