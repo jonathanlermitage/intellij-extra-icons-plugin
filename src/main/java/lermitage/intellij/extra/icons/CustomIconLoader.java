@@ -141,36 +141,30 @@ public class CustomIconLoader {
         int width = image.getWidth(null);
         int height = image.getHeight(null);
 
-        if (width != height) {
-            throw new IllegalArgumentException("Image should be square.");
+        if (width <= 0 || height <= 0) {
+            throw new IllegalArgumentException("Width or height are unknown.");
         }
 
-        if (width <= 0) {
-            throw new IllegalArgumentException("Width and height are unknown.");
-        }
-
-        if (width == 16) {
+        if (width == 16 && height == 16) {
             return image;
         }
 
-        if (width == 32) {
+        if (width == 32 && height == 32) {
             return RetinaImage.createFrom(image);
         }
 
         float widthToScaleTo = 16f;
         boolean retina = false;
 
-        if (width >= 32) {
+        if (width >= 32 || height >= 32) {
             widthToScaleTo = 32f;
             retina = true;
         }
 
-        Image scaledImage = ImageLoader.scaleImage(image, widthToScaleTo / width);
-
+        Image scaledImage = ImageLoader.scaleImage(image, widthToScaleTo / Math.max(width, height));
         if (retina) {
             return RetinaImage.createFrom(scaledImage);
         }
-
         return scaledImage;
     }
 
