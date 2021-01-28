@@ -315,11 +315,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".gitattributes", ".gitignore", ".gitmodules", ".gitreview"),
             ofFile("gitlab", "/extra-icons/gitlab.svg", "Gitlab: .gitlab-ci.yml")
                 .eq(".gitlab-ci.yml"),
-            ofFile("graphqlconfig", "/extra-icons/graphql-config.png", "GraphQL: graphql.config.json")
+            ofFile("graphqlconfig", "/extra-icons/graphql_config.svg", "GraphQL: graphql.config.json")
                 .eq("graphql.config.json"),
             ofFile("grafana", "/extra-icons/grafana.svg", "Grafana: grafana.ini")
                 .eq("grafana.ini"),
-            ofFile("graphqlschema", "/extra-icons/graphql-schema.png", "GraphQL: graphql.schema.json")
+            ofFile("graphqlschema", "/extra-icons/graphql_schema.svg", "GraphQL: graphql.schema.json")
                 .eq("graphql.schema.json"),
             ofFile("gocd", "/extra-icons/gocd.png", "Gocd: .gocd(.xml,.yml,...)")
                 .eq(".gocd").mayEnd(CFG),
@@ -563,7 +563,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".exe"),
             ofFile("ext_form", "/extra-icons/form.svg", "Form (e.g. IntelliJ Swing xml form): *.form")
                 .end(".form"),
-            ofFile("ext_graphqls", "/extra-icons/graphql.png", "GraphQL: *.graphqls")
+            ofFile("ext_graphqls", "/extra-icons/graphql.svg", "GraphQL: *.graphqls")
                 .end(".graphqls"),
             ofFile("ext_haxe", "/extra-icons/haxe.png", "Haxe: *.hx")
                 .end(".hx"),
@@ -645,7 +645,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     ".m4v", ".mkv", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid"),
             ofFile("ext_velocity", "/extra-icons/velocity.svg", "Velocity: *.vtl")
                 .end(".vtl"),
-            ofFile("ext_war", "/extra-icons/war.svg", "Java WAR: *.war")
+            ofFile("ext_war", "/extra-icons/tomcat.svg", "Java WAR: *.war")
                 .end(".war"),
             ofFile("ext_libreoffice_calc", "/extra-icons/officedocs/localc.png", "LibreOffice Calc: *.ods")
                 .end(".ods"),

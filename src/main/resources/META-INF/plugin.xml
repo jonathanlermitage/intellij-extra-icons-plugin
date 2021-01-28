@@ -26,6 +26,8 @@
       <li>internal: minor code cleanup.</li>
       <li>rework a help message about icons priority.</li>
       <li>handle non-square SVG images (backport from <a href="https://github.com/jonathanlermitage/IconViewer">Icon Viewer 2</a> plugin).</li>
+      <li>rework GraphQL files.</li>
+      <li>rework WAR files.</li>
     </ul>
     1.44.0 (2021/01/16)
     <ul>
