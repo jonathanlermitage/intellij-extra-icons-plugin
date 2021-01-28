@@ -595,6 +595,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".md"),
             ofFile("ext_md_alt2", "/extra-icons/markdown_alt2.svg", "Markdown: *.md (alternative 2)")
                 .end(".md"),
+            ofFile("ext_mmd", "/extra-icons/mindmap.svg", "IDEA MindMap plugin: *.mmd")
+                .end(".mmd"),
             ofFile("ext_mwb", "/extra-icons/mysqlworkbench.png", "MySQL Workbench: *.mwb")
                 .end(".mwb"),
             ofFile("ext_nsi", "/extra-icons/nsis.svg", "NSIS Nullsoft Scriptable Install System: *.nsi")

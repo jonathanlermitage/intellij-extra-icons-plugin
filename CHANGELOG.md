@@ -6,6 +6,7 @@
 * handle non-square SVG images (backport from [Icon Viewer 2](https://github.com/jonathanlermitage/IconViewer) plugin).
 * rework GraphQL files.
 * rework WAR files.
+* provide an alternative icon for IDEA MindMap plugin files.
 
 ## 1.44.0 (2021/01/16)
 * internal: minor code optimization.

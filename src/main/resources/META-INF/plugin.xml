@@ -28,6 +28,7 @@
       <li>handle non-square SVG images (backport from <a href="https://github.com/jonathanlermitage/IconViewer">Icon Viewer 2</a> plugin).</li>
       <li>rework GraphQL files.</li>
       <li>rework WAR files.</li>
+      <li>provide an alternative icon for IDEA MindMap plugin files.</li>
     </ul>
     1.44.0 (2021/01/16)
     <ul>
@@ -65,17 +66,20 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <fileIconProvider
             id="genericFileIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
+        <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <iconProvider
             id="extraIconsIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
+        <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <openapi.vcs.changes.ui.filePathIconProvider
             id="extraIconsFilePathIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <applicationService serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService" />
         <projectService serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService"/>
