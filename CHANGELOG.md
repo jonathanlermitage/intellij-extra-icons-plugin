@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.45.0 (WIP)
+## 1.45.0 (2021/01/31)
 * internal: minor code cleanup.
 * rework a help message about icons priority.
 * handle non-square SVG images (backport from [Icon Viewer 2](https://github.com/jonathanlermitage/IconViewer) plugin).
