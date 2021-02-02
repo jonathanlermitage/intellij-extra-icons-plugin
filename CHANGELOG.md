@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.45.1 (2021/02/02)
+* fix a NPE that may occur when multiple projects are opened and icons are being refreshed.
+
 ## 1.45.0 (2021/01/31)
 * internal: minor code cleanup.
 * rework a help message about icons priority.

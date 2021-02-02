@@ -5,6 +5,7 @@ package lermitage.intellij.extra.icons;
 import com.intellij.facet.Facet;
 import com.intellij.facet.FacetManager;
 import com.intellij.ide.projectView.ProjectView;
+import com.intellij.ide.projectView.impl.AbstractProjectViewPane;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.project.Project;
@@ -29,7 +30,10 @@ public class IJUtils {
             ProjectView view = ProjectView.getInstance(project);
             if (view != null) {
                 view.refresh();
-                view.getCurrentProjectViewPane().updateFromRoot(true);
+                AbstractProjectViewPane currentProjectViewPane = view.getCurrentProjectViewPane();
+                if (currentProjectViewPane != null) {
+                    currentProjectViewPane.updateFromRoot(true);
+                }
             }
         }
     }
