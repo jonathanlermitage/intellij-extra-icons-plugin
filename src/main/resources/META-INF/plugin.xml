@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.46.0 (WIP)
+    <ul>
+      <li>support <i>.env</i> files.</li>
+    </ul>
     1.45.1 (2021/02/02)
     <ul>
       <li>fix a NPE that may occur when multiple projects are opened and icons are being refreshed.</li>
@@ -42,13 +46,6 @@
       <li>support LGTM yml files.</li>
       <li>support <a href="https://www.jetbrains.com/mps/">MPS</a> <i>.mps</i> folders.</li>
       <li>support <a href="https://docs.renovatebot.com/configuration-options/">Renovate</a> files.</li>
-    </ul>
-    1.43.0 (2020/12/16)
-    <ul>
-      <li>support Git Submodules: <i>.gitmodules</i> files can be parsed to customize icon of Submodules folders. Nested Submodules are also supported.</li>
-      <li>provide some alternative icons for PDF files.</li>
-      <li>provide an alternative icon for JVM files.</li>
-      <li>adjust the red color of Git files to make them less eye-catching.</li>
     </ul>
     ]]>
     </change-notes>

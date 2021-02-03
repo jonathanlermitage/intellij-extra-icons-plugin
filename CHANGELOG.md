@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.46.0 (WIP)
+* support `.env` files.
+
 ## 1.45.1 (2021/02/02)
 * fix a NPE that may occur when multiple projects are opened and icons are being refreshed.
 

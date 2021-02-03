@@ -137,6 +137,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*[^a-zA-Z0-9]resolver\\.(js|ts)"),
             ofFile("angular_spec_generic", "/extra-icons/test-ts.svg", "AngularJS: *.spec.(js|ts)")
                 .regex(".*[^a-zA-Z0-9]spec\\.(js|ts)"),
+            ofFile("dotenv", "/extra-icons/env.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0_9]+)*")
+                .regex(".*/\\.env(\\.[a-zA-Z0_9]+)*"),
+            ofFile("dotenv_alt", "/extra-icons/env_alt.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0_9]+)* (alternative 1)")
+                .regex(".*/\\.env(\\.[a-zA-Z0_9]+)*"),
+            ofFile("dotenv_alt2", "/extra-icons/env_alt2.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0_9]+)* (alternative 2)")
+                .regex(".*/\\.env(\\.[a-zA-Z0_9]+)*"),
             ofFile("flyway", "/extra-icons/flyway.png", "Flyway (regex): '.*/db/migration/.*\\.sql'")
                 .regex(".*/db/migration/.*\\.sql"),
             ofFile("liquibase", "/extra-icons/liquibase.svg", "Liquibase (regex): '.*/db/changelog/.*\\.(sql|xml)'")
