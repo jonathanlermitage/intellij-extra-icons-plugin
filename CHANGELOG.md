@@ -1,7 +1,8 @@
 # Extra Icons Change Log
 
-## 1.46.0 (WIP)
+## 1.46.0 (2021/02/07)
 * support `.env` files.
+* force IDE to restart when installing or upgrading Extra Icons plugin: there may be a bug with [Dynamic Plugins](https://plugins.jetbrains.com/docs/intellij/dynamic-plugins.html). I hope it will fix [#44](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/44): some settings were lost when hot-reloading plugin (upgrade without restart).
 
 ## 1.45.1 (2021/02/02)
 * fix a NPE that may occur when multiple projects are opened and icons are being refreshed.
