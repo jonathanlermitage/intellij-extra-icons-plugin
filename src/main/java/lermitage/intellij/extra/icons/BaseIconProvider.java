@@ -84,7 +84,7 @@ public abstract class BaseIconProvider
     @Override
     public Icon getIcon(@NotNull FilePath filePath, @Nullable Project project) {
         try {
-            if (project != null) {
+            if (project != null && !project.isDisposed()) {
                 VirtualFile file = filePath.getVirtualFile();
                 if (file == null) {
                     return null;
