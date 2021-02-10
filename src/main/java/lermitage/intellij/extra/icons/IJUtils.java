@@ -11,6 +11,7 @@ import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -26,7 +27,7 @@ public class IJUtils {
      * Refresh project view.
      */
     public static void refresh(Project project) {
-        if (project != null) {
+        if (IJUtils.isAlive(project)) {
             ProjectView view = ProjectView.getInstance(project);
             if (view != null) {
                 view.refresh();
@@ -74,5 +75,13 @@ public class IJUtils {
             LOGGER.warn("Found facets " + facets + " for project " + project + " in " + execTime + "ms (it should be instant)");
         }
         return facets;
+    }
+
+    /**
+     * Return true if the project can be manipulated. Project is not null, not disposed, etc.
+     * Developed to fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39">issue #39</a>.
+     */
+    public static boolean isAlive(@Nullable Project project) {
+        return project != null && !project.isDisposed();
     }
 }

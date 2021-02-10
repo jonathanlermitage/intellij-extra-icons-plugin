@@ -84,7 +84,7 @@ public abstract class BaseIconProvider
     @Override
     public Icon getIcon(@NotNull FilePath filePath, @Nullable Project project) {
         try {
-            if (project != null && !project.isDisposed()) {
+            if (IJUtils.isAlive(project)) {
                 VirtualFile file = filePath.getVirtualFile();
                 if (file == null) {
                     return null;
@@ -109,7 +109,7 @@ public abstract class BaseIconProvider
     @Override
     public Icon getIcon(@NotNull VirtualFile file, int flags, @Nullable Project project) {
         try {
-            if (project != null) {
+            if (IJUtils.isAlive(project)) {
                 PsiFileSystemItem psiFileSystemItem;
                 if (file.isDirectory()) {
                     psiFileSystemItem = PsiManager.getInstance(project).findDirectory(file);
@@ -131,6 +131,9 @@ public abstract class BaseIconProvider
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
         try {
             Project project = psiElement.getProject();
+            if (!IJUtils.isAlive(project)) {
+                return null;
+            }
             ModelType currentModelType;
             PsiFileSystemItem currentPsiFileItem;
             if (psiElement instanceof PsiDirectory) {
