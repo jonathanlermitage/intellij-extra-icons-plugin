@@ -2,6 +2,7 @@
 
 ## 1.46.1 (WIP)
 * try to fix [#39](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39): error badge when project is disposed.
+* fix [#40](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/40): EDT warning when creating a custom icon model.
 
 ## 1.46.0 (2021/02/07)
 * support `.env` files.

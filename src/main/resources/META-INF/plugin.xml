@@ -24,6 +24,7 @@
     1.46.1 (WIP)
     <ul>
       <li>try to fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39">#39</a>: error badge when project is disposed.</li>
+      <li>fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/40">#40</a>: EDT warning when creating a custom icon model.</li>
     </ul>
     1.46.0 (2021/02/07)
     <ul>
