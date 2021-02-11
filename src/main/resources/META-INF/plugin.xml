@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.46.1 (WIP)
+    <ul>
+      <li>try to fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39">#39</a>: error badge when project is disposed.</li>
+    </ul>
     1.46.0 (2021/02/07)
     <ul>
       <li>support <i>.env</i> files.</li>
@@ -38,15 +42,6 @@
       <li>rework GraphQL files.</li>
       <li>rework WAR files.</li>
       <li>provide an alternative icon for IDEA MindMap plugin files.</li>
-    </ul>
-    1.44.0 (2021/01/16)
-    <ul>
-      <li>internal: minor code optimization.</li>
-      <li>support <a href="https://semaphoreci.com">Semaphore</a> <i>.semaphore</i> folders and <i>.semaphore/semaphore.yml</i> files.</li>
-      <li>support <i>*.bin</i> files.</li>
-      <li>support LGTM yml files.</li>
-      <li>support <a href="https://www.jetbrains.com/mps/">MPS</a> <i>.mps</i> folders.</li>
-      <li>support <a href="https://docs.renovatebot.com/configuration-options/">Renovate</a> files.</li>
     </ul>
     ]]>
     </change-notes>
