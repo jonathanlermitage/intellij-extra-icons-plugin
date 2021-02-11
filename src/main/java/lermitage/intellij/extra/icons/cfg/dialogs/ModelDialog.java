@@ -2,6 +2,9 @@
 
 package lermitage.intellij.extra.icons.cfg.dialogs;
 
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.ui.DialogWrapper;
@@ -14,13 +17,22 @@ import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.IconUtil;
-import lermitage.intellij.extra.icons.*;
+import lermitage.intellij.extra.icons.CustomIconLoader;
+import lermitage.intellij.extra.icons.IconType;
+import lermitage.intellij.extra.icons.Model;
+import lermitage.intellij.extra.icons.ModelCondition;
+import lermitage.intellij.extra.icons.ModelType;
 import lermitage.intellij.extra.icons.cfg.SettingsForm;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import java.awt.BorderLayout;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -70,17 +82,21 @@ public class ModelDialog extends DialogWrapper {
             //noinspection ConstantConditions
             conditionsCheckboxList.getItemAt(index).setEnabled(value);
         });
-        chooseIconButton.addActionListener(e -> SwingUtilities.invokeLater(() -> {
-            try {
-                customIconImage = loadCustomIcon();
-                if (customIconImage != null) {
-                    iconLabel.setIcon(IconUtil.createImageIcon(customIconImage.getImage()));
+
+        // use invokeAndWait + runReadAction to fix https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/40
+        final Application application = ApplicationManager.getApplication();
+        chooseIconButton.addActionListener(e -> application.invokeAndWait(() -> application.runReadAction(() -> {
+                try {
+                    customIconImage = loadCustomIcon();
+                    if (customIconImage != null) {
+                        iconLabel.setIcon(IconUtil.createImageIcon(customIconImage.getImage()));
+                    }
+                } catch (IllegalArgumentException ex) {
+                    Messages.showErrorDialog(ex.getMessage(), "Could Not Load Icon.");
                 }
-            }
-            catch (IllegalArgumentException ex) {
-                Messages.showErrorDialog(ex.getMessage(), "Could Not Load Icon.");
-            }
-        }));
+            }), ModalityState.NON_MODAL)
+        );
+
         conditionsCheckboxList.getEmptyText().setText("No conditions added.");
         toolbarPanel = createConditionsListToolbar();
         conditionsPanel.add(toolbarPanel, BorderLayout.CENTER);
@@ -171,10 +187,6 @@ public class ModelDialog extends DialogWrapper {
      * Opens a file chooser dialog and loads the icon.
      */
     private CustomIconLoader.ImageWrapper loadCustomIcon() {
-        // TODO fix https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/40
-        //  Model changes are allowed from write-safe contexts only. Please ensure you're using
-        //  invokeLater/invokeAndWait with a correct modality state (not "any"). See TransactionGuard
-        //  documentation for details.
         VirtualFile[] virtualFiles = FileChooser.chooseFiles(
             new FileChooserDescriptor(true, false, false, false, false, false)
                 .withFileFilter(file -> extensions.contains(file.getExtension())),
