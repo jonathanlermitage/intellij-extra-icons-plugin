@@ -524,7 +524,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("weblate", "/extra-icons/weblate.svg", "Weblate: .weblate")
                 .eq(".weblate"),
             ofFile("webpack", "/extra-icons/webpack.svg", "Webpack: webpack.conf.js")
-                .eq("webpack.config.js"),
+                .start("webpack.config.").end(".js", ".ts"),
             ofFile("zalando", "/extra-icons/zalando.png", "Zalando Zappr: .zappr.yaml")
                 .eq(".zappr.yaml"),
 
