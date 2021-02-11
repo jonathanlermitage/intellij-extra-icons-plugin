@@ -123,7 +123,7 @@ public class ModelDialog extends DialogWrapper {
         Model newModel = new Model(modelIDField.isVisible() ? modelIDField.getText() : null,
             icon,
             descriptionField.getText(),
-            ModelType.getByFriendlyName(typeComboBox.getSelectedItem().toString()),
+            ModelType.getByFriendlyName(Objects.requireNonNull(typeComboBox.getSelectedItem()).toString()),
             iconType,
             IntStream.range(0, conditionsCheckboxList.getItemsCount())
                 .mapToObj(index -> conditionsCheckboxList.getItemAt(index))
