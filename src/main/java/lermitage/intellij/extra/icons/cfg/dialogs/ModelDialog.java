@@ -171,6 +171,10 @@ public class ModelDialog extends DialogWrapper {
      * Opens a file chooser dialog and loads the icon.
      */
     private CustomIconLoader.ImageWrapper loadCustomIcon() {
+        // TODO fix https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/40
+        //  Model changes are allowed from write-safe contexts only. Please ensure you're using
+        //  invokeLater/invokeAndWait with a correct modality state (not "any"). See TransactionGuard
+        //  documentation for details.
         VirtualFile[] virtualFiles = FileChooser.chooseFiles(
             new FileChooserDescriptor(true, false, false, false, false, false)
                 .withFileFilter(file -> extensions.contains(file.getExtension())),
