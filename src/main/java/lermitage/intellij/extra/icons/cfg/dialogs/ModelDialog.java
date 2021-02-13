@@ -2,9 +2,6 @@
 
 package lermitage.intellij.extra.icons.cfg.dialogs;
 
-import com.intellij.openapi.application.Application;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.ui.DialogWrapper;
@@ -18,6 +15,7 @@ import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.IconUtil;
 import lermitage.intellij.extra.icons.CustomIconLoader;
+import lermitage.intellij.extra.icons.IJUtils;
 import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelCondition;
@@ -83,19 +81,16 @@ public class ModelDialog extends DialogWrapper {
             conditionsCheckboxList.getItemAt(index).setEnabled(value);
         });
 
-        // use invokeAndWait + runReadAction to fix https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/40
-        final Application application = ApplicationManager.getApplication();
-        chooseIconButton.addActionListener(e -> application.invokeAndWait(() -> application.runReadAction(() -> {
-                try {
-                    customIconImage = loadCustomIcon();
-                    if (customIconImage != null) {
-                        iconLabel.setIcon(IconUtil.createImageIcon(customIconImage.getImage()));
-                    }
-                } catch (IllegalArgumentException ex) {
-                    Messages.showErrorDialog(ex.getMessage(), "Could Not Load Icon.");
+        chooseIconButton.addActionListener(e -> IJUtils.invokeReadActionAndWait(() -> {
+            try {
+                customIconImage = loadCustomIcon();
+                if (customIconImage != null) {
+                    iconLabel.setIcon(IconUtil.createImageIcon(customIconImage.getImage()));
                 }
-            }), ModalityState.NON_MODAL)
-        );
+            } catch (IllegalArgumentException ex) {
+                Messages.showErrorDialog(ex.getMessage(), "Could Not Load Icon.");
+            }
+        }));
 
         conditionsCheckboxList.getEmptyText().setText("No conditions added.");
         toolbarPanel = createConditionsListToolbar();
