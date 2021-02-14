@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.46.1 (WIP)
+## 1.46.1 (2021/02/14)
 * try to fix [#39](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39): error badge saying project is disposed.
 * fix [#40](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/40): EDT warning when creating a custom icon model.
 * improve Webpack support. Thx [Yoav Vainrich](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/45).
