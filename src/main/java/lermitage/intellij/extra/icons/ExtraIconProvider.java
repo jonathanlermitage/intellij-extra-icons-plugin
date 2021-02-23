@@ -369,6 +369,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("kubernetes").mayEnd(YML),
             ofFile("kubernetes1", "/extra-icons/kubernetes.svg", "Kubernetes: start by 'kubernetes' and end by '.xml,.yml,...'")
                 .start("kubernetes").end(YML),
+            ofFile("lerna", "/extra-icons/lerna.png", "Lerna: lerna.json")
+                .eq("lerna.json"),
             ofFile("lgtm", "/extra-icons/lgtm.svg", "LGTM: .lgtm.yml, lgtm.yml")
                 .eq("lgtm", ".lgtm").end(YML),
             ofFile("lgtm_alt", "/extra-icons/lgtm_alt.svg", "LGTM: .lgtm.yml, lgtm.yml (alternative)")
