@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.47.0 (WIP)
+## 1.47.0 (2021/03/05)
 * support Lerna configuration file: `lerna.json`. Thx [Yoav Vainrich](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/46).
 
 ## 1.46.1 (2021/02/14)

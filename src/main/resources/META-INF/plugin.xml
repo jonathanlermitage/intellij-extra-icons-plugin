@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.47.0 (WIP)
+    1.47.0 (2021/03/05)
     <ul>
       <li>support Lerna configuration file: `lerna.json`. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/46">Yoav Vainrich</a>.</li>
     </ul>
