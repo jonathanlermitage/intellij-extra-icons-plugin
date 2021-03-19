@@ -75,7 +75,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_semaphoreci", "/extra-icons/folder_semaphoreci.svg", "Semaphore (regex): '^/\\.semaphore' folder")
                 .regex("^/\\.semaphore$")
                 .eq(".semaphore"), // FIXME #13 temp fix
-            ofDir("dir_expo", "/extra-icons/expo.svg", "Expo (regex): '^/\\.expo$' folder")
+            ofDir("dir_expo", "/extra-icons/expo_folder.svg", "Expo (regex): '^/\\.expo$' folder")
                 .regex("^/\\.expo$")
                 .eq(".expo"), // FIXME #13 temp fix
             // - Flyway databases
