@@ -75,6 +75,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_semaphoreci", "/extra-icons/folder_semaphoreci.svg", "Semaphore (regex): '^/\\.semaphore' folder")
                 .regex("^/\\.semaphore$")
                 .eq(".semaphore"), // FIXME #13 temp fix
+            ofDir("dir_expo", "/extra-icons/expo.svg", "Expo (regex): '^/\\.expo$' folder")
+                .regex("^/\\.expo$"),
             // - Flyway databases
             ofDir("dir_flyway_db2", "/extra-icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/migration/db2[a-zA-Z0-9._\\-]*"),
@@ -533,6 +535,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                  .eq("babel.config.json"),
             ofFile("babel_alt", "/extra-icons/babel_alt2.svg", "Babel: babel.config.json")
                  .eq("babel.config.json"),
+            ofFile("expo_eas", "/extra-icons/expo.svg", "Expo EAS: eas.json")
+                .eq("eas.json"),
 
             //
             // extension only
