@@ -529,6 +529,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("webpack.config.").end(".js", ".ts"),
             ofFile("zalando", "/extra-icons/zalando.png", "Zalando Zappr: .zappr.yaml")
                 .eq(".zappr.yaml"),
+            ofFile("metro", "/extra-icons/metro.svg", "Metro config: metro.config.js")
+                .eq("metro.config.js"),
 
             //
             // extension only
