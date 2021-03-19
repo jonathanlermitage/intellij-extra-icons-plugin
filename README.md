@@ -70,6 +70,7 @@ MIT License. In other words, you can do what you want: this project is entirely 
 * Matthias Kunnen ([github.com/MatthiasKunnen](https://github.com/MatthiasKunnen))
 * Florian Böhm ([github.com/Sheigutn](https://github.com/Sheigutn))
 * Mateusz Bajorek (<mateusz.bajorek@gmail.com>)
+* Bouteiller Alan ([github.com/bouteillerAlan](https://github.com/bouteillerAlan))
 
 ### 🤝 [JetBrains](https://www.jetbrains.com/idea/)
 

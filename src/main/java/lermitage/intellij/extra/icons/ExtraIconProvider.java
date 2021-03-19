@@ -75,6 +75,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_semaphoreci", "/extra-icons/folder_semaphoreci.svg", "Semaphore (regex): '^/\\.semaphore' folder")
                 .regex("^/\\.semaphore$")
                 .eq(".semaphore"), // FIXME #13 temp fix
+            ofDir("dir_expo", "/extra-icons/expo.svg", "Expo (regex): '^/\\.expo$' folder")
+                .regex("^/\\.expo$"),
             // - Flyway databases
             ofDir("dir_flyway_db2", "/extra-icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/migration/db2[a-zA-Z0-9._\\-]*"),
@@ -209,6 +211,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("gradle-wrapper.jar", "gradle-wrapper.properties"),
             ofFile("mvnw_linux", "/extra-icons/mvnw.svg", "Maven: mvnw")
                 .eq("mvnw"),
+            ofFile("babel", "/extra-icons/babel_alt.svg", "Babel: babel.config.json")
+                 .eq("babel.config.json"),
+            ofFile("babel_alt", "/extra-icons/babel_alt2.svg", "Babel: babel.config.json")
+                 .eq("babel.config.json"),
             ofFile("berksfile", "/extra-icons/berkshelf.png", "Berkshelf: berksfile")
                 .eq("berksfile"),
             ofFile("berksfilelock", "/extra-icons/berkshelflock.png", "Berkshelf: berksfile.lock")
@@ -297,6 +303,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("elastic").mayEnd(YML),
             ofFile("elastic1", "/extra-icons/elasticsearch.png", "Elasticsearch: start by 'elastic' and end by '.yml,.yaml'")
                 .start("elastic").end(YML),
+            ofFile("expo_eas", "/extra-icons/expo.svg", "Expo EAS: eas.json")
+                .eq("eas.json"),
             ofFile("cerebro", "/extra-icons/elastic-cerebro.png", "Cerebro: cerebro(.conf)")
                 .eq("cerebro").mayEnd(".conf"),
             ofFile("cerebro1", "/extra-icons/elastic-cerebro.png", "Cerebro: start by 'cerebro' and end by '.conf'")
@@ -393,6 +401,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("logstash-").end(".cfg", ".conf", ".yml", ".yaml", ".txt"),
             ofFile("lombok", "/extra-icons/lombok.svg", "Lombok: lombok.config")
                 .eq("lombok.config"),
+            ofFile("metro", "/extra-icons/metro.svg", "Metro config: metro.config.js")
+                .eq("metro.config.js"),
             ofFile("moduleinfojava", "/extra-icons/moduleinfo.svg", "Java module: module-info.java")
                 .eq("module-info.java"),
             ofFile("moduleinfojava_alt", "/extra-icons/moduleinfo_alt.svg", "Java module: module-info.java (alternative)")
@@ -529,8 +539,6 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("webpack.config.").end(".js", ".ts"),
             ofFile("zalando", "/extra-icons/zalando.png", "Zalando Zappr: .zappr.yaml")
                 .eq(".zappr.yaml"),
-            ofFile("metro", "/extra-icons/metro.svg", "Metro config: metro.config.js")
-                .eq("metro.config.js"),
 
             //
             // extension only
