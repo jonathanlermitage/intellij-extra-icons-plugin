@@ -76,7 +76,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex("^/\\.semaphore$")
                 .eq(".semaphore"), // FIXME #13 temp fix
             ofDir("dir_expo", "/extra-icons/expo.svg", "Expo (regex): '^/\\.expo$' folder")
-                .regex("^/\\.expo$"),
+                .regex("^/\\.expo$")
+                .eq(".expo"), // FIXME #13 temp fix
             // - Flyway databases
             ofDir("dir_flyway_db2", "/extra-icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/migration/db2[a-zA-Z0-9._\\-]*"),
