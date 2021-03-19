@@ -1,5 +1,13 @@
 # Extra Icons Change Log
 
+## 1.48.0 (WIP)
+
+Thx [Alan Bouteiller](https://github.com/bouteillerAlan) for his contributions:
+
+* support Babel config files.
+* support Expo files and folders.
+* support Metro config files.
+
 ## 1.47.0 (2021/03/05)
 * support Lerna configuration file: `lerna.json`. Thx [Yoav Vainrich](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/46).
 

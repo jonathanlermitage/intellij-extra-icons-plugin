@@ -21,6 +21,13 @@
     -->
 
     <change-notes><![CDATA[
+    1.48.0 (WIP)<br/>
+    Thx <a href="https://github.com/bouteillerAlan">Alan Bouteiller</a> for his contributions:
+    <ul>
+      <li>support Babel config files.</li>
+      <li>support Expo files and folders.</li>
+      <li>support Metro config files.</li>
+    </ul>
     1.47.0 (2021/03/05)
     <ul>
       <li>support Lerna configuration file: `lerna.json`. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/46">Yoav Vainrich</a>.</li>
