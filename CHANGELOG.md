@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.48.0 (WIP)
+## 1.48.0 (2021/03/20)
 
 Thx [Alan Bouteiller](https://github.com/bouteillerAlan) for his contributions:
 

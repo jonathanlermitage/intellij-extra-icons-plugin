@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.48.0 (WIP)<br/>
+    1.48.0 (2021/03/20)<br/>
     Thx <a href="https://github.com/bouteillerAlan">Alan Bouteiller</a> for his contributions:
     <ul>
       <li>support Babel config files.</li>
