@@ -214,7 +214,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("mvnw"),
             ofFile("babel", "/extra-icons/babel_alt.svg", "Babel: babel.config.json")
                  .eq("babel.config.json"),
-            ofFile("babel_alt", "/extra-icons/babel_alt2.svg", "Babel: babel.config.json")
+            ofFile("babel_alt", "/extra-icons/babel_alt2.svg", "Babel: babel.config.json (alternative)")
                  .eq("babel.config.json"),
             ofFile("berksfile", "/extra-icons/berkshelf.png", "Berkshelf: berksfile")
                 .eq("berksfile"),
