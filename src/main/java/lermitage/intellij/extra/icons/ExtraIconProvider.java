@@ -140,6 +140,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*[^a-zA-Z0-9]resolver\\.(js|ts)"),
             ofFile("angular_spec_generic", "/extra-icons/test-ts.svg", "AngularJS: *.spec.(js|ts)")
                 .regex(".*[^a-zA-Z0-9]spec\\.(js|ts)"),
+            ofFile("babel", "/extra-icons/babel_alt.svg", "Babel: babel.config.[json|js|cjs|mjs]|.babelrc.[json|js|cjs|mjs]|.babelrc")
+                .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?"),
+            ofFile("babel_alt", "/extra-icons/babel_alt2.svg", "Babel: babel.config.[json|js|cjs|mjs]|.babelrc.[json|js|cjs|mjs]|.babelrc (alternative) ")
+                .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?"),
             ofFile("dotenv", "/extra-icons/env.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0_9]+)*")
                 .regex(".*/\\.env(\\.[a-zA-Z0_9]+)*"),
             ofFile("dotenv_alt", "/extra-icons/env_alt.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0_9]+)* (alternative 1)")
@@ -152,10 +156,6 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*/db/changelog/.*\\.(sql|xml)"),
             ofFile("mockk", "/extra-icons/mockk.svg", "Mockk: io/mockk/settings.properties")
                 .regex(".*/io/mockk/settings\\.properties"),
-            ofFile("babel", "/extra-icons/babel_alt.svg", "Babel: babel.config.[json|js|cjs|mjs]|.babelrc.[json|js|cjs|mjs]|.babelrc")
-                .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?"),
-            ofFile("babel_alt", "/extra-icons/babel_alt2.svg", "(alternative) Babel: babel.config.[json|js|cjs|mjs]|.babelrc.[json|js|cjs|mjs]|.babelrc")
-                .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?"),
 
             //
             // file plus its containing folder
