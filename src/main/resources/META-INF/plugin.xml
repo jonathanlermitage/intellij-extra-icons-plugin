@@ -23,6 +23,7 @@
     <change-notes><![CDATA[
     1.49.0 (WIP)
     <ul>
+      <li>improve Babel support. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/51">Alan Bouteiller</a>.</li>
       <li>support Python <i>.venv</i> Virtual Environment folders</li>
     </ul>
     1.48.0 (2021/03/20)<br/>
