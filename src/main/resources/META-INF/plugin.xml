@@ -21,10 +21,11 @@
     -->
 
     <change-notes><![CDATA[
-    1.49.0 (WIP)
+    1.49.0 (2021/03/24)
     <ul>
       <li>improve Babel support. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/51">Alan Bouteiller</a>.</li>
       <li>support Python <i>.venv</i> Virtual Environment folders.</li>
+      <li>support <i>.pytest_cache</i> folders.</li>
     </ul>
     1.48.0 (2021/03/20)<br/>
     Thx <a href="https://github.com/bouteillerAlan">Alan Bouteiller</a> for his contributions:
@@ -47,10 +48,6 @@
     <ul>
       <li>support <i>.env</i> files.</li>
       <li>force IDE to restart when installing or upgrading Extra Icons plugin: there may be a bug with <a href="https://plugins.jetbrains.com/docs/intellij/dynamic-plugins.html">Dynamic Plugins</a>. I hope it will fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/44">#44</a>: some settings were lost when hot-reloading plugin (upgrade without restart).</li>
-    </ul>
-    1.45.1 (2021/02/02)
-    <ul>
-      <li>fix a NPE that may occur when multiple projects are opened and icons are being refreshed.</li>
     </ul>
     ]]>
     </change-notes>

@@ -66,6 +66,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_nuget", "/extra-icons/folder_nuget.svg", "Nuget (regex): '^/\\.nuget$' folder")
                 .regex("^/\\.nuget")
                 .eq(".nuget"), // FIXME #13 temp fix
+            ofDir("dir_pytest_cache", "/extra-icons/folder_pytest_cache.svg", "PyTest cache: '^/\\.pytest_cache$' folder")
+                .regex("^/\\.pytest_cache$")
+                .eq(".pytest_cache"), // FIXME #13 temp fix
             ofDir("dir_python_venv", "/extra-icons/folder_python_venv.svg", "Python Virtual Environment: '^/\\.venv$' folder")
                 .regex("^/\\.venv$")
                 .eq(".venv"), // FIXME #13 temp fix

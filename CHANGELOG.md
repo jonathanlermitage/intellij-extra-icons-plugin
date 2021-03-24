@@ -1,8 +1,9 @@
 # Extra Icons Change Log
 
-## 1.49.0 (WIP)
+## 1.49.0 (2021/03/24)
 * improve Babel support. Thx [Alan Bouteiller](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/51).
 * support Python `.venv` Virtual Environment folders.
+* support `.pytest_cache` folders.
 
 ## 1.48.0 (2021/03/20)
 
