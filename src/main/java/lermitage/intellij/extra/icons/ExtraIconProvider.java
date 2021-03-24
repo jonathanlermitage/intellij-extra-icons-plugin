@@ -28,7 +28,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("custom_jle1", "/extra-icons/bash.svg", "Custom: do").eq("do"),
 
             //
-            // regex (directory)
+            // folder
             //
             ofDir("dir_circleci", "/extra-icons/folder_circleci.svg", "Circle CI (regex): '^/\\.circleci$' folder")
                 .regex("^/\\.circleci$")
@@ -66,6 +66,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_nuget", "/extra-icons/folder_nuget.svg", "Nuget (regex): '^/\\.nuget$' folder")
                 .regex("^/\\.nuget")
                 .eq(".nuget"), // FIXME #13 temp fix
+            ofDir("dir_python_venv", "/extra-icons/folder_python_venv.svg", "Python Virtual Environment: '^/\\.venv$' folder")
+                .regex("^/\\.venv$")
+                .eq(".venv"), // FIXME #13 temp fix
             ofDir("dir_teamcity", "/extra-icons/folder_teamcity.svg", "TeamCity (regex): '^/\\.teamcity$' folder")
                 .regex("^/\\.teamcity")
                 .eq(".teamcity"), // FIXME #13 temp fix

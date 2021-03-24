@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.49.0 (WIP)
+    <ul>
+      <li>support Python <i>.venv</i> Virtual Environment folders</li>
+    </ul>
     1.48.0 (2021/03/20)<br/>
     Thx <a href="https://github.com/bouteillerAlan">Alan Bouteiller</a> for his contributions:
     <ul>
