@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.50.0 (WIP)
+    <ul>
+      <li>rework <i>.keep</i>, <i>.gitkeep</i>, <i>.hgkeep</i>, <i>.svnkeep</i> icon.</li>
+    </ul>
     1.49.0 (2021/03/24)
     <ul>
       <li>improve Babel support. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/51">Alan Bouteiller</a>.</li>
@@ -43,11 +47,6 @@
       <li>try to fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39">#39</a>: error badge saying project is disposed.</li>
       <li>fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/40">#40</a>: EDT warning when creating a custom icon model.</li>
       <li>improve Webpack support. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/45">Yoav Vainrich</a>.</li>
-    </ul>
-    1.46.0 (2021/02/07)
-    <ul>
-      <li>support <i>.env</i> files.</li>
-      <li>force IDE to restart when installing or upgrading Extra Icons plugin: there may be a bug with <a href="https://plugins.jetbrains.com/docs/intellij/dynamic-plugins.html">Dynamic Plugins</a>. I hope it will fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/44">#44</a>: some settings were lost when hot-reloading plugin (upgrade without restart).</li>
     </ul>
     ]]>
     </change-notes>
