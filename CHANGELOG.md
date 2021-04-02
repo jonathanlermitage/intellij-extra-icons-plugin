@@ -2,6 +2,7 @@
 
 ## 1.50.0 (WIP)
 * rework `.keep`, `.gitkeep`, `.hgkeep`, `.svnkeep` icon.
+* support Python `venv` Virtual Environment folders. This is a less common name than `.venv`, but some users may prefer this alternative.
 
 ## 1.49.0 (2021/03/24)
 * improve Babel support. Thx [Alan Bouteiller](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/51).

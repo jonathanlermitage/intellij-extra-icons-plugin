@@ -72,6 +72,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_python_venv", "/extra-icons/folder_python_venv.svg", "Python Virtual Environment: '^/\\.venv$' folder")
                 .regex("^/\\.venv$")
                 .eq(".venv"), // FIXME #13 temp fix
+            ofDir("dir_python_venv_nodot", "/extra-icons/folder_python_venv.svg", "Python Virtual Environment: '^/venv$' folder")
+                .regex("^/venv$")
+                .eq("venv"), // FIXME #13 temp fix
             ofDir("dir_teamcity", "/extra-icons/folder_teamcity.svg", "TeamCity (regex): '^/\\.teamcity$' folder")
                 .regex("^/\\.teamcity")
                 .eq(".teamcity"), // FIXME #13 temp fix

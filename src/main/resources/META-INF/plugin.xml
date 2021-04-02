@@ -24,6 +24,7 @@
     1.50.0 (WIP)
     <ul>
       <li>rework <i>.keep</i>, <i>.gitkeep</i>, <i>.hgkeep</i>, <i>.svnkeep</i> icon.</li>
+      <li>support Python <i>venv</i> Virtual Environment folders. This is a less common name than <i>.venv</i>, but some users may prefer this alternative.</li>
     </ul>
     1.49.0 (2021/03/24)
     <ul>
