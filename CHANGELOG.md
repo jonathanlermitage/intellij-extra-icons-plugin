@@ -3,6 +3,8 @@
 ## 1.50.0 (WIP)
 * rework `.keep`, `.gitkeep`, `.hgkeep`, `.svnkeep` icon.
 * support Python `venv` Virtual Environment folders. This is a less common name than `.venv`, but some users may prefer this alternative.
+* support SVGO 2 `svgo.config.js` files.
+* internal: migrate to SVGO 2 (a tool to optimize SVG files): all SVG icons are optimized again with new default settings and some configuration.
 
 ## 1.49.0 (2021/03/24)
 * improve Babel support. Thx [Alan Bouteiller](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/51).

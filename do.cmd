@@ -36,5 +36,5 @@ if [%1] == [cv] (
   gradlew dependencyUpdates --warning-mode all
 )
 if [%1] == [svgo] (
-  svgo --folder=src/main/resources/extra-icons/ --multipass --config=svgo.yml
+  svgo --folder=src/main/resources/extra-icons/
 )

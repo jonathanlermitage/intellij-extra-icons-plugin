@@ -50,7 +50,7 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
         ;;
 
     "svgo")
-        svgo --folder=src/main/resources/extra-icons/ --multipass --config=svgo.yml
+        svgo --folder=src/main/resources/extra-icons/
         ;;
 
     esac
