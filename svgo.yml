@@ -1,6 +1,0 @@
-plugins:
-  - cleanupIDs:
-      force: true
-  - removeViewBox: false
-  - removeUnknownsAndDefaults: 
-      keepDataAttrs: false

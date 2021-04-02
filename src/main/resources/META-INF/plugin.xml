@@ -25,8 +25,8 @@
     <ul>
       <li>rework <i>.keep</i>, <i>.gitkeep</i>, <i>.hgkeep</i>, <i>.svnkeep</i> icon.</li>
       <li>support Python <i>venv</i> Virtual Environment folders. This is a less common name than <i>.venv</i>, but some users may prefer this alternative.</li>
-      <li>support SVGO 2 `svgo.config.js` files.</li>
-      <li>internal: migrate to SVGO 2 (a tool to optimize SVG files): all SVG icons are optimized again with new default settings and some configuration.</li>
+      <li>support SVGO 2 <i>svgo.config.js</i> files.</li>
+      <li>internal: migrate to <a href="https://github.com/svg/svgo">SVGO</a> 2 (a tool to optimize SVG files): all SVG icons are optimized again with new default settings and some configuration.</li>
     </ul>
     1.49.0 (2021/03/24)
     <ul>
