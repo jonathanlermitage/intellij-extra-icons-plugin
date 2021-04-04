@@ -2,6 +2,8 @@
 
 ## 1.50.0 (WIP)
 * rework `.keep`, `.gitkeep`, `.hgkeep`, `.svnkeep` icon.
+* rework Python Virtual Environment folders.
+* rework Pytest folders.
 * support Python `venv` Virtual Environment folders. This is a less common name than `.venv`, but some users may prefer this alternative.
 * support SVGO 2 `svgo.config.js` files.
 * internal: migrate to [SVGO](https://github.com/svg/svgo) 2 (a tool to optimize SVG files): all SVG icons are optimized again with new default settings and some configuration.
