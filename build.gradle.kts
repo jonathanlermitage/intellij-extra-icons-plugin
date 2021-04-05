@@ -1,3 +1,4 @@
+import com.adarshr.gradle.testlogger.theme.ThemeType
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
@@ -5,6 +6,7 @@ plugins {
     id("idea")
     id("org.jetbrains.intellij") version "0.7.2" // https://github.com/JetBrains/gradle-intellij-plugin
     id("com.github.ben-manes.versions") version "0.38.0" // https://github.com/ben-manes/gradle-versions-plugin
+    id("com.adarshr.test-logger") version "3.0.0" // https://github.com/radarsh/gradle-test-logger-plugin
 }
 
 // Import variables from gradle.properties file
@@ -16,8 +18,10 @@ val pluginJavaVersion: String by project
 val pluginEnableBuildSearchableOptions: String by project
 
 val inCI = System.getenv("CI") != null
+val inIJ = System.getenv("IDEA_INITIAL_DIRECTORY") != null
 
 println("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion")
+println("Running in IntelliJ: $inIJ")
 
 group = "lermitage.intellij.extra.icons"
 version = pluginVersion
@@ -39,6 +43,11 @@ intellij {
     sandboxDirectory = "${rootProject.projectDir}/.idea-sandbox/${pluginIdeaVersion}"
     updateSinceUntilBuild = false
     version = pluginIdeaVersion
+}
+
+testlogger {
+    theme = if (inIJ) ThemeType.PLAIN_PARALLEL else ThemeType.STANDARD_PARALLEL
+    showSimpleNames = true
 }
 
 tasks {
