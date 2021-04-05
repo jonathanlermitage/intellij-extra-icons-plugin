@@ -69,10 +69,19 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_pytest_cache", "/extra-icons/folder_pytest_cache.svg", "PyTest cache: '^/\\.pytest_cache$' folder")
                 .regex("^/\\.pytest_cache$")
                 .eq(".pytest_cache"), // FIXME #13 temp fix
+            ofDir("dir_pytest_cache_alt", "/extra-icons/folder_pytest_cache_alt.svg", "PyTest cache: '^/\\.pytest_cache$' folder (alternative)")
+                .regex("^/\\.pytest_cache$")
+                .eq(".pytest_cache"), // FIXME #13 temp fix
             ofDir("dir_python_venv", "/extra-icons/folder_python_venv.svg", "Python Virtual Environment: '^/\\.venv$' folder")
                 .regex("^/\\.venv$")
                 .eq(".venv"), // FIXME #13 temp fix
+            ofDir("dir_python_venv_alt", "/extra-icons/folder_python_venv_alt.svg", "Python Virtual Environment: '^/\\.venv$' folder (alternative)")
+                .regex("^/\\.venv$")
+                .eq(".venv"), // FIXME #13 temp fix
             ofDir("dir_python_venv_nodot", "/extra-icons/folder_python_venv.svg", "Python Virtual Environment: '^/venv$' folder")
+                .regex("^/venv$")
+                .eq("venv"), // FIXME #13 temp fix
+            ofDir("dir_python_venv_nodot_alt", "/extra-icons/folder_python_venv_alt.svg", "Python Virtual Environment: '^/venv$' folder (alternative)")
                 .regex("^/venv$")
                 .eq("venv"), // FIXME #13 temp fix
             ofDir("dir_teamcity", "/extra-icons/folder_teamcity.svg", "TeamCity (regex): '^/\\.teamcity$' folder")
