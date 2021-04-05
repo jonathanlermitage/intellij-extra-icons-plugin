@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.50.0 (WIP)
+## 1.50.0 (2021/04/06)
 * rework `.keep`, `.gitkeep`, `.hgkeep`, `.svnkeep` icon.
 * rework Python Virtual Environment folders.
 * rework Pytest folders.
