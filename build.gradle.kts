@@ -18,10 +18,8 @@ val pluginJavaVersion: String by project
 val pluginEnableBuildSearchableOptions: String by project
 
 val inCI = System.getenv("CI") != null
-val inIJ = System.getenv("IDEA_INITIAL_DIRECTORY") != null
 
 println("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion")
-println("Running in IntelliJ: $inIJ")
 
 group = "lermitage.intellij.extra.icons"
 version = pluginVersion
@@ -46,7 +44,7 @@ intellij {
 }
 
 testlogger {
-    theme = if (inIJ) ThemeType.PLAIN_PARALLEL else ThemeType.STANDARD_PARALLEL
+    theme = ThemeType.PLAIN_PARALLEL
     showSimpleNames = true
 }
 
