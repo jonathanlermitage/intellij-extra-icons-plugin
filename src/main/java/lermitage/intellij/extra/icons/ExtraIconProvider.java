@@ -316,7 +316,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".dockerignore"),
             ofFile("editorconfig", "/extra-icons/editorconfig.png", "EditorConfig: .editorconfig")
                 .eq(".editorconfig").mayEnd(CFG),
-            ofFile("editorconfig_alt", "/extra-icons/editorconfig_alt.svg", "EditorConfig: .editorconfig (alternative)")
+            ofFile("editorconfig_alt", "/extra-icons/editorconfig_alt.svg", "EditorConfig: .editorconfig (alternative 1)")
+                .eq(".editorconfig").mayEnd(CFG),
+            ofFile("editorconfig_alt2", "/extra-icons/editorconfig_alt2.svg", "EditorConfig: .editorconfig (alternative 2)")
                 .eq(".editorconfig").mayEnd(CFG),
             ofFile("elastic", "/extra-icons/elasticsearch.png", "Elasticsearch: elastic(.yml,.yaml)")
                 .eq("elastic").mayEnd(YML),

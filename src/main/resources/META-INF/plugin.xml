@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.51.0 (WIP)
+    <ul>
+      <li>add an alternative icon for EditorConfig files.</li>
+    </ul>
     1.50.0 (2021/04/06)
     <ul>
       <li>rework <i>.keep</i>, <i>.gitkeep</i>, <i>.hgkeep</i>, <i>.svnkeep</i> icon.</li>
@@ -43,16 +47,6 @@
       <li>support Babel config files.</li>
       <li>support Expo files and folders.</li>
       <li>support Metro config files.</li>
-    </ul>
-    1.47.0 (2021/03/05)
-    <ul>
-      <li>support Lerna configuration file: `lerna.json`. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/46">Yoav Vainrich</a>.</li>
-    </ul>
-    1.46.1 (2021/02/14)
-    <ul>
-      <li>try to fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39">#39</a>: error badge saying project is disposed.</li>
-      <li>fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/40">#40</a>: EDT warning when creating a custom icon model.</li>
-      <li>improve Webpack support. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/45">Yoav Vainrich</a>.</li>
     </ul>
     ]]>
     </change-notes>
