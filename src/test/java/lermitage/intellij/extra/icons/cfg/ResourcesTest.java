@@ -12,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -28,7 +29,9 @@ public class ResourcesTest {
     @BeforeAll
     static void setUp() {
         File iconsFolder = new File("src/main/resources/extra-icons/");
-        icons = Arrays.asList(iconsFolder.listFiles((dir, name) -> name.endsWith(".png") || name.endsWith(".svg")));
+        icons = Arrays.asList(Objects.requireNonNull(
+            iconsFolder.listFiles((dir, name) -> name.endsWith(".png") || name.endsWith(".svg"))
+        ));
         pngIcons = icons.stream().filter(file -> file.getName().endsWith(".png")).collect(Collectors.toList());
         svgIcons = icons.stream().filter(file -> file.getName().endsWith(".svg")).collect(Collectors.toList());
         assertTrue(svgIcons.size() > 0);
@@ -88,7 +91,6 @@ public class ResourcesTest {
 
     @Test
     public void dark_icon_should_be_coupled_with_light_icon() {
-        File iconsFolder = new File("resources/extra-icons/");
         Set<String> iconNames = icons.stream()
             .map(File::getName)
             .collect(Collectors.toSet());
@@ -106,7 +108,6 @@ public class ResourcesTest {
 
     @Test
     public void svg_icons_should_be_16x16() {
-        File iconsFolder = new File("resources/extra-icons/");
         List<String> errors = new ArrayList<>();
 
         svgIcons.forEach(file -> {
