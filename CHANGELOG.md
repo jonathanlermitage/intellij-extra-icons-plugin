@@ -2,6 +2,7 @@
 
 ## 1.51.0 (WIP)
 * add an alternative icon for EditorConfig files.
+* add an alternative icon for Binary files.
 
 ## 1.50.0 (2021/04/06)
 * rework `.keep`, `.gitkeep`, `.hgkeep`, `.svnkeep` icon.
