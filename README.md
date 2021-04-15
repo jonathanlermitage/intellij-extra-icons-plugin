@@ -71,6 +71,7 @@ MIT License. In other words, you can do what you want: this project is entirely 
 * Florian Böhm ([github.com/Sheigutn](https://github.com/Sheigutn))
 * Mateusz Bajorek (<mateusz.bajorek@gmail.com>)
 * Bouteiller Alan ([github.com/bouteillerAlan](https://github.com/bouteillerAlan))
+* Gaëtan Maisse ([github.com/gaetanmaisse](https://github.com/gaetanmaisse))
 
 ### 🤝 [JetBrains](https://www.jetbrains.com/idea/)
 
