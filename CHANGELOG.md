@@ -2,7 +2,9 @@
 
 ## 1.51.0 (WIP)
 * add an alternative icon for EditorConfig files.
-* add an alternative icon for Binary files.
+* add an alternative icon for Binary files
+* support Storybook files and folders. Thx [Gaëtan Maisse](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/53).
+* rework Postman support.
 
 ## 1.50.0 (2021/04/06)
 * rework `.keep`, `.gitkeep`, `.hgkeep`, `.svnkeep` icon.

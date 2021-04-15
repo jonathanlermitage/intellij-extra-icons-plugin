@@ -25,6 +25,8 @@
     <ul>
       <li>add an alternative icon for EditorConfig files.</li>
       <li>add an alternative icon for Binary files.</li>
+      <li>support Storybook files and folders. Thx Gaëtan Maisse.</li>
+      <li>rework Postman support.</li>
     </ul>
     1.50.0 (2021/04/06)
     <ul>

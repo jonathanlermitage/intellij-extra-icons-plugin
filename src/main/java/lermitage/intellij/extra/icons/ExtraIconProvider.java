@@ -657,8 +657,16 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".pdf"),
             ofFile("ext_pid", "/extra-icons/pid.svg", "PID: *.pid")
                 .end(".pid"),
-            ofFile("ext_postmanconfig", "/extra-icons/postman.svg", "Postman config: *.postman.json, *postman_collection.json, *postman_environment.json")
-                .end(".postman.json", "postman_collection.json", "postman_environment.json"),
+            ofFile("ext_postmanconfig", "/extra-icons/postman.svg", "Postman config: *.postman.json")
+                .end(".postman.json"),
+            ofFile("ext_postmancollection", "/extra-icons/postman_col.svg", "Postman collection: *postman_collection.json")
+                .end("postman_collection.json"),
+            ofFile("ext_postmancollection_alt", "/extra-icons/postman.svg", "Postman collection: *postman_collection.json (alternative)")
+                .end("postman_collection.json"),
+            ofFile("ext_postmanenvironment", "/extra-icons/postman_env.svg", "Postman environment: *postman_environment.json")
+                .end("postman_environment.json"),
+            ofFile("ext_postmanenvironment_alt", "/extra-icons/postman.svg", "Postman environment: *postman_environment.json (alternative)")
+                .end("postman_environment.json"),
             ofFile("ext_rpm", "/extra-icons/rpm.svg", "Red Hat package: *.rpm")
                 .end(".rpm"),
             ofFile("ext_robotframework", "/extra-icons/robotframework.svg", "Robot Framework: *.robot")
