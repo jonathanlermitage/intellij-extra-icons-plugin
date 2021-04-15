@@ -96,6 +96,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_expo", "/extra-icons/expo_folder.svg", "Expo (regex): '^/\\.expo$' folder")
                 .regex("^/\\.expo$")
                 .eq(".expo"), // FIXME #13 temp fix
+            ofDir("dir_storybook", "/extra-icons/folder_storybook.svg", "Storybook (regex): '^/\\.storybook$' folder")
+                .regex("^/\\.storybook$")
+                .eq(".storybook"), // FIXME #13 temp fix
             // - Flyway databases
             ofDir("dir_flyway_db2", "/extra-icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/migration/db2[a-zA-Z0-9._\\-]*"),
@@ -496,6 +499,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("snapcraft.yaml"),
             ofFile("stacksmith", "/extra-icons/stacksmith.svg", "Bitnami Stacksmith: stackerfile.yml")
                 .eq("stackerfile.yml"),
+            ofFile("storybook", "/extra-icons/storybook.svg", "Storybook: *.stor(y|ies).(js|ts)x?")
+                .regex(".*\\.stor(y|ies)\\.(js|ts)x?$"),
             ofFile("svgo", "/extra-icons/svgo.svg", "SVGO: svgo(.yml,.yaml)")
                 .eq("svgo").end(YML),
             ofFile("svgo2", "/extra-icons/svgo.svg", "SVGO: svgo.config.js")
