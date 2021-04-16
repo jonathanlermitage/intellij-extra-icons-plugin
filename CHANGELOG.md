@@ -5,6 +5,7 @@
 * add an alternative icon for Binary files
 * support Storybook files and folders. Thx [Gaëtan Maisse](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/53).
 * rework Postman support.
+* support GoLang Arch Linter `.go-arch-lint.yml` files.
 
 ## 1.50.0 (2021/04/06)
 * rework `.keep`, `.gitkeep`, `.hgkeep`, `.svnkeep` icon.

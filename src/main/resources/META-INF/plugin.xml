@@ -27,6 +27,7 @@
       <li>add an alternative icon for Binary files.</li>
       <li>support Storybook files and folders. Thx Gaëtan Maisse.</li>
       <li>rework Postman support.</li>
+      <li>support GoLang Arch Linter <i>.go-arch-lint.yml</i> files.</li>
     </ul>
     1.50.0 (2021/04/06)
     <ul>
@@ -37,19 +38,6 @@
       <li>support Python <i>venv</i> Virtual Environment folders. This is a less common name than <i>.venv</i>, but some users may prefer this alternative.</li>
       <li>support SVGO 2 <i>svgo.config.js</i> files.</li>
       <li>internal: migrate to <a href="https://github.com/svg/svgo">SVGO</a> 2 (a tool to optimize SVG files): all SVG icons are optimized again with new default settings and some configuration.</li>
-    </ul>
-    1.49.0 (2021/03/24)
-    <ul>
-      <li>improve Babel support. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/51">Alan Bouteiller</a>.</li>
-      <li>support Python <i>.venv</i> Virtual Environment folders.</li>
-      <li>support <i>.pytest_cache</i> folders.</li>
-    </ul>
-    1.48.0 (2021/03/20)<br/>
-    Thx <a href="https://github.com/bouteillerAlan">Alan Bouteiller</a> for his contributions:
-    <ul>
-      <li>support Babel config files.</li>
-      <li>support Expo files and folders.</li>
-      <li>support Metro config files.</li>
     </ul>
     ]]>
     </change-notes>

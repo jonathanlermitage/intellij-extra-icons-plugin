@@ -347,6 +347,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("gatling").end(".conf"),
             ofFile("gitpod", "/extra-icons/gitpod.svg", "Gitpod: .gitpod.yml")
                 .start(".gitpod").end(YML),
+            ofFile("golangarchlinter", "/extra-icons/golangarchlinter.svg", "GoLang Arch Linter: .go-arch-lint.yml")
+                .start(".go-arch-lint.yml"),
             ofFile("grunt", "/extra-icons/grunt.svg", "Grunt: Gruntfile.js")
                 .eq("gruntfile.js"),
             ofFile("git", "/extra-icons/git.svg", "Git: .gitattributes, .gitignore, .gitmodules, .gitreview")
