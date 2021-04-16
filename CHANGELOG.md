@@ -3,6 +3,7 @@
 ## 1.51.0 (WIP)
 * add an alternative icon for EditorConfig files.
 * add an alternative icon for Binary files
+* add an alternative icon for Contribution files.
 * support Storybook files and folders. Thx [Gaëtan Maisse](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/53).
 * rework Postman support.
 * support GoLang Arch Linter `.go-arch-lint.yml` files.

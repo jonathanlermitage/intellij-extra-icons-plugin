@@ -277,9 +277,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("codeship-steps").mayEnd(CFG),
             ofFile("contact", "/extra-icons/contact.png", "Contact: contact(.md,.txt,.adoc,.rst), contacts")
                 .eq("contact", "contacts").mayEnd(TXT),
-            ofFile("contribute", "/extra-icons/contributing.png", "Contribution: contribute(.md,.txt,.adoc,.rst), contributing, contribution")
+            ofFile("contribute", "/extra-icons/contributing.svg", "Contribution: contribute(.md,.txt,.adoc,.rst), contributing, contribution")
                 .eq("contribute", "contributing", "contribution").mayEnd(TXT),
-            ofFile("contribute_alt", "/extra-icons/contributing_alt.svg", "Contribution: contribute(.md,.txt,.adoc,.rst), contributing, contribution (alternative)")
+            ofFile("contribute_alt", "/extra-icons/contributing_alt.png", "Contribution: contribute(.md,.txt,.adoc,.rst), contributing, contribution (alternative 1)")
+                .eq("contribute", "contributing", "contribution").mayEnd(TXT),
+            ofFile("contribute_alt2", "/extra-icons/contributing_alt2.svg", "Contribution: contribute(.md,.txt,.adoc,.rst), contributing, contribution (alternative 2)")
                 .eq("contribute", "contributing", "contribution").mayEnd(TXT),
             ofFile("coveragerc", "/extra-icons/coveragerc.svg", "Python coverage: .coveragerc")
                 .eq(".coveragerc"),

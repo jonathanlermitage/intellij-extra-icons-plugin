@@ -25,6 +25,7 @@
     <ul>
       <li>add an alternative icon for EditorConfig files.</li>
       <li>add an alternative icon for Binary files.</li>
+      <li>add an alternative icon for Contribution files.</li>
       <li>support Storybook files and folders. Thx Gaëtan Maisse.</li>
       <li>rework Postman support.</li>
       <li>support GoLang Arch Linter <i>.go-arch-lint.yml</i> files.</li>
