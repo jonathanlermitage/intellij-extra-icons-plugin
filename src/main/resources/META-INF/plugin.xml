@@ -21,7 +21,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.51.0 (WIP)
+    1.51.0 (2021/04/20)
     <ul>
       <li>add an alternative icon for EditorConfig files.</li>
       <li>add an alternative icon for Binary files.</li>

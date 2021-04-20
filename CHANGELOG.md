@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.51.0 (WIP)
+## 1.51.0 (2021/04/20)
 * add an alternative icon for EditorConfig files.
 * add an alternative icon for Binary files
 * add an alternative icon for Contribution files.
