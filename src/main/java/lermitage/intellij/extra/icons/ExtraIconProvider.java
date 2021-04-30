@@ -521,6 +521,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("test", "testing").mayEnd(TXT),
             ofFile("todo", "/extra-icons/todo.png", "To-Do: todo(.md,.txt,.adoc,.rst)")
                 .eq("todo").mayEnd(TXT),
+            ofFile("todo_alt", "/extra-icons/todo_alt.svg", "To-Do: todo(.md,.txt,.adoc,.rst) (alternative)")
+                .eq("todo").mayEnd(TXT),
             ofFile("tox", "/extra-icons/tox.png", "Tox: tox.ini")
                 .eq("tox.ini"),
             ofFile("travis", "/extra-icons/travis.svg", "Travis CI: .travis.yml")
