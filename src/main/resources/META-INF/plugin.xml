@@ -23,7 +23,7 @@
     <change-notes><![CDATA[
     1.52.0 (WIP)
     <ul>
-      <li>fixed Env files support. Thx Philipp Voronin.</li>
+      <li>fix Dotenv files support. Thx Philipp Voronin.</li>
       <li>add an alternative icon for TODO files.</li>
     </ul>
     1.51.0 (2021/04/20)

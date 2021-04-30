@@ -1,7 +1,7 @@
 # Extra Icons Change Log
 
 ## 1.52.0 (WIP)
-* fixed Env files support. Thx Philipp Voronin.
+* fix Dotenv files support. Thx Philipp Voronin.
 * add an alternative icon for TODO files.
 
 ## 1.51.0 (2021/04/20)
