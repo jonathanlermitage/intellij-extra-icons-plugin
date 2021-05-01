@@ -505,6 +505,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("stackerfile.yml"),
             ofFile("storybook", "/extra-icons/storybook.svg", "Storybook: *.stor(y|ies).(js|ts)x?")
                 .regex(".*\\.stor(y|ies)\\.(js|ts)x?$"),
+            ofFile("storybook1", "/extra-icons/storybook.svg", "Storybook: *.stories.mdx")
+                .end(".stories.mdx"),
             ofFile("svgo", "/extra-icons/svgo.svg", "SVGO: svgo(.yml,.yaml)")
                 .eq("svgo").end(YML),
             ofFile("svgo2", "/extra-icons/svgo.svg", "SVGO: svgo.config.js")

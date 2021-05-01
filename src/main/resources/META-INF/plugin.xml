@@ -26,6 +26,7 @@
       <li>fix Dotenv files support. Thx Philipp Voronin.</li>
       <li>add an alternative icon for TODO files.</li>
       <li>support TSX files.</li>
+      <li>improve Storybook support.</li>
     </ul>
     1.51.0 (2021/04/20)
     <ul>

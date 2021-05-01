@@ -4,6 +4,7 @@
 * fix Dotenv files support. Thx Philipp Voronin.
 * add an alternative icon for TODO files.
 * support TSX files.
+* improve Storybook support.
 
 ## 1.51.0 (2021/04/20)
 * add an alternative icon for EditorConfig files.
