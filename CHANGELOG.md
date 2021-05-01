@@ -3,6 +3,7 @@
 ## 1.52.0 (WIP)
 * fix Dotenv files support. Thx Philipp Voronin.
 * add an alternative icon for TODO files.
+* support TSX files.
 
 ## 1.51.0 (2021/04/20)
 * add an alternative icon for EditorConfig files.
