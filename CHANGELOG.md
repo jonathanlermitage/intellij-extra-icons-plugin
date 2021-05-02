@@ -5,7 +5,7 @@
 * add an alternative icon for TODO files.
 * add an alternative icon for CodeShip files.
 * support TSX files.
-  support `jitpack.yml` files.
+* support `jitpack.yml` files.
 * improve Storybook support.
 
 ## 1.51.0 (2021/04/20)
