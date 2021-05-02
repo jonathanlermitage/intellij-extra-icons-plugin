@@ -25,6 +25,7 @@
     <ul>
       <li>fix Dotenv files support. Thx Philipp Voronin.</li>
       <li>add an alternative icon for TODO files.</li>
+      <li>add an alternative icon for CodeShip files.</li>
       <li>support TSX files.</li>
       <li>support <i>jitpack.yml</i> files.</li>
       <li>improve Storybook support.</li>

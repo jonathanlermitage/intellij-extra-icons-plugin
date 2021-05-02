@@ -3,6 +3,7 @@
 ## 1.52.0 (WIP)
 * fix Dotenv files support. Thx Philipp Voronin.
 * add an alternative icon for TODO files.
+* add an alternative icon for CodeShip files.
 * support TSX files.
   support `jitpack.yml` files.
 * improve Storybook support.
