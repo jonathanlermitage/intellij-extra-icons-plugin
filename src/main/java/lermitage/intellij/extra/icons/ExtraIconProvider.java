@@ -383,6 +383,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("jest.config.js"),
             ofFile("jest_ts", "/extra-icons/jest.svg", "Jest: jest.config.ts")
                 .eq("jest.config.ts"),
+            ofFile("jitpack", "/extra-icons/jitpack.svg", "JitPack: jitpack.yml")
+                .eq("jitpack.yml"),
             ofFile("jsbeautify", "/extra-icons/jsbeautify.png", "JSBeautify: .jsbeautifyrc(.xml,.yml,...)")
                 .eq(".jsbeautifyrc").mayEnd(CFG),
             ofFile("jshint", "/extra-icons/jshint.png", "JSHint: .jshintrc(.xml,.yml,...)")
