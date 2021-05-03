@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.52.0 (WIP)
+## 1.52.0 (2021/05/03)
 * fix Dotenv files support. Thx Philipp Voronin.
 * add an alternative icon for TODO files.
 * add an alternative icon for CodeShip files.
