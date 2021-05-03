@@ -9,8 +9,8 @@
       See <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate.<br/>
       If you find this plugin helpful, you can <a href="https://buymeacoff.ee/jlermitage">buy me a coffee</a>. Thank you! 👍<br/>
       To customize toolbar icons, you may also want to install <a href="https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons">Extra ToolWindow Colorful Icons</a> plugin.<br/><br/>
-      See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide201/CHANGELOG.md">changelog</a>
-      and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide201/README.md">readme</a> on GitHub.<br/>
+      See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/CHANGELOG.md">changelog</a>
+      and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/README.md">readme</a> on GitHub.<br/>
       Check also my <a href="https://plugins.jetbrains.com/author/ed9cc7eb-74f5-46c1-b0df-67162fe1a1c5">plugins</a>.
     ]]>
     </description>
@@ -54,7 +54,7 @@
     </change-notes>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="201.6668.113"/>
+    <idea-version since-build="203"/>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
@@ -89,6 +89,7 @@
         <projectConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.ProjectConfigurableProvider"
                              id="LermitageExtraIcons-Project"
                              displayName="Project" parentId="LermitageExtraIcons"/>
+        <notificationGroup id="ExtraIcons" displayType="BALLOON" />
     </extensions>
 
     <!--

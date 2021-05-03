@@ -2,12 +2,8 @@
 
 package lermitage.intellij.extra.icons.cfg;
 
-import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationDisplayType;
-import com.intellij.notification.NotificationGroup;
+import com.intellij.notification.NotificationGroupManager;
 import com.intellij.notification.NotificationType;
-import com.intellij.notification.Notifications;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.Globals;
@@ -24,8 +20,6 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 public abstract class SettingsService {
-
-    private static final Logger LOGGER = Logger.getInstance(SettingsService.class);
 
     // the implementation of PersistentStateComponent works by serializing public fields, so keep them public
     @SuppressWarnings("WeakerAccess")
@@ -121,23 +115,13 @@ public abstract class SettingsService {
                 ignoredPatternObj = Pattern.compile(regex);
                 isIgnoredPatternValid = true;
             } catch (PatternSyntaxException e) {
-                // TODO when switching to 2020.3 as minimal version: rework NotificationGroup creation
-                //  https://jetbrains.org/intellij/sdk/docs/user_interface_components/notifications.html
-                //  (see "NotificationGroup (2020.3 and later)")
-                NotificationGroup notificationGroup = new NotificationGroup(
-                    Globals.PLUGIN_GROUP_DISPLAY_ID,
-                    NotificationDisplayType.BALLOON,
-                    true
-                );
-                Notification notification = notificationGroup.createNotification(
-                    Globals.PLUGIN_NAME + " settings",
-                    null,
-                    "Can't compile regex: '" + regex + "' (" + e.getMessage() + ")",
-                    NotificationType.WARNING
-                );
-                notification.setImportant(true);
-                Notifications.Bus.notify(notification);
-                LOGGER.warn("Can't compile regex '" + regex + "'");
+                NotificationGroupManager.getInstance().getNotificationGroup(Globals.PLUGIN_GROUP_DISPLAY_ID)
+                    .createNotification(Globals.PLUGIN_NAME + " settings",
+                        "Invalid settings",
+                        "Can't compile regex: '" + regex + "' (" + e.getMessage() + ")",
+                        NotificationType.WARNING)
+                    .setImportant(true)
+                    .notify(null);
                 ignoredPatternObj = null;
                 isIgnoredPatternValid = false;
             }
