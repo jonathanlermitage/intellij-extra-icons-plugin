@@ -40,9 +40,10 @@ Install JDK8+. You should be able to start Gradle Wrapper (`gradlew`).
 
 ### Branches
 
-* [ide201](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide201): plugin is compatible with 201.0+ IDE builds (2020.1 and newer). Contains features that need capabilities introduced in IntelliJ 2020.1.
-* [master](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/master): ~~plugin is compatible with 183.0+ IDE builds (2018.3 and newer).~~ this branch is terminated.
-* [ide173](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide173): ~~plugin is compatible with 173.0+ IDE builds (2017.3 and newer), but doesn't support AngularJS icons.~~ this branch is terminated.
+* [ide203](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide203): (future active branch) plugin is compatible with 203+ IDE builds (2020.3 and newer). It contains features that need capabilities introduced in IntelliJ 2020.3. Will be rebased onto `ide201` once IntelliJ 2020.3 becomes the new minimal supported version: the Extra Icons plugin is using some deprecated IJ code that will be removed later, but we don't yet know when.
+* [**ide201**](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide201): (**active branch**) plugin is compatible with 201+ IDE builds (2020.1 and newer). It contains features that need capabilities introduced in IntelliJ 2020.1.
+* [master](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/master): ~~plugin is compatible with 183+ IDE builds (2018.3 and newer).~~ this branch is terminated.
+* [ide173](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide173): ~~plugin is compatible with 173+ IDE builds (2017.3 and newer), but doesn't support AngularJS icons.~~ this branch is terminated.
 
 ## Contribution
 
