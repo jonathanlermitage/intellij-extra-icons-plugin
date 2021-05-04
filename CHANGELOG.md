@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.53.0 (WIP)
+* improve Storybook support.
+
 ## 1.52.0 (2021/05/03)
 * fix Dotenv files support. Thx Philipp Voronin.
 * add an alternative icon for TODO files.

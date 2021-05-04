@@ -21,6 +21,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.53.0 (WIP)
+    <ul>
+      <li>improve Storybook support.</li>
+    </ul>
     1.52.0 (2021/05/03)
     <ul>
       <li>fix Dotenv files support. Thx Philipp Voronin.</li>
@@ -29,15 +33,6 @@
       <li>support TSX files.</li>
       <li>support <i>jitpack.yml</i> files.</li>
       <li>improve Storybook support.</li>
-    </ul>
-    1.51.0 (2021/04/20)
-    <ul>
-      <li>add an alternative icon for EditorConfig files.</li>
-      <li>add an alternative icon for Binary files.</li>
-      <li>add an alternative icon for Contribution files.</li>
-      <li>support Storybook files and folders. Thx Gaëtan Maisse.</li>
-      <li>rework Postman support.</li>
-      <li>support GoLang Arch Linter <i>.go-arch-lint.yml</i> files.</li>
     </ul>
     ]]>
     </change-notes>
