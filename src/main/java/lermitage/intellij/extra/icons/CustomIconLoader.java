@@ -12,8 +12,6 @@ import com.intellij.util.RetinaImage;
 import com.intellij.util.SVGLoader;
 
 import javax.swing.Icon;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -21,9 +19,6 @@ import java.io.IOException;
 public class CustomIconLoader {
 
     private static final Logger LOGGER = Logger.getInstance(CustomIconLoader.class);
-
-    private static final GraphicsConfiguration GRAPHICS_CFG = GraphicsEnvironment.isHeadless() ? null // some Gradle tasks run IDE in headless
-        : GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
 
     public static Icon getIcon(Model model, Double additionalUIScale) {
         if (model.getIconType() == IconType.PATH) {
