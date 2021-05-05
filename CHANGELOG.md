@@ -2,6 +2,7 @@
 
 ## 1.53.0 (WIP)
 * improve Storybook support.
+* experimental: try to fix `ArrayIndexOutOfBoundsException: Coordinate out of bounds!` error when loading some custom PNG icons.
 
 ## 1.52.0 (2021/05/03)
 * fix Dotenv files support. Thx Philipp Voronin.

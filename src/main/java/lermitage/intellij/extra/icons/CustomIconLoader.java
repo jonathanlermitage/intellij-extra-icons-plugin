@@ -5,24 +5,17 @@ package lermitage.intellij.extra.icons;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.ui.paint.PaintUtil;
 import com.intellij.util.Base64;
 import com.intellij.util.IconUtil;
 import com.intellij.util.ImageLoader;
-import com.intellij.util.JBHiDPIScaledImage;
 import com.intellij.util.RetinaImage;
 import com.intellij.util.SVGLoader;
-import com.intellij.util.ui.UIUtil;
 
-import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class CustomIconLoader {
@@ -105,33 +98,8 @@ public class CustomIconLoader {
         IconType iconType = imageWrapper.getIconType();
         switch (iconType) {
             case SVG:
-                base64 = Base64.encode(imageWrapper.getImageAsByteArray());
-                break;
             case IMG:
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                try {
-                    Image image = imageWrapper.getImage();
-                    if (image instanceof JBHiDPIScaledImage) {
-                        image = ((JBHiDPIScaledImage) image).getDelegate();
-                    }
-                    //if (image instanceof ToolkitImage) { TODO uncomment if IJ (or IDE like PyCharm) still returns sun.awt.image.ToolkitImage objects
-                    //    image = ((ToolkitImage) image).getBufferedImage();
-                    //}
-                    if (!(image instanceof RenderedImage)) {
-                        BufferedImage bufferedImage = UIUtil.createImage(
-                            GRAPHICS_CFG,
-                            image.getWidth(null),
-                            image.getHeight(null),
-                            BufferedImage.TYPE_INT_RGB,
-                            PaintUtil.RoundingMode.ROUND);
-                        bufferedImage.getGraphics().drawImage(image, 0, 0, null);
-                        image = bufferedImage;
-                    }
-                    ImageIO.write((RenderedImage) image, "png", outputStream); // TODO fix (PNG) "java.lang.ArrayIndexOutOfBoundsException: Coordinate out of bounds!" -> possible fix: try TwelveMonkeys library
-                } catch (IOException ex) {
-                    LOGGER.info("Can't load " + iconType + " icon: " + ex.getMessage(), ex);
-                }
-                base64 = Base64.encode(outputStream.toByteArray());
+                base64 = Base64.encode(imageWrapper.getImageAsByteArray());
                 break;
         }
         return base64;
