@@ -41,6 +41,8 @@ import static lermitage.intellij.extra.icons.cfg.dialogs.ModelConditionDialog.FI
 
 public class ModelDialog extends DialogWrapper {
 
+    // Icons can be SVG or PNG only. Never allow user to pick GIF, JPEG, etc, otherwise
+    // we should convert these files to PNG in CustomIconLoader:toBase64 method.
     private final List<String> extensions = Arrays.asList("svg", "png");
 
     private final SettingsForm settingsForm;
