@@ -127,7 +127,7 @@ public class CustomIconLoader {
                         bufferedImage.getGraphics().drawImage(image, 0, 0, null);
                         image = bufferedImage;
                     }
-                    ImageIO.write((RenderedImage) image, "png", outputStream);
+                    ImageIO.write((RenderedImage) image, "png", outputStream); // TODO fix (PNG) "java.lang.ArrayIndexOutOfBoundsException: Coordinate out of bounds!" -> possible fix: try TwelveMonkeys library
                 } catch (IOException ex) {
                     LOGGER.info("Can't load " + iconType + " icon: " + ex.getMessage(), ex);
                 }
