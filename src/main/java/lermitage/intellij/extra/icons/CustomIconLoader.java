@@ -9,14 +9,16 @@ import com.intellij.util.Base64;
 import com.intellij.util.IconUtil;
 import com.intellij.util.ImageLoader;
 import com.intellij.util.RetinaImage;
-import com.intellij.util.SVGLoader;
 
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 public class CustomIconLoader {
+
+    private static final ThreadLocal<Boolean> contextUpdated = ThreadLocal.withInitial(() -> false);
 
     private static final Logger LOGGER = Logger.getInstance(CustomIconLoader.class);
 
@@ -34,7 +36,19 @@ public class CustomIconLoader {
         return IconUtil.createImageIcon(fromBase64.getImage());
     }
 
+    /** Load graphics libraries (TwelveMonkeys) in order to make the JVM able to manipulate SVG files. */
+    private synchronized static void enhanceImageIOCapabilities() {
+        if (!contextUpdated.get()) {
+            Thread.currentThread().setContextClassLoader(CustomIconLoader.class.getClassLoader());
+            ImageIO.scanForPlugins();
+            contextUpdated.set(true);
+            LOGGER.info("ImageIO plugins updated with TwelveMonkeys capabilities");
+        }
+    }
+
     public static ImageWrapper loadFromVirtualFile(VirtualFile virtualFile) throws IllegalArgumentException {
+        enhanceImageIOCapabilities();
+
         if (virtualFile.getExtension() != null) {
             Image image;
             IconType iconType;
@@ -44,8 +58,7 @@ public class CustomIconLoader {
                 ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(fileContents);
                 if (virtualFile.getExtension().equals("svg") && new String(fileContents).startsWith("<")) {
                     iconType = IconType.SVG;
-                    // TODO find a stable API, maybe TwelveMonkeys? SVGLoader is marked as Internal
-                    image = SVGLoader.load(byteArrayInputStream, 1.0f);
+                    image = ImageIO.read(byteArrayInputStream);
                 } else {
                     iconType = IconType.IMG;
                     image = ImageLoader.loadFromStream(byteArrayInputStream);
@@ -62,13 +75,15 @@ public class CustomIconLoader {
     }
 
     public static ImageWrapper fromBase64(String base64, IconType iconType, double additionalUIScale) {
+        enhanceImageIOCapabilities();
+
         byte[] decodedBase64 = Base64.decode(base64);
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(decodedBase64);
         Image image = null;
         try {
             switch (iconType) {
                 case SVG:
-                    image = SVGLoader.load(byteArrayInputStream, 1.0f);
+                    image = ImageIO.read(byteArrayInputStream);
                     break;
                 case IMG:
                     image = ImageLoader.loadFromStream(byteArrayInputStream);

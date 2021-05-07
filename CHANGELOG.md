@@ -1,8 +1,9 @@
 # Extra Icons Change Log
 
-## 1.53.0 (WIP)
+## 1.53.0 (2021/05/08)
 * improve Storybook support.
 * experimental: try to fix `ArrayIndexOutOfBoundsException: Coordinate out of bounds!` error when loading some custom PNG icons.
+* internal: removed dependencies to IJ internal code used to load custom SVG icons. Replaced by TwelveMonkeys + Apache Batik libraries. This way, future IDE updates won't break this plugin.
 
 ## 1.52.0 (2021/05/03)
 * fix Dotenv files support. Thx Philipp Voronin.

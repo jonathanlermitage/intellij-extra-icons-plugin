@@ -7,9 +7,10 @@
     <description><![CDATA[
       Add icons for files like Travis YML, Appveyor YML, Git sub-modules, etc.<br/>
       See <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate.<br/>
-      If you find this plugin helpful, you can <a href="http://buymeacoff.ee/jlermitage">buy me a coffee</a>. Thank you! 👍<br/><br/>
+      If you find this plugin helpful, you can <a href="http://buymeacoff.ee/jlermitage">buy me a coffee</a>. Thank you! 👍<br/>
+      To customize toolbar icons, you may also want to install <a href="https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons">Extra ToolWindow Colorful Icons</a> plugin.<br/><br/>
       See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide201/CHANGELOG.md">changelog</a>
-      and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide201/README.md">readme</a> on GitHub.
+      and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide201/README.md">readme</a> on GitHub.<br/>
       Check also my <a href="https://plugins.jetbrains.com/author/ed9cc7eb-74f5-46c1-b0df-67162fe1a1c5">plugins</a>.
     ]]>
     </description>
@@ -21,10 +22,11 @@
     -->
 
     <change-notes><![CDATA[
-    1.53.0 (WIP)
+    1.53.0 (2021/05/08)
     <ul>
       <li>improve Storybook support.</li>
       <li>experimental: try to fix <i>ArrayIndexOutOfBoundsException: Coordinate out of bounds!</i> error when loading some custom PNG icons.</li>
+      <li>internal: removed dependencies to IJ internal code used to load custom SVG icons. Replaced by TwelveMonkeys + Apache Batik libraries. This way, future IDE updates won't break this plugin.</li>
     </ul>
     1.52.0 (2021/05/03)
     <ul>

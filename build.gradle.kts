@@ -19,6 +19,9 @@ val pluginEnableBuildSearchableOptions: String by project
 
 val inCI = System.getenv("CI") != null
 
+val twelvemonkeysVersion = "3.7.0"
+val junitVersion = "5.7.1"
+
 println("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion")
 
 group = "lermitage.intellij.extra.icons"
@@ -29,8 +32,13 @@ repositories {
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.1")
+    implementation("com.twelvemonkeys.imageio:imageio-core:$twelvemonkeysVersion") // https://github.com/haraldk/TwelveMonkeys/releases
+    // TODO Apache Batik is bundled with IJ and IJ-based IDEs (tested with PyCharm Community). If needed, see how to
+    //  integrate org.apache.xmlgraphics:batik-all:1.14 without failing to load org.apache.batik.anim.dom.SAXSVGDocumentFactory
+    implementation("com.twelvemonkeys.imageio:imageio-batik:$twelvemonkeysVersion") // SVG support
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
 
 intellij {
