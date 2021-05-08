@@ -58,11 +58,10 @@ public class CustomIconLoader {
                 ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(fileContents);
                 if (virtualFile.getExtension().equals("svg") && new String(fileContents).startsWith("<")) {
                     iconType = IconType.SVG;
-                    image = ImageIO.read(byteArrayInputStream);
                 } else {
                     iconType = IconType.IMG;
-                    image = ImageLoader.loadFromStream(byteArrayInputStream);
                 }
+                image = ImageIO.read(byteArrayInputStream);
             } catch (IOException ex) {
                 throw new IllegalArgumentException("IOException while trying to load image.");
             }
@@ -79,16 +78,9 @@ public class CustomIconLoader {
 
         byte[] decodedBase64 = Base64.decode(base64);
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(decodedBase64);
-        Image image = null;
+        Image image;
         try {
-            switch (iconType) {
-                case SVG:
-                    image = ImageIO.read(byteArrayInputStream);
-                    break;
-                case IMG:
-                    image = ImageLoader.loadFromStream(byteArrayInputStream);
-                    break;
-            }
+            image = ImageIO.read(byteArrayInputStream);
         } catch (IOException ex) {
             LOGGER.info("Can't load " + iconType + " icon: " + ex.getMessage(), ex);
             return null;

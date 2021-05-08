@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.54.0 (WIP)
+* Improve rendering of custom PNG icons.
+
 ## 1.53.0 (2021/05/08)
 * improve Storybook support.
 * experimental: try to fix `ArrayIndexOutOfBoundsException: Coordinate out of bounds!` error when loading some custom PNG icons.

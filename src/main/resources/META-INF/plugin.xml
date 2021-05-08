@@ -22,6 +22,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.54.0 (WIP)
+    <ul>
+      <li>Improve rendering of custom PNG icons.</li>
+    </ul>
     1.53.0 (2021/05/08)
     <ul>
       <li>improve Storybook support.</li>
