@@ -573,6 +573,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("version", ".version", "versions", ".versions").end(YML),
             ofFile("version_xml", "/extra-icons/version.png", "Version: (.)version(s).xml")
                 .eq("version", ".version", "versions", ".versions").end(".xml"),
+            ofFile("vite", "/extra-icons/vite.svg", "Vite: vite.config.js")
+                .eq("vite.config.js"),
             ofFile("weblate", "/extra-icons/weblate.svg", "Weblate: .weblate")
                 .eq(".weblate"),
             ofFile("webpack", "/extra-icons/webpack.svg", "Webpack: webpack.conf.js")

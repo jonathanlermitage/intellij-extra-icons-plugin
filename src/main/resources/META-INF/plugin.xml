@@ -25,6 +25,7 @@
     1.54.0 (WIP)
     <ul>
       <li>Improve rendering of custom PNG icons.</li>
+      <li>Support <a href="https://vitejs.dev">Vite</a> <i>vite.config.js</i> files.</li>
     </ul>
     1.53.0 (2021/05/08)
     <ul>
