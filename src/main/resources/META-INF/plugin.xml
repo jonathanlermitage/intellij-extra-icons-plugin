@@ -27,6 +27,7 @@
       <li>improve rendering of custom PNG icons.</li>
       <li>support <a href="https://vitejs.dev">Vite</a> <i>vite.config.js</i> files.</li>
       <li>support <a href="https://docs.muse.dev">Muse</a> <i>.muse.toml</i> files.</li>
+      <li>support <a href="https://github.com/hadolint/hadolint">Hadolint</a> <i>.hadolint.y(a)ml</i> files.</li>
     </ul>
     1.53.0 (2021/05/08)
     <ul>

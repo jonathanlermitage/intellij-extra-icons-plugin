@@ -4,6 +4,7 @@
 * improve rendering of custom PNG icons.
 * support [Vite](https://vitejs.dev) `vite.config.js` files.
 * support [Muse](https://docs.muse.dev) `.muse.toml` files.
+* support [Hadolint](https://github.com/hadolint/hadolint) `.hadolint.y(a)ml` files.
 
 ## 1.53.0 (2021/05/08)
 * improve Storybook support.

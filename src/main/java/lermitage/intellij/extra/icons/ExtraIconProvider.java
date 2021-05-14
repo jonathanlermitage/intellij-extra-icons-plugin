@@ -367,6 +367,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("graphql.schema.json"),
             ofFile("gocd", "/extra-icons/gocd.png", "Gocd: .gocd(.xml,.yml,...)")
                 .eq(".gocd").mayEnd(CFG),
+            ofFile("hadolint", "/extra-icons/hadolint.png", "Hadolint: .hadolint.yaml, .hadolint.yml")
+                .eq(".hadolint").end(YML),
             ofFile("hibernate", "/extra-icons/hibernate.svg", "Hibernate: hibernate.properties")
                 .eq("hibernate.properties"),
             ofFile("java", "/extra-icons/java.png", "JVM properties (e.g. Tomcat or Maven JVM configuration): jvm.properties, jvm.config")
