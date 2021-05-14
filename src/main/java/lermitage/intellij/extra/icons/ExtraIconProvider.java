@@ -439,6 +439,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("module-info.java"),
             ofFile("moduleinfojava_alt", "/extra-icons/moduleinfo_alt.svg", "Java module: module-info.java (alternative)")
                 .eq("module-info.java"),
+            ofFile("muse", "/extra-icons/muse.png", "Muse: .muse.toml")
+                .eq(".muse.toml"),
             ofFile("mysql", "/extra-icons/my.png", "MySQL: my.ini")
                 .eq("my.ini"),
             ofFile("netlify", "/extra-icons/netlify.svg", "Netlify: netlify.toml")
