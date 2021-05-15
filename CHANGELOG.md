@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.54.0 (WIP)
+## 1.54.0 (2021/05/15)
 * improve rendering of custom PNG icons.
 * support [Vite](https://vitejs.dev) `vite.config.js` files.
 * support [Muse](https://docs.muse.dev) `.muse.toml` files.
