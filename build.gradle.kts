@@ -20,7 +20,7 @@ val pluginEnableBuildSearchableOptions: String by project
 val inCI = System.getenv("CI") != null
 
 val twelvemonkeysVersion = "3.7.0"
-val junitVersion = "5.7.1"
+val junitVersion = "5.7.2"
 
 println("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion")
 
