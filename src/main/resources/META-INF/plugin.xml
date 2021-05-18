@@ -1,3 +1,10 @@
+<!--
+  IMPORTANT
+  Plugin should be dynamic (can be loaded with no IDE restart), but some bugs in IDE reset plugin settings.
+  Dynamic Plugins how-to: https://plugins.jetbrains.com/docs/intellij/dynamic-plugins.html#mark-extension-points-as-dynamic
+  Dynamic Plugins issues: https://youtrack.jetbrains.com/issues/IDEA?q=%23dynamic-plugins, especially https://youtrack.jetbrains.com/issue/IDEA-262732.
+  That's why we're not ready to remove the << require-restart="true" >> instruction.
+-->
 <idea-plugin require-restart="true">
     <id>lermitage.intellij.extra.icons</id>
     <name>Extra Icons</name>
@@ -72,12 +79,16 @@
             id="extraIconsFilePathIconProvider"
             order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
-        <applicationService serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService" />
-        <projectService serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService"/>
+        <applicationService
+            serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService"/>
+        <projectService
+            serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService"/>
 
-        <applicationConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.IDEConfigurableProvider" id="LermitageExtraIcons"
+        <applicationConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.IDEConfigurableProvider"
+                                 id="LermitageExtraIcons"
                                  displayName="Extra Icons" parentId="appearance"/>
-        <projectConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.ProjectConfigurableProvider" id="LermitageExtraIcons-Project"
+        <projectConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.ProjectConfigurableProvider"
+                             id="LermitageExtraIcons-Project"
                              displayName="Project" parentId="LermitageExtraIcons"/>
     </extensions>
 
