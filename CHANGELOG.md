@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.55.0 (WIP)
+* rework support of `*.spec.tsx` files.
+
 ## 1.54.0 (2021/05/15)
 * improve rendering of custom PNG icons.
 * support [Vite](https://vitejs.dev) `vite.config.js` files.

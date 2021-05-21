@@ -159,8 +159,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*[^a-zA-Z0-9]guard\\.(js|ts)"),
             ofFile("angular_resolver_generic", "/extra-icons/angular-resolver.svg", "AngularJS: *.resolver.(js|ts)")
                 .regex(".*[^a-zA-Z0-9]resolver\\.(js|ts)"),
-            ofFile("angular_spec_generic", "/extra-icons/test-ts.svg", "AngularJS: *.spec.(js|ts)")
-                .regex(".*[^a-zA-Z0-9]spec\\.(js|ts)"),
+            ofFile("angular_spec_generic", "/extra-icons/test-ts.svg", "AngularJS: *.spec.(js|ts|tsx)")
+                .regex(".*[^a-zA-Z0-9]spec\\.(js|ts|tsx)"),
             ofFile("babel", "/extra-icons/babel_alt.svg", "Babel: babel.config.[json|js|cjs|mjs]|.babelrc.[json|js|cjs|mjs]|.babelrc")
                 .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?"),
             ofFile("babel_alt", "/extra-icons/babel_alt2.svg", "Babel: babel.config.[json|js|cjs|mjs]|.babelrc.[json|js|cjs|mjs]|.babelrc (alternative) ")

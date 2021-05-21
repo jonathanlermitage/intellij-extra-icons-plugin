@@ -66,7 +66,7 @@ MIT License. In other words, you can do what you want: this project is entirely 
 
 ### 🤝 Contributors
 
-* (author) Jonathan Lermitage (<jonathan.lermitage@gmail.com>, [![linkedin](misc/linkedin_profile_badge.png)](https://www.linkedin.com/in/jonathan-lermitage-092711142/), [buymeacoff.ee](http://buymeacoff.ee/jlermitage))
+* (author) Jonathan Lermitage (<jonathan.lermitage@gmail.com>, [![linkedin](misc/linkedin_profile_badge.png)](https://www.linkedin.com/in/jonathan-lermitage-092711142/), [buymeacoff.ee](https://buymeacoff.ee/jlermitage))
 * Edoardo Luppi (<lp.edoardo@gmail.com>)
 * Matthias Kunnen ([github.com/MatthiasKunnen](https://github.com/MatthiasKunnen))
 * Florian Böhm ([github.com/Sheigutn](https://github.com/Sheigutn))
