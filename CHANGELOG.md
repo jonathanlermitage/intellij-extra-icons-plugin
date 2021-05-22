@@ -2,6 +2,7 @@
 
 ## 1.55.0 (WIP)
 * rework support of `*.spec.tsx` files.
+* support `Caddyfile` files.
 
 ## 1.54.0 (2021/05/15)
 * improve rendering of custom PNG icons.

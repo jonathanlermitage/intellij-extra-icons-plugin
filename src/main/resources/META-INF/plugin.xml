@@ -31,6 +31,7 @@
     1.55.0 (WIP)
     <ul>
       <li>rework support of <i>*.spec.tsx</i> files.</li>
+      <li>support <i>Caddyfile</i> files.</li>
     </ul>
     1.54.0 (2021/05/15)
     <ul>

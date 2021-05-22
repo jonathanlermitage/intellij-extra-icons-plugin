@@ -223,6 +223,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("author", "authors").mayEnd(TXT),
             ofFile("bamboo", "/extra-icons/bamboo.png", "Bamboo: bamboo.yml")
                 .eq("bamboo.yml"),
+            ofFile("caddyfile", "/extra-icons/caddy.svg", "Caddy: Caddyfile")
+                .eq("caddyfile"),
             ofFile("cargo", "/extra-icons/cargo.png", "Cargo: cargo.toml")
                 .eq("cargo.toml"),
             ofFile("gradle_main", "/extra-icons/gradle.svg", "Gradle: build.gradle, gradle.properties, settings.gradle")
