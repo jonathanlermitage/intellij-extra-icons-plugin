@@ -4,8 +4,8 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 plugins {
     id("java")
     id("idea")
-    id("org.jetbrains.intellij") version "0.7.3" // https://github.com/JetBrains/gradle-intellij-plugin
-    id("com.github.ben-manes.versions") version "0.38.0" // https://github.com/ben-manes/gradle-versions-plugin
+    id("org.jetbrains.intellij") version "1.0" // https://github.com/JetBrains/gradle-intellij-plugin and https://lp.jetbrains.com/gradle-intellij-plugin/
+    id("com.github.ben-manes.versions") version "0.39.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.0.0" // https://github.com/radarsh/gradle-test-logger-plugin
 }
 
@@ -42,13 +42,13 @@ dependencies {
 }
 
 intellij {
-    downloadSources = pluginDownloadIdeaSources.toBoolean() && !inCI
-    instrumentCode = pluginInstrumentPluginCode.toBoolean()
-    pluginName = "Extra Icons"
-    setPlugins("AngularJS")
-    sandboxDirectory = "${rootProject.projectDir}/.idea-sandbox/${pluginIdeaVersion}"
-    updateSinceUntilBuild = false
-    version = pluginIdeaVersion
+    downloadSources.set(pluginDownloadIdeaSources.toBoolean() && !inCI)
+    instrumentCode.set(pluginInstrumentPluginCode.toBoolean())
+    pluginName.set("Extra Icons")
+    plugins.set(listOf("AngularJS"))
+    sandboxDir.set("${rootProject.projectDir}/.idea-sandbox/${pluginIdeaVersion}")
+    updateSinceUntilBuild.set(false)
+    version.set(pluginIdeaVersion)
 }
 
 testlogger {
