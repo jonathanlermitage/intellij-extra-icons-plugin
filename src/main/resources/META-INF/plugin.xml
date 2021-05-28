@@ -28,7 +28,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.55.0 (WIP)
+    1.55.0 (2021/05/29)
     <ul>
       <li>rework support of <i>*.spec.tsx</i> files.</li>
       <li>support <i>Caddyfile</i> files.</li>

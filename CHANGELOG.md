@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.55.0 (WIP)
+## 1.55.0 (2021/05/29)
 * rework support of `*.spec.tsx` files.
 * support `Caddyfile` files.
 
