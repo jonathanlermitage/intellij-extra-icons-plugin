@@ -33,7 +33,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_circleci", "/extra-icons/folder_circleci.svg", "Circle CI (regex): '^/\\.circleci$' folder")
                 .regex("^/\\.circleci$")
                 .eq(".circleci"), // FIXME #13 temp fix
-            ofDir("dir_dependabot", "/extra-icons/folder_dependabot.png", "Dependabot (regex): '^/\\.dependabot$' folder")
+            ofDir("dir_dependabot", "/extra-icons/folder_dependabot.svg", "Dependabot (regex): '^/\\.dependabot$' folder")
                 .regex("^/\\.dependabot$")
                 .eq(".dependabot"), // FIXME #13 temp fix
             ofDir("dir_docker", "/extra-icons/folder_docker.svg", "Docker (regex): '^/docker$' folder")
@@ -181,7 +181,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             // file plus its containing folder
             //
-            ofFile("dependabot_config", "/extra-icons/dependabot.png", "Dependabot: .dependabot/config.yml")
+            ofFile("dependabot_config", "/extra-icons/dependabot.svg", "Dependabot: .dependabot/config.yml")
                 .eq("config.yml").parents(".dependabot"),
             ofFile("golwroot", "/extra-icons/glowroot.png", "Glowroot: glowroot/admin.json and glowroot/config.json")
                 .eq("admin.json", "config.json").parents("glowroot"),

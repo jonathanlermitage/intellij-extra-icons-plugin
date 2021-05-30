@@ -2,6 +2,7 @@
 
 ## 1.56.0 (WIP)
 * rework Draw.io icon and add an alternative icon.
+* rework Dependabot icons (PNG icon to SVG).
 
 ## 1.55.0 (2021/05/29)
 * rework support of `*.spec.tsx` files.
