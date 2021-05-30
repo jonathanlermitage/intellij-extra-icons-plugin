@@ -623,7 +623,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".dar"),
             ofFile("ext_deb", "/extra-icons/deb.png", "Debian package: *.deb")
                 .end(".deb"),
-            ofFile("ext_drawio", "/extra-icons/drawio.png", "Draw.io: *.drawio, *.dio")
+            ofFile("ext_drawio", "/extra-icons/drawio.svg", "Draw.io: *.drawio, *.dio")
+                .end(".drawio", ".dio"),
+            ofFile("ext_drawio_alt", "/extra-icons/drawio_alt.png", "Draw.io: *.drawio, *.dio (alternative)")
                 .end(".drawio", ".dio"),
             ofFile("ext_epub", "/extra-icons/epub.svg", "Epub: *.epub, *.mobi, *.azw, *.azw3")
                 .end(".epub", ".mobi", ".azw", ".azw3"),

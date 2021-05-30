@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.56.0 (WIP)
+* rework Draw.io icon and add an alternative icon.
+
 ## 1.55.0 (2021/05/29)
 * rework support of `*.spec.tsx` files.
 * support `Caddyfile` files.

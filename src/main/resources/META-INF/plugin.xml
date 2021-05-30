@@ -28,6 +28,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.56.0 (WIP)
+    <ul>
+      <li>rework Draw.io icon and add an alternative icon.</li>
+    </ul>
     1.55.0 (2021/05/29)
     <ul>
       <li>rework support of <i>*.spec.tsx</i> files.</li>
@@ -45,15 +49,6 @@
       <li>improve Storybook support.</li>
       <li>experimental: try to fix <i>ArrayIndexOutOfBoundsException: Coordinate out of bounds!</i> error when loading some custom PNG icons.</li>
       <li>internal: removed dependencies to IJ internal code used to load custom SVG icons. Replaced by TwelveMonkeys + Apache Batik libraries. This way, future IDE updates won't break this plugin.</li>
-    </ul>
-    1.52.0 (2021/05/03)
-    <ul>
-      <li>fix Dotenv files support. Thx Philipp Voronin.</li>
-      <li>add an alternative icon for TODO files.</li>
-      <li>add an alternative icon for CodeShip files.</li>
-      <li>support TSX files.</li>
-      <li>support <i>jitpack.yml</i> files.</li>
-      <li>improve Storybook support.</li>
     </ul>
     ]]>
     </change-notes>
