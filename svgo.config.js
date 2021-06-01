@@ -5,7 +5,7 @@ module.exports = {
     plugins: [
         'removeDoctype',
         'removeXMLProcInst',
-        'removeComments',
+        //'removeComments', -> keep copyright notice
         'removeMetadata',
         'removeEditorsNSData',
         'cleanupAttrs',
