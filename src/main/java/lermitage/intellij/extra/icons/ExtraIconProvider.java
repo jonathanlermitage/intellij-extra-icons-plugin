@@ -701,6 +701,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".scss"),
             ofFile("less", "/extra-icons/less.svg", "LESS CSS: *.less")
                 .end(".less"),
+            ofFile("ext_stylus-browserext", "/extra-icons/stylus-browserext.png", "Stylus (browser extension): *.styl")
+                .end(".styl"),
             ofFile("ext_svg", "/extra-icons/svg.svg", "SVG: *.svg")
                 .end(".svg"),
             ofFile("ext_tf", "/extra-icons/terraform.svg", "Terraform: *.hcl, *.tf, *.tf.json")
