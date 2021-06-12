@@ -1,6 +1,8 @@
 import com.adarshr.gradle.testlogger.theme.ThemeType
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
+fun properties(key: String) = project.findProperty(key).toString()
+
 plugins {
     id("java")
     id("idea")
@@ -87,6 +89,9 @@ tasks {
     }
     runIde {
         jvmArgs = listOf("-Xms768m", "-Xmx2048m", "--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
+    }
+    runPluginVerifier {
+        ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map(String::trim).filter(String::isNotEmpty))
     }
     buildSearchableOptions {
         enabled = pluginEnableBuildSearchableOptions.toBoolean()
