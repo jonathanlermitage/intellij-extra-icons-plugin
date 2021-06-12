@@ -1,4 +1,5 @@
 @echo off
+@echo --------- %date% %time% ---------
 
 if [%1] == [help] (
   echo w $V:    set gradle wrapper
