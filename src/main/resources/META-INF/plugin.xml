@@ -33,6 +33,7 @@
       <li>rework Draw.io icon and add an alternative icon.</li>
       <li>rework Dependabot icons (PNG icon to SVG).</li>
       <li>support Stylus (browser extension) <i>*.styl</i> files.</li>
+      <li>support Mergify YML files.</li>
     </ul>
     1.55.0 (2021/05/29)
     <ul>

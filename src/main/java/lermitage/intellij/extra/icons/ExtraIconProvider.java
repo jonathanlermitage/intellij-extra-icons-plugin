@@ -57,6 +57,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_idearun", "/extra-icons/folder_idea.svg", "IntelliJ IDEA 2020+ Run/Debug Configurations (regex): '^/\\.run' folder")
                 .regex("^/\\.run$")
                 .eq(".run"), // FIXME #13 temp fix
+            ofDir("dir_mergify", "/extra-icons/folder_mergify.svg", "Mergify .mergify folder")
+                .regex("^/\\.mergify$")
+                .eq(".mergify"), // FIXME #13 temp fix
             ofDir("dir_mps", "/extra-icons/folder_idea.svg", "JetBrains MPS (regex): '^/\\.mps$' folder")
                 .regex("^/\\.mps$")
                 .eq(".mps"), // FIXME #13 temp fix
@@ -185,6 +188,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("config.yml").parents(".dependabot"),
             ofFile("golwroot", "/extra-icons/glowroot.png", "Glowroot: glowroot/admin.json and glowroot/config.json")
                 .eq("admin.json", "config.json").parents("glowroot"),
+            ofFile("mergify1", "/extra-icons/mergify.svg", "Mergify: .mergify.yml")
+                .eq(".mergify.yml"),
+            ofFile("mergify2", "/extra-icons/mergify.svg", "Mergify: .mergify/config.yml")
+                .eq("config.yml").parents(".mergify"),
+            ofFile("mergify3", "/extra-icons/mergify.svg", "Mergify: .github/mergify.yml")
+                .eq("mergify.yml").parents(".github"),
             ofFile("nuget", "/extra-icons/nuget.svg", "Nuget: .nuget/packages.config")
                 .eq("packages.config").parents(".nuget"),
             ofFile("onap_cba_blueprint", "/extra-icons/onap-cba-blueprint.svg", "ONAP CBA: Definitions/*blueprint.json")
