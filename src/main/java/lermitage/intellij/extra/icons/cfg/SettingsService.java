@@ -2,8 +2,11 @@
 
 package lermitage.intellij.extra.icons.cfg;
 
-import com.intellij.notification.*;
-import com.intellij.openapi.components.ServiceManager;
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationDisplayType;
+import com.intellij.notification.NotificationGroup;
+import com.intellij.notification.NotificationType;
+import com.intellij.notification.Notifications;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
@@ -97,17 +100,19 @@ public abstract class SettingsService {
         return allModels;
     }
 
+    /** Get project-level settings service, or global-level settings service if project is null. */
     @NotNull
     public static SettingsService getInstance(@Nullable Project project) {
         if (project == null) {
             return getIDEInstance();
         }
-        return ServiceManager.getService(project, SettingsProjectService.class);
+        return SettingsProjectService.getInstance(project);
     }
 
+    /** Get global-level settings service. */
     @NotNull
     public static SettingsService getIDEInstance() {
-        return ServiceManager.getService(SettingsIDEService.class);
+        return SettingsIDEService.getInstance();
     }
 
     private void compileAndSetRegex(String regex) {

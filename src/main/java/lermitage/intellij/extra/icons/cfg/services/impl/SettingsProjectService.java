@@ -3,7 +3,6 @@
 package lermitage.intellij.extra.icons.cfg.services.impl;
 
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.xmlb.XmlSerializerUtil;
@@ -21,7 +20,7 @@ public class SettingsProjectService extends SettingsService implements Persisten
 
     @NotNull
     public static SettingsProjectService getInstance(Project project) {
-        return ServiceManager.getService(project, SettingsProjectService.class);
+        return project.getService(SettingsProjectService.class);
     }
 
     public boolean isOverrideIDESettings() {
