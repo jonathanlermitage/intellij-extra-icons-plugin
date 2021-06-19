@@ -1,10 +1,13 @@
 # Extra Icons Change Log
 
-## 1.56.0 (WIP)
+## 1.56.0 (2021/06/20)
 * rework Draw.io icon and add an alternative icon.
 * rework Dependabot icons (PNG icon to SVG).
 * support Stylus (browser extension) `*.styl` files.
 * support Mergify YML files.
+* support `.*\.egg-info` folders.
+* internal: remove usage of code deprecated in IJ 2021.2.
+* internal: minor refactoring.
 
 ## 1.55.0 (2021/05/29)
 * rework support of `*.spec.tsx` files.
