@@ -39,7 +39,7 @@ $ gradlew buildPlugin        # build plugin to build/distributions/*.zip
 $ gradlew runIde             # try plugin in a standalone IDE
 $ gradlew dependencyUpdates  # check for dependencies updates
 $ gradlew verifyPlugin       # validate plugin.xml descriptors as well as plugin’s archive structure
-$ gradlew runPluginVerifier  # check for compatibility issues with IDE (there's already a GitHub action for that)
+$ gradlew runPluginVerifier  # check for compatibility issues with IDE
 $ gradlew test               # run tests
 ```
 
