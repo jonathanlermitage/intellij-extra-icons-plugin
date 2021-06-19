@@ -69,10 +69,13 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_nuget", "/extra-icons/folder_nuget.svg", "Nuget (regex): '^/\\.nuget$' folder")
                 .regex("^/\\.nuget")
                 .eq(".nuget"), // FIXME #13 temp fix
-            ofDir("dir_pytest_cache", "/extra-icons/folder_pytest_cache.svg", "PyTest cache: '^/\\.pytest_cache$' folder")
+            ofDir("dir_pytest_cache", "/extra-icons/folder_tmp.svg", "PyTest cache: '^/\\.pytest_cache$' folder")
                 .regex("^/\\.pytest_cache$")
                 .eq(".pytest_cache"), // FIXME #13 temp fix
-            ofDir("dir_pytest_cache_alt", "/extra-icons/folder_pytest_cache_alt.svg", "PyTest cache: '^/\\.pytest_cache$' folder (alternative)")
+            ofDir("dir_pytest_cache_alt1", "/extra-icons/folder_pytest_cache.svg", "PyTest cache: '^/\\.pytest_cache$' folder (alternative 1)")
+                .regex("^/\\.pytest_cache$")
+                .eq(".pytest_cache"), // FIXME #13 temp fix
+            ofDir("dir_pytest_cache_alt2", "/extra-icons/folder_pytest_cache_alt.svg", "PyTest cache: '^/\\.pytest_cache$' folder (alternative 2)")
                 .regex("^/\\.pytest_cache$")
                 .eq(".pytest_cache"), // FIXME #13 temp fix
             ofDir("dir_python_venv", "/extra-icons/folder_python_venv.svg", "Python Virtual Environment: '^/\\.venv$' folder")
@@ -87,6 +90,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_python_venv_nodot_alt", "/extra-icons/folder_python_venv_alt.svg", "Python Virtual Environment: '^/venv$' folder (alternative)")
                 .regex("^/venv$")
                 .eq("venv"), // FIXME #13 temp fix
+            ofDir("dir_python_egginfo", "/extra-icons/folder_tmp.svg", "Python: '.*\\.egg-info$' folder")
+                .end(".egg-info"),
             ofDir("dir_teamcity", "/extra-icons/folder_teamcity.svg", "TeamCity (regex): '^/\\.teamcity$' folder")
                 .regex("^/\\.teamcity")
                 .eq(".teamcity"), // FIXME #13 temp fix
