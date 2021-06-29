@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 1.57.0 (WIP)
+* minimal IDE version is now 2020.3.
 * add alternative icons for MS Office files (MS Office 2019 SVG icons).
 
 ## 1.56.0 (2021/06/20)
