@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.57.0 (WIP)
+* add alternative icons for MS Office files (MS Office 2019 SVG icons).
+
 ## 1.56.0 (2021/06/20)
 * rework Draw.io icon and add an alternative icon.
 * rework Dependabot icons (PNG icon to SVG).

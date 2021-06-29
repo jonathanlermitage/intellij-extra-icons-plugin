@@ -745,6 +745,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".vtl"),
             ofFile("ext_war", "/extra-icons/tomcat.svg", "Java WAR: *.war")
                 .end(".war"),
+
             ofFile("ext_libreoffice_calc", "/extra-icons/officedocs/localc.png", "LibreOffice Calc: *.ods")
                 .end(".ods"),
             ofFile("ext_libreoffice_draw", "/extra-icons/officedocs/lodraw.png", "LibreOffice Draw: *.odg")
@@ -755,17 +756,29 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".odf"),
             ofFile("ext_libreoffice_writer", "/extra-icons/officedocs/lowriter.png", "LibreOffice Writer: *.odt")
                 .end(".odt"),
-            ofFile("ext_msoffice_excel", "/extra-icons/officedocs/msexcel.png", "MSOffice Excel: *.xls, *.xlsx")
+            ofFile("ext_msoffice_excel", "/extra-icons/officedocs/msexcel-2019.svg", "MSOffice Excel: *.xls, *.xlsx")
                 .end(".xls", ".xlsx"),
-            ofFile("ext_msoffice_onenote", "/extra-icons/officedocs/msonenote.png", "MSOffice OneNote: *.one, *.onetoc2")
+            ofFile("ext_msoffice_excel_alt", "/extra-icons/officedocs/msexcel.png", "MSOffice Excel: *.xls, *.xlsx (alternative)")
+                .end(".xls", ".xlsx"),
+            ofFile("ext_msoffice_onenote", "/extra-icons/officedocs/msonenote-2019.svg", "MSOffice OneNote: *.one, *.onetoc2")
                 .end(".one", ".onetoc2"),
-            ofFile("ext_msoffice_powerpoint", "/extra-icons/officedocs/mspowerpoint.png", "MSOffice Powerpoint: *.ppt, *.pptx")
+            ofFile("ext_msoffice_onenote_alt", "/extra-icons/officedocs/msonenote.png", "MSOffice OneNote: *.one, *.onetoc2 (alternative)")
+                .end(".one", ".onetoc2"),
+            ofFile("ext_msoffice_powerpoint", "/extra-icons/officedocs/mspowerpoint-2019.svg", "MSOffice Powerpoint: *.ppt, *.pptx")
                 .end(".ppt", ".pptx"),
-            ofFile("ext_msoffice_project", "/extra-icons/officedocs/msproject.png", "MSOffice Project: *.mpd, *.mpp, *.mpt")
+            ofFile("ext_msoffice_powerpoint_alt", "/extra-icons/officedocs/mspowerpoint.png", "MSOffice Powerpoint: *.ppt, *.pptx (alternative)")
+                .end(".ppt", ".pptx"),
+            ofFile("ext_msoffice_project", "/extra-icons/officedocs/msproject-2019.svg", "MSOffice Project: *.mpd, *.mpp, *.mpt")
                 .end(".mpd", ".mpp", ".mpt"),
-            ofFile("ext_msoffice_visio", "/extra-icons/officedocs/msvisio.png", "MSOffice Visio: *.vsd, *.vsdx, *.vss, *.vssx, *.vst, *.vstx")
+            ofFile("ext_msoffice_project_alt", "/extra-icons/officedocs/msproject.png", "MSOffice Project: *.mpd, *.mpp, *.mpt (alternative)")
+                .end(".mpd", ".mpp", ".mpt"),
+            ofFile("ext_msoffice_visio", "/extra-icons/officedocs/msvisio-2019.svg", "MSOffice Visio: *.vsd, *.vsdx, *.vss, *.vssx, *.vst, *.vstx")
                 .end(".vsd", ".vsdx", ".vss", ".vssx", ".vst", ".vstx"),
-            ofFile("ext_msoffice_word", "/extra-icons/officedocs/msword.png", "MSOffice Word: *.doc, *.docx")
+            ofFile("ext_msoffice_visio_alt", "/extra-icons/officedocs/msvisio.png", "MSOffice Visio: *.vsd, *.vsdx, *.vss, *.vssx, *.vst, *.vstx (alternative)")
+                .end(".vsd", ".vsdx", ".vss", ".vssx", ".vst", ".vstx"),
+            ofFile("ext_msoffice_word", "/extra-icons/officedocs/msword-2019.svg", "MSOffice Word: *.doc, *.docx")
+                .end(".doc", ".docx"),
+            ofFile("ext_msoffice_word_alt", "/extra-icons/officedocs/msword.png", "MSOffice Word: *.doc, *.docx (alternative)")
                 .end(".doc", ".docx"),
 
             //

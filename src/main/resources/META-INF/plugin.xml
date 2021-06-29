@@ -22,6 +22,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.57.0 (WIP)
+    <ul>
+      <li>add alternative icons for MS Office files (MS Office 2019 SVG icons).</li>
+    </ul>
     1.56.0 (2021/06/20)
     <ul>
       <li>rework Draw.io icon and add an alternative icon.</li>
