@@ -68,7 +68,7 @@ public class CustomIconLoader {
             if (image == null) {
                 throw new IllegalArgumentException("Could not load image properly.");
             }
-            return new ImageWrapper(iconType, scaleImage(image), fileContents);
+            return new ImageWrapper(iconType, scaleImage(image, iconType == IconType.SVG), fileContents);
         }
         return null;
     }
@@ -88,7 +88,7 @@ public class CustomIconLoader {
         if (image == null) {
             return null;
         }
-        Image scaledImage = scaleImage(image);
+        Image scaledImage = scaleImage(image, iconType == IconType.SVG);
         if (additionalUIScale != 1f) {
             scaledImage = ImageLoader.scaleImage(scaledImage, additionalUIScale);
         }
@@ -107,9 +107,14 @@ public class CustomIconLoader {
         return base64;
     }
 
-    private static Image scaleImage(Image image) {
+    private static Image scaleImage(Image image, boolean isSVG) {
         int width = image.getWidth(null);
         int height = image.getHeight(null);
+
+        if (isSVG) { // generate high-quality thumbnail
+            Image scaledImage = ImageLoader.scaleImage(image, 128, 128);
+            return RetinaImage.createFrom(scaledImage, 8f, null);
+        }
 
         if (width <= 0 || height <= 0) {
             throw new IllegalArgumentException("Width or height are unknown.");
