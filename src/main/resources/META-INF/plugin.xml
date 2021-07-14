@@ -22,6 +22,12 @@
     -->
 
     <change-notes><![CDATA[
+    1.58.0 (WIP)
+    <ul>
+      <li>improve Dockerfile support.</li>
+      <li>improve Backup files support.</li>
+      <li>support DLL files.</li>
+    </ul>
     1.57.0 (2021/07/01)
     <ul>
       <li>minimal IDE version is now 2020.3.</li>

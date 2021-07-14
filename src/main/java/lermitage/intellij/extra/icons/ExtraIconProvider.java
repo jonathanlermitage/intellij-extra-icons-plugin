@@ -621,8 +621,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".bin"),
             ofFile("ext_bin_alt2", "/extra-icons/binary_alt2.svg", "Binary: *.bin (alternative 2)")
                 .end(".bin"),
-            ofFile("ext_back", "/extra-icons/backup.png", "Backup: *.versionbackup, *.versionsbackup, *.bak, *.back, *.backup, *.old, *.prev, *.revert")
-                .end(".versionbackup", ".versionsbackup", ".bak", ".back", ".backup", ".old", ".prev", ".revert"),
+            ofFile("ext_back", "/extra-icons/backup.png", "Backup: *.versionbackup, *.versionsbackup, *.bak, *.back, *.backup, *.old, *.prev, *.revert, *.releaseBackup")
+                .end(".versionbackup", ".versionsbackup", ".bak", ".back", ".backup", ".old", ".prev", ".revert", ".releasebackup"),
             ofFile("ext_sh", "/extra-icons/bash.svg", "Bash: *.sh")
                 .end(".sh"),
             ofFile("ext_cert", "/extra-icons/certificate.svg", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, ...")
@@ -637,6 +637,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".dar"),
             ofFile("ext_deb", "/extra-icons/deb.png", "Debian package: *.deb")
                 .end(".deb"),
+            ofFile("ext_dll", "/extra-icons/binary.svg", "Windows DLL: *.dll")
+                .end(".dll"),
+            ofFile("ext_dll_alt", "/extra-icons/binary_alt.svg", "Windows DLL: *.dll (alternative 1)")
+                .end(".dll"),
+            ofFile("ext_dll_alt2", "/extra-icons/binary_alt2.svg", "Windows DLL: *.dll (alternative 2)")
+                .end(".dll"),
             ofFile("ext_drawio", "/extra-icons/drawio.svg", "Draw.io: *.drawio, *.dio")
                 .end(".drawio", ".dio"),
             ofFile("ext_drawio_alt", "/extra-icons/drawio_alt.png", "Draw.io: *.drawio, *.dio (alternative)")
@@ -790,6 +796,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("dockerfile"),
             ofFile("docker_generic_alt2", "/extra-icons/docker_alt2.svg", "Docker (generic): start by 'dockerfile' (alternative 2)")
                 .start("dockerfile"),
+            ofFile("docker_generic_2", "/extra-icons/docker.png", "Docker (generic): end with 'dockerfile'")
+                .end("dockerfile"),
+            ofFile("docker_generic_2_alt", "/extra-icons/docker_alt.png", "Docker (generic): end with 'dockerfile' (alternative 1)")
+                .end("dockerfile"),
+            ofFile("docker_generic_2_alt2", "/extra-icons/docker_alt2.svg", "Docker (generic): end with 'dockerfile' (alternative 2)")
+                .end("dockerfile"),
 
             //
             // programmable

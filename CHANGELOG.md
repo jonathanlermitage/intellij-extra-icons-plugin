@@ -1,5 +1,10 @@
 # Extra Icons Change Log
 
+## 1.58.0 (WIP)
+* improve Dockerfile support.
+* improve Backup files support.
+* support DLL files.
+
 ## 1.57.0 (2021/07/01)
 * minimal IDE version is now 2020.3.
 * add alternative icons for MS Office files (MS Office 2019 SVG icons).
