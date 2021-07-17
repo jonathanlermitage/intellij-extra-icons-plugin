@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.58.0 (WIP)
+## 1.58.0 (2021/07/17)
 * improve Dockerfile support.
 * improve Backup files support.
 * support DLL files.

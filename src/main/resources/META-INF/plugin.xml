@@ -22,7 +22,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.58.0 (WIP)
+    1.58.0 (2021/07/17)
     <ul>
       <li>improve Dockerfile support.</li>
       <li>improve Backup files support.</li>
