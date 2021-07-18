@@ -22,6 +22,11 @@
     -->
 
     <change-notes><![CDATA[
+    1.59.0 (WIP)
+    <ul>
+      <li>support <i>AndroidManifest.xml</i> files.</li>
+      <li>support <i>proguard-rules.pro</i> files.</li>
+    </ul>
     1.58.0 (2021/07/17)
     <ul>
       <li>improve Dockerfile support.</li>

@@ -1,5 +1,9 @@
 # Extra Icons Change Log
 
+## 1.59.0 (WIP)
+* support `AndroidManifest.xml` files.
+* support `proguard-rules.pro` files.
+
 ## 1.58.0 (2021/07/17)
 * improve Dockerfile support.
 * improve Backup files support.

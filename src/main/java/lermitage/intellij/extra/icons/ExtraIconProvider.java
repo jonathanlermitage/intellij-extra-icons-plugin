@@ -219,6 +219,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".keep", ".gitkeep", ".hgkeep", ".svnkeep"),
             ofFile("htaccess", "/extra-icons/htaccess.svg", "Apache: .htaccess")
                 .eq(".htaccess"),
+            ofFile("android_manifest", "/extra-icons/android.svg", "Android: androidmanifest.xml")
+                .eq("androidmanifest.xml"),
+            ofFile("android_manifest_alt", "/extra-icons/android_alt.svg", "Android: androidmanifest.xml (alternative)")
+                .eq("androidmanifest.xml"),
             ofFile("appveyor", "/extra-icons/appveyor.svg", "Appveyor: appveyor.yml, .appveyor.yml")
                 .eq("appveyor.yml", ".appveyor.yml"),
             ofFile("allcontributors", "/extra-icons/allcontributors.svg", "All Contributors: .all-contributorsrc")
@@ -491,6 +495,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".prettierignore"),
             ofFile("privacy", "/extra-icons/privacy.svg", "Privacy: privacy(.md,.txt,.adoc,.rst)")
                 .eq("privacy").mayEnd(TXT),
+            ofFile("proguard", "/extra-icons/proguard.svg", "Proguard: proguard-rules.pro")
+                .eq("proguard-rules.pro"),
             ofFile("prometheus", "/extra-icons/prometheus.svg", "Prometheus: prometheus(.yml,.yaml)")
                 .eq("prometheus").end(YML),
             ofFile("puppet", "/extra-icons/puppet.svg", "Puppet: puppet(.conf)")
