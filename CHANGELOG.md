@@ -1,8 +1,9 @@
 # Extra Icons Change Log
 
-## 1.59.0 (WIP)
+## 1.59.0 (2021/07/30)
 * support `AndroidManifest.xml` files.
 * support `proguard-rules.pro` files.
+* support Maven Shade Plugin `dependency-reduced-pom.xml` files.
 
 ## 1.58.0 (2021/07/17)
 * improve Dockerfile support.

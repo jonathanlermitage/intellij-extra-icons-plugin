@@ -455,6 +455,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("logstash-").end(".cfg", ".conf", ".yml", ".yaml", ".txt"),
             ofFile("lombok", "/extra-icons/lombok.svg", "Lombok: lombok.config")
                 .eq("lombok.config"),
+            ofFile("maven_shade_plugin", "/extra-icons/generated_pom.svg", "Maven Shade Plugin: dependency-reduced-pom.xml")
+                .eq("dependency-reduced-pom.xml"),
+            ofFile("maven_shade_plugin_alt", "/extra-icons/generated_pom_alt.svg", "Maven Shade Plugin: dependency-reduced-pom.xml (alternative)")
+                .eq("dependency-reduced-pom.xml"),
             ofFile("metro", "/extra-icons/metro.svg", "Metro config: metro.config.js")
                 .eq("metro.config.js"),
             ofFile("moduleinfojava", "/extra-icons/moduleinfo.svg", "Java module: module-info.java")
