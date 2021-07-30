@@ -3,6 +3,8 @@
 package lermitage.intellij.extra.icons.cfg;
 
 import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.editor.event.DocumentEvent;
+import com.intellij.openapi.editor.event.DocumentListener;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
@@ -22,6 +24,7 @@ import lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService;
 import org.apache.commons.collections.CollectionUtils;
 import org.intellij.lang.regexp.RegExpFileType;
 import org.jetbrains.annotations.Nls;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JButton;
@@ -64,8 +67,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JCheckBox addToIDEUserIconsCheckbox;
     private JLabel filterLabel;
     private EditorTextField filterTextField;
-    private JButton filterApplyBtn;
-    private JButton filteResetBtn;
+    private JButton filterResetBtn;
     private JBLabel bottomTip;
     private JLabel additionalUIScaleTitle;
     private EditorTextField additionalUIScaleTextField;
@@ -79,8 +81,14 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     public SettingsForm() {
         buttonEnableAll.addActionListener(e -> enableAll());
         buttonDisableAll.addActionListener(e -> disableAll());
-        filterApplyBtn.addActionListener(e -> applyFilter());
-        filteResetBtn.addActionListener(e -> resetFilter());
+        filterResetBtn.addActionListener(e -> resetFilter());
+        filterTextField.addDocumentListener(new DocumentListener() {
+            @Override
+            public void documentChanged(@NotNull DocumentEvent event) {
+                DocumentListener.super.documentChanged(event);
+                applyFilter();
+            }
+        });
     }
 
     @SuppressWarnings("UnusedDeclaration")
@@ -204,8 +212,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         filterLabel.setText("Regex to filter Plugin icons table by:");
         filterTextField.setText("");
         filterTextField.setToolTipText("<html>Regex is a <b>Java regex</b> and <b>is not case-sensitive</b>.</html>");
-        filterApplyBtn.setText("Apply");
-        filteResetBtn.setText("Reset");
+        filterResetBtn.setText("Reset filter");
         bottomTip.setText("<html><b>Icons are ordered by priority</b>. To use an <i>alternative</i> icon (as for Markdown files), " +
             "deactivate the icon(s) with higher priority.</html>");
         initCheckbox();
@@ -265,8 +272,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         iconsTabbedPane.setEnabled(enabled);
         addToIDEUserIconsCheckbox.setEnabled(enabled);
         filterTextField.setEnabled(enabled);
-        filterApplyBtn.setEnabled(enabled);
-        filteResetBtn.setEnabled(enabled);
+        filterResetBtn.setEnabled(enabled);
     }
 
     @Override
@@ -338,7 +344,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             sorter.setRowFilter(RowFilter.regexFilter(filter));
             pluginIconsTable.setRowSorter(sorter);
         } catch (PatternSyntaxException pse) {
-            LOGGER.warn(pse);
+            LOGGER.debug(pse);
         }
     }
 

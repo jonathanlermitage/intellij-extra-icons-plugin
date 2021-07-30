@@ -22,6 +22,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.60.0 (WIP)
+    <ul>
+      <li>config panel: the regex filter is applied as you type.</li>
+    </ul>
     1.59.0 (2021/07/30)
     <ul>
       <li>support <i>AndroidManifest.xml</i> files.</li>

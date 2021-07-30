@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.60.0 (WIP)
+* config panel: the regex filter is applied as you type.
+
 ## 1.59.0 (2021/07/30)
 * support `AndroidManifest.xml` files.
 * support `proguard-rules.pro` files.
