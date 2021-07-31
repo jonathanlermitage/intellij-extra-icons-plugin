@@ -25,6 +25,7 @@
     1.60.0 (WIP)
     <ul>
       <li>config panel: the regex filter is applied as you type.</li>
+      <li>internal: fix usage of deprecated code.</li>
     </ul>
     1.59.0 (2021/07/30)
     <ul>

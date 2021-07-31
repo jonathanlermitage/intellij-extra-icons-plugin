@@ -116,10 +116,10 @@ public abstract class SettingsService {
                 isIgnoredPatternValid = true;
             } catch (PatternSyntaxException e) {
                 NotificationGroupManager.getInstance().getNotificationGroup(Globals.PLUGIN_GROUP_DISPLAY_ID)
-                    .createNotification(Globals.PLUGIN_NAME + " settings",
-                        "Invalid settings",
-                        "Can't compile regex: '" + regex + "' (" + e.getMessage() + ")",
+                    .createNotification("Can't compile regex: '" + regex + "' (" + e.getMessage() + ")",
                         NotificationType.WARNING)
+                    .setTitle(Globals.PLUGIN_NAME + " settings")
+                    .setSubtitle("Invalid settings")
                     .setImportant(true)
                     .notify(null);
                 ignoredPatternObj = null;

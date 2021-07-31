@@ -2,6 +2,7 @@
 
 ## 1.60.0 (WIP)
 * config panel: the regex filter is applied as you type.
+* internal: fix usage of deprecated code.
 
 ## 1.59.0 (2021/07/30)
 * support `AndroidManifest.xml` files.
