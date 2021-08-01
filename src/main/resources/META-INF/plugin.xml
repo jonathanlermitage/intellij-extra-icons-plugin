@@ -26,6 +26,7 @@
     <ul>
       <li>config panel: the regex filter is applied as you type.</li>
       <li>internal: fix usage of deprecated code.</li>
+      <li>rework Android icon.</li>
     </ul>
     1.59.0 (2021/07/30)
     <ul>
