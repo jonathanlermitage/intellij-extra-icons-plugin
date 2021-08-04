@@ -4,6 +4,7 @@
 * config panel: the regex filter is applied as you type.
 * internal: fix usage of deprecated code.
 * rework Android icon.
+* support [Nox](https://nox.thea.codes/en/stable/config.html) `noxfile.py` files.
 
 ## 1.59.0 (2021/07/30)
 * support `AndroidManifest.xml` files.

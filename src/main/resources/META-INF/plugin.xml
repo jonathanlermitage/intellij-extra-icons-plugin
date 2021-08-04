@@ -27,6 +27,7 @@
       <li>config panel: the regex filter is applied as you type.</li>
       <li>internal: fix usage of deprecated code.</li>
       <li>rework Android icon.</li>
+      <li>support <a href="https://nox.thea.codes/en/stable/config.html">Nox</a> <i>noxfile.py</i> files.</li>
     </ul>
     1.59.0 (2021/07/30)
     <ul>
