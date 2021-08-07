@@ -22,7 +22,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.60.0 (WIP)
+    1.60.0 (2021/08/07)
     <ul>
       <li>config panel: the regex filter is applied as you type.</li>
       <li>internal: fix usage of deprecated code.</li>

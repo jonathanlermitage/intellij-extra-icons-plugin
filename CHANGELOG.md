@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.60.0 (WIP)
+## 1.60.0 (2021/08/07)
 * config panel: the regex filter is applied as you type.
 * internal: fix usage of deprecated code.
 * rework Android icon.
