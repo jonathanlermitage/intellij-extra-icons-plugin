@@ -36,6 +36,9 @@ if [%1] == [test] (
 if [%1] == [cv] (
   gradlew dependencyUpdates --warning-mode all
 )
+if [%1] == [cvnd] (
+  gradlew dependencyUpdates --warning-mode all --no-daemon
+)
 if [%1] == [svgo] (
   svgo --folder=src/main/resources/extra-icons/ --recursive
 )
