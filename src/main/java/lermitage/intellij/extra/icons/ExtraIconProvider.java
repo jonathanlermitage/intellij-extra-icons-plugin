@@ -12,6 +12,7 @@ import static java.util.Arrays.asList;
 import static lermitage.intellij.extra.icons.Model.ofDir;
 import static lermitage.intellij.extra.icons.Model.ofFile;
 
+@SuppressWarnings({"SpellCheckingInspection", "GrazieInspection"})
 public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
 
     private static final String[] TXT = new String[]{".md", ".txt", ".adoc", ".rst"};
@@ -32,81 +33,81 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             ofDir("dir_circleci", "/extra-icons/folder_circleci.svg", "Circle CI (regex): '^/\\.circleci$' folder")
                 .regex("^/\\.circleci$")
-                .eq(".circleci"), // FIXME #13 temp fix
+                .eq(".circleci"),
             ofDir("dir_dependabot", "/extra-icons/folder_dependabot.svg", "Dependabot (regex): '^/\\.dependabot$' folder")
                 .regex("^/\\.dependabot$")
-                .eq(".dependabot"), // FIXME #13 temp fix
+                .eq(".dependabot"),
             ofDir("dir_docker", "/extra-icons/folder_docker.svg", "Docker (regex): '^/docker$' folder")
                 .regex("^/docker$")
-                .eq("docker"), // FIXME #13 temp fix
+                .eq("docker"),
             ofDir("dir_github", "/extra-icons/folder_github.svg", "Github (regex): '^/\\.github$' folder")
                 .regex("^/\\.github$")
-                .eq(".github"), // FIXME #13 temp fix
+                .eq(".github"),
             ofDir("dir_gitlab", "/extra-icons/folder_gitlab.svg", "Gitlab (regex): '^/\\.gitlab$' folder")
                 .regex("^/\\.gitlab$")
-                .eq(".gitlab"), // FIXME #13 temp fix
+                .eq(".gitlab"),
             ofDir("dir_gradle", "/extra-icons/folder_gradle.svg", "Gradle (regex): '^/gradle$' folder")
                 .regex("^/gradle$")
-                .eq("gradle"), // FIXME #13 temp fix
+                .eq("gradle"),
             ofDir("dir_idea", "/extra-icons/folder_idea.svg", "IntelliJ IDEA (regex): '^/\\.idea$' folder")
                 .regex("^/\\.idea$")
-                .eq(".idea"), // FIXME #13 temp fix
+                .eq(".idea"),
             ofDir("dir_ideasandbox", "/extra-icons/folder_idea.svg", "IntelliJ IDEA (regex): '^/\\.?idea-sandbox$' folder")
                 .regex("^/\\.?idea-sandbox$")
-                .eq(".idea-sandbox", "idea-sandbox"), // FIXME #13 temp fix
+                .eq(".idea-sandbox", "idea-sandbox"),
             ofDir("dir_idearun", "/extra-icons/folder_idea.svg", "IntelliJ IDEA 2020+ Run/Debug Configurations (regex): '^/\\.run' folder")
                 .regex("^/\\.run$")
-                .eq(".run"), // FIXME #13 temp fix
+                .eq(".run"),
             ofDir("dir_mergify", "/extra-icons/folder_mergify.svg", "Mergify: .mergify folder")
                 .regex("^/\\.mergify$")
-                .eq(".mergify"), // FIXME #13 temp fix
+                .eq(".mergify"),
             ofDir("dir_mps", "/extra-icons/folder_idea.svg", "JetBrains MPS (regex): '^/\\.mps$' folder")
                 .regex("^/\\.mps$")
-                .eq(".mps"), // FIXME #13 temp fix
+                .eq(".mps"),
             ofDir("dir_mvn", "/extra-icons/folder_mvnw.svg", "Maven (regex): '^/\\.mvn$' folder")
                 .regex("^/\\.mvn$")
-                .eq(".mvn"), // FIXME #13 temp fix
+                .eq(".mvn"),
             ofDir("dir_nuget", "/extra-icons/folder_nuget.svg", "Nuget (regex): '^/\\.nuget$' folder")
                 .regex("^/\\.nuget")
-                .eq(".nuget"), // FIXME #13 temp fix
+                .eq(".nuget"),
             ofDir("dir_pytest_cache", "/extra-icons/folder_tmp.svg", "PyTest cache: '^/\\.pytest_cache$' folder")
                 .regex("^/\\.pytest_cache$")
-                .eq(".pytest_cache"), // FIXME #13 temp fix
+                .eq(".pytest_cache"),
             ofDir("dir_pytest_cache_alt1", "/extra-icons/folder_pytest_cache.svg", "PyTest cache: '^/\\.pytest_cache$' folder (alternative 1)")
                 .regex("^/\\.pytest_cache$")
-                .eq(".pytest_cache"), // FIXME #13 temp fix
+                .eq(".pytest_cache"),
             ofDir("dir_pytest_cache_alt2", "/extra-icons/folder_pytest_cache_alt.svg", "PyTest cache: '^/\\.pytest_cache$' folder (alternative 2)")
                 .regex("^/\\.pytest_cache$")
-                .eq(".pytest_cache"), // FIXME #13 temp fix
+                .eq(".pytest_cache"),
             ofDir("dir_python_venv", "/extra-icons/folder_python_venv.svg", "Python Virtual Environment: '^/\\.venv$' folder")
                 .regex("^/\\.venv$")
-                .eq(".venv"), // FIXME #13 temp fix
+                .eq(".venv"),
             ofDir("dir_python_venv_alt", "/extra-icons/folder_python_venv_alt.svg", "Python Virtual Environment: '^/\\.venv$' folder (alternative)")
                 .regex("^/\\.venv$")
-                .eq(".venv"), // FIXME #13 temp fix
+                .eq(".venv"),
             ofDir("dir_python_venv_nodot", "/extra-icons/folder_python_venv.svg", "Python Virtual Environment: '^/venv$' folder")
                 .regex("^/venv$")
-                .eq("venv"), // FIXME #13 temp fix
+                .eq("venv"),
             ofDir("dir_python_venv_nodot_alt", "/extra-icons/folder_python_venv_alt.svg", "Python Virtual Environment: '^/venv$' folder (alternative)")
                 .regex("^/venv$")
-                .eq("venv"), // FIXME #13 temp fix
+                .eq("venv"),
             ofDir("dir_python_egginfo", "/extra-icons/folder_tmp.svg", "Python: '.*\\.egg-info$' folder")
                 .end(".egg-info"),
             ofDir("dir_teamcity", "/extra-icons/folder_teamcity.svg", "TeamCity (regex): '^/\\.teamcity$' folder")
                 .regex("^/\\.teamcity")
-                .eq(".teamcity"), // FIXME #13 temp fix
+                .eq(".teamcity"),
             ofDir("dir_vscode_settings", "/extra-icons/folder_vscode.svg", "Visual Studio Code (regex): '^/\\.vscode$' folder")
                 .regex("^/\\.vscode$")
-                .eq(".vscode"), // FIXME #13 temp fix
+                .eq(".vscode"),
             ofDir("dir_semaphoreci", "/extra-icons/folder_semaphoreci.svg", "Semaphore (regex): '^/\\.semaphore' folder")
                 .regex("^/\\.semaphore$")
-                .eq(".semaphore"), // FIXME #13 temp fix
+                .eq(".semaphore"),
             ofDir("dir_expo", "/extra-icons/expo_folder.svg", "Expo (regex): '^/\\.expo$' folder")
                 .regex("^/\\.expo$")
-                .eq(".expo"), // FIXME #13 temp fix
+                .eq(".expo"),
             ofDir("dir_storybook", "/extra-icons/folder_storybook.svg", "Storybook (regex): '^/\\.storybook$' folder")
                 .regex("^/\\.storybook$")
-                .eq(".storybook"), // FIXME #13 temp fix
+                .eq(".storybook"),
             // - Flyway databases
             ofDir("dir_flyway_db2", "/extra-icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/migration/db2[a-zA-Z0-9._\\-]*"),
