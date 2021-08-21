@@ -22,6 +22,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.61.0 (WIP)
+    <ul>
+      <li>improve support of Storybook: include <i>*.jsx</i> and <i>*.tsx</i> files. Warning: the TSX extension is already associated to <i>Typescript + React</i> files. You can deactivate the unwanted association in Extra Icons settings (tip: filter the icons table with "tsx", then disable <i>Storybook TSX</i> or <i>Typescript + React</i>).</li>
+    </ul>
     1.60.0 (2021/08/07)
     <ul>
       <li>config panel: the regex filter is applied as you type.</li>
