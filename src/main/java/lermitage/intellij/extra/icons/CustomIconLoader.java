@@ -26,9 +26,6 @@ public class CustomIconLoader {
         if (model.getIconType() == IconType.PATH) {
             return IconLoader.getIcon(model.getIcon(), CustomIconLoader.class);
         }
-        if (model.getIconType() == IconType.ICON) {
-            return model.getIntelliJIcon();
-        }
         ImageWrapper fromBase64 = fromBase64(model.getIcon(), model.getIconType(), additionalUIScale);
         if (fromBase64 == null) {
             return null;
@@ -107,7 +104,7 @@ public class CustomIconLoader {
         return base64;
     }
 
-    private static Image scaleImage(Image image, boolean isSVG) {
+    public static Image scaleImage(Image image, boolean isSVG) {
         int width = image.getWidth(null);
         int height = image.getHeight(null);
 
@@ -148,11 +145,20 @@ public class CustomIconLoader {
         private final IconType iconType;
         private final Image image;
         private final byte[] imageAsByteArray;
+        private final String imageAsBundledIconRef;
 
         public ImageWrapper(IconType iconType, Image image, byte[] imageAsByteArray) {
             this.iconType = iconType;
             this.image = image;
             this.imageAsByteArray = imageAsByteArray;
+            this.imageAsBundledIconRef = null;
+        }
+
+        public ImageWrapper(String imageAsBundledIconRef) {
+            this.iconType = IconType.PATH;
+            this.image = null;
+            this.imageAsByteArray = new byte[0];
+            this.imageAsBundledIconRef = imageAsBundledIconRef;
         }
 
         public IconType getIconType() {
@@ -165,6 +171,10 @@ public class CustomIconLoader {
 
         public byte[] getImageAsByteArray() {
             return imageAsByteArray;
+        }
+
+        public String getImageAsBundledIconRef() {
+            return imageAsBundledIconRef;
         }
     }
 }

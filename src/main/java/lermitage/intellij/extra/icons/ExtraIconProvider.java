@@ -22,12 +22,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     @NotNull
     public static List<Model> allModels() {
         return asList(
-
-            //
-            // custom
-            //
-            ofFile("custom_jle1", "/extra-icons/bash.svg", "Custom: do").eq("do"),
-
+            
             //
             // folder
             //
@@ -58,6 +53,15 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_idearun", "/extra-icons/folder_idea.svg", "IntelliJ IDEA 2020+ Run/Debug Configurations (regex): '^/\\.run' folder")
                 .regex("^/\\.run$")
                 .eq(".run"),
+            ofDir("dir_jpabuddy", "/extra-icons/folder_jpabuddy.svg", "JPA Buddy (regex): '^/\\.jpb' folder")
+                .regex("^/\\.jpb$")
+                .eq(".jpb"),
+            ofDir("dir_jpabuddy_alt", "/extra-icons/folder_jpabuddy_alt.svg", "JPA Buddy (regex): '^/\\.jpb' folder (alternative 1)")
+                .regex("^/\\.jpb$")
+                .eq(".jpb"),
+            ofDir("dir_jpabuddy_alt2", "/extra-icons/folder_jpabuddy_alt2.svg", "JPA Buddy (regex): '^/\\.jpb' folder (alternative 2)")
+                .regex("^/\\.jpb$")
+                .eq(".jpb"),
             ofDir("dir_mergify", "/extra-icons/folder_mergify.svg", "Mergify: .mergify folder")
                 .regex("^/\\.mergify$")
                 .eq(".mergify"),
@@ -510,9 +514,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("puppet").mayEnd(".conf"),
             ofFile("puppet1", "/extra-icons/puppet.svg", "Puppet: start by 'puppet' and end by '.conf'")
                 .start("puppet").end(".conf"),
-            ofFile("readme", "/extra-icons/readme.png", "Readme: readme(.md,.txt,.adoc,.rst), lisezmoi")
+            ofFile("readme", "/extra-icons/readme.svg", "Readme: readme(.md,.txt,.adoc,.rst), lisezmoi")
                 .eq("readme", "lisezmoi").mayEnd(TXT),
-            ofFile("readme_alt", "/extra-icons/readme_alt.svg", "Readme: readme(.md,.txt,.adoc,.rst), lisezmoi (alternative)")
+            ofFile("readme_alt", "/extra-icons/readme_alt.svg", "Readme: readme(.md,.txt,.adoc,.rst), lisezmoi (alternative 1)")
+                .eq("readme", "lisezmoi").mayEnd(TXT),
+            ofFile("readme_alt2", "/extra-icons/readme_alt2.svg", "Readme: readme(.md,.txt,.adoc,.rst), lisezmoi (alternative 2)")
                 .eq("readme", "lisezmoi").mayEnd(TXT),
             ofFile("redis", "/extra-icons/redis.svg", "Redis: redis(.conf)")
                 .eq("redis").mayEnd(".conf"),
@@ -538,6 +544,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("security").mayEnd(TXT),
             ofFile("snapcraft", "/extra-icons/snap.svg", "Snapcraft: snapcraft.yaml")
                 .eq("snapcraft.yaml"),
+            ofFile("screwdriver", "/extra-icons/screwdriver.svg", "Screwdriver: screwdriver.yaml")
+                .eq("screwdriver.yaml"),
             ofFile("stacksmith", "/extra-icons/stacksmith.svg", "Bitnami Stacksmith: stackerfile.yml")
                 .eq("stackerfile.yml"),
             ofFile("storybook", "/extra-icons/storybook.svg", "Storybook: *stor(y|ies).(js|jsx|ts|tsx)")

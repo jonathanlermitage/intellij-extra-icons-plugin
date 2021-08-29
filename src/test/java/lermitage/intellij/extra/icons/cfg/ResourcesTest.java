@@ -113,7 +113,9 @@ public class ResourcesTest {
         svgIcons.forEach(file -> {
             try {
                 String fileContent = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
-                if (!fileContent.contains("width=\"16\"") || !fileContent.contains("height=\"16\"")) {
+                boolean goodWidth = fileContent.contains("width=\"16\"") || fileContent.contains("width=\"16px\"");
+                boolean goodHeight = fileContent.contains("height=\"16\"") || fileContent.contains("height=\"16px\"");
+                if (!goodWidth || !goodHeight) {
                     errors.add(file.getName());
                 }
             } catch (IOException e) {

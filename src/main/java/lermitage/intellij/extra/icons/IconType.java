@@ -3,8 +3,10 @@
 package lermitage.intellij.extra.icons;
 
 public enum IconType {
+    /** The relative path of a bundled icon. */
     PATH,
-    ICON,
+    /** SVG user icon stored in config as Base64. */
     SVG,
+    /** PNG user icon stored in config as Base64. */
     IMG
 }

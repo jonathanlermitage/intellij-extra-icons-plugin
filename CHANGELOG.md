@@ -1,7 +1,13 @@
 # Extra Icons Change Log
 
-## 1.61.0 (WIP)
+## 1.61.0 (2021/09/01)
 * improve support of Storybook: include `*.jsx` and `*.tsx` files. Warning: the TSX extension is already associated to _Typescript + React_ files. You can deactivate the unwanted association in Extra Icons settings (tip: filter the icons table with "tsx", then disable _Storybook TSX_ or _Typescript + React_).
+* support [Screwdriver](https://docs.screwdriver.cd) `screwdriver.yaml` files.
+* support JPA Buddy `.jpb` folders.
+* rework a README icon (PNG icon to SVG).
+* add an alternative icon for README files.
+* you can now reuse bundled icons when creating user rules.
+* internal: code cleanup.
 
 ## 1.60.0 (2021/08/07)
 * config panel: the regex filter is applied as you type.
@@ -58,7 +64,7 @@
 
 ## 1.51.0 (2021/04/20)
 * add an alternative icon for EditorConfig files.
-* add an alternative icon for Binary files
+* add an alternative icon for Binary files.
 * add an alternative icon for Contribution files.
 * support Storybook files and folders. Thx [Gaëtan Maisse](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/53).
 * rework Postman support.

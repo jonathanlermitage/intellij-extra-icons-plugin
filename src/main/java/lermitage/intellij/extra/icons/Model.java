@@ -10,7 +10,6 @@ import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.Icon;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -33,7 +32,6 @@ public class Model {
     private IconType iconType;
     @OptionTag
     private boolean enabled = true;
-    private Icon intelliJIcon;
     @XCollection
     private List<ModelCondition> conditions = new ArrayList<>(Collections.singletonList(new ModelCondition()));
 
@@ -45,25 +43,12 @@ public class Model {
 
     @NotNull
     @Contract("_, _, _ -> new")
-    public static Model ofFile(String id, Icon icon, String description) {
-        return new Model(id, icon, description, ModelType.FILE);
-    }
-
-    @NotNull
-    @Contract("_, _, _ -> new")
     public static Model ofDir(String id, String icon, String description) {
         return new Model(id, icon, description, ModelType.DIR, IconType.PATH);
     }
 
-    @NotNull
-    @Contract("_, _, _ -> new")
-    public static Model ofDir(String id, Icon icon, String description) {
-        return new Model(id, icon, description, ModelType.DIR);
-    }
-
     // For XML deserializer
     private Model() {
-
     }
 
     public Model(String id, String icon, String description, ModelType modelType, IconType iconType) {
@@ -77,11 +62,6 @@ public class Model {
     public Model(String id, String icon, String description, ModelType modelType, IconType iconType, List<ModelCondition> conditions) {
         this(id, icon, description, modelType, iconType);
         this.conditions = conditions;
-    }
-
-    public Model(String id, Icon icon, String description, ModelType modelType) {
-        this(id, null, description, modelType, IconType.ICON);
-        this.intelliJIcon = icon;
     }
 
     public String getId() {
@@ -175,10 +155,6 @@ public class Model {
         return conditions;
     }
 
-    public Icon getIntelliJIcon() {
-        return intelliJIcon;
-    }
-
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
@@ -194,12 +170,11 @@ public class Model {
             description.equals(model.description) &&
             modelType == model.modelType &&
             iconType == model.iconType &&
-            Objects.equals(intelliJIcon, model.intelliJIcon) &&
             conditions.equals(model.conditions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, icon, description, modelType, iconType, enabled, intelliJIcon, conditions);
+        return Objects.hash(id, icon, description, modelType, iconType, enabled, conditions);
     }
 }
