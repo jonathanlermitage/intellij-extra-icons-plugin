@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.61.0 (2021/09/01)
+## 1.61.0 (WIP)
 * improve support of Storybook: include `*.jsx` and `*.tsx` files. Warning: the TSX extension is already associated to _Typescript + React_ files. You can deactivate the unwanted association in Extra Icons settings (tip: filter the icons table with "tsx", then disable _Storybook TSX_ or _Typescript + React_).
 * support [Screwdriver](https://docs.screwdriver.cd) `screwdriver.yaml` files.
 * support JPA Buddy `.jpb` folders.
