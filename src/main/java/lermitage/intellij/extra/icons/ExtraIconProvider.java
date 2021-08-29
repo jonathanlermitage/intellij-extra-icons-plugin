@@ -22,7 +22,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     @NotNull
     public static List<Model> allModels() {
         return asList(
-            
+
             //
             // folder
             //
@@ -50,16 +50,16 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_ideasandbox", "/extra-icons/folder_idea.svg", "IntelliJ IDEA (regex): '^/\\.?idea-sandbox$' folder")
                 .regex("^/\\.?idea-sandbox$")
                 .eq(".idea-sandbox", "idea-sandbox"),
-            ofDir("dir_idearun", "/extra-icons/folder_idea.svg", "IntelliJ IDEA 2020+ Run/Debug Configurations (regex): '^/\\.run' folder")
+            ofDir("dir_idearun", "/extra-icons/folder_idea.svg", "IntelliJ IDEA 2020+ Run/Debug Configurations (regex): '^/\\.run$' folder")
                 .regex("^/\\.run$")
                 .eq(".run"),
-            ofDir("dir_jpabuddy", "/extra-icons/folder_jpabuddy.svg", "JPA Buddy (regex): '^/\\.jpb' folder")
+            ofDir("dir_jpabuddy", "/extra-icons/folder_jpabuddy.svg", "JPA Buddy (regex): '^/\\.jpb$' folder")
                 .regex("^/\\.jpb$")
                 .eq(".jpb"),
-            ofDir("dir_jpabuddy_alt", "/extra-icons/folder_jpabuddy_alt.svg", "JPA Buddy (regex): '^/\\.jpb' folder (alternative 1)")
+            ofDir("dir_jpabuddy_alt", "/extra-icons/folder_jpabuddy_alt.svg", "JPA Buddy (regex): '^/\\.jpb$' folder (alternative 1)")
                 .regex("^/\\.jpb$")
                 .eq(".jpb"),
-            ofDir("dir_jpabuddy_alt2", "/extra-icons/folder_jpabuddy_alt2.svg", "JPA Buddy (regex): '^/\\.jpb' folder (alternative 2)")
+            ofDir("dir_jpabuddy_alt2", "/extra-icons/folder_jpabuddy_alt2.svg", "JPA Buddy (regex): '^/\\.jpb$' folder (alternative 2)")
                 .regex("^/\\.jpb$")
                 .eq(".jpb"),
             ofDir("dir_mergify", "/extra-icons/folder_mergify.svg", "Mergify: .mergify folder")
