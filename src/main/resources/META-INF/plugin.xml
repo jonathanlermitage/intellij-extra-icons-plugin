@@ -22,7 +22,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.61.0 (WIP)
+    1.61.0 (2021/08/29)
     <ul>
       <li>improve support of Storybook: include <i>*.jsx</i> and <i>*.tsx</i> files. Warning: the TSX extension is already associated to <i>Typescript + React</i> files. You can deactivate the unwanted association in Extra Icons settings (tip: filter the icons table with "tsx", then disable <i>Storybook TSX</i> or <i>Typescript + React</i>).</li>
       <li>support <a href="https://docs.screwdriver.cd">Screwdriver</a> <i>screwdriver.yaml</i> files.</li>
