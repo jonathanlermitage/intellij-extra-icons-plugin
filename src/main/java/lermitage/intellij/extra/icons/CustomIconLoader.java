@@ -9,6 +9,7 @@ import com.intellij.util.Base64;
 import com.intellij.util.IconUtil;
 import com.intellij.util.ImageLoader;
 import com.intellij.util.RetinaImage;
+import com.intellij.util.SVGLoader;
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -74,13 +75,24 @@ public class CustomIconLoader {
         enhanceImageIOCapabilities();
 
         byte[] decodedBase64 = Base64.decode(base64);
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(decodedBase64);
-        Image image;
-        try {
-            image = ImageIO.read(byteArrayInputStream);
-        } catch (IOException ex) {
-            LOGGER.info("Can't load " + iconType + " icon: " + ex.getMessage(), ex);
-            return null;
+
+        Image image = null;
+        if (iconType == IconType.SVG) {
+            // try to load SVG only, TwelveMonkeys offers better support for PNG
+            try (ByteArrayInputStream decodedBase64Stream = new ByteArrayInputStream(decodedBase64)) {
+                image = SVGLoader.load(decodedBase64Stream, 2f); // FIXME should not use internal code, but SVG rendering with TwelveMonkeys is not perfect
+            } catch (Exception ex) {
+                LOGGER.info("Can't load " + iconType + " icon with JetBrains SVGLoader: " + ex.getMessage()
+                    + "; will try again with TwelveMonkeys lib", ex);
+            }
+        }
+        if (image == null) {
+            try (ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(decodedBase64)) {
+                image = ImageIO.read(byteArrayInputStream);
+            } catch (IOException ex) {
+                LOGGER.info("Can't load " + iconType + " icon: " + ex.getMessage(), ex);
+                return null;
+            }
         }
         if (image == null) {
             return null;

@@ -134,7 +134,7 @@ public class ModelDialog extends DialogWrapper {
                 if (item instanceof BundledIcon) {
                     BundledIcon bundledIcon = (BundledIcon) item;
                     iconLabel.setIcon(IconLoader.getIcon((bundledIcon).getIconPath(), CustomIconLoader.class));
-                    customIconImage = new CustomIconLoader.ImageWrapper(bundledIcon.getIconPath());//fixme
+                    customIconImage = new CustomIconLoader.ImageWrapper(bundledIcon.getIconPath());
                 } else if (item instanceof String) {
                     iconLabel.setIcon(new ImageIcon());
                 }
