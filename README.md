@@ -43,6 +43,8 @@ $ gradlew runPluginVerifier  # check for compatibility issues with IDE
 $ gradlew test               # run tests
 ```
 
+Additionally, take a look at the `do` (or `do.cmd` on Windows) script: it contains useful commands to build, run and test the plugin, check for dependencies updates and some maintenance tasks. Show available commands by running `./do help`. 
+
 ### Optimizations
 
 Optionally, you may want to install SVGO in order to optimize SVG icons. Install `npm install -g svgo`, then optimize SVG files by running `./do svgo`.
