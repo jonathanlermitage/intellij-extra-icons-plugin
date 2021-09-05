@@ -30,7 +30,7 @@ Download plugin from [JetBrains Plugins Repository](https://plugins.jetbrains.co
 
 ## Build
 
-Install JDK11+. You should be able to start Gradle Wrapper (`gradlew`).
+Install JDK11+. You should be able to start Gradle Wrapper (`gradlew`). See Gradle commands below. 
 
 ### Gradle commands
 
@@ -42,6 +42,10 @@ $ gradlew verifyPlugin       # validate plugin.xml descriptors as well as plugin
 $ gradlew runPluginVerifier  # check for compatibility issues with IDE
 $ gradlew test               # run tests
 ```
+
+### Optimizations
+
+Optionally, you may want to install SVGO in order to optimize SVG icons. Install `npm install -g svgo`, then optimize SVG files by running `./do svgo`.
 
 ### Branches
 
