@@ -2,7 +2,7 @@
 @echo --------- %date% %time% ---------
 
 if [%1] == [help] (
-  echo w $V:    set gradle wrapper
+  echo w $V:    set or upgrade gradle wrapper to version $V
   echo fixgit:  fix permission flag on git index for required files
   echo run :    run plugin in IntelliJ Ultimate
   echo runeap:  run plugin in latest IntelliJ Ultimate EAP Snapshot
