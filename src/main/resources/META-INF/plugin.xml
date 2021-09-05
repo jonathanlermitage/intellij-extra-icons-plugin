@@ -24,7 +24,7 @@
     <change-notes><![CDATA[
     1.62.0 (WIP)
     <ul>
-      <li>temporarily reintroduce IntelliJ internal code (SVGLoader) to load user SVG icons. It provides better rendering of SVG icons than TwelveMonkeys (used as a ImageIO plugin), but we should avoid usage of internal code.</li>
+      <li>temporarily reintroduce IntelliJ internal code (SVGLoader) to load SVG user icons. It provides better rendering of SVG icons than TwelveMonkeys (used as a ImageIO plugin), but we should avoid usage of internal code. TwelveMonkeys is still used for PNG user icons (higher compatibility).</li>
     </ul>
     1.61.0 (2021/08/29)
     <ul>
