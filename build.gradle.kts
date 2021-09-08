@@ -24,7 +24,7 @@ val inCI = System.getenv("CI") != null
 val twelvemonkeysVersion = "3.7.0"
 val junitVersion = "5.7.2"
 
-println("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion")
+logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion")
 
 group = "lermitage.intellij.extra.icons"
 version = pluginVersion
@@ -78,10 +78,10 @@ tasks {
             componentSelection {
                 all {
                     if (isNonStable(candidate.version)) {
-                        println(" - [ ] ${candidate.module}:${candidate.version} candidate rejected")
+                        logger.quiet(" - [ ] ${candidate.module}:${candidate.version} candidate rejected")
                         reject("Not stable")
                     } else {
-                        println(" - [X] ${candidate.module}:${candidate.version} candidate accepted")
+                        logger.quiet(" - [X] ${candidate.module}:${candidate.version} candidate accepted")
                     }
                 }
             }
