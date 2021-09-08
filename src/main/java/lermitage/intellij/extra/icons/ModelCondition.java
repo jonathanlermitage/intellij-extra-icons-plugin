@@ -117,20 +117,16 @@ public class ModelCondition {
         }
 
         // facet is a pre-condition, should always be associated with other conditions
-        if (checkFacets) {
-            boolean facetMatched = false;
-            for (String modelFacet : facets) {
-                for (String prjFacet : prjFacets) {
-                    if (modelFacet.equalsIgnoreCase(prjFacet)) {
-                        facetMatched = true;
-                        break;
-                    }
-                }
-                if (facetMatched) {
+        if (checkFacets && facets != null) {
+            boolean facetChecked = false;
+            Set<String> facetsAsSet = Arrays.stream(facets).collect(Collectors.toSet());
+            for (String prjFacet : prjFacets) {
+                if (facetsAsSet.contains(prjFacet)) {
+                    facetChecked = true;
                     break;
                 }
             }
-            if (!facetMatched) {
+            if (!facetChecked) {
                 return false;
             }
         }

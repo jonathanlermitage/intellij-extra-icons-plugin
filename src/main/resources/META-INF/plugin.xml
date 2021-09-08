@@ -25,6 +25,7 @@
     1.62.0 (WIP)
     <ul>
       <li>temporarily reintroduce IntelliJ internal code (SVGLoader) to load SVG user icons. It provides better rendering of SVG icons than TwelveMonkeys (used as a ImageIO plugin), but we should avoid usage of internal code. TwelveMonkeys is still used for PNG user icons (higher compatibility).</li>
+      <li>performance improvements, especially in large projects. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/68">AlexPl292</a> for his investigations.</li>
     </ul>
     1.61.0 (2021/08/29)
     <ul>
@@ -42,52 +43,6 @@
       <li>internal: fix usage of deprecated code.</li>
       <li>rework Android icon.</li>
       <li>support <a href="https://nox.thea.codes/en/stable/config.html">Nox</a> <i>noxfile.py</i> files.</li>
-    </ul>
-    1.59.0 (2021/07/30)
-    <ul>
-      <li>support <i>AndroidManifest.xml</i> files.</li>
-      <li>support <i>proguard-rules.pro</i> files.</li>
-      <li>support Maven Shade Plugin <i>dependency-reduced-pom.xml</i> files.</li>
-    </ul>
-    1.58.0 (2021/07/17)
-    <ul>
-      <li>improve Dockerfile support.</li>
-      <li>improve Backup files support.</li>
-      <li>support DLL files.</li>
-    </ul>
-    1.57.0 (2021/07/01)
-    <ul>
-      <li>minimal IDE version is now 2020.3.</li>
-      <li>add alternative icons for MS Office files (MS Office 2019 SVG icons).</li>
-      <li>improve rendering quality of user SVG icons.</li>
-    </ul>
-    1.56.0 (2021/06/20)
-    <ul>
-      <li>rework Draw.io icon and add an alternative icon.</li>
-      <li>rework Dependabot icons (PNG icon to SVG).</li>
-      <li>support Stylus (browser extension) <i>*.styl</i> files.</li>
-      <li>support Mergify YML files.</li>
-      <li>support <i>.*\.egg-info</i> folders.</li>
-      <li>internal: remove usage of code deprecated in IJ 2021.2.</li>
-      <li>internal: minor refactoring.</li>
-    </ul>
-    1.55.0 (2021/05/29)
-    <ul>
-      <li>rework support of <i>*.spec.tsx</i> files.</li>
-      <li>support <i>Caddyfile</i> files.</li>
-    </ul>
-    1.54.0 (2021/05/15)
-    <ul>
-      <li>improve rendering of custom PNG icons.</li>
-      <li>support <a href="https://vitejs.dev">Vite</a> <i>vite.config.js</i> files.</li>
-      <li>support <a href="https://docs.muse.dev">Muse</a> <i>.muse.toml</i> files.</li>
-      <li>support <a href="https://github.com/hadolint/hadolint">Hadolint</a> <i>.hadolint.y(a)ml</i> files.</li>
-    </ul>
-    1.53.0 (2021/05/08)
-    <ul>
-      <li>improve Storybook support.</li>
-      <li>experimental: try to fix <i>ArrayIndexOutOfBoundsException: Coordinate out of bounds!</i> error when loading some custom PNG icons.</li>
-      <li>internal: removed dependencies to IJ internal code used to load custom SVG icons. Replaced by TwelveMonkeys + Apache Batik libraries. This way, future IDE updates won't break this plugin.</li>
     </ul>
     ]]>
     </change-notes>

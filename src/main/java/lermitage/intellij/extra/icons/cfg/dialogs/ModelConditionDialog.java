@@ -218,7 +218,7 @@ public class ModelConditionDialog extends DialogWrapper {
         }
 
         if (facetsCheckBox.isSelected()) {
-            String[] facets = facetsTextField.getText().split(FIELD_SEPARATOR);
+            String[] facets = facetsTextField.getText().toLowerCase().split(FIELD_SEPARATOR);
             modelCondition.setFacets(facets);
         }
 

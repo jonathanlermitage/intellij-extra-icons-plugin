@@ -18,13 +18,17 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class IJUtils {
 
     private static final Logger LOGGER = Logger.getInstance(IJUtils.class);
+
+    private static final Map<String, Set<String>> facetsCache = new ConcurrentHashMap<>();
 
     /**
      * Refresh project view.
@@ -54,11 +58,15 @@ public class IJUtils {
 
     /**
      * Get project's facets (as in {@code Project Structure > Projects Settings > Facets}),
-     * like "Spring", "JPA", etc.
+     * like "Spring", "JPA", etc. <b>Facet names are in lowercase</b>.
      */
     public static @NotNull Set<String> getFacets(Project project) {
         if (project == null) {
             return Collections.emptySet();
+        }
+        String projectCacheId = project.getLocationHash();
+        if (facetsCache.containsKey(projectCacheId)) {
+            return facetsCache.get(projectCacheId);
         }
         long t1 = System.currentTimeMillis();
         Set<String> facets = new HashSet<>();
@@ -67,7 +75,7 @@ public class IJUtils {
             Stream.of(moduleManager.getModules()).forEach(module -> {
                 FacetManager facetManager = FacetManager.getInstance(module);
                 @NotNull Facet<?>[] allFacets = facetManager.getAllFacets();
-                Set<String> facetNames = Stream.of(allFacets).map(Facet::getName).collect(Collectors.toSet());
+                Set<String> facetNames = Stream.of(allFacets).map(facet -> facet.getName().toLowerCase()).collect(Collectors.toSet());
                 facets.addAll(facetNames);
             });
         } catch (Exception e) {
@@ -77,6 +85,8 @@ public class IJUtils {
         if (execTime > 50) { // should be instant
             LOGGER.warn("Found facets " + facets + " for project " + project + " in " + execTime + "ms (it should be instant)");
         }
+
+        facetsCache.put(projectCacheId, facets);
         return facets;
     }
 
