@@ -15,7 +15,7 @@ public class PluginIconsSettingsTableModel extends DefaultTableModel {
     /**
      * Table columns type.
      */
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings("unchecked")
     private final Class<Object>[] types = new Class[]{Icon.class, Boolean.class, String.class, String.class};
 
     /**

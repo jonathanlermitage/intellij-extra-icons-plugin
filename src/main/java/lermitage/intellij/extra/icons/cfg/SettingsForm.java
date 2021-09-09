@@ -211,7 +211,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             "flag and <b>user icons are too small</b>.<br>Float value. Defaults to <b>1.0</b>.</html>");
         filterLabel.setText("Regex to filter Plugin icons table by:");
         filterTextField.setText("");
-        filterTextField.setToolTipText("<html>Regex is a <b>Java regex</b> and <b>is not case-sensitive</b>.</html>");
+        filterTextField.setToolTipText("<html>Regex is a <b>Java regex</b> and <b>is not case-sensitive</b><br>" +
+            "You can also type <b>yes</b> or <b>no</b> to find the icons that are enabled or disabled.</html>");
         filterResetBtn.setText("Reset filter");
         bottomTip.setText("<html><b>Icons are ordered by priority</b>. To use an <i>alternative</i> icon (as for Markdown files), " +
             "deactivate the icon(s) with higher priority.</html>");
@@ -341,7 +342,23 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                     return desc + " " + desc.toLowerCase(Locale.ENGLISH) + " " + desc.toUpperCase(Locale.ENGLISH);
                 }
             });
-            sorter.setRowFilter(RowFilter.regexFilter(filter));
+            // "yes"/"no" filter to filter by icons enabled/disabled, otherwise regex filter
+            boolean isYesFilter = "yes".equalsIgnoreCase(filter);
+            if (isYesFilter || "no".equalsIgnoreCase(filter)) {
+                sorter.setRowFilter(new RowFilter<>() {
+                    @Override
+                    public boolean include(Entry<? extends PluginIconsSettingsTableModel, ? extends Integer> entry) {
+                        boolean iconEnabled = ((boolean) entry.getValue(PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER));
+                        if (isYesFilter) {
+                            return iconEnabled;
+                        } else {
+                            return !iconEnabled;
+                        }
+                    }
+                });
+            } else {
+                sorter.setRowFilter(RowFilter.regexFilter(filter));
+            }
             pluginIconsTable.setRowSorter(sorter);
         } catch (PatternSyntaxException pse) {
             LOGGER.debug(pse);
