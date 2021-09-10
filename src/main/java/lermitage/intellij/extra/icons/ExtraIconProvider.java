@@ -548,14 +548,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("screwdriver.yaml"),
             ofFile("stacksmith", "/extra-icons/stacksmith.svg", "Bitnami Stacksmith: stackerfile.yml")
                 .eq("stackerfile.yml"),
-            ofFile("storybook", "/extra-icons/storybook.svg", "Storybook: *stor(y|ies).(js|jsx|ts|tsx)")
-                .regex(".*stor(y|ies)\\.(js|jsx|ts|tsx)$"),
-            ofFile("storybook1", "/extra-icons/storybook.svg", "Storybook: *.stories.mdx")
-                .end(".stories.mdx"),
-            ofFile("storybook2", "/extra-icons/storybook.svg", "Storybook JSX: *.jsx")
-                .end(".jsx"),
-            ofFile("storybook3", "/extra-icons/storybook.svg", "Storybook TSX: *.tsx")
-                .end(".tsx"),
+            ofFile("storybook", "/extra-icons/storybook.svg", "Storybook: *stor(y|ies).(js|jsx|ts|tsx|mdx)")
+                .regex(".*stor(y|ies)\\.(js|jsx|ts|tsx|mdx)$"),
             ofFile("svgo", "/extra-icons/svgo.svg", "SVGO: svgo(.yml,.yaml)")
                 .eq("svgo").end(YML),
             ofFile("svgo2", "/extra-icons/svgo.svg", "SVGO: svgo.config.js")
