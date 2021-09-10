@@ -27,7 +27,7 @@
       <li>temporarily reintroduce IntelliJ internal code (SVGLoader) to load SVG user icons. It provides better rendering of SVG icons than TwelveMonkeys (used as a ImageIO plugin), but we should avoid usage of internal code. TwelveMonkeys is still used for PNG user icons (higher compatibility).</li>
       <li>performance improvements, especially in large projects. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/68">AlexPl292</a> for his investigations.</li>
       <li>icons table: you can now find the icons that are enabled or not enabled by typing "yes" or "no" in the regex filter.</li>
-      <li>rework Storybook support: revert 1.61 patch and improve storybook detection.</li>
+      <li>rework Storybook support: revert 1.61 patch and improve Storybook detection.</li>
     </ul>
     1.61.0 (2021/08/29)
     <ul>

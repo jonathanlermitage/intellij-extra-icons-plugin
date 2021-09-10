@@ -4,7 +4,7 @@
 * temporarily reintroduce IntelliJ internal code (SVGLoader) to load SVG user icons. It provides better rendering of SVG icons than TwelveMonkeys (used as a ImageIO plugin), but we should avoid usage of internal code. TwelveMonkeys is still used for PNG user icons (higher compatibility).
 * performance improvements, especially in large projects. Thx [AlexPl292](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/68) for his investigations.
 * icons table: you can now find the icons that are enabled or not enabled by typing "yes" or "no" in the regex filter.
-* rework Storybook support: revert 1.61 patch and improve storybook detection.
+* rework Storybook support: revert 1.61 patch and improve Storybook detection.
 
 ## 1.61.0 (2021/08/29)
 * improve support of Storybook: include `*.jsx` and `*.tsx` files. Warning: the TSX extension is already associated to _Typescript + React_ files. You can deactivate the unwanted association in Extra Icons settings (tip: filter the icons table with "tsx", then disable _Storybook TSX_ or _Typescript + React_).
