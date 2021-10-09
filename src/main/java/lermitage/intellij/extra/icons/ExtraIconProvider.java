@@ -476,9 +476,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("my.ini"),
             ofFile("netlify", "/extra-icons/netlify.svg", "Netlify: netlify.toml")
                 .eq("netlify.toml"),
-            ofFile("nginx", "/extra-icons/nginx.png", "Nginx: nginx(.conf)")
+            ofFile("nginx", "/extra-icons/nginx.svg", "Nginx: nginx(.conf)")
                 .eq("nginx").mayEnd(".conf"),
-            ofFile("nginx1", "/extra-icons/nginx.png", "Nginx: start by 'nginx' and end by '.conf'")
+            ofFile("nginx1", "/extra-icons/nginx.svg", "Nginx: start by 'nginx' and end by '.conf'")
                 .start("nginx").end(".conf"),
             ofFile("npmrc", "/extra-icons/npm.svg", "NPM: .npmrc")
                 .eq(".npmrc"),
@@ -570,6 +570,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("todo").mayEnd(TXT),
             ofFile("tox", "/extra-icons/tox.png", "Tox: tox.ini")
                 .eq("tox.ini"),
+            ofFile("tox_alt", "/extra-icons/tox_alt.svg", "Tox: tox.ini (alternative)")
+                .eq("tox.ini"),
             ofFile("travis", "/extra-icons/travis.svg", "Travis CI: .travis.yml")
                 .eq(".travis.yml"),
             ofFile("travis_alt", "/extra-icons/travis_alt.svg", "Travis CI: .travis.yml (alternative 01)")
@@ -617,6 +619,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("weblate", "/extra-icons/weblate.svg", "Weblate: .weblate")
                 .eq(".weblate"),
             ofFile("webpack", "/extra-icons/webpack.svg", "Webpack: webpack.conf.js")
+                .start("webpack.config.").end(".js", ".ts"),
+            ofFile("webpack_alt", "/extra-icons/webpack_alt.svg", "Webpack: webpack.conf.js (alternative)")
                 .start("webpack.config.").end(".js", ".ts"),
             ofFile("zalando", "/extra-icons/zalando.png", "Zalando Zappr: .zappr.yaml")
                 .eq(".zappr.yaml"),
@@ -682,6 +686,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".http"),
             ofFile("ext_iml", "/extra-icons/jetbrains.svg", "IntelliJ project: *.iml")
                 .end(".iml"),
+            ofFile("ext_jfr", "/extra-icons/jfr.svg", "JFR snapshot: *.jfr")
+                .end(".jfr"),
             ofFile("ext_jinja", "/extra-icons/jinja.svg", "Jinja: *.jinja, *.jinja2")
                 .end(".jinja", ".jinja2"),
             ofFile("ext_cfg_ini", "/extra-icons/config.svg", "Configuration: *.ini")
@@ -704,6 +710,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".md"),
             ofFile("ext_md_alt2", "/extra-icons/markdown_alt2.svg", "Markdown: *.md (alternative 2)")
                 .end(".md"),
+            ofFile("ext_mdx", "/extra-icons/mdx.svg", "MDX: *.mdx")
+                .end(".mdx"),
             ofFile("ext_mmd", "/extra-icons/mindmap.svg", "IDEA MindMap plugin: *.mmd")
                 .end(".mmd"),
             ofFile("ext_mwb", "/extra-icons/mysqlworkbench.png", "MySQL Workbench: *.mwb")
@@ -715,6 +723,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("ext_pdf_alt", "/extra-icons/pdf_alt.svg", "PDF: *.pdf  (alternative 1)")
                 .end(".pdf"),
             ofFile("ext_pdf_alt2", "/extra-icons/pdf_alt2.svg", "PDF: *.pdf  (alternative 2)")
+                .end(".pdf"),
+            ofFile("ext_pdf_alt3", "/extra-icons/pdf_alt3.svg", "PDF: *.pdf  (alternative 3)")
                 .end(".pdf"),
             ofFile("ext_pid", "/extra-icons/pid.svg", "PID: *.pid")
                 .end(".pid"),

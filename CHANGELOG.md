@@ -1,5 +1,13 @@
 # Extra Icons Change Log
 
+## 1.63.0 (WIP)
+* rework Nginx icon (PNG icon to SVG).
+* add an alternative icon for PDF files.
+* add an alternative icon for Tox files.
+* add an alternative icon for Webpack files.
+* support JFR snapshot files.
+* support MDX files.
+
 ## 1.62.0 (2021/09/11)
 * temporarily reintroduce IntelliJ internal code (SVGLoader) to load SVG user icons. It provides better rendering of SVG icons than TwelveMonkeys (used as a ImageIO plugin), but we should avoid usage of internal code. TwelveMonkeys is still used for PNG user icons (higher compatibility).
 * performance improvements, especially in large projects. Thx [AlexPl292](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/68) for his investigations.

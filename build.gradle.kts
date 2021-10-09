@@ -6,7 +6,7 @@ fun properties(key: String) = project.findProperty(key).toString()
 plugins {
     id("java")
     id("idea")
-    id("org.jetbrains.intellij") version "1.1.6" // https://github.com/JetBrains/gradle-intellij-plugin and https://lp.jetbrains.com/gradle-intellij-plugin/
+    id("org.jetbrains.intellij") version "1.2.0" // https://github.com/JetBrains/gradle-intellij-plugin and https://lp.jetbrains.com/gradle-intellij-plugin/
     id("com.github.ben-manes.versions") version "0.39.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.0.0" // https://github.com/radarsh/gradle-test-logger-plugin
 }
@@ -22,7 +22,7 @@ val pluginEnableBuildSearchableOptions: String by project
 val inCI = System.getenv("CI") != null
 
 val twelvemonkeysVersion = "3.7.0"
-val junitVersion = "5.8.0"
+val junitVersion = "5.8.1"
 
 logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion")
 
@@ -48,7 +48,7 @@ intellij {
     instrumentCode.set(pluginInstrumentPluginCode.toBoolean())
     pluginName.set("Extra Icons")
     plugins.set(listOf("AngularJS"))
-    sandboxDir.set("${rootProject.projectDir}/.idea-sandbox/${pluginIdeaVersion}")
+    sandboxDir.set("${rootProject.projectDir}/.idea-sandbox/${shortIdeVersion(pluginIdeaVersion)}")
     updateSinceUntilBuild.set(false)
     version.set(pluginIdeaVersion)
 }
@@ -78,10 +78,10 @@ tasks {
             componentSelection {
                 all {
                     if (isNonStable(candidate.version)) {
-                        logger.quiet(" - [ ] ${candidate.module}:${candidate.version} candidate rejected")
+                        logger.debug(" - [ ] ${candidate.module}:${candidate.version} candidate rejected")
                         reject("Not stable")
                     } else {
-                        logger.quiet(" - [X] ${candidate.module}:${candidate.version} candidate accepted")
+                        logger.debug(" - [X] ${candidate.module}:${candidate.version} candidate accepted")
                     }
                 }
             }
@@ -105,5 +105,17 @@ fun isNonStable(version: String): Boolean {
     }
     return listOf("alpha", "Alpha", "ALPHA", "b", "beta", "Beta", "BETA", "rc", "RC", "M", "EA", "pr", "atlassian").any {
         "(?i).*[.-]${it}[.\\d-]*$".toRegex().matches(version)
+    }
+}
+
+/** Return an IDE version string without the optional PATCH number.
+ * In other words, replace IDE-MAJOR-MINOR(-PATCH) by IDE-MAJOR-MINOR. */
+fun shortIdeVersion(version: String): String {
+    val matcher = Regex("[A-Za-z]+[\\-]?[0-9]+[\\.]{1}[0-9]+")
+    return try {
+        matcher.findAll(version).map { it.value }.toList()[0]
+    } catch (e: Exception) {
+        logger.warn("Failed to shorten IDE version $version", e)
+        version
     }
 }

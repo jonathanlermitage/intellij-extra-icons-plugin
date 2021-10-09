@@ -22,6 +22,15 @@
     -->
 
     <change-notes><![CDATA[
+    1.63.0 (WIP)
+    <ul>
+      <li>rework Nginx icon (PNG icon to SVG).</li>
+      <li>add an alternative icon for PDF files.</li>
+      <li>add an alternative icon for Tox files.</li>
+      <li>add an alternative icon for Webpack files.</li>
+      <li>support JFR snapshot files.</li>
+      <li>support MDX files.</li>
+    </ul>
     1.62.0 (2021/09/11)
     <ul>
       <li>temporarily reintroduce IntelliJ internal code (SVGLoader) to load SVG user icons. It provides better rendering of SVG icons than TwelveMonkeys (used as a ImageIO plugin), but we should avoid usage of internal code. TwelveMonkeys is still used for PNG user icons (higher compatibility).</li>
