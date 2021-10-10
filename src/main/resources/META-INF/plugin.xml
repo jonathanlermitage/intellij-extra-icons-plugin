@@ -22,7 +22,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.63.0 (WIP)
+    1.63.0 (2021/10/11)
     <ul>
       <li>rework Nginx icon (PNG icon to SVG).</li>
       <li>add an alternative icon for PDF files.</li>

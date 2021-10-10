@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.63.0 (WIP)
+## 1.63.0 (2021/10/11)
 * rework Nginx icon (PNG icon to SVG).
 * add an alternative icon for PDF files.
 * add an alternative icon for Tox files.
