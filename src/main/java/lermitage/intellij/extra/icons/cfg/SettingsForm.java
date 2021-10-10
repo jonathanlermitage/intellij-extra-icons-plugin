@@ -287,7 +287,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private void loadUserIconsTable() {
         customModels = new ArrayList<>(SettingsService.getInstance(project).getCustomModels());
-        sortModels(customModels);
+        foldersFirst(customModels);
         setUserIconsTableModel();
     }
 
@@ -374,7 +374,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         int currentSelected = pluginIconsSettingsTableModel != null ? pluginIconsTable.getSelectedRow() : -1;
         pluginIconsSettingsTableModel = new PluginIconsSettingsTableModel();
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
-        sortModels(allRegisteredModels);
+        foldersFirst(allRegisteredModels);
         List<String> disabledModelIds = SettingsService.getInstance(project).getDisabledModelIds();
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
         allRegisteredModels.forEach(m -> pluginIconsSettingsTableModel.addRow(new Object[]{
@@ -413,7 +413,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 if (modelDialog.showAndGet()) {
                     Model newModel = modelDialog.getModelFromInput();
                     customModels.add(newModel);
-                    sortModels(customModels);
+                    foldersFirst(customModels);
                     setUserIconsTableModel();
                 }
             }).setEditAction(anActionButton -> {
@@ -432,14 +432,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         return decorator.createPanel();
     }
 
-    private void sortModels(List<Model> models) {
+    private void foldersFirst(List<Model> models) {
         models.sort((o1, o2) -> {
-            // folders first, then compare descriptions
-            int typeComparison = ModelType.compare(o1.getModelType(), o2.getModelType());
-            if (typeComparison == 0) {
-                return o1.getDescription().compareToIgnoreCase(o2.getDescription());
-            }
-            return typeComparison;
+            // folders first, then files
+            return ModelType.compare(o1.getModelType(), o2.getModelType());
         });
     }
 }
