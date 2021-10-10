@@ -30,6 +30,8 @@
       <li>add an alternative icon for Webpack files.</li>
       <li>support JFR snapshot files.</li>
       <li>support MDX files.</li>
+      <li>fix ordering of icons in config panel, to show actual ordering priorities.</li>
+      <li>support NestJS files (you may want to disable Angular support as both frameworks share some file patterns).</li>
     </ul>
     1.62.0 (2021/09/11)
     <ul>

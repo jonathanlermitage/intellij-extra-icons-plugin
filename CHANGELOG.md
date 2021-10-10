@@ -7,6 +7,8 @@
 * add an alternative icon for Webpack files.
 * support JFR snapshot files.
 * support MDX files.
+* fix ordering of icons in config panel, to show actual ordering priorities.
+* support NestJS files (you may want to disable Angular support as both frameworks share some file patterns).
 
 ## 1.62.0 (2021/09/11)
 * temporarily reintroduce IntelliJ internal code (SVGLoader) to load SVG user icons. It provides better rendering of SVG icons than TwelveMonkeys (used as a ImageIO plugin), but we should avoid usage of internal code. TwelveMonkeys is still used for PNG user icons (higher compatibility).

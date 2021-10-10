@@ -156,8 +156,14 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*/db/changelog/mssql[a-zA-Z0-9._\\-]*"),
 
             //
-            // regex (file)
+            // programmable
             //
+            ofDir("gitsubmodule", "/extra-icons/git_submodule.svg", "Git sub-module containing folder")
+                .iconEnabler(IconEnablerType.GIT_SUBMODULE_FOLDER),
+            ofDir("gitsubmodule_alt", "/extra-icons/git_submodule_alt.svg", "Git sub-module containing folder (alternative)")
+                .iconEnabler(IconEnablerType.GIT_SUBMODULE_FOLDER),
+
+            // angular
             ofFile("angular_module_generic", "/extra-icons/angular-module.svg", "AngularJS: *.module.(js|ts)")
                 .regex(".*[^a-zA-Z0-9]module\\.(js|ts)"),
             ofFile("angular_component_generic", "/extra-icons/angular-component.svg", "AngularJS: *.(component|controller).(js|ts)")
@@ -174,6 +180,40 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*[^a-zA-Z0-9]resolver\\.(js|ts)"),
             ofFile("angular_spec_generic", "/extra-icons/test-ts.svg", "AngularJS: *.spec.(js|ts|tsx)")
                 .regex(".*[^a-zA-Z0-9]spec\\.(js|ts|tsx)"),
+
+            // nestjs
+            ofFile("nestjs", "/extra-icons/nestjs.svg", "NestJS: .nest-cli.json, nest-cli.json, nestconfig.json, .nestconfig.json")
+                .eq(".nest-cli.json", "nest-cli.json", "nestconfig.json", ".nestconfig.json"),
+            ofFile("nestjs_adapter", "/extra-icons/nestjs_adapter.svg", "NestJS: *.adapter.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]adapter\\.(js|ts)"),
+            ofFile("nestjs_controller", "/extra-icons/nestjs_controller.svg", "NestJS: *.controller.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]controller\\.(js|ts)"),
+            ofFile("nestjs_controller_test", "/extra-icons/nestjs_controller_test.svg", "NestJS: *.controller.spec.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]controller\\.spec\\.(js|ts)"),
+            ofFile("nestjs_decorator", "/extra-icons/nestjs_decorator.svg", "NestJS: *.decorator.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]decorator\\.(js|ts)"),
+            ofFile("nestjs_filter", "/extra-icons/nestjs_filter.svg", "NestJS: *.filter.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]filter\\.(js|ts)"),
+            ofFile("nestjs_gateway", "/extra-icons/nestjs_gateway.svg", "NestJS: *.gateway.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]gateway\\.(js|ts)"),
+            ofFile("nestjs_guard", "/extra-icons/nestjs_guard.svg", "NestJS: *.guard.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]guard\\.(js|ts)"),
+            ofFile("nestjs_interceptor", "/extra-icons/nestjs_interceptor.svg", "NestJS: *.interceptor.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]interceptor\\.(js|ts)"),
+            ofFile("nestjs_middleware", "/extra-icons/nestjs_middleware.svg", "NestJS: *.middleware.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]middleware\\.(js|ts)"),
+            ofFile("nestjs_module", "/extra-icons/nestjs_module.svg", "NestJS: *.module.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]module\\.(js|ts)"),
+            ofFile("nestjs_pipe", "/extra-icons/nestjs_pipe.svg", "NestJS: *.pipe.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]pipe\\.(js|ts)"),
+            ofFile("nestjs_service", "/extra-icons/nestjs_service.svg", "NestJS: *.service.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]service\\.(js|ts)"),
+            ofFile("nestjs_service_test", "/extra-icons/nestjs_service_test.svg", "NestJS: *.service.spec.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]service\\.spec\\.(js|ts)"),
+
+            //
+            // regex (file)
+            //
             ofFile("babel", "/extra-icons/babel_alt.svg", "Babel: babel.config.[json|js|cjs|mjs]|.babelrc.[json|js|cjs|mjs]|.babelrc")
                 .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?"),
             ofFile("babel_alt", "/extra-icons/babel_alt2.svg", "Babel: babel.config.[json|js|cjs|mjs]|.babelrc.[json|js|cjs|mjs]|.babelrc (alternative) ")
@@ -830,15 +870,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("docker_generic_2_alt", "/extra-icons/docker_alt.png", "Docker (generic): end with 'dockerfile' (alternative 1)")
                 .end("dockerfile"),
             ofFile("docker_generic_2_alt2", "/extra-icons/docker_alt2.svg", "Docker (generic): end with 'dockerfile' (alternative 2)")
-                .end("dockerfile"),
-
-            //
-            // programmable
-            //
-            ofDir("gitsubmodule", "/extra-icons/git_submodule.svg", "Git sub-module containing folder")
-                .iconEnabler(IconEnablerType.GIT_SUBMODULE_FOLDER),
-            ofDir("gitsubmodule_alt", "/extra-icons/git_submodule_alt.svg", "Git sub-module containing folder (alternative)")
-                .iconEnabler(IconEnablerType.GIT_SUBMODULE_FOLDER)
+                .end("dockerfile")
         );
     }
 
