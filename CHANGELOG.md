@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.64.0 (WIP)
+* support more NestJS files.
+
 ## 1.63.0 (2021/10/11)
 * rework Nginx icon (PNG icon to SVG).
 * add an alternative icon for PDF files.

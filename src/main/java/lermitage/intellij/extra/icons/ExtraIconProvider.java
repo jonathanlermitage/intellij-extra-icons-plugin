@@ -192,6 +192,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*[^a-zA-Z0-9]controller\\.spec\\.(js|ts)"),
             ofFile("nestjs_decorator", "/extra-icons/nestjs_decorator.svg", "NestJS: *.decorator.(js|ts)")
                 .regex(".*[^a-zA-Z0-9]decorator\\.(js|ts)"),
+            ofFile("nestjs_dto", "/extra-icons/nestjs_dto.svg", "NestJS: *.dto.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]dto\\.(js|ts)"),
+            ofFile("nestjs_entity", "/extra-icons/nestjs_entity.svg", "NestJS: *.entity.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]entity\\.(js|ts)"),
             ofFile("nestjs_filter", "/extra-icons/nestjs_filter.svg", "NestJS: *.filter.(js|ts)")
                 .regex(".*[^a-zA-Z0-9]filter\\.(js|ts)"),
             ofFile("nestjs_gateway", "/extra-icons/nestjs_gateway.svg", "NestJS: *.gateway.(js|ts)")
@@ -202,6 +206,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*[^a-zA-Z0-9]interceptor\\.(js|ts)"),
             ofFile("nestjs_middleware", "/extra-icons/nestjs_middleware.svg", "NestJS: *.middleware.(js|ts)")
                 .regex(".*[^a-zA-Z0-9]middleware\\.(js|ts)"),
+            ofFile("nestjs_model", "/extra-icons/nestjs_model.svg", "NestJS: *.model.(js|ts)")
+                .regex(".*[^a-zA-Z0-9]model\\.(js|ts)"),
             ofFile("nestjs_module", "/extra-icons/nestjs_module.svg", "NestJS: *.module.(js|ts)")
                 .regex(".*[^a-zA-Z0-9]module\\.(js|ts)"),
             ofFile("nestjs_pipe", "/extra-icons/nestjs_pipe.svg", "NestJS: *.pipe.(js|ts)")
