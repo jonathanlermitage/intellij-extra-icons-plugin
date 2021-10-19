@@ -25,6 +25,7 @@
     1.64.0 (WIP)
     <ul>
       <li>support more NestJS files.</li>
+      <li>add an alternative icon for TODO files.</li>
     </ul>
     1.63.0 (2021/10/11)
     <ul>
@@ -43,23 +44,6 @@
       <li>performance improvements, especially in large projects. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/68">AlexPl292</a> for his investigations.</li>
       <li>icons table: you can now find the icons that are enabled or not enabled by typing "yes" or "no" in the regex filter.</li>
       <li>rework Storybook support: revert 1.61 patch and improve Storybook detection.</li>
-    </ul>
-    1.61.0 (2021/08/29)
-    <ul>
-      <li>improve support of Storybook: include <i>*.jsx</i> and <i>*.tsx</i> files. Warning: the TSX extension is already associated to <i>Typescript + React</i> files. You can deactivate the unwanted association in Extra Icons settings (tip: filter the icons table with "tsx", then disable <i>Storybook TSX</i> or <i>Typescript + React</i>).</li>
-      <li>support <a href="https://docs.screwdriver.cd">Screwdriver</a> <i>screwdriver.yaml</i> files.</li>
-      <li>support JPA Buddy <i>.jpb</i> folders.</li>
-      <li>rework a README icon (PNG icon to SVG).</li>
-      <li>add an alternative icon for README files.</li>
-      <li>you can now reuse bundled icons when creating user rules.</li>
-      <li>internal: code cleanup.</li>
-    </ul>
-    1.60.0 (2021/08/07)
-    <ul>
-      <li>config panel: the regex filter is applied as you type.</li>
-      <li>internal: fix usage of deprecated code.</li>
-      <li>rework Android icon.</li>
-      <li>support <a href="https://nox.thea.codes/en/stable/config.html">Nox</a> <i>noxfile.py</i> files.</li>
     </ul>
     ]]>
     </change-notes>

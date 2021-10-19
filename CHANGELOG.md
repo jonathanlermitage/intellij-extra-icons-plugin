@@ -2,6 +2,7 @@
 
 ## 1.64.0 (WIP)
 * support more NestJS files.
+* add an alternative icon for TODO files.
 
 ## 1.63.0 (2021/10/11)
 * rework Nginx icon (PNG icon to SVG).
