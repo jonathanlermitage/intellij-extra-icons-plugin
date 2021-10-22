@@ -26,6 +26,7 @@
     <ul>
       <li>support more NestJS files.</li>
       <li>add an alternative icon for TODO files.</li>
+      <li>fix a typo. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/74">lromanov</a>.</li>
     </ul>
     1.63.0 (2021/10/11)
     <ul>

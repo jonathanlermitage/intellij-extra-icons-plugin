@@ -3,6 +3,7 @@
 ## 1.64.0 (WIP)
 * support more NestJS files.
 * add an alternative icon for TODO files.
+* fix a typo. Thx [lromanov](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/74).
 
 ## 1.63.0 (2021/10/11)
 * rework Nginx icon (PNG icon to SVG).
