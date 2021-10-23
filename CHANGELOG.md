@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.65.0 (WIP)
+* add an alternative icon for JPA Buddy folders.
+
 ## 1.64.0 (2021/10/24)
 * support more NestJS files.
 * add an alternative icon for TODO files.

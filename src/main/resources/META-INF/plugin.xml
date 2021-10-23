@@ -22,6 +22,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.65.0 (WIP)
+    <ul>
+      <li>add an alternative icon for JPA Buddy folders.</li>
+    </ul>
     1.64.0 (2021/10/24)
     <ul>
       <li>support more NestJS files.</li>

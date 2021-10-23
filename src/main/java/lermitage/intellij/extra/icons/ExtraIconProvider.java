@@ -62,6 +62,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_jpabuddy_alt2", "/extra-icons/folder_jpabuddy_alt2.svg", "JPA Buddy (regex): '^/\\.jpb$' folder (alternative 2)")
                 .regex("^/\\.jpb$")
                 .eq(".jpb"),
+            ofDir("dir_jpabuddy_alt3", "/extra-icons/folder_jpabuddy_alt3.svg", "JPA Buddy (regex): '^/\\.jpb$' folder (alternative 3)")
+                .regex("^/\\.jpb$")
+                .eq(".jpb"),
             ofDir("dir_mergify", "/extra-icons/folder_mergify.svg", "Mergify: .mergify folder")
                 .regex("^/\\.mergify$")
                 .eq(".mergify"),

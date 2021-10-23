@@ -1,11 +1,1 @@
-<!-- Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 13 13">
-    <g fill="none" fill-rule="evenodd">
-        <rect width="2" height="1.8" x="2" y="2" fill="#C47BCE"/>
-        <rect width="2" height="1.8" x="2" y="5.2" fill="#C47BCE"/>
-        <rect width="2" height="1.8" x="2" y="8.4" fill="#eda200"/>
-        <rect width="7" height="1.8" x="5" y="2" fill="#C47BCE"/>
-        <rect width="7" height="1.8" x="5" y="5.2" fill="#C47BCE"/>
-        <rect width="7" height="1.8" x="5" y="8.4" fill="#eda200"/>
-    </g>
-</svg>
+<!--Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 13 13"><g fill="none" fill-rule="evenodd"><path fill="#C47BCE" d="M2 2h2v1.8H2zm0 3.2h2V7H2z"/><path fill="#eda200" d="M2 8.4h2v1.8H2z"/><path fill="#C47BCE" d="M5 2h7v1.8H5zm0 3.2h7V7H5z"/><path fill="#eda200" d="M5 8.4h7v1.8H5z"/></g></svg>
