@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.64.0 (WIP)
+## 1.64.0 (2021/10/24)
 * support more NestJS files.
 * add an alternative icon for TODO files.
 * fix a typo. Thx [lromanov](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/74).
