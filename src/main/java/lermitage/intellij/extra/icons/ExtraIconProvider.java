@@ -811,6 +811,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".toml"),
             ofFile("typescript", "/extra-icons/test-ts.svg", "Typescript: *.spec.ts")
                 .end(".spec.ts"),
+            ofFile("js-map", "/extra-icons/javascript-map.svg", "JsMap: *.js.map")
+                .end(".js.map"),
             ofFile("typescript-ts", "/extra-icons/typescript.svg", "Typescript: *.ts")
                 .end(".ts"),
             ofFile("typescript-react", "/extra-icons/tsx.svg", "TSX (Typescript + React): *.tsx")
