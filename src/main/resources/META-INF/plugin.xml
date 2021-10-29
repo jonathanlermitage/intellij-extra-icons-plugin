@@ -25,6 +25,8 @@
     1.65.0 (WIP)
     <ul>
       <li>add an alternative icon for JPA Buddy folders.</li>
+      <li>support JsMap files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/75">franciscomarin98</a>.</li>
+      <li>support PlantUML files.</li>
     </ul>
     1.64.0 (2021/10/24)
     <ul>
