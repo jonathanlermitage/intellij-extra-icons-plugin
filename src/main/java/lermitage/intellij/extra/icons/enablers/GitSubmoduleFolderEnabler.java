@@ -42,14 +42,15 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
 
     private synchronized void init(@NotNull Project project) {
         long t1 = System.currentTimeMillis();
-        submoduleFolders = findGitmodulesFiles(project);
+        submoduleFolders = findGitModulesFiles(project);
         initialized = true;
         long t2 = System.currentTimeMillis();
         lastInit = t2;
         LOGGER.info("Initialized " + this.getClass().getSimpleName() + " for project " + project.getBasePath() + " in " + (t2 - t1) + " ms");
     }
 
-    private Set<String> findGitmodulesFiles(@NotNull Project project) {
+    private Set<String> findGitModulesFiles(@NotNull Project project) {
+        long t1 = System.currentTimeMillis();
         Set<String> submoduleFoldersFound = new HashSet<>();
         String basePath = project.getBasePath();
         // find .gitmodules at root, then find every nested .gitmodules for every module (don't have to explore the whole project files)
@@ -59,15 +60,18 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
                 .stream()
                 .map(gitSubmodule -> gitSubmodule.getPath().toLowerCase())
                 .collect(Collectors.toSet());
-            submoduleFoldersFound.addAll(findNestedGitmodulesFiles(submoduleFoldersFound));
+            submoduleFoldersFound.addAll(findNestedGitModulesFiles(submoduleFoldersFound));
         } catch (FileNotFoundException e) {
             LOGGER.warn("Error while looking for git submodules", e);
         }
-        LOGGER.info("Found git submodules: " + submoduleFoldersFound);
+        long execTime = System.currentTimeMillis() - t1;
+        if (execTime > 100) {
+            LOGGER.warn("Found git submodules " + submoduleFoldersFound + " for project " + project + " in " + execTime + "ms (should be very fast)");
+        }
         return submoduleFoldersFound;
     }
 
-    private Set<String> findNestedGitmodulesFiles(@NotNull Set<String> parentModules) { // TODO should do some refactoring
+    private Set<String> findNestedGitModulesFiles(@NotNull Set<String> parentModules) { // TODO should do some refactoring
         Set<String> nestedModules = new HashSet<>();
         for (String parentModule : parentModules) {
             try {
@@ -78,7 +82,7 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
                     .collect(Collectors.toSet());
                 if (!submoduleFoldersFound.isEmpty()) {
                     nestedModules.addAll(submoduleFoldersFound);
-                    nestedModules.addAll(findNestedGitmodulesFiles(submoduleFoldersFound));
+                    nestedModules.addAll(findNestedGitModulesFiles(submoduleFoldersFound));
                 }
             } catch (FileNotFoundException e) {
                 LOGGER.warn("Error while looking for nested git submodules", e);
@@ -88,13 +92,13 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
     }
 
     /** Should (Re)Init if initialization never occurred or if latest initialization is too old. */
-    private boolean shouldInit(@NotNull Project project) {
+    private boolean shouldInit() {
         return !initialized || (System.currentTimeMillis() - lastInit) > INIT_TTL_MS;
     }
 
     @Override
     public boolean verify(@NotNull Project project, @NotNull String absolutePathToVerify) {
-        if (shouldInit(project)) {
+        if (shouldInit()) {
             init(project);
         }
         return submoduleFolders.contains(absolutePathToVerify.toLowerCase());
