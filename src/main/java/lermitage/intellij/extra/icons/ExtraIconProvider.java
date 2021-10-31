@@ -753,6 +753,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".jar"),
             ofFile("ext_jaroriginal", "/extra-icons/jar.png", "Java archive (copy): *.jar.original")
                 .end(".jar.original"),
+            ofFile("ext_jsmap", "/extra-icons/javascript-map.svg", "Javascript Source Maps: *.js.map")
+                .end(".js.map"),
+            ofFile("ext_cssmap", "/extra-icons/javascript-map.svg", "Css Source Maps: *.css.map")
+                .end(".css.map"),
+            ofFile("ext_css", "/extra-icons/javascript-map.svg", "Css Files: *.css")
+                .end(".css"),
             ofFile("ext_kdbx", "/extra-icons/keepass.png", "KeePass: *.kdbx")
                 .end(".kdbx"),
             ofFile("ext_md", "/extra-icons/markdown.svg", "Markdown: *.md")
@@ -813,12 +819,6 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".toml"),
             ofFile("typescript", "/extra-icons/test-ts.svg", "Typescript: *.spec.ts")
                 .end(".spec.ts"),
-            ofFile("js-map", "/extra-icons/javascript-map.svg", "Javascript Source Maps: *.js.map")
-                .end(".js.map"),
-            ofFile("css-map", "/extra-icons/javascript-map.svg", "Css Source Maps: *.css.map")
-                .end(".css.map"),
-            ofFile("css-files", "/extra-icons/javascript-map.svg", "Css Files: *.css")
-                .end(".css"),
             ofFile("typescript-ts", "/extra-icons/typescript.svg", "Typescript: *.ts")
                 .end(".ts"),
             ofFile("typescript-react", "/extra-icons/tsx.svg", "TSX (Typescript + React): *.tsx")
