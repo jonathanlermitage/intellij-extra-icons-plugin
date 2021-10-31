@@ -753,8 +753,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".jar"),
             ofFile("ext_jaroriginal", "/extra-icons/jar.png", "Java archive (copy): *.jar.original")
                 .end(".jar.original"),
-            ofFile("ext_jsmap", "/extra-icons/javascript-map.svg", "JsMap: *.js.map")
+            ofFile("ext_jsmap", "/extra-icons/javascript-map.svg", "Javascript Source Maps: *.js.map")
                 .end(".js.map"),
+            ofFile("ext_cssmap", "/extra-icons/javascript-map.svg", "Css Source Maps: *.css.map")
+                .end(".css.map"),
+            ofFile("ext_css", "/extra-icons/javascript-map.svg", "Css Files: *.css")
+                .end(".css"),
             ofFile("ext_kdbx", "/extra-icons/keepass.png", "KeePass: *.kdbx")
                 .end(".kdbx"),
             ofFile("ext_md", "/extra-icons/markdown.svg", "Markdown: *.md")
@@ -781,10 +785,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".pdf"),
             ofFile("ext_pid", "/extra-icons/pid.svg", "PID: *.pid")
                 .end(".pid"),
-            ofFile("ext_puml", "/extra-icons/uml.svg", "PlantUML: *.puml")
-                .end(".puml"),
             ofFile("ext_postmanconfig", "/extra-icons/postman.svg", "Postman config: *.postman.json")
                 .end(".postman.json"),
+            ofFile("ext_puml", "/extra-icons/uml.svg", "PlantUML: *.puml")
+                .end(".puml"),
             ofFile("ext_postmancollection", "/extra-icons/postman_col.svg", "Postman collection: *postman_collection.json")
                 .end("postman_collection.json"),
             ofFile("ext_postmancollection_alt", "/extra-icons/postman.svg", "Postman collection: *postman_collection.json (alternative)")
