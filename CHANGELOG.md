@@ -2,6 +2,7 @@
 
 ## 1.66.0 (WIP)
 * support CSS and CssMap files. Thx [franciscomarin98](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/76).
+* support [jgitver](https://jgitver.github.io/#_maven_configuration) Maven configuration files.
 
 ## 1.65.0 (2021/10/31)
 * add an alternative icon for JPA Buddy folders.
