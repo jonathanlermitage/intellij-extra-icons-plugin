@@ -755,9 +755,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".jar.original"),
             ofFile("ext_jsmap", "/extra-icons/javascript-map.svg", "Javascript Source Maps: *.js.map")
                 .end(".js.map"),
-            ofFile("ext_cssmap", "/extra-icons/javascript-map.svg", "Css Source Maps: *.css.map")
+            ofFile("ext_cssmap", "/extra-icons/css-map.svg", "Css Source Maps: *.css.map")
                 .end(".css.map"),
-            ofFile("ext_css", "/extra-icons/javascript-map.svg", "Css Files: *.css")
+            ofFile("ext_css", "/extra-icons/css.svg", "Css Files: *.css")
                 .end(".css"),
             ofFile("ext_kdbx", "/extra-icons/keepass.png", "KeePass: *.kdbx")
                 .end(".kdbx"),
