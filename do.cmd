@@ -6,6 +6,7 @@ if [%1] == [help] (
   echo fixgit:  fix permission flag on git index for required files
   echo run :    run plugin in IntelliJ Ultimate
   echo runeap:  run plugin in latest IntelliJ Ultimate EAP Snapshot
+  echo runeap:  run plugin in oldest supported IntelliJ Ultimate version
   echo release: package plugin
   echo test:    run unit tests
   echo cv:      check dependencies and Gradle updates
@@ -26,6 +27,9 @@ if [%1] == [run] (
 )
 if [%1] == [runeap] (
   gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
+)
+if [%1] == [runold] (
+  gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-2020.3.4 -PpluginDownloadIdeaSources=false
 )
 if [%1] == [release] (
   gradlew clean buildPlugin test verifyPlugin --warning-mode all

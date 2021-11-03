@@ -12,6 +12,7 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
         echo "fixgit:  fix permission flag on git index for required files"
         echo "run :    run plugin in IntelliJ Ultimate"
         echo "runeap:  run plugin in latest IntelliJ Ultimate EAP Snapshot"
+        echo "runold:  run plugin in oldest supported IntelliJ Ultimate version"
         echo "release: package plugin"
         echo "test:    run unit tests"
         echo "cv:      check dependencies and Gradle updates"
@@ -35,6 +36,10 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
 
     "runeap")
         ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
+        ;;
+
+    "runold")
+        ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-2020.3.4 -PpluginDownloadIdeaSources=false
         ;;
 
     "release")
