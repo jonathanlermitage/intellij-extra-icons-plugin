@@ -24,6 +24,7 @@ import java.util.regex.PatternSyntaxException;
 public class ModelConditionDialog extends DialogWrapper {
 
     public static final String FIELD_SEPARATOR = ";";
+    public static final String FIELD_SEPARATOR_NAME = "semicolon";
 
     private JPanel dialogPanel;
     private JCheckBox regexCheckBox;
@@ -116,8 +117,8 @@ public class ModelConditionDialog extends DialogWrapper {
         extensionsTextField.setEnabled(false);
         facetsTextField.setEnabled(false);
 
-        tipsLabel.setText("<html><br>Extensions: use <b>" + FIELD_SEPARATOR + "</b> as a separator for multiple values.<br>" +
-            "Regex is a <b>Java regex</b>.<br>" +
+        tipsLabel.setText("<html><br>Extensions: use <b>" + FIELD_SEPARATOR_NAME + "</b> as a separator for multiple values.<br>" +
+            "Regex is a <b>Java regex</b> and is applied on <b>absolute paths</b>.<br>" +
             "File path is <b>lowercased</b> before check.<br>" +
             "Facets can't be used alone, combine them with other condition(s).</html>");
     }
