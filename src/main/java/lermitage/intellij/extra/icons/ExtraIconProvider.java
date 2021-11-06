@@ -489,7 +489,15 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("known_issues").mayEnd(TXT),
             ofFile("kubernetes", "/extra-icons/kubernetes.svg", "Kubernetes: kubernetes(.xml,.yml,...)")
                 .eq("kubernetes").mayEnd(YML),
+            ofFile("kubernetes_alt1", "/extra-icons/kubernetes_alt.svg", "Kubernetes: kubernetes(.xml,.yml,...) (alternative 1)")
+                .eq("kubernetes").mayEnd(YML),
+            ofFile("kubernetes_alt2", "/extra-icons/kubernetes_alt2.svg", "Kubernetes: kubernetes(.xml,.yml,...) (alternative 2)")
+                .eq("kubernetes").mayEnd(YML),
             ofFile("kubernetes1", "/extra-icons/kubernetes.svg", "Kubernetes: start by 'kubernetes' and end by '.xml,.yml,...'")
+                .start("kubernetes").end(YML),
+            ofFile("kubernetes1_alt1", "/extra-icons/kubernetes_alt.svg", "Kubernetes: start by 'kubernetes' and end by '.xml,.yml,...' (alternative 1)")
+                .start("kubernetes").end(YML),
+            ofFile("kubernetes1_alt2", "/extra-icons/kubernetes_alt2.svg", "Kubernetes: start by 'kubernetes' and end by '.xml,.yml,...' (alternative 2)")
                 .start("kubernetes").end(YML),
             ofFile("lerna", "/extra-icons/lerna.png", "Lerna: lerna.json")
                 .eq("lerna.json"),

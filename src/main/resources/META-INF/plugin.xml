@@ -27,6 +27,7 @@
       <li>support CSS and CssMap files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/76">franciscomarin98</a>.</li>
       <li>support <a href="https://jgitver.github.io/#_maven_configuration">jgitver</a> Maven configuration files.</li>
       <li>support <i>.goreleaser.yml</i> files.</li>
+      <li>add alternatives icons for Kubernetes files.</li>
     </ul>
     1.65.0 (2021/10/31)
     <ul>
