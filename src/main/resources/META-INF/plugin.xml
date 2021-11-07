@@ -22,7 +22,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.66.0 (WIP)
+    1.66.0 (2021/11/07)
     <ul>
       <li>support CSS and CssMap files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/76">franciscomarin98</a>.</li>
       <li>support <a href="https://jgitver.github.io/#_maven_configuration">jgitver</a> Maven configuration files.</li>

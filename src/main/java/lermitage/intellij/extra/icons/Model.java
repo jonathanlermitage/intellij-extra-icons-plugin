@@ -49,6 +49,7 @@ public class Model {
     }
 
     // For XML deserializer
+    @SuppressWarnings("unused")
     private Model() {
     }
 
