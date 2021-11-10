@@ -281,6 +281,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".keep", ".gitkeep", ".hgkeep", ".svnkeep"),
             ofFile("htaccess", "/extra-icons/htaccess.svg", "Apache: .htaccess")
                 .eq(".htaccess"),
+            ofFile("html", "/extra-icons/html.svg", "HtmlFiles: .html")
+                .eq(".html"),
             ofFile("android_manifest", "/extra-icons/android.svg", "Android: androidmanifest.xml")
                 .eq("androidmanifest.xml"),
             ofFile("android_manifest_alt", "/extra-icons/android_alt.svg", "Android: androidmanifest.xml (alternative)")
