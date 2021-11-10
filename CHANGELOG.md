@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 1.67.0 (WIP)
+* support HtmlFiles, TypescriptDef, JSConfig, TSConfig, Typescript (test), and Javascript (test) files. Thx [franciscomarin98](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/78).
+
 ## 1.66.0 (2021/11/07)
 * support CSS and CssMap files. Thx [franciscomarin98](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/76).
 * support [jgitver](https://jgitver.github.io/#_maven_configuration) Maven configuration files.

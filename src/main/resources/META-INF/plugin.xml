@@ -22,6 +22,10 @@
     -->
 
     <change-notes><![CDATA[
+    1.67.0 (WIP)
+    <ul>
+      <li>support HtmlFiles, TypescriptDef, JSConfig, TSConfig, Typescript (test), and Javascript (test) files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/78">franciscomarin98</a>.</li>
+    </ul>
     1.66.0 (2021/11/07)
     <ul>
       <li>support CSS and CssMap files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/76">franciscomarin98</a>.</li>
