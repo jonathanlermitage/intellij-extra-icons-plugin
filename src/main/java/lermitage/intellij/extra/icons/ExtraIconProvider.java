@@ -229,6 +229,16 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?"),
             ofFile("dotenv", "/extra-icons/env.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0-9]+)*")
                 .regex(".*/\\.env(\\.[a-zA-Z0-9]+)*"),
+            ofFile("tsconfig", "/extra-icons/tsconfig.svg", "TSConfig: .*/\\.?tsconfig.*\\.(js|json)$")
+                .regex(".*/\\.?tsconfig.*\\.(js|json)$"),
+            ofFile("jsconfig", "/extra-icons/jsconfig.svg", "JSConfig: .*/\\.?jsconfig.*\\.(js|json)$")
+                .regex(".*/\\.?jsconfig.*\\.(js|json)$"),
+            ofFile("typescript-def", "/extra-icons/typescript-def.svg", "TypescriptDef: .*\\.d\\.ts$")
+                .regex(".*\\.d\\.ts$"),
+            ofFile("test-typescript", "/extra-icons/test-typescript.svg", "TestTypescript: .*\\.?(test|spec)\\.(ts|tsx)$")
+                .regex(".*\\.?(test|spec)\\.(ts|tsx)$"),
+            ofFile("test-javascript", "/extra-icons/test-javascript.svg", "TestJavascript: .*\\.?(test|spec)\\.js$")
+                .regex(".*\\.?(test|spec)\\.js$"),
             ofFile("dotenv_alt", "/extra-icons/env_alt.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0-9]+)* (alternative 1)")
                 .regex(".*/\\.env(\\.[a-zA-Z0-9]+)*"),
             ofFile("dotenv_alt2", "/extra-icons/env_alt2.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0-9]+)* (alternative 2)")
@@ -275,6 +285,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".keep", ".gitkeep", ".hgkeep", ".svnkeep"),
             ofFile("htaccess", "/extra-icons/htaccess.svg", "Apache: .htaccess")
                 .eq(".htaccess"),
+            ofFile("html", "/extra-icons/html.svg", "HtmlFiles: .html")
+                .eq(".html"),
             ofFile("android_manifest", "/extra-icons/android.svg", "Android: androidmanifest.xml")
                 .eq("androidmanifest.xml"),
             ofFile("android_manifest_alt", "/extra-icons/android_alt.svg", "Android: androidmanifest.xml (alternative)")
