@@ -235,6 +235,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*/\\.?jsconfig.*\\.(js|json)$"),
             ofFile("typescript-def", "/extra-icons/typescript-def.svg", "TypescriptDef: .*\\.d\\.ts$")
                 .regex(".*\\.d\\.ts$"),
+            ofFile("test-typescript", "/extra-icons/test-typescript.svg", "TestTypescript: .*\\.?(test|spec)\\.(ts|tsx)$")
+                .regex(".*\\.?(test|spec)\\.(ts|tsx)$"),
+            ofFile("test-javascript", "/extra-icons/test-javascript.svg", "TestJavascript: .*\\.?(test|spec)\\.js$")
+                .regex(".*\\.?(test|spec)\\.js$"),
             ofFile("dotenv_alt", "/extra-icons/env_alt.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0-9]+)* (alternative 1)")
                 .regex(".*/\\.env(\\.[a-zA-Z0-9]+)*"),
             ofFile("dotenv_alt2", "/extra-icons/env_alt2.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0-9]+)* (alternative 2)")
