@@ -51,7 +51,6 @@ Optionally, you may want to install SVGO in order to optimize SVG icons. Install
 
 ### Branches
 
-* [ide213](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide213): (**future branch**)  plugin is compatible with 213+ IDE builds (2021.3 and newer). It enables plugin hot reloading (you don't have to restart IDE on plugin update). An old bug could remove some Extra Icons preferences at project level if plugin is updated and plugin hot reloading is enabled. This issue should be fixed in recent IDEs.
 * [**ide203**](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide203): (**active branch**)  plugin is compatible with 203+ IDE builds (2020.3 and newer). It contains features that need capabilities introduced in IntelliJ 2020.3.
 * [ide201](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide201): ~~plugin is compatible with 201+ IDE builds (2020.1 and newer).~~ this branch is terminated.
 * [master](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/master): ~~plugin is compatible with 183+ IDE builds (2018.3 and newer).~~ this branch is terminated.
