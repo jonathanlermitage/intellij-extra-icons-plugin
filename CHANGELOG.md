@@ -2,6 +2,7 @@
 
 ## 1.67.0 (WIP)
 * support HtmlFiles, TypescriptDef, JSConfig, TSConfig, Typescript (test), and Javascript (test) files. Thx [franciscomarin98](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/78).
+* add an alternative icon for MDX files.
 
 ## 1.66.0 (2021/11/07)
 * support CSS and CssMap files. Thx [franciscomarin98](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/76).

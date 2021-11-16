@@ -25,6 +25,7 @@
     1.67.0 (WIP)
     <ul>
       <li>support HtmlFiles, TypescriptDef, JSConfig, TSConfig, Typescript (test), and Javascript (test) files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/78">franciscomarin98</a>.</li>
+      <li>add an alternative icon for MDX files.</li>
     </ul>
     1.66.0 (2021/11/07)
     <ul>
