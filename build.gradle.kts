@@ -53,7 +53,7 @@ intellij {
 }
 
 testlogger {
-    theme = ThemeType.PLAIN_PARALLEL
+    theme = ThemeType.PLAIN
     showSimpleNames = true
 }
 
@@ -87,7 +87,18 @@ tasks {
         }
     }
     runIde {
-        jvmArgs = listOf("-Xms768m", "-Xmx2048m", "--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
+        jvmArgs("-Xms128m")
+        jvmArgs("-Xmx1024m")
+        jvmArgs("--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
+        // copy over some JVM args from IntelliJ
+        jvmArgs("-Dide.no.platform.update=true")
+        jvmArgs("-Djdk.attach.allowAttachSelf=true")
+        jvmArgs("-Djdk.module.illegalAccess.silent=true")
+        jvmArgs("-Dsun.io.useCanonCaches=false")
+        jvmArgs("-XX:+UseG1GC")
+        jvmArgs("-XX:CICompilerCount=2")
+        jvmArgs("-XX:ReservedCodeCacheSize=512m")
+        jvmArgs("-XX:SoftRefLRUPolicyMSPerMB=50")
     }
     runPluginVerifier {
         ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map(String::trim).filter(String::isNotEmpty))
