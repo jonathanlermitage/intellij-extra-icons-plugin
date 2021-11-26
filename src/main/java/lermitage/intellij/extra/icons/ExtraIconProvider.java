@@ -785,6 +785,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".css.map"),
             ofFile("ext_css", "/extra-icons/css.svg", "Css Files: *.css")
                 .end(".css"),
+            ofFile("ext_js", "/extra-icons/javascript.svg", "Javascript: *.js")
+                .end(".js"),
+            ofFile("ext_js_alt", "/extra-icons/javascript_alt.svg", "Javascript: *.js (alternative)")
+                .end(".js"),
             ofFile("ext_kdbx", "/extra-icons/keepass.png", "KeePass: *.kdbx")
                 .end(".kdbx"),
             ofFile("ext_md", "/extra-icons/markdown.svg", "Markdown: *.md")
@@ -795,7 +799,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".md"),
             ofFile("ext_mdx", "/extra-icons/mdx.svg", "MDX: *.mdx")
                 .end(".mdx"),
-            ofFile("ext_mdx_alt", "/extra-icons/mdx_alt.svg", "MDX: *.mdx (alternative)")
+            ofFile("ext_mdx_alt", "/extra-icons/mdx_alt.svg", "MDX: *.mdx (alternative 1)")
+                .end(".mdx"),
+            ofFile("ext_mdx_alt2", "/extra-icons/mdx_alt2.svg", "MDX: *.mdx (alternative 2)")
                 .end(".mdx"),
             ofFile("ext_mmd", "/extra-icons/mindmap.svg", "IDEA MindMap plugin: *.mmd")
                 .end(".mmd"),

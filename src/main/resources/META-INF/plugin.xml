@@ -25,7 +25,9 @@
     1.67.0 (WIP)
     <ul>
       <li>support HtmlFiles, TypescriptDef, JSConfig, TSConfig, Typescript (test), and Javascript (test) files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/78">franciscomarin98</a>.</li>
-      <li>add an alternative icon for MDX files.</li>
+      <li>add alternative icons for MDX files.</li>
+      <li>support vanilla JS files.</li>
+      <li>rework JsMap icon.</li>
     </ul>
     1.66.0 (2021/11/07)
     <ul>
@@ -33,36 +35,6 @@
       <li>support <a href="https://jgitver.github.io/#_maven_configuration">jgitver</a> Maven configuration files.</li>
       <li>support <i>.goreleaser.yml</i> files.</li>
       <li>add alternatives icons for Kubernetes files.</li>
-    </ul>
-    1.65.0 (2021/10/31)
-    <ul>
-      <li>add an alternative icon for JPA Buddy folders.</li>
-      <li>support JsMap files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/75">franciscomarin98</a>.</li>
-      <li>support PlantUML files.</li>
-    </ul>
-    1.64.0 (2021/10/24)
-    <ul>
-      <li>support more NestJS files.</li>
-      <li>add an alternative icon for TODO files.</li>
-      <li>fix a typo. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/74">lromanov</a>.</li>
-    </ul>
-    1.63.0 (2021/10/11)
-    <ul>
-      <li>rework Nginx icon (PNG icon to SVG).</li>
-      <li>add an alternative icon for PDF files.</li>
-      <li>add an alternative icon for Tox files.</li>
-      <li>add an alternative icon for Webpack files.</li>
-      <li>support JFR snapshot files.</li>
-      <li>support MDX files.</li>
-      <li>fix ordering of icons in config panel, to show actual ordering priorities.</li>
-      <li>support NestJS files (you may want to disable Angular support as both frameworks share some file patterns).</li>
-    </ul>
-    1.62.0 (2021/09/11)
-    <ul>
-      <li>temporarily reintroduce IntelliJ internal code (SVGLoader) to load SVG user icons. It provides better rendering of SVG icons than TwelveMonkeys (used as a ImageIO plugin), but we should avoid usage of internal code. TwelveMonkeys is still used for PNG user icons (higher compatibility).</li>
-      <li>performance improvements, especially in large projects. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/68">AlexPl292</a> for his investigations.</li>
-      <li>icons table: you can now find the icons that are enabled or not enabled by typing "yes" or "no" in the regex filter.</li>
-      <li>rework Storybook support: revert 1.61 patch and improve Storybook detection.</li>
     </ul>
     ]]>
     </change-notes>
@@ -104,7 +76,7 @@
         <projectConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.ProjectConfigurableProvider"
                              id="LermitageExtraIcons-Project"
                              displayName="Project" parentId="LermitageExtraIcons"/>
-        <notificationGroup id="ExtraIcons" displayType="BALLOON" />
+        <notificationGroup id="ExtraIcons" displayType="BALLOON"/>
     </extensions>
 
     <!--
