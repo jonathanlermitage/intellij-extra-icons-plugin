@@ -22,7 +22,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.67.0 (WIP)
+    1.67.0 (2021/12/01)
     <ul>
       <li>support HtmlFiles, TypescriptDef, JSConfig, TSConfig, Typescript (test), and Javascript (test) files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/78">franciscomarin98</a>.</li>
       <li>add alternative icons for MDX files.</li>

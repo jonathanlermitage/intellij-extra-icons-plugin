@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.67.0 (WIP)
+## 1.67.0 (2021/12/01)
 * support HtmlFiles, TypescriptDef, JSConfig, TSConfig, Typescript (test), and Javascript (test) files. Thx [franciscomarin98](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/78).
 * add alternative icons for MDX files.
 * support vanilla JS files.
