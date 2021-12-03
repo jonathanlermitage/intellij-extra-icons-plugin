@@ -227,8 +227,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?"),
             ofFile("babel_alt", "/extra-icons/babel_alt2.svg", "Babel: babel.config.[json|js|cjs|mjs]|.babelrc.[json|js|cjs|mjs]|.babelrc (alternative) ")
                 .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?"),
-            ofFile("dotenv", "/extra-icons/env.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0-9]+)*")
-                .regex(".*/\\.env(\\.[a-zA-Z0-9]+)*"),
+            ofFile("dotenv", "/extra-icons/env.svg", "Dotenv: .*\\.env(\\.[a-zA-Z0-9]+)*")
+                .regex(".*\\.env(\\.[a-zA-Z0-9]+)*"),
+            ofFile("dotenv_alt", "/extra-icons/env_alt.svg", "Dotenv: .*\\.env(\\.[a-zA-Z0-9]+)* (alternative 1)")
+                .regex(".*\\.env(\\.[a-zA-Z0-9]+)*"),
+            ofFile("dotenv_alt2", "/extra-icons/env_alt2.svg", "Dotenv: .*\\.env(\\.[a-zA-Z0-9]+)* (alternative 2)")
+                .regex(".*\\.env(\\.[a-zA-Z0-9]+)*"),
             ofFile("tsconfig", "/extra-icons/tsconfig.svg", "TSConfig: .*/\\.?tsconfig.*\\.(js|json)$")
                 .regex(".*/\\.?tsconfig.*\\.(js|json)$"),
             ofFile("jsconfig", "/extra-icons/jsconfig.svg", "JSConfig: .*/\\.?jsconfig.*\\.(js|json)$")
@@ -239,10 +243,6 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*\\.?(test|spec)\\.(ts|tsx)$"),
             ofFile("test-javascript", "/extra-icons/test-javascript.svg", "TestJavascript: .*\\.?(test|spec)\\.js$")
                 .regex(".*\\.?(test|spec)\\.js$"),
-            ofFile("dotenv_alt", "/extra-icons/env_alt.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0-9]+)* (alternative 1)")
-                .regex(".*/\\.env(\\.[a-zA-Z0-9]+)*"),
-            ofFile("dotenv_alt2", "/extra-icons/env_alt2.svg", "Dotenv: .*/\\.env(\\.[a-zA-Z0-9]+)* (alternative 2)")
-                .regex(".*/\\.env(\\.[a-zA-Z0-9]+)*"),
             ofFile("flyway", "/extra-icons/flyway.png", "Flyway (regex): '.*/db/migration/.*\\.sql'")
                 .regex(".*/db/migration/.*\\.sql"),
             ofFile("liquibase", "/extra-icons/liquibase.svg", "Liquibase (regex): '.*/db/changelog/.*\\.(sql|xml)'")
