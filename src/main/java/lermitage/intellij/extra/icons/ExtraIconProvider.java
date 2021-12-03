@@ -315,7 +315,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("cargo.toml"),
             ofFile("gradle_main", "/extra-icons/gradle.svg", "Gradle: build.gradle, gradle.properties, settings.gradle")
                 .eq("build.gradle", "gradle.properties", "settings.gradle"),
-            ofFile("gradle_kotlin", "/extra-icons/gradle.svg", "Gradle (Kotlin DSL): build.gradle.kts, settings.gradle.kts")
+            ofFile("gradle_kotlin", "/extra-icons/gradle_kotlin_colored.svg", "Gradle (Kotlin DSL): build.gradle.kts, settings.gradle.kts")
+                .eq("build.gradle.kts", "settings.gradle.kts"),
+            ofFile("gradle_kotlin_native", "/extra-icons/gradle_kotlin.svg", "Gradle (Kotlin DSL): build.gradle.kts, settings.gradle.kts (alternative)")
                 .eq("build.gradle.kts", "settings.gradle.kts"),
             ofFile("gradle", "/extra-icons/gradlew.svg", "Gradle: gradlew")
                 .eq("gradlew"),

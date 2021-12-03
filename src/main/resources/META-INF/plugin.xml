@@ -22,6 +22,13 @@
     -->
 
     <change-notes><![CDATA[
+    1.68.0 (WIP)
+    <ul>
+      <li>config panel: add missing scrollbar to user icons list.</li>
+      <li>config panel: minor UI improvements.</li>
+      <li>fix support of Dotenv files (<a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/79">#79</a>).</li>
+      <li>add alternative icons for Gradle Kotlin Script files.</li>
+    </ul>
     1.67.0 (2021/12/01)
     <ul>
       <li>support HtmlFiles, TypescriptDef, JSConfig, TSConfig, Typescript (test), and Javascript (test) files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/78">franciscomarin98</a>.</li>
