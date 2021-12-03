@@ -125,7 +125,7 @@
               <scrollpane id="52611">
                 <constraints border-constraint="Center"/>
                 <properties/>
-                <border type="none"/>
+                <border type="etched"/>
                 <children>
                   <component id="6153d" class="com.intellij.ui.table.JBTable" binding="pluginIconsTable">
                     <constraints/>
@@ -145,7 +145,12 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
+            <children>
+              <component id="9aef2" class="javax.swing.JScrollBar" default-binding="true">
+                <constraints border-constraint="Center"/>
+                <properties/>
+              </component>
+            </children>
           </grid>
         </children>
       </tabbedpane>
