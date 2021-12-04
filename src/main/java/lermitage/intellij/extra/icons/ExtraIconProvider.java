@@ -791,7 +791,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .end(".js"),
             ofFile("ext_js_alt", "/extra-icons/javascript_alt.svg", "Javascript: *.js (alternative)")
                 .end(".js"),
-            ofFile("ext_kdbx", "/extra-icons/keepass.png", "KeePass: *.kdbx")
+            ofFile("ext_kdbx", "/extra-icons/keepass.svg", "KeePass: *.kdbx")
+                .end(".kdbx"),
+            ofFile("ext_kdbx_alt", "/extra-icons/keepass_alt.png", "KeePass: *.kdbx (alternative)")
                 .end(".kdbx"),
             ofFile("ext_md", "/extra-icons/markdown.svg", "Markdown: *.md")
                 .end(".md"),
