@@ -19,14 +19,19 @@
 Intellij IDEA (Community and Ultimate) plugin that adds icons for files like Travis YML, Appveyor YML, Git sub-modules, etc.  
 Starting from version 0.4, it works with all JetBrains products like WebStorm, DataGrip, etc.
 
-Download plugin from [JetBrains Plugins Repository](https://plugins.jetbrains.com/plugin/11058-extra-icons) or via your JetBrains IDE (<kbd>File</kbd>, <kbd>Settings</kbd>, <kbd>Plugins</kbd>, <kbd>Browse repositories...</kbd>).
+1. [Download](#download)
+2. [Build](#build)  
+3. [Contribution](#contribution)  
+4. [Known issues](#known-issues)  
+5. [License](#license)  
+6. [Credits](#credits)  
+7. [Screenshots](#screenshots)  
 
-1. [Build](#build)  
-2. [Contribution](#contribution)  
-3. [Known issues](#known-issues)  
-4. [License](#license)  
-5. [Credits](#credits)  
-6. [Screenshots](#screenshots)  
+## Download
+
+Download plugin from [JetBrains Plugins Repository](https://plugins.jetbrains.com/plugin/11058-extra-icons) or via your JetBrains IDE (<kbd>File</kbd>, <kbd>Settings</kbd>, <kbd>Plugins</kbd>, <kbd>Marketplace</kbd>).
+
+For early adopters, I'm trying to publish intermediate builds on a testing channel. Builds are fully tested, but I don't want to publish an official release on every commit :wink:. To proceed, go to <kbd>File</kbd>, <kbd>Settings</kbd>, <kbd>Plugins</kbd>, <kbd>Manage Plugin Repositories...</kbd> and add the `https://plugins.jetbrains.com/plugins/extra-icons-testing/list` repository. Expect 0 to 2 intermediate builds between two official releases, mainly to get bugfixes asap.
 
 ## Build
 
