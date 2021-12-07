@@ -8,6 +8,7 @@ plugins {
     id("org.jetbrains.intellij") version "1.3.0" // https://github.com/JetBrains/gradle-intellij-plugin and https://lp.jetbrains.com/gradle-intellij-plugin/
     id("com.github.ben-manes.versions") version "0.39.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.1.0" // https://github.com/radarsh/gradle-test-logger-plugin
+    id("biz.lermitage.oga") version "1.1.1"
 }
 
 // Import variables from gradle.properties file

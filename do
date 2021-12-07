@@ -16,6 +16,7 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
         echo "release: package plugin"
         echo "test:    run unit tests"
         echo "cv:      check dependencies and Gradle updates"
+        echo "oga:     check for deprecated groupId and artifactId couples"
         echo "svgo:    optimize SVG icons with SGVO. SVGO must be present, type 'npm install -g svgo' if needed)"
         ;;
 
@@ -52,6 +53,10 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
 
     "cv")
         ./gradlew dependencyUpdates --warning-mode all
+        ;;
+
+    "oga")
+        ./gradlew gradlew biz-lermitage-oga-gradle-check
         ;;
 
     "svgo")
