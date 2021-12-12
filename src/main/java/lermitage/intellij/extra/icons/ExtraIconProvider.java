@@ -183,6 +183,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*[^a-zA-Z0-9]resolver\\.(js|ts)"),
             ofFile("angular_spec_generic", "/extra-icons/test-ts.svg", "AngularJS: *.spec.(js|ts|tsx)")
                 .regex(".*[^a-zA-Z0-9]spec\\.(js|ts|tsx)"),
+            ofFile("angular_spec_generic_alt", "/extra-icons/test-ts_alt.svg", "AngularJS: *.spec.(js|ts|tsx) (alternative)")
+                .regex(".*[^a-zA-Z0-9]spec\\.(js|ts|tsx)"),
 
             // nestjs
             ofFile("nestjs", "/extra-icons/nestjs.svg", "NestJS: .nest-cli.json, nest-cli.json, nestconfig.json, .nestconfig.json")
@@ -239,9 +241,13 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*/\\.?jsconfig.*\\.(js|json)$"),
             ofFile("typescript-def", "/extra-icons/typescript-def.svg", "TypescriptDef: .*\\.d\\.ts$")
                 .regex(".*\\.d\\.ts$"),
-            ofFile("test-typescript", "/extra-icons/test-typescript.svg", "TestTypescript: .*\\.?(test|spec)\\.(ts|tsx)$")
+            ofFile("test-typescript", "/extra-icons/test-ts.svg", "TestTypescript: .*\\.?(test|spec)\\.(ts|tsx)$")
+                .regex(".*\\.?(test|spec)\\.(ts|tsx)$"),
+            ofFile("test-typescript_alt", "/extra-icons/test-ts_alt.svg", "TestTypescript: .*\\.?(test|spec)\\.(ts|tsx)$ (alternative)")
                 .regex(".*\\.?(test|spec)\\.(ts|tsx)$"),
             ofFile("test-javascript", "/extra-icons/test-javascript.svg", "TestJavascript: .*\\.?(test|spec)\\.js$")
+                .regex(".*\\.?(test|spec)\\.js$"),
+            ofFile("test-javascript_alt", "/extra-icons/test-javascript_alt.svg", "TestJavascript: .*\\.?(test|spec)\\.js$ (alternative)")
                 .regex(".*\\.?(test|spec)\\.js$"),
             ofFile("flyway", "/extra-icons/flyway.png", "Flyway (regex): '.*/db/migration/.*\\.sql'")
                 .regex(".*/db/migration/.*\\.sql"),
@@ -856,6 +862,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("ext_toml", "/extra-icons/toml.svg", "TOML: *.toml")
                 .end(".toml"),
             ofFile("typescript", "/extra-icons/test-ts.svg", "Typescript: *.spec.ts")
+                .end(".spec.ts"),
+            ofFile("typescript_alt", "/extra-icons/test-ts_alt.svg", "Typescript: *.spec.ts (alternative)")
                 .end(".spec.ts"),
             ofFile("typescript-ts", "/extra-icons/typescript.svg", "Typescript: *.ts")
                 .end(".ts"),

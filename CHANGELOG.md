@@ -6,6 +6,9 @@
 * fix support of Dotenv files ([#79](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/79)).
 * add alternative icons for Gradle Kotlin Script files.
 * add alternative icons for KeePass files.
+* add alternative icons for Javascript (test) files.
+* add alternative icons for Typescript (test) files.
+* upgrade TwelveMonkeys library to 3.8.0.
 
 ## 1.67.0 (2021/12/01)
 * support HtmlFiles, TypescriptDef, JSConfig, TSConfig, Typescript (test), and Javascript (test) files. Thx [franciscomarin98](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/78).
