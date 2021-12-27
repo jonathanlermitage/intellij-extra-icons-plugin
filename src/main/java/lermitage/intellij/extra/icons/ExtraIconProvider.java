@@ -115,6 +115,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("dir_storybook", "/extra-icons/folder_storybook.svg", "Storybook (regex): '^/\\.storybook$' folder")
                 .regex("^/\\.storybook$")
                 .eq(".storybook"),
+
+            // Folder con icons customizados
+
+
             // - Flyway databases
             ofDir("dir_flyway_db2", "/extra-icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/migration/db2[a-zA-Z0-9._\\-]*"),
@@ -136,6 +140,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*/db/migration/sqlserver[a-zA-Z0-9._\\-]*"),
             ofDir("dir_flyway_mssql", "/extra-icons/folder_sqlserver.svg", "Flyway, MS SQL Server database folder (regex): '.*/db/migration/mssql[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/migration/mssql[a-zA-Z0-9._\\-]*"),
+
             // - Liquibase databases
             ofDir("dir_liquibase_db2", "/extra-icons/folder_db2.svg", "Liquibase, IBM DB2 database folder (regex): '.*/db/changelog/db2[a-zA-Z0-9._\\-]*'")
                 .regex(".*/db/changelog/db2[a-zA-Z0-9._\\-]*"),
@@ -165,6 +170,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .iconEnabler(IconEnablerType.GIT_SUBMODULE_FOLDER),
             ofDir("gitsubmodule_alt", "/extra-icons/git_submodule_alt.svg", "Git sub-module containing folder (alternative)")
                 .iconEnabler(IconEnablerType.GIT_SUBMODULE_FOLDER),
+
+            // Php and laravel icons
+            ofFile("php-file", "/extra-icons/php_elephant.svg", "PHP: *.php")
+                .end(".php"),
 
             // angular
             ofFile("angular_module_generic", "/extra-icons/angular-module.svg", "AngularJS: *.module.(js|ts)")
