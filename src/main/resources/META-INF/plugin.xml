@@ -22,7 +22,7 @@
     -->
 
     <change-notes><![CDATA[
-    1.68.0 (WIP)
+    1.68.0 (2021/12/28)
     <ul>
       <li>config panel: add missing scrollbar to user icons list.</li>
       <li>config panel: minor UI improvements.</li>
@@ -31,7 +31,7 @@
       <li>add alternative icons for KeePass files.</li>
       <li>add alternative icons for Javascript (test) files.</li>
       <li>add alternative icons for Typescript (test) files.</li>
-      <li>upgrade TwelveMonkeys library to 3.8.0.</li>
+      <li>internal: upgrade TwelveMonkeys library to 3.8.1 (used to preview PNG icons).</li>
     </ul>
     1.67.0 (2021/12/01)
     <ul>
