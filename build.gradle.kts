@@ -21,7 +21,7 @@ val pluginEnableBuildSearchableOptions: String by project
 
 val inCI = System.getenv("CI") != null
 
-val twelvemonkeysVersion = "3.8.0"
+val twelvemonkeysVersion = "3.8.1"
 val junitVersion = "5.8.2"
 
 logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion")

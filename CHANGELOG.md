@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 1.68.0 (WIP)
+## 1.68.0 (2021/12/28)
 * config panel: add missing scrollbar to user icons list.
 * config panel: minor UI improvements.
 * fix support of Dotenv files ([#79](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/79)).
@@ -8,7 +8,7 @@
 * add alternative icons for KeePass files.
 * add alternative icons for Javascript (test) files.
 * add alternative icons for Typescript (test) files.
-* upgrade TwelveMonkeys library to 3.8.0.
+* internal: upgrade TwelveMonkeys library to 3.8.1 (used to preview PNG icons).
 
 ## 1.67.0 (2021/12/01)
 * support HtmlFiles, TypescriptDef, JSConfig, TSConfig, Typescript (test), and Javascript (test) files. Thx [franciscomarin98](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/78).
