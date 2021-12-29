@@ -171,9 +171,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofDir("gitsubmodule_alt", "/extra-icons/git_submodule_alt.svg", "Git sub-module containing folder (alternative)")
                 .iconEnabler(IconEnablerType.GIT_SUBMODULE_FOLDER),
 
-            // Php and laravel icons
-            ofFile("php-file", "/extra-icons/php_elephant.svg", "PHP: *.php")
-                .end(".php"),
+            // Dart Flutter
+            ofFile("dart", "/extra-icons/dart.svg", "Dart Files: *.dart")
+                .end(".dart"),
 
             // angular
             ofFile("angular_module_generic", "/extra-icons/angular-module.svg", "AngularJS: *.module.(js|ts)")
