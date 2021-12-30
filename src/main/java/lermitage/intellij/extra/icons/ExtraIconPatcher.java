@@ -22,17 +22,17 @@ public class ExtraIconPatcher extends IconPathPatcher {
 
     @NotNull
     public static Map<String, String> getEnabledIconModels() {
-        Map<String, String> enabledIconModels = new LinkedHashMap<>();
+        Map<String, String> enabledIcons = new LinkedHashMap<>();
         List<String> disabledModelIds = SettingsService.getIDEInstance().getDisabledModelIds();
         ExtraIconProvider.allModels()
             .stream()
             .filter(model -> model.getModelType() == ModelType.ICON)
             .forEach(model -> {
-                if (!enabledIconModels.containsKey(model.getIdeIcon()) && !disabledModelIds.contains(model.getId())) {
-                    enabledIconModels.put(model.getIdeIcon(), model.getIcon());
+                if (!enabledIcons.containsKey(model.getIdeIcon()) && !disabledModelIds.contains(model.getId())) {
+                    enabledIcons.put(model.getIdeIcon(), model.getIcon());
                 }
             });
-        return enabledIconModels;
+        return enabledIcons;
     }
 
     public ExtraIconPatcher() {
