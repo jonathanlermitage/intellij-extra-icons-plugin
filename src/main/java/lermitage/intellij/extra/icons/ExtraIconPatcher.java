@@ -21,7 +21,7 @@ public class ExtraIconPatcher extends IconPathPatcher {
     private Map<String, String> icons;
 
     @NotNull
-    public static Map<String, String> getEnabledIconModels() {
+    public static Map<String, String> getEnabledIcons() {
         Map<String, String> enabledIcons = new LinkedHashMap<>();
         List<String> disabledModelIds = SettingsService.getIDEInstance().getDisabledModelIds();
         ExtraIconProvider.allModels()
@@ -56,7 +56,7 @@ public class ExtraIconPatcher extends IconPathPatcher {
     }
 
     private void loadConfig() {
-        icons = getEnabledIconModels();
+        icons = getEnabledIcons();
         LOG.info("config loaded with success, enabled " + icons.size() + " items");
     }
 }
