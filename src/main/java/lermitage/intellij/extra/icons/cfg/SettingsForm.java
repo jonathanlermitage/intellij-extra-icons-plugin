@@ -91,7 +91,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         });
     }
 
-    @SuppressWarnings("UnusedDeclaration")
     public SettingsForm(Project project) {
         this();
         this.project = project;
@@ -374,6 +373,13 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         int currentSelected = pluginIconsSettingsTableModel != null ? pluginIconsTable.getSelectedRow() : -1;
         pluginIconsSettingsTableModel = new PluginIconsSettingsTableModel();
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
+        if (isProjectForm) {
+            // IDE icon overrides work at IDE level only, not a project level, that's why
+            // the project-level icons list won't show IDE icons.
+            allRegisteredModels = allRegisteredModels.stream()
+                .filter(model -> model.getModelType() != ModelType.ICON)
+                .collect(Collectors.toList());
+        }
         foldersFirst(allRegisteredModels);
         List<String> disabledModelIds = SettingsService.getInstance(project).getDisabledModelIds();
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();

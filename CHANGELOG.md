@@ -1,5 +1,9 @@
 # Extra Icons Change Log
 
+## 1.69.0 (WIP)
+* internal: plugin can now override IDE icons by icon name (see `ofIcon(...)` method usage in `ExtraIconProvider`).
+* improved support of Kotlin Gradle script icon.
+
 ## 1.68.0 (2021/12/28)
 * config panel: add missing scrollbar to user icons list.
 * config panel: minor UI improvements.

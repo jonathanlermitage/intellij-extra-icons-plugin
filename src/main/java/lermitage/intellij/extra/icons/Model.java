@@ -24,6 +24,8 @@ public class Model {
     @OptionTag
     private String id;
     @OptionTag
+    private String ideIcon;
+    @OptionTag
     private String icon;
     @OptionTag
     private String description;
@@ -48,6 +50,12 @@ public class Model {
         return new Model(id, icon, description, ModelType.DIR, IconType.PATH);
     }
 
+    @NotNull
+    @Contract("_, _, _, _ -> new")
+    public static Model ofIcon(String id, String ideIcon, String icon, String description) {
+        return new Model(id, ideIcon, icon, description, ModelType.ICON, IconType.PATH);
+    }
+
     // For XML deserializer
     @SuppressWarnings("unused")
     private Model() {
@@ -66,12 +74,21 @@ public class Model {
         this.conditions = conditions;
     }
 
+    public Model(String id, String ideIcon, String icon, String description, ModelType modelType, IconType iconType) {
+        this(id, icon, description, modelType, iconType);
+        this.ideIcon = ideIcon;
+    }
+
     public String getId() {
         return id;
     }
 
     public String getDescription() {
         return description;
+    }
+
+    public String getIdeIcon() {
+        return ideIcon;
     }
 
     public String getIcon() {
@@ -168,6 +185,7 @@ public class Model {
         Model model = (Model) o;
         return enabled == model.enabled &&
             Objects.equals(id, model.id) &&
+            Objects.equals(ideIcon, model.ideIcon) &&
             Objects.equals(icon, model.icon) &&
             description.equals(model.description) &&
             modelType == model.modelType &&
@@ -177,6 +195,6 @@ public class Model {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, icon, description, modelType, iconType, enabled, conditions);
+        return Objects.hash(id, ideIcon, icon, description, modelType, iconType, enabled, conditions);
     }
 }

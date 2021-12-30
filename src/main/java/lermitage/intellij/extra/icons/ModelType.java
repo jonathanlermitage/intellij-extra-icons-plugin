@@ -6,7 +6,8 @@ import org.jetbrains.annotations.Contract;
 
 public enum ModelType {
     FILE("File"),
-    DIR("Directory");
+    DIR("Directory"),
+    ICON("Icon");
 
 
     private final String friendlyName;
@@ -16,7 +17,7 @@ public enum ModelType {
     }
 
     /**
-     * {@link ModelType} comparator: {@link ModelType#DIR} before {@link ModelType#FILE}.
+     * {@link ModelType} comparator: {@link ModelType#DIR} &gt; {@link ModelType#FILE} > {@link ModelType#ICON}.
      */
     @Contract(pure = true)
     public static int compare(ModelType o1, ModelType o2) {
@@ -29,7 +30,10 @@ public enum ModelType {
         if (o2 == null) {
             return -1;
         }
-        if (o1 == DIR && o2 == FILE) {
+        if (o1 == DIR && (o2 == FILE || o2 == ICON)) {
+            return -1;
+        }
+        if (o1 == FILE && o2 == ICON) {
             return -1;
         }
         return 1;

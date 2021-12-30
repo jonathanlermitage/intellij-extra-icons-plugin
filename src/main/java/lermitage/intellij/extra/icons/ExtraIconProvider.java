@@ -11,6 +11,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static lermitage.intellij.extra.icons.Model.ofDir;
 import static lermitage.intellij.extra.icons.Model.ofFile;
+import static lermitage.intellij.extra.icons.Model.ofIcon;
 
 @SuppressWarnings({"SpellCheckingInspection", "GrazieInspection"})
 public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
@@ -22,6 +23,18 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     @NotNull
     public static List<Model> allModels() {
         return asList(
+
+            //
+            // IDE icon (lowest priority)
+            // Tip: to find IDE icon names, visit https://jetbrains.design/intellij/resources/icons_list/, pick
+            // an icon and open the ZIP file: you can use the non-dark SVG file name.
+            //
+            ofIcon("ide_kotlin_gradle_script",
+                "kotlin_gradle_script.svg", "/extra-icons/gradle_kotlin_colored.svg",
+                "IDE icon: Kotlin Gradle script"),
+            ofIcon("ide_kotlin_gradle_script_alt",
+                "kotlin_gradle_script.svg", "/extra-icons/gradle_kotlin.svg",
+                "IDE icon: Kotlin Gradle script (alternative)"),
 
             //
             // folder
