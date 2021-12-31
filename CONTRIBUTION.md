@@ -20,7 +20,7 @@ Please describe the issue and provide some information:
 Tip: to support new icons, you will want to
 edit [this file](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/src/main/java/lermitage/intellij/extra/icons/ExtraIconProvider.java#L24)
 . All icons and selection rules are registered here. Icons are stored in `src/main/resources/extra-icons/`.  
-Test the plugin with `./gradlew runIde`.
+Try the plugin in a standalone IDE with `./gradlew runIde`.
 
 ## Feature request
 
