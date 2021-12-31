@@ -181,7 +181,7 @@ public class Model {
     }
 
     /**
-     * Condition: fole/folder name must not contain a dot.
+     * Condition: file/folder name must not contain a dot.
      */
     public Model noDot() {
         getCurrentCondition().setNoDot();
@@ -198,7 +198,7 @@ public class Model {
     }
 
     /**
-     * Condition: project as given facet, like 'andoid', 'kotlin', 'python', 'spring' etc. You
+     * Condition: project has given facet, like 'andoid', 'kotlin', 'python', 'spring' etc. You
      * can see and add facets in Project Structure / Project Settings / Facets.
      * @param facets facet(s), lowercased.
      */
