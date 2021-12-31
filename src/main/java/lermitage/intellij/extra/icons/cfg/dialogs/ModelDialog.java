@@ -110,9 +110,8 @@ public class ModelDialog extends DialogWrapper {
         toolbarPanel = createConditionsListToolbar();
         conditionsPanel.add(toolbarPanel, BorderLayout.CENTER);
 
-        for (ModelType value : ModelType.values()) {
-            typeComboBox.addItem(value.getFriendlyName());
-        }
+        typeComboBox.addItem(ModelType.FILE.getFriendlyName());
+        typeComboBox.addItem(ModelType.DIR.getFriendlyName());
 
         chooseIconSelector.addItem("choose custom or bundled icon");
         List<Model> bundledModels = new ArrayList<>();
