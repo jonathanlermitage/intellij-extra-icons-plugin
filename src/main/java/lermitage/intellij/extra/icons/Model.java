@@ -38,18 +38,43 @@ public class Model {
     @XCollection
     private List<ModelCondition> conditions = new ArrayList<>(Collections.singletonList(new ModelCondition()));
 
+    /**
+     * Create a rule (Model) to apply given icon to a file. Once created, you need to
+     * apply condition(s) to rule, like {@link #start(String...)}, {@link #eq(String...)}, etc.
+     * @param id a unique id.
+     * @param icon the path of the icon to apply, located in plugin resources folder.
+     * @param description human readable description.
+     */
     @NotNull
     @Contract("_, _, _ -> new")
     public static Model ofFile(String id, String icon, String description) {
         return new Model(id, icon, description, ModelType.FILE, IconType.PATH);
     }
 
+    /**
+     * Create a rule (Model) to apply given icon to a folder. Once created, you need to
+     * apply condition(s) to rule, like {@link #start(String...)}, {@link #eq(String...)}, etc.
+     * @param id a unique id.
+     * @param icon the path of the icon to apply, located in plugin resources folder.
+     * @param description human readable description.
+     */
     @NotNull
     @Contract("_, _, _ -> new")
     public static Model ofDir(String id, String icon, String description) {
         return new Model(id, icon, description, ModelType.DIR, IconType.PATH);
     }
 
+    /**
+     * Create a rule (Model) to override given icon (ideIcon) with new icon (icon). Once created,
+     * you must NOT apply conditions (like {@link #start(String...)}, {@link #eq(String...)}, etc.) to this rule,
+     * they will be ignored.
+     * @param id a unique id.
+     * @param ideIcon the name of the icon to override. You can find icon
+     *                names <a href="https://jetbrains.design/intellij/resources/icons_list/">here</a>: pick
+     *                an icon and open the ZIP file; you can use the non-dark SVG file name.
+     * @param icon the path of the icon to apply, located in plugin resources folder.
+     * @param description human readable description.
+     */
     @NotNull
     @Contract("_, _, _, _ -> new")
     public static Model ofIcon(String id, String ideIcon, String icon, String description) {
@@ -61,6 +86,8 @@ public class Model {
     private Model() {
     }
 
+    /** Don't use it directly, please prefer {@link #ofFile(String, String, String)},
+     * {@link #ofDir(String, String, String)} or {@link #ofIcon(String, String, String, String)}. */
     public Model(String id, String icon, String description, ModelType modelType, IconType iconType) {
         this.id = id;
         this.icon = icon;
@@ -69,11 +96,15 @@ public class Model {
         this.iconType = iconType;
     }
 
+    /** Don't use it directly, please prefer {@link #ofFile(String, String, String)},
+     * {@link #ofDir(String, String, String)} or {@link #ofIcon(String, String, String, String)}. */
     public Model(String id, String icon, String description, ModelType modelType, IconType iconType, List<ModelCondition> conditions) {
         this(id, icon, description, modelType, iconType);
         this.conditions = conditions;
     }
 
+    /** Don't use it directly, please prefer {@link #ofFile(String, String, String)},
+     * {@link #ofDir(String, String, String)} or {@link #ofIcon(String, String, String, String)}. */
     public Model(String id, String ideIcon, String icon, String description, ModelType modelType, IconType iconType) {
         this(id, icon, description, modelType, iconType);
         this.ideIcon = ideIcon;
@@ -103,51 +134,92 @@ public class Model {
         return enabled;
     }
 
+    /**
+     * Condition: has given parent directory(s).
+     * @param parents one or multiple possible directories, lowercased.
+     */
     public Model parents(String... parents) {
         getCurrentCondition().setParents(parents);
         return this;
     }
 
-    public Model start(String... base) {
-        getCurrentCondition().setStart(base);
+    /**
+     * Condition: file/folder name starts with given string(s).
+     * @param start strings, lowercased.
+     */
+    public Model start(String... start) {
+        getCurrentCondition().setStart(start);
         return this;
     }
 
-    public Model eq(String... base) {
-        getCurrentCondition().setEq(base);
+    /**
+     * Condition: file/folder name is equal to given string(s).
+     * @param name strings, lowercased.
+     */
+    public Model eq(String... name) {
+        getCurrentCondition().setEq(name);
         return this;
     }
 
-    public Model mayEnd(String... extensions) {
-        getCurrentCondition().setMayEnd(extensions);
+    /**
+     * Condition: file/folder name may end with given string(s). This condition is optional.
+     * Example: to catch README and README.md files, you will use {@code model.eq("readme").mayEnd(".md")}
+     * @param end strings, lowercased.
+     */
+    public Model mayEnd(String... end) {
+        getCurrentCondition().setMayEnd(end);
         return this;
     }
 
-    public Model end(String... extensions) {
-        getCurrentCondition().setEnd(extensions);
+    /**
+     * Condition: file/folder name ends with given string(s).
+     * @param end strings, lowercased.
+     */
+    public Model end(String... end) {
+        getCurrentCondition().setEnd(end);
         return this;
     }
 
+    /**
+     * Condition: fole/folder name must not contain a dot.
+     */
     public Model noDot() {
         getCurrentCondition().setNoDot();
         return this;
     }
 
+    /**
+     * Condition: file/folder <b>absolute path</b> satisfies given regular expression.
+     * @param regex regular expression.
+     */
     public Model regex(@Language("RegExp") String regex) {
         getCurrentCondition().setRegex(regex);
         return this;
     }
 
+    /**
+     * Condition: project as given facet, like 'andoid', 'kotlin', 'python', 'spring' etc. You
+     * can see and add facets in Project Structure / Project Settings / Facets.
+     * @param facets facet(s), lowercased.
+     */
     public Model facets(String... facets) {
         getCurrentCondition().setFacets(Arrays.stream(facets).map(String::toLowerCase).toArray(String[]::new));
         return this;
     }
 
+    /**
+     * Condition: use an {@link lermitage.intellij.extra.icons.enablers.IconEnablerType},
+     * like {@link lermitage.intellij.extra.icons.enablers.GitSubmoduleFolderEnabler}.
+     * @param type IconEnablerType.
+     */
     public Model iconEnabler(IconEnablerType type) {
         getCurrentCondition().setIconEnablerType(type);
         return this;
     }
 
+    /**
+     * Add a possible condition to current model: file/folder will have to satisfy one of configured conditions.
+     */
     public Model or() {
         this.conditions.add(new ModelCondition());
         return this;
