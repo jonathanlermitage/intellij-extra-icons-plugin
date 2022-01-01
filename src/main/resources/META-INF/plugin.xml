@@ -57,7 +57,7 @@
     <depends>com.intellij.modules.lang</depends>
     <depends>com.intellij.modules.vcs</depends>
 
-    <!-- Icon Patcher override file icon by icon name -->
+    <!-- Icon Patchers override file icon by icon name -->
     <application-components>
         <component>
             <implementation-class>lermitage.intellij.extra.icons.ExtraIconPatcher</implementation-class>
