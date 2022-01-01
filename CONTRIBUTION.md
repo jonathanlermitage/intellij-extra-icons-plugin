@@ -22,7 +22,7 @@ edit [this file](https://github.com/jonathanlermitage/intellij-extra-icons-plugi
 . All icons and selection rules are registered here. Icons are stored in `src/main/resources/extra-icons/`.  
 Try the plugin in a standalone IDE with `./gradlew runIde`.
 
-## Feature request
+## Feature requests
 
 If you are not comfortable with Java development, you can ask me to support new icons. Please:
 
