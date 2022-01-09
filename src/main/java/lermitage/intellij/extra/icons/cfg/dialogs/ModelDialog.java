@@ -98,7 +98,7 @@ public class ModelDialog extends DialogWrapper {
     private void initComponents() {
         setIdComponentsVisible(false);
         ideIconOverrideTip.setText("<html><b>Find IDE icons <a href=\"#\">here</a></b>, open the ZIP file then use " +
-            "the non-dark icon name (with <i>.svg</i> extension).</html>");
+            "an icon file name (with <i>.svg</i> extension).</html>");
         ideIconOverrideTip.setToolTipText("<html>Open <i>https://jetbrains.design/intellij/resources/icons_list/</i> in default browser.</html>");
         ideIconOverrideTip.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ideIconOverrideTip.addMouseListener(new MouseAdapter() {
@@ -323,6 +323,8 @@ public class ModelDialog extends DialogWrapper {
         if (selectedItem != null && selectedItem.equals(ModelType.ICON.getFriendlyName())) {
             if (ideIconOverrideTextField.getText().trim().isEmpty()) {
                 return new ValidationInfo("IDE icon's name cannot be empty!", ideIconOverrideTextField);
+            } else if (!ideIconOverrideTextField.getText().endsWith(".svg")) {
+                return new ValidationInfo("IDE icon's name must end with .svg!", ideIconOverrideTextField);
             }
         } else {
             if (conditionsCheckboxList.isEmpty()) {
