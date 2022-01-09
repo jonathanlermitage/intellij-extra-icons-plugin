@@ -1,7 +1,7 @@
 # Extra Icons Change Log
 
 ## 1.69.0 (WIP)
-* internal: plugin can now override IDE icons by icon name (see `ofIcon(...)` method usage in `ExtraIconProvider`). Nota: for now, users can't provide their own icons, this is a limitation on IntelliJ API.
+* internal: plugin can now override IDE icons by icon name (see `ofIcon(...)` method usage in `ExtraIconProvider`). Nota: for now, users can't provide their own icons, this is a limitation of IntelliJ API.
 * improved support of Kotlin Gradle script icon.
 
 ## 1.68.0 (2021/12/28)
