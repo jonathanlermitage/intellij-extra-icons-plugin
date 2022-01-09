@@ -97,6 +97,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         this.isProjectForm = true;
     }
 
+    public boolean isProjectForm() {
+        return isProjectForm;
+    }
+
     @Nls(capitalization = Nls.Capitalization.Title)
     @Override
     public String getDisplayName() {

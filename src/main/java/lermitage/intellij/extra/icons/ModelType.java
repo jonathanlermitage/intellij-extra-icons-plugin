@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Contract;
 public enum ModelType {
     FILE("File"),
     DIR("Directory"),
-    ICON("Icon");
+    ICON("Icon (IDE restart is required to see changes)");
 
 
     private final String friendlyName;
