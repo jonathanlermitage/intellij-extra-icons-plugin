@@ -24,7 +24,7 @@
     <change-notes><![CDATA[
     1.69.0 (WIP)
     <ul>
-      <li>internal: plugin can now override IDE icons by icon name (see <i>ofIcon(...)</i> method usage in <i>ExtraIconProvider</i>).</li>
+      <li>internal: plugin can now override IDE icons by icon name (see <i>ofIcon(...)</i> method usage in <i>ExtraIconProvider</i>). Nota: for now, users can't provide their own icons, this is a limitation on IntelliJ API.</li>
       <li>improved support of Kotlin Gradle script icon.</li>
     </ul>
     1.68.0 (2021/12/28)
