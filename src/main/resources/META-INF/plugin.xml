@@ -24,7 +24,7 @@
     <change-notes><![CDATA[
     1.69.0 (WIP)
     <ul>
-      <li>you can now override IDE icons by icon name. Per example, you can override the Kotlin Class icon. To find IDE icon names, visit <a href="https://jetbrains.design/intellij/resources/icons_list/">IntelliJ icons list</a>, pick an icon and open the ZIP file: you can use the non-dark SVG file name.</li>
+      <li>you can now override IDE icons by icon name. Per example, you can override the Kotlin Class icon. To find IDE icon names, visit <a href="https://jetbrains.design/intellij/resources/icons_list/">IntelliJ icons list</a>, pick an icon and open the ZIP file: you can use the SVG file name.</li>
       <li>improved support of Kotlin Gradle script icon.</li>
     </ul>
     1.68.0 (2021/12/28)
