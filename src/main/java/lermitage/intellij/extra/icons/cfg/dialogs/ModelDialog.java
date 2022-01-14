@@ -15,9 +15,9 @@ import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.IconUtil;
-import lermitage.intellij.extra.icons.CustomIconLoader;
+import lermitage.intellij.extra.icons.utils.AsyncUtils;
+import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
-import lermitage.intellij.extra.icons.IJUtils;
 import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelCondition;
@@ -57,7 +57,7 @@ import static lermitage.intellij.extra.icons.cfg.dialogs.ModelConditionDialog.FI
 public class ModelDialog extends DialogWrapper {
 
     // Icons can be SVG or PNG only. Never allow user to pick GIF, JPEG, etc, otherwise
-    // we should convert these files to PNG in CustomIconLoader:toBase64 method.
+    // we should convert these files to PNG in IconUtils:toBase64 method.
     private final List<String> extensions = Arrays.asList("svg", "png");
 
     private final SettingsForm settingsForm;
@@ -76,7 +76,7 @@ public class ModelDialog extends DialogWrapper {
     private JLabel ideIconOverrideLabel;
     private JBLabel ideIconOverrideTip;
 
-    private CustomIconLoader.ImageWrapper customIconImage;
+    private IconUtils.ImageWrapper customIconImage;
     private JPanel toolbarPanel;
 
     private Model modelToEdit;
@@ -116,7 +116,7 @@ public class ModelDialog extends DialogWrapper {
             conditionsCheckboxList.getItemAt(index).setEnabled(value);
         });
 
-        chooseIconButton.addActionListener(e -> IJUtils.invokeReadActionAndWait(() -> {
+        chooseIconButton.addActionListener(e -> AsyncUtils.invokeReadActionAndWait(() -> {
             try {
                 customIconImage = loadCustomIcon();
                 if (customIconImage != null) {
@@ -159,8 +159,8 @@ public class ModelDialog extends DialogWrapper {
                 Object item = event.getItem();
                 if (item instanceof BundledIcon) {
                     BundledIcon bundledIcon = (BundledIcon) item;
-                    iconLabel.setIcon(IconLoader.getIcon((bundledIcon).getIconPath(), CustomIconLoader.class));
-                    customIconImage = new CustomIconLoader.ImageWrapper(bundledIcon.getIconPath());
+                    iconLabel.setIcon(IconLoader.getIcon((bundledIcon).getIconPath(), IconUtils.class));
+                    customIconImage = new IconUtils.ImageWrapper(bundledIcon.getIconPath());
                 } else if (item instanceof String) {
                     iconLabel.setIcon(new ImageIcon());
                 }
@@ -192,7 +192,7 @@ public class ModelDialog extends DialogWrapper {
             if (customIconImage.getIconType() == IconType.PATH) {
                 icon = customIconImage.getImageAsBundledIconRef();
             } else {
-                icon = CustomIconLoader.toBase64(customIconImage);
+                icon = IconUtils.toBase64(customIconImage);
             }
         } else if (modelToEdit != null) {
             icon = modelToEdit.getIcon();
@@ -243,7 +243,7 @@ public class ModelDialog extends DialogWrapper {
         typeComboBox.setSelectedItem(model.getModelType().getFriendlyName());
         typeComboBox.updateUI();
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
-        SwingUtilities.invokeLater(() -> iconLabel.setIcon(CustomIconLoader.getIcon(model, additionalUIScale)));
+        SwingUtilities.invokeLater(() -> iconLabel.setIcon(IconUtils.getIcon(model, additionalUIScale)));
         if (model.getIconType() == IconType.PATH) {
             for (int itemIdx = 0; itemIdx < chooseIconSelector.getItemCount(); itemIdx++) {
                 Object item = chooseIconSelector.getItemAt(itemIdx);
@@ -289,14 +289,14 @@ public class ModelDialog extends DialogWrapper {
     /**
      * Opens a file chooser dialog and loads the icon.
      */
-    private CustomIconLoader.ImageWrapper loadCustomIcon() {
+    private IconUtils.ImageWrapper loadCustomIcon() {
         VirtualFile[] virtualFiles = FileChooser.chooseFiles(
             new FileChooserDescriptor(true, false, false, false, false, false)
                 .withFileFilter(file -> extensions.contains(file.getExtension())),
             settingsForm.getProject(),
             null);
         if (virtualFiles.length > 0) {
-            return CustomIconLoader.loadFromVirtualFile(virtualFiles[0]);
+            return IconUtils.loadFromVirtualFile(virtualFiles[0]);
         }
         return null;
     }
@@ -350,7 +350,7 @@ public class ModelDialog extends DialogWrapper {
             Icon icon = null;
             if (value instanceof BundledIcon) {
                 text = ((BundledIcon) value).getDescription();
-                icon = IconLoader.getIcon(((BundledIcon) value).getIconPath(), CustomIconLoader.class);
+                icon = IconLoader.getIcon(((BundledIcon) value).getIconPath(), IconUtils.class);
             } else if (value instanceof String) {
                 text = (String) value;
                 icon = new ImageIcon();

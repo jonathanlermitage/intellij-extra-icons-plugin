@@ -24,7 +24,7 @@ import java.util.stream.Stream;
 
 public class ExtraIconPatcher extends IconPathPatcher {
 
-    private final Logger LOG = Logger.getInstance(getClass().getName());
+    private static final Logger LOGGER = Logger.getInstance(ExtraIconPatcher.class);
 
     private Map<String, String> icons;
 
@@ -70,10 +70,10 @@ public class ExtraIconPatcher extends IconPathPatcher {
         try {
             icons = convertB64IconsToLocalFiles(icons);
         } catch (IOException e) {
-            LOG.warn("Cannot create temporary directory to store user IDE icons, this feature won't work", e);
+            LOGGER.warn("Cannot create temporary directory to store user IDE icons, this feature won't work", e);
         }
         //icons.put("add.svg", "file://C:\\Projects\\ij-extra-icons\\src\\main\\resources\\extra-icons\\angular2.svg");
-        LOG.info("config loaded with success, enabled " + icons.size() + " items");
+        LOGGER.info("config loaded with success, enabled " + icons.size() + " items");
     }
 
     /**
