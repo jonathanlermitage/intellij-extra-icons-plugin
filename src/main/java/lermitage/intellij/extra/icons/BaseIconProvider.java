@@ -20,6 +20,8 @@ import com.intellij.psi.PsiManager;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
 import lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService;
+import lermitage.intellij.extra.icons.utils.IconUtils;
+import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -73,10 +75,13 @@ public abstract class BaseIconProvider
         }
         // Workaround for https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39
         // Plugin may want to reload icon on closed or disposed project. Just ignore it
-        if (e.getMessage() != null && (e.getMessage().contains("DISPOSE_IN_PROGRESS") || e.getMessage().contains("Project is already disposed"))) {
-            LOGGER.debug(e);
-        } else {
-            LOGGER.warn(e);
+        if (e.getMessage() != null) {
+            String errMsg = e.getMessage().toUpperCase();
+            if (errMsg.contains("DISPOSE_IN_PROGRESS") || errMsg.contains("PROJECT IS ALREADY DISPOSED")) {
+                LOGGER.debug(e);
+            } else {
+                LOGGER.warn(e);
+            }
         }
     }
 
@@ -84,7 +89,7 @@ public abstract class BaseIconProvider
     @Override
     public Icon getIcon(@NotNull FilePath filePath, @Nullable Project project) {
         try {
-            if (IJUtils.isAlive(project)) {
+            if (ProjectUtils.isAlive(project)) {
                 VirtualFile file = filePath.getVirtualFile();
                 if (file == null) {
                     return null;
@@ -109,7 +114,7 @@ public abstract class BaseIconProvider
     @Override
     public Icon getIcon(@NotNull VirtualFile file, int flags, @Nullable Project project) {
         try {
-            if (IJUtils.isAlive(project)) {
+            if (ProjectUtils.isAlive(project)) {
                 PsiFileSystemItem psiFileSystemItem;
                 if (file.isDirectory()) {
                     psiFileSystemItem = PsiManager.getInstance(project).findDirectory(file);
@@ -131,7 +136,7 @@ public abstract class BaseIconProvider
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
         try {
             Project project = psiElement.getProject();
-            if (!IJUtils.isAlive(project)) {
+            if (!ProjectUtils.isAlive(project)) {
                 return null;
             }
             ModelType currentModelType;
@@ -158,11 +163,11 @@ public abstract class BaseIconProvider
             String parentName = parent(currentPsiFileItem);
             String currentFileName = currentPsiFileItem.getName().toLowerCase();
             Optional<String> fullPath = getFullPath(currentPsiFileItem);
-            Set<String> facets = IJUtils.getFacets(project);
+            Set<String> facets = ProjectUtils.getFacets(project);
             Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
             for (final Model model : getModelsIncludingUserModels(project)) {
                 if (model.getModelType() == currentModelType && isModelEnabled(project, model) && model.check(parentName, currentFileName, fullPath, facets, project)) {
-                    return CustomIconLoader.getIcon(model, additionalUIScale);
+                    return IconUtils.getIcon(model, additionalUIScale);
                 }
             }
         } catch (Throwable e) {
