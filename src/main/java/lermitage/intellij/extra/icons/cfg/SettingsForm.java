@@ -13,8 +13,8 @@ import com.intellij.ui.EditorTextField;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.table.JBTable;
-import lermitage.intellij.extra.icons.CustomIconLoader;
-import lermitage.intellij.extra.icons.IJUtils;
+import lermitage.intellij.extra.icons.utils.IconUtils;
+import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelType;
 import lermitage.intellij.extra.icons.cfg.dialogs.ModelDialog;
@@ -91,11 +91,14 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         });
     }
 
-    @SuppressWarnings("UnusedDeclaration")
     public SettingsForm(Project project) {
         this();
         this.project = project;
         this.isProjectForm = true;
+    }
+
+    public boolean isProjectForm() {
+        return isProjectForm;
     }
 
     @Nls(capitalization = Nls.Capitalization.Title)
@@ -189,9 +192,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         service.setCustomModels(customModels);
 
         if (isProjectForm) {
-            IJUtils.refresh(project);
+            ProjectUtils.refresh(project);
         } else {
-            IJUtils.refreshOpenedProjects();
+            ProjectUtils.refreshOpenedProjects();
         }
     }
 
@@ -296,7 +299,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         userIconsSettingsTableModel = new UserIconsSettingsTableModel();
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
         customModels.forEach(m -> userIconsSettingsTableModel.addRow(new Object[]{
-                CustomIconLoader.getIcon(m, additionalUIScale),
+                IconUtils.getIcon(m, additionalUIScale),
                 m.isEnabled(),
                 m.getDescription()
             })
@@ -374,11 +377,18 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         int currentSelected = pluginIconsSettingsTableModel != null ? pluginIconsTable.getSelectedRow() : -1;
         pluginIconsSettingsTableModel = new PluginIconsSettingsTableModel();
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
+        if (isProjectForm) {
+            // IDE icon overrides work at IDE level only, not a project level, that's why
+            // the project-level icons list won't show IDE icons.
+            allRegisteredModels = allRegisteredModels.stream()
+                .filter(model -> model.getModelType() != ModelType.ICON)
+                .collect(Collectors.toList());
+        }
         foldersFirst(allRegisteredModels);
         List<String> disabledModelIds = SettingsService.getInstance(project).getDisabledModelIds();
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
         allRegisteredModels.forEach(m -> pluginIconsSettingsTableModel.addRow(new Object[]{
-                CustomIconLoader.getIcon(m, additionalUIScale),
+                IconUtils.getIcon(m, additionalUIScale),
                 !disabledModelIds.contains(m.getId()),
                 m.getDescription(),
                 m.getId()

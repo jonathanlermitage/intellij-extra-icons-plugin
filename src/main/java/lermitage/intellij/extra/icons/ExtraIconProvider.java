@@ -11,6 +11,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static lermitage.intellij.extra.icons.Model.ofDir;
 import static lermitage.intellij.extra.icons.Model.ofFile;
+import static lermitage.intellij.extra.icons.Model.ofIcon;
 
 @SuppressWarnings({"SpellCheckingInspection", "GrazieInspection"})
 public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
@@ -22,6 +23,65 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     @NotNull
     public static List<Model> allModels() {
         return asList(
+
+            //
+            // IDE icon (lowest priority)
+            // Tip: to find IDE icon names, visit https://jetbrains.design/intellij/resources/icons_list/, pick
+            // an icon and open the ZIP file: you can use the non-dark SVG file name.
+            //
+            // docker
+            ofIcon("ide_docker",
+                "Docker.svg", "/extra-icons/docker.png",
+                "IDE icon: Docker"),
+            ofIcon("ide_docker_alt",
+                "Docker.svg", "/extra-icons/docker_alt.png",
+                "IDE icon: Docker (alternative 1)"),
+            ofIcon("ide_docker_alt2",
+                "Docker.svg", "/extra-icons/docker_alt2.svg",
+                "IDE icon: Docker (alternative 2)"),
+            // docker compose
+            ofIcon("ide_docker_compose",
+                "DockerCompose.svg", "/extra-icons/dockercompose.png",
+                "IDE icon: Docker Compose"),
+            ofIcon("ide_docker_compose_alt",
+                "DockerCompose.svg", "/extra-icons/dockercompose_alt.png",
+                "IDE icon: Docker Compose (alternative 1)"),
+            ofIcon("ide_docker_compose_alt2",
+                "DockerCompose.svg", "/extra-icons/dockercompose_alt2.svg",
+                "IDE icon: Docker Compose (alternative 2)"),
+            // java
+            ofIcon("ide_java_enum_class",
+                "enum.svg", "/extra-icons/ide/enum.svg",
+                "IDE icon: Java enum"),
+            ofIcon("ide_java_enum_class_alt",
+                "enum.svg", "/extra-icons/ide/enum_alt.svg",
+                "IDE icon: Java enum (alternative 1)"),
+            ofIcon("ide_java_enum_class_alt2",
+                "enum.svg", "/extra-icons/ide/enum_alt2.svg",
+                "IDE icon: Java enum (alternative 2)"),
+            ofIcon("ide_java_abstract_exception",
+                "abstractException.svg", "/extra-icons/ide/abstractException.svg",
+                "IDE icon: Java abstract exception class"),
+            ofIcon("ide_java_exception_class",
+                "exceptionClass.svg", "/extra-icons/ide/exceptionClass.svg",
+                "IDE icon: Java exception class"),
+            // kotlin
+            ofIcon("ide_kotlin_enum_class",
+                "enumKotlin.svg", "/extra-icons/ide/enumKotlin.svg",
+                "IDE icon: Kotlin enum"),
+            ofIcon("ide_kotlin_enum_class_alt",
+                "enumKotlin.svg", "/extra-icons/ide/enumKotlin_alt.svg",
+                "IDE icon: Kotlin enum (alternative 1)"),
+            ofIcon("ide_kotlin_enum_class_alt2",
+                "enumKotlin.svg", "/extra-icons/ide/enumKotlin_alt2.svg",
+                "IDE icon: Kotlin enum (alternative 2)"),
+            // kotlin gradle script
+            ofIcon("ide_kotlin_gradle_script",
+                "kotlin_gradle_script.svg", "/extra-icons/gradle_kotlin_colored.svg",
+                "IDE icon: Kotlin Gradle script"),
+            ofIcon("ide_kotlin_gradle_script_alt",
+                "kotlin_gradle_script.svg", "/extra-icons/gradle_kotlin.svg",
+                "IDE icon: Kotlin Gradle script (alternative)"),
 
             //
             // folder
@@ -268,6 +328,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*/db/changelog/.*\\.(sql|xml)"),
             ofFile("mockk", "/extra-icons/mockk.svg", "Mockk: io/mockk/settings.properties")
                 .regex(".*/io/mockk/settings\\.properties"),
+            ofFile("storybook", "/extra-icons/storybook.svg", "Storybook: *.stor(y|ies).(js|jsx|ts|tsx|mdx)")
+                .regex(".*\\.stor(y|ies)\\.(js|jsx|ts|tsx|mdx)$"),
 
             //
             // file plus its containing folder
@@ -644,8 +706,6 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("screwdriver.yaml"),
             ofFile("stacksmith", "/extra-icons/stacksmith.svg", "Bitnami Stacksmith: stackerfile.yml")
                 .eq("stackerfile.yml"),
-            ofFile("storybook", "/extra-icons/storybook.svg", "Storybook: *.stor(y|ies).(js|jsx|ts|tsx|mdx)")
-                .regex(".*\\.stor(y|ies)\\.(js|jsx|ts|tsx|mdx)$"),
             ofFile("svgo", "/extra-icons/svgo.svg", "SVGO: svgo(.yml,.yaml)")
                 .eq("svgo").end(YML),
             ofFile("svgo2", "/extra-icons/svgo.svg", "SVGO: svgo.config.js")

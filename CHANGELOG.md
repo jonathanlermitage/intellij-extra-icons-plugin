@@ -1,5 +1,13 @@
 # Extra Icons Change Log
 
+## 1.69.0 (WIP)
+* you can now override IDE icons by icon name. Per example, you can override the Kotlin Class icon. To find IDE icon names, visit [IntelliJ icons list](https://jetbrains.design/intellij/resources/icons_list/), pick an icon and open the ZIP file: you can use the SVG file name.
+* improved support of Kotlin Gradle script icon.
+* override Java Enum, Java exception class and Java abstract exception class icons.
+* override Kotlin Enum icon.
+* override Docker and Docker Compose icons.
+* internal: minor code cleanup.
+
 ## 1.68.0 (2021/12/28)
 * config panel: add missing scrollbar to user icons list.
 * config panel: minor UI improvements.

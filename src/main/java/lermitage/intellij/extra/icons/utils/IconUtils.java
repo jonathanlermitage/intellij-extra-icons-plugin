@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-package lermitage.intellij.extra.icons;
+package lermitage.intellij.extra.icons.utils;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
@@ -10,6 +10,8 @@ import com.intellij.util.IconUtil;
 import com.intellij.util.ImageLoader;
 import com.intellij.util.RetinaImage;
 import com.intellij.util.SVGLoader;
+import lermitage.intellij.extra.icons.IconType;
+import lermitage.intellij.extra.icons.Model;
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -17,15 +19,15 @@ import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-public class CustomIconLoader {
+public class IconUtils {
+
+    private static final Logger LOGGER = Logger.getInstance(IconUtils.class);
 
     private static final ThreadLocal<Boolean> contextUpdated = ThreadLocal.withInitial(() -> false);
 
-    private static final Logger LOGGER = Logger.getInstance(CustomIconLoader.class);
-
     public static Icon getIcon(Model model, Double additionalUIScale) {
         if (model.getIconType() == IconType.PATH) {
-            return IconLoader.getIcon(model.getIcon(), CustomIconLoader.class);
+            return IconLoader.getIcon(model.getIcon(), IconUtils.class);
         }
         ImageWrapper fromBase64 = fromBase64(model.getIcon(), model.getIconType(), additionalUIScale);
         if (fromBase64 == null) {
@@ -37,7 +39,7 @@ public class CustomIconLoader {
     /** Load graphics libraries (TwelveMonkeys) in order to make the JVM able to manipulate SVG files. */
     private synchronized static void enhanceImageIOCapabilities() {
         if (!contextUpdated.get()) {
-            Thread.currentThread().setContextClassLoader(CustomIconLoader.class.getClassLoader());
+            Thread.currentThread().setContextClassLoader(IconUtils.class.getClassLoader());
             ImageIO.scanForPlugins();
             contextUpdated.set(true);
             LOGGER.info("ImageIO plugins updated with TwelveMonkeys capabilities");

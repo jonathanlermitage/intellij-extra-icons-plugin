@@ -1,14 +1,11 @@
 // SPDX-License-Identifier: MIT
 
-package lermitage.intellij.extra.icons;
+package lermitage.intellij.extra.icons.utils;
 
 import com.intellij.facet.Facet;
 import com.intellij.facet.FacetManager;
 import com.intellij.ide.projectView.ProjectView;
 import com.intellij.ide.projectView.impl.AbstractProjectViewPane;
-import com.intellij.openapi.application.Application;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.project.Project;
@@ -24,9 +21,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class IJUtils {
+public class ProjectUtils {
 
-    private static final Logger LOGGER = Logger.getInstance(IJUtils.class);
+    private static final Logger LOGGER = Logger.getInstance(ProjectUtils.class);
 
     private static final Map<String, Set<String>> facetsCache = new ConcurrentHashMap<>();
 
@@ -34,7 +31,7 @@ public class IJUtils {
      * Refresh project view.
      */
     public static void refresh(Project project) {
-        if (IJUtils.isAlive(project)) {
+        if (ProjectUtils.isAlive(project)) {
             ProjectView view = ProjectView.getInstance(project);
             if (view != null) {
                 view.refresh();
@@ -96,14 +93,5 @@ public class IJUtils {
      */
     public static boolean isAlive(@Nullable Project project) {
         return project != null && !project.isDisposed();
-    }
-
-    /**
-     * Execute given runnable via {@code invokeAndWait} + {@code runReadAction} to
-     * fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/40">#40</a>.
-     */
-    public static void invokeReadActionAndWait(Runnable runnable) {
-        final Application application = ApplicationManager.getApplication();
-        application.invokeAndWait(() -> application.runReadAction(runnable), ModalityState.NON_MODAL);
     }
 }

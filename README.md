@@ -63,16 +63,11 @@ Optionally, you may want to install SVGO in order to optimize SVG icons. Install
 
 ## Contribution
 
-Open an issue or a pull-request:
-
-* feature request -> support new icons: please provide SVG (with `height="16" width="16"` header) or 32x32 PNG (with transparency) file(s) and filename patterns.
-* contributions: they should be tested.      
-  Please reformat new and modified code only: do not reformat the whole project or entire existing file (in other words, try to limit the amount of changes in order to speed up code review).  
-  To finish, don't hesitate to add your name or nickname (and LinkedIn profile, etc.) to contributors list ;-)
+Please see [CONTRIBUTION.md](CONTRIBUTION.md).
 
 ## Known issues
 
-See [KNOWN_ISSUES.md](KNOWN_ISSUES.md) and [GitHub open issues](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues).
+Please see [KNOWN_ISSUES.md](KNOWN_ISSUES.md) and [GitHub open issues](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues).
 
 ## License
 
