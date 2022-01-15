@@ -22,6 +22,15 @@
     -->
 
     <change-notes><![CDATA[
+    1.69.0 (WIP)
+    <ul>
+      <li>you can now override IDE icons by icon name. Per example, you can override the Kotlin Class icon. To find IDE icon names, visit <a href="https://jetbrains.design/intellij/resources/icons_list/">IntelliJ icons list</a>, pick an icon and open the ZIP file: you can use the SVG file name.</li>
+      <li>improved support of Kotlin Gradle script icon.</li>
+      <li>override Java Enum, Java exception class and Java abstract exception class icons.</li>
+      <li>override Kotlin Enum icon.</li>
+      <li>override Docker and Docker Compose icons.</li>
+      <li>internal: minor code cleanup.</li>
+    </ul>
     1.68.0 (2021/12/28)
     <ul>
       <li>config panel: add missing scrollbar to user icons list.</li>
@@ -40,13 +49,6 @@
       <li>support vanilla JS files.</li>
       <li>rework JsMap icon.</li>
     </ul>
-    1.66.0 (2021/11/07)
-    <ul>
-      <li>support CSS and CssMap files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/76">franciscomarin98</a>.</li>
-      <li>support <a href="https://jgitver.github.io/#_maven_configuration">jgitver</a> Maven configuration files.</li>
-      <li>support <i>.goreleaser.yml</i> files.</li>
-      <li>add alternatives icons for Kubernetes files.</li>
-    </ul>
     ]]>
     </change-notes>
 
@@ -59,8 +61,15 @@
     <depends>com.intellij.modules.lang</depends>
     <depends>com.intellij.modules.vcs</depends>
 
+    <!-- Icon Patchers override file icon by icon name -->
+    <application-components>
+        <component>
+            <implementation-class>lermitage.intellij.extra.icons.ExtraIconPatcher</implementation-class>
+        </component>
+    </application-components>
+
     <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
+        <!-- Icon Providers override file icon by file path -->
         <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <fileIconProvider
             id="genericFileIconProvider"

@@ -16,19 +16,25 @@ public class GitSubmoduleUtils {
     private static final String GIT_MODULES_FILENAME = ".gitmodules";
     private static final Pattern GIT_MODULES_PATH_PATTERN = Pattern.compile("\\s*path\\s*=\\s*([^\\s]+)\\s*");
 
-    public static Set<GitSubmodule> findGitSubmodules(String rootPath) throws FileNotFoundException {
-        File rootGitmodules = new File(rootPath, GIT_MODULES_FILENAME);
-        if (!rootGitmodules.exists()) {
+    /**
+     * Find Git submodules.
+     * @param rootPath root directory's path.
+     * @return submodule paths relative to project's root directory.
+     * @throws FileNotFoundException if root directory doesn't exist.
+     */
+    public static Set<String> findGitSubmodules(String rootPath) throws FileNotFoundException {
+        File rootGitModules = new File(rootPath, GIT_MODULES_FILENAME);
+        if (!rootGitModules.exists()) {
             return Collections.emptySet();
         }
-        Set<GitSubmodule> submodules = new HashSet<>();
-        Scanner scanner = new Scanner(rootGitmodules);
+        Set<String> submodules = new HashSet<>();
+        Scanner scanner = new Scanner(rootGitModules);
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             Matcher matcher = GIT_MODULES_PATH_PATTERN.matcher(line);
             if (matcher.find()) {
                 String path = matcher.group(1);
-                submodules.add(new GitSubmodule(rootPath + "/" + path));
+                submodules.add(rootPath + "/" + path);
             }
         }
         return submodules;

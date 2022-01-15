@@ -58,7 +58,7 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
             submoduleFoldersFound = GitSubmoduleUtils
                 .findGitSubmodules(basePath)
                 .stream()
-                .map(gitSubmodule -> gitSubmodule.getPath().toLowerCase())
+                .map(String::toLowerCase)
                 .collect(Collectors.toSet());
             submoduleFoldersFound.addAll(findNestedGitModulesFiles(submoduleFoldersFound));
         } catch (FileNotFoundException e) {
@@ -78,7 +78,7 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
                 Set<String> submoduleFoldersFound = GitSubmoduleUtils
                     .findGitSubmodules(parentModule)
                     .stream()
-                    .map(gitSubmodule -> gitSubmodule.getPath().toLowerCase())
+                    .map(String::toLowerCase)
                     .collect(Collectors.toSet());
                 if (!submoduleFoldersFound.isEmpty()) {
                     nestedModules.addAll(submoduleFoldersFound);

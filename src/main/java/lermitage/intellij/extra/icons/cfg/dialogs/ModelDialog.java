@@ -15,9 +15,9 @@ import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.IconUtil;
-import lermitage.intellij.extra.icons.CustomIconLoader;
+import lermitage.intellij.extra.icons.utils.AsyncUtils;
+import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
-import lermitage.intellij.extra.icons.IJUtils;
 import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelCondition;
@@ -39,7 +39,12 @@ import javax.swing.ListCellRenderer;
 import javax.swing.SwingUtilities;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.event.ItemEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,7 +57,7 @@ import static lermitage.intellij.extra.icons.cfg.dialogs.ModelConditionDialog.FI
 public class ModelDialog extends DialogWrapper {
 
     // Icons can be SVG or PNG only. Never allow user to pick GIF, JPEG, etc, otherwise
-    // we should convert these files to PNG in CustomIconLoader:toBase64 method.
+    // we should convert these files to PNG in IconUtils:toBase64 method.
     private final List<String> extensions = Arrays.asList("svg", "png");
 
     private final SettingsForm settingsForm;
@@ -67,8 +72,11 @@ public class ModelDialog extends DialogWrapper {
     private JPanel conditionsPanel;
     private JBLabel idLabel;
     private JComboBox<Object> chooseIconSelector;
+    private JBTextField ideIconOverrideTextField;
+    private JLabel ideIconOverrideLabel;
+    private JBLabel ideIconOverrideTip;
 
-    private CustomIconLoader.ImageWrapper customIconImage;
+    private IconUtils.ImageWrapper customIconImage;
     private JPanel toolbarPanel;
 
     private Model modelToEdit;
@@ -89,12 +97,26 @@ public class ModelDialog extends DialogWrapper {
 
     private void initComponents() {
         setIdComponentsVisible(false);
+        ideIconOverrideTip.setText("<html><b>Find IDE icons <a href=\"#\">here</a></b>, open the ZIP file then use " +
+            "an icon file name (with <i>.svg</i> extension).</html>");
+        ideIconOverrideTip.setToolTipText("<html>Open <i>https://jetbrains.design/intellij/resources/icons_list/</i> in default browser.</html>");
+        ideIconOverrideTip.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        ideIconOverrideTip.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI("https://jetbrains.design/intellij/resources/icons_list/"));
+                } catch (Exception ex) {
+                    //ignore
+                }
+            }
+        });
         conditionsCheckboxList = new CheckBoxList<>((index, value) -> {
             //noinspection ConstantConditions
             conditionsCheckboxList.getItemAt(index).setEnabled(value);
         });
 
-        chooseIconButton.addActionListener(e -> IJUtils.invokeReadActionAndWait(() -> {
+        chooseIconButton.addActionListener(e -> AsyncUtils.invokeReadActionAndWait(() -> {
             try {
                 customIconImage = loadCustomIcon();
                 if (customIconImage != null) {
@@ -110,9 +132,13 @@ public class ModelDialog extends DialogWrapper {
         toolbarPanel = createConditionsListToolbar();
         conditionsPanel.add(toolbarPanel, BorderLayout.CENTER);
 
-        for (ModelType value : ModelType.values()) {
-            typeComboBox.addItem(value.getFriendlyName());
+        typeComboBox.addItem(ModelType.FILE.getFriendlyName());
+        typeComboBox.addItem(ModelType.DIR.getFriendlyName());
+        if (!settingsForm.isProjectForm()) {
+            typeComboBox.addItem(ModelType.ICON.getFriendlyName());
         }
+
+        typeComboBox.addActionListener(e -> updateUIOnTypeChange());
 
         chooseIconSelector.addItem("choose custom or bundled icon");
         List<Model> bundledModels = new ArrayList<>();
@@ -133,13 +159,26 @@ public class ModelDialog extends DialogWrapper {
                 Object item = event.getItem();
                 if (item instanceof BundledIcon) {
                     BundledIcon bundledIcon = (BundledIcon) item;
-                    iconLabel.setIcon(IconLoader.getIcon((bundledIcon).getIconPath(), CustomIconLoader.class));
-                    customIconImage = new CustomIconLoader.ImageWrapper(bundledIcon.getIconPath());
+                    iconLabel.setIcon(IconLoader.getIcon((bundledIcon).getIconPath(), IconUtils.class));
+                    customIconImage = new IconUtils.ImageWrapper(bundledIcon.getIconPath());
                 } else if (item instanceof String) {
                     iconLabel.setIcon(new ImageIcon());
                 }
             }
         });
+
+        updateUIOnTypeChange();
+    }
+
+    private void updateUIOnTypeChange() {
+        Object selectedItem = typeComboBox.getSelectedItem();
+        if (selectedItem != null) {
+            boolean ideIconOverrideSelected = selectedItem.equals(ModelType.ICON.getFriendlyName());
+            ideIconOverrideLabel.setVisible(ideIconOverrideSelected);
+            ideIconOverrideTextField.setVisible(ideIconOverrideSelected);
+            ideIconOverrideTip.setVisible(ideIconOverrideSelected);
+            conditionsPanel.setVisible(!ideIconOverrideSelected);
+        }
     }
 
     /**
@@ -153,21 +192,35 @@ public class ModelDialog extends DialogWrapper {
             if (customIconImage.getIconType() == IconType.PATH) {
                 icon = customIconImage.getImageAsBundledIconRef();
             } else {
-                icon = CustomIconLoader.toBase64(customIconImage);
+                icon = IconUtils.toBase64(customIconImage);
             }
         } else if (modelToEdit != null) {
             icon = modelToEdit.getIcon();
             iconType = modelToEdit.getIconType();
         }
-        Model newModel = new Model(modelIDField.isVisible() ? modelIDField.getText() : null,
-            icon,
-            descriptionField.getText(),
-            ModelType.getByFriendlyName(Objects.requireNonNull(typeComboBox.getSelectedItem()).toString()),
-            iconType,
-            IntStream.range(0, conditionsCheckboxList.getItemsCount())
-                .mapToObj(index -> conditionsCheckboxList.getItemAt(index))
-                .collect(Collectors.toList())
-        );
+
+        Object selectedItem = typeComboBox.getSelectedItem();
+        Model newModel;
+        if (selectedItem != null && selectedItem.equals(ModelType.ICON.getFriendlyName())) {
+            newModel = new Model(modelIDField.isVisible() ? modelIDField.getText() : null,
+                ideIconOverrideTextField.getText(),
+                icon,
+                descriptionField.getText(),
+                ModelType.getByFriendlyName(Objects.requireNonNull(typeComboBox.getSelectedItem()).toString()),
+                iconType
+            );
+        } else {
+            newModel = new Model(modelIDField.isVisible() ? modelIDField.getText() : null,
+                icon,
+                descriptionField.getText(),
+                ModelType.getByFriendlyName(Objects.requireNonNull(typeComboBox.getSelectedItem()).toString()),
+                iconType,
+                IntStream.range(0, conditionsCheckboxList.getItemsCount())
+                    .mapToObj(index -> conditionsCheckboxList.getItemAt(index))
+                    .collect(Collectors.toList())
+            );
+        }
+
         if (modelToEdit != null) {
             newModel.setEnabled(modelToEdit.isEnabled());
         }
@@ -186,10 +239,11 @@ public class ModelDialog extends DialogWrapper {
             modelIDField.setText(model.getId());
         }
         descriptionField.setText(model.getDescription());
+        ideIconOverrideTextField.setText(model.getIdeIcon());
         typeComboBox.setSelectedItem(model.getModelType().getFriendlyName());
         typeComboBox.updateUI();
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
-        SwingUtilities.invokeLater(() -> iconLabel.setIcon(CustomIconLoader.getIcon(model, additionalUIScale)));
+        SwingUtilities.invokeLater(() -> iconLabel.setIcon(IconUtils.getIcon(model, additionalUIScale)));
         if (model.getIconType() == IconType.PATH) {
             for (int itemIdx = 0; itemIdx < chooseIconSelector.getItemCount(); itemIdx++) {
                 Object item = chooseIconSelector.getItemAt(itemIdx);
@@ -201,6 +255,8 @@ public class ModelDialog extends DialogWrapper {
         }
         model.getConditions().forEach(modelCondition ->
             conditionsCheckboxList.addItem(modelCondition, modelCondition.asReadableString(FIELD_SEPARATOR), modelCondition.isEnabled()));
+
+        updateUIOnTypeChange();
     }
 
     /**
@@ -233,14 +289,14 @@ public class ModelDialog extends DialogWrapper {
     /**
      * Opens a file chooser dialog and loads the icon.
      */
-    private CustomIconLoader.ImageWrapper loadCustomIcon() {
+    private IconUtils.ImageWrapper loadCustomIcon() {
         VirtualFile[] virtualFiles = FileChooser.chooseFiles(
             new FileChooserDescriptor(true, false, false, false, false, false)
                 .withFileFilter(file -> extensions.contains(file.getExtension())),
             settingsForm.getProject(),
             null);
         if (virtualFiles.length > 0) {
-            return CustomIconLoader.loadFromVirtualFile(virtualFiles[0]);
+            return IconUtils.loadFromVirtualFile(virtualFiles[0]);
         }
         return null;
     }
@@ -262,9 +318,20 @@ public class ModelDialog extends DialogWrapper {
         if (customIconImage == null && modelToEdit == null) {
             return new ValidationInfo("Please add an icon!", chooseIconButton);
         }
-        if (conditionsCheckboxList.isEmpty()) {
-            return new ValidationInfo("Please add a condition to your model!", toolbarPanel);
+
+        Object selectedItem = typeComboBox.getSelectedItem();
+        if (selectedItem != null && selectedItem.equals(ModelType.ICON.getFriendlyName())) {
+            if (ideIconOverrideTextField.getText().trim().isEmpty()) {
+                return new ValidationInfo("IDE icon's name cannot be empty!", ideIconOverrideTextField);
+            } else if (!ideIconOverrideTextField.getText().endsWith(".svg")) {
+                return new ValidationInfo("IDE icon's name must end with .svg!", ideIconOverrideTextField);
+            }
+        } else {
+            if (conditionsCheckboxList.isEmpty()) {
+                return new ValidationInfo("Please add a condition to your model!", toolbarPanel);
+            }
         }
+
         return super.doValidate();
     }
 
@@ -283,7 +350,7 @@ public class ModelDialog extends DialogWrapper {
             Icon icon = null;
             if (value instanceof BundledIcon) {
                 text = ((BundledIcon) value).getDescription();
-                icon = IconLoader.getIcon(((BundledIcon) value).getIconPath(), CustomIconLoader.class);
+                icon = IconLoader.getIcon(((BundledIcon) value).getIconPath(), IconUtils.class);
             } else if (value instanceof String) {
                 text = (String) value;
                 icon = new ImageIcon();
