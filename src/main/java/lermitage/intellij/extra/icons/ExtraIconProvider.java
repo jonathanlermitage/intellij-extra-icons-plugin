@@ -239,6 +239,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("yaml", "/extra-icons/yaml.svg", "Yaml Files: *.yaml")
                 .end(".yaml"),
 
+            // Yaml Files
+            ofFile("Lock", "/extra-icons/lock.svg", "Lock Files: *.lock")
+                .end(".lock"),
+
+
             // angular
             ofFile("angular_module_generic", "/extra-icons/angular-module.svg", "AngularJS: *.module.(js|ts)")
                 .regex(".*[^a-zA-Z0-9]module\\.(js|ts)"),
@@ -366,7 +371,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq(".keep", ".gitkeep", ".hgkeep", ".svnkeep"),
             ofFile("htaccess", "/extra-icons/htaccess.svg", "Apache: .htaccess")
                 .eq(".htaccess"),
-            ofFile("html", "/extra-icons/html.svg", "HtmlFiles: .html")
+            ofFile("html", "/extra-icons/html5.svg", "HtmlFiles: *.html")
+                .end(".html"),
+            ofFile("html", "/extra-icons/html5.svg", "HtmlFiles: .html")
                 .eq(".html"),
             ofFile("android_manifest", "/extra-icons/android.svg", "Android: androidmanifest.xml")
                 .eq("androidmanifest.xml"),
