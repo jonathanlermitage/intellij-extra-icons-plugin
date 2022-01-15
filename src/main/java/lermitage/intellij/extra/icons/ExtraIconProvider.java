@@ -235,10 +235,6 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("dart", "/extra-icons/dart.svg", "Dart Files: *.dart")
                 .end(".dart"),
 
-            // Kotlin
-            ofFile("kotlin", "/extra-icons/kotlin.svg", "Dart Files: *.kt")
-                .end(".kt"),
-
             // angular
             ofFile("angular_module_generic", "/extra-icons/angular-module.svg", "AngularJS: *.module.(js|ts)")
                 .regex(".*[^a-zA-Z0-9]module\\.(js|ts)"),
