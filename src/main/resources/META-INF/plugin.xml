@@ -26,6 +26,7 @@
     <ul>
       <li>add more alternative icons (popular web browsers) for HTML files.</li>
       <li>override YAML icon.</li>
+      <li>support <i>.tox</i> folders.</li>
     </ul>
     1.69.0 (2022/01/22)
     <ul>

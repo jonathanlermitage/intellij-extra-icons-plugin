@@ -3,6 +3,7 @@
 ## 1.70.0 (WIP)
 * add more alternative icons (popular web browsers) for HTML files.
 * override YAML icon.
+* support `.tox` folders.
 
 ## 1.69.0 (2022/01/22)
 * you can now override IDE icons by icon name. Per example, you can override the Kotlin Class icon. To find IDE icon names, visit [IntelliJ icons list](https://jetbrains.design/intellij/resources/icons_list/), pick an icon and open the ZIP file: you can use the SVG file name.
