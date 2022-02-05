@@ -653,6 +653,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("dependency-reduced-pom.xml"),
             ofFile("metro", "/extra-icons/metro.svg", "Metro config: metro.config.js")
                 .eq("metro.config.js"),
+            ofFile("mkdocs", "/extra-icons/mkdocs.svg", "MkDocs: mkdocs.yml")
+                .eq("mkdocs.yml"),
             ofFile("moduleinfojava", "/extra-icons/moduleinfo.svg", "Java module: module-info.java")
                 .eq("module-info.java"),
             ofFile("moduleinfojava_alt", "/extra-icons/moduleinfo_alt.svg", "Java module: module-info.java (alternative)")
