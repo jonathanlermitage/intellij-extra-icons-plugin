@@ -90,7 +90,7 @@ tasks {
             }
         }
         outputFormatter = closureOf<Result> {
-            unresolved.dependencies.clear()
+            unresolved.dependencies.clear() // we don't care about unresolved unzipped.com.jetbrains.plugins artifacts
             val plainTextReporter = PlainTextReporter(project, revision, gradleReleaseChannel)
             val writer = StringWriter()
             plainTextReporter.write(writer, this)
