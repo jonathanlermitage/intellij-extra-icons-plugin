@@ -1,4 +1,7 @@
+import java.io.StringWriter
 import com.adarshr.gradle.testlogger.theme.ThemeType
+import com.github.benmanes.gradle.versions.reporter.PlainTextReporter
+import com.github.benmanes.gradle.versions.reporter.result.Result
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 fun properties(key: String) = project.findProperty(key).toString()
@@ -85,6 +88,13 @@ tasks {
                     }
                 }
             }
+        }
+        outputFormatter = closureOf<Result> {
+            unresolved.dependencies.clear()
+            val plainTextReporter = PlainTextReporter(project, revision, gradleReleaseChannel)
+            val writer = StringWriter()
+            plainTextReporter.write(writer, this)
+            logger.quiet(writer.toString())
         }
     }
     runIde {
