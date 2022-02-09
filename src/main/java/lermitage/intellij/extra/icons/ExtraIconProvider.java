@@ -367,6 +367,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             //
             ofFile("dependabot_config", "/extra-icons/dependabot.svg", "Dependabot: .dependabot/config.yml")
                 .eq("config.yml").parents(".dependabot"),
+            ofFile("dependabot", "/extra-icons/dependabot.svg", "Dependabot: .github/dependabot.yml")
+                .eq("dependabot").end(YML).parents(".github"),
             ofFile("golwroot", "/extra-icons/glowroot.png", "Glowroot: glowroot/admin.json and glowroot/config.json")
                 .eq("admin.json", "config.json").parents("glowroot"),
             ofFile("jgitver", "/extra-icons/jgitver.svg", "jgitver: .mvn/jgitver.config.xml")
