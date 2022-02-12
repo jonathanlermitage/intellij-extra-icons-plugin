@@ -119,6 +119,8 @@ tasks {
 
 dependencyLocking { // https://docs.gradle.org/current/userguide/dependency_locking.html
     lockMode.set(LockMode.LENIENT)
+    // allow build with multiple IDE versions
+    ignoredDependencies.add("com.jetbrains:ideaIU")
     ignoredDependencies.add("unzipped.com.jetbrains.plugins:*")
 }
 

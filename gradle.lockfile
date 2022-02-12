@@ -1,7 +1,6 @@
 # This is a Gradle generated file for dependency locking.
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
-com.jetbrains:ideaIU:2021.3.2=compileClasspath
 com.twelvemonkeys.common:common-image:3.8.1=compileClasspath,runtimeClasspath
 com.twelvemonkeys.common:common-io:3.8.1=compileClasspath,runtimeClasspath
 com.twelvemonkeys.common:common-lang:3.8.1=compileClasspath,runtimeClasspath
