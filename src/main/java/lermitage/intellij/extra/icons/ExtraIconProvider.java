@@ -437,6 +437,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("gradlew.bat", "gradlew.cmd"),
             ofFile("gradle_wrapper", "/extra-icons/gradle.svg", "Gradle Wrapper: gradle-wrapper.jar, gradle-wrapper.properties")
                 .eq("gradle-wrapper.jar", "gradle-wrapper.properties"),
+            ofFile("gradle_lock", "/extra-icons/gradle_lock.svg", "Gradle dependency versions lock: gradle.lockfile")
+                .eq("gradle.lockfile"),
+            ofFile("gradle_buildscriptlock", "/extra-icons/gradle_lock.svg", "Gradle dependency versions lock: buildscript-gradle.lockfile")
+                .eq("buildscript-gradle.lockfile"),
             ofFile("mvnw_linux", "/extra-icons/mvnw.svg", "Maven: mvnw")
                 .eq("mvnw"),
             ofFile("berksfile", "/extra-icons/berkshelf.png", "Berkshelf: berksfile")

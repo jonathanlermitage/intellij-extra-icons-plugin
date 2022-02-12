@@ -5,6 +5,9 @@
 * override YAML icon.
 * support `.tox` folders.
 * support `mkdocs.yml` files.
+* support JSX files. Thx [koolskateguy89](https://github.com/koolskateguy89).
+* support `.github/dependabot.yml` files. Thx [koolskateguy89](https://github.com/koolskateguy89).
+* support [_gradle.lockfile_ and _buildscript-gradle.lockfile_](https://docs.gradle.org/current/userguide/dependency_locking.html) files.
 
 ## 1.69.0 (2022/01/22)
 * you can now override IDE icons by icon name. Per example, you can override the Kotlin Class icon. To find IDE icon names, visit [IntelliJ icons list](https://jetbrains.design/intellij/resources/icons_list/), pick an icon and open the ZIP file: you can use the SVG file name.

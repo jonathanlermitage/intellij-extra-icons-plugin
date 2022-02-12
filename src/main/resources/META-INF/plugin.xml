@@ -28,6 +28,9 @@
       <li>override YAML icon.</li>
       <li>support <i>.tox</i> folders.</li>
       <li>support <i>mkdocs.yml</i> files.</li>
+      <li>support JSX files. Thx <a href="https://github.com/koolskateguy89">koolskateguy89</a>.</li>
+      <li>support <i>.github/dependabot.yml</i> files. Thx <a href="https://github.com/koolskateguy89">koolskateguy89</a>.</li>
+      <li>support <a href="https://docs.gradle.org/current/userguide/dependency_locking.html"><i>gradle.lockfile</i> and <i>buildscript-gradle.lockfile</i></a> files.</li>
     </ul>
     1.69.0 (2022/01/22)
     <ul>
