@@ -12,6 +12,7 @@ if [%1] == [help] (
   echo cv:      check dependencies and Gradle updates
   echo oga:     check for deprecated groupId and artifactId couples
   echo svgo:    optimize SVG icons with SGVO. SVGO must be present, type 'npm install -g svgo' if needed)
+  echo lock:    write gradle dependency versions lock file
 )
 
 if [%1] == [w] (
@@ -49,4 +50,7 @@ if [%1] == [oga] (
 )
 if [%1] == [svgo] (
   svgo --folder=src/main/resources/extra-icons/ --recursive
+)
+if [%1] == [lock] (
+  gradlew dependencies --write-locks
 )

@@ -18,6 +18,7 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
         echo "cv:      check dependencies and Gradle updates"
         echo "oga:     check for deprecated groupId and artifactId couples"
         echo "svgo:    optimize SVG icons with SGVO. SVGO must be present, type 'npm install -g svgo' if needed)"
+        echo "lock:    write gradle dependency versions lock file"
         ;;
 
     "w")
@@ -61,6 +62,10 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
 
     "svgo")
         svgo --folder=src/main/resources/extra-icons/ --recursive
+        ;;
+
+    "lock")
+        ./gradlew dependencies --write-locks
         ;;
 
     esac

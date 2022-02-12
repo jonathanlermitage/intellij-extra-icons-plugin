@@ -8,7 +8,7 @@ fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
     id("java")
-    id("org.jetbrains.intellij") version "1.3.1" // https://github.com/JetBrains/gradle-intellij-plugin and https://lp.jetbrains.com/gradle-intellij-plugin/
+    id("org.jetbrains.intellij") version "1.4.0" // https://github.com/JetBrains/gradle-intellij-plugin and https://lp.jetbrains.com/gradle-intellij-plugin/
     id("com.github.ben-manes.versions") version "0.42.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.1.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("biz.lermitage.oga") version "1.1.1"
@@ -73,9 +73,6 @@ tasks {
     withType<DependencyUpdatesTask> {
         checkForGradleUpdate = true
         gradleReleaseChannel = "current"
-        outputFormatter = "plain"
-        outputDir = "build"
-        reportfileName = "dependencyUpdatesReport"
         revision = "release"
         resolutionStrategy {
             componentSelection {
@@ -90,11 +87,11 @@ tasks {
             }
         }
         outputFormatter = closureOf<Result> {
-            unresolved.dependencies.clear() // we don't care about unresolved unzipped.com.jetbrains.plugins artifacts
+            unresolved.dependencies.removeIf { it.group.toString() == "unzipped.com.jetbrains.plugins" }
             val plainTextReporter = PlainTextReporter(project, revision, gradleReleaseChannel)
             val writer = StringWriter()
             plainTextReporter.write(writer, this)
-            logger.quiet(writer.toString())
+            logger.quiet(writer.toString().trim())
         }
     }
     runIde {
@@ -117,6 +114,29 @@ tasks {
     buildSearchableOptions {
         enabled = pluginEnableBuildSearchableOptions.toBoolean()
         jvmArgs = listOf("--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
+    }
+}
+
+dependencyLocking { // https://docs.gradle.org/current/userguide/dependency_locking.html
+    lockMode.set(LockMode.LENIENT)
+    ignoredDependencies.add("unzipped.com.jetbrains.plugins:*")
+}
+
+configurations {
+    compileClasspath {
+        resolutionStrategy.activateDependencyLocking()
+    }
+    runtimeClasspath {
+        resolutionStrategy.activateDependencyLocking()
+    }
+    annotationProcessor {
+        resolutionStrategy.activateDependencyLocking()
+    }
+    testCompileClasspath {
+        resolutionStrategy.disableDependencyVerification()
+    }
+    testRuntimeClasspath {
+        resolutionStrategy.disableDependencyVerification()
     }
 }
 
