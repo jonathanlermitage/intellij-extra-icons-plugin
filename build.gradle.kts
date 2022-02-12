@@ -117,6 +117,8 @@ tasks {
     }
 }
 
+// Nota: I know dependency locking is totally useless in this project since there is no transitive
+// dependencies, but I wanted to experiment this feature :-)
 dependencyLocking { // https://docs.gradle.org/current/userguide/dependency_locking.html
     lockMode.set(LockMode.LENIENT)
     // allow build with multiple IDE versions
