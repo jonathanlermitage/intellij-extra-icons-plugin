@@ -31,8 +31,6 @@ Starting from version 0.4, it works with all JetBrains products like WebStorm, D
 
 Download plugin from [JetBrains Plugins Repository](https://plugins.jetbrains.com/plugin/11058-extra-icons) or via your JetBrains IDE (<kbd>File</kbd>, <kbd>Settings</kbd>, <kbd>Plugins</kbd>, <kbd>Marketplace</kbd>).
 
-For early adopters, I'm trying to publish intermediate builds on a testing channel. Builds are fully tested, but I don't want to publish an official release on every commit :wink:. To proceed, go to <kbd>File</kbd>, <kbd>Settings</kbd>, <kbd>Plugins</kbd>, <kbd>Manage Plugin Repositories...</kbd> and add the `https://plugins.jetbrains.com/plugins/extra-icons-testing/list` repository. Expect 0 to 2 intermediate builds between two official releases, mainly to get bugfixes asap.
-
 ## Build
 
 Install JDK11+. You should be able to start Gradle Wrapper (`gradlew`). See Gradle commands below. 
