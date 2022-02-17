@@ -34,6 +34,24 @@ public class SettingsServiceTest {
     }
 
     @Test
+    public void registered_models_description_should_be_unique() {
+        List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
+        Set<String> descriptions = new HashSet<>();
+        Set<String> duplicatedDescriptions = new HashSet<>();
+
+        for (Model model : allRegisteredModels) {
+            String description = model.getDescription();
+            if (descriptions.contains(description)) {
+                duplicatedDescriptions.add(description);
+            }
+            descriptions.add(description);
+        }
+        if (!duplicatedDescriptions.isEmpty()) {
+            fail("model descriptions are registered more than once: " + duplicatedDescriptions);
+        }
+    }
+
+    @Test
     public void registered_models_should_have_existing_icon_file() {
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
         List<String> errors = new ArrayList<>();
