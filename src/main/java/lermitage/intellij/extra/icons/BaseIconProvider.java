@@ -17,6 +17,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileSystemItem;
 import com.intellij.psi.PsiManager;
+import com.intellij.testFramework.LightVirtualFile;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
 import lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService;
@@ -116,7 +117,9 @@ public abstract class BaseIconProvider
         try {
             if (ProjectUtils.isAlive(project)) {
                 PsiFileSystemItem psiFileSystemItem;
-                if (file.isDirectory()) {
+                if (file instanceof LightVirtualFile) {
+                    return null; // TODO need to understand what happens in https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/86
+                } else if (file.isDirectory()) {
                     psiFileSystemItem = PsiManager.getInstance(project).findDirectory(file);
                 } else {
                     psiFileSystemItem = PsiManager.getInstance(project).findFile(file);
