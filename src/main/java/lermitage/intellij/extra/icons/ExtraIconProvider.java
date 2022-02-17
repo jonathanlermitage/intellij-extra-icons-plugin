@@ -365,6 +365,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*/io/mockk/settings\\.properties"),
             ofFile("storybook", "/extra-icons/storybook.svg", "Storybook: *.stor(y|ies).(js|jsx|ts|tsx|mdx)")
                 .regex(".*\\.stor(y|ies)\\.(js|jsx|ts|tsx|mdx)$"),
+            ofFile("eslint", "/extra-icons/eslint.svg", "Eslint files")
+                .regex(".*\\.eslintrc(\\.[cm]?js(on)?|\\.y(a)?ml)?$"),
 
             //
             // file plus its containing folder
@@ -815,6 +817,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("version", ".version", "versions", ".versions").end(".xml"),
             ofFile("vite", "/extra-icons/vite.svg", "Vite: vite.config.js")
                 .eq("vite.config.js"),
+            ofFile("vite_alt", "/extra-icons/vite_alt.svg", "Vite: vite.config.js")
+                .eq("vite.config.js"),
             ofFile("weblate", "/extra-icons/weblate.svg", "Weblate: .weblate")
                 .eq(".weblate"),
             ofFile("webpack", "/extra-icons/webpack.svg", "Webpack: webpack.conf.js")
@@ -972,6 +976,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofFile("ext_stylus-browserext", "/extra-icons/stylus-browserext.png", "Stylus (browser extension): *.styl")
                 .end(".styl"),
             ofFile("ext_svg", "/extra-icons/svg.svg", "SVG: *.svg")
+                .end(".svg"),
+            ofFile("ext_svg", "/extra-icons/svg_alt.svg", "SVG: *.svg")
                 .end(".svg"),
             ofFile("ext_tf", "/extra-icons/terraform.svg", "Terraform: *.hcl, *.tf, *.tf.json")
                 .end(".hcl", ".tf", ".tf.json"),
