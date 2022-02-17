@@ -3,6 +3,7 @@
 ## 1.70.0 (WIP)
 * add more alternative icons (popular web browsers) for HTML files.
 * override YAML icon.
+* override Bash file icon.
 * support `.tox` folders.
 * support `mkdocs.yml` files.
 * support JSX files. Thx [koolskateguy89](https://github.com/koolskateguy89).

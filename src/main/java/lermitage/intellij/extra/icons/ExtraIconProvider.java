@@ -120,6 +120,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 "kotlin_gradle_script.svg", "/extra-icons/gradle_kotlin.svg",
                 "IDE icon: Kotlin Gradle script (alternative)"),
             // yaml
+            ofIcon("ide_sh_file",
+                "shFile.svg", "/extra-icons/bash.svg",
+                "IDE icon: Bash file"),
+            // yaml
             ofIcon("ide_yaml",
                 "yaml.svg", "/extra-icons/ide/yaml.svg",
                 "IDE icon: YAML"),

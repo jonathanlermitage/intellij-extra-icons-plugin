@@ -26,6 +26,7 @@
     <ul>
       <li>add more alternative icons (popular web browsers) for HTML files.</li>
       <li>override YAML icon.</li>
+      <li>override Bash file icon.</li>
       <li>support <i>.tox</i> folders.</li>
       <li>support <i>mkdocs.yml</i> files.</li>
       <li>support JSX files. Thx <a href="https://github.com/koolskateguy89">koolskateguy89</a>.</li>
