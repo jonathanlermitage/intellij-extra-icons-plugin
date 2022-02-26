@@ -22,9 +22,9 @@
     -->
 
     <change-notes><![CDATA[
-    1.70.0 (2022/02/20)
+    1.70.0 (2022/02/25)
     <ul>
-      <li><b>INFO</b> Extra Icons is now a paid plugin: 5$ per year. Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use older releases. For explanations, please see <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/misc/PAYD.md">misc/PAYD.md</a>.</li>
+      <li><b>INFO</b> Extra Icons is now a paid plugin: 5$ per year. Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use older releases.</li>
       <li>add more alternative icons (popular web browsers) for HTML files.</li>
       <li>override YAML icon.</li>
       <li>override Bash file icon.</li>
