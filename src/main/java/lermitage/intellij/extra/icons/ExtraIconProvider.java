@@ -351,6 +351,20 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*/\\.?jsconfig.*\\.(js|json)$"),
             ofFile("typescript-def", "/extra-icons/typescript-def.svg", "TypescriptDef: .*\\.d\\.ts$")
                 .regex(".*\\.d\\.ts$"),
+            ofFile("post-css", "/extra-icons/postcss.svg", "PostCSS: .*\\.(pcss|postcss)$")
+                .regex(".*\\.(pcss|postcss)$"),
+            ofFile("post-css-config", "/extra-icons/postcss.svg", "PostCSS Configuration: ^(\\.postcssrc|postcss\\.config)(\\.[cm]?js|ts|json|ya?ml)?$")
+                .regex("^(\\.postcssrc|postcss\\.config)(\\.[cm]?js|ts|json|ya?ml)?$"),
+            ofFile("sequelize", "/extra-icons/sequelize.svg", "Sequelize: ^\\.sequelizerc(\\.[cm]?js|\\.json)?$")
+                .regex("^\\.sequelizerc(\\.[cm]?js|\\.json)?$"),
+            ofFile("svelte", "/extra-icons/svelte.svg", "Svelte: .*\\.(svelte|svx)")
+                .regex(".*\\.(svelte|svx)"),
+            ofFile("tailwindcss", "/extra-icons/tailwindcss.svg", "Tailwindcss Configuration: ^\\.?tailwind.*\\.[cm]?[jt]s$")
+                .regex("^\\.?tailwind.*\\.[cm]?[jt]s$"),
+            ofFile("YAML Files", "/extra-icons/yaml.svg", "YAML Files: .*\\.(yml|yaml|info)$")
+                .regex(".*\\.(yml|yaml|info)$"),
+            ofFile("Nodemon", "/extra-icons/nodemon.svg", "Nodemon: ^\\.?nodemon\\.json$")
+                .regex(".^\\.?nodemon\\.json$"),
             ofFile("test-typescript", "/extra-icons/test-ts.svg", "TestTypescript: .*\\.?(test|spec)\\.(ts|tsx)$")
                 .regex(".*\\.?(test|spec)\\.(ts|tsx)$"),
             ofFile("test-typescript_alt", "/extra-icons/test-ts_alt.svg", "TestTypescript: .*\\.?(test|spec)\\.(ts|tsx)$ (alternative)")
