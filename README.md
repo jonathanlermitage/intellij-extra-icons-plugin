@@ -1,4 +1,4 @@
-:rocket: With release 2022.1.1, Extra Icons is now a paid plugin: 5$/year (or 0.5$/month). Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use previous releases.    
+:rocket: With release 2022.1.1, Extra Icons is now a paid plugin: 5$/year (or 0.5$/month). Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use previous releases. You can also package your own version of the plugin and install it for free, it's still free (MIT license) and OpenSource. You only have to pay if you want to download and use my version of the plugin that is hosted on the JetBrains marketplace. I think it's a way to support my work.  
 :construction: The paid version is being registered into the JetBrains marketplace. It takes some time, that's why you don't see new releases yet.
 
 <h1 align="center">
