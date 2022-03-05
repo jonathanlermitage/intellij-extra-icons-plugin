@@ -1,3 +1,6 @@
+:rocket: With release 2022.1.1, Extra Icons is now a paid plugin: 5$/year (or 0.5$/month). Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use previous releases.    
+:construction: The paid version is being registered into the JetBrains marketplace. It takes some time, that's why you don't see new releases yet.
+
 <h1 align="center">
     <a href="https://plugins.jetbrains.com/plugin/11058-extra-icons">
       <img src="./src/main/resources/META-INF/pluginIcon.svg" width="84" height="84" alt="logo"/>
@@ -59,7 +62,7 @@ Optionally, you may want to install SVGO in order to optimize SVG icons. Install
 * [master](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/master): ~~plugin is compatible with 183+ IDE builds (2018.3 and newer).~~ this branch is terminated.
 * [ide173](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide173): ~~plugin is compatible with 173+ IDE builds (2017.3 and newer), but doesn't support AngularJS icons.~~ this branch is terminated.
 
-## Contribution
+## How to contribute
 
 Please see [CONTRIBUTION.md](CONTRIBUTION.md).
 
@@ -69,27 +72,19 @@ Please see [KNOWN_ISSUES.md](KNOWN_ISSUES.md) and [GitHub open issues](https://g
 
 ## License
 
-MIT License. In other words, you can do what you want: this project is entirely OpenSource, Free and Gratis.
+MIT License. In other words, you can do what you want: this project is entirely OpenSource, Free and Gratis.  
+You only have to pay a subscription if you want to support my work by using the version that is published to the JetBrains marketplace. If you don't want to (or can't) support my work, you can still use old releases (up to 1.69), or package and install your own release for free.
 
-## Credits
+## 🤝 Contributors
 
-### 🤝 Contributors
-
-* (author) Jonathan Lermitage (<jonathan.lermitage@gmail.com>, [![linkedin](misc/linkedin_profile_badge.png)](https://www.linkedin.com/in/jonathan-lermitage-092711142/), [buymeacoff.ee](https://buymeacoff.ee/jlermitage))
+* (author) Jonathan Lermitage (<jonathan.lermitage@gmail.com>)
 * Edoardo Luppi (<lp.edoardo@gmail.com>)
 * Matthias Kunnen ([github.com/MatthiasKunnen](https://github.com/MatthiasKunnen))
 * Florian Böhm ([github.com/Sheigutn](https://github.com/Sheigutn))
 * Mateusz Bajorek (<mateusz.bajorek@gmail.com>)
 * Bouteiller Alan ([github.com/bouteillerAlan](https://github.com/bouteillerAlan))
 * Gaëtan Maisse ([github.com/gaetanmaisse](https://github.com/gaetanmaisse))
-
-### 🤝 [JetBrains](https://www.jetbrains.com/idea/)
-
-Thanks for their Open-Source licence to their amazing IDEs.
-
-### 🤝 [Syntevo](https://www.syntevo.com/smartgit/)
-
-Thanks for their licence for **SmartGit** (an excellent graphical Git client, free for non-commercial projects).
+* please see the [contributors list](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/graphs/contributors)
 
 ## Screenshots
 

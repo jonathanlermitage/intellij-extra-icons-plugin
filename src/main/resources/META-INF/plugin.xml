@@ -2,15 +2,17 @@
     <id>lermitage.intellij.extra.icons</id>
     <name>Extra Icons</name>
     <version>REPLACED_BY_GRADLE</version>
-    <vendor email="jonathan.lermitage@gmail.com" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
+    <vendor email="jonathan@lermitage.biz" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
+    <!-- required parameters for paid plugins: https://plugins.jetbrains.com/docs/marketplace/add-required-parameters.html -->
+    <product-descriptor code="PEXTRAICONS" release-date="20220225" release-version="20221"/>
 
     <description><![CDATA[
       Add icons for files like Travis YML, Appveyor YML, Git sub-modules, etc.<br/>
-      See <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate.<br/>
-      To customize toolbar icons, you may also want to install <a href="https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons">Extra ToolWindow Colorful Icons</a> plugin.<br/><br/>
+      See <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. You can also register your own icons.<br/>
+      To add more colors to toolbar icons, you may also want to install <a href="https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons">Extra ToolWindow Colorful Icons</a> plugin.<br/>
       See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/CHANGELOG.md">changelog</a>
-      and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/README.md">readme</a> on GitHub.<br/>
-      Check also my <a href="https://plugins.jetbrains.com/author/ed9cc7eb-74f5-46c1-b0df-67162fe1a1c5">plugins</a>.
+      and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/README.md">readme</a> on GitHub. Check also my <a href="https://plugins.jetbrains.com/author/ed9cc7eb-74f5-46c1-b0df-67162fe1a1c5">plugins</a>.<br/><br/>
+      <b>INFO</b>: Extra Icons is now a paid plugin: 5$ per year. Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use previous releases.
     ]]>
     </description>
 
@@ -21,9 +23,8 @@
     -->
 
     <change-notes><![CDATA[
-    1.70.0 (2022/02/25)
+    2022.1.1 (2022/03/05)
     <ul>
-      <li><b>INFO</b> Extra Icons is now a paid plugin: 5$ per year. Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use older releases.</li>
       <li>add more alternative icons (popular web browsers) for HTML files.</li>
       <li>override YAML icon.</li>
       <li>override Bash file icon.</li>

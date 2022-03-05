@@ -1,7 +1,7 @@
 # Extra Icons Change Log
 
-## 1.70.0 (2022/02/25)
-* **INFO** Extra Icons is now a paid plugin: 5$ per year. Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use [older releases](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/releases/tag/v1.68).
+## 2022.1.1 (2022/03/05)
+* **INFO**: Extra Icons is now a paid plugin: 5$ per year. Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use [previous releases](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/releases/tag/v1.69).
 * add more alternative icons (popular web browsers) for HTML files.
 * override YAML icon.
 * override Bash file icon.
