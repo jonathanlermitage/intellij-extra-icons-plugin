@@ -10,7 +10,7 @@ plugins {
     id("java")
     id("org.jetbrains.intellij") version "1.4.0" // https://github.com/JetBrains/gradle-intellij-plugin and https://lp.jetbrains.com/gradle-intellij-plugin/
     id("com.github.ben-manes.versions") version "0.42.0" // https://github.com/ben-manes/gradle-versions-plugin
-    id("com.adarshr.test-logger") version "3.1.0" // https://github.com/radarsh/gradle-test-logger-plugin
+    id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("biz.lermitage.oga") version "1.1.1"
 }
 
@@ -24,7 +24,7 @@ val pluginEnableBuildSearchableOptions: String by project
 
 val inCI = System.getenv("CI") != null
 
-val twelvemonkeysVersion = "3.8.1"
+val twelvemonkeysVersion = "3.8.2"
 val junitVersion = "5.8.2"
 
 logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion")
