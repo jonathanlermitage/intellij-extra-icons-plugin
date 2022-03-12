@@ -2,7 +2,7 @@
     <id>lermitage.intellij.extra.icons</id>
     <name>Extra Icons</name>
     <version>REPLACED_BY_GRADLE</version>
-    <vendor email="jonathan@lermitage.biz" url="https://github.com/jonathanlermitage">Jonathan Lermitage</vendor>
+    <vendor email="jonathan@lermitage.biz" url="https://github.com/jonathanlermitage">JONATHAN_LERMITAGE</vendor>
     <!-- required parameters for paid plugins: https://plugins.jetbrains.com/docs/marketplace/add-required-parameters.html -->
     <product-descriptor code="PEXTRAICONS" release-date="20220225" release-version="20221"/>
 
