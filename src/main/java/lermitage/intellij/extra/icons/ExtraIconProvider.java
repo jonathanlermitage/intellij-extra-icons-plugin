@@ -699,6 +699,16 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("package-lock.json"),
             ofFile("prettier", "/extra-icons/prettier.svg", "Prettier: .prettierrc")
                 .eq(".prettierrc"),
+            ofFile("prettier-yml", "/extra-icons/prettier.svg", "Prettier: .prettierrc.yml, .prettierrc.yaml")
+                .eq(".prettierrc.yml", ".prettierrc.yaml"),
+            ofFile("prettier-json", "/extra-icons/prettier.svg", "Prettier: .prettierrc.json, .prettierrc.json5")
+                .eq(".prettierrc.json", ".prettierrc.json5"),
+            ofFile("prettier-js", "/extra-icons/prettier.svg", "Prettier: .prettierrc.js, prettier.config.js")
+                .eq(".prettierrc.js", "prettier.config.js"),
+            ofFile("prettier-cjs", "/extra-icons/prettier.svg", "Prettier: .prettierrc.cjs, prettier.config.cjs")
+                .eq(".prettierrc.cjs", "prettier.config.cjs"),
+            ofFile("prettier-toml", "/extra-icons/prettier.svg", "Prettier: .prettierrc.toml")
+                .eq(".prettierrc.toml"),
             ofFile("pdd", "/extra-icons/pdd.svg", "Puzzle Driven Development: .pdd")
                 .eq(".pdd"),
             ofFile("pdd_yml", "/extra-icons/pdd.svg", "Puzzle Driven Development: .0pdd.yml")
