@@ -4,6 +4,7 @@
     <version>REPLACED_BY_GRADLE</version>
     <vendor email="jonathan@lermitage.biz" url="https://github.com/jonathanlermitage">JONATHAN_LERMITAGE</vendor>
     <!-- required parameters for paid plugins: https://plugins.jetbrains.com/docs/marketplace/add-required-parameters.html -->
+    <!-- TODO reminder: update the release-date and pluginVersion on new release, but change the release-version on new year only -->
     <product-descriptor code="PEXTRAICONS" release-date="20220225" release-version="20221"/>
 
     <description><![CDATA[
