@@ -23,6 +23,10 @@
     -->
 
     <change-notes><![CDATA[
+    2022.1.2 (WIP)
+    <ul>
+      <li>rework Babel icon, and provide an alternative icon.</li>
+    </ul>
     2022.1.1 (2022/03/05)
     <ul>
       <li>add more alternative icons (popular web browsers) for HTML files.</li>
