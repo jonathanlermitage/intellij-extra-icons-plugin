@@ -57,12 +57,26 @@ public class ExtraIconPatcher extends IconPathPatcher {
 
     @Override
     public @Nullable String patchPath(@NotNull String path, @Nullable ClassLoader classLoader) {
-        String iconOriginalPath = (new File(path)).getName();
         if (icons == null) {
             loadConfig();
-
         }
-        return this.icons.get(iconOriginalPath);
+
+        if (this.icons.containsKey(path)) {
+            return this.icons.get(path);
+        }
+        if (path.startsWith("/") && path.length() > 2) {
+            String simplifiedPath = path.substring(1);
+            if (this.icons.containsKey(simplifiedPath)) {
+                return this.icons.get(simplifiedPath);
+            }
+        }
+
+        String fileName = (new File(path)).getName();
+        if (this.icons.containsKey(fileName)) {
+            return this.icons.get(fileName);
+        }
+
+        return null;
     }
 
     private void loadConfig() {
