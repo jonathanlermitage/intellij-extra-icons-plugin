@@ -28,6 +28,7 @@
     <ul>
       <li>rework Babel icon, and provide an alternative icon.</li>
       <li>support more Prettier config files.</li>
+      <li>internal: upgrade TwelveMonkeys library to 3.8.2 (used to preview PNG icons).</li>
     </ul>
     2022.1.1 (2022/03/05)
     <ul>
