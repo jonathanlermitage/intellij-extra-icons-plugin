@@ -9,11 +9,11 @@
 
     <description><![CDATA[
       Add icons for files like Travis YML, Appveyor YML, Git sub-modules, etc.<br/>
-      See <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. You can also register your own icons.<br/>
+      See <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. You can also register your own icons in order to override file icons, but also all <a href="https://jetbrains.design/intellij/resources/icons_list/">IDE icons</a> (including toolbars, menus, etc.).<br/>
       To add more colors to toolbar icons, you may also want to install <a href="https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons">Extra ToolWindow Colorful Icons</a> plugin.<br/>
       See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/CHANGELOG.md">changelog</a>
       and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/README.md">readme</a> on GitHub. Check also my <a href="https://plugins.jetbrains.com/author/ed9cc7eb-74f5-46c1-b0df-67162fe1a1c5">plugins</a>.<br/><br/>
-      <b>INFO</b>: Extra Icons is now a paid plugin: 5$ per year. Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use previous releases.
+      <b>INFO</b>: Extra Icons is now a paid plugin: 5$ per year. Price decreases over time, and it's free for students, teachers and OSS developers (please contact JetBrains support directly if you faced issues while registering your free license, I can do nothing personally). If you don't want to (or can't) support my work, feel free to use previous releases, or repackage the plugin (it's still opensource). Finally, starting from now, contributors will receive coupons for free licenses (please email me if needed). If you have questions about this, please read the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/FAQ.md">FAQ</a>.
     ]]>
     </description>
 
@@ -30,6 +30,8 @@
       <li>support more Prettier config files.</li>
       <li>internal: upgrade TwelveMonkeys library to 3.8.2 (used to preview PNG icons).</li>
       <li>improve support of IDE icons override.</li>
+      <li>support <i>werf.yaml</i> files.</li>
+      <li>support <i>FAQ</i> files (with <i>.md</i>, <i>.adoc</i>, <i>.txt</i>, <i>.rst</i> or no extension).</li>
     </ul>
     2022.1.1 (2022/03/05)
     <ul>

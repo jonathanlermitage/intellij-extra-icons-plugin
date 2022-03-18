@@ -549,6 +549,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .eq("cerebro").mayEnd(".conf"),
             ofFile("cerebro1", "/extra-icons/elastic-cerebro.png", "Cerebro: start by 'cerebro' and end by '.conf'")
                 .start("cerebro").end(".conf"),
+            ofFile("faq", "/extra-icons/faq.svg", "FAQ: faq(.md,.txt,.adoc,.rst)")
+                .eq("faq").mayEnd(TXT),
+            ofFile("faq_alt", "/extra-icons/faq_alt.svg", "FAQ: faq(.md,.txt,.adoc,.rst) (alternative 1)")
+                .eq("faq").mayEnd(TXT),
+            ofFile("faq_alt2", "/extra-icons/faq_alt2.svg", "FAQ: faq(.md,.txt,.adoc,.rst) (alternative 2)")
+                .eq("faq").mayEnd(TXT),
             ofFile("intellijcodestyle", "/extra-icons/jetbrains.svg", "IntelliJ: intellijcodestyle.xml")
                 .eq("intellijcodestyle.xml"),
             ofFile("mailmap", "/extra-icons/email.svg", "Mailmap: .mailmap")
@@ -835,6 +841,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .start("webpack.config.").end(".js", ".ts"),
             ofFile("webpack_alt", "/extra-icons/webpack_alt.svg", "Webpack: webpack.conf.js (alternative)")
                 .start("webpack.config.").end(".js", ".ts"),
+            ofFile("werf", "/extra-icons/werf.svg", "Werf: werf.yaml")
+                .eq("werf.yaml"),
             ofFile("zalando", "/extra-icons/zalando.png", "Zalando Zappr: .zappr.yaml")
                 .eq(".zappr.yaml"),
 

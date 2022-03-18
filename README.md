@@ -1,4 +1,4 @@
-:rocket: With release 2022.1.1, Extra Icons is now a paid plugin: 5$/year (or 0.5$/month). Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use previous releases. You can also package your own version of the plugin and install it for free, it's still free (MIT license) and OpenSource. You only have to pay if you want to download and use my version of the plugin that is hosted on the JetBrains marketplace. I think it's a way to support my work.  
+:rocket: With release 2022.1.1, Extra Icons is now a paid plugin: 5$/year (or 0.5$/month). Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use previous releases. You can also package your own version of the plugin and install it for free, it's still free (MIT license) and OpenSource. You only have to pay if you want to download and use my version of the plugin that is hosted on the JetBrains marketplace. I think it's a way to support my work. If you have questions about this, please read the [FAQ](./FAQ.md).
 
 <h1 align="center">
     <a href="https://plugins.jetbrains.com/plugin/11058-extra-icons">
@@ -19,6 +19,7 @@
 </p>
 
 Intellij IDEA (Community and Ultimate) plugin that adds icons for files like Travis YML, Appveyor YML, Git sub-modules, etc.  
+You can also register your own icons in order to override file icons, but also all [IDE icons](https://jetbrains.design/intellij/resources/icons_list/) (including toolbars, menus, etc.).  
 Starting from version 0.4, it works with all JetBrains products like WebStorm, DataGrip, etc.
 
 1. [Download](#download)
