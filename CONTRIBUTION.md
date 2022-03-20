@@ -32,5 +32,4 @@ If you are not comfortable with Java development, you can ask me to support new 
 
 You can open an issue, or email me (jonathan.lermitage@gmail.com).
 
-:warning: Feature requests with no icon or no explanations will be
-ignored ([like this one](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/63)).
+:warning: Feature requests with no icon or no explanations will be ignored.
