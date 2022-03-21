@@ -345,6 +345,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*\\.env(\\.[a-zA-Z0-9]+)*"),
             ofFile("eslint", "/extra-icons/eslint.svg", "Eslint (regex): .*\\.eslintrc(\\.[cm]?js(on)?|\\.y(a)?ml)?$")
                 .regex(".*\\.eslintrc(\\.[cm]?js(on)?|\\.y(a)?ml)?$"),
+            ofFile("nodemon", "/extra-icons/nodemon.svg", "Nodemon: ^\\.?nodemon\\.json$")
+                .regex(".^\\.?nodemon\\.json$"),
             ofFile("tsconfig", "/extra-icons/tsconfig.svg", "TSConfig: .*/\\.?tsconfig.*\\.(js|json)$")
                 .regex(".*/\\.?tsconfig.*\\.(js|json)$"),
             ofFile("jsconfig", "/extra-icons/jsconfig.svg", "JSConfig: .*/\\.?jsconfig.*\\.(js|json)$")
@@ -361,10 +363,6 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 .regex(".*\\.(svelte|svx)"),
             ofFile("tailwindcss", "/extra-icons/tailwindcss.svg", "Tailwindcss Configuration: ^\\.?tailwind.*\\.[cm]?[jt]s$")
                 .regex("^\\.?tailwind.*\\.[cm]?[jt]s$"),
-            ofFile("YAML Files", "/extra-icons/yaml.svg", "YAML Files: .*\\.(yml|yaml|info)$")
-                .regex(".*\\.(yml|yaml|info)$"),
-            ofFile("Nodemon", "/extra-icons/nodemon.svg", "Nodemon: ^\\.?nodemon\\.json$")
-                .regex(".^\\.?nodemon\\.json$"),
             ofFile("test-typescript", "/extra-icons/test-ts.svg", "TestTypescript: .*\\.?(test|spec)\\.(ts|tsx)$")
                 .regex(".*\\.?(test|spec)\\.(ts|tsx)$"),
             ofFile("test-typescript_alt", "/extra-icons/test-ts_alt.svg", "TestTypescript: .*\\.?(test|spec)\\.(ts|tsx)$ (alternative)")
