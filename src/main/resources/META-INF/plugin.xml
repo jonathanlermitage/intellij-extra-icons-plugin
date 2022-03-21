@@ -32,6 +32,7 @@
       <li>improve support of IDE icons override.</li>
       <li>support <i>werf.yaml</i> files.</li>
       <li>support <i>FAQ</i> files (with <i>.md</i>, <i>.adoc</i>, <i>.txt</i>, <i>.rst</i> or no extension).</li>
+      <li>support PostCSS, Sequelize, Svelte, Tailwindcss and Nodemon files. Thx francmarin98.</li>
     </ul>
     2022.1.1 (2022/03/05)
     <ul>
