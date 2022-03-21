@@ -127,6 +127,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             ofIcon("ide_yaml",
                 "yaml.svg", "/extra-icons/ide/yaml.svg",
                 "IDE icon: YAML"),
+            ofIcon("ide_yaml_alt",
+                "yaml.svg", "/extra-icons/ide/yaml_alt.svg",
+                "IDE icon: YAML (alternative)"),
 
             //
             // folder
