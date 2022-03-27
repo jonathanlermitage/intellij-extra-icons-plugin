@@ -10,6 +10,8 @@
 * support PostCSS, Sequelize, Svelte, Tailwindcss and Nodemon files. Thx francmarin98.
 * support Commitlint config files.
 * internal: some code rework.
+* IDE 2021.1.3 is now the minimal supported version. This is a requirement to enable plugin's dynamic reloading. Previous versions of IDE (IntelliJ and any IntelliJ-based IDE) are affected by a [bug](https://youtrack.jetbrains.com/issue/IDEA-262732) that deletes plugin's settings on dynamic reload. This bug was fixed in IJ 2021.1.3, this is why I finally updated minimal IDE version in order to enable plugin's dynamic reloading safely.
+* experimental: plugin updates don't require IDE restart. Il will probably apply in next releases. You may still have to restart IDE, I can't test for now, but at least it will be totally safe.
 
 ## 2022.1.1 (2022/03/05)
 * **INFO**: Extra Icons is now a paid plugin: 5$ per year. Price decreases over time, and it's free for students, teachers and OSS developers. If you don't want to (or can't) support my work, feel free to use [previous releases](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/releases/tag/v1.69).

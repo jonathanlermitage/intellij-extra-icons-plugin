@@ -41,7 +41,7 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
         ;;
 
     "runold")
-        ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-2020.3.4 -PpluginDownloadIdeaSources=false
+        ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-2021.1.3 -PpluginDownloadIdeaSources=false
         ;;
 
     "release")

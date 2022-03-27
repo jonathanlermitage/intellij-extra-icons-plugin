@@ -1,4 +1,3 @@
 ## Known issues
 
 * [ ] Python icon (`.py` files) can't be customized in PyCharm Community and Professional: it seems to be a limitation of this IDE. Issue not reproduced in IntelliJ IDEA.
-* [ ] Plugin should be dynamically reloaded (I mean you should upgrade plugin with no IDE restart), but a [bug](https://youtrack.jetbrains.com/issue/IDEA-262732) in IntelliJ (and any IJ-based IDE) deletes plugin settings on reload. This should be fixed in IntelliJ 2021.1.3 and 2021.2. Meanwhile, I don't want to force users to upgrade their IDE (especially if they have perpetual license for an older IDE release). So, IJ 2021.1.3 won't be the minimal IDE version for now, and I can't mark the plugin as dynamic yet. Feel free to ask to JetBrains support to backport their fix to IJ 2020.x (at least, please [upvote this comment](https://youtrack.jetbrains.com/issue/IDEA-262732#focus=Comments-27-4972631.0-0)).

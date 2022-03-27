@@ -22,7 +22,7 @@ To answer the question quickly, I am doing free and OSS since ~2010. I started o
 Finally, Extra Icons is still:
 - free (MIT license). You can do what you want with it.
 - partially gratis: you can get the sources, remove the code that asks for a JetBrains license, repackage the plugin, then install it in your IDE at no cost. This is legal, and this is why I will stick to the MIT license. You only have to pay if you want to install the plugin from the JetBrains marketplace.
-- opensource: you can learn from the project's source code, you can contribute (I will send free licenses to contributors, because I think `contributing == supporting`) and - this is only my opinion - this is the meaning of OSS: sharing **and** contribution.
+- opensource: you can learn from the project's source code, you can contribute (I will send free licenses to contributors, because I think `contributing == supporting`) and - this is only my opinion - this is the meaning of OSS: sharing **and** contribution. Also, you can stay on 1.69 release (or reinstall this version) as it requires no license.
 
 Again, this is the short answer. I could talk about this for hours, but not on the Internet :-)  
 Thx for your understanding, and many THX to supporters and contributors.

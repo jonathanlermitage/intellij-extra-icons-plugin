@@ -15,7 +15,7 @@ jobs:
       - uses: ChrisCarini/intellij-platform-plugin-verifier-action@v1.0.3
         with:
           ide-versions: |
-            ideaIC:2020.3.4
-            ideaIU:2020.3.4
+            ideaIC:2021.1.3
+            ideaIU:2021.1.3
             ideaIC:2021.3.3
             ideaIU:2021.3.3
