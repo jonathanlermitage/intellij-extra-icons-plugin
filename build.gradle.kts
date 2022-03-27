@@ -20,7 +20,6 @@ val pluginDownloadIdeaSources: String by project
 val pluginInstrumentPluginCode: String by project
 val pluginVersion: String by project
 val pluginJavaVersion: String by project
-val pluginEnableBuildSearchableOptions: String by project
 
 val inCI = System.getenv("CI") != null
 
@@ -107,13 +106,14 @@ tasks {
         jvmArgs("-XX:CICompilerCount=2")
         jvmArgs("-XX:ReservedCodeCacheSize=512m")
         jvmArgs("-XX:SoftRefLRUPolicyMSPerMB=50")
+
+        autoReloadPlugins.set(true)
     }
     runPluginVerifier {
         ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map(String::trim).filter(String::isNotEmpty))
     }
     buildSearchableOptions {
-        enabled = pluginEnableBuildSearchableOptions.toBoolean()
-        jvmArgs = listOf("--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
+        enabled = false
     }
 }
 

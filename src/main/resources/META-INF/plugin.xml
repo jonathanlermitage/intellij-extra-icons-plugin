@@ -1,4 +1,4 @@
-<idea-plugin require-restart="true">
+<idea-plugin require-restart="false">
     <id>lermitage.intellij.extra.icons</id>
     <name>Extra Icons</name>
     <version>REPLACED_BY_GRADLE</version>
@@ -13,7 +13,7 @@
       To add more colors to toolbar icons, you may also want to install <a href="https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons">Extra ToolWindow Colorful Icons</a> plugin.<br/>
       See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/CHANGELOG.md">changelog</a>
       and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/README.md">readme</a> on GitHub. Check also my <a href="https://plugins.jetbrains.com/author/ed9cc7eb-74f5-46c1-b0df-67162fe1a1c5">plugins</a>.<br/><br/>
-      <b>INFO</b>: Extra Icons is now a paid plugin: 5$ per year. Price decreases over time, and it's free for students, teachers and OSS developers (please contact JetBrains support directly if you faced issues while registering your free license, I can do nothing personally). If you don't want to (or can't) support my work, feel free to use previous releases, or repackage the plugin (it's still opensource). Finally, starting from now, contributors will receive coupons for free licenses (please email me if needed). If you have questions about this, please read the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/FAQ.md">FAQ</a>.
+      <b>INFO</b>: Extra Icons is now a paid plugin: 5$ per year or 0.5$ per month. You only have to pay if you want to download and use my version of the plugin that is hosted on the JetBrains marketplace. I think it's a way to support my work. Price decreases over time (3$/year or 0.3$/month on 3rd year), and it's free for students, teachers and OSS developers (please contact JetBrains support directly if you faced issues while registering your free license, I can do nothing personally). If you don't want to (or can't) support my work, feel free to use previous releases, or repackage the plugin (it's still opensource). Finally, starting from now, contributors will receive coupons for free licenses (please email me if needed). If you have questions about this, please read the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/FAQ.md">FAQ</a>.
     ]]>
     </description>
 
@@ -33,6 +33,8 @@
       <li>support <i>werf.yaml</i> files.</li>
       <li>support <i>FAQ</i> files (with <i>.md</i>, <i>.adoc</i>, <i>.txt</i>, <i>.rst</i> or no extension).</li>
       <li>support PostCSS, Sequelize, Svelte, Tailwindcss and Nodemon files. Thx francmarin98.</li>
+      <li>support Commitlint config files.</li>
+      <li>internal: some code rework.</li>
     </ul>
     2022.1.1 (2022/03/05)
     <ul>

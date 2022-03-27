@@ -38,6 +38,8 @@ public class Model {
     @XCollection
     private List<ModelCondition> conditions = new ArrayList<>(Collections.singletonList(new ModelCondition()));
 
+    private String[] altIcons;
+
     /**
      * Create a rule (Model) to apply given icon to a file. Once created, you need to
      * apply condition(s) to rule, like {@link #start(String...)}, {@link #eq(String...)}, etc.
@@ -84,6 +86,19 @@ public class Model {
     // For XML deserializer
     @SuppressWarnings("unused")
     private Model() {
+    }
+
+    /** Don't use it directly, please prefer {@link #ofFile(String, String, String)},
+     * {@link #ofDir(String, String, String)} or {@link #ofIcon(String, String, String, String)}. */
+    public Model(String id, String ideIcon, String icon, String description, ModelType modelType, IconType iconType, boolean enabled, List<ModelCondition> conditions) {
+        this.id = id;
+        this.ideIcon = ideIcon;
+        this.icon = icon;
+        this.description = description;
+        this.modelType = modelType;
+        this.iconType = iconType;
+        this.enabled = enabled;
+        this.conditions = conditions;
     }
 
     /** Don't use it directly, please prefer {@link #ofFile(String, String, String)},
@@ -218,6 +233,15 @@ public class Model {
     }
 
     /**
+     * Register alternate icons.
+     * @param altIcons an array of icons.
+     */
+    public Model addAltIcons(String... altIcons) {
+        this.altIcons = altIcons;
+        return this;
+    }
+
+    /**
      * Add a possible condition to current model: file/folder will have to satisfy one of configured conditions.
      */
     public Model or() {
@@ -248,6 +272,10 @@ public class Model {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String[] getAltIcons() {
+        return altIcons;
     }
 
     @Override
