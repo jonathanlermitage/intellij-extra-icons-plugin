@@ -5,7 +5,6 @@ package lermitage.intellij.extra.icons;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
-import com.intellij.util.Base64;
 import lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
@@ -21,6 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_DECODER;
 
 public class ExtraIconPatcher extends IconPathPatcher {
 
@@ -106,7 +107,7 @@ public class ExtraIconPatcher extends IconPathPatcher {
                 // base64 icon provided by user: store as local file
                 Path iconFile = Files.createTempFile("extra-icons-ide-user-icon", ".svg");
                 FileUtils.forceDeleteOnExit(iconFile.toFile());
-                Files.write(iconFile, Base64.decode(iconStr));
+                Files.write(iconFile, B64_DECODER.decode(iconStr));
                 String decodedIconPath = iconFile.toAbsolutePath().toString();
                 morphedIcons.put(iconKey, "file://" + decodedIconPath);
             }

@@ -35,6 +35,7 @@
       <li>support PostCSS, Sequelize, Svelte, Tailwindcss and Nodemon files. Thx francmarin98.</li>
       <li>support Commitlint config files.</li>
       <li>internal: some code rework.</li>
+      <li>internal: remove usage of some deprecated code (replaced <i>com.intellij.util.Base64</i> by JDK11 implementation).</li>
       <li>IDE 2021.1.3 is now the minimal supported version. This is a requirement to enable plugin's dynamic reloading. Previous versions of IDE (IntelliJ and any IntelliJ-based IDE) are affected by a <a href="https://youtrack.jetbrains.com/issue/IDEA-262732">bug</a> that deletes plugin's settings on dynamic reload. This bug was fixed in IJ 2021.1.3, this is why I finally updated minimal IDE version in order to enable plugin's dynamic reloading safely.</li>
       <li>experimental: plugin updates don't require IDE restart. Il will probably apply in next releases. You may still have to restart IDE, I can't test for now, but at least it will be totally safe.</li>
     </ul>

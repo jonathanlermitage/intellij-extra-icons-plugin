@@ -5,7 +5,6 @@ package lermitage.intellij.extra.icons.utils;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.util.Base64;
 import com.intellij.util.IconUtil;
 import com.intellij.util.ImageLoader;
 import com.intellij.util.RetinaImage;
@@ -18,6 +17,9 @@ import javax.swing.Icon;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+
+import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_DECODER;
+import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_ENCODER;
 
 public class IconUtils {
 
@@ -76,7 +78,7 @@ public class IconUtils {
     public static ImageWrapper fromBase64(String base64, IconType iconType, double additionalUIScale) {
         enhanceImageIOCapabilities();
 
-        byte[] decodedBase64 = Base64.decode(base64);
+        byte[] decodedBase64 = B64_DECODER.decode(base64);
 
         Image image = null;
         if (iconType == IconType.SVG) {
@@ -112,7 +114,7 @@ public class IconUtils {
         switch (iconType) {
             case SVG:
             case IMG:
-                base64 = Base64.encode(imageWrapper.getImageAsByteArray());
+                base64 = B64_ENCODER.encodeToString(imageWrapper.getImageAsByteArray());
                 break;
         }
         return base64;
