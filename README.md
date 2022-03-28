@@ -53,13 +53,6 @@ Additionally, take a look at the `do` (or `do.cmd` on Windows) script: it contai
 
 Optionally, you may want to install SVGO in order to optimize SVG icons. Install `npm install -g svgo`, then optimize SVG files by running `./do svgo`.
 
-### Branches
-
-* [**ide203**](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide203): (**active branch**)  plugin is compatible with 203+ IDE builds (2020.3 and newer). It contains features that need capabilities introduced in IntelliJ 2020.3.
-* [ide201](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide201): ~~plugin is compatible with 201+ IDE builds (2020.1 and newer).~~ this branch is terminated.
-* [master](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/master): ~~plugin is compatible with 183+ IDE builds (2018.3 and newer).~~ this branch is terminated.
-* [ide173](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/ide173): ~~plugin is compatible with 173+ IDE builds (2017.3 and newer), but doesn't support AngularJS icons.~~ this branch is terminated.
-
 ## How to contribute
 
 Please see [CONTRIBUTION.md](CONTRIBUTION.md).

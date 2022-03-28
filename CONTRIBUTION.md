@@ -18,7 +18,7 @@ Please describe the issue:
 * to finish, don't hesitate to add your name or nickname (and LinkedIn profile, etc.) to the contributors list ;-)
 
 Tip: to support new icons, you will want to
-edit [this file](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/src/main/java/lermitage/intellij/extra/icons/ExtraIconProvider.java#L24)
+edit [this file](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/src/main/java/lermitage/intellij/extra/icons/ExtraIconProvider.java#L24)
 . All icons and selection rules are registered here. Icons are stored in `src/main/resources/extra-icons/`.  
 Try the plugin in a standalone IDE with `./gradlew runIde`.
 

@@ -11,9 +11,9 @@
       Add icons for files like Travis YML, Appveyor YML, Git sub-modules, etc.<br/>
       See <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. You can also register your own icons in order to override file icons, but also all <a href="https://jetbrains.design/intellij/resources/icons_list/">IDE icons</a> (including toolbars, menus, etc.).<br/>
       To add more colors to toolbar icons, you may also want to install <a href="https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons">Extra ToolWindow Colorful Icons</a> plugin.<br/>
-      See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/CHANGELOG.md">changelog</a>
-      and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/README.md">readme</a> on GitHub. Check also my <a href="https://plugins.jetbrains.com/author/ed9cc7eb-74f5-46c1-b0df-67162fe1a1c5">plugins</a>.<br/><br/>
-      <b>INFO</b>: Extra Icons is now a paid plugin: 5$ per year or 0.5$ per month. You only have to pay if you want to download and use my version of the plugin that is hosted on the JetBrains marketplace. I think it's a way to support my work. Price decreases over time (3$/year or 0.3$/month on 3rd year), and it's free for students, teachers and OSS developers (please contact JetBrains support directly if you faced issues while registering your free license, I can do nothing personally). If you don't want to (or can't) support my work, feel free to use previous releases, or repackage the plugin (it's still opensource). Finally, starting from now, contributors will receive coupons for free licenses (please email me if needed). If you have questions about this, please read the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/ide203/FAQ.md">FAQ</a>.
+      See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">changelog</a>
+      and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/README.md">readme</a> on GitHub. Check also my <a href="https://plugins.jetbrains.com/author/ed9cc7eb-74f5-46c1-b0df-67162fe1a1c5">plugins</a>.<br/><br/>
+      <b>INFO</b>: Extra Icons is now a paid plugin: 5$ per year or 0.5$ per month. You only have to pay if you want to download and use my version of the plugin that is hosted on the JetBrains marketplace. I think it's a way to support my work. Price decreases over time (3$/year or 0.3$/month on 3rd year), and it's free for students, teachers and OSS developers (please contact JetBrains support directly if you faced issues while registering your free license, I can do nothing personally). If you don't want to (or can't) support my work, feel free to use previous releases, or repackage the plugin (it's still opensource). Finally, starting from now, contributors will receive coupons for free licenses (please email me if needed). If you have questions about this, please read the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/FAQ.md">FAQ</a>.
     ]]>
     </description>
 
@@ -56,7 +56,7 @@
     </change-notes>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <!-- use 211.7628.21 (2021.1.3) because IDEA-262732 - plugin's hot reload deletes its settings - is fixed in 2021.1.3 -->
+    <!-- use 211.7628.21 (2021.1.3) because bug IDEA-262732 (plugin's hot reload deletes its settings) is fixed in 2021.1.3 -->
     <idea-version since-build="211.7628.21"/>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html#modules-available-in-all-products
