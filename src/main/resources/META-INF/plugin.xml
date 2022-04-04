@@ -5,15 +5,17 @@
     <vendor email="jonathan@lermitage.biz" url="https://github.com/jonathanlermitage">JONATHAN_LERMITAGE</vendor>
     <!-- required parameters for paid plugins: https://plugins.jetbrains.com/docs/marketplace/add-required-parameters.html -->
     <!-- TODO reminder: update the release-date and pluginVersion on new release, but change the release-version on new year only -->
-    <product-descriptor code="PEXTRAICONS" release-date="20220225" release-version="20221"/>
+    <product-descriptor code="PEXTRAICONS" release-date="20220403" release-version="20221"/>
 
     <description><![CDATA[
-      Add icons for files like Travis YML, Appveyor YML, Git sub-modules, etc.<br/>
-      See <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. You can also register your own icons in order to override file icons, but also all <a href="https://jetbrains.design/intellij/resources/icons_list/">IDE icons</a> (including toolbars, menus, etc.).<br/>
-      To add more colors to toolbar icons, you may also want to install <a href="https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons">Extra ToolWindow Colorful Icons</a> plugin.<br/>
-      See <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md">changelog</a>
-      and <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/README.md">readme</a> on GitHub. Check also my <a href="https://plugins.jetbrains.com/author/ed9cc7eb-74f5-46c1-b0df-67162fe1a1c5">plugins</a>.<br/><br/>
-      <b>INFO</b>: Extra Icons is now a paid plugin: 5$ per year or 0.5$ per month. You only have to pay if you want to download and use my version of the plugin that is hosted on the JetBrains marketplace. I think it's a way to support my work. Price decreases over time (3$/year or 0.3$/month on 3rd year), and it's free for students, teachers and OSS developers (please contact JetBrains support directly if you faced issues while registering your free license, I can do nothing personally). If you don't want to (or can't) support my work, feel free to use previous releases, or repackage the plugin (it's still opensource). Finally, starting from now, contributors will receive coupons for free licenses (please email me if needed). If you have questions about this, please read the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/FAQ.md">FAQ</a>.
+      <ul>
+        <li>Adds 400+ icons for files like Travis YML, GitLab YML, Angular files, etc.</li>
+        <li>Shows an icon for Git sub-module folders.</li>
+        <li>Configurable: see <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. This is configurable at IDE and project level.</li>
+        <li>You can also register your own icons in order to override file icons and all <a href="https://jetbrains.design/intellij/resources/icons_list/">IDE icons</a> (including toolbars, menus, etc.).</li>
+      </ul>
+      <br/>
+      <b>INFO</b>: Extra Icons is now a paid plugin: 5$ per year or 0.5$ per month. You only have to pay if you want to download and use my version of the plugin that is hosted on the JetBrains marketplace. I think it's a way to support my work. Price decreases over time (3$/year or 0.3$/month on 3rd year), and it's free for students, teachers and OSS developers (please contact JetBrains support directly if you faced issues while registering your free license, I can do nothing personally). If you don't want to (or can't) support my work, feel free to use <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/releases/tag/v1.69">previous releases</a>, or repackage the plugin (it's still opensource). Finally, starting from now, contributors will receive coupons for free licenses (please email me if needed). If you have questions about this, please read the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/FAQ.md">FAQ</a>.
     ]]>
     </description>
 
@@ -24,7 +26,7 @@
     -->
 
     <change-notes><![CDATA[
-    2022.1.2 (WIP)
+    2022.1.2 (2022/04/03)
     <ul>
       <li>rework Babel icon, and provide an alternative icon.</li>
       <li>support more Prettier config files.</li>
@@ -32,12 +34,12 @@
       <li>improve support of IDE icons override.</li>
       <li>support <i>werf.yaml</i> files.</li>
       <li>support <i>FAQ</i> files (with <i>.md</i>, <i>.adoc</i>, <i>.txt</i>, <i>.rst</i> or no extension).</li>
-      <li>support PostCSS, Sequelize, Svelte, Tailwindcss and Nodemon files. Thx francmarin98.</li>
+      <li>support PostCSS, Sequelize, Svelte, Tailwindcss and Nodemon files. <b>Thx francmarin98</b>.</li>
       <li>support Commitlint config files.</li>
       <li>internal: some code rework.</li>
       <li>internal: remove usage of some deprecated code (replaced <i>com.intellij.util.Base64</i> by JDK11 implementation).</li>
       <li>IDE 2021.1.3 is now the minimal supported version. This is a requirement to enable plugin's dynamic reloading. Previous versions of IDE (IntelliJ and any IntelliJ-based IDE) are affected by a <a href="https://youtrack.jetbrains.com/issue/IDEA-262732">bug</a> that deletes plugin's settings on dynamic reload. This bug was fixed in IJ 2021.1.3, this is why I finally updated minimal IDE version in order to enable plugin's dynamic reloading safely.</li>
-      <li>experimental: plugin updates don't require IDE restart. Il will probably apply in next releases. You may still have to restart IDE, I can't test for now, but at least it will be totally safe.</li>
+      <li>experimental: plugin updates don't require IDE restart. It will probably apply with next releases. You may still have to restart IDE, I can't test for now, but at least it should be totally safe.</li>
     </ul>
     2022.1.1 (2022/03/05)
     <ul>
