@@ -26,6 +26,12 @@
     -->
 
     <change-notes><![CDATA[
+    2022.1.3 (WIP)
+    <ul>
+      <li>internal: improve error handling.</li>
+      <li>support <i>requirements.txt</i> files in Python projects and projects with the Python facet.</li>
+      <li>support <i>lighttpd.conf</i> files.</li>
+    </ul>
     2022.1.2 (2022/04/03)
     <ul>
       <li>rework Babel icon, and provide an alternative icon.</li>

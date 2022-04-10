@@ -77,9 +77,13 @@ public abstract class BaseIconProvider
         // Workaround for https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39
         // Plugin may want to reload icon on closed or disposed project. Just ignore it
         if (e.getMessage() != null) {
-            String errMsg = e.getMessage().toUpperCase();
-            if (errMsg.contains("DISPOSE_IN_PROGRESS") || errMsg.contains("PROJECT IS ALREADY DISPOSED")) {
-                LOGGER.debug(e);
+            String errMsg = e.getMessage()
+                .replaceAll("[\\s_]", "")
+                .toUpperCase();
+            if (errMsg.contains("DISPOSEINPROGRESS") || errMsg.contains("PROJECTISALREADYDISPOSED")) {
+                if (LOGGER.isDebugEnabled()) {
+                    LOGGER.debug(e);
+                }
             } else {
                 LOGGER.warn(e);
             }
@@ -118,7 +122,10 @@ public abstract class BaseIconProvider
             if (ProjectUtils.isAlive(project)) {
                 PsiFileSystemItem psiFileSystemItem;
                 if (file instanceof LightVirtualFile) {
-                    return null; // TODO need to understand what happens in https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/86
+                    // TODO need to reproduce and understand what happens in
+                    //  https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/86
+                    //  (error: Light files should have PSI only in one project)
+                    return null;
                 } else if (file.isDirectory()) {
                     psiFileSystemItem = PsiManager.getInstance(project).findDirectory(file);
                 } else {

@@ -5,6 +5,7 @@ package lermitage.intellij.extra.icons;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.xmlb.annotations.OptionTag;
 import com.intellij.util.xmlb.annotations.XCollection;
+import lermitage.intellij.extra.icons.cfg.SettingsService;
 import lermitage.intellij.extra.icons.enablers.IconEnablerType;
 import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.Contract;
@@ -33,6 +34,8 @@ public class Model {
     private ModelType modelType;
     @OptionTag
     private IconType iconType;
+    /** Indicates if a <b>user</b> model is enabled. To know if a built-in model
+     * is enabled, see {@link SettingsService#getDisabledModelIds()}. */
     @OptionTag
     private boolean enabled = true;
     @XCollection

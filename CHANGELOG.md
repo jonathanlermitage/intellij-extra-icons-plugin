@@ -1,5 +1,10 @@
 # Extra Icons Change Log
 
+## 2022.1.3 (WIP)
+* internal: improve error handling.
+* support `requirements.txt` files in Python projects and projects with the Python facet.
+* support `lighttpd.conf` files.
+
 ## 2022.1.2 (2022/04/03)
 * rework Babel icon, and provide an alternative icon.
 * support more Prettier config files.
