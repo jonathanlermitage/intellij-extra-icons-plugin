@@ -31,6 +31,9 @@
       <li>internal: improve error handling.</li>
       <li>support <i>requirements.txt</i> files in Python projects and projects with the Python facet.</li>
       <li>support <i>lighttpd.conf</i> files.</li>
+      <li>override MDX icon when the MDX plugin is installed.</li>
+      <li>fix a Docker icon rendering issue in IJ 2022.1 in the <i>Services</i> tool window and the <i>Run/Debug Configurations</i> dialog.</li>
+      <li>fix PostCSS, Sequelize and Tailwindcss support.</li>
     </ul>
     2022.1.2 (2022/04/03)
     <ul>
@@ -86,17 +89,17 @@
         <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <fileIconProvider
             id="genericFileIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <iconProvider
             id="extraIconsIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <openapi.vcs.changes.ui.filePathIconProvider
             id="extraIconsFilePathIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <applicationService
             serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService"/>

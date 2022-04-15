@@ -33,12 +33,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 //
                 // docker
                 ofIcon("ide_docker",
-                    "Docker.svg", "/extra-icons/docker.png",
+                    "Docker.svg", "/extra-icons/docker.svg",
                     "IDE icon: Docker")
                     .addAltIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg"),
                 // docker compose
                 ofIcon("ide_docker_compose",
-                    "DockerCompose.svg", "/extra-icons/dockercompose.png",
+                    "DockerCompose.svg", "/extra-icons/dockercompose.svg",
                     "IDE icon: Docker Compose")
                     .addAltIcons("/extra-icons/dockercompose_alt.png", "/extra-icons/dockercompose_alt2.svg"),
                 // html
@@ -287,14 +287,14 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .regex(".*\\.d\\.ts$"),
                 ofFile("post-css", "/extra-icons/postcss.svg", "PostCSS: .*\\.(pcss|postcss)$")
                     .regex(".*\\.(pcss|postcss)$"),
-                ofFile("post-css-config", "/extra-icons/postcss.svg", "PostCSS Configuration: ^(\\.postcssrc|postcss\\.config)(\\.[cm]?js|ts|json|ya?ml)?$")
-                    .regex("^(\\.postcssrc|postcss\\.config)(\\.[cm]?js|ts|json|ya?ml)?$"),
-                ofFile("sequelize", "/extra-icons/sequelize.svg", "Sequelize: ^\\.sequelizerc(\\.[cm]?js|\\.json)?$")
-                    .regex("^\\.sequelizerc(\\.[cm]?js|\\.json)?$"),
+                ofFile("post-css-config", "/extra-icons/postcss.svg", "PostCSS Configuration: .*(\\.postcssrc|postcss\\.config)(\\.[cm]?js|ts|json|ya?ml)?$")
+                    .regex(".*(\\.postcssrc|postcss\\.config)(\\.[cm]?js|ts|json|ya?ml)?$"),
+                ofFile("sequelize", "/extra-icons/sequelize.svg", "Sequelize: .*\\.sequelizerc(\\.[cm]?js|\\.json)?$")
+                    .regex(".*\\.sequelizerc(\\.[cm]?js|\\.json)?$"),
                 ofFile("svelte", "/extra-icons/svelte.svg", "Svelte: .*\\.(svelte|svx)")
                     .regex(".*\\.(svelte|svx)"),
-                ofFile("tailwindcss", "/extra-icons/tailwindcss.svg", "Tailwindcss Configuration: ^\\.?tailwind.*\\.[cm]?[jt]s$")
-                    .regex("^\\.?tailwind.*\\.[cm]?[jt]s$"),
+                ofFile("tailwindcss", "/extra-icons/tailwindcss.svg", "Tailwindcss Configuration: .*\\.?tailwind.*\\.[cm]?[jt]s$")
+                    .regex(".*\\.?tailwind.*\\.[cm]?[jt]s$"),
                 ofFile("test-typescript", "/extra-icons/test-ts.svg", "TestTypescript: .*\\.?(test|spec)\\.(ts|tsx)$")
                     .regex(".*\\.?(test|spec)\\.(ts|tsx)$")
                     .addAltIcons("/extra-icons/test-ts_alt.svg"),
@@ -437,19 +437,19 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".crowdin.yml"),
                 ofFile("deptective", "/extra-icons/deptective.png", "Deptective: deptective.json")
                     .eq("deptective.json"),
-                ofFile("docker", "/extra-icons/docker.png", "Docker: dockerfile(.xml,.yml,...)")
+                ofFile("docker", "/extra-icons/docker.svg", "Docker: dockerfile(.xml,.yml,...)")
                     .eq("dockerfile").mayEnd(CFG)
                     .addAltIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg"),
-                ofFile("dockercompose", "/extra-icons/dockercompose.png", "Docker: docker-compose")
+                ofFile("dockercompose", "/extra-icons/dockercompose.svg", "Docker: docker-compose")
                     .eq("docker-compose").mayEnd(CFG)
                     .addAltIcons("/extra-icons/dockercompose_alt.png", "/extra-icons/dockercompose_alt2.svg"),
-                ofFile("docker1", "/extra-icons/docker.png", "Docker: start by 'dockerfile' and end by '.xml,.yml,...'")
+                ofFile("docker1", "/extra-icons/docker.svg", "Docker: start by 'dockerfile' and end by '.xml,.yml,...'")
                     .start("dockerfile").end(CFG)
                     .addAltIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg"),
-                ofFile("dockercompose1", "/extra-icons/dockercompose.png", "Docker: start by 'docker-compose' and end by '.xml,.yml,...'")
+                ofFile("dockercompose1", "/extra-icons/dockercompose.svg", "Docker: start by 'docker-compose' and end by '.xml,.yml,...'")
                     .start("docker-compose").end(CFG)
                     .addAltIcons("/extra-icons/dockercompose_alt.png", "/extra-icons/dockercompose_alt2.svg"),
-                ofFile("dockerignore", "/extra-icons/dockerignore.png", "Docker: .dockerignore")
+                ofFile("dockerignore", "/extra-icons/dockerignore.svg", "Docker: .dockerignore")
                     .eq(".dockerignore")
                     .addAltIcons("/extra-icons/dockerignore_alt.png", "/extra-icons/dockerignore_alt2.svg"),
                 ofFile("editorconfig", "/extra-icons/editorconfig.png", "EditorConfig: .editorconfig")
@@ -898,10 +898,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 //
                 // generic
                 //
-                ofFile("docker_generic", "/extra-icons/docker.png", "Docker (generic): start by 'dockerfile'")
+                ofFile("docker_generic", "/extra-icons/docker.svg", "Docker (generic): start by 'dockerfile'")
                     .start("dockerfile")
                     .addAltIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg"),
-                ofFile("docker_generic_2", "/extra-icons/docker.png", "Docker (generic): end with 'dockerfile'")
+                ofFile("docker_generic_2", "/extra-icons/docker.svg", "Docker (generic): end with 'dockerfile'")
                     .end("dockerfile")
                     .addAltIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg")
             )

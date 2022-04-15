@@ -4,6 +4,9 @@
 * internal: improve error handling.
 * support `requirements.txt` files in Python projects and projects with the Python facet.
 * support `lighttpd.conf` files.
+* override MDX icon when the MDX plugin is installed.
+* fix a Docker icon rendering issue in IJ 2022.1 in the _Services_ tool window and the _Run/Debug Configurations_ dialog.
+* fix PostCSS, Sequelize and Tailwindcss support.
 
 ## 2022.1.2 (2022/04/03)
 * rework Babel icon, and provide an alternative icon.
