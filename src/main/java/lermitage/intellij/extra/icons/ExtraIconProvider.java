@@ -163,46 +163,46 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".storybook"),
                 // - Flyway databases
                 ofDir("dir_flyway_db2", "/extra-icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/db2[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/migration/db2[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_flyway_h2", "/extra-icons/folder_h2.svg", "Flyway, H2 database folder (regex): '.*/db/migration/h2[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/h2[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/migration/h2[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_flyway_hsqldb", "/extra-icons/folder_hsqldb.svg", "Flyway, HSQLDB database folder (regex): '.*/db/migration/hsqldb[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/hsqldb[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/migration/hsqldb[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_flyway_mariadb", "/extra-icons/folder_mariadb.svg", "Flyway, MariaDB database folder (regex): '.*/db/migration/maria[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/maria[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/migration/maria[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_flyway_mysql", "/extra-icons/folder_mysql.svg", "Flyway, MySQL database folder (regex): '.*/db/migration/mysql[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/mysql[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/migration/mysql[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_flyway_postgresql", "/extra-icons/folder_postgresql.svg", "Flyway, PostgreSQL database folder (regex): '.*/db/migration/postgre[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/postgre[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/migration/postgre[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_flyway_sqlite", "/extra-icons/folder_sqlite.svg", "Flyway, Sqlite database folder (regex): '.*/db/migration/sqlite[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/sqlite[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/migration/sqlite[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_flyway_oracle", "/extra-icons/folder_oracle.svg", "Flyway, Oracle database folder (regex): '.*/db/migration/oracle[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/oracle[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/migration/oracle[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_flyway_sqlserver", "/extra-icons/folder_sqlserver.svg", "Flyway, MS SQL Server database folder (regex): '.*/db/migration/sqlserver[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/sqlserver[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/migration/sqlserver[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_flyway_mssql", "/extra-icons/folder_sqlserver.svg", "Flyway, MS SQL Server database folder (regex): '.*/db/migration/mssql[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/mssql[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/migration/mssql[a-zA-Z\\d._\\-]*"),
                 // - Liquibase databases
                 ofDir("dir_liquibase_db2", "/extra-icons/folder_db2.svg", "Liquibase, IBM DB2 database folder (regex): '.*/db/changelog/db2[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/db2[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/changelog/db2[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_liquibase_h2", "/extra-icons/folder_h2.svg", "Liquibase, H2 database folder (regex): '.*/db/changelog/h2[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/h2[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/changelog/h2[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_liquibase_hsqldb", "/extra-icons/folder_hsqldb.svg", "Liquibase, HSQLDB database folder (regex): '.*/db/changelog/hsqldb[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/hsqldb[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/changelog/hsqldb[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_liquibase_mariadb", "/extra-icons/folder_mariadb.svg", "Liquibase, MariaDB database folder (regex): '.*/db/changelog/maria[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/maria[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/changelog/maria[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_liquibase_mysql", "/extra-icons/folder_mysql.svg", "Liquibase, MySQL database folder (regex): '.*/db/changelog/mysql[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/mysql[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/changelog/mysql[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_liquibase_postgresql", "/extra-icons/folder_postgresql.svg", "Liquibase, PostgreSQL database folder (regex): '.*/db/changelog/postgre[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/postgre[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/changelog/postgre[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_liquibase_sqlite", "/extra-icons/folder_sqlite.svg", "Liquibase, Sqlite database folder (regex): '.*/db/changelog/sqlite[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/sqlite[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/changelog/sqlite[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_liquibase_oracle", "/extra-icons/folder_oracle.svg", "Liquibase, Oracle database folder (regex): '.*/db/changelog/oracle[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/oracle[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/changelog/oracle[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_liquibase_sqlserver", "/extra-icons/folder_sqlserver.svg", "Liquibase, MS SQL Server database folder (regex): '.*/db/changelog/sqlserver[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/sqlserver[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/changelog/sqlserver[a-zA-Z\\d._\\-]*"),
                 ofDir("dir_liquibase_mssql", "/extra-icons/folder_sqlserver.svg", "Liquibase, MS SQL Server database folder (regex): '.*/db/changelog/mssql[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/mssql[a-zA-Z0-9._\\-]*"),
+                    .regex(".*/db/changelog/mssql[a-zA-Z\\d._\\-]*"),
 
                 //
                 // programmable
@@ -213,58 +213,58 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
 
                 // angular
                 ofFile("angular_module_generic", "/extra-icons/angular-module.svg", "AngularJS: *.module.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]module\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]module\\.(js|ts)"),
                 ofFile("angular_component_generic", "/extra-icons/angular-component.svg", "AngularJS: *.(component|controller).(js|ts)")
-                    .regex(".*[^a-zA-Z0-9](component|controller)\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d](component|controller)\\.(js|ts)"),
                 ofFile("angular_service_generic", "/extra-icons/angular-service.svg", "AngularJS: *.service.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]service\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]service\\.(js|ts)"),
                 ofFile("angular_pipe_generic", "/extra-icons/angular-pipe.svg", "AngularJS: *.pipe.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]pipe\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]pipe\\.(js|ts)"),
                 ofFile("angular_directive_generic", "/extra-icons/angular-directive.svg", "AngularJS: *.directive.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]directive(s)?\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]directive(s)?\\.(js|ts)"),
                 ofFile("angular_guard_generic", "/extra-icons/angular-guard.svg", "AngularJS: *.guard.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]guard\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]guard\\.(js|ts)"),
                 ofFile("angular_resolver_generic", "/extra-icons/angular-resolver.svg", "AngularJS: *.resolver.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]resolver\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]resolver\\.(js|ts)"),
                 ofFile("angular_spec_generic", "/extra-icons/test-ts.svg", "AngularJS: *.spec.(js|ts|tsx)")
-                    .regex(".*[^a-zA-Z0-9]spec\\.(js|ts|tsx)")
+                    .regex(".*[^a-zA-Z\\d]spec\\.(js|ts|tsx)")
                     .addAltIcons("/extra-icons/test-ts_alt.svg"),
 
                 // nestjs
                 ofFile("nestjs", "/extra-icons/nestjs.svg", "NestJS: .nest-cli.json, nest-cli.json, nestconfig.json, .nestconfig.json")
                     .eq(".nest-cli.json", "nest-cli.json", "nestconfig.json", ".nestconfig.json"),
                 ofFile("nestjs_adapter", "/extra-icons/nestjs_adapter.svg", "NestJS: *.adapter.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]adapter\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]adapter\\.(js|ts)"),
                 ofFile("nestjs_controller", "/extra-icons/nestjs_controller.svg", "NestJS: *.controller.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]controller\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]controller\\.(js|ts)"),
                 ofFile("nestjs_controller_test", "/extra-icons/nestjs_controller_test.svg", "NestJS: *.controller.spec.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]controller\\.spec\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]controller\\.spec\\.(js|ts)"),
                 ofFile("nestjs_decorator", "/extra-icons/nestjs_decorator.svg", "NestJS: *.decorator.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]decorator\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]decorator\\.(js|ts)"),
                 ofFile("nestjs_dto", "/extra-icons/nestjs_dto.svg", "NestJS: *.dto.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]dto\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]dto\\.(js|ts)"),
                 ofFile("nestjs_entity", "/extra-icons/nestjs_entity.svg", "NestJS: *.entity.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]entity\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]entity\\.(js|ts)"),
                 ofFile("nestjs_filter", "/extra-icons/nestjs_filter.svg", "NestJS: *.filter.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]filter\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]filter\\.(js|ts)"),
                 ofFile("nestjs_gateway", "/extra-icons/nestjs_gateway.svg", "NestJS: *.gateway.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]gateway\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]gateway\\.(js|ts)"),
                 ofFile("nestjs_guard", "/extra-icons/nestjs_guard.svg", "NestJS: *.guard.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]guard\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]guard\\.(js|ts)"),
                 ofFile("nestjs_interceptor", "/extra-icons/nestjs_interceptor.svg", "NestJS: *.interceptor.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]interceptor\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]interceptor\\.(js|ts)"),
                 ofFile("nestjs_middleware", "/extra-icons/nestjs_middleware.svg", "NestJS: *.middleware.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]middleware\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]middleware\\.(js|ts)"),
                 ofFile("nestjs_model", "/extra-icons/nestjs_model.svg", "NestJS: *.model.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]model\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]model\\.(js|ts)"),
                 ofFile("nestjs_module", "/extra-icons/nestjs_module.svg", "NestJS: *.module.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]module\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]module\\.(js|ts)"),
                 ofFile("nestjs_pipe", "/extra-icons/nestjs_pipe.svg", "NestJS: *.pipe.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]pipe\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]pipe\\.(js|ts)"),
                 ofFile("nestjs_service", "/extra-icons/nestjs_service.svg", "NestJS: *.service.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]service\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]service\\.(js|ts)"),
                 ofFile("nestjs_service_test", "/extra-icons/nestjs_service_test.svg", "NestJS: *.service.spec.(js|ts)")
-                    .regex(".*[^a-zA-Z0-9]service\\.spec\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]service\\.spec\\.(js|ts)"),
 
                 //
                 // regex (file)
@@ -273,7 +273,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?")
                     .addAltIcons("/extra-icons/babel_alt.svg"),
                 ofFile("dotenv", "/extra-icons/env.svg", "Dotenv: .*\\.env(\\.[a-zA-Z0-9]+)*")
-                    .regex(".*\\.env(\\.[a-zA-Z0-9]+)*")
+                    .regex(".*\\.env(\\.[a-zA-Z\\d]+)*")
                     .addAltIcons("/extra-icons/env_alt.svg", "/extra-icons/env_alt2.svg"),
                 ofFile("eslint", "/extra-icons/eslint.svg", "Eslint (regex): .*\\.eslintrc(\\.[cm]?js(on)?|\\.y(a)?ml)?$")
                     .regex(".*\\.eslintrc(\\.[cm]?js(on)?|\\.y(a)?ml)?$"),
