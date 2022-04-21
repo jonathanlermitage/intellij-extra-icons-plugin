@@ -11,11 +11,12 @@
       <ul>
         <li>Adds 400+ icons for files like Travis YML, GitLab YML, Angular files, etc.</li>
         <li>Shows an icon for Git sub-module folders.</li>
-        <li>Configurable: see <i>Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. This is configurable at IDE and project level.</li>
+        <li>Configurable: see <i>File &gt; Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. This is configurable at IDE and project level.</li>
         <li>You can also register your own icons in order to override file icons and all <a href="https://jetbrains.design/intellij/resources/icons_list/">IDE icons</a> (including toolbars, menus, etc.).</li>
+        <li>For more information, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">GET_STARTED.md</a> guide.</li>
       </ul>
       <br/>
-      <b>INFO</b>: Extra Icons is now a paid plugin: 5$ per year or 0.5$ per month. You only have to pay if you want to download and use my version of the plugin that is hosted on the JetBrains marketplace. I think it's a way to support my work. Price decreases over time (3$/year or 0.3$/month on 3rd year), and it's free for students, teachers and OSS developers (please contact JetBrains support directly if you faced issues while registering your free license, I can do nothing personally). If you don't want to (or can't) support my work, feel free to use <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/releases/tag/v1.69">previous releases</a>, or repackage the plugin (it's still opensource). Finally, starting from now, contributors will receive coupons for free licenses (please email me if needed). If you have questions about this, please read the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/FAQ.md">FAQ</a>.
+      <b>INFO</b>: Extra Icons is now a paid plugin: 5$ per year or 0.5$ per month. You only have to pay if you want to download and use my version of the plugin that is hosted on the JetBrains marketplace. I think it's a way to support my work. <b>Price decreases over time</b> (3$/year or 0.3$/month on 3rd year), and it's <b>free for students, teachers and OSS developers</b> (please contact JetBrains support directly if you faced issues while registering your free license, I can do nothing personally). If you don't want to (or can't) support my work, feel free to use <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/releases/tag/v1.69">previous releases</a>, or repackage the plugin (it's still opensource). Finally, starting from now, contributors will receive coupons for free licenses (please email me if needed). If you have questions about this, please read the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/FAQ.md">FAQ</a>.
     ]]>
     </description>
 
@@ -34,6 +35,8 @@
       <li>override MDX icon when the MDX plugin is installed.</li>
       <li>fix a Docker icon rendering issue in IJ 2022.1 in the <i>Services</i> tool window and the <i>Run/Debug Configurations</i> dialog.</li>
       <li>fix PostCSS, Sequelize and Tailwindcss support.</li>
+      <li>config panel: UI improvements.</li>
+      <li>config panel: some icons now have tags, and you can enable and disable multiple icons by tags.</li>
     </ul>
     2022.1.2 (2022/04/03)
     <ul>
@@ -67,7 +70,7 @@
     ]]>
     </change-notes>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
     <!-- use 211.7628.21 (2021.1.3) because bug IDEA-262732 (plugin's hot reload deletes its settings) is fixed in 2021.1.3 -->
     <idea-version since-build="211.7628.21"/>
 

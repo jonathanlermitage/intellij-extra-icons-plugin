@@ -1,3 +1,7 @@
+## How to use the plugin?
+
+Please see this guide: [GET_STARTED.md](docs/GET_STARTED.md).
+
 ## I am a student or an OSS developer, can I get a license for free?
 
 Sure! Please follow [https://jetbrains.com/student/](https://jetbrains.com/student/) (students) or [https://jetbrains.com/buy/opensource/](https://jetbrains.com/buy/opensource/) (OSS developer) instructions. If you are facing issues, please contact JetBrains support directly. Unfortunately, I can do nothing, this is on the JetBrains side.

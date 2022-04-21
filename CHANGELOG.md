@@ -7,6 +7,8 @@
 * override MDX icon when the MDX plugin is installed.
 * fix a Docker icon rendering issue in IJ 2022.1 in the _Services_ tool window and the _Run/Debug Configurations_ dialog.
 * fix PostCSS, Sequelize and Tailwindcss support.
+* config panel: UI improvements.
+* config panel: some icons now have tags, and you can enable and disable multiple icons by tags.
 
 ## 2022.1.2 (2022/04/03)
 * rework Babel icon, and provide an alternative icon.

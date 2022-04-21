@@ -6,6 +6,7 @@ import com.intellij.openapi.project.DumbAware;
 import com.intellij.psi.PsiFile;
 import lermitage.intellij.extra.icons.BaseIconProvider;
 import lermitage.intellij.extra.icons.Model;
+import lermitage.intellij.extra.icons.ModelTag;
 import org.angular2.lang.Angular2LangUtil;
 import org.jetbrains.annotations.NotNull;
 
@@ -26,25 +27,35 @@ public class Angular2IconProvider extends BaseIconProvider implements DumbAware 
     public static List<Model> allModels() {
         return asList(
             ofFile("angular_json", "/extra-icons/angular2.svg", "Angular (in Angular 2+ projects only): angular.json")
-                .eq("angular.json"),
+                .eq("angular.json")
+                .tags(ModelTag.ANGULAR2),
             ofFile("angular_module", "/extra-icons/angular-module.svg", "Angular (in Angular 2+ projects only): *.module.ts")
-                .end(".module.ts"),
+                .end(".module.ts")
+                .tags(ModelTag.ANGULAR2),
             ofFile("angular_component", "/extra-icons/angular-component.svg", "Angular (in Angular 2+ projects only): *.component.ts")
-                .end(".component.ts"),
+                .end(".component.ts")
+                .tags(ModelTag.ANGULAR2),
             ofFile("angular_service", "/extra-icons/angular-service.svg", "Angular (in Angular 2+ projects only): *.service.ts")
-                .end(".service.ts"),
+                .end(".service.ts")
+                .tags(ModelTag.ANGULAR2),
             ofFile("angular_pipe", "/extra-icons/angular-pipe.svg", "Angular (in Angular 2+ projects only): *.pipe.ts")
-                .end(".pipe.ts"),
+                .end(".pipe.ts")
+                .tags(ModelTag.ANGULAR2),
             ofFile("angular_directive", "/extra-icons/angular-directive.svg", "Angular (in Angular 2+ projects only): *.directive.ts")
-                .end(".directive.ts"),
+                .end(".directive.ts")
+                .tags(ModelTag.ANGULAR2),
             ofFile("angular_guard", "/extra-icons/angular-guard.svg", "Angular (in Angular 2+ projects only): *.guard.ts")
-                .end(".guard.ts"),
+                .end(".guard.ts")
+                .tags(ModelTag.ANGULAR2),
             ofFile("angular_resolver", "/extra-icons/angular-resolver.svg", "Angular (in Angular 2+ projects only): *.resolver.ts")
-                .end(".resolver.ts"),
+                .end(".resolver.ts")
+                .tags(ModelTag.ANGULAR2),
             ofFile("angular_spec", "/extra-icons/test-ts.svg", "Angular (in Angular 2+ projects only): *.spec.ts")
-                .end(".spec.ts"),
+                .end(".spec.ts")
+                .tags(ModelTag.ANGULAR2),
             ofFile("angular_html", "/extra-icons/html5.svg", "Angular (in Angular 2+ projects only): *.html")
                 .end(".html")
+                .tags(ModelTag.ANGULAR2, ModelTag.HTML)
         );
     }
 

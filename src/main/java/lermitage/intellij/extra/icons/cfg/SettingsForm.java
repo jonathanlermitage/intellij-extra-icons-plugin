@@ -13,14 +13,15 @@ import com.intellij.ui.EditorTextField;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.table.JBTable;
-import lermitage.intellij.extra.icons.utils.IconUtils;
-import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import lermitage.intellij.extra.icons.Model;
+import lermitage.intellij.extra.icons.ModelTag;
 import lermitage.intellij.extra.icons.ModelType;
 import lermitage.intellij.extra.icons.cfg.dialogs.ModelDialog;
 import lermitage.intellij.extra.icons.cfg.models.PluginIconsSettingsTableModel;
 import lermitage.intellij.extra.icons.cfg.models.UserIconsSettingsTableModel;
 import lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService;
+import lermitage.intellij.extra.icons.utils.IconUtils;
+import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.intellij.lang.regexp.RegExpFileType;
 import org.jetbrains.annotations.Nls;
@@ -29,6 +30,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -42,18 +44,20 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.table.TableStringConverter;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private static final Logger LOGGER = Logger.getInstance(SettingsForm.class);
 
     private JPanel pane;
-    private JBLabel title;
     private JButton buttonEnableAll;
     private JButton buttonDisableAll;
     private JCheckBox overrideSettingsCheckbox;
@@ -71,6 +75,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JBLabel bottomTip;
     private JLabel additionalUIScaleTitle;
     private EditorTextField additionalUIScaleTextField;
+    private JComboBox<String> comboBoxIconsGroupSelector;
+    private JLabel disableOrEnableOrLabel;
+    private JLabel disableOrEnableLabel;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -79,8 +86,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private List<Model> customModels = new ArrayList<>();
 
     public SettingsForm() {
-        buttonEnableAll.addActionListener(e -> enableAll());
-        buttonDisableAll.addActionListener(e -> disableAll());
+        buttonEnableAll.addActionListener(e -> enableAll(true));
+        buttonDisableAll.addActionListener(e -> enableAll(false));
         filterResetBtn.addActionListener(e -> resetFilter());
         filterTextField.addDocumentListener(new DocumentListener() {
             @Override
@@ -151,9 +158,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private List<String> collectDisabledModelIds() {
         List<String> disabledModelIds = new ArrayList<>();
         for (int settingsTableRow = 0; settingsTableRow < pluginIconsSettingsTableModel.getRowCount(); settingsTableRow++) {
-            boolean iconEnabled = (boolean) pluginIconsSettingsTableModel.getValueAt(settingsTableRow, PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER);
+            boolean iconEnabled = (boolean) pluginIconsSettingsTableModel.getValueAt(settingsTableRow, PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER);
             if (!iconEnabled) {
-                disabledModelIds.add((String) pluginIconsSettingsTableModel.getValueAt(settingsTableRow, PluginIconsSettingsTableModel.ICON_ID_ROW_NUMBER));
+                disabledModelIds.add((String) pluginIconsSettingsTableModel.getValueAt(settingsTableRow, PluginIconsSettingsTableModel.ICON_ID_COL_NUMBER));
             }
         }
         return disabledModelIds;
@@ -161,7 +168,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private List<Boolean> collectUserIconEnabledStates() {
         return IntStream.range(0, userIconsSettingsTableModel.getRowCount()).mapToObj(
-            index -> ((boolean) userIconsSettingsTableModel.getValueAt(index, UserIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER))
+            index -> ((boolean) userIconsSettingsTableModel.getValueAt(index, UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER))
         ).collect(Collectors.toList());
     }
 
@@ -204,9 +211,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void initComponents() {
-        title.setText("Select extra icons to activate, then hit OK or Apply button:");
-        buttonEnableAll.setText("Enable all");
-        buttonDisableAll.setText("Disable all");
+        buttonEnableAll.setText("Enable all...");
+        buttonDisableAll.setText("Disable all...");
         ignoredPatternTitle.setText("Regex to ignore relative paths:");
         ignoredPatternTextField.setToolTipText("<html>Regex is a <b>Java regex</b>, and file path is <b>lowercased</b> before check.</html>");
         additionalUIScaleTitle.setText("Additional UI Scale Factor to adjust user icons size:");
@@ -233,13 +239,16 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             additionalUIScaleTitle.setVisible(false);
             additionalUIScaleTextField.setVisible(false);
         }
+        comboBoxIconsGroupSelector.addItem("icons");
+        Arrays.stream(ModelTag.values()).forEach(modelTag -> comboBoxIconsGroupSelector.addItem(modelTag.getName() + " tagged icons"));
     }
 
     private void createUIComponents() {
         // Use default project here because project is not available yet
-        ignoredPatternTextField = new EditorTextField("", ProjectManager.getInstance().getDefaultProject(), RegExpFileType.INSTANCE);
+        Project defaultProject = ProjectManager.getInstance().getDefaultProject();
+        ignoredPatternTextField = new EditorTextField("", defaultProject, RegExpFileType.INSTANCE);
         ignoredPatternTextField.setFontInheritedFromLAF(false);
-        filterTextField = new EditorTextField("", ProjectManager.getInstance().getDefaultProject(), RegExpFileType.INSTANCE);
+        filterTextField = new EditorTextField("", defaultProject, RegExpFileType.INSTANCE);
         filterTextField.setFontInheritedFromLAF(false);
     }
 
@@ -264,19 +273,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void setComponentState(boolean enabled) {
-        buttonEnableAll.setEnabled(enabled);
-        buttonDisableAll.setEnabled(enabled);
-        pluginIconsTable.setEnabled(enabled);
-        userIconsTable.setEnabled(enabled);
-        ignoredPatternTitle.setEnabled(enabled);
-        ignoredPatternTextField.setEnabled(enabled);
-        additionalUIScaleTitle.setEnabled(enabled);
-        additionalUIScaleTextField.setEnabled(enabled);
-        title.setEnabled(enabled);
-        iconsTabbedPane.setEnabled(enabled);
-        addToIDEUserIconsCheckbox.setEnabled(enabled);
-        filterTextField.setEnabled(enabled);
-        filterResetBtn.setEnabled(enabled);
+        Stream.of(pluginIconsTable, userIconsTable, ignoredPatternTitle,
+            ignoredPatternTextField, additionalUIScaleTitle, additionalUIScaleTextField,
+            iconsTabbedPane, addToIDEUserIconsCheckbox, filterLabel,
+            filterTextField, filterResetBtn, buttonEnableAll,
+            disableOrEnableOrLabel, buttonDisableAll, disableOrEnableLabel,
+            comboBoxIconsGroupSelector).forEach(jComponent -> jComponent.setEnabled(enabled));
     }
 
     @Override
@@ -307,27 +309,38 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         userIconsTable.setModel(userIconsSettingsTableModel);
         userIconsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         userIconsTable.setRowHeight(28);
-        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_ROW_NUMBER).setMaxWidth(28);
-        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_ROW_NUMBER).setWidth(28);
-        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER).setWidth(28);
-        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER).setMaxWidth(28);
-        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_LABEL_ROW_NUMBER).sizeWidthToFit();
+        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_COL_NUMBER).setMaxWidth(28);
+        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_COL_NUMBER).setWidth(28);
+        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setWidth(28);
+        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setMaxWidth(28);
+        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_LABEL_COL_NUMBER).sizeWidthToFit();
         if (currentSelected != -1 && currentSelected < userIconsTable.getRowCount()) {
             userIconsTable.setRowSelectionInterval(currentSelected, currentSelected);
         }
     }
 
-    private void enableAll() {
-        DefaultTableModel tableModel = iconsTabbedPane.getSelectedIndex() == 0 ? pluginIconsSettingsTableModel : userIconsSettingsTableModel;
-        for (int settingsTableRow = 0; settingsTableRow < tableModel.getRowCount(); settingsTableRow++) {
-            tableModel.setValueAt(true, settingsTableRow, PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER); // Enabled row number is the same for both models
+    /** Get the selected tag for quick action. Empty if "all icons" is selected, otherwise returns selected tag. */
+    private Optional<ModelTag> getSelectedTag() {
+        int selectedItemIdx = comboBoxIconsGroupSelector.getSelectedIndex();
+        if (selectedItemIdx == 0) {
+            return Optional.empty();
         }
+        return Optional.of(ModelTag.values()[selectedItemIdx - 1]);
     }
 
-    private void disableAll() {
-        DefaultTableModel tableModel = iconsTabbedPane.getSelectedIndex() == 0 ? pluginIconsSettingsTableModel : userIconsSettingsTableModel;
+    private void enableAll(boolean enable) {
+        boolean isPluginIconsSettingsTableModelSelected = iconsTabbedPane.getSelectedIndex() == 0;
+        DefaultTableModel tableModel = isPluginIconsSettingsTableModelSelected ? pluginIconsSettingsTableModel : userIconsSettingsTableModel;
         for (int settingsTableRow = 0; settingsTableRow < tableModel.getRowCount(); settingsTableRow++) {
-            tableModel.setValueAt(false, settingsTableRow, PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER); // Enabled row number is the same for both models
+            Optional<ModelTag> selectedTag = getSelectedTag();
+            if (selectedTag.isEmpty()) {
+                tableModel.setValueAt(enable, settingsTableRow, PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER); // Enabled column number is the same for both models
+            } else if (isPluginIconsSettingsTableModelSelected) {
+                @SuppressWarnings("unchecked") List<ModelTag> rowTags = (List<ModelTag>) tableModel.getValueAt(settingsTableRow, PluginIconsSettingsTableModel.ICON_TAGS_ENUM_LIST_COL_NUMBER);
+                if (rowTags.contains(selectedTag.get())) {
+                    tableModel.setValueAt(enable, settingsTableRow, PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER);
+                }
+            }
         }
     }
 
@@ -341,17 +354,17 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             sorter.setStringConverter(new TableStringConverter() {
                 @Override
                 public String toString(TableModel model, int row, int column) {
-                    String desc = model.getValueAt(row, PluginIconsSettingsTableModel.ICON_LABEL_ROW_NUMBER).toString();
+                    String desc = model.getValueAt(row, PluginIconsSettingsTableModel.ICON_LABEL_COL_NUMBER).toString();
                     return desc + " " + desc.toLowerCase(Locale.ENGLISH) + " " + desc.toUpperCase(Locale.ENGLISH);
                 }
             });
-            // "yes"/"no" filter to filter by icons enabled/disabled, otherwise regex filter
+            // "yes"/"no" to filter by icons enabled/disabled, otherwise regex filter
             boolean isYesFilter = "yes".equalsIgnoreCase(filter);
             if (isYesFilter || "no".equalsIgnoreCase(filter)) {
                 sorter.setRowFilter(new RowFilter<>() {
                     @Override
                     public boolean include(Entry<? extends PluginIconsSettingsTableModel, ? extends Integer> entry) {
-                        boolean iconEnabled = ((boolean) entry.getValue(PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER));
+                        boolean iconEnabled = ((boolean) entry.getValue(PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER));
                         if (isYesFilter) {
                             return iconEnabled;
                         } else {
@@ -391,18 +404,24 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 IconUtils.getIcon(m, additionalUIScale),
                 !disabledModelIds.contains(m.getId()),
                 m.getDescription(),
+                Arrays.toString(m.getTags().stream().map(ModelTag::getName).toArray()).replaceAll("\\[|]*", "").trim(),
+                m.getTags(),
                 m.getId()
             })
         );
         pluginIconsTable.setModel(pluginIconsSettingsTableModel);
         pluginIconsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         pluginIconsTable.setRowHeight(28);
-        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ROW_NUMBER).setMaxWidth(28);
-        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ROW_NUMBER).setWidth(28);
-        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER).setWidth(28);
-        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ENABLED_ROW_NUMBER).setMaxWidth(28);
-        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_LABEL_ROW_NUMBER).sizeWidthToFit();
-        pluginIconsTable.getColumnModel().removeColumn(pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ID_ROW_NUMBER)); // set invisible but keep data
+        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_COL_NUMBER).setMaxWidth(28);
+        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_COL_NUMBER).setWidth(28);
+        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setWidth(28);
+        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setMaxWidth(28);
+        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_LABEL_COL_NUMBER).sizeWidthToFit();
+        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMaxWidth(120);
+        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMinWidth(120);
+        // set invisible but keep data
+        pluginIconsTable.getColumnModel().removeColumn(pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ID_COL_NUMBER));
+        pluginIconsTable.getColumnModel().removeColumn(pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_TAGS_ENUM_LIST_COL_NUMBER));
         if (currentSelected != -1) {
             pluginIconsTable.setRowSelectionInterval(currentSelected, currentSelected);
         }

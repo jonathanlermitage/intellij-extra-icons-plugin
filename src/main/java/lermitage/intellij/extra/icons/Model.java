@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @SuppressWarnings({"WeakerAccess", "OptionalUsedAsFieldOrParameterType"})
 public class Model {
@@ -42,6 +43,8 @@ public class Model {
     private List<ModelCondition> conditions = new ArrayList<>(Collections.singletonList(new ModelCondition()));
 
     private String[] altIcons;
+
+    private List<ModelTag> tags;
 
     /**
      * Create a rule (Model) to apply given icon to a file. Once created, you need to
@@ -93,7 +96,7 @@ public class Model {
 
     /** Don't use it directly, please prefer {@link #ofFile(String, String, String)},
      * {@link #ofDir(String, String, String)} or {@link #ofIcon(String, String, String, String)}. */
-    public Model(String id, String ideIcon, String icon, String description, ModelType modelType, IconType iconType, boolean enabled, List<ModelCondition> conditions) {
+    public Model(String id, String ideIcon, String icon, String description, ModelType modelType, IconType iconType, boolean enabled, List<ModelCondition> conditions, List<ModelTag> tags) {
         this.id = id;
         this.ideIcon = ideIcon;
         this.icon = icon;
@@ -102,6 +105,7 @@ public class Model {
         this.iconType = iconType;
         this.enabled = enabled;
         this.conditions = conditions;
+        this.tags = tags;
     }
 
     /** Don't use it directly, please prefer {@link #ofFile(String, String, String)},
@@ -156,7 +160,7 @@ public class Model {
      * Condition: has given parent directory(s).
      * @param parents one or multiple possible directories, lowercased.
      */
-    public Model parents(String... parents) {
+    public Model parents(@NotNull String... parents) {
         getCurrentCondition().setParents(parents);
         return this;
     }
@@ -165,7 +169,7 @@ public class Model {
      * Condition: file/folder name starts with given string(s).
      * @param start strings, lowercased.
      */
-    public Model start(String... start) {
+    public Model start(@NotNull String... start) {
         getCurrentCondition().setStart(start);
         return this;
     }
@@ -174,7 +178,7 @@ public class Model {
      * Condition: file/folder name is equal to given string(s).
      * @param name strings, lowercased.
      */
-    public Model eq(String... name) {
+    public Model eq(@NotNull String... name) {
         getCurrentCondition().setEq(name);
         return this;
     }
@@ -184,7 +188,7 @@ public class Model {
      * Example: to catch README and README.md files, you will use {@code model.eq("readme").mayEnd(".md")}
      * @param end strings, lowercased.
      */
-    public Model mayEnd(String... end) {
+    public Model mayEnd(@NotNull String... end) {
         getCurrentCondition().setMayEnd(end);
         return this;
     }
@@ -193,7 +197,7 @@ public class Model {
      * Condition: file/folder name ends with given string(s).
      * @param end strings, lowercased.
      */
-    public Model end(String... end) {
+    public Model end(@NotNull String... end) {
         getCurrentCondition().setEnd(end);
         return this;
     }
@@ -210,7 +214,7 @@ public class Model {
      * Condition: file/folder <b>absolute path</b> satisfies given regular expression.
      * @param regex regular expression.
      */
-    public Model regex(@Language("RegExp") String regex) {
+    public Model regex(@NotNull @Language("RegExp") String regex) {
         getCurrentCondition().setRegex(regex);
         return this;
     }
@@ -220,7 +224,7 @@ public class Model {
      * can see and add facets in Project Structure / Project Settings / Facets.
      * @param facets facet(s), lowercased.
      */
-    public Model facets(String... facets) {
+    public Model facets(@NotNull String... facets) {
         getCurrentCondition().setFacets(Arrays.stream(facets).map(String::toLowerCase).toArray(String[]::new));
         return this;
     }
@@ -230,7 +234,7 @@ public class Model {
      * like {@link lermitage.intellij.extra.icons.enablers.GitSubmoduleFolderEnabler}.
      * @param type IconEnablerType.
      */
-    public Model iconEnabler(IconEnablerType type) {
+    public Model iconEnabler(@NotNull IconEnablerType type) {
         getCurrentCondition().setIconEnablerType(type);
         return this;
     }
@@ -239,8 +243,17 @@ public class Model {
      * Register alternate icons.
      * @param altIcons an array of icons.
      */
-    public Model addAltIcons(String... altIcons) {
+    public Model altIcons(@NotNull String... altIcons) {
         this.altIcons = altIcons;
+        return this;
+    }
+
+    /**
+     * Associate this model to one or multiple tags. User will be able to enable and disable multiple models by tag.
+     * @param tags an array of tags.
+     */
+    public Model tags(@NotNull ModelTag... tags) {
+        this.tags = Arrays.stream(tags).collect(Collectors.toList());
         return this;
     }
 
@@ -279,6 +292,10 @@ public class Model {
 
     public String[] getAltIcons() {
         return altIcons;
+    }
+
+    public List<ModelTag> getTags() {
+        return tags == null ? Collections.emptyList() : tags;
     }
 
     @Override

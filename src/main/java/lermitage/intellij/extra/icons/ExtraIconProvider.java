@@ -35,27 +35,30 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofIcon("ide_docker",
                     "Docker.svg", "/extra-icons/docker.svg",
                     "IDE icon: Docker")
-                    .addAltIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg"),
+                    .altIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg")
+                    .tags(ModelTag.DOCKER),
                 // docker compose
                 ofIcon("ide_docker_compose",
                     "DockerCompose.svg", "/extra-icons/dockercompose.svg",
                     "IDE icon: Docker Compose")
-                    .addAltIcons("/extra-icons/dockercompose_alt.png", "/extra-icons/dockercompose_alt2.svg"),
+                    .altIcons("/extra-icons/dockercompose_alt.png", "/extra-icons/dockercompose_alt2.svg")
+                    .tags(ModelTag.DOCKER),
                 // html
                 ofIcon("ide_html",
                     "html.svg", "/extra-icons/html5.svg",
                     "IDE icon: HTML")
-                    .addAltIcons("/extra-icons/html5_alt.svg", "/extra-icons/html5_alt2.svg",
+                    .altIcons("/extra-icons/html5_alt.svg", "/extra-icons/html5_alt2.svg",
                         "/extra-icons/ide/firefox.svg", "/extra-icons/ide/firefoxDeveloper.svg",
                         "/extra-icons/ide/vivaldi.svg", "/extra-icons/ide/edge.svg",
                         "/extra-icons/ide/explorer.svg", "/extra-icons/ide/opera.svg",
                         "/extra-icons/ide/chrome.svg", "/extra-icons/ide/canary.svg",
-                        "/extra-icons/ide/safari.svg"),
+                        "/extra-icons/ide/safari.svg")
+                    .tags(ModelTag.HTML),
                 // java
                 ofIcon("ide_java_enum_class",
                     "enum.svg", "/extra-icons/ide/enum.svg",
                     "IDE icon: Java enum")
-                    .addAltIcons("/extra-icons/ide/enum_alt.svg", "/extra-icons/ide/enum_alt2.svg"),
+                    .altIcons("/extra-icons/ide/enum_alt.svg", "/extra-icons/ide/enum_alt2.svg"),
                 ofIcon("ide_java_abstract_exception",
                     "abstractException.svg", "/extra-icons/ide/abstractException.svg",
                     "IDE icon: Java abstract exception class"),
@@ -66,12 +69,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofIcon("ide_kotlin_enum_class",
                     "enumKotlin.svg", "/extra-icons/ide/enumKotlin.svg",
                     "IDE icon: Kotlin enum")
-                    .addAltIcons("/extra-icons/ide/enumKotlin_alt.svg", "/extra-icons/ide/enumKotlin_alt2.svg"),
+                    .altIcons("/extra-icons/ide/enumKotlin_alt.svg", "/extra-icons/ide/enumKotlin_alt2.svg"),
                 // kotlin gradle script
                 ofIcon("ide_kotlin_gradle_script",
                     "kotlin_gradle_script.svg", "/extra-icons/gradle_kotlin_colored.svg",
                     "IDE icon: Kotlin Gradle script")
-                    .addAltIcons("/extra-icons/gradle_kotlin.svg"),
+                    .altIcons("/extra-icons/gradle_kotlin.svg"),
                 // yaml
                 ofIcon("ide_sh_file",
                     "shFile.svg", "/extra-icons/bash.svg",
@@ -80,7 +83,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofIcon("ide_yaml",
                     "yaml.svg", "/extra-icons/ide/yaml.svg",
                     "IDE icon: YAML")
-                    .addAltIcons("/extra-icons/ide/yaml_alt.svg"),
+                    .altIcons("/extra-icons/ide/yaml_alt.svg"),
 
                 //
                 // folder
@@ -93,7 +96,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".dependabot"),
                 ofDir("dir_docker", "/extra-icons/folder_docker.svg", "Docker (regex): '^/docker$' folder")
                     .regex("^/docker$")
-                    .eq("docker"),
+                    .eq("docker")
+                    .tags(ModelTag.DOCKER),
                 ofDir("dir_github", "/extra-icons/folder_github.svg", "Github (regex): '^/\\.github$' folder")
                     .regex("^/\\.github$")
                     .eq(".github"),
@@ -115,7 +119,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofDir("dir_jpabuddy", "/extra-icons/folder_jpabuddy.svg", "JPA Buddy (regex): '^/\\.jpb$' folder")
                     .regex("^/\\.jpb$")
                     .eq(".jpb")
-                    .addAltIcons("/extra-icons/folder_jpabuddy_alt.svg", "/extra-icons/folder_jpabuddy_alt2.svg",
+                    .altIcons("/extra-icons/folder_jpabuddy_alt.svg", "/extra-icons/folder_jpabuddy_alt2.svg",
                         "/extra-icons/folder_jpabuddy_alt3.svg"),
                 ofDir("dir_mergify", "/extra-icons/folder_mergify.svg", "Mergify: .mergify folder")
                     .regex("^/\\.mergify$")
@@ -132,15 +136,15 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofDir("dir_pytest_cache", "/extra-icons/folder_tmp.svg", "PyTest cache: '^/\\.pytest_cache$' folder")
                     .regex("^/\\.pytest_cache$")
                     .eq(".pytest_cache")
-                    .addAltIcons("/extra-icons/folder_pytest_cache.svg", "/extra-icons/folder_pytest_cache_alt.svg"),
+                    .altIcons("/extra-icons/folder_pytest_cache.svg", "/extra-icons/folder_pytest_cache_alt.svg"),
                 ofDir("dir_python_venv", "/extra-icons/folder_python_venv.svg", "Python Virtual Environment: '^/\\.venv$' folder")
                     .regex("^/\\.venv$")
                     .eq(".venv")
-                    .addAltIcons("/extra-icons/folder_python_venv_alt.svg"),
+                    .altIcons("/extra-icons/folder_python_venv_alt.svg"),
                 ofDir("dir_python_venv_nodot", "/extra-icons/folder_python_venv.svg", "Python Virtual Environment: '^/venv$' folder")
                     .regex("^/venv$")
                     .eq("venv")
-                    .addAltIcons("/extra-icons/folder_python_venv_alt.svg"),
+                    .altIcons("/extra-icons/folder_python_venv_alt.svg"),
                 ofDir("dir_python_egginfo", "/extra-icons/folder_tmp.svg", "Python: '.*\\.egg-info$' folder")
                     .end(".egg-info"),
                 ofDir("dir_python_dottox", "/extra-icons/folder_tmp.svg", "Python: '.*\\.tox$' folder")
@@ -160,121 +164,167 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".expo"),
                 ofDir("dir_storybook", "/extra-icons/folder_storybook.svg", "Storybook (regex): '^/\\.storybook$' folder")
                     .regex("^/\\.storybook$")
-                    .eq(".storybook"),
+                    .eq(".storybook")
+                    .tags(ModelTag.STORYBOOK),
                 // - Flyway databases
                 ofDir("dir_flyway_db2", "/extra-icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/db2[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/migration/db2[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.FLYWAY),
                 ofDir("dir_flyway_h2", "/extra-icons/folder_h2.svg", "Flyway, H2 database folder (regex): '.*/db/migration/h2[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/h2[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/migration/h2[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.FLYWAY),
                 ofDir("dir_flyway_hsqldb", "/extra-icons/folder_hsqldb.svg", "Flyway, HSQLDB database folder (regex): '.*/db/migration/hsqldb[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/hsqldb[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/migration/hsqldb[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.FLYWAY),
                 ofDir("dir_flyway_mariadb", "/extra-icons/folder_mariadb.svg", "Flyway, MariaDB database folder (regex): '.*/db/migration/maria[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/maria[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/migration/maria[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.FLYWAY),
                 ofDir("dir_flyway_mysql", "/extra-icons/folder_mysql.svg", "Flyway, MySQL database folder (regex): '.*/db/migration/mysql[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/mysql[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/migration/mysql[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.FLYWAY),
                 ofDir("dir_flyway_postgresql", "/extra-icons/folder_postgresql.svg", "Flyway, PostgreSQL database folder (regex): '.*/db/migration/postgre[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/postgre[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/migration/postgre[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.FLYWAY),
                 ofDir("dir_flyway_sqlite", "/extra-icons/folder_sqlite.svg", "Flyway, Sqlite database folder (regex): '.*/db/migration/sqlite[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/sqlite[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/migration/sqlite[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.FLYWAY),
                 ofDir("dir_flyway_oracle", "/extra-icons/folder_oracle.svg", "Flyway, Oracle database folder (regex): '.*/db/migration/oracle[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/oracle[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/migration/oracle[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.FLYWAY),
                 ofDir("dir_flyway_sqlserver", "/extra-icons/folder_sqlserver.svg", "Flyway, MS SQL Server database folder (regex): '.*/db/migration/sqlserver[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/sqlserver[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/migration/sqlserver[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.FLYWAY),
                 ofDir("dir_flyway_mssql", "/extra-icons/folder_sqlserver.svg", "Flyway, MS SQL Server database folder (regex): '.*/db/migration/mssql[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/migration/mssql[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/migration/mssql[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.FLYWAY),
                 // - Liquibase databases
                 ofDir("dir_liquibase_db2", "/extra-icons/folder_db2.svg", "Liquibase, IBM DB2 database folder (regex): '.*/db/changelog/db2[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/db2[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/changelog/db2[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.LIQUIBASE),
                 ofDir("dir_liquibase_h2", "/extra-icons/folder_h2.svg", "Liquibase, H2 database folder (regex): '.*/db/changelog/h2[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/h2[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/changelog/h2[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.LIQUIBASE),
                 ofDir("dir_liquibase_hsqldb", "/extra-icons/folder_hsqldb.svg", "Liquibase, HSQLDB database folder (regex): '.*/db/changelog/hsqldb[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/hsqldb[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/changelog/hsqldb[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.LIQUIBASE),
                 ofDir("dir_liquibase_mariadb", "/extra-icons/folder_mariadb.svg", "Liquibase, MariaDB database folder (regex): '.*/db/changelog/maria[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/maria[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/changelog/maria[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.LIQUIBASE),
                 ofDir("dir_liquibase_mysql", "/extra-icons/folder_mysql.svg", "Liquibase, MySQL database folder (regex): '.*/db/changelog/mysql[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/mysql[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/changelog/mysql[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.LIQUIBASE),
                 ofDir("dir_liquibase_postgresql", "/extra-icons/folder_postgresql.svg", "Liquibase, PostgreSQL database folder (regex): '.*/db/changelog/postgre[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/postgre[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/changelog/postgre[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.LIQUIBASE),
                 ofDir("dir_liquibase_sqlite", "/extra-icons/folder_sqlite.svg", "Liquibase, Sqlite database folder (regex): '.*/db/changelog/sqlite[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/sqlite[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/changelog/sqlite[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.LIQUIBASE),
                 ofDir("dir_liquibase_oracle", "/extra-icons/folder_oracle.svg", "Liquibase, Oracle database folder (regex): '.*/db/changelog/oracle[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/oracle[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/changelog/oracle[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.LIQUIBASE),
                 ofDir("dir_liquibase_sqlserver", "/extra-icons/folder_sqlserver.svg", "Liquibase, MS SQL Server database folder (regex): '.*/db/changelog/sqlserver[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/sqlserver[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/changelog/sqlserver[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.LIQUIBASE),
                 ofDir("dir_liquibase_mssql", "/extra-icons/folder_sqlserver.svg", "Liquibase, MS SQL Server database folder (regex): '.*/db/changelog/mssql[a-zA-Z0-9._\\-]*'")
-                    .regex(".*/db/changelog/mssql[a-zA-Z\\d._\\-]*"),
+                    .regex(".*/db/changelog/mssql[a-zA-Z\\d._\\-]*")
+                    .tags(ModelTag.LIQUIBASE),
 
                 //
                 // programmable
                 //
                 ofDir("gitsubmodule", "/extra-icons/git_submodule.svg", "Git sub-module containing folder")
                     .iconEnabler(IconEnablerType.GIT_SUBMODULE_FOLDER)
-                    .addAltIcons("/extra-icons/git_submodule_alt.svg"),
+                    .altIcons("/extra-icons/git_submodule_alt.svg"),
 
                 // angular
                 ofFile("angular_module_generic", "/extra-icons/angular-module.svg", "AngularJS: *.module.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]module\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]module\\.(js|ts)")
+                    .tags(ModelTag.ANGULAR2),
                 ofFile("angular_component_generic", "/extra-icons/angular-component.svg", "AngularJS: *.(component|controller).(js|ts)")
-                    .regex(".*[^a-zA-Z\\d](component|controller)\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d](component|controller)\\.(js|ts)")
+                    .tags(ModelTag.ANGULAR2),
                 ofFile("angular_service_generic", "/extra-icons/angular-service.svg", "AngularJS: *.service.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]service\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]service\\.(js|ts)")
+                    .tags(ModelTag.ANGULAR2),
                 ofFile("angular_pipe_generic", "/extra-icons/angular-pipe.svg", "AngularJS: *.pipe.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]pipe\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]pipe\\.(js|ts)")
+                    .tags(ModelTag.ANGULAR2),
                 ofFile("angular_directive_generic", "/extra-icons/angular-directive.svg", "AngularJS: *.directive.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]directive(s)?\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]directive(s)?\\.(js|ts)")
+                    .tags(ModelTag.ANGULAR2),
                 ofFile("angular_guard_generic", "/extra-icons/angular-guard.svg", "AngularJS: *.guard.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]guard\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]guard\\.(js|ts)")
+                    .tags(ModelTag.ANGULAR2),
                 ofFile("angular_resolver_generic", "/extra-icons/angular-resolver.svg", "AngularJS: *.resolver.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]resolver\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]resolver\\.(js|ts)")
+                    .tags(ModelTag.ANGULAR2),
                 ofFile("angular_spec_generic", "/extra-icons/test-ts.svg", "AngularJS: *.spec.(js|ts|tsx)")
                     .regex(".*[^a-zA-Z\\d]spec\\.(js|ts|tsx)")
-                    .addAltIcons("/extra-icons/test-ts_alt.svg"),
+                    .altIcons("/extra-icons/test-ts_alt.svg")
+                    .tags(ModelTag.ANGULAR2),
 
                 // nestjs
                 ofFile("nestjs", "/extra-icons/nestjs.svg", "NestJS: .nest-cli.json, nest-cli.json, nestconfig.json, .nestconfig.json")
-                    .eq(".nest-cli.json", "nest-cli.json", "nestconfig.json", ".nestconfig.json"),
+                    .eq(".nest-cli.json", "nest-cli.json", "nestconfig.json", ".nestconfig.json")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_adapter", "/extra-icons/nestjs_adapter.svg", "NestJS: *.adapter.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]adapter\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]adapter\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_controller", "/extra-icons/nestjs_controller.svg", "NestJS: *.controller.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]controller\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]controller\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_controller_test", "/extra-icons/nestjs_controller_test.svg", "NestJS: *.controller.spec.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]controller\\.spec\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]controller\\.spec\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_decorator", "/extra-icons/nestjs_decorator.svg", "NestJS: *.decorator.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]decorator\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]decorator\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_dto", "/extra-icons/nestjs_dto.svg", "NestJS: *.dto.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]dto\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]dto\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_entity", "/extra-icons/nestjs_entity.svg", "NestJS: *.entity.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]entity\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]entity\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_filter", "/extra-icons/nestjs_filter.svg", "NestJS: *.filter.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]filter\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]filter\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_gateway", "/extra-icons/nestjs_gateway.svg", "NestJS: *.gateway.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]gateway\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]gateway\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_guard", "/extra-icons/nestjs_guard.svg", "NestJS: *.guard.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]guard\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]guard\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_interceptor", "/extra-icons/nestjs_interceptor.svg", "NestJS: *.interceptor.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]interceptor\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]interceptor\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_middleware", "/extra-icons/nestjs_middleware.svg", "NestJS: *.middleware.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]middleware\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]middleware\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_model", "/extra-icons/nestjs_model.svg", "NestJS: *.model.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]model\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]model\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_module", "/extra-icons/nestjs_module.svg", "NestJS: *.module.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]module\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]module\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_pipe", "/extra-icons/nestjs_pipe.svg", "NestJS: *.pipe.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]pipe\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]pipe\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_service", "/extra-icons/nestjs_service.svg", "NestJS: *.service.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]service\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]service\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
                 ofFile("nestjs_service_test", "/extra-icons/nestjs_service_test.svg", "NestJS: *.service.spec.(js|ts)")
-                    .regex(".*[^a-zA-Z\\d]service\\.spec\\.(js|ts)"),
+                    .regex(".*[^a-zA-Z\\d]service\\.spec\\.(js|ts)")
+                    .tags(ModelTag.NESTJS),
 
                 //
                 // regex (file)
                 //
                 ofFile("babel", "/extra-icons/babel.svg", "Babel: babel.config.[json|js|cjs|mjs]|.babelrc.[json|js|cjs|mjs]|.babelrc")
                     .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?")
-                    .addAltIcons("/extra-icons/babel_alt.svg"),
+                    .altIcons("/extra-icons/babel_alt.svg"),
                 ofFile("dotenv", "/extra-icons/env.svg", "Dotenv: .*\\.env(\\.[a-zA-Z0-9]+)*")
                     .regex(".*\\.env(\\.[a-zA-Z\\d]+)*")
-                    .addAltIcons("/extra-icons/env_alt.svg", "/extra-icons/env_alt2.svg"),
+                    .altIcons("/extra-icons/env_alt.svg", "/extra-icons/env_alt2.svg"),
                 ofFile("eslint", "/extra-icons/eslint.svg", "Eslint (regex): .*\\.eslintrc(\\.[cm]?js(on)?|\\.y(a)?ml)?$")
                     .regex(".*\\.eslintrc(\\.[cm]?js(on)?|\\.y(a)?ml)?$"),
                 ofFile("nodemon", "/extra-icons/nodemon.svg", "Nodemon: ^\\.?nodemon\\.json$")
@@ -297,18 +347,21 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .regex(".*\\.?tailwind.*\\.[cm]?[jt]s$"),
                 ofFile("test-typescript", "/extra-icons/test-ts.svg", "TestTypescript: .*\\.?(test|spec)\\.(ts|tsx)$")
                     .regex(".*\\.?(test|spec)\\.(ts|tsx)$")
-                    .addAltIcons("/extra-icons/test-ts_alt.svg"),
+                    .altIcons("/extra-icons/test-ts_alt.svg"),
                 ofFile("test-javascript", "/extra-icons/test-javascript.svg", "TestJavascript: .*\\.?(test|spec)\\.js$")
                     .regex(".*\\.?(test|spec)\\.js$")
-                    .addAltIcons("/extra-icons/test-javascript_alt.svg"),
+                    .altIcons("/extra-icons/test-javascript_alt.svg"),
                 ofFile("flyway", "/extra-icons/flyway.png", "Flyway (regex): '.*/db/migration/.*\\.sql'")
-                    .regex(".*/db/migration/.*\\.sql"),
+                    .regex(".*/db/migration/.*\\.sql")
+                    .tags(ModelTag.FLYWAY),
                 ofFile("liquibase", "/extra-icons/liquibase.svg", "Liquibase (regex): '.*/db/changelog/.*\\.(sql|xml)'")
-                    .regex(".*/db/changelog/.*\\.(sql|xml)"),
+                    .regex(".*/db/changelog/.*\\.(sql|xml)")
+                    .tags(ModelTag.LIQUIBASE),
                 ofFile("mockk", "/extra-icons/mockk.svg", "Mockk: io/mockk/settings.properties")
                     .regex(".*/io/mockk/settings\\.properties"),
                 ofFile("storybook", "/extra-icons/storybook.svg", "Storybook: *.stor(y|ies).(js|jsx|ts|tsx|mdx)")
-                    .regex(".*\\.stor(y|ies)\\.(js|jsx|ts|tsx|mdx)$"),
+                    .regex(".*\\.stor(y|ies)\\.(js|jsx|ts|tsx|mdx)$")
+                    .tags(ModelTag.STORYBOOK),
 
                 //
                 // file plus its containing folder
@@ -349,7 +402,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".htaccess"),
                 ofFile("android_manifest", "/extra-icons/android.svg", "Android: androidmanifest.xml")
                     .eq("androidmanifest.xml")
-                    .addAltIcons("/extra-icons/android_alt.svg"),
+                    .altIcons("/extra-icons/android_alt.svg"),
                 ofFile("appveyor", "/extra-icons/appveyor.svg", "Appveyor: appveyor.yml, .appveyor.yml")
                     .eq("appveyor.yml", ".appveyor.yml"),
                 ofFile("allcontributors", "/extra-icons/allcontributors.svg", "All Contributors: .all-contributorsrc")
@@ -358,7 +411,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("archunit.properties"),
                 ofFile("author", "/extra-icons/authors.png", "Author: author(.md,.txt,.adoc,.rst), authors")
                     .eq("author", "authors").mayEnd(TXT)
-                    .addAltIcons("/extra-icons/authors_alt.svg", "/extra-icons/authors_alt2.svg",
+                    .altIcons("/extra-icons/authors_alt.svg", "/extra-icons/authors_alt2.svg",
                         "/extra-icons/authors_alt3.svg", "/extra-icons/authors_alt4.svg"),
                 ofFile("bamboo", "/extra-icons/bamboo.png", "Bamboo: bamboo.yml")
                     .eq("bamboo.yml"),
@@ -374,7 +427,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("build.gradle", "gradle.properties", "settings.gradle"),
                 ofFile("gradle_kotlin", "/extra-icons/gradle_kotlin_colored.svg", "Gradle (Kotlin DSL): build.gradle.kts, settings.gradle.kts")
                     .eq("build.gradle.kts", "settings.gradle.kts")
-                    .addAltIcons("/extra-icons/gradle_kotlin.svg"),
+                    .altIcons("/extra-icons/gradle_kotlin.svg"),
                 ofFile("gradle", "/extra-icons/gradlew.svg", "Gradle: gradlew")
                     .eq("gradlew"),
                 ofFile("gradlew", "/extra-icons/gradlew.svg", "Gradle (Windows): gradlew.bat, gradlew.cmd")
@@ -425,12 +478,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".codacy").mayEnd(YML),
                 ofFile("codeship", "/extra-icons/codeship.svg", "Codeship steps: codeship-steps(.xml,.yml,...)")
                     .eq("codeship-steps").mayEnd(CFG)
-                    .addAltIcons("/extra-icons/codeship_alt.png"),
+                    .altIcons("/extra-icons/codeship_alt.png"),
                 ofFile("contact", "/extra-icons/contact.png", "Contact: contact(.md,.txt,.adoc,.rst), contacts")
                     .eq("contact", "contacts").mayEnd(TXT),
                 ofFile("contribute", "/extra-icons/contributing.svg", "Contribution: contribute(.md,.txt,.adoc,.rst), contributing, contribution")
                     .eq("contribute", "contributing", "contribution").mayEnd(TXT)
-                    .addAltIcons("/extra-icons/contributing_alt.png", "/extra-icons/contributing_alt2.svg"),
+                    .altIcons("/extra-icons/contributing_alt.png", "/extra-icons/contributing_alt2.svg"),
                 ofFile("coveragerc", "/extra-icons/coveragerc.svg", "Python coverage: .coveragerc")
                     .eq(".coveragerc"),
                 ofFile("crowdin", "/extra-icons/crowdin.svg", "Crowdin: .crowdin.yml")
@@ -439,22 +492,27 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("deptective.json"),
                 ofFile("docker", "/extra-icons/docker.svg", "Docker: dockerfile(.xml,.yml,...)")
                     .eq("dockerfile").mayEnd(CFG)
-                    .addAltIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg"),
+                    .altIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg")
+                    .tags(ModelTag.DOCKER),
                 ofFile("dockercompose", "/extra-icons/dockercompose.svg", "Docker: docker-compose")
                     .eq("docker-compose").mayEnd(CFG)
-                    .addAltIcons("/extra-icons/dockercompose_alt.png", "/extra-icons/dockercompose_alt2.svg"),
+                    .altIcons("/extra-icons/dockercompose_alt.png", "/extra-icons/dockercompose_alt2.svg")
+                    .tags(ModelTag.DOCKER),
                 ofFile("docker1", "/extra-icons/docker.svg", "Docker: start by 'dockerfile' and end by '.xml,.yml,...'")
                     .start("dockerfile").end(CFG)
-                    .addAltIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg"),
+                    .altIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg")
+                    .tags(ModelTag.DOCKER),
                 ofFile("dockercompose1", "/extra-icons/dockercompose.svg", "Docker: start by 'docker-compose' and end by '.xml,.yml,...'")
                     .start("docker-compose").end(CFG)
-                    .addAltIcons("/extra-icons/dockercompose_alt.png", "/extra-icons/dockercompose_alt2.svg"),
+                    .altIcons("/extra-icons/dockercompose_alt.png", "/extra-icons/dockercompose_alt2.svg")
+                    .tags(ModelTag.DOCKER),
                 ofFile("dockerignore", "/extra-icons/dockerignore.svg", "Docker: .dockerignore")
                     .eq(".dockerignore")
-                    .addAltIcons("/extra-icons/dockerignore_alt.png", "/extra-icons/dockerignore_alt2.svg"),
+                    .altIcons("/extra-icons/dockerignore_alt.png", "/extra-icons/dockerignore_alt2.svg")
+                    .tags(ModelTag.DOCKER),
                 ofFile("editorconfig", "/extra-icons/editorconfig.png", "EditorConfig: .editorconfig")
                     .eq(".editorconfig").mayEnd(CFG)
-                    .addAltIcons("/extra-icons/editorconfig_alt.svg", "/extra-icons/editorconfig_alt2.svg"),
+                    .altIcons("/extra-icons/editorconfig_alt.svg", "/extra-icons/editorconfig_alt2.svg"),
                 ofFile("elastic", "/extra-icons/elasticsearch.png", "Elasticsearch: elastic(.yml,.yaml)")
                     .eq("elastic").mayEnd(YML),
                 ofFile("elastic1", "/extra-icons/elasticsearch.png", "Elasticsearch: start by 'elastic' and end by '.yml,.yaml'")
@@ -467,7 +525,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .start("cerebro").end(".conf"),
                 ofFile("faq", "/extra-icons/faq.svg", "FAQ: faq(.md,.txt,.adoc,.rst)")
                     .eq("faq").mayEnd(TXT)
-                    .addAltIcons("/extra-icons/faq_alt.svg", "/extra-icons/faq_alt2.svg"),
+                    .altIcons("/extra-icons/faq_alt.svg", "/extra-icons/faq_alt2.svg"),
                 ofFile("intellijcodestyle", "/extra-icons/jetbrains.svg", "IntelliJ: intellijcodestyle.xml")
                     .eq("intellijcodestyle.xml"),
                 ofFile("mailmap", "/extra-icons/email.svg", "Mailmap: .mailmap")
@@ -486,7 +544,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .start(".go-arch-lint.yml"),
                 ofFile("goreleaser", "/extra-icons/goreleaser.svg", "GoReleaser: .goreleaser.yml")
                     .start(".goreleaser.yml")
-                    .addAltIcons("/extra-icons/goreleaser_alt.svg"),
+                    .altIcons("/extra-icons/goreleaser_alt.svg"),
                 ofFile("grunt", "/extra-icons/grunt.svg", "Grunt: Gruntfile.js")
                     .eq("gruntfile.js"),
                 ofFile("git", "/extra-icons/git.svg", "Git: .gitattributes, .gitignore, .gitmodules, .gitreview")
@@ -507,7 +565,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("hibernate.properties"),
                 ofFile("java", "/extra-icons/java.png", "JVM properties (e.g. Tomcat or Maven JVM configuration): jvm.properties, jvm.config")
                     .eq("jvm.properties", "jvm.config")
-                    .addAltIcons("/extra-icons/java_alt.svg"),
+                    .altIcons("/extra-icons/java_alt.svg"),
                 ofFile("imgbot", "/extra-icons/imgbot.svg", "ImgBot: .imgbotconfig")
                     .eq(".imgbotconfig"),
                 ofFile("jenkins", "/extra-icons/jenkins.png", "Jenkins: jenkinsfile(.xml,.yml,...), jenkins")
@@ -542,18 +600,20 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .start("known_issues").mayEnd(TXT),
                 ofFile("kubernetes", "/extra-icons/kubernetes.svg", "Kubernetes: kubernetes(.xml,.yml,...)")
                     .eq("kubernetes").mayEnd(YML)
-                    .addAltIcons("/extra-icons/kubernetes_alt.svg", "/extra-icons/kubernetes_alt2.svg"),
+                    .altIcons("/extra-icons/kubernetes_alt.svg", "/extra-icons/kubernetes_alt2.svg")
+                    .tags(ModelTag.KUBERNETES),
                 ofFile("kubernetes1", "/extra-icons/kubernetes.svg", "Kubernetes: start by 'kubernetes' and end by '.xml,.yml,...'")
                     .start("kubernetes").end(YML)
-                    .addAltIcons("/extra-icons/kubernetes_alt.svg", "/extra-icons/kubernetes_alt2.svg"),
+                    .altIcons("/extra-icons/kubernetes_alt.svg", "/extra-icons/kubernetes_alt2.svg")
+                    .tags(ModelTag.KUBERNETES),
                 ofFile("lerna", "/extra-icons/lerna.png", "Lerna: lerna.json")
                     .eq("lerna.json"),
                 ofFile("lgtm", "/extra-icons/lgtm.svg", "LGTM: .lgtm.yml, lgtm.yml")
                     .eq("lgtm", ".lgtm").end(YML)
-                    .addAltIcons("/extra-icons/lgtm_alt.svg"),
+                    .altIcons("/extra-icons/lgtm_alt.svg"),
                 ofFile("license", "/extra-icons/license.svg", "License: license(.md,.txt,.adoc,.rst), copying, license_info, additional_license_info")
                     .eq("license", "copying", "license_info", "additional_license_info").mayEnd(TXT)
-                    .addAltIcons("/extra-icons/license_alt.png"),
+                    .altIcons("/extra-icons/license_alt.png"),
                 ofFile("lighttpd", "/extra-icons/lighttpd.svg", "Lighttpd: lighttpd.conf")
                     .eq("lighttpd.conf"),
                 ofFile("log4j", "/extra-icons/log4j.png", "Log4j: log4j(.xml,.yml,...), log4j-test")
@@ -572,14 +632,14 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("lombok.config"),
                 ofFile("maven_shade_plugin", "/extra-icons/generated_pom.svg", "Maven Shade Plugin: dependency-reduced-pom.xml")
                     .eq("dependency-reduced-pom.xml")
-                    .addAltIcons("/extra-icons/generated_pom_alt.svg"),
+                    .altIcons("/extra-icons/generated_pom_alt.svg"),
                 ofFile("metro", "/extra-icons/metro.svg", "Metro config: metro.config.js")
                     .eq("metro.config.js"),
                 ofFile("mkdocs", "/extra-icons/mkdocs.svg", "MkDocs: mkdocs.yml")
                     .eq("mkdocs.yml"),
                 ofFile("moduleinfojava", "/extra-icons/moduleinfo.svg", "Java module: module-info.java")
                     .eq("module-info.java")
-                    .addAltIcons("/extra-icons/moduleinfo_alt.svg"),
+                    .altIcons("/extra-icons/moduleinfo_alt.svg"),
                 ofFile("muse", "/extra-icons/muse.png", "Muse: .muse.toml")
                     .eq(".muse.toml"),
                 ofFile("mysql", "/extra-icons/my.png", "MySQL: my.ini")
@@ -636,7 +696,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .start("puppet").end(".conf"),
                 ofFile("readme", "/extra-icons/readme.svg", "Readme: readme(.md,.txt,.adoc,.rst), lisezmoi")
                     .eq("readme", "lisezmoi").mayEnd(TXT)
-                    .addAltIcons("/extra-icons/readme_alt.svg", "/extra-icons/readme_alt2.svg"),
+                    .altIcons("/extra-icons/readme_alt.svg", "/extra-icons/readme_alt2.svg"),
                 ofFile("redis", "/extra-icons/redis.svg", "Redis: redis(.conf)")
                     .eq("redis").mayEnd(".conf"),
                 ofFile("redis1", "/extra-icons/redis.svg", "Redis: start by 'redis' and end by '.conf'")
@@ -646,10 +706,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("requirementstxt_python", "/extra-icons/requirementstxt_python.svg", "Python: requirements.txt (Python facet only)")
                     .eq("requirements.txt")
                     .facets("python")
-                    .addAltIcons("/extra-icons/requirementstxt_python_alt.svg"),
+                    .altIcons("/extra-icons/requirementstxt_python_alt.svg"),
                 ofFile("restyled", "/extra-icons/restyled.svg", "Restyled: .restyled.yaml")
                     .eq(".restyled.yaml")
-                    .addAltIcons("/extra-icons/restyled_alt.svg", "/extra-icons/restyled_alt2.svg"),
+                    .altIcons("/extra-icons/restyled_alt.svg", "/extra-icons/restyled_alt2.svg"),
                 ofFile("roadmap", "/extra-icons/roadmap.png", "Roadmap: roadmap(.md,.txt,.adoc,.rst)")
                     .eq("roadmap").mayEnd(TXT),
                 ofFile("rollup", "/extra-icons/rollup.svg", "Rollup: rollup.config.js")
@@ -672,7 +732,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("svgo.config.js"),
                 ofFile("swaggerconfig", "/extra-icons/swagger.svg", "Swagger: swagger-config.yaml")
                     .eq("swagger-config.yaml")
-                    .addAltIcons("/extra-icons/swagger_alt.svg"),
+                    .altIcons("/extra-icons/swagger_alt.svg"),
                 ofFile("swaggerignore", "/extra-icons/swaggerignore.svg", "Swagger: .swagger-codegen-ignore")
                     .eq(".swagger-codegen-ignore"),
                 ofFile("tinylogproperties", "/extra-icons/tinylog_properties.svg", "Tinylog: tinylog.properties")
@@ -681,13 +741,13 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("test", "testing").mayEnd(TXT),
                 ofFile("todo", "/extra-icons/todo.png", "To-Do: todo(.md,.txt,.adoc,.rst)")
                     .eq("todo").mayEnd(TXT)
-                    .addAltIcons("/extra-icons/todo_alt.svg", "/extra-icons/todo_alt2.svg"),
+                    .altIcons("/extra-icons/todo_alt.svg", "/extra-icons/todo_alt2.svg"),
                 ofFile("tox", "/extra-icons/tox.png", "Tox: tox.ini")
                     .eq("tox.ini")
-                    .addAltIcons("/extra-icons/tox_alt.svg"),
+                    .altIcons("/extra-icons/tox_alt.svg"),
                 ofFile("travis", "/extra-icons/travis.svg", "Travis CI: .travis.yml")
                     .eq(".travis.yml")
-                    .addAltIcons("/extra-icons/travis_alt.svg", "/extra-icons/travis_alt02.svg",
+                    .altIcons("/extra-icons/travis_alt.svg", "/extra-icons/travis_alt02.svg",
                         "/extra-icons/travis_alt03.svg", "/extra-icons/travis_alt04.svg",
                         "/extra-icons/travis_alt05.svg", "/extra-icons/travis_alt06.svg",
                         "/extra-icons/travis_alt07.svg", "/extra-icons/travis_alt08.svg",
@@ -708,12 +768,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("version", ".version", "versions", ".versions").end(".xml"),
                 ofFile("vite", "/extra-icons/vite.svg", "Vite: vite.config.js")
                     .eq("vite.config.js")
-                    .addAltIcons("/extra-icons/vite_alt.svg"),
+                    .altIcons("/extra-icons/vite_alt.svg"),
                 ofFile("weblate", "/extra-icons/weblate.svg", "Weblate: .weblate")
                     .eq(".weblate"),
                 ofFile("webpack", "/extra-icons/webpack.svg", "Webpack: webpack.conf.js")
                     .start("webpack.config.").end(".js", ".ts")
-                    .addAltIcons("/extra-icons/webpack_alt.svg"),
+                    .altIcons("/extra-icons/webpack_alt.svg"),
                 ofFile("werf", "/extra-icons/werf.svg", "Werf: werf.yaml")
                     .eq("werf.yaml"),
                 ofFile("zalando", "/extra-icons/zalando.png", "Zalando Zappr: .zappr.yaml")
@@ -726,21 +786,21 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".zip", ".7z", ".tar", ".gz", ".bz2", ".xz"),
                 ofFile("ext_adoc", "/extra-icons/asciidoc.svg", "Asciidoc: *.adoc, *.asciidoc")
                     .end(".adoc", ".asciidoc")
-                    .addAltIcons("/extra-icons/asciidoc_alt.png"),
+                    .altIcons("/extra-icons/asciidoc_alt.png"),
                 ofFile("ext_apk", "/extra-icons/apk.svg", "Android application package (APK): *.apk, *.xapk")
                     .end(".apk", ".xapk"),
                 ofFile("ext_avro_avsc", "/extra-icons/avro.svg", "Avro: *.avsc")
                     .end(".avsc"),
                 ofFile("ext_bin", "/extra-icons/binary.svg", "Binary: *.bin")
                     .end(".bin")
-                    .addAltIcons("/extra-icons/binary_alt.svg", "/extra-icons/binary_alt2.svg"),
+                    .altIcons("/extra-icons/binary_alt.svg", "/extra-icons/binary_alt2.svg"),
                 ofFile("ext_back", "/extra-icons/backup.png", "Backup: *.versionbackup, *.versionsbackup, *.bak, *.back, *.backup, *.old, *.prev, *.revert, *.releaseBackup")
                     .end(".versionbackup", ".versionsbackup", ".bak", ".back", ".backup", ".old", ".prev", ".revert", ".releasebackup"),
                 ofFile("ext_sh", "/extra-icons/bash.svg", "Bash: *.sh")
                     .end(".sh"),
                 ofFile("ext_cert", "/extra-icons/certificate.svg", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, ...")
                     .end(".jks", ".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".jceks", ".p12", ".p7b", ".p7s", ".pfx", ".pubkey")
-                    .addAltIcons("/extra-icons/certificate_alt.png"),
+                    .altIcons("/extra-icons/certificate_alt.png"),
                 ofFile("ext_cmd", "/extra-icons/cmd.svg", "Windows script: *.cmd, *.bat, *.ps1")
                     .end(".cmd", ".bat", ".ps1"),
                 ofFile("ext_csv", "/extra-icons/csv.png", "CSV: *.csv")
@@ -751,10 +811,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".deb"),
                 ofFile("ext_dll", "/extra-icons/binary.svg", "Windows DLL: *.dll")
                     .end(".dll")
-                    .addAltIcons("/extra-icons/binary_alt.svg", "/extra-icons/binary_alt2.svg"),
+                    .altIcons("/extra-icons/binary_alt.svg", "/extra-icons/binary_alt2.svg"),
                 ofFile("ext_drawio", "/extra-icons/drawio.svg", "Draw.io: *.drawio, *.dio")
                     .end(".drawio", ".dio")
-                    .addAltIcons("/extra-icons/drawio_alt.png"),
+                    .altIcons("/extra-icons/drawio_alt.png"),
                 ofFile("ext_epub", "/extra-icons/epub.svg", "Epub: *.epub, *.mobi, *.azw, *.azw3")
                     .end(".epub", ".mobi", ".azw", ".azw3"),
                 ofFile("ext_exe", "/extra-icons/msexe.png", "Windows executable: *.exe")
@@ -795,18 +855,18 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".css"),
                 ofFile("ext_js", "/extra-icons/javascript.svg", "Javascript: *.js")
                     .end(".js")
-                    .addAltIcons("/extra-icons/javascript_alt.svg"),
+                    .altIcons("/extra-icons/javascript_alt.svg"),
                 ofFile("ext_js_react", "/extra-icons/jsx.svg", "JSX (Javascript + React): *.jsx")
                     .end(".jsx"),
                 ofFile("ext_kdbx", "/extra-icons/keepass.svg", "KeePass: *.kdbx")
                     .end(".kdbx")
-                    .addAltIcons("/extra-icons/keepass_alt.png"),
+                    .altIcons("/extra-icons/keepass_alt.png"),
                 ofFile("ext_md", "/extra-icons/markdown.svg", "Markdown: *.md")
                     .end(".md")
-                    .addAltIcons("/extra-icons/markdown_alt.svg", "/extra-icons/markdown_alt2.svg"),
+                    .altIcons("/extra-icons/markdown_alt.svg", "/extra-icons/markdown_alt2.svg"),
                 ofFile("ext_mdx", "/extra-icons/mdx.svg", "MDX: *.mdx")
                     .end(".mdx")
-                    .addAltIcons("/extra-icons/mdx_alt.svg", "/extra-icons/mdx_alt2.svg"),
+                    .altIcons("/extra-icons/mdx_alt.svg", "/extra-icons/mdx_alt2.svg"),
                 ofFile("ext_mmd", "/extra-icons/mindmap.svg", "IDEA MindMap plugin: *.mmd")
                     .end(".mmd"),
                 ofFile("ext_mwb", "/extra-icons/mysqlworkbench.png", "MySQL Workbench: *.mwb")
@@ -815,7 +875,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".nsi"),
                 ofFile("ext_pdf", "/extra-icons/pdf.png", "PDF: *.pdf")
                     .end(".pdf")
-                    .addAltIcons("/extra-icons/pdf_alt.svg", "/extra-icons/pdf_alt2.svg",
+                    .altIcons("/extra-icons/pdf_alt.svg", "/extra-icons/pdf_alt2.svg",
                         "/extra-icons/pdf_alt3.svg"),
                 ofFile("ext_pid", "/extra-icons/pid.svg", "PID: *.pid")
                     .end(".pid"),
@@ -825,15 +885,15 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".puml"),
                 ofFile("ext_postmancollection", "/extra-icons/postman_col.svg", "Postman collection: *postman_collection.json")
                     .end("postman_collection.json")
-                    .addAltIcons("/extra-icons/postman.svg"),
+                    .altIcons("/extra-icons/postman.svg"),
                 ofFile("ext_postmanenvironment", "/extra-icons/postman_env.svg", "Postman environment: *postman_environment.json")
                     .end("postman_environment.json")
-                    .addAltIcons("/extra-icons/postman.svg"),
+                    .altIcons("/extra-icons/postman.svg"),
                 ofFile("ext_rpm", "/extra-icons/rpm.svg", "Red Hat package: *.rpm")
                     .end(".rpm"),
                 ofFile("ext_robotframework", "/extra-icons/robotframework.svg", "Robot Framework: *.robot")
                     .end(".robot")
-                    .addAltIcons("/extra-icons/robotframework_alt.svg"),
+                    .altIcons("/extra-icons/robotframework_alt.svg"),
                 ofFile("sass", "/extra-icons/sass.svg", "SASS: *.sass")
                     .end(".sass"),
                 ofFile("scss", "/extra-icons/scss.svg", "SASS: *.scss")
@@ -844,14 +904,14 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".styl"),
                 ofFile("ext_svg", "/extra-icons/svg.svg", "SVG: *.svg")
                     .end(".svg")
-                    .addAltIcons("/extra-icons/svg_alt.svg"),
+                    .altIcons("/extra-icons/svg_alt.svg"),
                 ofFile("ext_tf", "/extra-icons/terraform.svg", "Terraform: *.hcl, *.tf, *.tf.json")
                     .end(".hcl", ".tf", ".tf.json"),
                 ofFile("ext_toml", "/extra-icons/toml.svg", "TOML: *.toml")
                     .end(".toml"),
                 ofFile("typescript", "/extra-icons/test-ts.svg", "Typescript: *.spec.ts")
                     .end(".spec.ts")
-                    .addAltIcons("/extra-icons/test-ts_alt.svg"),
+                    .altIcons("/extra-icons/test-ts_alt.svg"),
                 ofFile("typescript-ts", "/extra-icons/typescript.svg", "Typescript: *.ts")
                     .end(".ts"),
                 ofFile("typescript-react", "/extra-icons/tsx.svg", "TSX (Typescript + React): *.tsx")
@@ -859,7 +919,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_video", "/extra-icons/video.svg", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ...")
                     .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
                         ".m4v", ".mkv", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid")
-                    .addAltIcons("/extra-icons/video_alt.svg", "/extra-icons/video_alt2.svg",
+                    .altIcons("/extra-icons/video_alt.svg", "/extra-icons/video_alt2.svg",
                         "/extra-icons/video_alt3.svg"),
                 ofFile("ext_velocity", "/extra-icons/velocity.svg", "Velocity: *.vtl")
                     .end(".vtl"),
@@ -867,43 +927,56 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".war"),
 
                 ofFile("ext_libreoffice_calc", "/extra-icons/officedocs/localc.png", "LibreOffice Calc: *.ods")
-                    .end(".ods"),
+                    .end(".ods")
+                    .tags(ModelTag.LIBRE_OFFICE),
                 ofFile("ext_libreoffice_draw", "/extra-icons/officedocs/lodraw.png", "LibreOffice Draw: *.odg")
-                    .end(".odg"),
+                    .end(".odg")
+                    .tags(ModelTag.LIBRE_OFFICE),
                 ofFile("ext_libreoffice_impress", "/extra-icons/officedocs/loimpress.png", "LibreOffice Impress: *.odp")
-                    .end(".odp"),
+                    .end(".odp")
+                    .tags(ModelTag.LIBRE_OFFICE),
                 ofFile("ext_libreoffice_math", "/extra-icons/officedocs/lomath.png", "LibreOffice Math: *.odf")
-                    .end(".odf"),
+                    .end(".odf")
+                    .tags(ModelTag.LIBRE_OFFICE),
                 ofFile("ext_libreoffice_writer", "/extra-icons/officedocs/lowriter.png", "LibreOffice Writer: *.odt")
-                    .end(".odt"),
+                    .end(".odt")
+                    .tags(ModelTag.LIBRE_OFFICE),
                 ofFile("ext_msoffice_excel", "/extra-icons/officedocs/msexcel-2019.svg", "MSOffice Excel: *.xls, *.xlsx")
                     .end(".xls", ".xlsx")
-                    .addAltIcons("/extra-icons/officedocs/msexcel.png"),
+                    .altIcons("/extra-icons/officedocs/msexcel.png")
+                    .tags(ModelTag.MS_OFFICE),
                 ofFile("ext_msoffice_onenote", "/extra-icons/officedocs/msonenote-2019.svg", "MSOffice OneNote: *.one, *.onetoc2")
                     .end(".one", ".onetoc2")
-                    .addAltIcons("/extra-icons/officedocs/msonenote.png"),
+                    .altIcons("/extra-icons/officedocs/msonenote.png")
+                    .tags(ModelTag.MS_OFFICE),
                 ofFile("ext_msoffice_powerpoint", "/extra-icons/officedocs/mspowerpoint-2019.svg", "MSOffice Powerpoint: *.ppt, *.pptx")
                     .end(".ppt", ".pptx")
-                    .addAltIcons("/extra-icons/officedocs/mspowerpoint.png"),
+                    .altIcons("/extra-icons/officedocs/mspowerpoint.png")
+                    .tags(ModelTag.MS_OFFICE),
                 ofFile("ext_msoffice_project", "/extra-icons/officedocs/msproject-2019.svg", "MSOffice Project: *.mpd, *.mpp, *.mpt")
                     .end(".mpd", ".mpp", ".mpt")
-                    .addAltIcons("/extra-icons/officedocs/msproject.png"),
+                    .altIcons("/extra-icons/officedocs/msproject.png")
+                    .tags(ModelTag.MS_OFFICE),
                 ofFile("ext_msoffice_visio", "/extra-icons/officedocs/msvisio-2019.svg", "MSOffice Visio: *.vsd, *.vsdx, *.vss, *.vssx, *.vst, *.vstx")
                     .end(".vsd", ".vsdx", ".vss", ".vssx", ".vst", ".vstx")
-                    .addAltIcons("/extra-icons/officedocs/msvisio.png"),
+                    .altIcons("/extra-icons/officedocs/msvisio.png")
+                    .tags(ModelTag.MS_OFFICE),
                 ofFile("ext_msoffice_word", "/extra-icons/officedocs/msword-2019.svg", "MSOffice Word: *.doc, *.docx")
                     .end(".doc", ".docx")
-                    .addAltIcons("/extra-icons/officedocs/msword.png"),
+                    .altIcons("/extra-icons/officedocs/msword.png")
+                    .tags(ModelTag.MS_OFFICE),
 
                 //
                 // generic
                 //
                 ofFile("docker_generic", "/extra-icons/docker.svg", "Docker (generic): start by 'dockerfile'")
                     .start("dockerfile")
-                    .addAltIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg"),
+                    .altIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg")
+                    .tags(ModelTag.DOCKER),
                 ofFile("docker_generic_2", "/extra-icons/docker.svg", "Docker (generic): end with 'dockerfile'")
                     .end("dockerfile")
-                    .addAltIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg")
+                    .altIcons("/extra-icons/docker_alt.png", "/extra-icons/docker_alt2.svg")
+                    .tags(ModelTag.DOCKER)
             )
             .flatMap(ExtraIconProvider::modelList)
             .collect(Collectors.toList());
@@ -937,7 +1010,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             altId = model.getId() + "_alt" + (altIconIdx + 1);
         }
         return new Model(altId, model.getIdeIcon(), model.getAltIcons()[altIconIdx], altDescription, model.getModelType(),
-            model.getIconType(), model.isEnabled(), model.getConditions());
+            model.getIconType(), model.isEnabled(), model.getConditions(), model.getTags());
     }
 
     public ExtraIconProvider() {
