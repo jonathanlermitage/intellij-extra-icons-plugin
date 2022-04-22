@@ -142,8 +142,8 @@ public class ModelDialog extends DialogWrapper {
 
         chooseIconSelector.addItem("choose custom or bundled icon");
         List<Model> bundledModels = new ArrayList<>();
-        bundledModels.addAll(ExtraIconProvider.allModels());
         bundledModels.addAll(Angular2IconProvider.allModels());
+        bundledModels.addAll(ExtraIconProvider.allModels());
         bundledModels.stream()
             .map(Model::getIcon)
             .sorted()

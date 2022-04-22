@@ -37,6 +37,7 @@
       <li>fix PostCSS, Sequelize and Tailwindcss support.</li>
       <li>config panel: UI improvements.</li>
       <li>config panel: some icons now have tags, and you can enable and disable multiple icons by tags.</li>
+      <li>fix the priority of Angular icons when the Angular plugin is installed.</li>
     </ul>
     2022.1.2 (2022/04/03)
     <ul>

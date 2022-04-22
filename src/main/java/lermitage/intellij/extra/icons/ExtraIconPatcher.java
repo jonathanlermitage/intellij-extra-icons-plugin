@@ -87,7 +87,6 @@ public class ExtraIconPatcher extends IconPathPatcher {
         } catch (IOException e) {
             LOGGER.warn("Cannot create temporary directory to store user IDE icons, this feature won't work", e);
         }
-        //icons.put("add.svg", "file://C:\\Projects\\ij-extra-icons\\src\\main\\resources\\extra-icons\\angular2.svg");
         LOGGER.info("config loaded with success, enabled " + icons.size() + " items");
     }
 

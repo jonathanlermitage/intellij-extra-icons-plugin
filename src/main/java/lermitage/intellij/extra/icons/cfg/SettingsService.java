@@ -89,8 +89,8 @@ public abstract class SettingsService {
     @NotNull
     public static List<Model> getAllRegisteredModels() {
         List<Model> allModels = new ArrayList<>();
-        allModels.addAll(ExtraIconProvider.allModels());
         allModels.addAll(Angular2IconProvider.allModels());
+        allModels.addAll(ExtraIconProvider.allModels());
         return allModels;
     }
 
