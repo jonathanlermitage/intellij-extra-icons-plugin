@@ -525,7 +525,12 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .start("cerebro").end(".conf"),
                 ofFile("faq", "/extra-icons/faq.svg", "FAQ: faq(.md,.txt,.adoc,.rst)")
                     .eq("faq").mayEnd(TXT)
-                    .altIcons("/extra-icons/faq_alt.svg", "/extra-icons/faq_alt2.svg"),
+                    .altIcons("/extra-icons/faq_alt.svg", "/extra-icons/faq_alt2.svg",
+                        "/extra-icons/faq_alt3.svg", "/extra-icons/faq_alt4.svg"),
+                ofFile("help", "/extra-icons/faq.svg", "HELP: help(.md,.txt,.adoc,.rst)")
+                    .eq("help").mayEnd(TXT)
+                    .altIcons("/extra-icons/faq_alt.svg", "/extra-icons/faq_alt2.svg",
+                        "/extra-icons/faq_alt3.svg", "/extra-icons/faq_alt4.svg"),
                 ofFile("intellijcodestyle", "/extra-icons/jetbrains.svg", "IntelliJ: intellijcodestyle.xml")
                     .eq("intellijcodestyle.xml"),
                 ofFile("mailmap", "/extra-icons/email.svg", "Mailmap: .mailmap")

@@ -10,6 +10,7 @@
 * config panel: UI improvements.
 * config panel: some icons now have tags, and you can enable and disable multiple icons by tags.
 * fix the priority of Angular icons when the Angular plugin is installed.
+* add alternative icons for FAQ files, and support HELP files.
 
 ## 2022.1.2 (2022/04/03)
 * rework Babel icon, and provide an alternative icon.
