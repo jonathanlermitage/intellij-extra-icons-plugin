@@ -671,6 +671,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("package.json"),
                 ofFile("packagejsonlock", "/extra-icons/packagejsonlock.png", "NPM: package-lock.json")
                     .eq("package-lock.json"),
+                ofFile("pnpmlock", "/extra-icons/pnpm.svg", "PNPM: pnpm-lock.yaml")
+                    .eq("pnpm-lock.yaml"),
                 ofFile("prettier", "/extra-icons/prettier.svg", "Prettier: .prettierrc")
                     .eq(".prettierrc"),
                 ofFile("prettier-yml", "/extra-icons/prettier.svg", "Prettier: .prettierrc.yml, .prettierrc.yaml")
@@ -771,8 +773,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("version", ".version", "versions", ".versions").end(YML),
                 ofFile("version_xml", "/extra-icons/version.png", "Version: (.)version(s).xml")
                     .eq("version", ".version", "versions", ".versions").end(".xml"),
-                ofFile("vite", "/extra-icons/vite.svg", "Vite: vite.config.js")
-                    .eq("vite.config.js")
+                ofFile("vite", "/extra-icons/vite.svg", "Vite: ^vite\\.config\\.[jt]s$")
+                    .start("vite.config.").end(".js", ".ts")
                     .altIcons("/extra-icons/vite_alt.svg"),
                 ofFile("weblate", "/extra-icons/weblate.svg", "Weblate: .weblate")
                     .eq(".weblate"),
