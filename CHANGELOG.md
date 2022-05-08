@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2022.1.3 (WIP)
+## 2022.1.3 (2022/05/07)
 * internal: improve error handling.
 * support `requirements.txt` files in Python projects and projects with the Python facet.
 * support `lighttpd.conf` files.
@@ -11,6 +11,8 @@
 * config panel: some icons now have tags, and you can enable and disable multiple icons by tags.
 * fix the priority of Angular icons when the Angular plugin is installed.
 * add alternative icons for FAQ files, and support HELP files.
+* fix #81: rework Angular support.
+* support `pnpm-lock.yaml` and `vite.config.ts` files. Thx **iamKyun**.
 
 ## 2022.1.2 (2022/04/03)
 * rework Babel icon, and provide an alternative icon.

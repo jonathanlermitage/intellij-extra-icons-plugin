@@ -37,11 +37,11 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
         ;;
 
     "runeap")
-        ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
+        ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
         ;;
 
     "runold")
-        ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-2021.1.3 -PpluginDownloadIdeaSources=false
+        ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-2021.1.3 -PpluginDownloadIdeaSources=false
         ;;
 
     "release")

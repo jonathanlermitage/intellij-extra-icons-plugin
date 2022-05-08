@@ -237,31 +237,46 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("/extra-icons/git_submodule_alt.svg"),
 
                 // angular
-                ofFile("angular_module_generic", "/extra-icons/angular-module.svg", "AngularJS: *.module.(js|ts)")
+                ofFile("angular_json", "/extra-icons/angular2.svg", "Angular: angular.json")
+                    .eq("angular.json")
+                    .tags(ModelTag.ANGULAR2),
+                ofFile("angular_module_generic", "/extra-icons/angular-module.svg", "Angular (if angular.json exists): *.module.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]module\\.(js|ts)")
+                    .filesExist("angular.json")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_component_generic", "/extra-icons/angular-component.svg", "AngularJS: *.(component|controller).(js|ts)")
+                ofFile("angular_component_generic", "/extra-icons/angular-component.svg", "Angular (if angular.json exists): *.(component|controller).(js|ts)")
                     .regex(".*[^a-zA-Z\\d](component|controller)\\.(js|ts)")
+                    .filesExist("angular.json")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_service_generic", "/extra-icons/angular-service.svg", "AngularJS: *.service.(js|ts)")
+                ofFile("angular_service_generic", "/extra-icons/angular-service.svg", "Angular (if angular.json exists): *.service.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]service\\.(js|ts)")
+                    .filesExist("angular.json")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_pipe_generic", "/extra-icons/angular-pipe.svg", "AngularJS: *.pipe.(js|ts)")
+                ofFile("angular_pipe_generic", "/extra-icons/angular-pipe.svg", "Angular (if angular.json exists): *.pipe.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]pipe\\.(js|ts)")
+                    .filesExist("angular.json")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_directive_generic", "/extra-icons/angular-directive.svg", "AngularJS: *.directive.(js|ts)")
+                ofFile("angular_directive_generic", "/extra-icons/angular-directive.svg", "Angular (if angular.json exists): *.directive.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]directive(s)?\\.(js|ts)")
+                    .filesExist("angular.json")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_guard_generic", "/extra-icons/angular-guard.svg", "AngularJS: *.guard.(js|ts)")
+                ofFile("angular_guard_generic", "/extra-icons/angular-guard.svg", "Angular (if angular.json exists): *.guard.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]guard\\.(js|ts)")
+                    .filesExist("angular.json")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_resolver_generic", "/extra-icons/angular-resolver.svg", "AngularJS: *.resolver.(js|ts)")
+                ofFile("angular_resolver_generic", "/extra-icons/angular-resolver.svg", "Angular (if angular.json exists): *.resolver.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]resolver\\.(js|ts)")
+                    .filesExist("angular.json")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_spec_generic", "/extra-icons/test-ts.svg", "AngularJS: *.spec.(js|ts|tsx)")
+                ofFile("angular_spec_generic", "/extra-icons/test-ts.svg", "Angular (if angular.json exists): *.spec.(js|ts|tsx)")
                     .regex(".*[^a-zA-Z\\d]spec\\.(js|ts|tsx)")
+                    .filesExist("angular.json")
                     .altIcons("/extra-icons/test-ts_alt.svg")
                     .tags(ModelTag.ANGULAR2),
+                ofFile("angular_html", "/extra-icons/html5.svg", "Angular (if angular.json exists): *.html")
+                    .end(".html")
+                    .filesExist("angular.json")
+                    .tags(ModelTag.ANGULAR2, ModelTag.HTML),
 
                 // nestjs
                 ofFile("nestjs", "/extra-icons/nestjs.svg", "NestJS: .nest-cli.json, nest-cli.json, nestconfig.json, .nestconfig.json")
@@ -671,26 +686,33 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("package.json"),
                 ofFile("packagejsonlock", "/extra-icons/packagejsonlock.png", "NPM: package-lock.json")
                     .eq("package-lock.json"),
-                ofFile("pnpmlock", "/extra-icons/pnpm.svg", "PNPM: pnpm-lock.yaml")
-                    .eq("pnpm-lock.yaml"),
-                ofFile("prettier", "/extra-icons/prettier.svg", "Prettier: .prettierrc")
-                    .eq(".prettierrc"),
-                ofFile("prettier-yml", "/extra-icons/prettier.svg", "Prettier: .prettierrc.yml, .prettierrc.yaml")
-                    .eq(".prettierrc.yml", ".prettierrc.yaml"),
-                ofFile("prettier-json", "/extra-icons/prettier.svg", "Prettier: .prettierrc.json, .prettierrc.json5")
-                    .eq(".prettierrc.json", ".prettierrc.json5"),
-                ofFile("prettier-js", "/extra-icons/prettier.svg", "Prettier: .prettierrc.js, prettier.config.js")
-                    .eq(".prettierrc.js", "prettier.config.js"),
-                ofFile("prettier-cjs", "/extra-icons/prettier.svg", "Prettier: .prettierrc.cjs, prettier.config.cjs")
-                    .eq(".prettierrc.cjs", "prettier.config.cjs"),
-                ofFile("prettier-toml", "/extra-icons/prettier.svg", "Prettier: .prettierrc.toml")
-                    .eq(".prettierrc.toml"),
                 ofFile("pdd", "/extra-icons/pdd.svg", "Puzzle Driven Development: .pdd")
                     .eq(".pdd"),
                 ofFile("pdd_yml", "/extra-icons/pdd.svg", "Puzzle Driven Development: .0pdd.yml")
                     .eq(".0pdd.yml"),
+                ofFile("pnpmlock", "/extra-icons/pnpm.svg", "PNPM: pnpm-lock.yaml")
+                    .eq("pnpm-lock.yaml"),
+                ofFile("prettier", "/extra-icons/prettier.svg", "Prettier: .prettierrc")
+                    .eq(".prettierrc")
+                    .tags(ModelTag.PRETTIER),
+                ofFile("prettier-yml", "/extra-icons/prettier.svg", "Prettier: .prettierrc.yml, .prettierrc.yaml")
+                    .eq(".prettierrc.yml", ".prettierrc.yaml")
+                    .tags(ModelTag.PRETTIER),
+                ofFile("prettier-json", "/extra-icons/prettier.svg", "Prettier: .prettierrc.json, .prettierrc.json5")
+                    .eq(".prettierrc.json", ".prettierrc.json5")
+                    .tags(ModelTag.PRETTIER),
+                ofFile("prettier-js", "/extra-icons/prettier.svg", "Prettier: .prettierrc.js, prettier.config.js")
+                    .eq(".prettierrc.js", "prettier.config.js")
+                    .tags(ModelTag.PRETTIER),
+                ofFile("prettier-cjs", "/extra-icons/prettier.svg", "Prettier: .prettierrc.cjs, prettier.config.cjs")
+                    .eq(".prettierrc.cjs", "prettier.config.cjs")
+                    .tags(ModelTag.PRETTIER),
+                ofFile("prettier-toml", "/extra-icons/prettier.svg", "Prettier: .prettierrc.toml")
+                    .eq(".prettierrc.toml")
+                    .tags(ModelTag.PRETTIER),
                 ofFile("prettierignore", "/extra-icons/prettierignore.svg", "Prettier: .prettierignore")
-                    .eq(".prettierignore"),
+                    .eq(".prettierignore")
+                    .tags(ModelTag.PRETTIER),
                 ofFile("privacy", "/extra-icons/privacy.svg", "Privacy: privacy(.md,.txt,.adoc,.rst)")
                     .eq("privacy").mayEnd(TXT),
                 ofFile("proguard", "/extra-icons/proguard.svg", "Proguard: proguard-rules.pro")
@@ -760,7 +782,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         "/extra-icons/travis_alt07.svg", "/extra-icons/travis_alt08.svg",
                         "/extra-icons/travis_alt09.svg", "/extra-icons/travis_alt10.svg",
                         "/extra-icons/travis_alt11.svg", "/extra-icons/travis_alt12.svg",
-                        "/extra-icons/travis_alt13.svg", "/extra-icons/travis_alt14.svg"),
+                        "/extra-icons/travis_alt13.svg", "/extra-icons/travis_alt14.svg")
+                    .tags(ModelTag.TRAVIS),
                 ofFile("vagrant", "/extra-icons/vagrant.svg", "Vagrant: vagrantfile")
                     .eq("vagrantfile"),
                 ofFile("version", "/extra-icons/version.png", "Version: (.)version(s)(.md,.txt,.adoc,.rst)")

@@ -28,10 +28,10 @@ if [%1] == [run] (
   gradlew buildPlugin runIde --warning-mode all
 )
 if [%1] == [runeap] (
-  gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
+  gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
 )
 if [%1] == [runold] (
-  gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-2021.1.3 -PpluginDownloadIdeaSources=false
+  gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-2021.1.3 -PpluginDownloadIdeaSources=false
 )
 if [%1] == [release] (
   gradlew clean buildPlugin test verifyPlugin --warning-mode all

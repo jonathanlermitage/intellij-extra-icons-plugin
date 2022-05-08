@@ -42,8 +42,10 @@ public class Model {
     @XCollection
     private List<ModelCondition> conditions = new ArrayList<>(Collections.singletonList(new ModelCondition()));
 
+    /** Alternative icons. Extra Icons will automatically generate alt icons (and ids, names, etc.) based on on this list. */
     private String[] altIcons;
 
+    /** Tags associated to this model. Used to easily (de)activate models linked to specific tags. */
     private List<ModelTag> tags;
 
     /**
@@ -158,7 +160,7 @@ public class Model {
 
     /**
      * Condition: has given parent directory(s).
-     * @param parents one or multiple possible directories, lowercased.
+     * @param parents one or multiple possible directories, lowercase.
      */
     public Model parents(@NotNull String... parents) {
         getCurrentCondition().setParents(parents);
@@ -167,7 +169,7 @@ public class Model {
 
     /**
      * Condition: file/folder name starts with given string(s).
-     * @param start strings, lowercased.
+     * @param start strings, lowercase.
      */
     public Model start(@NotNull String... start) {
         getCurrentCondition().setStart(start);
@@ -176,7 +178,7 @@ public class Model {
 
     /**
      * Condition: file/folder name is equal to given string(s).
-     * @param name strings, lowercased.
+     * @param name strings, lowercase.
      */
     public Model eq(@NotNull String... name) {
         getCurrentCondition().setEq(name);
@@ -186,7 +188,7 @@ public class Model {
     /**
      * Condition: file/folder name may end with given string(s). This condition is optional.
      * Example: to catch README and README.md files, you will use {@code model.eq("readme").mayEnd(".md")}
-     * @param end strings, lowercased.
+     * @param end strings, lowercase.
      */
     public Model mayEnd(@NotNull String... end) {
         getCurrentCondition().setMayEnd(end);
@@ -195,7 +197,7 @@ public class Model {
 
     /**
      * Condition: file/folder name ends with given string(s).
-     * @param end strings, lowercased.
+     * @param end strings, lowercase.
      */
     public Model end(@NotNull String... end) {
         getCurrentCondition().setEnd(end);
@@ -222,10 +224,19 @@ public class Model {
     /**
      * Condition: project has given facet, like 'andoid', 'kotlin', 'python', 'spring' etc. You
      * can see and add facets in Project Structure / Project Settings / Facets.
-     * @param facets facet(s), lowercased.
+     * @param facets facet(s), lowercase.
      */
     public Model facets(@NotNull String... facets) {
         getCurrentCondition().setFacets(Arrays.stream(facets).map(String::toLowerCase).toArray(String[]::new));
+        return this;
+    }
+
+    /**
+     * Condition: project has given files.
+     * @param filesExist file(s), case-sensitive on Unix based systems.
+     */
+    public Model filesExist(@NotNull String... filesExist) {
+        getCurrentCondition().setFilesExist(filesExist);
         return this;
     }
 

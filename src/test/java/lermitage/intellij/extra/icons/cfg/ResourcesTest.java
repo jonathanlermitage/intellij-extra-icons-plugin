@@ -3,7 +3,6 @@
 package lermitage.intellij.extra.icons.cfg;
 
 import lermitage.intellij.extra.icons.ExtraIconProvider;
-import lermitage.intellij.extra.icons.providers.Angular2IconProvider;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -152,28 +151,6 @@ public class ResourcesTest {
 
         if (!errors.isEmpty()) {
             fail("some ExtraIconProvider model icons not found: " + errors);
-        }
-    }
-
-    @Test
-    public void angular2_icons_provider_icons_should_exist() {
-        List<String> errors = new ArrayList<>();
-
-        List<String> iconNames = icons.stream().map(file -> {
-            String relativePath = file.getAbsolutePath().replaceAll("\\\\", "/");
-            relativePath = relativePath.substring(relativePath.lastIndexOf("/extra-icons/") + "/extra-icons/".length());
-            return relativePath;
-        }).collect(Collectors.toList());
-
-        Angular2IconProvider.allModels().forEach(model -> {
-            String extraIconName = model.getIcon().replace("/extra-icons/", "");
-            if (!iconNames.contains(extraIconName)) {
-                errors.add(model.getId() + " model's icon " + extraIconName + " not found");
-            }
-        });
-
-        if (!errors.isEmpty()) {
-            fail("some Angular2IconProvider model icons not found: " + errors);
         }
     }
 }

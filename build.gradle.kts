@@ -50,7 +50,6 @@ intellij {
     downloadSources.set(pluginDownloadIdeaSources.toBoolean() && !inCI)
     instrumentCode.set(pluginInstrumentPluginCode.toBoolean())
     pluginName.set("Extra Icons")
-    plugins.set(listOf("AngularJS"))
     sandboxDir.set("${rootProject.projectDir}/.idea-sandbox/${shortIdeVersion(pluginIdeaVersion)}")
     updateSinceUntilBuild.set(false)
     version.set(pluginIdeaVersion)

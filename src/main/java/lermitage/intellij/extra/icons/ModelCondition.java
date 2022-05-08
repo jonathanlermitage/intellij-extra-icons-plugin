@@ -2,6 +2,7 @@
 
 package lermitage.intellij.extra.icons;
 
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.util.xmlb.annotations.OptionTag;
@@ -11,6 +12,7 @@ import lermitage.intellij.extra.icons.enablers.IconEnablerProvider;
 import lermitage.intellij.extra.icons.enablers.IconEnablerType;
 import org.intellij.lang.annotations.Language;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -24,6 +26,8 @@ import java.util.stream.Stream;
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 @Tag
 public class ModelCondition {
+
+    private static final Logger LOGGER = Logger.getInstance(ModelCondition.class);
 
     @OptionTag
     private boolean start = false;
@@ -44,6 +48,8 @@ public class ModelCondition {
     @OptionTag
     private boolean checkFacets = false;
     @OptionTag
+    private boolean checkFilesExist = false;
+    @OptionTag
     private boolean hasIconEnabler = false;
 
     @OptionTag
@@ -56,6 +62,7 @@ public class ModelCondition {
     private String regex;
     @OptionTag
     private String[] facets = new String[0];
+    private String[] filesExist = new String[0];
     private Pattern pattern;
     private IconEnablerType iconEnablerType;
 
@@ -99,6 +106,11 @@ public class ModelCondition {
         this.facets = facets;
     }
 
+    public void setFilesExist(String[] filesExist) {
+        this.checkFilesExist = true;
+        this.filesExist = filesExist;
+    }
+
     public void setIconEnablerType(IconEnablerType iconEnablerType) {
         this.hasIconEnabler = true;
         this.iconEnablerType = iconEnablerType;
@@ -127,6 +139,32 @@ public class ModelCondition {
             }
             if (!facetChecked) {
                 return false;
+            }
+        }
+
+        // filesExist is a pre-condition, should always be associated with other conditions
+        if (checkFilesExist && filesExist != null) {
+            String projectBasePath = project.getBasePath();
+            if (projectBasePath != null) {
+                boolean atLeastOneFileChecked = false;
+                projectBasePath = projectBasePath.replaceAll("\\\\", "/");
+                if (!projectBasePath.endsWith("/")) {
+                    projectBasePath += "/";
+                }
+                for (String fileExistName : filesExist) {
+                    try {
+                        File fileExist = new File(projectBasePath + fileExistName);
+                        if (fileExist.exists() && fileExist.isFile()) {
+                            atLeastOneFileChecked = true;
+                            break;
+                        }
+                    } catch (Exception e) {
+                        LOGGER.warn("Can't check file exists: '" + projectBasePath + fileExistName + "'", e);
+                    }
+                }
+                if (!atLeastOneFileChecked) {
+                    return false;
+                }
             }
         }
 
