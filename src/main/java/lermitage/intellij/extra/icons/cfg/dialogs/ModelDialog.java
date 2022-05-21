@@ -15,6 +15,8 @@ import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.IconUtil;
+import lermitage.intellij.extra.icons.utils.AsyncUtils;
+import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.Model;
@@ -22,8 +24,7 @@ import lermitage.intellij.extra.icons.ModelCondition;
 import lermitage.intellij.extra.icons.ModelType;
 import lermitage.intellij.extra.icons.cfg.SettingsForm;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
-import lermitage.intellij.extra.icons.utils.AsyncUtils;
-import lermitage.intellij.extra.icons.utils.IconUtils;
+import lermitage.intellij.extra.icons.providers.Angular2IconProvider;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
@@ -44,6 +45,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -139,8 +141,10 @@ public class ModelDialog extends DialogWrapper {
         typeComboBox.addActionListener(e -> updateUIOnTypeChange());
 
         chooseIconSelector.addItem("choose custom or bundled icon");
-        //bundledModels.addAll(Angular2IconProvider.allModels());
-        ExtraIconProvider.allModels().stream()
+        List<Model> bundledModels = new ArrayList<>();
+        bundledModels.addAll(Angular2IconProvider.allModels());
+        bundledModels.addAll(ExtraIconProvider.allModels());
+        bundledModels.stream()
             .map(Model::getIcon)
             .sorted()
             .distinct()

@@ -26,6 +26,11 @@
     -->
 
     <change-notes><![CDATA[
+    2022.1.4 (WIP)
+    <ul>
+      <li>support cache2k xml config files.</li>
+      <li>fix #96: rework Angular support.</li>
+    </ul>
     2022.1.3 (2022/05/07)
     <ul>
       <li>internal: improve error handling.</li>
@@ -120,6 +125,13 @@
                              displayName="Project" parentId="LermitageExtraIcons"/>
         <notificationGroup id="ExtraIcons" displayType="BALLOON"/>
     </extensions>
+
+    <!--
+      IMPORTANT To override test-files icons the icon provider must be ordered as "first".
+       In this particular case I ordered first both the Javascript one and the Angular2+ one.
+       That's because both define a test-related icon and the order can be undefined between each other.
+    -->
+    <depends optional="true" config-file="angular2.xml">AngularJS</depends>
 
     <actions>
         <!-- Add your actions here -->

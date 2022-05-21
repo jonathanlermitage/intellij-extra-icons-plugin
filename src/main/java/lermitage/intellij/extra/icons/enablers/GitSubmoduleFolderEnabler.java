@@ -31,7 +31,7 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
     // one icon enabler per project
     private static final Map<Project, IconEnabler> iconEnablersCache = new ConcurrentHashMap<>();
 
-    public static IconEnabler getIntance(@NotNull Project project) {
+    public static IconEnabler getInstance(@NotNull Project project) {
         if (iconEnablersCache.containsKey(project)) {
             return iconEnablersCache.get(project);
         }

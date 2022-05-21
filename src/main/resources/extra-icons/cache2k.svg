@@ -1,0 +1,17 @@
+<!--#%L
+  cache2k Java Caching
+  %%
+  Copyright (C) 2000 - 2022 headissue GmbH, Munich
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%--><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><defs><marker refX="0" refY="0" orient="auto" id="a" overflow="visible"><path d="m5.77 0-8.65 5V-5Z" transform="scale(.4)" style="fill:#fff;fill-rule:evenodd;stroke:#fff;stroke-width:1pt"/></marker></defs><g transform="translate(-129.18 -313.894) scale(.9606)"><rect width="15.21" height="14.177" ry="3.195" x="135.221" y="328.044" fill="#d40000" style="stroke-width:.465881"/><path d="M143.061 330.025v10.693" style="fill:#fff;stroke:#fff;stroke-width:.476898"/><path d="M142.876 333.034h5.482" style="fill:none;stroke:#fff;stroke-width:.476898;marker-end:url(#a)"/><path d="M135.898 331.364h5.809" style="fill:none;stroke:#fff;stroke-width:.476898;marker-end:url(#a)"/><path d="M135.898 334.125h5.809" style="fill:none;stroke:#fff;stroke-width:.476898;marker-end:url(#a)"/><path d="M135.898 338.085h5.809" style="fill:none;stroke:#fff;stroke-width:.476898;marker-end:url(#a)"/></g></svg>

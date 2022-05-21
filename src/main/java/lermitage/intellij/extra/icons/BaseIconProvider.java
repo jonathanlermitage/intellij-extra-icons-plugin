@@ -27,6 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -56,6 +57,37 @@ public abstract class BaseIconProvider
      * This list will be processed by constructor and models 'enabled' field updated according to running IDE configuration.
      */
     protected abstract List<Model> getAllModels();
+
+    private static Model extractAltModel(Model model, int altIconIdx) {
+        String altDescription;
+        String altId;
+        if (altIconIdx < 1) {
+            if (model.getAltIcons().length == 1) {
+                altDescription = model.getDescription() + " (alternative)";
+            } else {
+                altDescription = model.getDescription() + " (alternative 1)";
+            }
+            altId = model.getId() + "_alt";
+
+        } else {
+            altDescription = model.getDescription() + " (alternative " + (altIconIdx + 1) + ")";
+            altId = model.getId() + "_alt" + (altIconIdx + 1);
+        }
+        return new Model(altId, model.getIdeIcon(), model.getAltIcons()[altIconIdx], altDescription, model.getModelType(),
+            model.getIconType(), model.isEnabled(), model.getConditions(), model.getTags());
+    }
+
+    public static Stream<Model> modelList(Model model) {
+        if (model.getAltIcons() == null || model.getAltIcons().length == 0) {
+            return Stream.of(model);
+        }
+        List<Model> models = new ArrayList<>();
+        models.add(model);
+        for (int i = 0; i < model.getAltIcons().length; i++) {
+            models.add(extractAltModel(model, i));
+        }
+        return models.stream();
+    }
 
     /**
      * Check whether this icon provider supports the input file.

@@ -6,7 +6,6 @@ import com.intellij.openapi.project.DumbAware;
 import lermitage.intellij.extra.icons.enablers.IconEnablerType;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -469,6 +468,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("browserslist", ".browserslistrc"),
                 ofFile("build", "/extra-icons/build.png", "Build: build(.md,.txt,.adoc,.rst), building")
                     .eq("build", "building").mayEnd(TXT),
+                ofFile("cache2k", "/extra-icons/cache2k.svg", "cache2k: cache2k.xml")
+                    .eq("cache2k.xml"),
                 ofFile("cassandra", "/extra-icons/cassandra.svg", "Cassandra: cassandra(.yml,.yaml)")
                     .eq("cassandra").mayEnd(YML),
                 ofFile("cassandra1", "/extra-icons/cassandra.svg", "Cassandra: start by 'cassandra' and end by '.yml,.yaml'")
@@ -1010,37 +1011,6 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
             )
             .flatMap(ExtraIconProvider::modelList)
             .collect(Collectors.toList());
-    }
-
-    private static Stream<Model> modelList(Model model) {
-        if (model.getAltIcons() == null || model.getAltIcons().length == 0) {
-            return Stream.of(model);
-        }
-        List<Model> models = new ArrayList<>();
-        models.add(model);
-        for (int i = 0; i < model.getAltIcons().length; i++) {
-            models.add(extractAltModel(model, i));
-        }
-        return models.stream();
-    }
-
-    private static Model extractAltModel(Model model, int altIconIdx) {
-        String altDescription;
-        String altId;
-        if (altIconIdx < 1) {
-            if (model.getAltIcons().length == 1) {
-                altDescription = model.getDescription() + " (alternative)";
-            } else {
-                altDescription = model.getDescription() + " (alternative 1)";
-            }
-            altId = model.getId() + "_alt";
-
-        } else {
-            altDescription = model.getDescription() + " (alternative " + (altIconIdx + 1) + ")";
-            altId = model.getId() + "_alt" + (altIconIdx + 1);
-        }
-        return new Model(altId, model.getIdeIcon(), model.getAltIcons()[altIconIdx], altDescription, model.getModelType(),
-            model.getIconType(), model.isEnabled(), model.getConditions(), model.getTags());
     }
 
     public ExtraIconProvider() {

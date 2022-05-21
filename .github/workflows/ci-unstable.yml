@@ -17,4 +17,4 @@ jobs:
         with:
           java-version: 11
       - name: Build and verify
-        run: ./gradlew clean buildPlugin test verifyPlugin -PpluginIdeaVersion=IC-${{ matrix.ij }} --warning-mode all
+        run: ./gradlew clean buildPlugin test verifyPlugin -PpluginIdeaVersion=IU-${{ matrix.ij }} --warning-mode all

@@ -11,7 +11,7 @@ if [%1] == [help] (
   echo test:    run unit tests
   echo cv:      check dependencies and Gradle updates
   echo oga:     check for deprecated groupId and artifactId couples
-  echo svgo:    optimize SVG icons with SGVO. SVGO must be present, type 'npm install -g svgo' if needed
+  echo svgo:    optimize SVG icons with SVGO. SVGO must be present, type 'npm install -g svgo' if needed
   echo lock:    write gradle dependency versions lock file
 )
 
@@ -28,10 +28,10 @@ if [%1] == [run] (
   gradlew buildPlugin runIde --warning-mode all
 )
 if [%1] == [runeap] (
-  gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
+  gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
 )
 if [%1] == [runold] (
-  gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-2021.1.3 -PpluginDownloadIdeaSources=false
+  gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-2021.1.3 -PpluginDownloadIdeaSources=false
 )
 if [%1] == [release] (
   gradlew clean buildPlugin test verifyPlugin --warning-mode all

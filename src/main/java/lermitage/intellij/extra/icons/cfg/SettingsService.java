@@ -10,6 +10,7 @@ import lermitage.intellij.extra.icons.Globals;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService;
+import lermitage.intellij.extra.icons.providers.Angular2IconProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -87,7 +88,10 @@ public abstract class SettingsService {
 
     @NotNull
     public static List<Model> getAllRegisteredModels() {
-        return ExtraIconProvider.allModels();
+        List<Model> allModels = new ArrayList<>();
+        allModels.addAll(Angular2IconProvider.allModels());
+        allModels.addAll(ExtraIconProvider.allModels());
+        return allModels;
     }
 
     /** Get project-level settings service, or global-level settings service if project is null. */

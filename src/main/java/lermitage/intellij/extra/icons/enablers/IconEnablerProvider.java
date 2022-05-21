@@ -16,7 +16,7 @@ public class IconEnablerProvider {
         //noinspection SwitchStatementWithTooFewBranches
         switch (type) {
             case GIT_SUBMODULE_FOLDER:
-                return Optional.of(GitSubmoduleFolderEnabler.getIntance(project));
+                return Optional.of(GitSubmoduleFolderEnabler.getInstance(project));
             default:
                 throw new IllegalArgumentException("Invalid IconEnablerType: " + type);
         }

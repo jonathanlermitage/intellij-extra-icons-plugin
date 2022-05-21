@@ -17,7 +17,7 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
         echo "test:    run unit tests"
         echo "cv:      check dependencies and Gradle updates"
         echo "oga:     check for deprecated groupId and artifactId couples"
-        echo "svgo:    optimize SVG icons with SGVO. SVGO must be present, type 'npm install -g svgo' if needed"
+        echo "svgo:    optimize SVG icons with SVGO. SVGO must be present, type 'npm install -g svgo' if needed"
         echo "lock:    write gradle dependency versions lock file"
         ;;
 
@@ -37,11 +37,11 @@ for ((cmd = 1; cmd <= $#; cmd++)); do
         ;;
 
     "runeap")
-        ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
+        ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
         ;;
 
     "runold")
-        ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-2021.1.3 -PpluginDownloadIdeaSources=false
+        ./gradlew buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-2021.1.3 -PpluginDownloadIdeaSources=false
         ;;
 
     "release")

@@ -1,5 +1,9 @@
 # Extra Icons Change Log
 
+## 2022.1.4 (WIP)
+* support cache2k xml config files.
+* fix #96: rework Angular support.
+
 ## 2022.1.3 (2022/05/07)
 * internal: improve error handling.
 * support `requirements.txt` files in Python projects and projects with the Python facet.
