@@ -51,7 +51,7 @@ intellij {
     instrumentCode.set(pluginInstrumentPluginCode.toBoolean())
     pluginName.set("Extra Icons")
     plugins.set(listOf("AngularJS"))
-    sandboxDir.set("${rootProject.projectDir}/.idea-sandbox/${shortIdeVersion(pluginIdeaVersion)}")
+    sandboxDir.set("${rootProject.projectDir}/.idea-sandbox/${shortenIdeVersion(pluginIdeaVersion)}")
     updateSinceUntilBuild.set(false)
     version.set(pluginIdeaVersion)
 }
@@ -164,12 +164,15 @@ fun isNonStable(version: String): Boolean {
 
 /** Return an IDE version string without the optional PATCH number.
  * In other words, replace IDE-MAJOR-MINOR(-PATCH) by IDE-MAJOR-MINOR. */
-fun shortIdeVersion(version: String): String {
+fun shortenIdeVersion(version: String): String {
+    if (version.contains("SNAPSHOT", ignoreCase = true)) {
+        return version
+    }
     val matcher = Regex("[A-Za-z]+[\\-]?[0-9]+[\\.]{1}[0-9]+")
     return try {
         matcher.findAll(version).map { it.value }.toList()[0]
     } catch (e: Exception) {
-        logger.warn("Failed to shorten IDE version $version", e)
+        logger.warn("Failed to shorten IDE version $version: ${e.message}")
         version
     }
 }
