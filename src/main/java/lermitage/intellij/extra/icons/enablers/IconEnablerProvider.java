@@ -13,10 +13,11 @@ public class IconEnablerProvider {
         if (project == null || type == null) {
             return Optional.empty();
         }
-        //noinspection SwitchStatementWithTooFewBranches
         switch (type) {
-            case GIT_SUBMODULE_FOLDER:
+            case IS_GIT_SUBMODULE_FOLDER:
                 return Optional.of(GitSubmoduleFolderEnabler.getInstance(project));
+            case IS_IN_ANGULAR_FOLDER:
+                return Optional.of(AngularFolderEnabler.getInstance(project));
             default:
                 throw new IllegalArgumentException("Invalid IconEnablerType: " + type);
         }

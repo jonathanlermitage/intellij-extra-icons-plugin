@@ -31,8 +31,11 @@ public class Angular2IconProvider extends BaseIconProvider implements DumbAware 
                 ofFile("angular_prj_module_generic", "/extra-icons/angular-module.svg", "Angular (in Angular 2+ projects only): *.module.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]module\\.(js|ts)")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_prj_component_generic", "/extra-icons/angular-component.svg", "Angular (in Angular 2+ projects only): *.(component|controller).(js|ts)")
-                    .regex(".*[^a-zA-Z\\d](component|controller)\\.(js|ts)")
+                ofFile("angular_prj_component_generic", "/extra-icons/angular-component.svg", "Angular (in Angular 2+ projects only): *.component.(js|ts)")
+                    .regex(".*[^a-zA-Z\\d]component\\.(js|ts)")
+                    .tags(ModelTag.ANGULAR2),
+                ofFile("angular_prj_controller_generic", "/extra-icons/angular-controller.svg", "Angular (in Angular 2+ projects only): *.controller.(js|ts)")
+                    .regex(".*[^a-zA-Z\\d]controller\\.(js|ts)")
                     .tags(ModelTag.ANGULAR2),
                 ofFile("angular_prj_service_generic", "/extra-icons/angular-service.svg", "Angular (in Angular 2+ projects only): *.service.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]service\\.(js|ts)")

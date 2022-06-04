@@ -1,8 +1,10 @@
 # Extra Icons Change Log
 
-## 2022.1.4 (WIP)
+## 2022.1.4 (2022/06/04)
 * support cache2k xml config files.
 * fix #96: rework Angular support.
+* add a dedicated color to Angular controller icon.
+* rework some Angular icons.
 
 ## 2022.1.3 (2022/05/07)
 * internal: improve error handling.

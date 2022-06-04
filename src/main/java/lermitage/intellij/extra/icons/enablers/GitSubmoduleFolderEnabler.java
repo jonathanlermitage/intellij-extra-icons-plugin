@@ -23,20 +23,20 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
      * parsing {@code .gitmodule} files for every folder in the project.
      * Useful if you add a new git submodule: user will wait up to {@value}ms to see the corresponding git submodule icon.
      */
-    private static final long INIT_TTL_MS = 300_000L;
+    private static final long INIT_TTL_MS = 300_000L; // 5min
     private boolean initialized = false;
     private long lastInit = -1;
     private Set<String> submoduleFolders;
 
     // one icon enabler per project
-    private static final Map<Project, IconEnabler> iconEnablersCache = new ConcurrentHashMap<>();
+    private static final Map<Project, IconEnabler> enablersCache = new ConcurrentHashMap<>();
 
     public static IconEnabler getInstance(@NotNull Project project) {
-        if (iconEnablersCache.containsKey(project)) {
-            return iconEnablersCache.get(project);
+        if (enablersCache.containsKey(project)) {
+            return enablersCache.get(project);
         }
-        GitSubmoduleFolderEnabler iconEnabler = new GitSubmoduleFolderEnabler();
-        iconEnablersCache.put(project, iconEnabler);
+        IconEnabler iconEnabler = new GitSubmoduleFolderEnabler();
+        enablersCache.put(project, iconEnabler);
         return iconEnabler;
     }
 
@@ -49,11 +49,11 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
         LOGGER.info("Initialized " + this.getClass().getSimpleName() + " for project " + project.getBasePath() + " in " + (t2 - t1) + " ms");
     }
 
+    /** Find .gitmodules at root, then find every nested .gitmodules for every module (don't have to explore the whole project files). */
     private Set<String> findGitModulesFiles(@NotNull Project project) {
         long t1 = System.currentTimeMillis();
         Set<String> submoduleFoldersFound = new HashSet<>();
         String basePath = project.getBasePath();
-        // find .gitmodules at root, then find every nested .gitmodules for every module (don't have to explore the whole project files)
         try {
             submoduleFoldersFound = GitSubmoduleUtils
                 .findGitSubmodules(basePath)
@@ -102,5 +102,10 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
             init(project);
         }
         return submoduleFolders.contains(absolutePathToVerify.toLowerCase());
+    }
+
+    @Override
+    public boolean terminatesConditionEvaluation() {
+        return true;
     }
 }

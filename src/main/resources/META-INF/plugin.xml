@@ -26,10 +26,12 @@
     -->
 
     <change-notes><![CDATA[
-    2022.1.4 (WIP)
+    2022.1.4 (2022/06/04)
     <ul>
       <li>support cache2k xml config files.</li>
       <li>fix #96: rework Angular support.</li>
+      <li>add a dedicated color to Angular controller icon.</li>
+      <li>rework some Angular icon.</li>
     </ul>
     2022.1.3 (2022/05/07)
     <ul>

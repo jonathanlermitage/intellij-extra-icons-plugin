@@ -8,4 +8,6 @@ import org.jetbrains.annotations.NotNull;
 public interface IconEnabler {
 
     boolean verify(@NotNull Project project, @NotNull String absolutePathToVerify);
+
+    boolean terminatesConditionEvaluation();
 }

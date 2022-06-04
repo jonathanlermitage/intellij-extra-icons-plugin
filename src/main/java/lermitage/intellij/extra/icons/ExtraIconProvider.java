@@ -232,7 +232,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 // programmable
                 //
                 ofDir("gitsubmodule", "/extra-icons/git_submodule.svg", "Git sub-module containing folder")
-                    .iconEnabler(IconEnablerType.GIT_SUBMODULE_FOLDER)
+                    .iconEnabler(IconEnablerType.IS_GIT_SUBMODULE_FOLDER)
                     .altIcons("/extra-icons/git_submodule_alt.svg"),
 
                 // angular
@@ -241,40 +241,44 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .tags(ModelTag.ANGULAR2),
                 ofFile("angular_module_generic", "/extra-icons/angular-module.svg", "Angular (if angular.json exists): *.module.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]module\\.(js|ts)")
-                    .filesExist("angular.json")
+                    .iconEnabler(IconEnablerType.IS_IN_ANGULAR_FOLDER)
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_component_generic", "/extra-icons/angular-component.svg", "Angular (if angular.json exists): *.(component|controller).(js|ts)")
-                    .regex(".*[^a-zA-Z\\d](component|controller)\\.(js|ts)")
-                    .filesExist("angular.json")
+                ofFile("angular_component_generic", "/extra-icons/angular-component.svg", "Angular (if angular.json exists): *.component.(js|ts)")
+                    .regex(".*[^a-zA-Z\\d]component\\.(js|ts)")
+                    .iconEnabler(IconEnablerType.IS_IN_ANGULAR_FOLDER)
+                    .tags(ModelTag.ANGULAR2),
+                ofFile("angular_controller_generic", "/extra-icons/angular-controller.svg", "Angular (if angular.json exists): *.controller.(js|ts)")
+                    .regex(".*[^a-zA-Z\\d]controller\\.(js|ts)")
+                    .iconEnabler(IconEnablerType.IS_IN_ANGULAR_FOLDER)
                     .tags(ModelTag.ANGULAR2),
                 ofFile("angular_service_generic", "/extra-icons/angular-service.svg", "Angular (if angular.json exists): *.service.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]service\\.(js|ts)")
-                    .filesExist("angular.json")
+                    .iconEnabler(IconEnablerType.IS_IN_ANGULAR_FOLDER)
                     .tags(ModelTag.ANGULAR2),
                 ofFile("angular_pipe_generic", "/extra-icons/angular-pipe.svg", "Angular (if angular.json exists): *.pipe.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]pipe\\.(js|ts)")
-                    .filesExist("angular.json")
+                    .iconEnabler(IconEnablerType.IS_IN_ANGULAR_FOLDER)
                     .tags(ModelTag.ANGULAR2),
                 ofFile("angular_directive_generic", "/extra-icons/angular-directive.svg", "Angular (if angular.json exists): *.directive.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]directive(s)?\\.(js|ts)")
-                    .filesExist("angular.json")
+                    .iconEnabler(IconEnablerType.IS_IN_ANGULAR_FOLDER)
                     .tags(ModelTag.ANGULAR2),
                 ofFile("angular_guard_generic", "/extra-icons/angular-guard.svg", "Angular (if angular.json exists): *.guard.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]guard\\.(js|ts)")
-                    .filesExist("angular.json")
+                    .iconEnabler(IconEnablerType.IS_IN_ANGULAR_FOLDER)
                     .tags(ModelTag.ANGULAR2),
                 ofFile("angular_resolver_generic", "/extra-icons/angular-resolver.svg", "Angular (if angular.json exists): *.resolver.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]resolver\\.(js|ts)")
-                    .filesExist("angular.json")
+                    .iconEnabler(IconEnablerType.IS_IN_ANGULAR_FOLDER)
                     .tags(ModelTag.ANGULAR2),
                 ofFile("angular_spec_generic", "/extra-icons/test-ts.svg", "Angular (if angular.json exists): *.spec.(js|ts|tsx)")
                     .regex(".*[^a-zA-Z\\d]spec\\.(js|ts|tsx)")
-                    .filesExist("angular.json")
+                    .iconEnabler(IconEnablerType.IS_IN_ANGULAR_FOLDER)
                     .altIcons("/extra-icons/test-ts_alt.svg")
                     .tags(ModelTag.ANGULAR2),
                 ofFile("angular_html", "/extra-icons/html5.svg", "Angular (if angular.json exists): *.html")
                     .end(".html")
-                    .filesExist("angular.json")
+                    .iconEnabler(IconEnablerType.IS_IN_ANGULAR_FOLDER)
                     .tags(ModelTag.ANGULAR2, ModelTag.HTML),
 
                 // nestjs

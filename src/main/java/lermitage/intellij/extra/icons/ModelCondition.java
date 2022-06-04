@@ -124,7 +124,12 @@ public class ModelCondition {
         if (hasIconEnabler && fullPath.isPresent()) {
             Optional<IconEnabler> iconEnabler = IconEnablerProvider.getIconEnabler(project, iconEnablerType);
             if (iconEnabler.isPresent()) {
-                return iconEnabler.get().verify(project, fullPath.get());
+                boolean iconEnabledVerified = iconEnabler.get().verify(project, fullPath.get());
+                if (!iconEnabledVerified) {
+                    return false;
+                } else if (iconEnabler.get().terminatesConditionEvaluation()) {
+                    return true;
+                }
             }
         }
 
