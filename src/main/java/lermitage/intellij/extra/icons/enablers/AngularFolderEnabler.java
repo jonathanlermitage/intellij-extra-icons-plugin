@@ -5,6 +5,7 @@ package lermitage.intellij.extra.icons.enablers;
 import com.intellij.ide.actions.AttachDirectoryUtils;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
+import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -52,14 +53,18 @@ public class AngularFolderEnabler implements IconEnabler {
         long t1 = System.currentTimeMillis();
         angularFolders = findAngularFolders(project);
         initialized = true;
-        long t2 = System.currentTimeMillis();
-        LOGGER.info("Initialized " + this.getClass().getSimpleName() + " for project " + project.getBasePath() + " in " + (t2 - t1) + " ms");
+        long execDuration = System.currentTimeMillis() - t1;
+        String logMsg = "Searched for angular.json files in project " + project.getName() + " in " + execDuration + " ms." +
+            " Found angular folders: " + angularFolders;
+        if (execDuration > 1000) {
+            LOGGER.warn(logMsg + ". Operation should complete faster. " + ProjectUtils.PLEASE_OPEN_ISSUE_MSG);
+        } else {
+            LOGGER.info(logMsg);
+        }
     }
 
     /** Find folders containing an angular.json file. Some folders are ignored in order to preserve performance. */
     private Set<String> findAngularFolders(@NotNull Project project) {
-        long t1 = System.currentTimeMillis();
-
         // In some multi-module projects, per example dotNet and Angular, loaded with Rider, the
         // project may be in a subdirectory. It could look like this:
         // ■ module
@@ -77,6 +82,7 @@ public class AngularFolderEnabler implements IconEnabler {
         // will scan the smallest path first: it's very probable that the other paths are children
         // of this first path, so there is no need to scan them twice
         foldersToScan.sort(Comparator.comparingLong(File::length));
+        LOGGER.info("Will scan these folders for angular.json files: " + foldersToScan);
 
         Set<String> angularFoldersFound = new HashSet<>();
         try {
@@ -94,10 +100,6 @@ public class AngularFolderEnabler implements IconEnabler {
             }
         } catch (Exception e) {
             LOGGER.warn("Error while looking for angular folders, Angular support will be limited", e);
-        }
-        long execTime = System.currentTimeMillis() - t1;
-        if (execTime > 250) {
-            LOGGER.warn("Found angular folders " + angularFoldersFound + " for project " + project + " in " + execTime + "ms");
         }
         return angularFoldersFound;
     }

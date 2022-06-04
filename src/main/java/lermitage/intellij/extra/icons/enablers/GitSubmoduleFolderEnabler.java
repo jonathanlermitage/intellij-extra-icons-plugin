@@ -5,6 +5,7 @@ package lermitage.intellij.extra.icons.enablers;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import lermitage.intellij.extra.icons.utils.GitSubmoduleUtils;
+import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.FileNotFoundException;
@@ -46,12 +47,18 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
         initialized = true;
         long t2 = System.currentTimeMillis();
         lastInit = t2;
-        LOGGER.info("Initialized " + this.getClass().getSimpleName() + " for project " + project.getBasePath() + " in " + (t2 - t1) + " ms");
+        long execDuration = t2 - t1;
+        String logMsg = "Searched for git submodules in project " + project.getName() + " in " + execDuration + " ms." +
+            " Found git submodule folders: " + submoduleFolders;
+        if (execDuration > 200) {
+            LOGGER.warn(logMsg + ". Operation should complete faster. " + ProjectUtils.PLEASE_OPEN_ISSUE_MSG);
+        } else {
+            LOGGER.info(logMsg);
+        }
     }
 
     /** Find .gitmodules at root, then find every nested .gitmodules for every module (don't have to explore the whole project files). */
     private Set<String> findGitModulesFiles(@NotNull Project project) {
-        long t1 = System.currentTimeMillis();
         Set<String> submoduleFoldersFound = new HashSet<>();
         String basePath = project.getBasePath();
         try {
@@ -63,10 +70,6 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
             submoduleFoldersFound.addAll(findNestedGitModulesFiles(submoduleFoldersFound));
         } catch (FileNotFoundException e) {
             LOGGER.warn("Error while looking for git submodules", e);
-        }
-        long execTime = System.currentTimeMillis() - t1;
-        if (execTime > 100) {
-            LOGGER.warn("Found git submodules " + submoduleFoldersFound + " for project " + project + " in " + execTime + "ms (should be very fast)");
         }
         return submoduleFoldersFound;
     }
