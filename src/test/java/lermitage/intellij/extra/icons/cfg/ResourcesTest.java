@@ -144,7 +144,7 @@ public class ResourcesTest {
         }).collect(Collectors.toList());
 
         ExtraIconProvider.allModels().forEach(model -> {
-            String extraIconName = model.getIcon().replace("/extra-icons/", "");
+            String extraIconName = model.getIcon().replace("extra-icons/", "");
             if (!iconNames.contains(extraIconName)) {
                 errors.add(model.getId() + " model's icon " + extraIconName + " not found");
             }
@@ -166,7 +166,7 @@ public class ResourcesTest {
         }).collect(Collectors.toList());
 
         Angular2IconProvider.allModels().forEach(model -> {
-            String extraIconName = model.getIcon().replace("/extra-icons/", "");
+            String extraIconName = model.getIcon().replace("extra-icons/", "");
             if (!iconNames.contains(extraIconName)) {
                 errors.add(model.getId() + " model's icon " + extraIconName + " not found");
             }

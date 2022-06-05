@@ -99,7 +99,7 @@ public class ExtraIconPatcher extends IconPathPatcher {
         Map<String, String> morphedIcons = new LinkedHashMap<>();
         for (String iconKey : icons.keySet()) {
             String iconStr = icons.get(iconKey);
-            if (iconStr.startsWith("/extra-icons/")) {
+            if (iconStr.startsWith("extra-icons/")) {
                 // bundled icon, nothing to do
                 morphedIcons.put(iconKey, iconStr);
             } else {

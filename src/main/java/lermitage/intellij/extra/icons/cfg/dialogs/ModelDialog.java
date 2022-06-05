@@ -149,7 +149,7 @@ public class ModelDialog extends DialogWrapper {
             .sorted()
             .distinct()
             .forEach(iconPath -> chooseIconSelector.addItem(new BundledIcon(
-                iconPath, "bundled: " + iconPath.replace("/extra-icons/", ""))));
+                iconPath, "bundled: " + iconPath.replace("extra-icons/", ""))));
         ComboBoxRenderer renderer = new ComboBoxRenderer();
         // customIconImage
         chooseIconSelector.setRenderer(renderer);

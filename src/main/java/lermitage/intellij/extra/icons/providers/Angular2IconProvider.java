@@ -28,35 +28,35 @@ public class Angular2IconProvider extends BaseIconProvider implements DumbAware 
     @NotNull
     public static List<Model> allModels() {
         return Stream.of(
-                ofFile("angular_prj_module_generic", "/extra-icons/angular-module.svg", "Angular (in Angular 2+ projects only): *.module.(js|ts)")
+                ofFile("angular_prj_module_generic", "extra-icons/angular-module.svg", "Angular (in Angular 2+ projects only): *.module.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]module\\.(js|ts)")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_prj_component_generic", "/extra-icons/angular-component.svg", "Angular (in Angular 2+ projects only): *.component.(js|ts)")
+                ofFile("angular_prj_component_generic", "extra-icons/angular-component.svg", "Angular (in Angular 2+ projects only): *.component.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]component\\.(js|ts)")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_prj_controller_generic", "/extra-icons/angular-controller.svg", "Angular (in Angular 2+ projects only): *.controller.(js|ts)")
+                ofFile("angular_prj_controller_generic", "extra-icons/angular-controller.svg", "Angular (in Angular 2+ projects only): *.controller.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]controller\\.(js|ts)")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_prj_service_generic", "/extra-icons/angular-service.svg", "Angular (in Angular 2+ projects only): *.service.(js|ts)")
+                ofFile("angular_prj_service_generic", "extra-icons/angular-service.svg", "Angular (in Angular 2+ projects only): *.service.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]service\\.(js|ts)")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_prj_pipe_generic", "/extra-icons/angular-pipe.svg", "Angular (in Angular 2+ projects only): *.pipe.(js|ts)")
+                ofFile("angular_prj_pipe_generic", "extra-icons/angular-pipe.svg", "Angular (in Angular 2+ projects only): *.pipe.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]pipe\\.(js|ts)")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_prj_directive_generic", "/extra-icons/angular-directive.svg", "Angular (in Angular 2+ projects only): *.directive.(js|ts)")
+                ofFile("angular_prj_directive_generic", "extra-icons/angular-directive.svg", "Angular (in Angular 2+ projects only): *.directive.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]directive(s)?\\.(js|ts)")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_prj_guard_generic", "/extra-icons/angular-guard.svg", "Angular (in Angular 2+ projects only): *.guard.(js|ts)")
+                ofFile("angular_prj_guard_generic", "extra-icons/angular-guard.svg", "Angular (in Angular 2+ projects only): *.guard.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]guard\\.(js|ts)")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_prj_resolver_generic", "/extra-icons/angular-resolver.svg", "Angular (in Angular 2+ projects only): *.resolver.(js|ts)")
+                ofFile("angular_prj_resolver_generic", "extra-icons/angular-resolver.svg", "Angular (in Angular 2+ projects only): *.resolver.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]resolver\\.(js|ts)")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_prj_spec_generic", "/extra-icons/test-ts.svg", "Angular (in Angular 2+ projects only): *.spec.(js|ts|tsx)")
+                ofFile("angular_prj_spec_generic", "extra-icons/test-ts.svg", "Angular (in Angular 2+ projects only): *.spec.(js|ts|tsx)")
                     .regex(".*[^a-zA-Z\\d]spec\\.(js|ts|tsx)")
-                    .altIcons("/extra-icons/test-ts_alt.svg")
+                    .altIcons("extra-icons/test-ts_alt.svg")
                     .tags(ModelTag.ANGULAR2),
-                ofFile("angular_prj_html", "/extra-icons/html5.svg", "Angular (in Angular 2+ projects only): *.html")
+                ofFile("angular_prj_html", "extra-icons/html5.svg", "Angular (in Angular 2+ projects only): *.html")
                     .end(".html")
                     .tags(ModelTag.ANGULAR2, ModelTag.HTML)
             )
