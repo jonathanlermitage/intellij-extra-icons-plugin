@@ -39,19 +39,19 @@ Install JDK11+. You should be able to start Gradle Wrapper (`gradlew`). See Grad
 ### Gradle commands
 
 ```bash
-$ gradlew buildPlugin        # build plugin to build/distributions/*.zip
-$ gradlew runIde             # try plugin in a standalone IDE
-$ gradlew dependencyUpdates  # check for dependencies updates
-$ gradlew verifyPlugin       # validate plugin.xml descriptors as well as plugin's archive structure
-$ gradlew runPluginVerifier  # check for compatibility issues with IDE
-$ gradlew test               # run tests
+$ ./gradlew buildPlugin        # build plugin to build/distributions/*.zip
+$ ./gradlew runIde             # try plugin in a standalone IDE
+$ ./gradlew dependencyUpdates  # check for dependencies updates
+$ ./gradlew verifyPlugin       # validate plugin.xml descriptors as well as plugin's archive structure
+$ ./gradlew runPluginVerifier  # check for compatibility issues with IDE
+$ ./gradlew test               # run tests
 ```
 
-Additionally, take a look at the `do` (or `do.cmd` on Windows) script: it contains useful commands to build, run and test the plugin, check for dependencies updates and some maintenance tasks. Show available commands by running `./do help`. 
+Additionally, take a look at the `Makefile` script: it contains useful commands to build, run and test the plugin, check for dependencies updates and some maintenance tasks. Show available commands by running `make help`. 
 
 ### Optimizations
 
-Optionally, you may want to install SVGO in order to optimize SVG icons. Install SVGO with `npm install -g svgo`, then optimize SVG files by running `./do svgo`.
+Optionally, you may want to install SVGO in order to optimize SVG icons. Install SVGO with `npm install -g svgo`, then optimize SVG files by running `make svgo`.
 
 ## How to contribute
 

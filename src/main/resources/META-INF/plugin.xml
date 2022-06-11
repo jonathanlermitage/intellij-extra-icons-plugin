@@ -13,7 +13,7 @@
         <li>Shows an icon for Git sub-module folders.</li>
         <li>Configurable: see <i>File &gt; Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. This is configurable at IDE and project level.</li>
         <li>You can also register your own icons in order to override file icons and all <a href="https://jetbrains.design/intellij/resources/icons_list/">IDE icons</a> (including toolbars, menus, etc.).</li>
-        <li>For more information, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">GET_STARTED.md</a> guide.</li>
+        <li>For more information, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">GET_STARTED</a> guide.</li>
         <li>For questions about the plugin licensing model, how to get a license for free (students, teachers and OSS developers), and how to get a perpetual license, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/FAQ.md">FAQ</a>.</li>
       </ul>
     ]]>
@@ -26,6 +26,10 @@
     -->
 
     <change-notes><![CDATA[
+    2022.1.5 (2022/07/02)
+    <ul>
+      <li>prevent a possible crash with the new IntelliJ UI (currently in preview) for IntelliJ 2022.2+ EAP (222.2889.14+).</li>
+    </ul>
     2022.1.4 (2022/06/04)
     <ul>
       <li>support cache2k xml config files.</li>

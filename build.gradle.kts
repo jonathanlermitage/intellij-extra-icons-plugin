@@ -3,6 +3,8 @@ import com.adarshr.gradle.testlogger.theme.ThemeType
 import com.github.benmanes.gradle.versions.reporter.PlainTextReporter
 import com.github.benmanes.gradle.versions.reporter.result.Result
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import com.palantir.gradle.gitversion.VersionDetails
+import groovy.lang.Closure
 
 fun properties(key: String) = project.findProperty(key).toString()
 
@@ -13,6 +15,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.42.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("com.osacky.doctor") version "0.8.1" // https://github.com/runningcode/gradle-doctor/
+    id("com.palantir.git-version") version "0.15.0" // https://github.com/palantir/gradle-git-version
     id("biz.lermitage.oga") version "1.1.1"
 }
 
@@ -20,15 +23,18 @@ plugins {
 val pluginIdeaVersion: String by project
 val pluginDownloadIdeaSources: String by project
 val pluginInstrumentPluginCode: String by project
-val pluginVersion: String by project
 val pluginJavaVersion: String by project
+
+// Use the latest tag name (without the leading 'v') as the plugin version
+val versionDetails: Closure<VersionDetails> by extra
+val pluginVersion: String = versionDetails().lastTag.substring(1)
 
 val inCI = System.getenv("CI") != null
 
 val twelvemonkeysVersion = "3.8.2"
 val junitVersion = "5.8.2"
 
-logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion")
+logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion. Plugin version set to $pluginVersion.")
 
 group = "lermitage.intellij.extra.icons"
 version = pluginVersion

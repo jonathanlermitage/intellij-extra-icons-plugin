@@ -138,7 +138,7 @@ public abstract class BaseIconProvider
                     psiFileSystemItem = PsiManager.getInstance(project).findFile(file);
                 }
                 if (psiFileSystemItem != null) {
-                    return getIcon(psiFileSystemItem, 0 /* flags are ignored */);
+                    return getIcon(psiFileSystemItem, 0 /* flags are ignored (could be com.intellij.ui.icons.ImageDescriptor.HAS_2x or HAS_DARK_2x) */);
                 }
             }
         } catch (Throwable e) {
