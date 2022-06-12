@@ -2,7 +2,7 @@
 
 ## 2022.1.5 (planned for 2022/07/02)
 * prevent a possible crash with the new IntelliJ UI (currently in preview) for IntelliJ 2022.2+ EAP (222.2889.14+).
-* rework gradlew icon.
+* rework Gradle icons.
 
 ## 2022.1.4 (2022/06/04)
 * support cache2k xml config files.
