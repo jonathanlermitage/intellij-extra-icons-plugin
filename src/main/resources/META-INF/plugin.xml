@@ -29,6 +29,7 @@
     2022.1.5 (2022/07/02)
     <ul>
       <li>prevent a possible crash with the new IntelliJ UI (currently in preview) for IntelliJ 2022.2+ EAP (222.2889.14+).</li>
+      <li>rework gradlew icon.</li>
     </ul>
     2022.1.4 (2022/06/04)
     <ul>
