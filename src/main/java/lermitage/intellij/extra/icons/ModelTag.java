@@ -7,6 +7,7 @@ public enum ModelTag {
     ANGULAR2("Angular"),
     DOCKER("Docker"),
     FLYWAY("Flyway"),
+    HELM("Helm"),
     HTML("HTML"),
     KUBERNETES("Kubernetes"),
     LIBRE_OFFICE("LibreOffice"),

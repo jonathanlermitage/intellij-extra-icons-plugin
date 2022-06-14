@@ -15,9 +15,9 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
-public class AngularFolderEnabler implements IconEnabler {
+public class InAngularFolderEnabler implements IconEnabler {
 
-    private static final Logger LOGGER = Logger.getInstance(AngularFolderEnabler.class);
+    private static final Logger LOGGER = Logger.getInstance(InAngularFolderEnabler.class);
 
     /**
      * Initialization ({@link #init(Project)}) is done once at project opening to avoid
@@ -33,7 +33,7 @@ public class AngularFolderEnabler implements IconEnabler {
         if (enablersCache.containsKey(project)) {
             return enablersCache.get(project);
         }
-        IconEnabler iconEnabler = new AngularFolderEnabler();
+        IconEnabler iconEnabler = new InAngularFolderEnabler();
         enablersCache.put(project, iconEnabler);
         return iconEnabler;
     }
@@ -52,7 +52,7 @@ public class AngularFolderEnabler implements IconEnabler {
             " Found angular folders: " + angularFolders);
     }
 
-    /** Should (Re)Init if initialization never occurred or if latest initialization is too old. */
+    /** Should (Re)Init if initialization never occurred. */
     private boolean shouldInit() {
         return !initialized;
     }

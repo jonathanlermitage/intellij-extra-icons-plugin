@@ -6,6 +6,13 @@ public enum IconEnablerType {
 
     /** Detect git submodule folders. */
     IS_GIT_SUBMODULE_FOLDER,
+
+    /** Detect Helm folders. */
+    IS_HELM_FOLDER,
+
     /** Detect folders containing Angular files. */
-    IS_IN_ANGULAR_FOLDER
+    IS_IN_ANGULAR_FOLDER,
+
+    /** Detect folders containing Helm files. */
+    IS_IN_HELM_FOLDER
 }
