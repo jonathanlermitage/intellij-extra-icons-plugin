@@ -27,8 +27,16 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
         long t1 = System.currentTimeMillis();
         // TODO migrate to getVirtualFilesByName("angular.json", true, GlobalSearchScope.projectScope(project))
         //  in 2023 and set minimal IDE version to 2022.1 (221)
-        @SuppressWarnings("deprecation") Collection<VirtualFile> virtualFilesByName = FilenameIndex.getVirtualFilesByName(project, getFilenameToSearch(), true, GlobalSearchScope.projectScope(project));
-        folders = virtualFilesByName.stream().map(virtualFile -> normalizePath(virtualFile.getPath()).replace(normalizePath("/" + getFilenameToSearch()), "/")).collect(Collectors.toSet());
+        @SuppressWarnings("deprecation") Collection<VirtualFile> virtualFilesByName = FilenameIndex.getVirtualFilesByName(
+            project,
+            getFilenameToSearch(),
+            true,
+            GlobalSearchScope.projectScope(project));
+        folders = virtualFilesByName.stream()
+            .map(virtualFile ->
+                normalizePath(virtualFile.getPath())
+                    .replace(normalizePath("/" + getFilenameToSearch()), "/"))
+            .collect(Collectors.toSet());
 
         initialized = true;
         long execDuration = System.currentTimeMillis() - t1;
