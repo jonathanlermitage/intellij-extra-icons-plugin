@@ -14,6 +14,7 @@ plugins {
     id("org.jetbrains.intellij") version "1.6.0" // https://github.com/JetBrains/gradle-intellij-plugin and https://lp.jetbrains.com/gradle-intellij-plugin/
     id("com.github.ben-manes.versions") version "0.42.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
+    id("com.jaredsburrows.license") version "0.9.0" // https://github.com/jaredsburrows/gradle-license-plugin
     id("com.osacky.doctor") version "0.8.1" // https://github.com/runningcode/gradle-doctor/
     id("com.palantir.git-version") version "0.15.0" // https://github.com/palantir/gradle-git-version
     id("biz.lermitage.oga") version "1.1.1"
@@ -23,21 +24,29 @@ plugins {
 val pluginIdeaVersion: String by project
 val pluginDownloadIdeaSources: String by project
 val pluginInstrumentPluginCode: String by project
+val pluginVersion: String by project
 val pluginJavaVersion: String by project
 
-// Use the latest tag name (without the leading 'v') as the plugin version
-val versionDetails: Closure<VersionDetails> by extra
-val pluginVersion: String = versionDetails().lastTag.substring(1)
+version = if (pluginVersion == "auto") {
+    val versionDetails: Closure<VersionDetails> by extra
+    val lastTag = versionDetails().lastTag
+    if (lastTag.startsWith("v", ignoreCase = true)) {
+        lastTag.substring(1)
+    } else {
+        lastTag
+    }
+} else {
+    pluginVersion
+}
 
 val inCI = System.getenv("CI") != null
 
 val twelvemonkeysVersion = "3.8.2"
 val junitVersion = "5.8.2"
 
-logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion. Plugin version set to $pluginVersion.")
+logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion. Plugin version set to $version.")
 
 group = "lermitage.intellij.extra.icons"
-version = pluginVersion
 
 repositories {
     mavenCentral()

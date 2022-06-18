@@ -27,8 +27,8 @@ public class ProjectUtils {
     private static final Map<String, Set<String>> facetsCache = new ConcurrentHashMap<>();
 
     private static final String PROJECT_ISSUES_URL = "https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues";
-    public static final String PLEASE_OPEN_ISSUE_MSG = "You could open an issue: " + PROJECT_ISSUES_URL + " (dont forget to " +
-        "attach IDE log files: see Help > Collect Logs).";
+    public static final String PLEASE_OPEN_ISSUE_MSG = "You could open an issue: " + PROJECT_ISSUES_URL + ". " +
+        "THIS IS IMPORTANT: please attach IDE log files: see 'Help' > 'Collect Logs...'). Thank you!";
 
     /**
      * Refresh project view.

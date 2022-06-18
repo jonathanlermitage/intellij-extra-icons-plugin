@@ -1,7 +1,7 @@
 # Useful commands. Run 'make help' to show available tasks.
 # ------
 # Linux: no requirements needed (except Gradle and a JDK), it should work as it.
-# Windows: tested with GNU Make 4.3 installed with Chocolatey, and Unix tools (installed with Git) available from path. WSL may also work.
+# Windows: tested with GNU Make 4.4 installed with Chocolatey, and Unix tools (installed with Git) available from path. WSL may also work.
 # macOS: I don't have an Apple computer so I can't test, but it should work as it.
 
 ifeq ($(OS),Windows_NT)
@@ -88,6 +88,11 @@ lock: intro ## write gradle dependency versions lock file
 .PHONY: unlock
 unlock: intro ## remove gradle dependency versions lock file
 	@[ -f gradle.lockfile ] && rm gradle.lockfile && echo -e '\e[1;32mlock file deleted\e[0m' || echo -e '\e[1;33mdid nothing: lock file does not exist\e[0m'
+
+
+.PHONY: lic
+lic: intro ## generate license report to build/reports/licenses/ (licenses used by dependencies)
+	${gradlew_cmd} licenseReport
 
 
 .PHONY: help

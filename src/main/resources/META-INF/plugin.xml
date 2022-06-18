@@ -26,10 +26,12 @@
     -->
 
     <change-notes><![CDATA[
-    2022.1.5 (2022/07/02)
+    2022.1.5 (2022/06/14)
     <ul>
+      <li>fix #99: Angular support (when it looks for <i>angular.json</i> files) may freeze the IDE on some specific projects.</li>
       <li>prevent a possible crash with the new IntelliJ UI (currently in preview) for IntelliJ 2022.2+ EAP (222.2889.14+).</li>
       <li>rework Gradle icons.</li>
+      <li>add an alternative Gitlab icon (the latest version from the Gitlab website).</li>
     </ul>
     2022.1.4 (2022/06/04)
     <ul>

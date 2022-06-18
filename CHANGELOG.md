@@ -1,8 +1,10 @@
 # Extra Icons Change Log
 
-## 2022.1.5 (planned for 2022/07/02)
+## 2022.1.5 (2022/06/14)
+* fix #99: Angular support (when it looks for `angular.json` files) may freeze the IDE on some specific projects.
 * prevent a possible crash with the new IntelliJ UI (currently in preview) for IntelliJ 2022.2+ EAP (222.2889.14+).
 * rework Gradle icons.
+* add an alternative Gitlab icon (the latest version from the Gitlab website).
 
 ## 2022.1.4 (2022/06/04)
 * support cache2k xml config files.

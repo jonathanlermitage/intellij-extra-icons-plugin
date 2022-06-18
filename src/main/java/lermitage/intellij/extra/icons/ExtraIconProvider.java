@@ -575,7 +575,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("git", "extra-icons/git.svg", "Git: .gitattributes, .gitignore, .gitmodules, .gitreview")
                     .eq(".gitattributes", ".gitignore", ".gitmodules", ".gitreview"),
                 ofFile("gitlab", "extra-icons/gitlab.svg", "Gitlab: .gitlab-ci.yml")
-                    .eq(".gitlab-ci.yml"),
+                    .eq(".gitlab-ci.yml")
+                    .altIcons("extra-icons/gitlab_alt.svg"),
                 ofFile("grafana", "extra-icons/grafana.svg", "Grafana: grafana.ini")
                     .eq("grafana.ini"),
                 ofFile("graphqlconfig", "extra-icons/graphql_config.svg", "GraphQL: graphql.config.json")
