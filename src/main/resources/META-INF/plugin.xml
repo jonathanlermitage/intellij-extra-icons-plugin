@@ -30,7 +30,7 @@
     <ul>
       <li>improve accuracy and performance of Angular support.</li>
       <li>support Cookie text files.</li>
-      <li>support Helm files.</li>
+      <li>support various Helm files.</li>
     </ul>
     2022.1.5 (2022/06/14)
     <ul>
