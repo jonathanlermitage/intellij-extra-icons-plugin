@@ -340,6 +340,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("babel", "extra-icons/babel.svg", "Babel: babel.config.[json|js|cjs|mjs]|.babelrc.[json|js|cjs|mjs]|.babelrc")
                     .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?")
                     .altIcons("extra-icons/babel_alt.svg"),
+                ofFile("cookie", "extra-icons/cookie.svg", "Cookie (regew): .*cookie[a-zA-Z\\d_-]*\\.txt")
+                    .regex(".*cookie[a-zA-Z\\d_-]*\\.txt"),
                 ofFile("dotenv", "extra-icons/env.svg", "Dotenv: .*\\.env(\\.[a-zA-Z0-9]+)*")
                     .regex(".*\\.env(\\.[a-zA-Z\\d]+)*")
                     .altIcons("extra-icons/env_alt.svg", "extra-icons/env_alt2.svg"),

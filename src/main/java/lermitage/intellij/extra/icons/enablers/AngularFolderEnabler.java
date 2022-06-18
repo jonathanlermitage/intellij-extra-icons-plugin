@@ -25,15 +25,6 @@ public class AngularFolderEnabler implements IconEnabler {
      */
     private boolean initialized = false;
     private Set<String> angularFolders;
-    private static final Set<String> EXCLUDED_FOLDERS = Set.of(
-        "build",
-        "cache",
-        "idea-sandbox",
-        "gradle",
-        "node_modules",
-        "out",
-        "output",
-        "private");
 
     // one icon enabler per project
     private static final Map<Project, IconEnabler> enablersCache = new ConcurrentHashMap<>();
