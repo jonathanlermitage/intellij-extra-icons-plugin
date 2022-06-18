@@ -26,6 +26,12 @@
     -->
 
     <change-notes><![CDATA[
+    2022.1.6 (WIP)
+    <ul>
+      <li>improve accuracy and performance of Angular support.</li>
+      <li>support Cookie text files.</li>
+      <li>support Helm files.</li>
+    </ul>
     2022.1.5 (2022/06/14)
     <ul>
       <li>fix #99: Angular support (when it looks for <i>angular.json</i> files) may freeze the IDE on some specific projects.</li>

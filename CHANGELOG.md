@@ -1,5 +1,10 @@
 # Extra Icons Change Log
 
+## 2022.1.6 (WIP)
+* improve accuracy and performance of Angular support.
+* support Cookie text files.
+* support Helm files.
+
 ## 2022.1.5 (2022/06/14)
 * fix #99: Angular support (when it looks for `angular.json` files) may freeze the IDE on some specific projects.
 * prevent a possible crash with the new IntelliJ UI (currently in preview) for IntelliJ 2022.2+ EAP (222.2889.14+).

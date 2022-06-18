@@ -47,7 +47,7 @@ runeap: intro ## run plugin in latest IntelliJ Ultimate EAP Snapshot
 
 .PHONY: runold
 runold: intro ## run plugin in oldest supported IntelliJ Ultimate version
-	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-2021.1.3 -PpluginDownloadIdeaSources=false
+	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-2022.1.1 -PpluginDownloadIdeaSources=false
 
 
 .PHONY: build
