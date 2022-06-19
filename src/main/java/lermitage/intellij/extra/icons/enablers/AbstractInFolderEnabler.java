@@ -10,6 +10,8 @@ import com.intellij.psi.search.GlobalSearchScope;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -21,21 +23,39 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     private boolean initialized = false;
     protected Set<String> folders;
 
-    protected abstract String getFilenameToSearch();
+    protected abstract String[] getFilenamesToSearch();
 
     protected synchronized void init(@NotNull Project project) {
         long t1 = System.currentTimeMillis();
+        String[] filenamesToSearch = getFilenamesToSearch();
         // TODO migrate to getVirtualFilesByName("angular.json", true, GlobalSearchScope.projectScope(project))
         //  in 2023 and set minimal IDE version to 2022.1 (221)
         @SuppressWarnings("deprecation") Collection<VirtualFile> virtualFilesByName = FilenameIndex.getVirtualFilesByName(
             project,
-            getFilenameToSearch(),
+            getFilenamesToSearch()[0],
             true,
             GlobalSearchScope.projectScope(project));
+        final String[] additionalFilenamesToSearch = filenamesToSearch.length > 1 ?
+            Arrays.copyOfRange(filenamesToSearch, 1, filenamesToSearch.length) :
+            new String[0];
         folders = virtualFilesByName.stream()
             .map(virtualFile ->
                 normalizePath(virtualFile.getPath())
-                    .replace(normalizePath("/" + getFilenameToSearch()), "/"))
+                    .replace(normalizePath("/" + getFilenamesToSearch()[0]), "/"))
+            .filter(folder -> {
+                if (additionalFilenamesToSearch.length > 0) {
+                    for (String additionalFilenameToSearch : additionalFilenamesToSearch) {
+                        try {
+                            if (!new File(folder, additionalFilenameToSearch).exists()) {
+                                return false;
+                            }
+                        } catch (Exception e) {
+                            LOGGER.warn("Failed to check " + folder + "/" + additionalFilenameToSearch + " existence", e);
+                        }
+                    }
+                }
+                return true;
+            })
             .collect(Collectors.toSet());
 
         initialized = true;

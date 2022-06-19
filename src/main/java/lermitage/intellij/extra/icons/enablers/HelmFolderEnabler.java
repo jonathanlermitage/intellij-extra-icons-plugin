@@ -22,8 +22,9 @@ public class HelmFolderEnabler extends AbstractFolderEnabler implements IconEnab
         return iconEnabler;
     }
 
+    @NotNull
     @Override
-    protected String getFilenameToSearch() {
-        return "Chart.yaml";
+    protected String[] getFilenamesToSearch() {
+        return new String[]{"Chart.yaml", "values.yaml"};
     }
 }

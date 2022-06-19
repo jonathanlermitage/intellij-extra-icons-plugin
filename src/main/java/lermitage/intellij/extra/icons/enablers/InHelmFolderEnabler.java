@@ -23,7 +23,7 @@ public class InHelmFolderEnabler extends AbstractInFolderEnabler implements Icon
     }
 
     @Override
-    protected String getFilenameToSearch() {
-        return "Chart.yaml";
+    protected String[] getFilenamesToSearch() {
+        return new String[]{"Chart.yaml", "values.yaml"};
     }
 }
