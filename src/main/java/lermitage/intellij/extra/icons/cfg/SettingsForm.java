@@ -495,7 +495,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
         // TODO fix Model and ModelCondition equals & hashCode methods in order
         //  to fix CollectionUtils.isEqualCollection(customModels, service.getCustomModels()).
-        //  For now, the comparison returns false when customModels ordering changed. It should return true.
+        //  For now, the comparison returns true when customModels ordering changed. It should return false.
         forceUpdate = true;
     }
 
