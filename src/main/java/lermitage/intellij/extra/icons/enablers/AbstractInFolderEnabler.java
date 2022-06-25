@@ -88,7 +88,9 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     }
 
     protected static String normalizePath(@NotNull String path) {
-        return path.toLowerCase().replaceAll("\\\\", "/");
+        return path.toLowerCase()
+            .replaceAll("\\\\", "/")
+            .replaceAll("//", "/");
     }
 
     @Override

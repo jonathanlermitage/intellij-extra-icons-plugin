@@ -68,7 +68,6 @@ public abstract class BaseIconProvider
                 altDescription = model.getDescription() + " (alternative 1)";
             }
             altId = model.getId() + "_alt";
-
         } else {
             altDescription = model.getDescription() + " (alternative " + (altIconIdx + 1) + ")";
             altId = model.getId() + "_alt" + (altIconIdx + 1);

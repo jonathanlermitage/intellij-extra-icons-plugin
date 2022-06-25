@@ -232,7 +232,7 @@ public class Model {
     }
 
     /**
-     * Condition: project has given files.
+     * Condition: project has at least one of given files.
      * @param filesExist file(s), case-sensitive on Unix based systems.
      */
     public Model filesExist(@NotNull String... filesExist) {

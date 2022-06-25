@@ -2,6 +2,7 @@
 
 package lermitage.intellij.extra.icons.cfg;
 
+import com.google.common.base.Strings;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.event.DocumentEvent;
 import com.intellij.openapi.editor.event.DocumentListener;
@@ -39,6 +40,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.table.TableStringConverter;
@@ -223,8 +225,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         filterTextField.setToolTipText("<html>Regex is a <b>Java regex</b> and <b>is not case-sensitive</b><br>" +
             "You can also type <b>yes</b> or <b>no</b> to find the icons that are enabled or disabled.</html>");
         filterResetBtn.setText("Reset filter");
-        bottomTip.setText("<html><b>Icons are ordered by priority</b>. To use an <i>alternative</i> icon (as for Markdown files), " +
-            "deactivate the icon(s) with higher priority.</html>");
+        bottomTip.setText("<html><b>Icons are ordered by priority</b>. To use an <b>alternative</b> icon (as for Markdown files), " +
+            "deactivate the icon(s) with higher priority.<br/>The <b>Restart</b> column indicates if you need to restart the IDE to see changes.</html>");
         initCheckbox();
         loadPluginIconsTable();
         userIconsTable.setShowHorizontalLines(false);
@@ -309,11 +311,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         userIconsTable.setModel(userIconsSettingsTableModel);
         userIconsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         userIconsTable.setRowHeight(28);
-        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_COL_NUMBER).setMaxWidth(28);
-        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_COL_NUMBER).setWidth(28);
-        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setWidth(28);
-        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setMaxWidth(28);
-        userIconsTable.getColumnModel().getColumn(UserIconsSettingsTableModel.ICON_LABEL_COL_NUMBER).sizeWidthToFit();
+        TableColumnModel columnModel = userIconsTable.getColumnModel();
+        columnModel.getColumn(UserIconsSettingsTableModel.ICON_COL_NUMBER).setMaxWidth(28);
+        columnModel.getColumn(UserIconsSettingsTableModel.ICON_COL_NUMBER).setWidth(28);
+        columnModel.getColumn(UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setWidth(28);
+        columnModel.getColumn(UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setMaxWidth(28);
+        columnModel.getColumn(UserIconsSettingsTableModel.ICON_LABEL_COL_NUMBER).sizeWidthToFit();
         if (currentSelected != -1 && currentSelected < userIconsTable.getRowCount()) {
             userIconsTable.setRowSelectionInterval(currentSelected, currentSelected);
         }
@@ -405,6 +408,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 !disabledModelIds.contains(m.getId()),
                 m.getDescription(),
                 Arrays.toString(m.getTags().stream().map(ModelTag::getName).toArray()).replaceAll("\\[|]*", "").trim(),
+                !Strings.isNullOrEmpty(m.getIdeIcon()),
                 m.getTags(),
                 m.getId()
             })
@@ -412,16 +416,19 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         pluginIconsTable.setModel(pluginIconsSettingsTableModel);
         pluginIconsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         pluginIconsTable.setRowHeight(28);
-        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_COL_NUMBER).setMaxWidth(28);
-        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_COL_NUMBER).setWidth(28);
-        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setWidth(28);
-        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setMaxWidth(28);
-        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_LABEL_COL_NUMBER).sizeWidthToFit();
-        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMaxWidth(120);
-        pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMinWidth(120);
+        TableColumnModel columnModel = pluginIconsTable.getColumnModel();
+        columnModel.getColumn(PluginIconsSettingsTableModel.ICON_COL_NUMBER).setMaxWidth(28);
+        columnModel.getColumn(PluginIconsSettingsTableModel.ICON_COL_NUMBER).setWidth(28);
+        columnModel.getColumn(PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setWidth(28);
+        columnModel.getColumn(PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setMaxWidth(28);
+        columnModel.getColumn(PluginIconsSettingsTableModel.ICON_LABEL_COL_NUMBER).sizeWidthToFit();
+        columnModel.getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMaxWidth(120);
+        columnModel.getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMinWidth(120);
+        columnModel.getColumn(PluginIconsSettingsTableModel.ICON_REQUIRE_IDE_RESTART).setMaxWidth(65);
+        columnModel.getColumn(PluginIconsSettingsTableModel.ICON_REQUIRE_IDE_RESTART).setMinWidth(65);
         // set invisible but keep data
-        pluginIconsTable.getColumnModel().removeColumn(pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_ID_COL_NUMBER));
-        pluginIconsTable.getColumnModel().removeColumn(pluginIconsTable.getColumnModel().getColumn(PluginIconsSettingsTableModel.ICON_TAGS_ENUM_LIST_COL_NUMBER));
+        columnModel.removeColumn(columnModel.getColumn(PluginIconsSettingsTableModel.ICON_ID_COL_NUMBER));
+        columnModel.removeColumn(columnModel.getColumn(PluginIconsSettingsTableModel.ICON_TAGS_ENUM_LIST_COL_NUMBER));
         if (currentSelected != -1) {
             pluginIconsTable.setRowSelectionInterval(currentSelected, currentSelected);
         }

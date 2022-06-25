@@ -26,11 +26,15 @@
     -->
 
     <change-notes><![CDATA[
-    2022.1.6 (WIP)
+    2022.1.6 (2022/06/25)
     <ul>
       <li>improve accuracy and performance of Angular support.</li>
+      <li>support various Helm files and folders.</li>
       <li>support Cookie text files.</li>
-      <li>support various Helm files.</li>
+      <li>support <i>node_modules</i> folders.</li>
+      <li>add an alternative YAML icon.</li>
+      <li>the icons list in the configuration panel now indicates if you need to restart the IDE to see changes.</li>
+      <li>some code cleanup.</li>
     </ul>
     2022.1.5 (2022/06/14)
     <ul>
