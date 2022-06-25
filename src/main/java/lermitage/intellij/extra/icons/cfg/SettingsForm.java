@@ -87,6 +87,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private boolean isProjectForm = false;
     private List<Model> customModels = new ArrayList<>();
 
+    private boolean forceUpdate = false;
+
     public SettingsForm() {
         buttonEnableAll.addActionListener(e -> enableAll(true));
         buttonDisableAll.addActionListener(e -> enableAll(false));
@@ -131,6 +133,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     @Override
     public boolean isModified() {
+        if (forceUpdate) {
+            return true;
+        }
         SettingsService service = SettingsService.getInstance(project);
         if (isProjectForm) {
             SettingsProjectService projectService = (SettingsProjectService) service;
@@ -205,6 +210,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         } else {
             ProjectUtils.refreshOpenedProjects();
         }
+
+        forceUpdate = false;
     }
 
     @Nullable
@@ -444,6 +451,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private JComponent createToolbarDecorator() {
         ToolbarDecorator decorator = ToolbarDecorator.createDecorator(userIconsTable)
+
             .setAddAction(anActionButton -> {
                 ModelDialog modelDialog = new ModelDialog(this);
                 if (modelDialog.showAndGet()) {
@@ -452,7 +460,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                     foldersFirst(customModels);
                     setUserIconsTableModel();
                 }
-            }).setEditAction(anActionButton -> {
+            })
+
+            .setEditAction(anActionButton -> {
                 int currentSelected = userIconsTable.getSelectedRow();
                 ModelDialog modelDialog = new ModelDialog(this);
                 modelDialog.setModelToEdit(customModels.get(currentSelected));
@@ -461,11 +471,37 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                     customModels.set(currentSelected, newModel);
                     setUserIconsTableModel();
                 }
-            }).setRemoveAction(anActionButton -> {
+            })
+
+            .setRemoveAction(anActionButton -> {
                 customModels.remove(userIconsTable.getSelectedRow());
                 setUserIconsTableModel();
-            }).setButtonComparator("Add", "Edit", "Remove");
+            })
+
+            .setButtonComparator("Add", "Edit", "Remove")
+
+            .setMoveUpAction(anActionButton -> reorderUserIcons(MoveDirection.UP, userIconsTable.getSelectedRow()))
+
+            .setMoveDownAction(anActionButton -> reorderUserIcons(MoveDirection.DOWN, userIconsTable.getSelectedRow()));
         return decorator.createPanel();
+    }
+
+    private void reorderUserIcons(MoveDirection moveDirection, int selectedItemIdx) {
+        Model modelToMove = customModels.get(selectedItemIdx);
+        int move = moveDirection == MoveDirection.UP ? -1 : 1;
+        customModels.set(selectedItemIdx, customModels.get(selectedItemIdx + move));
+        customModels.set(selectedItemIdx + move, modelToMove);
+        setUserIconsTableModel();
+
+        // TODO fix Model and ModelCondition equals & hashCode methods in order
+        //  to fix CollectionUtils.isEqualCollection(customModels, service.getCustomModels()).
+        //  For now, the comparison returns false when customModels ordering changed. It should return true.
+        forceUpdate = true;
+    }
+
+    private enum MoveDirection {
+        UP,
+        DOWN
     }
 
     private void foldersFirst(List<Model> models) {
