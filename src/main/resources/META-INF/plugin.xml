@@ -26,6 +26,10 @@
     -->
 
     <change-notes><![CDATA[
+    2022.1.7 (WIP)
+    <ul>
+      <li>implement #100: add buttons to allow reordering of entries in the User Icons list.</li>
+    </ul>
     2022.1.6 (2022/06/25)
     <ul>
       <li>improve accuracy and performance of Angular support.</li>

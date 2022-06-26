@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2022.1.7 (WIP)
+* implement #100: add buttons to allow reordering of entries in the User Icons list.
+
 ## 2022.1.6 (2022/06/25)
 * improve accuracy and performance of Angular support.
 * support various Helm files and folders.
