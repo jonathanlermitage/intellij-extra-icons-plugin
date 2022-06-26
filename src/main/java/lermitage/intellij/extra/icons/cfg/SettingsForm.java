@@ -488,10 +488,28 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private void reorderUserIcons(MoveDirection moveDirection, int selectedItemIdx) {
         Model modelToMove = customModels.get(selectedItemIdx);
-        int move = moveDirection == MoveDirection.UP ? -1 : 1;
-        customModels.set(selectedItemIdx, customModels.get(selectedItemIdx + move));
-        customModels.set(selectedItemIdx + move, modelToMove);
+        int newSelectedItemIdx = moveDirection == MoveDirection.UP ? selectedItemIdx -1 : selectedItemIdx + 1;
+        boolean selectedItemIsEnabled = (boolean) userIconsTable.getValueAt(selectedItemIdx, UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER);
+        boolean newSelectedItemIsEnabled = (boolean) userIconsTable.getValueAt(newSelectedItemIdx, UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER);
+        List<Boolean> itemsAreEnabled = new ArrayList<>();
+        for (int i = 0; i < userIconsTable.getRowCount(); i++) {
+            itemsAreEnabled.add((Boolean) userIconsTable.getValueAt(i, UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER));
+        }
+
+        customModels.set(selectedItemIdx, customModels.get(newSelectedItemIdx));
+        customModels.set(newSelectedItemIdx, modelToMove);
         setUserIconsTableModel();
+
+        // User may have enabled or disabled some items, but changes are not applied yet to customModels, so setUserIconsTableModel will reset
+        // the Enabled column to previous state. We need to reapply user changes on this column.
+        for (int i = 0; i < userIconsTable.getRowCount(); i++) {
+            userIconsTable.setValueAt(itemsAreEnabled.get(i), i, UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER);
+        }
+        userIconsTable.setValueAt(selectedItemIsEnabled, newSelectedItemIdx, UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER);
+        userIconsTable.setValueAt(newSelectedItemIsEnabled, selectedItemIdx, UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER);
+
+        userIconsTable.clearSelection();
+        userIconsTable.setRowSelectionInterval(newSelectedItemIdx, newSelectedItemIdx);
 
         // TODO fix Model and ModelCondition equals & hashCode methods in order
         //  to fix CollectionUtils.isEqualCollection(customModels, service.getCustomModels()).
