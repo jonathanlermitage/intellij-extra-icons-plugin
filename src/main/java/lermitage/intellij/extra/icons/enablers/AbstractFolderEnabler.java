@@ -16,8 +16,8 @@ public abstract class AbstractFolderEnabler extends AbstractInFolderEnabler impl
         if (!normalizedPathToVerify.endsWith("/")) {
             normalizedPathToVerify += "/";
         }
-        for (String helmFolder : folders) {
-            if (normalizedPathToVerify.equals(helmFolder)) {
+        for (String folder : folders) {
+            if (normalizedPathToVerify.equals(folder)) {
                 return true;
             }
         }

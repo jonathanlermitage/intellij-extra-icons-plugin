@@ -60,7 +60,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
 
         initialized = true;
         long execDuration = System.currentTimeMillis() - t1;
-        String logMsg = "Searched for angular.json files in project " + project.getName() + " in " + execDuration + " ms." + " Found angular folders: " + folders;
+        String logMsg = "Searched for " + Arrays.toString(getFilenamesToSearch()) + " files in project " + project.getName() + " in " + execDuration + " ms." + " Found folders: " + folders;
         if (execDuration > 200) {
             LOGGER.warn(logMsg + ". Operation should complete faster. " + ProjectUtils.PLEASE_OPEN_ISSUE_MSG);
         } else {
