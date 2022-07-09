@@ -1,17 +1,17 @@
-import java.io.StringWriter
 import com.adarshr.gradle.testlogger.theme.ThemeType
 import com.github.benmanes.gradle.versions.reporter.PlainTextReporter
 import com.github.benmanes.gradle.versions.reporter.result.Result
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.palantir.gradle.gitversion.VersionDetails
 import groovy.lang.Closure
+import java.io.StringWriter
 
 fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
     id("java")
     id("jacoco")
-    id("org.jetbrains.intellij") version "1.6.0" // https://github.com/JetBrains/gradle-intellij-plugin and https://lp.jetbrains.com/gradle-intellij-plugin/
+    id("org.jetbrains.intellij") version "1.7.0" // https://github.com/JetBrains/gradle-intellij-plugin https://lp.jetbrains.com/gradle-intellij-plugin/
     id("com.github.ben-manes.versions") version "0.42.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("com.jaredsburrows.license") version "0.9.0" // https://github.com/jaredsburrows/gradle-license-plugin
@@ -26,6 +26,7 @@ val pluginDownloadIdeaSources: String by project
 val pluginInstrumentPluginCode: String by project
 val pluginVersion: String by project
 val pluginJavaVersion: String by project
+val pluginVerifyProductDescriptor: String by project
 
 version = if (pluginVersion == "auto") {
     val versionDetails: Closure<VersionDetails> by extra
@@ -43,6 +44,13 @@ val inCI = System.getenv("CI") != null
 
 val twelvemonkeysVersion = "3.8.2"
 val junitVersion = "5.8.2"
+
+if (pluginVerifyProductDescriptor.toBoolean()) {
+    val pluginXmlStr = projectDir.resolve("src/main/resources/META-INF/plugin.xml").readText()
+    if (!pluginXmlStr.contains("<product-descriptor")) {
+        throw GradleException("plugin.xml: Product Descriptor is missing")
+    }
+}
 
 logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion. Plugin version set to $version.")
 

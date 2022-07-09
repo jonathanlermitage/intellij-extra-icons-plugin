@@ -146,6 +146,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".storybook")
                     .tags(ModelTag.STORYBOOK),
                 // - Flyway databases
+                ofDir("dir_flyway", "extra-icons/folder_flyway.svg", "Flyway (regex): '.*/db/migration/?'")
+                    .regex(".*/db/migration/?")
+                    .tags(ModelTag.FLYWAY),
                 ofDir("dir_flyway_db2", "extra-icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/migration/db2[a-zA-Z\\d._\\-]*")
                     .tags(ModelTag.FLYWAY),
@@ -177,6 +180,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .regex(".*/db/migration/mssql[a-zA-Z\\d._\\-]*")
                     .tags(ModelTag.FLYWAY),
                 // - Liquibase databases
+                ofDir("dir_liquibase", "extra-icons/folder_liquibase.svg", "Liquibase (regex): '.*/db/changelog/?'")
+                    .regex(".*/db/changelog/?")
+                    .tags(ModelTag.LIQUIBASE),
                 ofDir("dir_liquibase_db2", "extra-icons/folder_db2.svg", "Liquibase, IBM DB2 database folder (regex): '.*/db/changelog/db2[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/changelog/db2[a-zA-Z\\d._\\-]*")
                     .tags(ModelTag.LIQUIBASE),
@@ -393,12 +399,14 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("test-javascript", "extra-icons/test-javascript.svg", "TestJavascript: .*\\.?(test|spec)\\.js$")
                     .regex(".*\\.?(test|spec)\\.js$")
                     .altIcons("extra-icons/test-javascript_alt.svg"),
-                ofFile("flyway", "extra-icons/flyway.png", "Flyway (regex): '.*/db/migration/.*\\.sql'")
+                ofFile("flyway", "extra-icons/flyway.svg", "Flyway (regex): '.*/db/migration/.*\\.sql'")
                     .regex(".*/db/migration/.*\\.sql")
-                    .tags(ModelTag.FLYWAY),
+                    .tags(ModelTag.FLYWAY)
+                    .altIcons("extra-icons/flyway_alt.svg", "extra-icons/flyway_alt2.png"),
                 ofFile("liquibase", "extra-icons/liquibase.svg", "Liquibase (regex): '.*/db/changelog/.*\\.(sql|xml)'")
                     .regex(".*/db/changelog/.*\\.(sql|xml)")
-                    .tags(ModelTag.LIQUIBASE),
+                    .tags(ModelTag.LIQUIBASE)
+                    .altIcons("extra-icons/liquibase_alt.svg"),
                 ofFile("mockk", "extra-icons/mockk.svg", "Mockk: io/mockk/settings.properties")
                     .regex(".*/io/mockk/settings\\.properties"),
                 ofFile("storybook", "extra-icons/storybook.svg", "Storybook: *.stor(y|ies).(js|jsx|ts|tsx|mdx)")
@@ -842,8 +850,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 //
                 // extension only
                 //
-                ofFile("ext_archive", "extra-icons/archive.svg", "Archive: *.zip, *.7z, *.tar, *.gz, *.bz2, *.xz")
-                    .end(".zip", ".7z", ".tar", ".gz", ".bz2", ".xz"),
+                ofFile("ext_archive", "extra-icons/archive.svg", "Archive: *.zip, *.7z, *.tar, *.gz, *.bz2, *.xz, *.tgz")
+                    .end(".zip", ".7z", ".tar", ".gz", ".bz2", ".xz", ".tgz"),
                 ofFile("ext_adoc", "extra-icons/asciidoc.svg", "Asciidoc: *.adoc, *.asciidoc")
                     .end(".adoc", ".asciidoc")
                     .altIcons("extra-icons/asciidoc_alt.png"),
@@ -983,6 +991,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         "extra-icons/video_alt3.svg"),
                 ofFile("ext_velocity", "extra-icons/velocity.svg", "Velocity: *.vtl")
                     .end(".vtl"),
+                ofFile("ext_vscode-workspace", "extra-icons/vscode.svg", "Visual Studio Code: : *.code-workspace")
+                    .end(".code-workspace"),
                 ofFile("ext_war", "extra-icons/tomcat.svg", "Java WAR: *.war")
                     .end(".war"),
 

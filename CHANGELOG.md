@@ -2,6 +2,9 @@
 
 ## 2022.1.7 (WIP)
 * implement #100: add buttons to allow reordering of entries in the User Icons list.
+* improve Flyway and Liquibase support.
+* support VSCode `*.code-workspace` files.
+* support `*.tgz` files.
 
 ## 2022.1.6 (2022/06/25)
 * improve accuracy and performance of Angular support.

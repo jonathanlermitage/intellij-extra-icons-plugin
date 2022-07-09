@@ -52,7 +52,7 @@ runold: intro ## run plugin in oldest supported IntelliJ Ultimate version
 
 .PHONY: build
 build: intro ## build and package plugin to build/distribution/ (see generated ZIP file)
-	${gradlew_cmd} clean buildPlugin test verifyPlugin --warning-mode all
+	${gradlew_cmd} clean buildPlugin test verifyPlugin --warning-mode all -PpluginVerifyProductDescriptor=true
 
 
 .PHONY: test

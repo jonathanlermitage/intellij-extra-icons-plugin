@@ -29,6 +29,9 @@
     2022.1.7 (WIP)
     <ul>
       <li>implement #100: add buttons to allow reordering of entries in the User Icons list.</li>
+      <li>improve Flyway and Liquibase support.</li>
+      <li>support VSCode <i>*.code-workspace</i> files.</li>
+      <li>support <i>*.tgz</i> files.</li>
     </ul>
     2022.1.6 (2022/06/25)
     <ul>
@@ -39,64 +42,6 @@
       <li>add an alternative YAML icon.</li>
       <li>the icons list in the configuration panel now indicates if you need to restart the IDE to see changes.</li>
       <li>some code cleanup.</li>
-    </ul>
-    2022.1.5 (2022/06/14)
-    <ul>
-      <li>fix #99: Angular support (when it looks for <i>angular.json</i> files) may freeze the IDE on some specific projects.</li>
-      <li>prevent a possible crash with the new IntelliJ UI (currently in preview) for IntelliJ 2022.2+ EAP (222.2889.14+).</li>
-      <li>rework Gradle icons.</li>
-      <li>add an alternative Gitlab icon (the latest version from the Gitlab website).</li>
-    </ul>
-    2022.1.4 (2022/06/04)
-    <ul>
-      <li>support cache2k xml config files.</li>
-      <li>fix #96: rework Angular support.</li>
-      <li>add a dedicated color to Angular controller icon.</li>
-      <li>rework some Angular icons.</li>
-    </ul>
-    2022.1.3 (2022/05/07)
-    <ul>
-      <li>internal: improve error handling.</li>
-      <li>support <i>requirements.txt</i> files in Python projects and projects with the Python facet.</li>
-      <li>support <i>lighttpd.conf</i> files.</li>
-      <li>override MDX icon when the MDX plugin is installed.</li>
-      <li>fix a Docker icon rendering issue in IJ 2022.1 in the <i>Services</i> tool window and the <i>Run/Debug Configurations</i> dialog.</li>
-      <li>fix PostCSS, Sequelize and Tailwindcss support.</li>
-      <li>config panel: UI improvements.</li>
-      <li>config panel: some icons now have tags, and you can enable and disable multiple icons by tags.</li>
-      <li>fix the priority of Angular icons when the Angular plugin is installed.</li>
-      <li>add alternative icons for FAQ files, and support HELP files.</li>
-      <li>fix #81: rework Angular support.</li>
-      <li>support <i>pnpm-lock.yaml</i> and <i>vite.config.ts</i> files. Thx <b>iamKyun</b>.</li>
-    </ul>
-    2022.1.2 (2022/04/03)
-    <ul>
-      <li>rework Babel icon, and provide an alternative icon.</li>
-      <li>support more Prettier config files.</li>
-      <li>internal: upgrade TwelveMonkeys library to 3.8.2 (used to preview PNG icons).</li>
-      <li>improve support of IDE icons override.</li>
-      <li>support <i>werf.yaml</i> files.</li>
-      <li>support <i>FAQ</i> files (with <i>.md</i>, <i>.adoc</i>, <i>.txt</i>, <i>.rst</i> or no extension).</li>
-      <li>support PostCSS, Sequelize, Svelte, Tailwindcss and Nodemon files. <b>Thx francmarin98</b>.</li>
-      <li>support Commitlint config files.</li>
-      <li>internal: some code rework.</li>
-      <li>internal: remove usage of some deprecated code (replaced <i>com.intellij.util.Base64</i> by JDK11 implementation).</li>
-      <li>IDE 2021.1.3 is now the minimal supported version. This is a requirement to enable plugin's dynamic reloading. Previous versions of IDE (IntelliJ and any IntelliJ-based IDE) are affected by a <a href="https://youtrack.jetbrains.com/issue/IDEA-262732">bug</a> that deletes plugin's settings on dynamic reload. This bug was fixed in IJ 2021.1.3, this is why I finally updated minimal IDE version in order to enable plugin's dynamic reloading safely.</li>
-      <li>experimental: plugin updates don't require IDE restart. It will probably apply with next releases. You may still have to restart IDE, I can't test for now, but at least it should be totally safe.</li>
-    </ul>
-    2022.1.1 (2022/03/05)
-    <ul>
-      <li>add more alternative icons (popular web browsers) for HTML files.</li>
-      <li>override YAML icon.</li>
-      <li>override Bash file icon.</li>
-      <li>support <i>.tox</i> folders.</li>
-      <li>support <i>mkdocs.yml</i> files.</li>
-      <li>support JSX files. Thx <a href="https://github.com/koolskateguy89">koolskateguy89</a>.</li>
-      <li>support <i>.github/dependabot.yml</i> files. Thx <a href="https://github.com/koolskateguy89">koolskateguy89</a>.</li>
-      <li>support <a href="https://docs.gradle.org/current/userguide/dependency_locking.html"><i>gradle.lockfile</i> and <i>buildscript-gradle.lockfile</i></a> files.</li>
-      <li>support Eslint files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/85">francmarin98</a>.</li>
-      <li>add an alternative icon for SVG files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/85">francmarin98</a>.</li>
-      <li>add an alternative icon for Vite files. Thx <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/pull/85">francmarin98</a>.</li>
     </ul>
     ]]>
     </change-notes>
