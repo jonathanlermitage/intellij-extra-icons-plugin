@@ -40,8 +40,6 @@ version = if (pluginVersion == "auto") {
     pluginVersion
 }
 
-val inCI = System.getenv("CI") != null
-
 val twelvemonkeysVersion = "3.8.2"
 val junitVersion = "5.8.2"
 
@@ -71,7 +69,7 @@ dependencies {
 }
 
 intellij {
-    downloadSources.set(pluginDownloadIdeaSources.toBoolean() && !inCI)
+    downloadSources.set(pluginDownloadIdeaSources.toBoolean() && !System.getenv().containsKey("CI"))
     instrumentCode.set(pluginInstrumentPluginCode.toBoolean())
     pluginName.set("Extra Icons")
     plugins.set(listOf("AngularJS"))
