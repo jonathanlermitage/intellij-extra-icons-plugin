@@ -32,6 +32,7 @@
       <li>improve Flyway and Liquibase support.</li>
       <li>support VSCode <i>*.code-workspace</i> files.</li>
       <li>support <i>*.tgz</i> files.</li>
+      <li>support Deno json and jsonc files.</li>
     </ul>
     2022.1.6 (2022/06/25)
     <ul>

@@ -5,6 +5,7 @@
 * improve Flyway and Liquibase support.
 * support VSCode `*.code-workspace` files.
 * support `*.tgz` files.
+* support Deno json and jsonc files.
 
 ## 2022.1.6 (2022/06/25)
 * improve accuracy and performance of Angular support.

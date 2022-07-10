@@ -539,6 +539,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".coveragerc"),
                 ofFile("crowdin", "extra-icons/crowdin.svg", "Crowdin: .crowdin.yml")
                     .eq(".crowdin.yml"),
+                ofFile("deno", "extra-icons/deno.svg", "Deno: deno.json, deno.jsonc")
+                    .eq("deno.json", "deno.jsonc"),
                 ofFile("deptective", "extra-icons/deptective.png", "Deptective: deptective.json")
                     .eq("deptective.json"),
                 ofFile("docker", "extra-icons/docker.svg", "Docker: dockerfile(.xml,.yml,...)")
