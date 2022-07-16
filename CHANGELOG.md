@@ -1,11 +1,14 @@
 # Extra Icons Change Log
 
-## 2022.1.7 (WIP)
+## 2022.1.7 (2022/07/16)
+* performance improvement.
 * implement #100: add buttons to allow reordering of entries in the User Icons list.
+* improve support of older IDEs (based on IJ 2021). IDE build number is detected at runtime and code is adapted when needed.
 * improve Flyway and Liquibase support.
 * support VSCode `*.code-workspace` files.
 * support `*.tgz` files.
 * support Deno json and jsonc files.
+* refactoring and code cleanup.
 
 ## 2022.1.6 (2022/06/25)
 * improve accuracy and performance of Angular support.

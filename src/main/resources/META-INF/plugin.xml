@@ -13,8 +13,8 @@
         <li>Shows an icon for Git sub-module folders.</li>
         <li>Configurable: see <i>File &gt; Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. This is configurable at IDE and project level.</li>
         <li>You can also register your own icons in order to override file icons and all <a href="https://jetbrains.design/intellij/resources/icons_list/">IDE icons</a> (including toolbars, menus, etc.).</li>
-        <li>For more information, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">GET_STARTED</a> guide.</li>
-        <li>For questions about the plugin licensing model, how to get a license for free (students, teachers and OSS developers), and how to get a perpetual license, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/FAQ.md">FAQ</a>.</li>
+        <li>For more information, please see this <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">guide</a>.</li>
+        <li>For questions about the plugin licensing model, how to get a license for free (students, teachers and OSS developers), and how to get a perpetual license, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md">license FAQ</a>.</li>
       </ul>
     ]]>
     </description>
@@ -26,13 +26,16 @@
     -->
 
     <change-notes><![CDATA[
-    2022.1.7 (WIP)
+    2022.1.7 (2022/07/16)
     <ul>
+      <li>performance improvement.</li>
       <li>implement #100: add buttons to allow reordering of entries in the User Icons list.</li>
+      <li>improve support of older IDEs (based on IJ 2021). IDE build number is detected at runtime and code is adapted when needed.</li>
       <li>improve Flyway and Liquibase support.</li>
       <li>support VSCode <i>*.code-workspace</i> files.</li>
       <li>support <i>*.tgz</i> files.</li>
       <li>support Deno json and jsonc files.</li>
+      <li>refactoring and code cleanup.</li>
     </ul>
     2022.1.6 (2022/06/25)
     <ul>

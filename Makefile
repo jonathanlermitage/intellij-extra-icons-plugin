@@ -95,6 +95,11 @@ lic: intro ## generate license report to build/reports/licenses/ (licenses used 
 	${gradlew_cmd} licenseReport
 
 
+.PHONY: dt
+dt: intro ## show dependencies graph
+	${gradlew_cmd} dependencies
+
+
 .PHONY: help
 help: intro
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":[^:]*?## "}; {printf "\033[1;38;5;69m%-15s\033[0;38;5;38m %s\033[0m\n", $$1, $$2}'

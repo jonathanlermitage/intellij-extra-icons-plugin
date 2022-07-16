@@ -26,8 +26,7 @@ Try the plugin in a standalone IDE with `./gradlew runIde`.
 
 If you are not comfortable with Java development, you can ask me to support new icons. Please:
 
-* provide SVG (with `height="16" width="16"` in the SVG tag, this is required by IntelliJ 2020.1.4) or 32x32 PNG (with
-  transparency) icon(s)
+* provide SVG or 32x32 PNG icon(s)
 * explain the conditions to apply the icon(s), like filename patterns
 
 You can open an issue, or email me (jonathan.lermitage@gmail.com).

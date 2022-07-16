@@ -10,17 +10,16 @@ import lermitage.intellij.extra.icons.enablers.IconEnablerType;
 import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@SuppressWarnings({"WeakerAccess", "OptionalUsedAsFieldOrParameterType"})
 public class Model {
 
     @OptionTag
@@ -48,6 +47,14 @@ public class Model {
     /** Tags associated to this model. Used to easily (de)activate models linked to specific tags. */
     private List<ModelTag> tags;
 
+    /** For a model representing an alternative icon, the ID of the base model, otherwise null. */
+    private Object parentId = null;
+
+    // For XML deserializer (IntelliJ internals)
+    @SuppressWarnings("unused")
+    private Model() {
+    }
+
     /**
      * Create a rule (Model) to apply given icon to a file. Once created, you need to
      * apply condition(s) to rule, like {@link #start(String...)}, {@link #eq(String...)}, etc.
@@ -58,7 +65,7 @@ public class Model {
     @NotNull
     @Contract("_, _, _ -> new")
     public static Model ofFile(String id, String icon, String description) {
-        return new Model(id, icon, description, ModelType.FILE, IconType.PATH);
+        return createFileOrFolderModel(id, icon, description, ModelType.FILE, IconType.PATH);
     }
 
     /**
@@ -71,7 +78,7 @@ public class Model {
     @NotNull
     @Contract("_, _, _ -> new")
     public static Model ofDir(String id, String icon, String description) {
-        return new Model(id, icon, description, ModelType.DIR, IconType.PATH);
+        return createFileOrFolderModel(id, icon, description, ModelType.DIR, IconType.PATH);
     }
 
     /**
@@ -88,50 +95,62 @@ public class Model {
     @NotNull
     @Contract("_, _, _, _ -> new")
     public static Model ofIcon(String id, String ideIcon, String icon, String description) {
-        return new Model(id, ideIcon, icon, description, ModelType.ICON, IconType.PATH);
+        return createIdeIconModel(id, ideIcon, icon, description, ModelType.ICON, IconType.PATH);
     }
 
-    // For XML deserializer
-    @SuppressWarnings("unused")
-    private Model() {
+    @NotNull
+    @Contract("_, _, _, _, _ -> new")
+    public static Model createFileOrFolderModel(String id, String icon, String description,
+                                                ModelType modelType, IconType iconType) {
+        Model model = new Model();
+        model.id = id;
+        model.icon = icon;
+        model.description = description;
+        model.modelType = modelType;
+        model.iconType = iconType;
+        return model;
     }
 
-    /** Don't use it directly, please prefer {@link #ofFile(String, String, String)},
-     * {@link #ofDir(String, String, String)} or {@link #ofIcon(String, String, String, String)}. */
-    public Model(String id, String ideIcon, String icon, String description, ModelType modelType, IconType iconType, boolean enabled, List<ModelCondition> conditions, List<ModelTag> tags) {
-        this.id = id;
-        this.ideIcon = ideIcon;
-        this.icon = icon;
-        this.description = description;
-        this.modelType = modelType;
-        this.iconType = iconType;
-        this.enabled = enabled;
-        this.conditions = conditions;
-        this.tags = tags;
+    @NotNull
+    @Contract("_, _, _, _, _, _ -> new")
+    public static Model createFileOrFolderModel(String id, String icon, String description,
+                                                ModelType modelType, IconType iconType,
+                                                List<ModelCondition> conditions) {
+        Model model = createFileOrFolderModel(id, icon, description, modelType, iconType);
+        model.conditions = conditions;
+        return model;
     }
 
-    /** Don't use it directly, please prefer {@link #ofFile(String, String, String)},
-     * {@link #ofDir(String, String, String)} or {@link #ofIcon(String, String, String, String)}. */
-    public Model(String id, String icon, String description, ModelType modelType, IconType iconType) {
-        this.id = id;
-        this.icon = icon;
-        this.description = description;
-        this.modelType = modelType;
-        this.iconType = iconType;
+    @NotNull
+    @Contract("_, _, _, _, _, _ -> new")
+    public static Model createIdeIconModel(String id, String ideIcon, String icon, String description,
+                                           ModelType modelType, IconType iconType) {
+        Model model = new Model();
+        model.id = id;
+        model.ideIcon = ideIcon;
+        model.icon = icon;
+        model.description = description;
+        model.modelType = modelType;
+        model.iconType = iconType;
+        return model;
     }
 
-    /** Don't use it directly, please prefer {@link #ofFile(String, String, String)},
-     * {@link #ofDir(String, String, String)} or {@link #ofIcon(String, String, String, String)}. */
-    public Model(String id, String icon, String description, ModelType modelType, IconType iconType, List<ModelCondition> conditions) {
-        this(id, icon, description, modelType, iconType);
-        this.conditions = conditions;
-    }
-
-    /** Don't use it directly, please prefer {@link #ofFile(String, String, String)},
-     * {@link #ofDir(String, String, String)} or {@link #ofIcon(String, String, String, String)}. */
-    public Model(String id, String ideIcon, String icon, String description, ModelType modelType, IconType iconType) {
-        this(id, icon, description, modelType, iconType);
-        this.ideIcon = ideIcon;
+    @NotNull
+    @Contract("_, _, _, _, _ -> new")
+    public static Model createAltModel(Model baseModel, String altId, String altIdeIcon,
+                                       String altIcon, String altDescription) {
+        Model altModel = new Model();
+        altModel.id = altId;
+        altModel.ideIcon = altIdeIcon;
+        altModel.icon = altIcon;
+        altModel.description = altDescription;
+        altModel.modelType = baseModel.modelType;
+        altModel.iconType = baseModel.iconType;
+        altModel.enabled = baseModel.enabled;
+        altModel.conditions = baseModel.conditions;
+        altModel.tags = baseModel.tags;
+        altModel.parentId = baseModel.id;
+        return altModel;
     }
 
     public String getId() {
@@ -156,6 +175,11 @@ public class Model {
 
     public boolean isEnabled() {
         return enabled;
+    }
+
+    @Nullable
+    public Object getParentId() {
+        return parentId;
     }
 
     /**
@@ -232,15 +256,6 @@ public class Model {
     }
 
     /**
-     * Condition: project has at least one of given files.
-     * @param filesExist file(s), case-sensitive on Unix based systems.
-     */
-    public Model filesExist(@NotNull String... filesExist) {
-        getCurrentCondition().setFilesExist(filesExist);
-        return this;
-    }
-
-    /**
      * Condition: use an {@link lermitage.intellij.extra.icons.enablers.IconEnablerType},
      * like {@link lermitage.intellij.extra.icons.enablers.GitSubmoduleFolderEnabler}.
      * @param type IconEnablerType.
@@ -280,7 +295,7 @@ public class Model {
         return conditions.get(conditions.size() - 1);
     }
 
-    public boolean check(String parentName, String fileName, Optional<String> fullPath, Set<String> facets, Project project) {
+    public boolean check(String parentName, String fileName, @Nullable String fullPath, Set<String> facets, Project project) {
         for (ModelCondition condition : conditions) {
             if (condition.check(parentName, fileName, fullPath, facets, project)) {
                 return true;

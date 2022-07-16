@@ -66,6 +66,10 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+
+    // TODO check JUnit and Gradle updates and remove this workaround asap
+    // gradle 7.5 + JUnit workaround for NoClassDefFoundError: org/junit/platform/launcher/LauncherSessionListener
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.8.2")
 }
 
 intellij {
@@ -88,9 +92,16 @@ tasks {
         sourceCompatibility = pluginJavaVersion
         targetCompatibility = pluginJavaVersion
         options.compilerArgs = listOf("-Xlint:deprecation")
+        options.encoding = "UTF-8"
     }
     withType<Test> {
         useJUnitPlatform()
+
+        // TODO check JUnit and Gradle updates and remove this workaround asap
+        // gradle 7.5 + JUnit workaround https://docs.gradle.org/7.5/userguide/upgrading_version_7.html#removes_implicit_add_opens_for_test_workers
+        jvmArgs("--add-opens=java.base/java.io=ALL-UNNAMED")
+        jvmArgs("--add-opens=java.base/java.lang=ALL-UNNAMED")
+        jvmArgs("--add-opens=java.base/java.util=ALL-UNNAMED")
     }
     jacocoTestReport {
         reports {

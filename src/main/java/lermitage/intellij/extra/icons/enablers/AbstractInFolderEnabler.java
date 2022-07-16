@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 public abstract class AbstractInFolderEnabler implements IconEnabler {
 
     private static final Logger LOGGER = Logger.getInstance(AbstractInFolderEnabler.class);
+    private final String className = this.getClass().getSimpleName();
 
     private boolean initialized = false;
     protected Set<String> folders;
@@ -50,7 +51,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                                 return false;
                             }
                         } catch (Exception e) {
-                            LOGGER.warn("Failed to check " + folder + "/" + additionalFilenameToSearch + " existence", e);
+                            LOGGER.warn(className + " failed to check " + folder + "/" + additionalFilenameToSearch + " existence", e);
                         }
                     }
                 }
@@ -60,7 +61,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
 
         initialized = true;
         long execDuration = System.currentTimeMillis() - t1;
-        String logMsg = "Searched for " + Arrays.toString(getFilenamesToSearch()) + " files in project " + project.getName() + " in " + execDuration + " ms." + " Found folders: " + folders;
+        String logMsg = className + " searched for " + Arrays.toString(getFilenamesToSearch()) + " files in project " + project.getName() + " in " + execDuration + " ms." + " Found folders: " + folders;
         if (execDuration > 200) {
             LOGGER.warn(logMsg + ". Operation should complete faster. " + ProjectUtils.PLEASE_OPEN_ISSUE_MSG);
         } else {

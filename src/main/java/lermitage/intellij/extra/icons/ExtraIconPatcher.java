@@ -2,6 +2,7 @@
 
 package lermitage.intellij.extra.icons;
 
+import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
@@ -29,6 +30,8 @@ public class ExtraIconPatcher extends IconPathPatcher {
 
     private Map<String, String> icons;
 
+    /** ClassLoader#getResource needs a leading "/" in old IDEs, and it should be absent in modern IDEs (2022+). */
+    private final boolean useOldResourceLoaderBehavior;
 
     @NotNull
     public static Map<String, String> getEnabledIcons() {
@@ -47,6 +50,17 @@ public class ExtraIconPatcher extends IconPathPatcher {
 
     public ExtraIconPatcher() {
         super();
+
+        // Starting with IJ 2022 (build 221+), resource path must not start with a leading "/". On older IJ versions, resource
+        // path has to start with a leading "/". A solution would be to support IJ 2022+ only, but we can easily
+        // detect IDE build version and adapt icons path when needed.
+        String buildVersion = ApplicationInfo.getInstance().getBuild().asStringWithoutProductCode();
+        useOldResourceLoaderBehavior = buildVersion.startsWith("21");
+        if (useOldResourceLoaderBehavior) {
+            LOGGER.info("Detected IDE build version " + buildVersion + ". This is an old build (<221). " +
+                "Will adapt code in order to customize IDE icons correctly.");
+        }
+
         loadConfig();
         IconLoader.installPathPatcher(this);
     }
@@ -83,11 +97,11 @@ public class ExtraIconPatcher extends IconPathPatcher {
     private void loadConfig() {
         icons = getEnabledIcons();
         try {
-            icons = convertB64IconsToLocalFiles(icons);
+            icons = convertUserB64IconsToLocalFilesAndKeepBundledIcons(icons);
         } catch (IOException e) {
             LOGGER.warn("Cannot create temporary directory to store user IDE icons, this feature won't work", e);
         }
-        LOGGER.info("config loaded with success, enabled " + icons.size() + " items");
+        LOGGER.info("Config loaded with success, enabled " + icons.size() + " items");
     }
 
     /**
@@ -95,13 +109,17 @@ public class ExtraIconPatcher extends IconPathPatcher {
      * in-memory byte arrays; we have to use bundled icons (from /resources) or local files. This method
      * stores in-memory Base64 icons provided by user as temporary local files.
      */
-    private Map<String, String> convertB64IconsToLocalFiles(Map<String, String> icons) throws IOException {
+    private Map<String, String> convertUserB64IconsToLocalFilesAndKeepBundledIcons(Map<String, String> icons) throws IOException {
         Map<String, String> morphedIcons = new LinkedHashMap<>();
         for (String iconKey : icons.keySet()) {
             String iconStr = icons.get(iconKey);
             if (iconStr.startsWith("extra-icons/")) {
-                // bundled icon, nothing to do
-                morphedIcons.put(iconKey, iconStr);
+                // bundled icon, no icon transformation needed
+                if (useOldResourceLoaderBehavior) {
+                    morphedIcons.put(iconKey, "/" + iconStr);
+                } else {
+                    morphedIcons.put(iconKey, iconStr);
+                }
             } else {
                 // base64 icon provided by user: store as local file
                 Path iconFile = Files.createTempFile("extra-icons-ide-user-icon", ".svg");
