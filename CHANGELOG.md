@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2022.1.8 (WIP)
+* support Nx `nx.json` files.
+
 ## 2022.1.7 (2022/07/16)
 * performance improvement.
 * implement #100: add buttons to allow reordering of entries in the User Icons list.

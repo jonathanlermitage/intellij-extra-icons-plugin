@@ -717,6 +717,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("notice").mayEnd(TXT),
                 ofFile("nox", "extra-icons/nox.png", "Nox: noxfile.py")
                     .eq("noxfile.py"),
+                ofFile("nx", "extra-icons/nx.svg", "Nx: nx.json")
+                    .eq("nx.json")
+                    .altIcons("extra-icons/nx_alt.svg"),
                 ofFile("openissues", "extra-icons/bug.svg", "Open issues: open_issues(.md,.txt,.adoc,.rst)")
                     .start("open_issues").mayEnd(TXT),
                 ofFile("packageinfojava", "extra-icons/packageinfojava.svg", "Java package info: package-info.java")

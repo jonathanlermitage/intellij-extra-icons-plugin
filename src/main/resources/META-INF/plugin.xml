@@ -26,6 +26,10 @@
     -->
 
     <change-notes><![CDATA[
+    2022.1.8 (WIP)
+    <ul>
+      <li>support Nx <i>nx.json</i> files.</li>
+    </ul>
     2022.1.7 (2022/07/16)
     <ul>
       <li>performance improvement.</li>
