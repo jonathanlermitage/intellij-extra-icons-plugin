@@ -999,6 +999,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".code-workspace"),
                 ofFile("ext_war", "extra-icons/tomcat.svg", "Java WAR: *.war")
                     .end(".war"),
+                ofFile("ext_xiph", "extra-icons/xiph.svg", "Xiph audio: *.flac, *.oga, *.ogg, *.opus, *.spx")
+                    .end(".flac", ".oga", ".ogg", ".opus", ".spx"),
 
                 ofFile("ext_libreoffice_calc", "extra-icons/officedocs/localc.png", "LibreOffice Calc: *.ods")
                     .end(".ods")
