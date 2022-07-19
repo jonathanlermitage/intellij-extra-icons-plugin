@@ -861,6 +861,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_adoc", "extra-icons/asciidoc.svg", "Asciidoc: *.adoc, *.asciidoc")
                     .end(".adoc", ".asciidoc")
                     .altIcons("extra-icons/asciidoc_alt.png"),
+                ofFile("ext_monkeys-audio", "extra-icons/monkey's_audio.svg", "Monkey's Audio: *.ape")
+                    .end(".ape"),
                 ofFile("ext_apk", "extra-icons/apk.svg", "Android application package (APK): *.apk, *.xapk")
                     .end(".apk", ".xapk"),
                 ofFile("ext_avro_avsc", "extra-icons/avro.svg", "Avro: *.avsc")
@@ -935,6 +937,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_kdbx", "extra-icons/keepass.svg", "KeePass: *.kdbx")
                     .end(".kdbx")
                     .altIcons("extra-icons/keepass_alt.png"),
+                ofFile("ext_matroska", "extra-icons/matroska.svg", "Matroska: *.mkv, *.mka")
+                    .end(".mkv", ".mka"),
                 ofFile("ext_md", "extra-icons/markdown.svg", "Markdown: *.md")
                     .end(".md")
                     .altIcons("extra-icons/markdown_alt.svg", "extra-icons/markdown_alt2.svg"),
@@ -992,7 +996,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".tsx"),
                 ofFile("ext_video", "extra-icons/video.svg", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ...")
                     .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
-                        ".m4v", ".mkv", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid")
+                        ".m4v", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid")
                     .altIcons("extra-icons/video_alt.svg", "extra-icons/video_alt2.svg",
                         "extra-icons/video_alt3.svg"),
                 ofFile("ext_velocity", "extra-icons/velocity.svg", "Velocity: *.vtl")
@@ -1001,6 +1005,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".code-workspace"),
                 ofFile("ext_war", "extra-icons/tomcat.svg", "Java WAR: *.war")
                     .end(".war"),
+                ofFile("ext_wma", "extra-icons/wma.svg", "Windows Media Audio: *.wma")
+                    .end(".wma"),
                 ofFile("ext_xiph", "extra-icons/xiph.svg", "Xiph audio: *.flac, *.oga, *.ogg, *.opus, *.spx")
                     .end(".flac", ".oga", ".ogg", ".opus", ".spx"),
 
