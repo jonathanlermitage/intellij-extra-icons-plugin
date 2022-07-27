@@ -519,6 +519,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".cirrus.yml"),
                 ofFile("composer", "extra-icons/composer.svg", "Composer: composer.json, composer.lock")
                     .eq("composer.json", "composer.lock"),
+                ofFile("cypress", "extra-icons/cypress.svg", "Cypress: cypress.json")
+                    .eq("cypress.json"),
                 ofFile("mvnw_windows", "extra-icons/mvnw.svg", "Maven (Windows): mvnw.bat, mvnw.cmd")
                     .eq("mvnw.bat", "mvnw.cmd"),
                 ofFile("codecov", "extra-icons/codecov.svg", "CodeCov: .codecov.yml, codecov.yml")
@@ -736,22 +738,28 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("pnpm-lock.yaml"),
                 ofFile("prettier", "extra-icons/prettier.svg", "Prettier: .prettierrc")
                     .eq(".prettierrc")
-                    .tags(ModelTag.PRETTIER),
+                    .tags(ModelTag.PRETTIER)
+                    .altIcons("extra-icons/prettier_alt.svg"),
                 ofFile("prettier-yml", "extra-icons/prettier.svg", "Prettier: .prettierrc.yml, .prettierrc.yaml")
                     .eq(".prettierrc.yml", ".prettierrc.yaml")
-                    .tags(ModelTag.PRETTIER),
+                    .tags(ModelTag.PRETTIER)
+                    .altIcons("extra-icons/prettier_alt.svg"),
                 ofFile("prettier-json", "extra-icons/prettier.svg", "Prettier: .prettierrc.json, .prettierrc.json5")
                     .eq(".prettierrc.json", ".prettierrc.json5")
-                    .tags(ModelTag.PRETTIER),
+                    .tags(ModelTag.PRETTIER)
+                    .altIcons("extra-icons/prettier_alt.svg"),
                 ofFile("prettier-js", "extra-icons/prettier.svg", "Prettier: .prettierrc.js, prettier.config.js")
                     .eq(".prettierrc.js", "prettier.config.js")
-                    .tags(ModelTag.PRETTIER),
+                    .tags(ModelTag.PRETTIER)
+                    .altIcons("extra-icons/prettier_alt.svg"),
                 ofFile("prettier-cjs", "extra-icons/prettier.svg", "Prettier: .prettierrc.cjs, prettier.config.cjs")
                     .eq(".prettierrc.cjs", "prettier.config.cjs")
-                    .tags(ModelTag.PRETTIER),
+                    .tags(ModelTag.PRETTIER)
+                    .altIcons("extra-icons/prettier_alt.svg"),
                 ofFile("prettier-toml", "extra-icons/prettier.svg", "Prettier: .prettierrc.toml")
                     .eq(".prettierrc.toml")
-                    .tags(ModelTag.PRETTIER),
+                    .tags(ModelTag.PRETTIER)
+                    .altIcons("extra-icons/prettier_alt.svg"),
                 ofFile("prettierignore", "extra-icons/prettierignore.svg", "Prettier: .prettierignore")
                     .eq(".prettierignore")
                     .tags(ModelTag.PRETTIER),
@@ -1008,7 +1016,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_war", "extra-icons/tomcat.svg", "Java WAR: *.war")
                     .end(".war"),
                 ofFile("ext_wma", "extra-icons/wma.svg", "Windows Media Audio: *.wma")
-                    .end(".wma"),
+                    .end(".wma")
+                    .altIcons("extra-icons/video_alt3.svg"),
                 ofFile("ext_xiph", "extra-icons/xiph.svg", "Xiph audio: *.flac, *.oga, *.ogg, *.opus, *.spx")
                     .end(".flac", ".oga", ".ogg", ".opus", ".spx"),
 

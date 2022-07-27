@@ -290,7 +290,7 @@ public abstract class BaseIconProvider
         if (service.getIgnoredPatternObj() == null || service.getIgnoredPattern() == null || service.getIgnoredPattern().isEmpty()) {
             return false;
         }
-        VirtualFile contentRoot = ProjectFileIndex.SERVICE.getInstance(project).getContentRootForFile(file);
+        VirtualFile contentRoot = ProjectFileIndex.getInstance(project).getContentRootForFile(file);
         if (contentRoot == null) {
             return false;
         }

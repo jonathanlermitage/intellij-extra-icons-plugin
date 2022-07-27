@@ -41,7 +41,7 @@ version = if (pluginVersion == "auto") {
 }
 
 val twelvemonkeysVersion = "3.8.2"
-val junitVersion = "5.8.2"
+val junitVersion = "5.9.0"
 
 if (pluginVerifyProductDescriptor.toBoolean()) {
     val pluginXmlStr = projectDir.resolve("src/main/resources/META-INF/plugin.xml").readText()
@@ -69,7 +69,7 @@ dependencies {
 
     // TODO check JUnit and Gradle updates and remove this workaround asap
     // gradle 7.5 + JUnit workaround for NoClassDefFoundError: org/junit/platform/launcher/LauncherSessionListener
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.8.2")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.9.0")
 }
 
 intellij {
@@ -138,17 +138,7 @@ tasks {
     runIde {
         jvmArgs("-Xms128m")
         jvmArgs("-Xmx1024m")
-        jvmArgs("--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
-        // copy over some JVM args from IntelliJ
-        jvmArgs("-Dide.no.platform.update=true")
-        jvmArgs("-Djdk.attach.allowAttachSelf=true")
-        jvmArgs("-Djdk.module.illegalAccess.silent=true")
-        jvmArgs("-Dsun.io.useCanonCaches=false")
-        jvmArgs("-XX:+UseG1GC")
-        jvmArgs("-XX:CICompilerCount=2")
-        jvmArgs("-XX:ReservedCodeCacheSize=512m")
-        jvmArgs("-XX:SoftRefLRUPolicyMSPerMB=50")
-
+        jvmArgs("--add-exports", "java.desktop/sun.awt.windows=ALL-UNNAMED")
         autoReloadPlugins.set(true)
     }
     runPluginVerifier {

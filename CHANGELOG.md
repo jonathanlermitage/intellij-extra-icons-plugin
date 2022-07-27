@@ -3,6 +3,9 @@
 ## 2022.1.8 (WIP)
 * support Nx `nx.json` files.
 * support many audio files. Thx to contributor **Serial-ATA**.
+* support Cypress json files.
+* add an alternative Prettier icon.
+* internal: fix usage of some deprecated code.
 
 ## 2022.1.7 (2022/07/16)
 * performance improvement.

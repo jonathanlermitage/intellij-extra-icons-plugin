@@ -62,7 +62,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
         initialized = true;
         long execDuration = System.currentTimeMillis() - t1;
         String logMsg = className + " searched for " + Arrays.toString(getFilenamesToSearch()) + " files in project " + project.getName() + " in " + execDuration + " ms." + " Found folders: " + folders;
-        if (execDuration > 200) {
+        if (execDuration > 4000) {
             LOGGER.warn(logMsg + ". Operation should complete faster. " + ProjectUtils.PLEASE_OPEN_ISSUE_MSG);
         } else {
             LOGGER.info(logMsg);
