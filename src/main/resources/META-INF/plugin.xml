@@ -32,6 +32,7 @@
       <li>support many audio files. Thx to contributor <b>Serial-ATA</b>.</li>
       <li>support Cypress json files.</li>
       <li>add an alternative Prettier icon.</li>
+      <li>add an alternative 7zip icon.</li>
       <li>internal: fix usage of some deprecated code</li>
     </ul>
     2022.1.7 (2022/07/16)

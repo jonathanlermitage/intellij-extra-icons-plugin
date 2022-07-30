@@ -864,8 +864,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 //
                 ofFile("ext_aac", "extra-icons/aac.svg", "Advanced Audio Coding: *.aac")
                     .end(".aac"),
-                ofFile("ext_archive", "extra-icons/archive.svg", "Archive: *.zip, *.7z, *.tar, *.gz, *.bz2, *.xz, *.tgz")
-                    .end(".zip", ".7z", ".tar", ".gz", ".bz2", ".xz", ".tgz"),
+                ofFile("ext_archive", "extra-icons/archive.svg", "Archive: *.zip, *.tar, *.gz, *.bz2, *.xz, *.tgz")
+                    .end(".zip", ".tar", ".gz", ".bz2", ".xz", ".tgz"),
+                ofFile("ext_archive_7z", "extra-icons/archive.svg", "Archive: *.7z")
+                    .end(".7z")
+                    .altIcons("extra-icons/7zip.svg"),
                 ofFile("ext_adoc", "extra-icons/asciidoc.svg", "Asciidoc: *.adoc, *.asciidoc")
                     .end(".adoc", ".asciidoc")
                     .altIcons("extra-icons/asciidoc_alt.png"),
