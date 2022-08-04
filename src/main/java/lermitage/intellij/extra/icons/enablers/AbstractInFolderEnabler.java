@@ -2,17 +2,21 @@
 
 package lermitage.intellij.extra.icons.enablers;
 
+import com.intellij.notification.NotificationGroupManager;
+import com.intellij.notification.NotificationType;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
+import lermitage.intellij.extra.icons.Globals;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -22,20 +26,40 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     private final String className = this.getClass().getSimpleName();
 
     private boolean initialized = false;
-    protected Set<String> folders;
+    private boolean indexErrorReported = false;
+    protected Set<String> folders = Collections.emptySet();
 
     protected abstract String[] getFilenamesToSearch();
 
     protected synchronized void init(@NotNull Project project) {
         long t1 = System.currentTimeMillis();
         String[] filenamesToSearch = getFilenamesToSearch();
-        // TODO migrate to getVirtualFilesByName("angular.json", true, GlobalSearchScope.projectScope(project))
+        // TODO migrate to getVirtualFilesByName(getFilenamesToSearch()[0], true, GlobalSearchScope.projectScope(project))
         //  in 2023 and set minimal IDE version to 2022.1 (221)
-        @SuppressWarnings("deprecation") Collection<VirtualFile> virtualFilesByName = FilenameIndex.getVirtualFilesByName(
-            project,
-            getFilenamesToSearch()[0],
-            true,
-            GlobalSearchScope.projectScope(project));
+        Collection<VirtualFile> virtualFilesByName;
+        try {
+            virtualFilesByName = FilenameIndex.getVirtualFilesByName(
+                project,
+                getFilenamesToSearch()[0],
+                true,
+                GlobalSearchScope.projectScope(project));
+        } catch (Exception e) {
+            initialized = true;
+            if (!indexErrorReported) {
+                indexErrorReported = true;
+                String msg = "Failed to query IDE filename index. If this is the first " +
+                    "time you see this message, please try to clear the file system cache " +
+                    "and Local History (go to File, Invalidate Caches...)";
+                LOGGER.warn(msg, e);
+                NotificationGroupManager.getInstance().getNotificationGroup(Globals.PLUGIN_GROUP_DISPLAY_ID)
+                    .createNotification(msg, NotificationType.WARNING)
+                    .setTitle(Globals.PLUGIN_NAME)
+                    .setImportant(true)
+                    .notify(null);
+            }
+            return;
+        }
+
         final String[] additionalFilenamesToSearch = filenamesToSearch.length > 1 ?
             Arrays.copyOfRange(filenamesToSearch, 1, filenamesToSearch.length) :
             new String[0];
