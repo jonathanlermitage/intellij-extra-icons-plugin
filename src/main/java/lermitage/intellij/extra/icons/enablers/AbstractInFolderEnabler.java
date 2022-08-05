@@ -47,9 +47,10 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
             initialized = true;
             if (!indexErrorReported) {
                 indexErrorReported = true;
-                String msg = "Failed to query IDE filename index. If this is the first " +
-                    "time you see this message, please try to clear the file system cache " +
-                    "and Local History (go to File, Invalidate Caches...)";
+                String msg = "Failed to query IDE filename index. A few features won't work: icons for Git " +
+                    "submodules, Helm, and Angular. If this is the first time you see this message, and if you " +
+                    "really need these features, please restart your IDE. If it doesn't help, try to clear the " +
+                    "file system cache and Local History (go to File, Invalidate Caches...).";
                 LOGGER.warn(msg, e);
                 NotificationGroupManager.getInstance().getNotificationGroup(Globals.PLUGIN_GROUP_DISPLAY_ID)
                     .createNotification(msg, NotificationType.WARNING)
