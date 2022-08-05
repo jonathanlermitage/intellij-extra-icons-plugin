@@ -30,6 +30,8 @@ public abstract class SettingsService {
     public List<Model> customModels = new ArrayList<>();
     @SuppressWarnings("WeakerAccess")
     public Double additionalUIScale;
+    @SuppressWarnings("WeakerAccess")
+    public Boolean ignoreWarnings;
 
     private Pattern ignoredPatternObj;
     private Boolean isIgnoredPatternValid;
@@ -84,6 +86,17 @@ public abstract class SettingsService {
 
     public void setAdditionalUIScale(Double additionalUIScale) {
         this.additionalUIScale = additionalUIScale;
+    }
+
+    public Boolean getIgnoreWarnings() {
+        if (ignoreWarnings == null) {
+            ignoreWarnings = false;
+        }
+        return ignoreWarnings;
+    }
+
+    public void setIgnoreWarnings(Boolean ignoreWarnings) {
+        this.ignoreWarnings = ignoreWarnings;
     }
 
     @NotNull

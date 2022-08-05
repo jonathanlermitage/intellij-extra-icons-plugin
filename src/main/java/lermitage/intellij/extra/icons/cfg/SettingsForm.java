@@ -80,6 +80,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JComboBox<String> comboBoxIconsGroupSelector;
     private JLabel disableOrEnableOrLabel;
     private JLabel disableOrEnableLabel;
+    private JCheckBox ignoreWarningsCheckBox;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -155,6 +156,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         if (!CollectionUtils.isEqualCollection(customModels.stream().map(Model::isEnabled).collect(Collectors.toList()), collectUserIconEnabledStates())) {
             return true;
         }
+        if (service.getIgnoreWarnings() != ignoreWarningsCheckBox.isSelected()) {
+            return true;
+        }
         if (service.getIgnoredPattern() == null && ignoredPatternTextField.getText().isEmpty()) {
             return false;
         }
@@ -198,6 +202,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 "Invalid Additional UI Scale Factor",
                 JOptionPane.WARNING_MESSAGE);
         }
+        service.setIgnoreWarnings(ignoreWarningsCheckBox.isSelected());
         List<Boolean> enabledStates = collectUserIconEnabledStates();
         for (int i = 0; i < customModels.size(); i++) {
             Model model = customModels.get(i);
@@ -225,15 +230,24 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         ignoredPatternTitle.setText("Regex to ignore relative paths:");
         ignoredPatternTextField.setToolTipText("<html>Regex is a <b>Java regex</b>, and file path is <b>lowercased</b> before check.</html>");
         additionalUIScaleTitle.setText("Additional UI Scale Factor to adjust user icons size:");
-        additionalUIScaleTextField.setToolTipText("<html>Useful if you run IDE with <b>-Dsun.java2d.uiScale.enabled=false</b> " +
-            "flag and <b>user icons are too small</b>.<br>Float value. Defaults to <b>1.0</b>.</html>");
+        additionalUIScaleTextField.setToolTipText(
+            "<html>Useful if you run IDE with <b>-Dsun.java2d.uiScale.enabled=false</b> " +
+                "flag and <b>user icons are too small</b>.<br>Float value. Defaults to <b>1.0</b>.</html>");
+        ignoreWarningsCheckBox.setText("Ignore plugin's warnings");
+        ignoreWarningsCheckBox.setToolTipText(
+            "Notification may warn you that some features have been be disabled<br>" +
+                "due to plugin or IDE errors, like IDE filename index issues.<br>" +
+                "Use this checkbox to silent these notifications.");
         filterLabel.setText("Regex to filter Plugin icons table by:");
         filterTextField.setText("");
-        filterTextField.setToolTipText("<html>Regex is a <b>Java regex</b> and <b>is not case-sensitive</b><br>" +
-            "You can also type <b>yes</b> or <b>no</b> to find the icons that are enabled or disabled.</html>");
+        filterTextField.setToolTipText(
+            "<html>Regex is a <b>Java regex</b> and <b>is not case-sensitive</b><br>" +
+                "You can also type <b>yes</b> or <b>no</b> to find the icons that are enabled or disabled.</html>");
         filterResetBtn.setText("Reset filter");
-        bottomTip.setText("<html><b>Icons are ordered by priority</b>. To use an <b>alternative</b> icon (as for Markdown files), " +
-            "deactivate the icon(s) with higher priority.<br/>The <b>Restart</b> column indicates if you need to restart the IDE to see changes.</html>");
+        bottomTip.setText(
+            "<html><b>Icons are ordered by priority</b>. To use an <b>alternative</b> icon (as for Markdown files), " +
+                "deactivate the icon(s) with higher priority.<br/>The <b>Restart</b> column indicates if you need to restart " +
+                "the IDE to see changes.</html>");
         initCheckbox();
         loadPluginIconsTable();
         userIconsTable.setShowHorizontalLines(false);
@@ -244,9 +258,11 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         loadUserIconsTable();
         loadIgnoredPattern();
         loadAdditionalUIScale();
+        loadIgnoreWarnings();
         if (isProjectForm) {
             additionalUIScaleTitle.setVisible(false);
             additionalUIScaleTextField.setVisible(false);
+            ignoreWarningsCheckBox.setVisible(false);
         }
         comboBoxIconsGroupSelector.addItem("icons");
         Arrays.stream(ModelTag.values()).forEach(modelTag -> comboBoxIconsGroupSelector.addItem(modelTag.getName() + " tagged icons"));
@@ -282,8 +298,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void setComponentState(boolean enabled) {
-        Stream.of(pluginIconsTable, userIconsTable, ignoredPatternTitle,
-            ignoredPatternTextField, additionalUIScaleTitle, additionalUIScaleTextField,
+        Stream.of(pluginIconsTable, userIconsTable, ignoredPatternTitle, ignoredPatternTextField,
             iconsTabbedPane, addToIDEUserIconsCheckbox, filterLabel,
             filterTextField, filterResetBtn, buttonEnableAll,
             disableOrEnableOrLabel, buttonDisableAll, disableOrEnableLabel,
@@ -297,6 +312,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         loadUserIconsTable();
         loadIgnoredPattern();
         loadAdditionalUIScale();
+        loadIgnoreWarnings();
     }
 
     private void loadUserIconsTable() {
@@ -449,6 +465,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         additionalUIScaleTextField.setText(Double.toString(SettingsService.getIDEInstance().getAdditionalUIScale()));
     }
 
+    private void loadIgnoreWarnings() {
+        ignoreWarningsCheckBox.setSelected(SettingsService.getIDEInstance().getIgnoreWarnings());
+    }
+
     private JComponent createToolbarDecorator() {
         ToolbarDecorator decorator = ToolbarDecorator.createDecorator(userIconsTable)
 
@@ -488,7 +508,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private void reorderUserIcons(MoveDirection moveDirection, int selectedItemIdx) {
         Model modelToMove = customModels.get(selectedItemIdx);
-        int newSelectedItemIdx = moveDirection == MoveDirection.UP ? selectedItemIdx -1 : selectedItemIdx + 1;
+        int newSelectedItemIdx = moveDirection == MoveDirection.UP ? selectedItemIdx - 1 : selectedItemIdx + 1;
         boolean selectedItemIsEnabled = (boolean) userIconsTable.getValueAt(selectedItemIdx, UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER);
         boolean newSelectedItemIsEnabled = (boolean) userIconsTable.getValueAt(newSelectedItemIdx, UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER);
         List<Boolean> itemsAreEnabled = new ArrayList<>();

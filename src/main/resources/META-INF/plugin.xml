@@ -34,6 +34,8 @@
       <li>add an alternative Prettier icon.</li>
       <li>add an alternative 7zip icon.</li>
       <li>internal: fix usage of some deprecated code</li>
+      <li>don't crash if plugin can't query the IDE filename index.</li>
+      <li>add an option to ignore plugin's warnings.</li>
     </ul>
     2022.1.7 (2022/07/16)
     <ul>

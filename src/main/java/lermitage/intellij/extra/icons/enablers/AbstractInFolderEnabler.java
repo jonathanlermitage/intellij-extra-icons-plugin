@@ -10,6 +10,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
 import lermitage.intellij.extra.icons.Globals;
+import lermitage.intellij.extra.icons.cfg.SettingsService;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -34,10 +35,10 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     protected synchronized void init(@NotNull Project project) {
         long t1 = System.currentTimeMillis();
         String[] filenamesToSearch = getFilenamesToSearch();
-        // TODO migrate to getVirtualFilesByName(getFilenamesToSearch()[0], true, GlobalSearchScope.projectScope(project))
-        //  in 2023 and set minimal IDE version to 2022.1 (221)
         Collection<VirtualFile> virtualFilesByName;
         try {
+            // TODO migrate to getVirtualFilesByName(getFilenamesToSearch()[0], true, GlobalSearchScope.projectScope(project))
+            //  in 2023 and set minimal IDE version to 2022.1 (221)
             virtualFilesByName = FilenameIndex.getVirtualFilesByName(
                 project,
                 getFilenamesToSearch()[0],
@@ -52,11 +53,13 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                     "really need these features, please restart your IDE. If it doesn't help, try to clear the " +
                     "file system cache and Local History (go to File, Invalidate Caches...).";
                 LOGGER.warn(msg, e);
-                NotificationGroupManager.getInstance().getNotificationGroup(Globals.PLUGIN_GROUP_DISPLAY_ID)
-                    .createNotification(msg, NotificationType.WARNING)
-                    .setTitle(Globals.PLUGIN_NAME)
-                    .setImportant(true)
-                    .notify(null);
+                if (!SettingsService.getIDEInstance().getIgnoreWarnings()) {
+                    NotificationGroupManager.getInstance().getNotificationGroup(Globals.PLUGIN_GROUP_DISPLAY_ID)
+                        .createNotification(msg, NotificationType.WARNING)
+                        .setTitle(Globals.PLUGIN_NAME)
+                        .setImportant(true)
+                        .notify(null);
+                }
             }
             return;
         }

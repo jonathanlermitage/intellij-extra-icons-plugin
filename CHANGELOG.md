@@ -7,6 +7,8 @@
 * add an alternative Prettier icon.
 * add an alternative 7zip icon.
 * internal: fix usage of some deprecated code.
+* don't crash if plugin can't query the IDE filename index.
+* add an option to ignore plugin's warnings.
 
 ## 2022.1.7 (2022/07/16)
 * performance improvement.
