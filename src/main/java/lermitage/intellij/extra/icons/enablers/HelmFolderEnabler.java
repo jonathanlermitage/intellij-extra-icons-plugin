@@ -27,4 +27,9 @@ public class HelmFolderEnabler extends AbstractFolderEnabler implements IconEnab
     protected String[] getFilenamesToSearch() {
         return new String[]{"Chart.yaml", "values.yaml"};
     }
+
+    @Override
+    public String getName() {
+        return "Helm folder icon";
+    }
 }

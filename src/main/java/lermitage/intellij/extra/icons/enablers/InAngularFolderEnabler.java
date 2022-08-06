@@ -27,4 +27,9 @@ public class InAngularFolderEnabler extends AbstractInFolderEnabler implements I
     protected String[] getFilenamesToSearch() {
         return new String[]{"angular.json"};
     }
+
+    @Override
+    public String getName() {
+        return "Angular icons";
+    }
 }
