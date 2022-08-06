@@ -26,7 +26,7 @@
     -->
 
     <change-notes><![CDATA[
-    2022.1.8 (WIP)
+    2022.1.8 (2022/08/06)
     <ul>
       <li>support Nx <i>nx.json</i> files.</li>
       <li>support many audio files. Thx to contributor <b>Serial-ATA</b>.</li>
@@ -34,7 +34,7 @@
       <li>add an alternative Prettier icon.</li>
       <li>add an alternative 7zip icon.</li>
       <li>internal: fix usage of some deprecated code</li>
-      <li>don't crash if plugin can't query the IDE filename index.</li>
+      <li>don't crash if plugin can't query the IDE filename index, and simply display a notification.</li>
       <li>add an option to ignore plugin's warnings.</li>
     </ul>
     2022.1.7 (2022/07/16)
