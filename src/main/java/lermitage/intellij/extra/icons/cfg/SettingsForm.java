@@ -235,7 +235,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 "flag and <b>user icons are too small</b>.<br>Float value. Defaults to <b>1.0</b>.</html>");
         ignoreWarningsCheckBox.setText("Ignore plugin's warnings");
         ignoreWarningsCheckBox.setToolTipText(
-            "Notification may warn you that some features have been be disabled<br>" +
+            "You may see notifications saying that some features have been disabled<br>" +
                 "due to plugin or IDE errors, like IDE filename index issues.<br>" +
                 "Use this checkbox to silent these notifications.");
         filterLabel.setText("Regex to filter Plugin icons table by:");
