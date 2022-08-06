@@ -103,8 +103,8 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
             init(project);
         }
         String normalizedPathToVerify = normalizePath(absolutePathToVerify);
-        for (String helmFolder : folders) {
-            if (normalizedPathToVerify.startsWith(helmFolder)) {
+        for (String folder : folders) {
+            if (normalizedPathToVerify.startsWith(folder)) {
                 return true;
             }
         }
