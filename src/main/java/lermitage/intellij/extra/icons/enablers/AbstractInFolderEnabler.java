@@ -52,7 +52,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
             if (!indexErrorReported) {
                 indexErrorReported = true;
                 String msg = "Failed to query IDE filename index. <b>This feature won't work: " + getName() + "</b>. " +
-                    "If this is the first time you see this message, and if you really need these features, " +
+                    "If this is the first time you see this message, and if you really need this feature, " +
                     "please restart your IDE. If it doesn't help, try to clear the file system cache and " +
                     "Local History (go to File, Invalidate Caches...).<br><hr>" +
                     "To disable this notification, please go to <b>File</b>, <b>Settings...</b>, <b>Extra Icons</b>, and check <b>Ignore plugin's warnings</b>.";
