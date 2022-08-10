@@ -875,6 +875,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".apk", ".xapk"),
                 ofFile("ext_apple-audio", "extra-icons/apple.svg", "Apple Audio: *.aiff, *.aifc, *.caf")
                     .end(".aiff", ".aifc", ".caf"),
+                ofFile("ext_apple-video", "extra-icons/apple.svg", "Apple Video: *.mov, *.qt")
+                    .end(".mov", ".qt"),
                 ofFile("ext_avro_avsc", "extra-icons/avro.svg", "Avro: *.avsc")
                     .end(".avsc"),
                 ofFile("ext_bin", "extra-icons/binary.svg", "Binary: *.bin")
@@ -1008,7 +1010,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".tsx"),
                 ofFile("ext_video", "extra-icons/video.svg", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ...")
                     .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
-                        ".m4v", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid")
+                        ".m4v", ".mp4", ".mpg", ".mpeg", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid")
                     .altIcons("extra-icons/video_alt.svg", "extra-icons/video_alt2.svg",
                         "extra-icons/video_alt3.svg"),
                 ofFile("ext_velocity", "extra-icons/velocity.svg", "Velocity: *.vtl")
