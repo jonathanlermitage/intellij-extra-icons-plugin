@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2022.1.9 (WIP)
+* support many audio/video files. Thx to contributor **Serial-ATA**.
+
 ## 2022.1.8 (2022/08/06)
 * support Nx `nx.json` files.
 * support many audio files. Thx to contributor **Serial-ATA**.

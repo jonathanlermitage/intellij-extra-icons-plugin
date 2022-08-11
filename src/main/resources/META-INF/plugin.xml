@@ -26,6 +26,10 @@
     -->
 
     <change-notes><![CDATA[
+    2022.1.9 (WIP)
+    <ul>
+      <li>support many audio/video files. Thx to contributor <b>Serial-ATA</b>.</li>
+    </ul>
     2022.1.8 (2022/08/06)
     <ul>
       <li>support Nx <i>nx.json</i> files.</li>
