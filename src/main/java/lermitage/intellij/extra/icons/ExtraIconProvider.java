@@ -878,6 +878,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".apk", ".xapk"),
                 ofFile("ext_apple-audio", "extra-icons/apple.svg", "Apple Audio: *.aiff, *.aifc, *.caf")
                     .end(".aiff", ".aifc", ".caf"),
+                ofFile("ext_apple-video", "extra-icons/apple.svg", "Apple Video: *.mov, *.qt")
+                    .end(".mov", ".qt"),
                 ofFile("ext_avro_avsc", "extra-icons/avro.svg", "Avro: *.avsc")
                     .end(".avsc"),
                 ofFile("ext_bin", "extra-icons/binary.svg", "Binary: *.bin")
@@ -960,6 +962,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/mdx_alt.svg", "extra-icons/mdx_alt2.svg"),
                 ofFile("ext_mmd", "extra-icons/mindmap.svg", "IDEA MindMap plugin: *.mmd")
                     .end(".mmd"),
+                ofFile("ext_mpeg", "extra-icons/mpeg.svg", "MPEG-1/2 Audio: *.mp3, *.mp1, *.m1a, *.mp2, *.m2a, *.mpa")
+                    .end(".mp3", ".mp1", ".m1a", ".mp2", ".m2a", ".mpa"),
                 ofFile("ext_mwb", "extra-icons/mysqlworkbench.png", "MySQL Workbench: *.mwb")
                     .end(".mwb"),
                 ofFile("ext_nsi", "extra-icons/nsis.svg", "NSIS Nullsoft Scriptable Install System: *.nsi")
@@ -1008,8 +1012,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("typescript-react", "extra-icons/tsx.svg", "TSX (Typescript + React): *.tsx")
                     .end(".tsx"),
                 ofFile("ext_video", "extra-icons/video.svg", "Video: *.3gp, *.avi, *.flv, *.mkv, *.mp4, *.mpeg, *.ogm, *.webm, ...")
-                    .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m4p",
-                        ".m4v", ".mp4", ".mpg", ".mpeg", ".mov", ".ogm", ".ogv", ".vob", ".webm", ".wmv", ".xvid")
+                    .end(".3g2", ".3gp", ".avi", ".divx", ".f4a", ".f4b", ".f4p", ".f4v", ".flv", ".m2t", ".m4p",
+                        ".m4v", ".mp4", ".mpg", ".mpeg", ".ogm", ".ogv", ".ts", ".tsa", ".tsv", ".vob", ".webm", ".wmv", ".xvid")
                     .altIcons("extra-icons/video_alt.svg", "extra-icons/video_alt2.svg",
                         "extra-icons/video_alt3.svg"),
                 ofFile("ext_velocity", "extra-icons/velocity.svg", "Velocity: *.vtl")
