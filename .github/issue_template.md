@@ -2,10 +2,14 @@
 
 Please describe the issue:
 
-* the plugin version
-* the OS and IDE version. Open your IDE and go to <kbd>Help</kbd>, <kbd>About</kbd>, then <kbd>Copy</kbd>
-* the stacktrace, if any in the event log (in the bottom-right corner of your IDE)
-* any useful information
+* the **plugin version**
+* the **OS and IDE version**. Open your IDE and go to <kbd>Help</kbd>, <kbd>About</kbd>, then <kbd>Copy</kbd>
+* the **IDE logs**. Open your IDE and go to <kbd>Help</kbd>, <kbd>Collect Logs and Diagnostic Data</kbd>, then attach files
+* the **stacktrace**, if any
+* any useful information: what did you do just before the issue, etc.
+
+:warning: This information is needed in order to determine if this is an IDE bug or a plugin bug, and to find a solution or a workaround.
+
 
 ## Feature requests
 
