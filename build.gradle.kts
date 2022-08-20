@@ -142,6 +142,9 @@ tasks {
         jvmArgs("-Xms128m")
         jvmArgs("-Xmx1024m")
         autoReloadPlugins.set(true)
+        // If any warning or error with missing --add-opens, wait for the next gradle-intellij-plugin's update that should sync
+        // with https://raw.githubusercontent.com/JetBrains/intellij-community/master/plugins/devkit/devkit-core/src/run/OpenedPackages.txt
+        // or do it manually
     }
     runPluginVerifier {
         ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map(String::trim).filter(String::isNotEmpty))
