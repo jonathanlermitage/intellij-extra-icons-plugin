@@ -40,7 +40,7 @@ version = if (pluginVersion == "auto") {
     pluginVersion
 }
 
-val twelvemonkeysVersion = "3.8.2"
+val twelvemonkeysVersion = "3.8.3"
 val junitVersion = "5.9.0"
 
 if (pluginVerifyProductDescriptor.toBoolean()) {

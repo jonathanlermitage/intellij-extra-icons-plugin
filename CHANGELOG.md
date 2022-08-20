@@ -2,6 +2,7 @@
 
 ## 2022.1.9 (WIP)
 * support many audio/video files. Thx to contributor **Serial-ATA**.
+* internal: upgrade TwelveMonkeys library to 3.8.3 (used to preview PNG icons).
 
 ## 2022.1.8 (2022/08/06)
 * support Nx `nx.json` files.
