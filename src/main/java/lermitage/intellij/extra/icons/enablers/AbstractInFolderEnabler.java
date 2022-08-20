@@ -54,7 +54,8 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                 String msg = "Failed to query IDE filename index. <b>This feature won't work: " + getName() + "</b>. " +
                     "If this is the first time you see this message, and if you really need this feature, " +
                     "please restart your IDE. If it doesn't help, try to clear the file system cache and " +
-                    "Local History (go to File, Invalidate Caches...).<br><hr>" +
+                    "Local History (go to File, Invalidate Caches...).<br><b>It seems to be a JetBrains issue</b> (feel free to <b>upvote</b> " +
+                    "https://youtrack.jetbrains.com/issue/IDEA-289822). Please do not open a new ticket for that.<br><hr>" +
                     "To disable this notification, please go to <b>File</b>, <b>Settings...</b>, <b>Extra Icons</b>, and check <b>Ignore plugin's warnings</b>.";
                 LOGGER.warn(msg, e);
                 if (!SettingsService.getIDEInstance().getIgnoreWarnings()) {
