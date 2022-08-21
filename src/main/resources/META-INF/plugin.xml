@@ -30,6 +30,7 @@
     <ul>
       <li>support many audio/video files. Thx to contributor <b>Serial-ATA</b>.</li>
       <li>internal: upgrade TwelveMonkeys library to 3.8.3 (used to preview PNG icons).</li>
+      <li>rework Haxe icons (PNG icon to SVG).</li>
     </ul>
     2022.1.8 (2022/08/06)
     <ul>
