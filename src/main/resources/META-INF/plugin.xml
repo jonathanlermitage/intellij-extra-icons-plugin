@@ -27,7 +27,7 @@
     -->
 
     <change-notes><![CDATA[
-    2022.1.9 (WIP)
+    2022.1.9 (2022/08/27)
     <ul>
       <li>support many audio/video files. Thx to contributor <b>Serial-ATA</b>.</li>
       <li>try to mitigate errors when querying IDE filename index (will now retry twice before failing). This is a JetBrains issue, <b>feel free to upvote <a href="https://youtrack.jetbrains.com/issue/IDEA-289822">IDEA-289822</a></b>, it would help.</li>
