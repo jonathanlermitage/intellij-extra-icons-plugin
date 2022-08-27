@@ -30,6 +30,7 @@
     2022.1.9 (WIP)
     <ul>
       <li>support many audio/video files. Thx to contributor <b>Serial-ATA</b>.</li>
+      <li>try to mitigate errors when querying IDE filename index (will now retry twice before failing). This is a JetBrains issue, <b>feel free to upvote <a href="https://youtrack.jetbrains.com/issue/IDEA-289822">IDEA-289822</a></b>, it would help.</li>
       <li>internal: upgrade TwelveMonkeys library to 3.8.3 (used to preview PNG icons).</li>
       <li>rework Haxe icons (PNG icon to SVG).</li>
       <li>improve Dotenv and Cookie file support.</li>

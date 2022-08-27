@@ -38,15 +38,29 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     protected synchronized void init(@NotNull Project project) {
         long t1 = System.currentTimeMillis();
         String[] filenamesToSearch = getFilenamesToSearch();
-        Collection<VirtualFile> virtualFilesByName;
+        Collection<VirtualFile> virtualFilesByName = null;
         try {
-            // TODO migrate to getVirtualFilesByName(getFilenamesToSearch()[0], true, GlobalSearchScope.projectScope(project))
-            //  in 2023 and set minimal IDE version to 2022.1 (221)
-            virtualFilesByName = FilenameIndex.getVirtualFilesByName(
-                project,
-                getFilenamesToSearch()[0],
-                true,
-                GlobalSearchScope.projectScope(project));
+            final int MAX_ATTEMPTS = 3;
+            //noinspection ConstantConditions
+            for (int i = 1; i <= MAX_ATTEMPTS; i++) {
+                try {
+                    // TODO migrate to getVirtualFilesByName(getFilenamesToSearch()[0], true, GlobalSearchScope.projectScope(project))
+                    //  in 2023 and set minimal IDE version to 2022.1 (221)
+                    virtualFilesByName = FilenameIndex.getVirtualFilesByName(
+                        project,
+                        getFilenamesToSearch()[0],
+                        true,
+                        GlobalSearchScope.projectScope(project));
+                    break;
+                } catch (Exception e) {
+                    if (i == MAX_ATTEMPTS) {
+                        throw (e);
+                    }
+                    LOGGER.warn(getName() + " IconEnabler failed to query IDE filename index (attempt " + i + "/" + MAX_ATTEMPTS + "). " +
+                        "Will try again in 20 ms. " + e.getMessage());
+                    Thread.sleep(20);
+                }
+            }
         } catch (Exception e) {
             initialized = true;
             if (!indexErrorReported) {
