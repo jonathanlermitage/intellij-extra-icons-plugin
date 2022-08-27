@@ -11,7 +11,7 @@ fun properties(key: String) = project.findProperty(key).toString()
 plugins {
     id("java")
     id("jacoco")
-    id("org.jetbrains.intellij") version "1.8.0" // https://github.com/JetBrains/gradle-intellij-plugin https://lp.jetbrains.com/gradle-intellij-plugin/
+    id("org.jetbrains.intellij") version "1.8.1" // https://github.com/JetBrains/gradle-intellij-plugin https://lp.jetbrains.com/gradle-intellij-plugin/
     id("com.github.ben-manes.versions") version "0.42.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("com.jaredsburrows.license") version "0.9.0" // https://github.com/jaredsburrows/gradle-license-plugin
@@ -23,7 +23,6 @@ plugins {
 // Import variables from gradle.properties file
 val pluginIdeaVersion: String by project
 val pluginDownloadIdeaSources: String by project
-val pluginInstrumentPluginCode: String by project
 val pluginVersion: String by project
 val pluginJavaVersion: String by project
 val pluginVerifyProductDescriptor: String by project
@@ -40,9 +39,6 @@ version = if (pluginVersion == "auto") {
     pluginVersion
 }
 
-val twelvemonkeysVersion = "3.8.3"
-val junitVersion = "5.9.0"
-
 if (pluginVerifyProductDescriptor.toBoolean()) {
     val pluginXmlStr = projectDir.resolve("src/main/resources/META-INF/plugin.xml").readText()
     if (!pluginXmlStr.contains("<product-descriptor")) {
@@ -57,6 +53,9 @@ group = "lermitage.intellij.extra.icons"
 repositories {
     mavenCentral()
 }
+
+val twelvemonkeysVersion = "3.8.3"
+val junitVersion = "5.9.0"
 
 dependencies {
     implementation("com.twelvemonkeys.imageio:imageio-core:$twelvemonkeysVersion") // https://github.com/haraldk/TwelveMonkeys/releases
@@ -74,7 +73,7 @@ dependencies {
 
 intellij {
     downloadSources.set(pluginDownloadIdeaSources.toBoolean() && !System.getenv().containsKey("CI"))
-    instrumentCode.set(pluginInstrumentPluginCode.toBoolean())
+    instrumentCode.set(true)
     pluginName.set("Extra Icons")
     plugins.set(listOf("AngularJS"))
     sandboxDir.set("${rootProject.projectDir}/.idea-sandbox/${shortenIdeVersion(pluginIdeaVersion)}")
@@ -141,7 +140,7 @@ tasks {
     runIde {
         jvmArgs("-Xms128m")
         jvmArgs("-Xmx1024m")
-        autoReloadPlugins.set(true)
+        autoReloadPlugins.set(false)
         // If any warning or error with missing --add-opens, wait for the next gradle-intellij-plugin's update that should sync
         // with https://raw.githubusercontent.com/JetBrains/intellij-community/master/plugins/devkit/devkit-core/src/run/OpenedPackages.txt
         // or do it manually

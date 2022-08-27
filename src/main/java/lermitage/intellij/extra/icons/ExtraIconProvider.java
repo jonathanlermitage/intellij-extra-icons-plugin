@@ -368,12 +368,14 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?")
                     .altIcons("extra-icons/babel_alt.svg"),
                 ofFile("cookie", "extra-icons/cookie.svg", "Cookie (regex): .*cookie[a-zA-Z\\d_-]*\\.txt")
-                    .regex(".*cookie[a-zA-Z\\d_-]*\\.txt"),
+                    .regex(".*cookie[a-zA-Z\\d._\\-]*\\.txt$"),
                 ofFile("dotenv", "extra-icons/env.svg", "Dotenv: .*\\.env(\\.[a-zA-Z0-9]+)*")
-                    .regex(".*\\.env(\\.[a-zA-Z\\d]+)*")
+                    .regex(".*\\.env[a-zA-Z\\d._\\-]*$")
                     .altIcons("extra-icons/env_alt.svg", "extra-icons/env_alt2.svg"),
                 ofFile("eslint", "extra-icons/eslint.svg", "Eslint (regex): .*\\.eslintrc(\\.[cm]?js(on)?|\\.y(a)?ml)?$")
                     .regex(".*\\.eslintrc(\\.[cm]?js(on)?|\\.y(a)?ml)?$"),
+                ofFile("githubactions", "extra-icons/github_action.svg", "GitHub Actions: .github/workflows/.*\\.yml")
+                    .regex(".*/\\.github/workflows/.*\\.yml"),
                 ofFile("nodemon", "extra-icons/nodemon.svg", "Nodemon: ^\\.?nodemon\\.json$")
                     .regex(".^\\.?nodemon\\.json$"),
                 ofFile("tsconfig", "extra-icons/tsconfig.svg", "TSConfig: .*/\\.?tsconfig.*\\.(js|json)$")
@@ -620,6 +622,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("graphql.schema.json"),
                 ofFile("gocd", "extra-icons/gocd.png", "Gocd: .gocd(.xml,.yml,...)")
                     .eq(".gocd").mayEnd(CFG),
+                ofFile("gomod", "extra-icons/gomod.svg", "Go: go.mod")
+                    .eq("go.mod")
+                    .altIcons("extra-icons/gomod_alt.svg"),
                 ofFile("hadolint", "extra-icons/hadolint.png", "Hadolint: .hadolint.yaml, .hadolint.yml")
                     .eq(".hadolint").end(YML),
                 ofFile("hibernate", "extra-icons/hibernate.svg", "Hibernate: hibernate.properties")

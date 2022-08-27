@@ -1,4 +1,4 @@
-<idea-plugin require-restart="false">
+<idea-plugin require-restart="true">
     <id>lermitage.intellij.extra.icons</id>
     <name>Extra Icons</name>
     <version>REPLACED_BY_GRADLE</version>
@@ -16,6 +16,7 @@
         <li>For more information, please see this <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">guide</a>.</li>
         <li>For questions about the plugin licensing model, how to get a license for free (students, teachers and OSS developers), and how to get a perpetual license, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md">license FAQ</a>.</li>
       </ul>
+      <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin">GitHub</a> | <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues">Issues</a> | <a href="https://www.linkedin.com/in/jonathan-lermitage/">LinkedIn</a> | <a href="https://vshymanskyy.github.io/StandWithUkraine/">💙 Help Ukraine 💛</a>
     ]]>
     </description>
 
@@ -31,6 +32,10 @@
       <li>support many audio/video files. Thx to contributor <b>Serial-ATA</b>.</li>
       <li>internal: upgrade TwelveMonkeys library to 3.8.3 (used to preview PNG icons).</li>
       <li>rework Haxe icons (PNG icon to SVG).</li>
+      <li>improve Dotenv and Cookie file support.</li>
+      <li>support <i>go.mod</i> files (I am proud of this icon 😁).</li>
+      <li>support GitHub Actions YML files.</li>
+      <li>disable plugin's dynamic reloading since it never worked. Plugin uses an IntelliJ IconPathPatcher implementation in order to override IDE icons, which prevents dynamic reloading.</li>
     </ul>
     2022.1.8 (2022/08/06)
     <ul>

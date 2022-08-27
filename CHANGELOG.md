@@ -4,6 +4,10 @@
 * support many audio/video files. Thx to contributor **Serial-ATA**.
 * internal: upgrade TwelveMonkeys library to 3.8.3 (used to preview PNG icons).
 * rework Haxe icons (PNG icon to SVG).
+* improve Dotenv and Cookie file support.
+* support `go.mod` files (I am proud of this icon :smile:).
+* support GitHub Actions YML files.
+* disable plugin's dynamic reloading since it never worked. Plugin uses an IntelliJ IconPathPatcher implementation in order to override IDE icons, which prevents dynamic reloading.
 
 ## 2022.1.8 (2022/08/06)
 * support Nx `nx.json` files.
