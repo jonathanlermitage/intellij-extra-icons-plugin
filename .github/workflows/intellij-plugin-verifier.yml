@@ -28,8 +28,12 @@ jobs:
             ideaIU:2021.1.3
             ideaIC:2022.2.1
             ideaIU:2022.2.1
-          failure-levels: |
+          failure-levels: | # see https://github.com/ChrisCarini/intellij-platform-plugin-verifier-action#failure-levels
+            OVERRIDE_ONLY_API_USAGES
+            NON_EXTENDABLE_API_USAGES
+            PLUGIN_STRUCTURE_WARNINGS
             INVALID_PLUGIN
+          # TODO enable COMPATIBILITY_PROBLEMS when this issue is fixed: https://youtrack.jetbrains.com/issue/MP-4724/intellij-plugin-verifier-Plugin-AngularJS-doesnt-have-a-build-compatible-with-IC-222373954-in-Marketplace
 
       - name: Get log file path and print contents
         run: |
