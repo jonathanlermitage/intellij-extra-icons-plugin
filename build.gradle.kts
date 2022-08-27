@@ -4,7 +4,9 @@ import com.github.benmanes.gradle.versions.reporter.result.Result
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.palantir.gradle.gitversion.VersionDetails
 import groovy.lang.Closure
+import org.jetbrains.intellij.tasks.RunPluginVerifierTask
 import java.io.StringWriter
+import java.util.EnumSet
 
 fun properties(key: String) = project.findProperty(key).toString()
 
@@ -146,7 +148,20 @@ tasks {
         // or do it manually
     }
     runPluginVerifier {
+        // https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html#runpluginverifier-task
         ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map(String::trim).filter(String::isNotEmpty))
+        failureLevel.set(
+            EnumSet.complementOf(
+                EnumSet.of(
+                    // TODO enable COMPATIBILITY_PROBLEMS when this issue is fixed: https://youtrack.jetbrains.com/issue/MP-4724/intellij-plugin-verifier-Plugin-AngularJS-doesnt-have-a-build-compatible-with-IC-222373954-in-Marketplace
+                    //RunPluginVerifierTask.FailureLevel.COMPATIBILITY_PROBLEMS,
+                    RunPluginVerifierTask.FailureLevel.OVERRIDE_ONLY_API_USAGES,
+                    RunPluginVerifierTask.FailureLevel.NON_EXTENDABLE_API_USAGES,
+                    RunPluginVerifierTask.FailureLevel.PLUGIN_STRUCTURE_WARNINGS,
+                    RunPluginVerifierTask.FailureLevel.INVALID_PLUGIN
+                )
+            )
+        )
     }
     buildSearchableOptions {
         enabled = false
