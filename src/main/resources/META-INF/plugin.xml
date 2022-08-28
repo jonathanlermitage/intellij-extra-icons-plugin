@@ -36,7 +36,7 @@
       <li>improve Dotenv and Cookie file support.</li>
       <li>support <i>go.mod</i> files (I am proud of this icon 😁).</li>
       <li>support GitHub Actions YML files.</li>
-      <li>disable plugin's dynamic reloading since it never worked. Plugin uses an IntelliJ IconPathPatcher implementation in order to override IDE icons, which prevents dynamic reloading.</li>
+      <li>disable plugin's dynamic reloading since it never worked. Plugin uses an IconPathPatcher implementation in order to override IDE icons, which prevents dynamic reloading.</li>
     </ul>
     2022.1.8 (2022/08/06)
     <ul>
