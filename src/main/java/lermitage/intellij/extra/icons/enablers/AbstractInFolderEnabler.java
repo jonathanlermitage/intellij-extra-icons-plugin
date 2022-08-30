@@ -9,12 +9,15 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
+import dev.failsafe.Failsafe;
+import dev.failsafe.RetryPolicy;
 import lermitage.intellij.extra.icons.Globals;
 import lermitage.intellij.extra.icons.cfg.SettingsService;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -25,6 +28,9 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
 
     private static final Logger LOGGER = Logger.getInstance(AbstractInFolderEnabler.class);
     private final String className = this.getClass().getSimpleName();
+
+    private final int FILENAME_INDEX_QUERY_MAX_ATTEMPTS = 3;
+    private final int FILENAME_INDEX_QUERY_RETRY_DELAY_MS = 20;
 
     private boolean initialized = false;
     private boolean indexErrorReported = false;
@@ -38,29 +44,25 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     protected synchronized void init(@NotNull Project project) {
         long t1 = System.currentTimeMillis();
         String[] filenamesToSearch = getFilenamesToSearch();
-        Collection<VirtualFile> virtualFilesByName = null;
+        Collection<VirtualFile> virtualFilesByName;
         try {
-            final int MAX_ATTEMPTS = 3;
-            //noinspection ConstantConditions
-            for (int i = 1; i <= MAX_ATTEMPTS; i++) {
-                try {
-                    // TODO migrate to getVirtualFilesByName(getFilenamesToSearch()[0], true, GlobalSearchScope.projectScope(project))
-                    //  in 2023 and set minimal IDE version to 2022.1 (221)
-                    virtualFilesByName = FilenameIndex.getVirtualFilesByName(
-                        project,
-                        getFilenamesToSearch()[0],
-                        true,
-                        GlobalSearchScope.projectScope(project));
-                    break;
-                } catch (Exception e) {
-                    if (i == MAX_ATTEMPTS) {
-                        throw (e);
-                    }
-                    LOGGER.warn(getName() + " IconEnabler failed to query IDE filename index (attempt " + i + "/" + MAX_ATTEMPTS + "). " +
-                        "Will try again in 20 ms. " + e.getMessage());
-                    Thread.sleep(20);
-                }
-            }
+            RetryPolicy<Object> retryPolicy = RetryPolicy.builder()
+                .handle(Exception.class)
+                .withMaxAttempts(FILENAME_INDEX_QUERY_MAX_ATTEMPTS)
+                .onRetry(event -> LOGGER.warn(getName() + " IconEnabler failed to query IDE filename index " +
+                    "(attempt " + event.getAttemptCount() + "/" + FILENAME_INDEX_QUERY_MAX_ATTEMPTS + "). " +
+                    "Will try again in " + FILENAME_INDEX_QUERY_RETRY_DELAY_MS + " ms. " + event))
+                .withDelay(Duration.ofMillis(FILENAME_INDEX_QUERY_RETRY_DELAY_MS)).build();
+
+            virtualFilesByName = Failsafe.with(retryPolicy).get(() -> {
+                // TODO migrate to getVirtualFilesByName(getFilenamesToSearch()[0], true, GlobalSearchScope.projectScope(project))
+                //  in 2023 and set minimal IDE version to 2022.1 (221)
+                return FilenameIndex.getVirtualFilesByName(
+                    project,
+                    getFilenamesToSearch()[0],
+                    true,
+                    GlobalSearchScope.projectScope(project));
+            });
         } catch (Exception e) {
             initialized = true;
             if (!indexErrorReported) {

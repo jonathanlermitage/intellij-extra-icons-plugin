@@ -56,10 +56,12 @@ repositories {
     mavenCentral()
 }
 
+val failsafe = "3.2.4"
 val twelvemonkeysVersion = "3.8.3"
 val junitVersion = "5.9.0"
 
 dependencies {
+    implementation("dev.failsafe:failsafe:$failsafe") // Retry support https://failsafe.dev/retry/
     implementation("com.twelvemonkeys.imageio:imageio-core:$twelvemonkeysVersion") // https://github.com/haraldk/TwelveMonkeys/releases
     // TODO Apache Batik is bundled with IJ and IJ-based IDEs (tested with PyCharm Community). If needed, see how to
     //  integrate org.apache.xmlgraphics:batik-all:1.14 without failing to load org.apache.batik.anim.dom.SAXSVGDocumentFactory
