@@ -47,7 +47,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
         String[] filenamesToSearch = getFilenamesToSearch();
         Collection<VirtualFile> virtualFilesByName;
         try {
-            RetryPolicy<Object> retryPolicy = RetryPolicy.builder()
+            RetryPolicy<Collection<VirtualFile>> retryPolicy = RetryPolicy.<Collection<VirtualFile>>builder()
                 .handle(Exception.class)
                 .withMaxAttempts(FILENAME_INDEX_QUERY_MAX_ATTEMPTS)
                 .onRetry(event -> LOGGER.warn(getName() + " IconEnabler failed to query IDE filename index " +
