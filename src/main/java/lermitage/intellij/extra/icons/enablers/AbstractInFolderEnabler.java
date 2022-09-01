@@ -30,7 +30,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     private final String className = this.getClass().getSimpleName();
 
     private final int FILENAME_INDEX_QUERY_MAX_ATTEMPTS = 3;
-    private final int FILENAME_INDEX_QUERY_RETRY_DELAY_MS = 20;
+    private final int FILENAME_INDEX_QUERY_RETRY_DELAY_MS = 60;
 
     private boolean initialized = false;
     private boolean indexErrorReported = false;
@@ -41,7 +41,8 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     /** The name of this icon enabler. Used to identify disabled icon enabler if an error occurred. */
     public abstract String getName();
 
-    protected synchronized void init(@NotNull Project project) {
+    @Override
+    public synchronized void init(@NotNull Project project) {
         long t1 = System.currentTimeMillis();
         String[] filenamesToSearch = getFilenamesToSearch();
         Collection<VirtualFile> virtualFilesByName;
@@ -67,12 +68,15 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
             initialized = true;
             if (!indexErrorReported) {
                 indexErrorReported = true;
-                String msg = "Failed to query IDE filename index. <b>This feature won't work: " + getName() + "</b>. " +
-                    "If this is the first time you see this message, and if you really need this feature, " +
+                String msg = "Failed to query IDE filename index. <b>This feature won't work: " + getName() + "</b>.<br>" +
+                    "📢 If this is the first time you see this message, and if you really need this feature, " +
                     "please restart your IDE. If it doesn't help, try to clear the file system cache and " +
-                    "Local History (go to File, Invalidate Caches...).<br><b>It seems to be a JetBrains issue</b> (feel free to <b>upvote</b> " +
-                    "https://youtrack.jetbrains.com/issue/IDEA-289822). Please do not open a new ticket for that.<br><hr>" +
-                    "To disable this notification, please go to <b>File</b>, <b>Settings...</b>, <b>Extra Icons</b>, and check <b>Ignore plugin's warnings</b>.";
+                    "Local History (go to <i>File</i>, <i>Invalidate Caches...</i>).<br>" +
+                    "📢 You can also wait until indexing is done, then go to <i>File</i>, <i>Settings</i>, <i>Appearance &amp; Behavior</i>, " +
+                    "<i>Extra Icons</i>, and hit the <b>Reload projects icons</b> button.<br><hr>" +
+                    "<b>It seems to be a JetBrains issue</b> (feel free to <b>upvote</b> " +
+                    "https://youtrack.jetbrains.com/issue/IDEA-289822). Please do not open a new ticket for that.<br>" +
+                    "To disable this notification, please go to <i>File</i>, <i>Settings</i>, <i>Extra Icons</i>, and check <b>Ignore plugin's warnings</b>.";
                 LOGGER.warn(msg, e);
                 if (!SettingsService.getIDEInstance().getIgnoreWarnings()) {
                     NotificationGroupManager.getInstance().getNotificationGroup(Globals.PLUGIN_GROUP_DISPLAY_ID)

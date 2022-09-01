@@ -41,7 +41,8 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
         return iconEnabler;
     }
 
-    private synchronized void init(@NotNull Project project) {
+    @Override
+    public synchronized void init(@NotNull Project project) {
         long t1 = System.currentTimeMillis();
         submoduleFolders = findGitModulesFiles(project);
         initialized = true;

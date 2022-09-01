@@ -21,6 +21,7 @@ import lermitage.intellij.extra.icons.cfg.dialogs.ModelDialog;
 import lermitage.intellij.extra.icons.cfg.models.PluginIconsSettingsTableModel;
 import lermitage.intellij.extra.icons.cfg.models.UserIconsSettingsTableModel;
 import lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService;
+import lermitage.intellij.extra.icons.enablers.EnablerUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.apache.commons.collections.CollectionUtils;
@@ -81,6 +82,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JLabel disableOrEnableOrLabel;
     private JLabel disableOrEnableLabel;
     private JCheckBox ignoreWarningsCheckBox;
+    private JButton buttonReloadProjectsIcons;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -100,6 +102,13 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 DocumentListener.super.documentChanged(event);
                 applyFilter();
             }
+        });
+        buttonReloadProjectsIcons.addActionListener(e -> {
+            EnablerUtils.forceInitAllEnablers();
+            ProjectUtils.refreshOpenedProjects();
+            JOptionPane.showMessageDialog(null,
+                "All icons in project views should have been reloaded.", "Icons reloaded",
+                JOptionPane.INFORMATION_MESSAGE);
         });
     }
 
@@ -263,8 +272,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             additionalUIScaleTitle.setVisible(false);
             additionalUIScaleTextField.setVisible(false);
             ignoreWarningsCheckBox.setVisible(false);
+            buttonReloadProjectsIcons.setVisible(false);
         }
         comboBoxIconsGroupSelector.addItem("icons");
+        buttonReloadProjectsIcons.setText("Reload projects icons");
+        buttonReloadProjectsIcons.setToolTipText("<b>Reload icons in all project views.</b><br>" +
+            "Use it if some icons were not loaded due to errors like IDE filename index issues.");
         Arrays.stream(ModelTag.values()).forEach(modelTag -> comboBoxIconsGroupSelector.addItem(modelTag.getName() + " tagged icons"));
     }
 

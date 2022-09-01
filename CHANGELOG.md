@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2022.1.10 (WIP)
+* add an option in Extra Icons settings in order to force icons reloading on demand. Use it if you still see errors when querying IDE filename index: wait until indexing is done, go to File, Settings, Appearance & Behavior, Extra Icons, then hit the `Reload projects icons` button. Again, feel free to upvote [**IDEA-289822**](https://youtrack.jetbrains.com/issue/IDEA-289822), it would help.
+
 ## 2022.1.9 (2022/08/27)
 * support many audio/video files. Thx to contributor **Serial-ATA**.
 * try to mitigate errors when querying IDE filename index (will now retry twice before failing). This is a JetBrains issue, **feel free to upvote** [**IDEA-289822**](https://youtrack.jetbrains.com/issue/IDEA-289822), it would help.
