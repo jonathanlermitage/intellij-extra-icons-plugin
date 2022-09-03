@@ -30,6 +30,7 @@
     2022.1.10 (WIP)
     <ul>
       <li>add an option in Extra Icons settings in order to force icons reloading on demand. Use it if you still see errors when querying IDE filename index: wait until indexing is done, go to File, Settings, Appearance &amp; Behavior, Extra Icons, then hit the <i>Reload projects icons</i> button. Again, feel free to upvote <a href="https://youtrack.jetbrains.com/issue/IDEA-289822">IDEA-289822</a>, it would help.</li>
+      <li>add an alternative Dependabot icon.</li>
     </ul>
     2022.1.9 (2022/08/27)
     <ul>
