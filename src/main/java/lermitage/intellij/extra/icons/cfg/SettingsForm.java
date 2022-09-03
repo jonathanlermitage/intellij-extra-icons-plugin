@@ -220,8 +220,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         service.setCustomModels(customModels);
 
         if (isProjectForm) {
+            EnablerUtils.forceInitAllEnablers(project);
             ProjectUtils.refresh(project);
         } else {
+            EnablerUtils.forceInitAllEnablers();
             ProjectUtils.refreshOpenedProjects();
         }
 

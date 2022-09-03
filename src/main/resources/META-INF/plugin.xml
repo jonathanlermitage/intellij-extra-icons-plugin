@@ -33,6 +33,7 @@
       <li>add an alternative Dependabot icon.</li>
       <li>add an alternative Draw.io icon.</li>
       <li>add an alternative Helm icon.</li>
+      <li>improve icons reloading on config change.</li>
     </ul>
     2022.1.9 (2022/08/27)
     <ul>

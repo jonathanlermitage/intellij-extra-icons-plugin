@@ -11,13 +11,17 @@ import java.util.Optional;
 public class EnablerUtils {
 
     public static void forceInitAllEnablers() {
+        Project[] projects = ProjectManager.getInstance().getOpenProjects();
+        for (Project project : projects) {
+            forceInitAllEnablers(project);
+        }
+    }
+
+    public static void forceInitAllEnablers(Project project) {
         for (IconEnablerType iconEnablerType : IconEnablerType.values()) {
-            Project[] projects = ProjectManager.getInstance().getOpenProjects();
-            for (Project project : projects) {
-                if (ProjectUtils.isAlive(project)) {
-                    Optional<IconEnabler> iconEnabler = IconEnablerProvider.getIconEnabler(project, iconEnablerType);
-                    iconEnabler.ifPresent(enabler -> enabler.init(project));
-                }
+            if (ProjectUtils.isAlive(project)) {
+                Optional<IconEnabler> iconEnabler = IconEnablerProvider.getIconEnabler(project, iconEnablerType);
+                iconEnabler.ifPresent(enabler -> enabler.init(project));
             }
         }
     }

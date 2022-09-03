@@ -5,6 +5,7 @@
 * add an alternative Dependabot icon.
 * add an alternative Draw.io icon.
 * add an alternative Helm icon.
+* improve icons reloading on config change.
 
 ## 2022.1.9 (2022/08/27)
 * support many audio/video files. Thx to contributor **Serial-ATA**.
