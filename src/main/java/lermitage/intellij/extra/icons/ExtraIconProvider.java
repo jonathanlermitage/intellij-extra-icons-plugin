@@ -913,7 +913,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/binary_alt.svg", "extra-icons/binary_alt2.svg"),
                 ofFile("ext_drawio", "extra-icons/drawio.svg", "Draw.io: *.drawio, *.dio")
                     .end(".drawio", ".dio")
-                    .altIcons("extra-icons/drawio_alt.png"),
+                    .altIcons("extra-icons/drawio_alt.svg", "extra-icons/drawio_alt2.png"),
                 ofFile("ext_epub", "extra-icons/epub.svg", "Epub: *.epub, *.mobi, *.azw, *.azw3")
                     .end(".epub", ".mobi", ".azw", ".azw3"),
                 ofFile("ext_exe", "extra-icons/msexe.png", "Windows executable: *.exe")
