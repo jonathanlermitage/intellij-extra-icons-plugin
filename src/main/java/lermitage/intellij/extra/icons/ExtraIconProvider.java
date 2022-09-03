@@ -225,7 +225,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 // helm
                 ofDir("helm_dir", "extra-icons/helmDirectory.svg", "Helm chart containing folder")
                     .iconEnabler(IconEnablerType.IS_HELM_FOLDER)
-                    .altIcons("extra-icons/helmlogo.svg")
+                    .altIcons("extra-icons/helmlogo.svg", "extra-icons/helmlogo_alt.svg")
                     .tags(ModelTag.HELM),
                 ofFile("helm_chart_yaml", "extra-icons/helmChart.svg", "Helm: Chart.yaml")
                     .eq("chart.yaml")
@@ -260,7 +260,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("helm_all_yaml", "extra-icons/helm.svg", "Helm: *.yaml")
                     .end(".yaml")
                     .iconEnabler(IconEnablerType.IS_IN_HELM_FOLDER)
-                    .altIcons("extra-icons/helmlogo.svg")
+                    .altIcons("extra-icons/helmlogo.svg", "extra-icons/helmlogo_alt.svg")
                     .tags(ModelTag.HELM),
 
                 // angular
