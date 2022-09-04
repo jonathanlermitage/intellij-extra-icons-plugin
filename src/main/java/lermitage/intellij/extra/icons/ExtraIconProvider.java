@@ -927,7 +927,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_haxexml", "extra-icons/haxehxml.svg", "Haxe: *.hxml")
                     .end(".hxml"),
                 ofFile("ext_http", "extra-icons/http.png", "HTTP (e.g. IntelliJ HTTP Client queries file): *.http")
-                    .end(".http"),
+                    .end(".http")
+                    .altIcons("extra-icons/http_alt.svg"),
                 ofFile("ext_iml", "extra-icons/jetbrains.svg", "IntelliJ project: *.iml")
                     .end(".iml"),
                 ofFile("ext_jfr", "extra-icons/jfr.svg", "JFR snapshot: *.jfr")

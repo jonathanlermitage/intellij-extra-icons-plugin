@@ -5,6 +5,7 @@
 * add an alternative Dependabot icon.
 * add an alternative Draw.io icon.
 * add an alternative Helm icon.
+* add an alternative HTTP icon.
 * rework some Docker icons, and fix a Docker Ignore dark icon.
 * improve icons reloading on config change.
 
