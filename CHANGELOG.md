@@ -6,6 +6,7 @@
 * add an alternative Draw.io icon.
 * add an alternative Helm icon.
 * add an alternative HTTP icon.
+* support [YANG](https://network.developer.nokia.com/sr/learn/yang/understanding-yang/) files.
 * rework some Docker icons, and fix a Docker Ignore dark icon.
 * improve icons reloading on config change.
 
