@@ -34,13 +34,13 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofIcon("ide_docker",
                     "Docker.svg", "extra-icons/docker.svg",
                     "IDE icon: Docker")
-                    .altIcons("extra-icons/docker_alt.png", "extra-icons/docker_alt2.svg")
+                    .altIcons("extra-icons/docker_alt.svg", "extra-icons/docker_alt2.svg")
                     .tags(ModelTag.DOCKER),
                 // docker compose
                 ofIcon("ide_docker_compose",
                     "DockerCompose.svg", "extra-icons/dockercompose.svg",
                     "IDE icon: Docker Compose")
-                    .altIcons("extra-icons/dockercompose_alt.png", "extra-icons/dockercompose_alt2.svg")
+                    .altIcons("extra-icons/dockercompose_alt.svg", "extra-icons/dockercompose_alt2.svg")
                     .tags(ModelTag.DOCKER),
                 // html
                 ofIcon("ide_html",
@@ -552,23 +552,23 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("deptective.json"),
                 ofFile("docker", "extra-icons/docker.svg", "Docker: dockerfile(.xml,.yml,...)")
                     .eq("dockerfile").mayEnd(CFG)
-                    .altIcons("extra-icons/docker_alt.png", "extra-icons/docker_alt2.svg")
+                    .altIcons("extra-icons/docker_alt.svg", "extra-icons/docker_alt2.svg")
                     .tags(ModelTag.DOCKER),
                 ofFile("dockercompose", "extra-icons/dockercompose.svg", "Docker: docker-compose")
                     .eq("docker-compose").mayEnd(CFG)
-                    .altIcons("extra-icons/dockercompose_alt.png", "extra-icons/dockercompose_alt2.svg")
+                    .altIcons("extra-icons/dockercompose_alt.svg", "extra-icons/dockercompose_alt2.svg")
                     .tags(ModelTag.DOCKER),
                 ofFile("docker1", "extra-icons/docker.svg", "Docker: start by 'dockerfile' and end by '.xml,.yml,...'")
                     .start("dockerfile").end(CFG)
-                    .altIcons("extra-icons/docker_alt.png", "extra-icons/docker_alt2.svg")
+                    .altIcons("extra-icons/docker_alt.svg", "extra-icons/docker_alt2.svg")
                     .tags(ModelTag.DOCKER),
                 ofFile("dockercompose1", "extra-icons/dockercompose.svg", "Docker: start by 'docker-compose' and end by '.xml,.yml,...'")
                     .start("docker-compose").end(CFG)
-                    .altIcons("extra-icons/dockercompose_alt.png", "extra-icons/dockercompose_alt2.svg")
+                    .altIcons("extra-icons/dockercompose_alt.svg", "extra-icons/dockercompose_alt2.svg")
                     .tags(ModelTag.DOCKER),
                 ofFile("dockerignore", "extra-icons/dockerignore.svg", "Docker: .dockerignore")
                     .eq(".dockerignore")
-                    .altIcons("extra-icons/dockerignore_alt.png", "extra-icons/dockerignore_alt2.svg")
+                    .altIcons("extra-icons/dockerignore_alt.svg", "extra-icons/dockerignore_alt2.svg")
                     .tags(ModelTag.DOCKER),
                 ofFile("editorconfig", "extra-icons/editorconfig.png", "EditorConfig: .editorconfig")
                     .eq(".editorconfig").mayEnd(CFG)
@@ -1081,11 +1081,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 //
                 ofFile("docker_generic", "extra-icons/docker.svg", "Docker (generic): start by 'dockerfile'")
                     .start("dockerfile")
-                    .altIcons("extra-icons/docker_alt.png", "extra-icons/docker_alt2.svg")
+                    .altIcons("extra-icons/docker_alt.svg", "extra-icons/docker_alt2.svg")
                     .tags(ModelTag.DOCKER),
                 ofFile("docker_generic_2", "extra-icons/docker.svg", "Docker (generic): end with 'dockerfile'")
                     .end("dockerfile")
-                    .altIcons("extra-icons/docker_alt.png", "extra-icons/docker_alt2.svg")
+                    .altIcons("extra-icons/docker_alt.svg", "extra-icons/docker_alt2.svg")
                     .tags(ModelTag.DOCKER)
             )
             .flatMap(ExtraIconProvider::modelList)
