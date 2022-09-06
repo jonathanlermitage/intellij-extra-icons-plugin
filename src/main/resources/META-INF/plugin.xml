@@ -20,7 +20,6 @@
       Some narrow-minded people organized a review-bombing against my plugin (and sent me very aggressive emails, sometimes death threats;
       seriously... they're crazy), which is why you see many 1-star ratings. JetBrains support accepted to remove most of the toxic reviews,
       but unfortunately, they refused to remove the 1-star ratings...<br>
-      There's a big problem on the JetBrains marketplace, and I know they have a plan to fix it. Let's be patient, and it should get better.<br>
       <br>
       <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin">GitHub</a> | <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues">Issues</a> | <a href="https://www.linkedin.com/in/jonathan-lermitage/">LinkedIn</a> | <a href="https://vshymanskyy.github.io/StandWithUkraine/">💙 Help Ukraine 💛</a>
     ]]>
@@ -33,7 +32,7 @@
     -->
 
     <change-notes><![CDATA[
-    2022.1.10 (WIP)
+    2022.1.10 (2022/09/05)
     <ul>
       <li>add an option in Extra Icons settings in order to force icons reloading on demand. Use it if you still see errors when querying IDE filename index: wait until indexing is done, go to File, Settings, Appearance &amp; Behavior, Extra Icons, then hit the <i>Reload projects icons</i> button. Again, feel free to upvote <a href="https://youtrack.jetbrains.com/issue/IDEA-289822">IDEA-289822</a>, it would help.</li>
       <li>add an alternative Dependabot icon.</li>

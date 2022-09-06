@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2022.1.10 (WIP)
+## 2022.1.10 (2022/09/05)
 * add an option in Extra Icons settings in order to force icons reloading on demand. Use it if you still see errors when querying IDE filename index: wait until indexing is done, go to File, Settings, Appearance & Behavior, Extra Icons, then hit the `Reload projects icons` button. Again, feel free to upvote [**IDEA-289822**](https://youtrack.jetbrains.com/issue/IDEA-289822), it would help.
 * add an alternative Dependabot icon.
 * add an alternative Draw.io icon.
