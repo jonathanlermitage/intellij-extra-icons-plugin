@@ -32,6 +32,14 @@
     -->
 
     <change-notes><![CDATA[
+    2022.1.11 (2022/09/16)
+    <ul>
+      <li><a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/110">feat #110</a> config panel: add a text input field to test the conditions for User icons.</li>
+      <li><a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/111">fix #111</a> slow operations are prohibited on EDT.</li>
+      <li>config panel: minor UI improvements in Plugin icons list.</li>
+      <li>fix possible NPE when updating User icons conditions list.</li>
+      <li>I think IDE filename index issues are gone! Sorry for this annoying issue, it made me crazy. Big thanks to <a href="https://youtrack.jetbrains.com/issue/IDEA-291382/Assertion-failed-at-VirtualDirectoryImpldoFindChildById#focus=Comments-27-6445738.0-0">Andreas Perhab</a>, who found a solution using an Index Listener. Some explanations: we are not allowed to query the index during indexing. Extra Icons plugin needs to query the index in order to locate some files (for Angular and Helm support) and, unfortunately, the IDE seems to try to update icons (which invokes Extra Icons plugin, which tries to query the index) during indexing. This is not new, but it's more frequent since IJ 2022. Starting from now, we will silent this error, and we query the index a second time, once indexing tasks completed.</li>
+    </ul>
     2022.1.10 (2022/09/05)
     <ul>
       <li>add an option in Extra Icons settings in order to force icons reloading on demand. Use it if you still see errors when querying IDE filename index: wait until indexing is done, go to File, Settings, Appearance &amp; Behavior, Extra Icons, then hit the <i>Reload projects icons</i> button. Again, feel free to upvote <a href="https://youtrack.jetbrains.com/issue/IDEA-289822">IDEA-289822</a>, it would help.</li>
@@ -42,49 +50,6 @@
       <li>support <a href="https://network.developer.nokia.com/sr/learn/yang/understanding-yang/">YANG</a> files.</li>
       <li>rework some Docker icons, and fix a Docker Ignore dark icon.</li>
       <li>improve icons reloading on config change.</li>
-    </ul>
-    2022.1.9 (2022/08/27)
-    <ul>
-      <li>support many audio/video files. Thx to contributor <b>Serial-ATA</b>.</li>
-      <li>try to mitigate errors when querying IDE filename index (will now retry twice before failing). This is a JetBrains issue, <b>feel free to upvote <a href="https://youtrack.jetbrains.com/issue/IDEA-289822">IDEA-289822</a></b>, it would help.</li>
-      <li>internal: upgrade TwelveMonkeys library to 3.8.3 (used to preview PNG icons).</li>
-      <li>rework Haxe icons (PNG icon to SVG).</li>
-      <li>improve Dotenv and Cookie file support.</li>
-      <li>support <i>go.mod</i> files (I am proud of this icon 😁).</li>
-      <li>support GitHub Actions YML files.</li>
-      <li>disable plugin's dynamic reloading since it never worked. Plugin uses an IconPathPatcher implementation in order to override IDE icons, which prevents dynamic reloading.</li>
-    </ul>
-    2022.1.8 (2022/08/06)
-    <ul>
-      <li>support Nx <i>nx.json</i> files.</li>
-      <li>support many audio files. Thx to contributor <b>Serial-ATA</b>.</li>
-      <li>support Cypress json files.</li>
-      <li>add an alternative Prettier icon.</li>
-      <li>add an alternative 7zip icon.</li>
-      <li>internal: fix usage of some deprecated code</li>
-      <li>don't crash if plugin can't query the IDE filename index, and simply display a notification.</li>
-      <li>add an option to ignore plugin's warnings.</li>
-    </ul>
-    2022.1.7 (2022/07/16)
-    <ul>
-      <li>performance improvement.</li>
-      <li>implement #100: add buttons to allow reordering of entries in the User Icons list.</li>
-      <li>improve support of older IDEs (based on IJ 2021). IDE build number is detected at runtime and code is adapted when needed.</li>
-      <li>improve Flyway and Liquibase support.</li>
-      <li>support VSCode <i>*.code-workspace</i> files.</li>
-      <li>support <i>*.tgz</i> files.</li>
-      <li>support Deno json and jsonc files.</li>
-      <li>refactoring and code cleanup.</li>
-    </ul>
-    2022.1.6 (2022/06/25)
-    <ul>
-      <li>improve accuracy and performance of Angular support.</li>
-      <li>support various Helm files and folders.</li>
-      <li>support Cookie text files.</li>
-      <li>support <i>node_modules</i> folders.</li>
-      <li>add an alternative YAML icon.</li>
-      <li>the icons list in the configuration panel now indicates if you need to restart the IDE to see changes.</li>
-      <li>some code cleanup.</li>
     </ul>
     ]]>
     </change-notes>
@@ -147,5 +112,9 @@
     <actions>
         <!-- Add your actions here -->
     </actions>
+
+    <projectListeners>
+        <listener class="lermitage.intellij.extra.icons.IndexListener" topic="com.intellij.util.indexing.UnindexedFilesUpdaterListener" />
+    </projectListeners>
 
 </idea-plugin>

@@ -20,7 +20,7 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
     private static final Logger LOGGER = Logger.getInstance(GitSubmoduleFolderEnabler.class);
 
     /**
-     * Initialization ({@link #init(Project)}) is done once at project opening and at least every {@value}ms (if needed) to avoid
+     * Initialization ({@link #init(Project, boolean)}) is done once at project opening and at least every {@value}ms (if needed) to avoid
      * parsing {@code .gitmodule} files for every folder in the project.
      * Useful if you add a new git submodule: user will wait up to {@value}ms to see the corresponding git submodule icon.
      */
@@ -42,9 +42,18 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
     }
 
     @Override
-    public synchronized void init(@NotNull Project project) {
+    public synchronized void init(@NotNull Project project, boolean silentErrors) {
         long t1 = System.currentTimeMillis();
-        submoduleFolders = findGitModulesFiles(project);
+        try {
+            submoduleFolders = findGitModulesFiles(project);
+        } catch (Exception e) {
+            if (silentErrors) {
+                LOGGER.warn("Failed to init Git submodule Enabler", e);
+            } else {
+                throw e;
+            }
+        }
+
         initialized = true;
         long t2 = System.currentTimeMillis();
         lastInit = t2;
@@ -103,7 +112,7 @@ public class GitSubmoduleFolderEnabler implements IconEnabler {
     @Override
     public boolean verify(@NotNull Project project, @NotNull String absolutePathToVerify) {
         if (shouldInit()) {
-            init(project);
+            init(project, true);
         }
         return submoduleFolders.contains(absolutePathToVerify.toLowerCase());
     }

@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 public interface IconEnabler {
 
-    void init(@NotNull Project project);
+    void init(@NotNull Project project, boolean silentErrors) throws Exception;
 
     boolean verify(@NotNull Project project, @NotNull String absolutePathToVerify);
 

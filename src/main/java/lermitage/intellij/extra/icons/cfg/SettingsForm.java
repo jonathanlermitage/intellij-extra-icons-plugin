@@ -9,6 +9,7 @@ import com.intellij.openapi.editor.event.DocumentListener;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.ui.EditorTextField;
 import com.intellij.ui.ToolbarDecorator;
@@ -30,6 +31,7 @@ import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -103,12 +105,19 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 applyFilter();
             }
         });
-        buttonReloadProjectsIcons.addActionListener(e -> {
-            EnablerUtils.forceInitAllEnablers();
-            ProjectUtils.refreshOpenedProjects();
-            JOptionPane.showMessageDialog(null,
-                "All icons in project views should have been reloaded.", "Icons reloaded",
-                JOptionPane.INFORMATION_MESSAGE);
+        buttonReloadProjectsIcons.addActionListener(al -> {
+            try {
+                EnablerUtils.forceInitAllEnablers();
+                ProjectUtils.refreshOpenedProjects();
+                JOptionPane.showMessageDialog(null,
+                    "All icons in project views should have been reloaded.", "Icons reloaded",
+                    JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                LOGGER.warn("Config updated, but failed to reload icons for project " + project.getName(), e);
+                JOptionPane.showMessageDialog(null,
+                    "Failed to reload icons, please try again later.", "Icons not reloaded",
+                    JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
 
@@ -219,12 +228,16 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         }
         service.setCustomModels(customModels);
 
-        if (isProjectForm) {
-            EnablerUtils.forceInitAllEnablers(project);
-            ProjectUtils.refresh(project);
-        } else {
-            EnablerUtils.forceInitAllEnablers();
-            ProjectUtils.refreshOpenedProjects();
+        try {
+            if (isProjectForm) {
+                EnablerUtils.forceInitAllEnablers(project);
+                ProjectUtils.refresh(project);
+            } else {
+                EnablerUtils.forceInitAllEnablers();
+                ProjectUtils.refreshOpenedProjects();
+            }
+        } catch (Exception e) {
+            LOGGER.warn("Config updated, but failed to reload icons for project " + project.getName(), e);
         }
 
         forceUpdate = false;
@@ -441,12 +454,13 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         foldersFirst(allRegisteredModels);
         List<String> disabledModelIds = SettingsService.getInstance(project).getDisabledModelIds();
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
+        Icon checkmarkIcon = IconLoader.getIcon("extra-icons/plugin-internals/checkmark.svg", SettingsForm.class);
         allRegisteredModels.forEach(m -> pluginIconsSettingsTableModel.addRow(new Object[]{
                 IconUtils.getIcon(m, additionalUIScale),
                 !disabledModelIds.contains(m.getId()),
                 m.getDescription(),
                 Arrays.toString(m.getTags().stream().map(ModelTag::getName).toArray()).replaceAll("\\[|]*", "").trim(),
-                !Strings.isNullOrEmpty(m.getIdeIcon()),
+                Strings.isNullOrEmpty(m.getIdeIcon()) ? null : checkmarkIcon,
                 m.getTags(),
                 m.getId()
             })

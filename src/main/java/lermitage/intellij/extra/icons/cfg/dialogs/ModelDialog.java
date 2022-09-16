@@ -2,6 +2,7 @@
 
 package lermitage.intellij.extra.icons.cfg.dialogs;
 
+import com.intellij.ide.ui.laf.darcula.ui.DarculaTextBorder;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.ui.DialogWrapper;
@@ -10,6 +11,7 @@ import com.intellij.openapi.ui.ValidationInfo;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.CheckBoxList;
+import com.intellij.ui.JBColor;
 import com.intellij.ui.ListUtil;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
@@ -35,18 +37,24 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
 import javax.swing.SwingUtilities;
+import javax.swing.border.LineBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Desktop;
+import java.awt.event.ComponentAdapter;
 import java.awt.event.ItemEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -56,7 +64,7 @@ import static lermitage.intellij.extra.icons.cfg.dialogs.ModelConditionDialog.FI
 
 public class ModelDialog extends DialogWrapper {
 
-    // Icons can be SVG or PNG only. Never allow user to pick GIF, JPEG, etc, otherwise
+    // Icons can be SVG or PNG only. Never allow user to pick GIF, JPEG, etc., otherwise
     // we should convert these files to PNG in IconUtils:toBase64 method.
     private final List<String> extensions = Arrays.asList("svg", "png");
 
@@ -75,6 +83,8 @@ public class ModelDialog extends DialogWrapper {
     private JBTextField ideIconOverrideTextField;
     private JLabel ideIconOverrideLabel;
     private JBLabel ideIconOverrideTip;
+    private JTextField testTextField;
+    private JLabel testLabel;
 
     private IconUtils.ImageWrapper customIconImage;
     private JPanel toolbarPanel;
@@ -87,6 +97,8 @@ public class ModelDialog extends DialogWrapper {
         init();
         setTitle("Add New Model");
         initComponents();
+        conditionsPanel.addComponentListener(new ComponentAdapter() {
+        });
     }
 
     @Nullable
@@ -129,6 +141,8 @@ public class ModelDialog extends DialogWrapper {
         }));
 
         conditionsCheckboxList.getEmptyText().setText("No conditions added.");
+        conditionsCheckboxList.addPropertyChangeListener(evt -> testModel(getModelFromInput(), testTextField));
+
         toolbarPanel = createConditionsListToolbar();
         conditionsPanel.add(toolbarPanel, BorderLayout.CENTER);
 
@@ -167,17 +181,58 @@ public class ModelDialog extends DialogWrapper {
             }
         });
 
+        testLabel.setText("Test your model:");
+        testTextField.setText("");
+        testTextField.setToolTipText("Enter a file of folder name or absolute path in order to verify your Model.");
+        testTextField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                testModel(getModelFromInput(), testTextField);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                testModel(getModelFromInput(), testTextField);
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                testModel(getModelFromInput(), testTextField);
+            }
+        });
+
         updateUIOnTypeChange();
+    }
+
+    private void testModel(Model model, JTextField testTextField) {
+        if (testTextField.getText().isEmpty()) {
+            testTextField.setBorder(new DarculaTextBorder());
+        } else {
+            if (model == null || model.getConditions().isEmpty()) {
+                testTextField.setBorder(new LineBorder(JBColor.RED, 1));
+            } else {
+                boolean checked = model.check("", testTextField.getText(), testTextField.getText(), Collections.emptySet(), null);
+                if (checked) {
+                    testTextField.setBorder(new LineBorder(JBColor.GREEN, 1));
+                } else {
+                    testTextField.setBorder(new LineBorder(JBColor.RED, 1));
+                }
+            }
+        }
     }
 
     private void updateUIOnTypeChange() {
         Object selectedItem = typeComboBox.getSelectedItem();
+        testTextField.setVisible(true);
         if (selectedItem != null) {
             boolean ideIconOverrideSelected = selectedItem.equals(ModelType.ICON.getFriendlyName());
             ideIconOverrideLabel.setVisible(ideIconOverrideSelected);
             ideIconOverrideTextField.setVisible(ideIconOverrideSelected);
             ideIconOverrideTip.setVisible(ideIconOverrideSelected);
             conditionsPanel.setVisible(!ideIconOverrideSelected);
+            if (ideIconOverrideSelected) {
+                testTextField.setVisible(false);
+            }
         }
     }
 
@@ -200,30 +255,32 @@ public class ModelDialog extends DialogWrapper {
         }
 
         Object selectedItem = typeComboBox.getSelectedItem();
-        Model newModel;
-        if (selectedItem != null && selectedItem.equals(ModelType.ICON.getFriendlyName())) {
-            newModel = Model.createIdeIconModel(
-                modelIDField.isVisible() ? modelIDField.getText() : null,
-                ideIconOverrideTextField.getText(),
-                icon,
-                descriptionField.getText(),
-                ModelType.getByFriendlyName(Objects.requireNonNull(typeComboBox.getSelectedItem()).toString()),
-                iconType
-            );
-        } else {
-            newModel = Model.createFileOrFolderModel(
-                modelIDField.isVisible() ? modelIDField.getText() : null,
-                icon,
-                descriptionField.getText(),
-                ModelType.getByFriendlyName(Objects.requireNonNull(typeComboBox.getSelectedItem()).toString()),
-                iconType,
-                IntStream.range(0, conditionsCheckboxList.getItemsCount())
-                    .mapToObj(index -> conditionsCheckboxList.getItemAt(index))
-                    .collect(Collectors.toList())
-            );
+        Model newModel = null;
+        if (selectedItem != null) {
+            if (selectedItem.equals(ModelType.ICON.getFriendlyName())) {
+                newModel = Model.createIdeIconModel(
+                    modelIDField.isVisible() ? modelIDField.getText() : null,
+                    ideIconOverrideTextField.getText(),
+                    icon,
+                    descriptionField.getText(),
+                    ModelType.getByFriendlyName(selectedItem.toString()),
+                    iconType
+                );
+            } else {
+                newModel = Model.createFileOrFolderModel(
+                    modelIDField.isVisible() ? modelIDField.getText() : null,
+                    icon,
+                    descriptionField.getText(),
+                    ModelType.getByFriendlyName(selectedItem.toString()),
+                    iconType,
+                    IntStream.range(0, conditionsCheckboxList.getItemsCount())
+                        .mapToObj(index -> conditionsCheckboxList.getItemAt(index))
+                        .collect(Collectors.toList())
+                );
+            }
         }
 
-        if (modelToEdit != null) {
+        if (modelToEdit != null && newModel != null) {
             newModel.setEnabled(modelToEdit.isEnabled());
         }
         return newModel;
@@ -271,6 +328,7 @@ public class ModelDialog extends DialogWrapper {
                 ModelCondition modelCondition = modelConditionDialog.getModelConditionFromInput();
                 conditionsCheckboxList.addItem(modelCondition, modelCondition.asReadableString(FIELD_SEPARATOR), modelCondition.isEnabled());
             }
+            testModel(getModelFromInput(), testTextField);
         }).setEditAction(anActionButton -> {
             int selectedItem = conditionsCheckboxList.getSelectedIndex();
             ModelCondition selectedCondition = Objects.requireNonNull(conditionsCheckboxList.getItemAt(selectedItem));
@@ -283,8 +341,11 @@ public class ModelDialog extends DialogWrapper {
                 conditionsCheckboxList.updateItem(selectedCondition, newCondition, newCondition.asReadableString(FIELD_SEPARATOR));
                 newCondition.setEnabled(isEnabled);
             }
-        }).setRemoveAction(anActionButton ->
-            ListUtil.removeSelectedItems(conditionsCheckboxList)
+            testModel(getModelFromInput(), testTextField);
+        }).setRemoveAction(anActionButton -> {
+                ListUtil.removeSelectedItems(conditionsCheckboxList);
+                testModel(getModelFromInput(), testTextField);
+            }
         ).setButtonComparator("Add", "Edit", "Remove").createPanel();
     }
 

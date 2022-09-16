@@ -20,7 +20,7 @@ public class PluginIconsSettingsTableModel extends DefaultTableModel {
      * Table columns type.
      */
     @SuppressWarnings("unchecked")
-    private final Class<Object>[] types = new Class[]{Icon.class, Boolean.class, String.class, String.class, Boolean.class, List.class, String.class};
+    private final Class<Object>[] types = new Class[]{Icon.class, Boolean.class, String.class, String.class, Icon.class, List.class, String.class};
 
     /**
      * Indicates if table columns are editable.
