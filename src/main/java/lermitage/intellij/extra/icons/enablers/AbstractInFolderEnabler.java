@@ -69,7 +69,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
         } catch (Exception e) {
             initialized = true;
             if (silentErrors) {
-                LOGGER.infoWithDebug(getName() + " Enabler failed to query IDE filename index. Some icons override won't work " +
+                LOGGER.info(getName() + " Enabler failed to query IDE filename index. Some icons override won't work " +
                     "for now. Meanwhile, an Index Listener will try to fix that automatically once indexing tasks are done.", e);
             } else {
                 throw (e);
