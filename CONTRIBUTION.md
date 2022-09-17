@@ -15,6 +15,7 @@ Please describe the issue:
 * please reformat new and modified code only: do not reformat the whole project or entire existing file (in other words,
   try to limit the amount of changes in order to speed up code review)
 * please write comments in english only
+* (optional) try this [sample project](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/sample-project). This is a project with many empty files. It will help you to verify icon overrides
 * don't hesitate to add your name or nickname (and LinkedIn profile, etc.) to the contributors list ;-)
 * please email me (jonathan.lermitage@gmail) or send a private message on Twitter (JLermitage), **I have some free licenses for you**
 
