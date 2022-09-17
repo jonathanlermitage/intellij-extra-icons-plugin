@@ -32,6 +32,10 @@
     -->
 
     <change-notes><![CDATA[
+    2022.1.12 (WIP)
+    <ul>
+      <li>add graphql-resolver, Rego and Mongodb icons. Improve icons detection mechanism. Thx to contributor <b>fcannizzaro</b>.</li>
+    </ul>
     2022.1.11 (2022/09/16)
     <ul>
       <li><a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/110">feat #110</a> config panel: add a text input field to test the conditions for User icons.</li>
