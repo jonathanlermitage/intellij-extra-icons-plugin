@@ -60,6 +60,8 @@ Optionally, you may want to install SVGO in order to optimize SVG icons. Install
 
 Please see [CONTRIBUTION.md](CONTRIBUTION.md).
 
+Nota: you can test icons with this [sample project](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/tree/sample-project). This is a project with many empty files. It will help you to verify icon overrides.
+
 ## Known issues
 
 Please see [KNOWN_ISSUES.md](KNOWN_ISSUES.md) and [GitHub open issues](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues).
