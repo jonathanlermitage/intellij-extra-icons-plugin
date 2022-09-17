@@ -23,6 +23,8 @@ public class IconEnablerProvider {
                 return Optional.of(HelmFolderEnabler.getInstance(project));
             case IS_IN_ANGULAR_FOLDER:
                 return Optional.of(InAngularFolderEnabler.getInstance(project));
+            case IS_IN_GRAPHQL_FOLDER:
+                return Optional.of(InGraphQLFolderEnabler.getInstance(project));
             case IS_IN_HELM_FOLDER:
                 return Optional.of(InHelmFolderEnabler.getInstance(project));
             default:

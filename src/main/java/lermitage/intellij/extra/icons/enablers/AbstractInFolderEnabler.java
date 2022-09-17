@@ -24,13 +24,24 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
 
     private boolean initialized = false;
 
-    /** Parent folder(s) where files or folders should be located in order to activate Enabler. */
+    /**
+     * Parent folder(s) where files or folders should be located in order to activate Enabler.
+     */
     protected Set<String> folders = Collections.emptySet();
 
     protected abstract String[] getFilenamesToSearch();
 
-    /** The name of this icon enabler. Used to identify disabled icon enabler if an error occurred. */
+    /**
+     * The name of this icon enabler. Used to identify disabled icon enabler if an error occurred.
+     */
     public abstract String getName();
+
+    /**
+     * A boolean flag used to obtain a match if any of the specified files exists in the project.
+     */
+    public boolean getRequiredSearchedFiles() {
+        return true;
+    }
 
     @Override
     public synchronized void init(@NotNull Project project, boolean silentErrors) throws Exception {
@@ -57,33 +68,49 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                 throw new Exception(msg);
             }
         }
-        Collection<VirtualFile> virtualFilesByName;
-        try {
-            // TODO migrate to getVirtualFilesByName(getFilenamesToSearch()[0], true, GlobalSearchScope.projectScope(project))
-            //  in 2023 and set minimal IDE version to 2022.1 (221)
-            virtualFilesByName = FilenameIndex.getVirtualFilesByName(
-                project,
-                getFilenamesToSearch()[0],
-                true,
-                GlobalSearchScope.projectScope(project));
-        } catch (Exception e) {
-            initialized = true;
-            if (silentErrors) {
-                LOGGER.info(getName() + " Enabler failed to query IDE filename index. Some icons override won't work " +
-                    "for now. Meanwhile, an Index Listener will try to fix that automatically once indexing tasks are done.", e);
-            } else {
-                throw (e);
+
+        final boolean allRequired = getRequiredSearchedFiles();
+        Collection<VirtualFile> virtualFilesByName = null;
+        String matchedFile = null;
+
+        for (String filename : filenamesToSearch) {
+            try {
+                // TODO migrate to getVirtualFilesByName(filename, true, GlobalSearchScope.projectScope(project))
+                //  in 2023 and set minimal IDE version to 2022.1 (221)
+                virtualFilesByName = FilenameIndex.getVirtualFilesByName(
+                    project,
+                    filename,
+                    true,
+                    GlobalSearchScope.projectScope(project));
+
+                if (!virtualFilesByName.isEmpty()) {
+                    matchedFile = filename;
+                    break;
+                }
+            } catch (Exception e) {
+                initialized = true;
+                if (silentErrors) {
+                    LOGGER.info(getName() + " Enabler failed to query IDE filename index. Some icons override won't work " +
+                        "for now. Meanwhile, an Index Listener will try to fix that automatically once indexing tasks are done.", e);
+                } else {
+                    throw (e);
+                }
+                if (allRequired) {
+                    return;
+                }
             }
-            return;
         }
 
-        final String[] additionalFilenamesToSearch = filenamesToSearch.length > 1 ?
+        final String[] additionalFilenamesToSearch = filenamesToSearch.length > 1 && allRequired ?
             Arrays.copyOfRange(filenamesToSearch, 1, filenamesToSearch.length) :
             new String[0];
+
+        final String matchedFilename = matchedFile;
+
         folders = virtualFilesByName.stream()
             .map(virtualFile ->
                 normalizePath(virtualFile.getPath())
-                    .replace(normalizePath("/" + getFilenamesToSearch()[0]), "/"))
+                    .replace(normalizePath("/" + matchedFilename), "/"))
             .filter(folder -> {
                 if (additionalFilenamesToSearch.length > 0) {
                     for (String additionalFilenameToSearch : additionalFilenamesToSearch) {
@@ -110,7 +137,9 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                 LOGGER.warn(e);
             }
         }
+
         String normalizedPathToVerify = normalizePath(absolutePathToVerify);
+
         for (String folder : folders) {
             if (normalizedPathToVerify.startsWith(folder)) {
                 return true;
@@ -119,7 +148,9 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
         return false;
     }
 
-    /** Should (Re)Init if initialization never occurred. */
+    /**
+     * Should (Re)Init if initialization never occurred.
+     */
     protected boolean shouldInit() {
         return !initialized;
     }
