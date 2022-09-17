@@ -36,6 +36,9 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
      */
     public abstract String getName();
 
+    /**
+     * A boolean flag used to obtain a match if any of the specified files exists in the project.
+     */
     public boolean getRequiredSearchedFiles() {
         return true;
     }
