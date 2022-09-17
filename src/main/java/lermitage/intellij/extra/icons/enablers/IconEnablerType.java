@@ -13,6 +13,9 @@ public enum IconEnablerType {
     /** Detect folders containing Angular files. */
     IS_IN_ANGULAR_FOLDER,
 
+    /** Detect folders containing GraphQL files. */
+    IS_IN_GRAPHQL_FOLDER,
+
     /** Detect folders containing Helm files. */
     IS_IN_HELM_FOLDER
 }

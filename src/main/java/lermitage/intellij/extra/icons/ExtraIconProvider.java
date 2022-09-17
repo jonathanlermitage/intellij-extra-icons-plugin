@@ -621,8 +621,13 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("grafana.ini"),
                 ofFile("graphqlconfig", "extra-icons/graphql_config.svg", "GraphQL: graphql.config.json")
                     .eq("graphql.config.json"),
+                ofFile("graphqlresolver", "extra-icons/graphql.svg", "GraphQL Resolvers: *.resolver.*")
+                    .regex(".+\\.resolver\\..+")
+                    .iconEnabler(IconEnablerType.IS_IN_GRAPHQL_FOLDER),
                 ofFile("graphqlschema", "extra-icons/graphql_schema.svg", "GraphQL: graphql.schema.json")
                     .eq("graphql.schema.json"),
+                ofFile("graphqlfiles", "extra-icons/graphql.svg", "GraphQL files: schema, operations")
+                    .end("graphql", "gql"),
                 ofFile("gocd", "extra-icons/gocd.png", "Gocd: .gocd(.xml,.yml,...)")
                     .eq(".gocd").mayEnd(CFG),
                 ofFile("gomod", "extra-icons/gomod.svg", "Go: go.mod")
@@ -709,6 +714,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("moduleinfojava", "extra-icons/moduleinfo.svg", "Java module: module-info.java")
                     .eq("module-info.java")
                     .altIcons("extra-icons/moduleinfo_alt.svg"),
+                ofFile("mongodb", "extra-icons/mongodb.svg", "MongoDB related files: *.mongo.*)")
+                    .regex(".*\\.mongo\\..+"),
                 ofFile("muse", "extra-icons/muse.png", "Muse: .muse.toml")
                     .eq(".muse.toml"),
                 ofFile("mysql", "extra-icons/my.png", "MySQL: my.ini")
@@ -788,6 +795,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("redis").mayEnd(".conf"),
                 ofFile("redis1", "extra-icons/redis.svg", "Redis: start by 'redis' and end by '.conf'")
                     .start("redis").end(".conf"),
+                ofFile("rego", "extra-icons/rego.svg", "Rego (Open Policy Agent): end by '.rego' or '.opa'")
+                    .end("opa", "rego"),
                 ofFile("renovate", "extra-icons/renovate.svg", "Renovate: renovate.json, renovate.json5, .renovaterc.json, .renovaterc")
                     .eq("renovate.json", "renovate.json5", ".renovaterc.json", ".renovaterc"),
                 ofFile("requirementstxt_python", "extra-icons/requirementstxt_python.svg", "Python: requirements.txt (Python facet only)")
