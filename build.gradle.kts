@@ -58,7 +58,7 @@ repositories {
 }
 
 val twelvemonkeysVersion = "3.8.3"
-val junitVersion = "5.9.0"
+val junitVersion = "5.9.1"
 
 dependencies {
     implementation("com.twelvemonkeys.imageio:imageio-core:$twelvemonkeysVersion") // https://github.com/haraldk/TwelveMonkeys/releases
@@ -71,7 +71,7 @@ dependencies {
 
     // TODO check JUnit and Gradle updates and remove this workaround asap
     // gradle 7.5 + JUnit workaround for NoClassDefFoundError: org/junit/platform/launcher/LauncherSessionListener
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.9.0")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.9.1")
 }
 
 intellij {

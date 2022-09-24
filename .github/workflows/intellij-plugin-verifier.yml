@@ -17,6 +17,9 @@ jobs:
       - name: Build the plugin using Gradle
         run: ./gradlew buildPlugin
 
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
       - name: Verify Plugin on IntelliJ Platforms
         id: verify
         uses: ChrisCarini/intellij-platform-plugin-verifier-action@latest
