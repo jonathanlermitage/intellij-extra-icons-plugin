@@ -2,6 +2,7 @@
 
 ## 2022.1.12 (WIP)
 * add graphql-resolver, Rego and Mongodb icons. Improve frameworks detection mechanism. Thx to contributor **fcannizzaro**.
+* I'm working on tooling and preparing the support for the 2023 IDEs. That's why this changelog will probably be a bit poor until next year. Meanwhile, bugfixes remain my priority, so don't hesitate to raise issues.
 
 ## 2022.1.11 (2022/09/16)
 * [feat #110](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/110) config panel: add a text input field to test the conditions for User icons.

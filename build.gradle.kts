@@ -4,6 +4,7 @@ import com.github.benmanes.gradle.versions.reporter.result.Result
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.palantir.gradle.gitversion.VersionDetails
 import groovy.lang.Closure
+import org.apache.commons.io.FileUtils
 import org.jetbrains.intellij.tasks.RunPluginVerifierTask
 import java.io.StringWriter
 import java.util.EnumSet
@@ -22,6 +23,9 @@ plugins {
     id("biz.lermitage.oga") version "1.1.1"
 }
 
+val pluginXmlFile = projectDir.resolve("src/main/resources/META-INF/plugin.xml")
+val pluginXmlFileBackup = projectDir.resolve("src/main/resources/META-INF/plugin.original.xml")
+
 // Import variables from gradle.properties file
 val pluginIdeaVersion: String by project
 val pluginDownloadIdeaSources: String by project
@@ -29,6 +33,7 @@ val pluginVersion: String by project
 val pluginJavaVersion: String by project
 val pluginVerifyProductDescriptor: String by project
 val testLoggerStyle: String by project
+val pluginNeedsLicense: String by project
 
 version = if (pluginVersion == "auto") {
     val versionDetails: Closure<VersionDetails> by extra
@@ -40,13 +45,6 @@ version = if (pluginVersion == "auto") {
     }
 } else {
     pluginVersion
-}
-
-if (pluginVerifyProductDescriptor.toBoolean()) {
-    val pluginXmlStr = projectDir.resolve("src/main/resources/META-INF/plugin.xml").readText()
-    if (!pluginXmlStr.contains("<product-descriptor")) {
-        throw GradleException("plugin.xml: Product Descriptor is missing")
-    }
 }
 
 logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion. Plugin version set to $version.")
@@ -96,6 +94,36 @@ testlogger {
 }
 
 tasks {
+    register("verifyProductDescriptor") {
+        doLast {
+            val pluginXmlStr = pluginXmlFile.readText()
+            if (!pluginXmlStr.contains("<product-descriptor")) {
+                throw GradleException("plugin.xml: Product Descriptor is missing")
+            }
+        }
+    }
+    register("removeLicenseRestrictionFromPluginXml") {
+        doLast {
+            logger.warn("----------------------------------------------------------------")
+            logger.warn("/!\\ Will build a plugin which doesn't ask for a paid license /!\\")
+            logger.warn("----------------------------------------------------------------")
+            var pluginXmlStr = pluginXmlFile.readText()
+            pluginXmlStr = pluginXmlStr.replace(Regex(
+                "<product-descriptor code=\"PEXTRAICONS\" release-date=\"\\d+\" release-version=\"\\d+\"/>"),
+                "")
+            pluginXmlFileBackup.delete()
+            FileUtils.moveFile(pluginXmlFile, pluginXmlFileBackup)
+            FileUtils.write(pluginXmlFile, pluginXmlStr, "UTF-8")
+            logger.quiet("Saved a copy of $pluginXmlFile to $pluginXmlFileBackup")
+        }
+    }
+    register("restorePluginXml") {
+        doLast {
+            FileUtils.copyFile(pluginXmlFileBackup, pluginXmlFile)
+            pluginXmlFileBackup.delete()
+            logger.quiet("Restored original $pluginXmlFile from $pluginXmlFileBackup")
+        }
+    }
     withType<JavaCompile> {
         sourceCompatibility = pluginJavaVersion
         targetCompatibility = pluginJavaVersion
@@ -172,6 +200,20 @@ tasks {
     }
     buildSearchableOptions {
         enabled = false
+    }
+    patchPluginXml {
+        if (!pluginNeedsLicense.toBoolean()) {
+            dependsOn("removeLicenseRestrictionFromPluginXml")
+        } else {
+            if (pluginVerifyProductDescriptor.toBoolean()) {
+                dependsOn("verifyProductDescriptor")
+            }
+        }
+    }
+    buildPlugin {
+        if (!pluginNeedsLicense.toBoolean()) {
+            finalizedBy("restorePluginXml")
+        }
     }
 }
 

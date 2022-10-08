@@ -17,6 +17,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+// TODO deprecated external plugins in most cases should use com.intellij.openapi.project.DumbService.DumbModeListener
+//  https://github.com/JetBrains/intellij-community/blob/master/platform/platform-impl/src/com/intellij/openapi/project/DumbServiceImpl.java
 public class IndexListener implements UnindexedFilesUpdaterListener {
 
     private static final Logger LOGGER = Logger.getInstance(IndexListener.class);
