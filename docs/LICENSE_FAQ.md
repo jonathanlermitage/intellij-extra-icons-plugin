@@ -6,7 +6,7 @@ As explained on the JetBrains marketplace, 12 months of uninterrupted subscripti
 
 ## I am a student or an OSS developer, can I get a license for free?
 
-Sure! Please follow [https://jetbrains.com/student/](https://jetbrains.com/student/) (students) or [https://jetbrains.com/buy/opensource/](https://jetbrains.com/buy/opensource/) (OSS developer) instructions. If you are facing issues, please contact JetBrains support directly. Unfortunately, I can do nothing, this is on the JetBrains side.
+Sure! Please register with [https://jetbrains.com/student/](https://jetbrains.com/student/) (students) or [https://jetbrains.com/buy/opensource/](https://jetbrains.com/buy/opensource/) (OSS developer), then follow [these instructions](https://plugins.jetbrains.com/docs/marketplace/community-programs.html). If you are facing issues, please contact JetBrains support directly. Unfortunately, I can do nothing, this is on the JetBrains side.
 
 Also, if you contributed to Extra Icons, please email me, or send a private message on Twitter (JLermitage): I have some coupons for free licenses for you.
 
