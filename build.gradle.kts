@@ -95,6 +95,7 @@ testlogger {
 
 tasks {
     register("verifyProductDescriptor") {
+        // Ensure generated plugin requires a paid license
         doLast {
             val pluginXmlStr = pluginXmlFile.readText()
             if (!pluginXmlStr.contains("<product-descriptor")) {
@@ -103,6 +104,7 @@ tasks {
         }
     }
     register("removeLicenseRestrictionFromPluginXml") {
+        // Remove paid license requirement
         doLast {
             logger.warn("----------------------------------------------------------------")
             logger.warn("/!\\ Will build a plugin which doesn't ask for a paid license /!\\")
@@ -114,14 +116,24 @@ tasks {
             pluginXmlFileBackup.delete()
             FileUtils.moveFile(pluginXmlFile, pluginXmlFileBackup)
             FileUtils.write(pluginXmlFile, pluginXmlStr, "UTF-8")
-            logger.quiet("Saved a copy of $pluginXmlFile to $pluginXmlFileBackup")
+            logger.debug("Saved a copy of $pluginXmlFile to $pluginXmlFileBackup")
         }
     }
     register("restorePluginXml") {
+        // Task removeLicenseRestrictionFromPluginXml worked with a modified version of plugin.xml file -> restore original file
         doLast {
             FileUtils.copyFile(pluginXmlFileBackup, pluginXmlFile)
             pluginXmlFileBackup.delete()
-            logger.quiet("Restored original $pluginXmlFile from $pluginXmlFileBackup")
+            logger.debug("Restored original $pluginXmlFile from $pluginXmlFileBackup")
+        }
+    }
+    register("renameDistributionNoLicense") {
+        // Rename generated plugin file to mention the fact that no paid license is needed
+        doLast {
+            val baseName = "build/distributions/Extra Icons-$version"
+            val noLicFile = projectDir.resolve("${baseName}-no-license.zip")
+            noLicFile.delete()
+            FileUtils.moveFile(projectDir.resolve("${baseName}.zip"), noLicFile)
         }
     }
     withType<JavaCompile> {
@@ -212,7 +224,7 @@ tasks {
     }
     buildPlugin {
         if (!pluginNeedsLicense.toBoolean()) {
-            finalizedBy("restorePluginXml")
+            finalizedBy("restorePluginXml", "renameDistributionNoLicense")
         }
     }
 }

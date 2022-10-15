@@ -6,11 +6,11 @@
 
 ifeq ($(OS),Windows_NT)
     gradlew_cmd := gradlew
-    cp_cmd := gradlew
 else
     gradlew_cmd := ./gradlew
-    cp_cmd := gradlew
 endif
+
+ij_min_version := 2021.2.4 # must reflect settings.xml -> idea-version.since-build
 
 
 default: help
@@ -38,7 +38,7 @@ fixgit: intro ## fix executable permission flag on git index for required files
 
 
 .PHONY: run
-run: intro ## run plugin in IntelliJ Ultimate
+run: intro ## run plugin in latest stable IntelliJ Ultimate
 	${gradlew_cmd} buildPlugin runIde --warning-mode all
 
 
@@ -49,7 +49,7 @@ runeap: intro ## run plugin in latest IntelliJ Ultimate EAP Snapshot
 
 .PHONY: runold
 runold: intro ## run plugin in oldest supported IntelliJ Ultimate version
-	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-2021.2.4 -PpluginDownloadIdeaSources=false
+	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-${ij_min_version} -PpluginDownloadIdeaSources=false
 
 
 .PHONY: build

@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2022.1.12 (WIP)
+## 2022.1.12 (2022/10/15)
 * add graphql-resolver, Rego and Mongodb icons. Improve frameworks detection mechanism. Thx to contributor **fcannizzaro**.
 * I'm working on tooling and preparing the support for the 2023 IDEs. That's why this changelog will probably be a bit poor until next year. Meanwhile, bugfixes remain my priority, so don't hesitate to raise issues.
 
