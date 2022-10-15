@@ -32,6 +32,10 @@
     -->
 
     <change-notes><![CDATA[
+    2022.1.13 (WIP)
+    <ul>
+      <li>set minimal IDE version to 2022.1 and fix usage of a deprecated API used to query IDE filename index.</li>
+    </ul>
     2022.1.12 (2022/10/15)
     <ul>
       <li>add graphql-resolver, Rego and Mongodb icons. Improve frameworks detection mechanism. Thx to contributor <b>fcannizzaro</b>.</li>
@@ -45,22 +49,11 @@
       <li>fix possible NPE when updating User icons conditions list.</li>
       <li>I think IDE filename index issues are gone! Sorry for this annoying issue, it made me crazy. Big thanks to <a href="https://youtrack.jetbrains.com/issue/IDEA-291382/Assertion-failed-at-VirtualDirectoryImpldoFindChildById#focus=Comments-27-6445738.0-0">Andreas Perhab</a>, who found a solution using an Index Listener. Some explanations: we are not allowed to query the index during indexing. Extra Icons plugin needs to query the index in order to locate some files (for Angular and Helm support) and, unfortunately, the IDE seems to try to update icons (which invokes Extra Icons plugin, which tries to query the index) during indexing. This is not new, but it's more frequent since IJ 2022. Starting from now, we will silent this error, and we query the index a second time, once indexing tasks completed.</li>
     </ul>
-    2022.1.10 (2022/09/05)
-    <ul>
-      <li>add an option in Extra Icons settings in order to force icons reloading on demand. Use it if you still see errors when querying IDE filename index: wait until indexing is done, go to File, Settings, Appearance &amp; Behavior, Extra Icons, then hit the <i>Reload projects icons</i> button. Again, feel free to upvote <a href="https://youtrack.jetbrains.com/issue/IDEA-289822">IDEA-289822</a>, it would help.</li>
-      <li>add an alternative Dependabot icon.</li>
-      <li>add an alternative Draw.io icon.</li>
-      <li>add an alternative Helm icon.</li>
-      <li>add an alternative HTTP icon.</li>
-      <li>support <a href="https://network.developer.nokia.com/sr/learn/yang/understanding-yang/">YANG</a> files.</li>
-      <li>rework some Docker icons, and fix a Docker Ignore dark icon.</li>
-      <li>improve icons reloading on config change.</li>
-    </ul>
     ]]>
     </change-notes>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
-    <idea-version since-build="212.5712.43"/>
+    <idea-version since-build="221"/>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html#modules-available-in-all-products
          on how to target different products -->

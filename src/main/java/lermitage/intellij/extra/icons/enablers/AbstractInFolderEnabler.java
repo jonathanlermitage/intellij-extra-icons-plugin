@@ -75,14 +75,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
 
         for (String filename : filenamesToSearch) {
             try {
-                // TODO migrate to getVirtualFilesByName(filename, true, GlobalSearchScope.projectScope(project))
-                //  in 2023 and set minimal IDE version to 2022.1 (221)
-                virtualFilesByName = FilenameIndex.getVirtualFilesByName(
-                    project,
-                    filename,
-                    true,
-                    GlobalSearchScope.projectScope(project));
-
+                virtualFilesByName = FilenameIndex.getVirtualFilesByName(filename, true, GlobalSearchScope.projectScope(project));
                 if (!virtualFilesByName.isEmpty()) {
                     matchedFile = filename;
                     break;
