@@ -7,6 +7,7 @@ import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
 import lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService;
+import lermitage.intellij.extra.icons.utils.OS;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -27,6 +28,7 @@ import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_DECODER;
 public class ExtraIconPatcher extends IconPathPatcher {
 
     private static final Logger LOGGER = Logger.getInstance(ExtraIconPatcher.class);
+    private static final OS detectedOS = OS.detectOS();
 
     private Map<String, String> icons;
 
@@ -126,7 +128,11 @@ public class ExtraIconPatcher extends IconPathPatcher {
                 FileUtils.forceDeleteOnExit(iconFile.toFile());
                 Files.write(iconFile, B64_DECODER.decode(iconStr));
                 String decodedIconPath = iconFile.toAbsolutePath().toString();
-                morphedIcons.put(iconKey, "file://" + decodedIconPath);
+                if (detectedOS == OS.WIN) {
+                    morphedIcons.put(iconKey, "file:/" + decodedIconPath);
+                } else {
+                    morphedIcons.put(iconKey, "file://" + decodedIconPath);
+                }
             }
         }
         return morphedIcons;

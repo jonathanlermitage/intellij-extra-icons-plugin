@@ -2,6 +2,7 @@
 
 ## 2022.1.13 (WIP)
 * set minimal IDE version to 2022.1 and fix usage of a deprecated API used to query IDE filename index.
+* [fix #113](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/113) can't load custom icons from local drive on Windows.
 
 ## 2022.1.12 (2022/10/15)
 * add graphql-resolver, Rego and Mongodb icons. Improve frameworks detection mechanism. Thx to contributor **fcannizzaro**.

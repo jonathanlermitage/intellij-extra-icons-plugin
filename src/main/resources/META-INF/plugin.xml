@@ -35,6 +35,7 @@
     2022.1.13 (WIP)
     <ul>
       <li>set minimal IDE version to 2022.1 and fix usage of a deprecated API used to query IDE filename index.</li>
+      <li><a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/113">fix #113</a> can't load custom icons from local drive on Windows.</li>
     </ul>
     2022.1.12 (2022/10/15)
     <ul>
