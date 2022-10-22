@@ -55,7 +55,7 @@ repositories {
     mavenCentral()
 }
 
-val twelvemonkeysVersion = "3.8.3"
+val twelvemonkeysVersion = "3.9.3"
 val junitVersion = "5.9.1"
 
 dependencies {

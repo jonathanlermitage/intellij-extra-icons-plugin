@@ -18,7 +18,7 @@ default: help
 
 .PHONY: intro
 intro:
-	@echo -e '\n\e[1;34m------ [ij-extra-icons] $(shell date) ------\e[0m\\n'
+	@echo -e '\n\e[1;34m------ [ij-extra-icons] $(shell date) ------\e[0m\n'
 
 
 .PHONY: log
