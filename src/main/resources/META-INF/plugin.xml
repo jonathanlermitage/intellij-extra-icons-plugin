@@ -20,6 +20,7 @@
       Some narrow-minded people organized a review-bombing against my plugin (and sent me very aggressive emails, sometimes death threats;
       seriously... they're crazy), which is why you see many 1-star ratings. JetBrains support accepted to remove most of the toxic reviews,
       but unfortunately, they refused to remove the 1-star ratings...<br>
+      If you want to help plugin developers, please consider <a href="https://youtrack.jetbrains.com/issue/MP-4248">up-voting YouTrack issue MP-4248</a>. Thank you!
       <br>
       <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin">GitHub</a> | <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues">Issues</a> | <a href="https://www.linkedin.com/in/jonathan-lermitage/">LinkedIn</a> | <a href="https://vshymanskyy.github.io/StandWithUkraine/">💙 Help Ukraine 💛</a>
     ]]>
@@ -32,7 +33,7 @@
     -->
 
     <change-notes><![CDATA[
-    2022.1.13 (WIP)
+    2022.1.13 (2022/11/11)
     <ul>
       <li>set minimal IDE version to 2022.1 and fix usage of a deprecated API used to query IDE filename index.</li>
       <li><a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/113">fix #113</a> can't load custom icons from local drive on Windows.</li>
