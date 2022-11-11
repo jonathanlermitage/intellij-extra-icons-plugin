@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2022.1.13 (WIP, planned for 2022/11/11)
+## 2022.1.13 (2022/11/11)
 * set minimal IDE version to 2022.1 and fix usage of a deprecated API used to query IDE filename index.
 * [fix #113](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/113) can't load custom icons from local drive on Windows.
 * internal: upgrade TwelveMonkeys library to 3.9.3 (used to preview PNG icons).
