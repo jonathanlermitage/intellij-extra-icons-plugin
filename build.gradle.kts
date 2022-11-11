@@ -163,17 +163,8 @@ tasks {
         checkForGradleUpdate = true
         gradleReleaseChannel = "current"
         revision = "release"
-        resolutionStrategy {
-            componentSelection {
-                all {
-                    if (isNonStable(candidate.version)) {
-                        logger.debug(" - [ ] ${candidate.module}:${candidate.version} candidate rejected")
-                        reject("Not stable")
-                    } else {
-                        logger.debug(" - [X] ${candidate.module}:${candidate.version} candidate accepted")
-                    }
-                }
-            }
+        rejectVersionIf {
+            isNonStable(candidate.version)
         }
         outputFormatter = closureOf<Result> {
             unresolved.dependencies.removeIf {
