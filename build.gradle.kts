@@ -6,7 +6,6 @@ import com.palantir.gradle.gitversion.VersionDetails
 import groovy.lang.Closure
 import org.apache.commons.io.FileUtils
 import org.jetbrains.intellij.tasks.RunPluginVerifierTask
-import java.io.StringWriter
 import java.util.EnumSet
 
 fun properties(key: String) = project.findProperty(key).toString()
@@ -15,7 +14,7 @@ plugins {
     id("java")
     id("jacoco")
     id("org.jetbrains.intellij") version "1.9.0" // https://github.com/JetBrains/gradle-intellij-plugin https://lp.jetbrains.com/gradle-intellij-plugin/
-    id("com.github.ben-manes.versions") version "0.42.0" // https://github.com/ben-manes/gradle-versions-plugin
+    id("com.github.ben-manes.versions") version "0.44.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("com.jaredsburrows.license") version "0.9.0" // https://github.com/jaredsburrows/gradle-license-plugin
     id("com.osacky.doctor") version "0.8.1" // https://github.com/runningcode/gradle-doctor/
@@ -161,10 +160,8 @@ tasks {
                 val coordinates = "${it.group}:${it.name}"
                 coordinates.startsWith("unzipped.com") || coordinates.startsWith("com.jetbrains:ideaI")
             }
-            val plainTextReporter = PlainTextReporter(project, revision, gradleReleaseChannel)
-            val writer = StringWriter()
-            plainTextReporter.write(writer, this)
-            logger.quiet(writer.toString().trim())
+            PlainTextReporter(project, revision, gradleReleaseChannel)
+                .write(System.out, this)
         }
     }
     runIde {
