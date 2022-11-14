@@ -10,6 +10,11 @@ Sure! Please register with [https://jetbrains.com/student/](https://jetbrains.co
 
 Also, if you contributed to Extra Icons, please email me, or send a private message on Twitter (JLermitage): I have some coupons for free licenses for you.
 
+## I am an OSS developer, can I get a license for free?
+
+I'm sorry, but I noticed that many OSS accounts were totally fake. I mean, many people simply create (or duplicate) a project with a few lines of codes, then they ask for an OSS free license.  
+As of 2022-11-14, I no longer offer licenses for OSS developers. Instead, I donate to some open source projects (~1000 USD this year).
+
 ## I received a coupon for a free license, how does it work?
 
 Please note a coupon is not an activation code, it's a bit weird. You need to hit the "Buy" button (monthly or yearly subscription, it doesn't matter), then enter the coupon code. The form will now say you will get a 9-months license at no cost.  
