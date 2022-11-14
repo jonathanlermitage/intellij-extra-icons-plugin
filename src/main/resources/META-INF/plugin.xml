@@ -14,7 +14,7 @@
         <li>Configurable: see <i>File &gt; Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. This is configurable at IDE and project level.</li>
         <li>You can also register your own icons in order to override file icons and all <a href="https://jetbrains.design/intellij/resources/icons_list/">IDE icons</a> (including toolbars, menus, etc.).</li>
         <li>For more information, please see this <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">guide</a>.</li>
-        <li>For questions about the plugin licensing model, how to get a license for free (students, teachers and OSS developers), and how to get a perpetual license, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md">license FAQ</a>.</li>
+        <li>For questions about the plugin licensing model, how to get a license for free (students and teachers), and how to get a perpetual license, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md">license FAQ</a>.</li>
       </ul>
       📢 Please don't trust the plugin's low rating. It had ~5 stars until I decided to ask for modest financial support starting from March 2022.
       Some narrow-minded people organized a review-bombing against my plugin (and sent me very aggressive emails, sometimes death threats;
