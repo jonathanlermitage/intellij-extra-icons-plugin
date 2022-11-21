@@ -102,8 +102,6 @@
         <notificationGroup id="ExtraIcons" displayType="BALLOON"/>
     </extensions>
 
-    <depends optional="true" config-file="angular2.xml">AngularJS</depends>
-
     <actions>
     </actions>
 

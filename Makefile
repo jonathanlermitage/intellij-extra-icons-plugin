@@ -43,13 +43,13 @@ run: intro ## run plugin in latest stable IntelliJ Ultimate
 
 
 .PHONY: runeap
-runeap: intro ## run plugin in latest IntelliJ Ultimate EAP Snapshot
-	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
+runeap: intro ## run plugin in latest IntelliJ EAP Snapshot
+	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
 
 
 .PHONY: runold
-runold: intro ## run plugin in oldest supported IntelliJ Ultimate version
-	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IU-${ij_min_version} -PpluginDownloadIdeaSources=false
+runold: intro ## run plugin in oldest supported IntelliJ version
+	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-${ij_min_version} -PpluginDownloadIdeaSources=false
 
 
 .PHONY: build
