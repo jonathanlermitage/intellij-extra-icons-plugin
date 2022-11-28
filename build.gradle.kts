@@ -54,7 +54,7 @@ repositories {
     mavenCentral()
 }
 
-val twelvemonkeysVersion = "3.9.3"
+val twelvemonkeysVersion = "3.9.4"
 val junitVersion = "5.9.1"
 val junitPlatformLauncher = "1.9.1"
 
