@@ -3,6 +3,7 @@
 package lermitage.intellij.extra.icons.enablers;
 
 import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
@@ -22,6 +23,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     private static final Logger LOGGER = Logger.getInstance(AbstractInFolderEnabler.class);
     private final String className = this.getClass().getSimpleName();
 
+    /** Indicates if the Enabler has been initialized, even with error. */
     private boolean initialized = false;
 
     /**
@@ -44,29 +46,37 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     }
 
     @Override
-    public synchronized void init(@NotNull Project project, boolean silentErrors) throws Exception {
-        long t1 = System.currentTimeMillis();
-        initWithIdeFileIndex(project, getFilenamesToSearch(), silentErrors);
+    public synchronized void init(@NotNull Project project, boolean silentErrors) {
         initialized = true;
-        long execDuration = System.currentTimeMillis() - t1;
-        String logMsg = getName() + " Enabler searched for " + Arrays.toString(getFilenamesToSearch()) + " files in project " + project.getName() + " in " + execDuration + " ms." + " Found folders: " + folders;
-        if (execDuration > 4000) {
-            LOGGER.warn(logMsg + ". Operation should complete faster. " + ProjectUtils.PLEASE_OPEN_ISSUE_MSG);
-        } else {
-            LOGGER.info(logMsg);
-        }
+        DumbService.getInstance(project).runWhenSmart(() -> { // run when smart = run once indexing tasks completed
+            try {
+                long t1 = System.currentTimeMillis();
+                initWithIdeFileIndex(project, getFilenamesToSearch(), silentErrors);
+                long execDuration = System.currentTimeMillis() - t1;
+                String logMsg = getName() + " Enabler searched for " + Arrays.toString(getFilenamesToSearch()) + " files in project " + project.getName() + " in " + execDuration + " ms." + " Found folders: " + folders;
+                if (execDuration > 4000) {
+                    LOGGER.warn(logMsg + ". Operation should complete faster. " + ProjectUtils.PLEASE_OPEN_ISSUE_MSG);
+                } else {
+                    LOGGER.info(logMsg);
+                }
+                LOGGER.info(getName() + " Enabler init done. Refreshing project " + project.getName());
+                ProjectUtils.refresh(project);
+            } catch (Exception e) {
+                String msg = "Canceled init of" + getName() + " Enabler";
+                if (silentErrors) {
+                    LOGGER.info(msg, e);
+                } else {
+                    LOGGER.error(msg, e);
+                }
+            }
+        });
     }
 
     private void initWithIdeFileIndex(@NotNull Project project, String[] filenamesToSearch, boolean silentErrors) throws Exception {
         if (!project.isInitialized()) {
             String msg = getName() + " Enabler can't query IDE filename index: project " + project.getName() + " is not initialized. " +
-                "Some icons override won't work for now. Meanwhile, an Index Listener will try to fix that automatically once indexing " +
-                "tasks are done.";
-            if (silentErrors) {
-                LOGGER.info(msg);
-            } else {
-                throw new Exception(msg);
-            }
+                "Some icons override won't work.";
+            throw new Exception(msg);
         }
 
         final boolean allRequired = getRequiredSearchedFiles();
@@ -83,8 +93,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
             } catch (Exception e) {
                 initialized = true;
                 if (silentErrors) {
-                    LOGGER.info(getName() + " Enabler failed to query IDE filename index. Some icons override won't work " +
-                        "for now. Meanwhile, an Index Listener will try to fix that automatically once indexing tasks are done.", e);
+                    LOGGER.info(getName() + " Enabler failed to query IDE filename index. Some icons override won't work.", e);
                 } else {
                     throw (e);
                 }
@@ -105,15 +114,13 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                 normalizePath(virtualFile.getPath())
                     .replace(normalizePath("/" + matchedFilename), "/"))
             .filter(folder -> {
-                if (additionalFilenamesToSearch.length > 0) {
-                    for (String additionalFilenameToSearch : additionalFilenamesToSearch) {
-                        try {
-                            if (!new File(folder, additionalFilenameToSearch).exists()) {
-                                return false;
-                            }
-                        } catch (Exception e) {
-                            LOGGER.warn(className + " failed to check " + folder + "/" + additionalFilenameToSearch + " existence", e);
+                for (String additionalFilenameToSearch : additionalFilenamesToSearch) {
+                    try {
+                        if (!new File(folder, additionalFilenameToSearch).exists()) {
+                            return false;
                         }
+                    } catch (Exception e) {
+                        LOGGER.warn(className + " failed to check " + folder + "/" + additionalFilenameToSearch + " existence", e);
                     }
                 }
                 return true;
