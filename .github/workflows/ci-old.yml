@@ -1,0 +1,19 @@
+name: Build
+on: [ push, pull_request ]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ij: [ 2022.1.4 ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      - name: Build and verify
+        run: ./gradlew clean buildPlugin test verifyPlugin -PpluginIdeaVersion=IC-${{ matrix.ij }} --warning-mode all
