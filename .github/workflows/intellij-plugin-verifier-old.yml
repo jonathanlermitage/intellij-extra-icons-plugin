@@ -1,5 +1,5 @@
 #see https://github.com/ChrisCarini/intellij-platform-plugin-verifier-action
-name: Compatibility
+name: Compatibility old
 on: [ push, pull_request ]
 jobs:
   run:
