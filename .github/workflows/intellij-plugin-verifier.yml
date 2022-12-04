@@ -27,10 +27,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           ide-versions: |
-            ideaIC:2022.1
-            ideaIU:2022.1
-            ideaIC:2022.2.4
-            ideaIU:2022.2.4
+            ideaIC:2022.1.4
+            ideaIU:2022.1.4
+            ideaIC:2022.3
+            ideaIU:2022.3
           failure-levels: | # see https://github.com/ChrisCarini/intellij-platform-plugin-verifier-action#failure-levels
             OVERRIDE_ONLY_API_USAGES
             NON_EXTENDABLE_API_USAGES

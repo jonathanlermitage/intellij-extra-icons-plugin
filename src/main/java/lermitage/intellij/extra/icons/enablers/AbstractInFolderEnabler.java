@@ -26,21 +26,15 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     /** Indicates if the Enabler has been initialized, even with error. */
     private boolean initialized = false;
 
-    /**
-     * Parent folder(s) where files or folders should be located in order to activate Enabler.
-     */
+    /** Parent folder(s) where files or folders should be located in order to activate Enabler. */
     protected Set<String> folders = Collections.emptySet();
 
     protected abstract String[] getFilenamesToSearch();
 
-    /**
-     * The name of this icon enabler. Used to identify disabled icon enabler if an error occurred.
-     */
+    /** The name of this icon enabler. Used to identify disabled icon enabler if an error occurred. */
     public abstract String getName();
 
-    /**
-     * A boolean flag used to obtain a match if any of the specified files exists in the project.
-     */
+    /** A boolean flag used to obtain a match if any of the specified files exists in the project. */
     public boolean getRequiredSearchedFiles() {
         return true;
     }

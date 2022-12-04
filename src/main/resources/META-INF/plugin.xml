@@ -63,7 +63,7 @@
     </change-notes>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
-    <idea-version since-build="221"/>
+    <idea-version since-build="221.6008.13"/> <!-- 2022.1.4 -->
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html#modules-available-in-all-products
          on how to target different products -->
