@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2022.1.14 (WIP)
+## 2022.1.14 (2022/12/04)
 * [try to mitigate #114](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/114) PHPStorm freezes for a few seconds several times. The JetBrains Angular plugin may cause high CPU usage. Removed usage of the (optional) Angular plugin which was used to detect Angular projects. Angular projects are still detected by using the IDE filename index, so you should still see Angular icons. Unfortunately, you may still experience some IDE freezes: this is an issue with the Angular plugin itself. It seems to be [fixed](https://youtrack.jetbrains.com/issue/WEB-57461) in IntelliJ 2022.3 RC, so you may want to wait for the 2022.3 final release of your IDE, or temporarily disable the Angular plugin.
 * internal: upgrade TwelveMonkeys library to 3.9.4 (used to preview and resize PNG icons).
 * fix usage of a deprecated API in order to improve compatibility with future 2023 IDEs.
