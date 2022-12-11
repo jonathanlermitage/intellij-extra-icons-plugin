@@ -24,10 +24,16 @@ import java.util.stream.Stream;
 public class ProjectUtils {
 
     private static final Logger LOGGER = Logger.getInstance(ProjectUtils.class);
-    private static final Map<String, Set<String>> facetsCache = new ConcurrentHashMap<>();
+    private static final Map<Project, Set<String>> facetsCache = new ConcurrentHashMap<>();
 
     private static final String PROJECT_ISSUES_URL = "https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues";
     public static final String PLEASE_OPEN_ISSUE_MSG = "You could open an issue: " + PROJECT_ISSUES_URL + ". Thank you!";
+
+    public static void onProjectClose(Project project) {
+        if (project != null) {
+            facetsCache.remove(project);
+        }
+    }
 
     /**
      * Refresh project view.
@@ -63,9 +69,8 @@ public class ProjectUtils {
         if (project == null) {
             return Collections.emptySet();
         }
-        String projectCacheId = project.getLocationHash();
-        if (facetsCache.containsKey(projectCacheId)) {
-            return facetsCache.get(projectCacheId);
+        if (facetsCache.containsKey(project)) {
+            return facetsCache.get(project);
         }
         long t1 = System.currentTimeMillis();
         Set<String> facets = new HashSet<>();
@@ -85,7 +90,7 @@ public class ProjectUtils {
             LOGGER.warn("Found facets " + facets + " for project " + project + " in " + execTime + "ms (should be instant)");
         }
 
-        facetsCache.put(projectCacheId, facets);
+        facetsCache.put(project, facets);
         return facets;
     }
 

@@ -13,6 +13,13 @@ public class InAngularFolderEnabler extends AbstractInFolderEnabler implements I
     // one icon enabler per project
     private static final Map<Project, IconEnabler> enablersCache = new ConcurrentHashMap<>();
 
+
+    public static void onProjectClose(Project project) {
+        if (project != null) {
+            enablersCache.remove(project);
+        }
+    }
+
     public static IconEnabler getInstance(@NotNull Project project) {
         if (enablersCache.containsKey(project)) {
             return enablersCache.get(project);

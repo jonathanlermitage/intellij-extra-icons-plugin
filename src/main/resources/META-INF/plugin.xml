@@ -79,4 +79,9 @@
         <notificationGroup id="ExtraIcons" displayType="BALLOON"/>
     </extensions>
 
+    <applicationListeners>
+        <listener class="lermitage.intellij.extra.icons.utils.ProjectListener"
+                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    </applicationListeners>
+
 </idea-plugin>
