@@ -454,13 +454,13 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         foldersFirst(allRegisteredModels);
         List<String> disabledModelIds = SettingsService.getInstance(project).getDisabledModelIds();
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
-        Icon checkmarkIcon = IconLoader.getIcon("extra-icons/plugin-internals/checkmark.svg", SettingsForm.class);
+        Icon restartIcon = IconLoader.getIcon("extra-icons/plugin-internals/reboot.svg", SettingsForm.class);
         allRegisteredModels.forEach(m -> pluginIconsSettingsTableModel.addRow(new Object[]{
                 IconUtils.getIcon(m, additionalUIScale),
                 !disabledModelIds.contains(m.getId()),
                 m.getDescription(),
                 Arrays.toString(m.getTags().stream().map(ModelTag::getName).toArray()).replaceAll("\\[|]*", "").trim(),
-                Strings.isNullOrEmpty(m.getIdeIcon()) ? null : checkmarkIcon,
+                Strings.isNullOrEmpty(m.getIdeIcon()) ? null : restartIcon,
                 m.getTags(),
                 m.getId()
             })
