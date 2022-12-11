@@ -5,6 +5,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import com.palantir.gradle.gitversion.VersionDetails
 import groovy.lang.Closure
 import org.apache.commons.io.FileUtils
+import org.jetbrains.changelog.Changelog
 import org.jetbrains.intellij.tasks.RunPluginVerifierTask
 import java.util.EnumSet
 
@@ -13,7 +14,8 @@ fun properties(key: String) = project.findProperty(key).toString()
 plugins {
     id("java")
     id("jacoco")
-    id("org.jetbrains.intellij") version "1.10.0" // https://github.com/JetBrains/gradle-intellij-plugin https://lp.jetbrains.com/gradle-intellij-plugin/
+    id("org.jetbrains.intellij") version "1.10.1" // https://github.com/JetBrains/gradle-intellij-plugin
+    id("org.jetbrains.changelog") version "2.0.0" // https://github.com/JetBrains/gradle-changelog-plugin
     id("com.github.ben-manes.versions") version "0.44.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("com.jaredsburrows.license") version "0.9.0" // https://github.com/jaredsburrows/gradle-license-plugin
@@ -74,6 +76,11 @@ intellij {
     sandboxDir.set("${rootProject.projectDir}/.idea-sandbox/${shortenIdeVersion(pluginIdeaVersion)}")
     updateSinceUntilBuild.set(false)
     version.set(pluginIdeaVersion)
+}
+
+changelog {
+    headerParserRegex.set("(.*)".toRegex())
+    itemPrefix.set("*")
 }
 
 testlogger {
@@ -198,6 +205,14 @@ tasks {
                 dependsOn("verifyProductDescriptor")
             }
         }
+        changeNotes.set(provider {
+            with(changelog) {
+                renderItem(
+                    getOrNull(properties("pluginVersion")) ?: getLatest(),
+                    Changelog.OutputType.HTML,
+                )
+            }
+        })
     }
     buildPlugin {
         if (!pluginNeedsLicense.toBoolean()) {

@@ -32,36 +32,6 @@
     https://intellij-support.jetbrains.com/hc/en-us/community/posts/206783005-Project-view-file-type-icon-customization
     -->
 
-    <change-notes><![CDATA[
-    2022.1.14 (2022/12/04)
-    <ul>
-      <li><a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/114">try to mitigate #114</a> PHPStorm freezes for a few seconds several times. The JetBrains Angular plugin may cause high CPU usage. Removed usage of the (optional) Angular plugin which was used to detect Angular projects. Angular projects are still detected by using the IDE filename index, so you should still see Angular icons. Unfortunately, you may still experience some IDE freezes: this is an issue with the Angular plugin itself. It seems to be <a href="https://youtrack.jetbrains.com/issue/WEB-57461">fixed</a> in IntelliJ 2022.3 RC, so you may want to wait for the 2022.3 final release of your IDE, or temporarily disable the Angular plugin.</li>
-      <li>internal: upgrade TwelveMonkeys library to 3.9.4 (used to preview and resize PNG icons).</li>
-      <li>fix usage of a deprecated API in order to improve compatibility with future 2023 IDEs.</li>
-      <li>improve Angular and JS/TS test icons.</li>
-    </ul>
-    2022.1.13 (2022/11/11)
-    <ul>
-      <li>set minimal IDE version to 2022.1 and fix usage of a deprecated API used to query IDE filename index.</li>
-      <li><a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/113">fix #113</a> can't load custom icons from local drive on Windows.</li>
-      <li>internal: upgrade TwelveMonkeys library to 3.9.3 (used to preview and resize PNG icons).</li>
-    </ul>
-    2022.1.12 (2022/10/15)
-    <ul>
-      <li>add graphql-resolver, Rego and Mongodb icons. Improve frameworks detection mechanism. Thx to contributor <b>fcannizzaro</b>.</li>
-      <li>I'm working on tooling and preparing the support for the 2023 IDEs. That's why this changelog will probably be a bit poor until next year. Meanwhile, bugfixes remain my priority, so don't hesitate to raise issues.</li>
-    </ul>
-    2022.1.11 (2022/09/16)
-    <ul>
-      <li><a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/110">feat #110</a> config panel: add a text input field to test the conditions for User icons.</li>
-      <li><a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/111">fix #111</a> slow operations are prohibited on EDT.</li>
-      <li>config panel: minor UI improvements in Plugin icons list.</li>
-      <li>fix possible NPE when updating User icons conditions list.</li>
-      <li>I think IDE filename index issues are gone! Sorry for this annoying issue, it made me crazy. Big thanks to <a href="https://youtrack.jetbrains.com/issue/IDEA-291382/Assertion-failed-at-VirtualDirectoryImpldoFindChildById#focus=Comments-27-6445738.0-0">Andreas Perhab</a>, who found a solution using an Index Listener. Some explanations: we are not allowed to query the index during indexing. Extra Icons plugin needs to query the index in order to locate some files (for Angular and Helm support) and, unfortunately, the IDE seems to try to update icons (which invokes Extra Icons plugin, which tries to query the index) during indexing. This is not new, but it's more frequent since IJ 2022. Starting from now, we will silent this error, and we query the index a second time, once indexing tasks completed.</li>
-    </ul>
-    ]]>
-    </change-notes>
-
     <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
     <idea-version since-build="221.6008.13"/> <!-- 2022.1.4 -->
 
