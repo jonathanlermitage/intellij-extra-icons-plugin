@@ -21,7 +21,8 @@ import lermitage.intellij.extra.icons.ModelType;
 import lermitage.intellij.extra.icons.cfg.dialogs.ModelDialog;
 import lermitage.intellij.extra.icons.cfg.models.PluginIconsSettingsTableModel;
 import lermitage.intellij.extra.icons.cfg.models.UserIconsSettingsTableModel;
-import lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService;
+import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
+import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.enablers.EnablerUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
@@ -108,7 +109,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         buttonReloadProjectsIcons.addActionListener(al -> {
             try {
                 EnablerUtils.forceInitAllEnablers();
-                ProjectUtils.refreshOpenedProjects();
+                ProjectUtils.refreshAllOpenedProjects();
                 JOptionPane.showMessageDialog(null,
                     "All icons in project views should have been reloaded.", "Icons reloaded",
                     JOptionPane.INFORMATION_MESSAGE);
@@ -231,10 +232,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         try {
             if (isProjectForm) {
                 EnablerUtils.forceInitAllEnablers(project);
-                ProjectUtils.refresh(project);
+                ProjectUtils.refreshProject(project);
             } else {
                 EnablerUtils.forceInitAllEnablers();
-                ProjectUtils.refreshOpenedProjects();
+                ProjectUtils.refreshAllOpenedProjects();
             }
         } catch (Exception e) {
             LOGGER.warn("Config updated, but failed to reload icons for project " + project.getName(), e);

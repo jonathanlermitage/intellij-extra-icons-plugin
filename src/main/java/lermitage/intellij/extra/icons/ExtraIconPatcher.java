@@ -6,7 +6,7 @@ import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
-import lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService;
+import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.utils.OS;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;

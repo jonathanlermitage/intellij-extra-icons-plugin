@@ -8,6 +8,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
+import lermitage.intellij.extra.icons.utils.LogUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 public abstract class AbstractInFolderEnabler implements IconEnabler {
 
     private static final Logger LOGGER = Logger.getInstance(AbstractInFolderEnabler.class);
+
     private final String className = this.getClass().getSimpleName();
 
     /** Indicates if the Enabler has been initialized, even with error. */
@@ -40,12 +42,12 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     }
 
     @Override
-    public synchronized void init(@NotNull Project project, boolean silentErrors) {
+    public synchronized void init(@NotNull Project project) {
         initialized = true;
         DumbService.getInstance(project).runWhenSmart(() -> { // run when smart = run once indexing tasks completed
             try {
                 long t1 = System.currentTimeMillis();
-                initWithIdeFileIndex(project, getFilenamesToSearch(), silentErrors);
+                initWithIdeFileIndex(project, getFilenamesToSearch());
                 long execDuration = System.currentTimeMillis() - t1;
                 String logMsg = getName() + " Enabler searched for " + Arrays.toString(getFilenamesToSearch()) + " files in project " + project.getName() + " in " + execDuration + " ms." + " Found folders: " + folders;
                 if (execDuration > 4000) {
@@ -54,19 +56,14 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                     LOGGER.info(logMsg);
                 }
                 LOGGER.info(getName() + " Enabler init done. Refreshing project " + project.getName());
-                ProjectUtils.refresh(project);
-            } catch (Exception e) {
-                String msg = "Canceled init of" + getName() + " Enabler";
-                if (silentErrors) {
-                    LOGGER.info(msg, e);
-                } else {
-                    LOGGER.error(msg, e);
-                }
+                ProjectUtils.refreshProject(project);
+            } catch (Throwable e) {
+                LogUtils.showErrorIfAllowedByUser(LOGGER, "Canceled init of" + getName() + " Enabler", e);
             }
         });
     }
 
-    private void initWithIdeFileIndex(@NotNull Project project, String[] filenamesToSearch, boolean silentErrors) throws Exception {
+    private void initWithIdeFileIndex(@NotNull Project project, String[] filenamesToSearch) throws Throwable {
         if (!project.isInitialized()) {
             String msg = getName() + " Enabler can't query IDE filename index: project " + project.getName() + " is not initialized. " +
                 "Some icons override won't work.";
@@ -86,11 +83,9 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                 }
             } catch (Exception e) {
                 initialized = true;
-                if (silentErrors) {
-                    LOGGER.info(getName() + " Enabler failed to query IDE filename index. Some icons override won't work.", e);
-                } else {
-                    throw (e);
-                }
+                LogUtils.throwErrorIfAllowedByUser(LOGGER,
+                    getName() + " Enabler failed to query IDE filename index. Some icons override won't work.",
+                    e);
                 if (allRequired) {
                     return;
                 }
@@ -126,7 +121,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     public boolean verify(@NotNull Project project, @NotNull String absolutePathToVerify) {
         if (shouldInit()) {
             try {
-                init(project, true);
+                init(project);
             } catch (Exception e) {
                 LOGGER.warn(e);
             }
@@ -149,7 +144,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
         return !initialized;
     }
 
-    protected static String normalizePath(@NotNull String path) {
+    protected String normalizePath(@NotNull String path) {
         return path.toLowerCase()
             .replaceAll("\\\\", "/")
             .replaceAll("//", "/");

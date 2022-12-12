@@ -5,7 +5,7 @@
     <vendor email="jonathan@lermitage.biz" url="https://github.com/jonathanlermitage">JONATHAN_LERMITAGE</vendor>
     <!-- required parameters for paid plugins: https://plugins.jetbrains.com/docs/marketplace/add-required-parameters.html -->
     <!-- IMPORTANT reminder: update the pluginVersion on new release, but change the release-date and release-version on major version changes only -->
-    <product-descriptor code="PEXTRAICONS" release-date="20220225" release-version="20221"/>
+    <product-descriptor code="PEXTRAICONS" release-date="20230101" release-version="20231"/>
 
     <description><![CDATA[
       <ul>
@@ -66,9 +66,9 @@
             order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <applicationService
-            serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService"/>
+            serviceImplementation="lermitage.intellij.extra.icons.cfg.services.SettingsIDEService"/>
         <projectService
-            serviceImplementation="lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService"/>
+            serviceImplementation="lermitage.intellij.extra.icons.cfg.services.SettingsProjectService"/>
 
         <applicationConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.IDEConfigurableProvider"
                                  id="LermitageExtraIcons"
@@ -78,10 +78,5 @@
                              displayName="Project" parentId="LermitageExtraIcons"/>
         <notificationGroup id="ExtraIcons" displayType="BALLOON"/>
     </extensions>
-
-    <applicationListeners>
-        <listener class="lermitage.intellij.extra.icons.utils.ProjectListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 
 </idea-plugin>

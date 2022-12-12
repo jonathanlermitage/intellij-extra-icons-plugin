@@ -1,13 +1,12 @@
 // SPDX-License-Identifier: MIT
 
-package lermitage.intellij.extra.icons.cfg.services.impl;
+package lermitage.intellij.extra.icons.cfg.services;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.util.xmlb.XmlSerializerUtil;
-import lermitage.intellij.extra.icons.cfg.SettingsService;
 import org.jetbrains.annotations.NotNull;
 
 // see http://www.jetbrains.org/intellij/sdk/docs/basics/persisting_state_of_components.html

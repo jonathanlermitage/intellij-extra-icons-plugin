@@ -14,7 +14,7 @@ public abstract class AbstractFolderEnabler extends AbstractInFolderEnabler impl
     public boolean verify(@NotNull Project project, @NotNull String absolutePathToVerify) {
         if (shouldInit()) {
             try {
-                init(project, true);
+                init(project);
             } catch (Exception e) {
                 LOGGER.warn(e);
             }

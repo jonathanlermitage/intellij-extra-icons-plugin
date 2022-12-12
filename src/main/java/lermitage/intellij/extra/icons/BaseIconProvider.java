@@ -18,9 +18,10 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileSystemItem;
 import com.intellij.psi.PsiManager;
 import com.intellij.testFramework.LightVirtualFile;
-import lermitage.intellij.extra.icons.cfg.SettingsService;
-import lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService;
-import lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService;
+import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
+import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
+import lermitage.intellij.extra.icons.cfg.services.SettingsService;
+import lermitage.intellij.extra.icons.services.FacetsFinderService;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
@@ -128,7 +129,7 @@ public abstract class BaseIconProvider
     @Override
     public Icon getIcon(@NotNull FilePath filePath, @Nullable Project project) {
         try {
-            if (ProjectUtils.isAlive(project)) {
+            if (ProjectUtils.isProjectAlive(project)) {
                 VirtualFile file = filePath.getVirtualFile();
                 if (file == null) {
                     return null;
@@ -153,7 +154,7 @@ public abstract class BaseIconProvider
     @Override
     public Icon getIcon(@NotNull VirtualFile file, int flags, @Nullable Project project) {
         try {
-            if (ProjectUtils.isAlive(project)) {
+            if (ProjectUtils.isProjectAlive(project)) {
                 PsiFileSystemItem psiFileSystemItem;
                 if (file instanceof LightVirtualFile) {
                     // TODO need to reproduce and understand what happens in
@@ -180,7 +181,7 @@ public abstract class BaseIconProvider
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
         try {
             Project project = psiElement.getProject();
-            if (!ProjectUtils.isAlive(project)) {
+            if (!ProjectUtils.isProjectAlive(project)) {
                 return null;
             }
             ModelType currentModelType;
@@ -207,7 +208,7 @@ public abstract class BaseIconProvider
             String parentName = parent(currentPsiFileItem);
             String currentFileName = currentPsiFileItem.getName().toLowerCase();
             String fullPath = getFullPath(currentPsiFileItem);
-            Set<String> facets = ProjectUtils.getFacets(project);
+            Set<String> facets = FacetsFinderService.getInstance(project).getFacets();
             Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
             SettingsService service = getSettingsService(project);
             Object parentModelIdWhoseCheckFailed = null;

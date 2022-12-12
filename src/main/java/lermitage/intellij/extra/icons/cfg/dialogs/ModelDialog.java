@@ -23,7 +23,7 @@ import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelCondition;
 import lermitage.intellij.extra.icons.ModelType;
 import lermitage.intellij.extra.icons.cfg.SettingsForm;
-import lermitage.intellij.extra.icons.cfg.SettingsService;
+import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.utils.AsyncUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import org.jetbrains.annotations.Nullable;

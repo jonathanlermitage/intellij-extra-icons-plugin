@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-package lermitage.intellij.extra.icons.cfg;
+package lermitage.intellij.extra.icons.cfg.services;
 
 import lermitage.intellij.extra.icons.Model;
 import org.junit.jupiter.api.Test;

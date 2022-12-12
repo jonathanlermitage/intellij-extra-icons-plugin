@@ -207,10 +207,7 @@ tasks {
         }
         changeNotes.set(provider {
             with(changelog) {
-                renderItem(
-                    getOrNull(properties("pluginVersion")) ?: getLatest(),
-                    Changelog.OutputType.HTML,
-                )
+                renderItem(getLatest(), Changelog.OutputType.HTML)
             }
         })
     }

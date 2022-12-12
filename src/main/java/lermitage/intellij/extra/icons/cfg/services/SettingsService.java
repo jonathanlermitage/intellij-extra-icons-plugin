@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-package lermitage.intellij.extra.icons.cfg;
+package lermitage.intellij.extra.icons.cfg.services;
 
 import com.intellij.notification.NotificationGroupManager;
 import com.intellij.notification.NotificationType;
@@ -8,8 +8,6 @@ import com.intellij.openapi.project.Project;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.Globals;
 import lermitage.intellij.extra.icons.Model;
-import lermitage.intellij.extra.icons.cfg.services.impl.SettingsIDEService;
-import lermitage.intellij.extra.icons.cfg.services.impl.SettingsProjectService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

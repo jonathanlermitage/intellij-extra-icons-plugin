@@ -5,8 +5,9 @@ package lermitage.intellij.extra.icons;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.xmlb.annotations.OptionTag;
 import com.intellij.util.xmlb.annotations.XCollection;
-import lermitage.intellij.extra.icons.cfg.SettingsService;
+import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.enablers.IconEnablerType;
+import lermitage.intellij.extra.icons.enablers.services.GitSubmoduleFolderEnablerService;
 import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -257,7 +258,7 @@ public class Model {
 
     /**
      * Condition: use an {@link lermitage.intellij.extra.icons.enablers.IconEnablerType},
-     * like {@link lermitage.intellij.extra.icons.enablers.GitSubmoduleFolderEnabler}.
+     * like {@link GitSubmoduleFolderEnablerService}.
      * @param type IconEnablerType.
      */
     public Model iconEnabler(@NotNull IconEnablerType type) {
