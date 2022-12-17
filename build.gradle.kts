@@ -14,7 +14,7 @@ fun properties(key: String) = project.findProperty(key).toString()
 plugins {
     id("java")
     id("jacoco")
-    id("org.jetbrains.intellij") version "1.10.1" // https://github.com/JetBrains/gradle-intellij-plugin
+    id("org.jetbrains.intellij") version "1.11.0" // https://github.com/JetBrains/gradle-intellij-plugin
     id("org.jetbrains.changelog") version "2.0.0" // https://github.com/JetBrains/gradle-changelog-plugin
     id("com.github.ben-manes.versions") version "0.44.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin

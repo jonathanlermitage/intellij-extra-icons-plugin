@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2023.1.1 (WIP)
+## 2023.1 (WIP)
 * settings: rework the icon which indicates if an IDE restart is needed.
 * internal: clear ExtraIcons internal caches associated to closed projects. It should reduce memory usage (a little).
 * internal: important code rework and refactoring, avoid some possible errors.
