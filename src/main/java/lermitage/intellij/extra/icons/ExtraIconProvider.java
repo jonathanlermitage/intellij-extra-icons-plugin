@@ -216,6 +216,14 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .tags(ModelTag.LIQUIBASE),
 
                 //
+                // file plus extension, before programmable items, otherwise scroll down to "file plus extension, after programmable items"
+                //
+                ofFile("kustomize", "extra-icons/kustomize.svg", "Kustomize: kustomization.yaml")
+                    .eq("kustomization.yaml")
+                    .altIcons("extra-icons/kustomize_alt.svg")
+                    .tags(ModelTag.KUBERNETES),
+
+                //
                 // programmable
                 //
                 // git
@@ -485,7 +493,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("settings.json").parents(".vscode"),
 
                 //
-                // file plus extension
+                // file plus extension, after programmable items
                 //
                 ofFile("vcskeep", "extra-icons/keep.svg", "Various VCS: .keep, .gitkeep, .hgkeep, .svnkeep")
                     .eq(".keep", ".gitkeep", ".hgkeep", ".svnkeep"),
