@@ -1,10 +1,11 @@
 # Extra Icons Change Log
 
-## 2023.1 (WIP)
+## 2023.1 (2023/01/21)
 * settings: rework the icon which indicates if an IDE restart is needed.
 * internal: clear ExtraIcons internal caches associated to closed projects. It should reduce memory usage (a little).
 * internal: important code rework and refactoring, avoid some possible errors.
 * support Kustomize `kustomization.yaml` files.
+* remove Better Code Hub icons as [Better Code Hub has closed on December 31st 2022](https://github.com/marketplace/better-code-hub).
 
 ## 2022.1.14 (2022/12/04)
 * [try to mitigate #114](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/114) PHPStorm freezes for a few seconds several times. The JetBrains Angular plugin may cause high CPU usage. Removed usage of the (optional) Angular plugin which was used to detect Angular projects. Angular projects are still detected by using the IDE filename index, so you should still see Angular icons. Unfortunately, you may still experience some IDE freezes: this is an issue with the Angular plugin itself. It seems to be [fixed](https://youtrack.jetbrains.com/issue/WEB-57461) in IntelliJ 2022.3 RC, so you may want to wait for the 2022.3 final release of your IDE, or temporarily disable the Angular plugin.
