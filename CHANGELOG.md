@@ -2,7 +2,7 @@
 
 ## 2023.1.1 (WIP)
 * minor UI improvement in settings panel: add icons to _Enable all... / Disable all..._ combobox items.
-* minor UI improvement in Model dialog: hide tester's' label when type is set to IDE icon.
+* minor UI improvement in Model dialog: hide tester's input label when type is set to IDE icon.
 * rework LibreOffice icons (PNG icons to SVG).
 
 ## 2023.1 (2023/01/21)
