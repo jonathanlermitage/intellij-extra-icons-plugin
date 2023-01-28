@@ -1,5 +1,10 @@
 # Extra Icons Change Log
 
+## 2023.1.1 (WIP)
+* minor UI improvement in settings panel: add icons to _Enable all... / Disable all..._ combobox items.
+* minor UI improvement in Model dialog: hide tester's' label when type is set to IDE icon.
+* rework LibreOffice icons (PNG icons to SVG).
+
 ## 2023.1 (2023/01/21)
 * settings: rework the icon which indicates if an IDE restart is needed.
 * internal: clear ExtraIcons internal caches associated to closed projects. It should reduce memory usage (a little).

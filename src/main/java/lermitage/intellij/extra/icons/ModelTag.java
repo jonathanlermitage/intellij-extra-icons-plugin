@@ -4,27 +4,34 @@ package lermitage.intellij.extra.icons;
 
 public enum ModelTag {
 
-    ANGULAR2("Angular"),
-    DOCKER("Docker"),
-    FLYWAY("Flyway"),
-    HELM("Helm"),
-    HTML("HTML"),
-    KUBERNETES("Kubernetes"),
-    LIBRE_OFFICE("LibreOffice"),
-    LIQUIBASE("Liquibase"),
-    MS_OFFICE("MS Office"),
-    NESTJS("NestJS"),
-    PRETTIER("Prettier"),
-    STORYBOOK("Storybook"),
-    TRAVIS("Travis CI");
+    ANGULAR2("Angular", "extra-icons/angular2.svg"),
+    DOCKER("Docker", "extra-icons/docker.svg"),
+    FLYWAY("Flyway", "extra-icons/flyway.svg"),
+    HELM("Helm", "extra-icons/helm.svg"),
+    HTML("HTML", "extra-icons/html5.svg"),
+    KUBERNETES("Kubernetes", "extra-icons/kubernetes.svg"),
+    LIBRE_OFFICE("LibreOffice", "extra-icons/officedocs/lowriter.png"),
+    LIQUIBASE("Liquibase", "extra-icons/liquibase.svg"),
+    MS_OFFICE("MS Office", "extra-icons/officedocs/msword-2019.svg"),
+    NESTJS("NestJS", "extra-icons/nestjs.svg"),
+    PRETTIER("Prettier", "extra-icons/prettier.svg"),
+    STORYBOOK("Storybook", "extra-icons/storybook.svg"),
+    TRAVIS("Travis CI", "extra-icons/travis.svg");
 
-    ModelTag(String name) {
+    ModelTag(String name, String icon) {
         this.name = name;
+        this.icon = icon;
     }
 
     private final String name;
+    private final String icon;
 
     public String getName() {
         return name;
     }
+
+    public String getIcon() {
+        return icon;
+    }
+
 }

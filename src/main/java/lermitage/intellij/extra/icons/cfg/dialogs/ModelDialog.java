@@ -218,6 +218,7 @@ public class ModelDialog extends DialogWrapper {
 
     private void updateUIOnTypeChange() {
         Object selectedItem = typeComboBox.getSelectedItem();
+        testLabel.setVisible(true);
         testTextField.setVisible(true);
         if (selectedItem != null) {
             boolean ideIconOverrideSelected = selectedItem.equals(ModelType.ICON.getFriendlyName());
@@ -226,6 +227,7 @@ public class ModelDialog extends DialogWrapper {
             ideIconOverrideTip.setVisible(ideIconOverrideSelected);
             conditionsPanel.setVisible(!ideIconOverrideSelected);
             if (ideIconOverrideSelected) {
+                testLabel.setVisible(false);
                 testTextField.setVisible(false);
             }
         }

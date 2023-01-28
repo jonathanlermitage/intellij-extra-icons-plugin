@@ -24,6 +24,8 @@ import lermitage.intellij.extra.icons.cfg.models.UserIconsSettingsTableModel;
 import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.enablers.EnablerUtils;
+import lermitage.intellij.extra.icons.utils.ComboBoxWithImageItem;
+import lermitage.intellij.extra.icons.utils.ComboBoxWithImageRenderer;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.apache.commons.collections.CollectionUtils;
@@ -81,7 +83,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JBLabel bottomTip;
     private JLabel additionalUIScaleTitle;
     private EditorTextField additionalUIScaleTextField;
-    private JComboBox<String> comboBoxIconsGroupSelector;
+    private JComboBox<ComboBoxWithImageItem> comboBoxIconsGroupSelector;
     private JLabel disableOrEnableOrLabel;
     private JLabel disableOrEnableLabel;
     private JCheckBox ignoreWarningsCheckBox;
@@ -290,11 +292,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             ignoreWarningsCheckBox.setVisible(false);
             buttonReloadProjectsIcons.setVisible(false);
         }
-        comboBoxIconsGroupSelector.addItem("icons");
         buttonReloadProjectsIcons.setText("Reload projects icons");
         buttonReloadProjectsIcons.setToolTipText("<b>Reload icons in all project views.</b><br>" +
             "Use it if some icons were not loaded due to errors like IDE filename index issues.");
-        Arrays.stream(ModelTag.values()).forEach(modelTag -> comboBoxIconsGroupSelector.addItem(modelTag.getName() + " tagged icons"));
+        comboBoxIconsGroupSelector.setRenderer(new ComboBoxWithImageRenderer());
+        comboBoxIconsGroupSelector.addItem(new ComboBoxWithImageItem("icons"));
+        Arrays.stream(ModelTag.values()).forEach(modelTag -> comboBoxIconsGroupSelector.addItem(new ComboBoxWithImageItem(modelTag, " icons")));
     }
 
     private void createUIComponents() {
