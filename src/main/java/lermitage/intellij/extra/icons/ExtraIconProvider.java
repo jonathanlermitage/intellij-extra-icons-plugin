@@ -1089,21 +1089,27 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_yang", "extra-icons/yang.svg", "YANG: *.yang")
                     .end(".yang"),
 
-                ofFile("ext_libreoffice_calc", "extra-icons/officedocs/localc.png", "LibreOffice Calc: *.ods")
+                ofFile("ext_libreoffice_calc", "extra-icons/officedocs/localc.svg", "LibreOffice Calc: *.ods")
                     .end(".ods")
+                    .altIcons("extra-icons/officedocs/lomain.svg")
                     .tags(ModelTag.LIBRE_OFFICE),
-                ofFile("ext_libreoffice_draw", "extra-icons/officedocs/lodraw.png", "LibreOffice Draw: *.odg")
+                ofFile("ext_libreoffice_draw", "extra-icons/officedocs/lodraw.svg", "LibreOffice Draw: *.odg")
                     .end(".odg")
+                    .altIcons("extra-icons/officedocs/lomain.svg")
                     .tags(ModelTag.LIBRE_OFFICE),
-                ofFile("ext_libreoffice_impress", "extra-icons/officedocs/loimpress.png", "LibreOffice Impress: *.odp")
+                ofFile("ext_libreoffice_impress", "extra-icons/officedocs/loimpress.svg", "LibreOffice Impress: *.odp")
                     .end(".odp")
+                    .altIcons("extra-icons/officedocs/lomain.svg")
                     .tags(ModelTag.LIBRE_OFFICE),
-                ofFile("ext_libreoffice_math", "extra-icons/officedocs/lomath.png", "LibreOffice Math: *.odf")
+                ofFile("ext_libreoffice_math", "extra-icons/officedocs/lomath.svg", "LibreOffice Math: *.odf")
                     .end(".odf")
+                    .altIcons("extra-icons/officedocs/lomain.svg")
                     .tags(ModelTag.LIBRE_OFFICE),
-                ofFile("ext_libreoffice_writer", "extra-icons/officedocs/lowriter.png", "LibreOffice Writer: *.odt")
+                ofFile("ext_libreoffice_writer", "extra-icons/officedocs/lowriter.svg", "LibreOffice Writer: *.odt")
                     .end(".odt")
+                    .altIcons("extra-icons/officedocs/lomain.svg")
                     .tags(ModelTag.LIBRE_OFFICE),
+
                 ofFile("ext_msoffice_excel", "extra-icons/officedocs/msexcel-2019.svg", "MSOffice Excel: *.xls, *.xlsx")
                     .end(".xls", ".xlsx")
                     .altIcons("extra-icons/officedocs/msexcel.png")
