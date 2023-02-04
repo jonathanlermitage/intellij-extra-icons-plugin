@@ -699,8 +699,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".jsbeautifyrc").mayEnd(CFG),
                 ofFile("jshint", "extra-icons/jshint.png", "JSHint: .jshintrc(.xml,.yml,...)")
                     .eq(".jshintrc").mayEnd(CFG),
-                ofFile("junit", "extra-icons/junit5.png", "JUnit: junit-platform.properties")
-                    .eq("junit-platform.properties"),
+                ofFile("junit", "extra-icons/junit5_transparent.svg", "JUnit: junit-platform.properties")
+                    .eq("junit-platform.properties")
+                    .altIcons("extra-icons/junit5_white.svg", "extra-icons/junit5.png"),
                 ofFile("karate", "extra-icons/karate.svg", "Karate: karate-config.js")
                     .eq("karate-config.js"),
                 ofFile("karma_js", "extra-icons/karma.svg", "Karma: karma.conf.js")
