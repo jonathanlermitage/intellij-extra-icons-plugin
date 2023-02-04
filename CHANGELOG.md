@@ -1,9 +1,10 @@
 # Extra Icons Change Log
 
-## 2023.1.1 (WIP)
+## 2023.1.1 (planned for 2023/02/11)
 * minor UI improvement in settings panel: add icons to _Enable all... / Disable all..._ combobox items.
 * minor UI improvement in Model dialog: hide tester's input label when type is set to IDE icon.
-* rework LibreOffice icons (PNG icons to SVG).
+* rework JUnit5 icon (PNG icon to SVG), and add an alternative icon.
+* rework LibreOffice icons (PNG icons to SVG). LibreOffice 7.5 [new icons](https://wiki.documentfoundation.org/ReleaseNotes/7.5#Design) will come later, if I find their source files (help needed).
 
 ## 2023.1 (2023/01/21)
 * settings: rework the icon which indicates if an IDE restart is needed.
