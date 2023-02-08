@@ -954,7 +954,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_cmd", "extra-icons/cmd.svg", "Windows script: *.cmd, *.bat, *.ps1")
                     .end(".cmd", ".bat", ".ps1"),
                 ofFile("ext_csv", "extra-icons/csv.png", "CSV: *.csv")
-                    .end(".csv"),
+                    .end(".csv")
+                    .altIcons("extra-icons/officedocs/msexcel-papirus.svg"),
                 ofFile("ext_dar", "extra-icons/jar.png", "Diffusion Archive / XL Deploy Archive: *.dar")
                     .end(".dar"),
                 ofFile("ext_deb", "extra-icons/deb.png", "Debian package: *.deb")
@@ -1011,7 +1012,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".jsx"),
                 ofFile("ext_kdbx", "extra-icons/keepass.svg", "KeePass: *.kdbx")
                     .end(".kdbx")
-                    .altIcons("extra-icons/keepass_alt.png"),
+                    .altIcons("extra-icons/keepass_alt2.svg", "extra-icons/keepass_alt.png"),
                 ofFile("ext_matroska", "extra-icons/matroska.svg", "Matroska: *.mkv, *.mka")
                     .end(".mkv", ".mka"),
                 ofFile("ext_md", "extra-icons/markdown.svg", "Markdown: *.md")
@@ -1090,30 +1091,30 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_yang", "extra-icons/yang.svg", "YANG: *.yang")
                     .end(".yang"),
 
-                ofFile("ext_libreoffice_calc", "extra-icons/officedocs/localc.svg", "LibreOffice Calc: *.ods")
+                ofFile("ext_libreoffice_calc", "extra-icons/officedocs/libo-calc.svg", "LibreOffice Calc: *.ods")
                     .end(".ods")
-                    .altIcons("extra-icons/officedocs/lomain.svg")
+                    .altIcons("extra-icons/officedocs/localc.svg", "extra-icons/officedocs/libo-symbol-black.svg", "extra-icons/officedocs/lomain.svg")
                     .tags(ModelTag.LIBRE_OFFICE),
-                ofFile("ext_libreoffice_draw", "extra-icons/officedocs/lodraw.svg", "LibreOffice Draw: *.odg")
+                ofFile("ext_libreoffice_draw", "extra-icons/officedocs/libo-draw.svg", "LibreOffice Draw: *.odg")
                     .end(".odg")
-                    .altIcons("extra-icons/officedocs/lomain.svg")
+                    .altIcons("extra-icons/officedocs/lodraw.svg", "extra-icons/officedocs/libo-symbol-black.svg", "extra-icons/officedocs/lomain.svg")
                     .tags(ModelTag.LIBRE_OFFICE),
-                ofFile("ext_libreoffice_impress", "extra-icons/officedocs/loimpress.svg", "LibreOffice Impress: *.odp")
+                ofFile("ext_libreoffice_impress", "extra-icons/officedocs/libo-impress.svg", "LibreOffice Impress: *.odp")
                     .end(".odp")
-                    .altIcons("extra-icons/officedocs/lomain.svg")
+                    .altIcons("extra-icons/officedocs/loimpress.svg", "extra-icons/officedocs/libo-symbol-black.svg", "extra-icons/officedocs/lomain.svg")
                     .tags(ModelTag.LIBRE_OFFICE),
-                ofFile("ext_libreoffice_math", "extra-icons/officedocs/lomath.svg", "LibreOffice Math: *.odf")
+                ofFile("ext_libreoffice_math", "extra-icons/officedocs/libo-math.svg", "LibreOffice Math: *.odf")
                     .end(".odf")
-                    .altIcons("extra-icons/officedocs/lomain.svg")
+                    .altIcons("extra-icons/officedocs/lomath.svg", "extra-icons/officedocs/libo-symbol-black.svg", "extra-icons/officedocs/lomain.svg")
                     .tags(ModelTag.LIBRE_OFFICE),
-                ofFile("ext_libreoffice_writer", "extra-icons/officedocs/lowriter.svg", "LibreOffice Writer: *.odt")
+                ofFile("ext_libreoffice_writer", "extra-icons/officedocs/libo-writer.svg", "LibreOffice Writer: *.odt")
                     .end(".odt")
-                    .altIcons("extra-icons/officedocs/lomain.svg")
+                    .altIcons("extra-icons/officedocs/lowriter.svg", "extra-icons/officedocs/libo-symbol-black.svg", "extra-icons/officedocs/lomain.svg")
                     .tags(ModelTag.LIBRE_OFFICE),
 
                 ofFile("ext_msoffice_excel", "extra-icons/officedocs/msexcel-2019.svg", "MSOffice Excel: *.xls, *.xlsx")
                     .end(".xls", ".xlsx")
-                    .altIcons("extra-icons/officedocs/msexcel.png")
+                    .altIcons("extra-icons/officedocs/msexcel.png", "extra-icons/officedocs/msexcel-papirus.svg")
                     .tags(ModelTag.MS_OFFICE),
                 ofFile("ext_msoffice_onenote", "extra-icons/officedocs/msonenote-2019.svg", "MSOffice OneNote: *.one, *.onetoc2")
                     .end(".one", ".onetoc2")
@@ -1121,7 +1122,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .tags(ModelTag.MS_OFFICE),
                 ofFile("ext_msoffice_powerpoint", "extra-icons/officedocs/mspowerpoint-2019.svg", "MSOffice Powerpoint: *.ppt, *.pptx")
                     .end(".ppt", ".pptx")
-                    .altIcons("extra-icons/officedocs/mspowerpoint.png")
+                    .altIcons("extra-icons/officedocs/mspowerpoint.png", "extra-icons/officedocs/mspowerpoint-papirus.svg")
                     .tags(ModelTag.MS_OFFICE),
                 ofFile("ext_msoffice_project", "extra-icons/officedocs/msproject-2019.svg", "MSOffice Project: *.mpd, *.mpp, *.mpt")
                     .end(".mpd", ".mpp", ".mpt")
@@ -1133,7 +1134,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .tags(ModelTag.MS_OFFICE),
                 ofFile("ext_msoffice_word", "extra-icons/officedocs/msword-2019.svg", "MSOffice Word: *.doc, *.docx")
                     .end(".doc", ".docx")
-                    .altIcons("extra-icons/officedocs/msword.png")
+                    .altIcons("extra-icons/officedocs/msword.png", "extra-icons/officedocs/msword-papirus.svg")
                     .tags(ModelTag.MS_OFFICE),
 
                 //
