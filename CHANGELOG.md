@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2023.1.1 (planned for 2023/02/11)
+## 2023.1.1 (2023/02/11)
 * minor UI improvement in settings panel: add icons to _Enable all... / Disable all..._ combobox items.
 * minor UI improvement in Model dialog: hide tester's input label when type is set to IDE icon.
 * rework JUnit5 icon (PNG icon to SVG), and add an alternative icon.
