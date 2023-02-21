@@ -39,7 +39,7 @@ jobs:
             NON_EXTENDABLE_API_USAGES
             PLUGIN_STRUCTURE_WARNINGS
             INVALID_PLUGIN
-          # TODO enable COMPATIBILITY_PROBLEMS when this issue is fixed: https://youtrack.jetbrains.com/issue/MP-4724/intellij-plugin-verifier-Plugin-AngularJS-doesnt-have-a-build-compatible-with-IC-222373954-in-Marketplace
+            COMPATIBILITY_PROBLEMS
 
       - name: Get log file path and print contents
         run: |

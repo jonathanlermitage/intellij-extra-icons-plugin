@@ -192,8 +192,7 @@ tasks {
         failureLevel.set(
             EnumSet.complementOf(
                 EnumSet.of(
-                    // TODO enable COMPATIBILITY_PROBLEMS when this issue is fixed: https://youtrack.jetbrains.com/issue/MP-4724/intellij-plugin-verifier-Plugin-AngularJS-doesnt-have-a-build-compatible-with-IC-222373954-in-Marketplace
-                    //RunPluginVerifierTask.FailureLevel.COMPATIBILITY_PROBLEMS,
+                    RunPluginVerifierTask.FailureLevel.COMPATIBILITY_PROBLEMS,
                     RunPluginVerifierTask.FailureLevel.OVERRIDE_ONLY_API_USAGES,
                     RunPluginVerifierTask.FailureLevel.NON_EXTENDABLE_API_USAGES,
                     RunPluginVerifierTask.FailureLevel.PLUGIN_STRUCTURE_WARNINGS,
