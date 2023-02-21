@@ -8,6 +8,7 @@ import com.intellij.openapi.ui.ValidationInfo;
 import com.intellij.ui.EditorTextField;
 import com.intellij.ui.components.JBLabel;
 import lermitage.intellij.extra.icons.ModelCondition;
+import lermitage.intellij.extra.icons.utils.I18nUtils;
 import org.intellij.lang.regexp.RegExpFileType;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,6 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import java.awt.event.ItemEvent;
+import java.text.MessageFormat;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
@@ -44,10 +47,12 @@ public class ModelConditionDialog extends DialogWrapper {
     private JCheckBox facetsCheckBox;
     private JTextField facetsTextField;
 
+    private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
+
     public ModelConditionDialog() {
         super(false);
         init();
-        setTitle("Add Condition");
+        setTitle(i18n.getString("model.condition.dialog.title"));
     }
 
     @Nullable
@@ -117,10 +122,7 @@ public class ModelConditionDialog extends DialogWrapper {
         extensionsTextField.setEnabled(false);
         facetsTextField.setEnabled(false);
 
-        tipsLabel.setText("<html><br>Extensions: use <b>" + FIELD_SEPARATOR_NAME + "</b> as a separator for multiple values.<br>" +
-            "Regex is a <b>Java regex</b> and is applied on <b>absolute paths</b>.<br>" +
-            "File path is <b>lowercased</b> before check.<br>" +
-            "Facets can't be used alone, combine them with other condition(s).</html>");
+        tipsLabel.setText(MessageFormat.format(i18n.getString("model.condition.dialog.tips"), FIELD_SEPARATOR_NAME));
     }
 
     private void createUIComponents() {
@@ -135,7 +137,7 @@ public class ModelConditionDialog extends DialogWrapper {
             String regex = regexTextField.getText();
             PatternSyntaxException exception = tryCompileRegex(regex);
             if (regex.isEmpty() || exception != null) {
-                String message = "Please specify a valid regex.";
+                String message = i18n.getString("model.condition.dialog.err.invalid.regex");
                 if (exception != null) {
                     message += " ( " + exception.getMessage() + ")";
                 }
@@ -145,36 +147,36 @@ public class ModelConditionDialog extends DialogWrapper {
 
         if (parentsCheckBox.isSelected()) {
             if (parentsTextField.getText().isEmpty()) {
-                return new ValidationInfo("Please specify at least one parent.", parentsTextField);
+                return new ValidationInfo(i18n.getString("model.condition.dialog.err.parent.missing"), parentsTextField);
             }
         }
 
         if (namesCheckBox.isSelected()) {
             if (namesTextField.getText().isEmpty()) {
-                return new ValidationInfo("Please specify at least one name.", namesTextField);
+                return new ValidationInfo(i18n.getString("model.condition.dialog.err.name.missing"), namesTextField);
             }
         }
 
         if (extensionsCheckBox.isSelected()) {
             if (extensionsTextField.getText().isEmpty()) {
-                return new ValidationInfo("Please specify at least one extension.", extensionsTextField);
+                return new ValidationInfo(i18n.getString("model.condition.dialog.err.extension.missing"), extensionsTextField);
             }
         }
 
         if (mayEndWithRadioButton.isSelected() && mayEndWithRadioButton.isEnabled()) {
             if (!namesCheckBox.isSelected()) {
-                return new ValidationInfo("If you select \"May end in\", you need to select the names checkbox.", namesCheckBox);
+                return new ValidationInfo(i18n.getString("model.condition.dialog.err.names.checkbox.if.may.end"), namesCheckBox);
             }
         }
 
         if (facetsCheckBox.isSelected()) {
             if (facetsTextField.getText().isEmpty()) {
-                return new ValidationInfo("Please specify at least one facet.", facetsTextField);
+                return new ValidationInfo(i18n.getString("model.condition.dialog.err.facet.missing"), facetsTextField);
             }
         }
 
         if (!getModelConditionFromInput().isValid()) {
-            return new ValidationInfo("Please select at least one checkbox from Regex, Parents, Names or Extensions.");
+            return new ValidationInfo(i18n.getString("model.condition.dialog.err.select.at.least.one.checkbox"));
         }
 
         return null;
@@ -202,8 +204,7 @@ public class ModelConditionDialog extends DialogWrapper {
                 if (noDotCheckBox.isSelected()) {
                     modelCondition.setNoDot();
                 }
-            }
-            else {
+            } else {
                 modelCondition.setEq(names);
             }
         }
@@ -212,8 +213,7 @@ public class ModelConditionDialog extends DialogWrapper {
             String[] extensions = extensionsTextField.getText().split(FIELD_SEPARATOR);
             if (mayEndWithRadioButton.isSelected()) {
                 modelCondition.setMayEnd(extensions);
-            }
-            else {
+            } else {
                 modelCondition.setEnd(extensions);
             }
         }
@@ -230,7 +230,7 @@ public class ModelConditionDialog extends DialogWrapper {
      * Sets a condition that can be edited using this dialog.
      */
     public void setCondition(ModelCondition modelCondition) {
-        setTitle("Edit Condition");
+        setTitle(i18n.getString("model.condition.dialog.edit.condition.title"));
 
         if (modelCondition.hasRegex()) {
             regexCheckBox.setSelected(true);
@@ -271,8 +271,7 @@ public class ModelConditionDialog extends DialogWrapper {
         try {
             Pattern.compile(regex);
             return null;
-        }
-        catch (PatternSyntaxException ex) {
+        } catch (PatternSyntaxException ex) {
             return ex;
         }
     }

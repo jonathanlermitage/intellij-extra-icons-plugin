@@ -22,15 +22,19 @@ import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.services.FacetsFinderService;
+import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -44,13 +48,15 @@ public abstract class BaseIconProvider
     implements FilePathIconProvider, /* to override icons in VCS (Git, etc.) views */
     FileIconProvider /* to override icons in Project view */ {
 
-    private static final Logger LOGGER = Logger.getInstance(BaseIconProvider.class);
+    private static final @NonNls Logger LOGGER = Logger.getInstance(BaseIconProvider.class);
     private final String className = this.getClass().getSimpleName();
 
     private final List<Model> models;
 
     private long checks_done = 0;
     private long checks_saved = 0;
+
+    private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 
     public BaseIconProvider() {
         super();
@@ -68,14 +74,14 @@ public abstract class BaseIconProvider
         String altId;
         if (altIconIdx < 1) {
             if (model.getAltIcons().length == 1) {
-                altDescription = model.getDescription() + " (alternative)";
+                altDescription = MessageFormat.format(i18n.getString("model.desc.alternative"), model.getDescription());
             } else {
-                altDescription = model.getDescription() + " (alternative 1)";
+                altDescription = MessageFormat.format(i18n.getString("model.desc.alternative.first"), model.getDescription());
             }
-            altId = model.getId() + "_alt";
+            altId = model.getId() + "_alt"; //NON-NLS
         } else {
-            altDescription = model.getDescription() + " (alternative " + (altIconIdx + 1) + ")";
-            altId = model.getId() + "_alt" + (altIconIdx + 1);
+            altDescription = MessageFormat.format(i18n.getString("model.desc.alternative.other"), model.getDescription(),altIconIdx + 1);
+            altId = model.getId() + "_alt" + (altIconIdx + 1); //NON-NLS
         }
         return Model.createAltModel(model, altId, model.getIdeIcon(), model.getAltIcons()[altIconIdx], altDescription);
     }
@@ -96,7 +102,7 @@ public abstract class BaseIconProvider
      * Check whether this icon provider supports the input file.
      * If not overridden, returns {@code true}.
      */
-    protected boolean isSupported(@NotNull final PsiFile psiFile) {
+    protected boolean isSupported(@SuppressWarnings("unused") @NotNull final PsiFile psiFile) {
         return true;
     }
 
@@ -113,7 +119,7 @@ public abstract class BaseIconProvider
         // Plugin may want to reload icon on closed or disposed project. Just ignore it
         if (e.getMessage() != null) {
             String errMsg = e.getMessage()
-                .replaceAll("[\\s_]", "")
+                .replaceAll("[\\s_]", "") //NON-NLS
                 .toUpperCase();
             if (errMsg.contains("DISPOSEINPROGRESS") || errMsg.contains("PROJECTISALREADYDISPOSED")) {
                 if (LOGGER.isDebugEnabled()) {

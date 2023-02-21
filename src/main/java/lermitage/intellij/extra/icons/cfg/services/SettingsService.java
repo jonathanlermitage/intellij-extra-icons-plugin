@@ -8,11 +8,14 @@ import com.intellij.openapi.project.Project;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.Globals;
 import lermitage.intellij.extra.icons.Model;
+import lermitage.intellij.extra.icons.utils.I18nUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
@@ -32,6 +35,8 @@ public abstract class SettingsService {
 
     private Pattern ignoredPatternObj;
     private Boolean isIgnoredPatternValid;
+
+    private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 
     public List<String> getDisabledModelIds() {
         if (disabledModelIds == null) { // a malformed xml file could make it null
@@ -123,10 +128,10 @@ public abstract class SettingsService {
                 isIgnoredPatternValid = true;
             } catch (PatternSyntaxException e) {
                 NotificationGroupManager.getInstance().getNotificationGroup(Globals.PLUGIN_GROUP_DISPLAY_ID)
-                    .createNotification("Can't compile regex: '" + regex + "' (" + e.getMessage() + ")",
+                    .createNotification(MessageFormat.format(i18n.getString("notification.content.cant.compile.regex"), regex,e.getMessage()),
                         NotificationType.WARNING)
-                    .setTitle(Globals.PLUGIN_NAME + " settings")
-                    .setSubtitle("Invalid settings")
+                    .setTitle(MessageFormat.format(i18n.getString("notification.content.cant.compile.regex.title"), Globals.PLUGIN_NAME))
+                    .setSubtitle(i18n.getString("notification.content.cant.compile.regex.subtitle"))
                     .setImportant(true)
                     .notify(null);
                 ignoredPatternObj = null;

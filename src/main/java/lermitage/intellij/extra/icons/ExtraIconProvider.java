@@ -14,7 +14,7 @@ import static lermitage.intellij.extra.icons.Model.ofDir;
 import static lermitage.intellij.extra.icons.Model.ofFile;
 import static lermitage.intellij.extra.icons.Model.ofIcon;
 
-@SuppressWarnings({"SpellCheckingInspection", "GrazieInspection"})
+@SuppressWarnings({"SpellCheckingInspection", "GrazieInspection", "HardCodedStringLiteral"})
 public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
 
     private static final String[] TXT = new String[]{".md", ".txt", ".adoc", ".rst"};

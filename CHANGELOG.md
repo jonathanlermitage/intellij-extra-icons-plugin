@@ -2,6 +2,7 @@
 
 ## 2023.1.2 (planned for 2023/03/11)
 * support C, C++ and H files.
+* plugin's internationalization: support English (default locale) and French. Chinese will come later.
 
 ## 2023.1.1 (2023/02/11)
 * minor UI improvement in settings panel: add icons to _Enable all... / Disable all..._ combobox items.

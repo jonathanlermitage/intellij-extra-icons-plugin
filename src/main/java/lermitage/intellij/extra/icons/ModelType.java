@@ -2,15 +2,19 @@
 
 package lermitage.intellij.extra.icons;
 
+import lermitage.intellij.extra.icons.utils.I18nUtils;
 import org.jetbrains.annotations.Contract;
 
-public enum ModelType {
-    FILE("File"),
-    DIR("Directory"),
-    ICON("Icon (IDE restart is required to see changes)");
+import java.util.ResourceBundle;
 
+public enum ModelType {
+    FILE("File"), //NON-NLS
+    DIR("Directory"), //NON-NLS
+    ICON("Icon (IDE restart is required to see changes)"); //NON-NLS
 
     private final String friendlyName;
+
+    private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 
     ModelType(String friendlyName) {
         this.friendlyName = friendlyName;
@@ -40,6 +44,15 @@ public enum ModelType {
     }
 
     public String getFriendlyName() {
+        if (friendlyName.equals(FILE.friendlyName)) {
+            return i18n.getString("model.type.file");
+        }
+        if (friendlyName.equals(DIR.friendlyName)) {
+            return i18n.getString("model.type.directory");
+        }
+        if (friendlyName.equals(ICON.friendlyName)) {
+            return i18n.getString("model.type.icon");
+        }
         return friendlyName;
     }
 

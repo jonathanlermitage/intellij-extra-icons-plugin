@@ -9,14 +9,17 @@ import com.intellij.util.xmlb.annotations.Tag;
 import lermitage.intellij.extra.icons.enablers.IconEnabler;
 import lermitage.intellij.extra.icons.enablers.IconEnablerProvider;
 import lermitage.intellij.extra.icons.enablers.IconEnablerType;
+import lermitage.intellij.extra.icons.utils.I18nUtils;
 import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.Nullable;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -58,6 +61,8 @@ public class ModelCondition {
     private String[] facets = new String[0];
     private Pattern pattern;
     private IconEnablerType iconEnablerType;
+
+    private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 
     public void setParents(String... parents) {
         this.checkParent = true;
@@ -298,22 +303,22 @@ public class ModelCondition {
     public String asReadableString(String delimiter) {
         ArrayList<String> parameters = new ArrayList<>();
         if (hasRegex) {
-            parameters.add("regex: " + this.regex);
+            parameters.add(MessageFormat.format(i18n.getString("model.condition.regex"), this.regex));
         }
 
         if (checkParent) {
-            parameters.add("parent(s): " + String.join(delimiter, this.parentNames));
+            parameters.add(MessageFormat.format(i18n.getString("model.condition.check.parents"), String.join(delimiter, this.parentNames)));
         }
 
         if (start || eq) {
             String names = String.join(delimiter, this.names);
             if (start) {
-                names = "name starts with: " + names;
+                names = MessageFormat.format(i18n.getString("model.condition.name.starts.with"), names);
                 if (noDot) {
-                    names += " and does not contain a dot";
+                    names += i18n.getString("model.condition.name.starts.with.and.no.dot");
                 }
             } else {
-                names = "name equals: " + names;
+                names = MessageFormat.format(i18n.getString("model.condition.name.equals"), names);
             }
             parameters.add(names);
         }
@@ -321,15 +326,15 @@ public class ModelCondition {
         if (mayEnd || end) {
             String extensions = String.join(delimiter, this.extensions);
             if (mayEnd) {
-                extensions = "name may end with: " + extensions;
+                extensions = MessageFormat.format(i18n.getString("model.condition.name.may.end.with"), extensions);
             } else {
-                extensions = "name ends with: " + extensions;
+                extensions = MessageFormat.format(i18n.getString("model.condition.name.ends.with"), extensions);
             }
             parameters.add(extensions);
         }
 
         if (checkFacets) {
-            parameters.add("facets: " + Arrays.toString(this.facets));
+            parameters.add(MessageFormat.format(i18n.getString("model.condition.facets"), Arrays.toString(this.facets)));
         }
 
         return StringUtil.capitalize(String.join(", ", parameters));

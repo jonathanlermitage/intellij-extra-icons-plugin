@@ -16,7 +16,7 @@ plugins {
     id("jacoco")
     id("org.jetbrains.intellij") version "1.13.0" // https://github.com/JetBrains/gradle-intellij-plugin
     id("org.jetbrains.changelog") version "2.0.0" // https://github.com/JetBrains/gradle-changelog-plugin
-    id("com.github.ben-manes.versions") version "0.45.0" // https://github.com/ben-manes/gradle-versions-plugin
+    id("com.github.ben-manes.versions") version "0.46.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("com.jaredsburrows.license") version "0.9.0" // https://github.com/jaredsburrows/gradle-license-plugin
     id("com.osacky.doctor") version "0.8.1" // https://github.com/runningcode/gradle-doctor/
@@ -35,6 +35,8 @@ val pluginJavaVersion: String by project
 val pluginVerifyProductDescriptor: String by project
 val testLoggerStyle: String by project
 val pluginNeedsLicense: String by project
+val pluginLanguage: String by project
+val pluginCountry: String by project
 
 version = if (pluginVersion == "auto") {
     val versionDetails: Closure<VersionDetails> by extra
@@ -173,6 +175,12 @@ tasks {
     runIde {
         jvmArgs("-Xms128m")
         jvmArgs("-Xmx1024m")
+        if (pluginLanguage.isNotBlank()) {
+            jvmArgs("-Duser.language=$pluginLanguage")
+        }
+        if (pluginCountry.isNotBlank()) {
+            jvmArgs("-Duser.country=$pluginCountry")
+        }
         autoReloadPlugins.set(false)
         // If any warning or error with missing --add-opens, wait for the next gradle-intellij-plugin's update that should sync
         // with https://raw.githubusercontent.com/JetBrains/intellij-community/master/plugins/devkit/devkit-core/src/run/OpenedPackages.txt

@@ -6,11 +6,12 @@ import com.intellij.ide.projectView.ProjectView;
 import com.intellij.ide.projectView.impl.AbstractProjectViewPane;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 public class ProjectUtils {
 
-    public static final String PLEASE_OPEN_ISSUE_MSG = "You could open an issue: " +
+    public static final @NonNls String PLEASE_OPEN_ISSUE_MSG = "You could open an issue: " +
         "https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues. Thank you!";
 
     /**

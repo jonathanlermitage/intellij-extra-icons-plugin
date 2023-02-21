@@ -38,17 +38,27 @@ fixgit: intro ## fix executable permission flag on git index for required files
 
 
 .PHONY: run
-run: intro ## run plugin in latest stable IntelliJ Ultimate
+run: intro ## run plugin in latest stable IntelliJ Community
 	${gradlew_cmd} buildPlugin runIde --warning-mode all
 
 
+.PHONY: runFR
+runFR: intro ## run plugin in latest stable IntelliJ Community with French locale (fr_FR)
+	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginLanguage=fr -PpluginCountry=FR
+
+
+.PHONY: runCN
+runCN: intro ## run plugin in latest stable IntelliJ Community with Chinese locale (cn_CN)
+	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginLanguage=cn -PpluginCountry=CN
+
+
 .PHONY: runeap
-runeap: intro ## run plugin in latest IntelliJ EAP Snapshot
+runeap: intro ## run plugin in latest IntelliJ Community EAP Snapshot
 	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
 
 
 .PHONY: runold
-runold: intro ## run plugin in oldest supported IntelliJ version
+runold: intro ## run plugin in oldest supported IntelliJ Community version
 	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-${ij_min_version} -PpluginDownloadIdeaSources=false
 
 

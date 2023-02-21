@@ -19,8 +19,8 @@ public class ComboBoxWithImageItem {
         this.imagePath = null;
     }
 
-    public ComboBoxWithImageItem(@NotNull ModelTag modelTag, String nameSuffix) {
-        this.title = modelTag.getName() + nameSuffix;
+    public ComboBoxWithImageItem(@NotNull ModelTag modelTag, String title) {
+        this.title = title;
         this.imagePath = modelTag.getIcon();
     }
 

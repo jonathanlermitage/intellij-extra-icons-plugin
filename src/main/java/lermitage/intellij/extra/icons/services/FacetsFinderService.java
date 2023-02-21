@@ -8,6 +8,7 @@ import com.intellij.openapi.components.Service;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.project.Project;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
@@ -18,7 +19,7 @@ import java.util.stream.Stream;
 @Service
 public final class FacetsFinderService {
 
-    private static final Logger LOGGER = Logger.getInstance(FacetsFinderService.class);
+    private static final @NonNls Logger LOGGER = Logger.getInstance(FacetsFinderService.class);
 
     private final Set<String> facets;
 

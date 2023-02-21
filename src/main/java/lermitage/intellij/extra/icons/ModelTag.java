@@ -2,6 +2,7 @@
 
 package lermitage.intellij.extra.icons;
 
+@SuppressWarnings("HardCodedStringLiteral")
 public enum ModelTag {
 
     ANGULAR2("Angular", "extra-icons/angular2.svg"),

@@ -4,6 +4,7 @@ package lermitage.intellij.extra.icons.utils;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
+import org.jetbrains.annotations.NonNls;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -21,7 +22,7 @@ import java.awt.Component;
  */
 public class ComboBoxWithImageRenderer extends JLabel implements ListCellRenderer<Object> {
 
-    private static final Logger LOGGER = Logger.getInstance(ComboBoxWithImageRenderer.class);
+    private static final @NonNls Logger LOGGER = Logger.getInstance(ComboBoxWithImageRenderer.class);
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public ComboBoxWithImageRenderer() {

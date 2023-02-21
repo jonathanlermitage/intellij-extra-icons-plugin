@@ -25,6 +25,7 @@ import lermitage.intellij.extra.icons.ModelType;
 import lermitage.intellij.extra.icons.cfg.SettingsForm;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.utils.AsyncUtils;
+import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import org.jetbrains.annotations.Nullable;
 
@@ -51,10 +52,12 @@ import java.awt.event.ItemEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URI;
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -64,7 +67,7 @@ public class ModelDialog extends DialogWrapper {
 
     // Icons can be SVG or PNG only. Never allow user to pick GIF, JPEG, etc., otherwise
     // we should convert these files to PNG in IconUtils:toBase64 method.
-    private final List<String> extensions = Arrays.asList("svg", "png");
+    private final List<String> extensions = Arrays.asList("svg", "png"); //NON-NLS
 
     private final SettingsForm settingsForm;
 
@@ -89,11 +92,13 @@ public class ModelDialog extends DialogWrapper {
 
     private Model modelToEdit;
 
+    private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
+
     public ModelDialog(SettingsForm settingsForm) {
         super(true);
         this.settingsForm = settingsForm;
         init();
-        setTitle("Add New Model");
+        setTitle(i18n.getString("model.dialog.title"));
         initComponents();
         conditionsPanel.addComponentListener(new ComponentAdapter() {
         });
@@ -107,9 +112,8 @@ public class ModelDialog extends DialogWrapper {
 
     private void initComponents() {
         setIdComponentsVisible(false);
-        ideIconOverrideTip.setText("<html><b>Find IDE icons <a href=\"#\">here</a></b>, open the ZIP file then use " +
-            "an icon file name (with <i>.svg</i> extension).</html>");
-        ideIconOverrideTip.setToolTipText("<html>Open <i>https://jetbrains.design/intellij/resources/icons_list/</i> in default browser.</html>");
+        ideIconOverrideTip.setText(i18n.getString("model.dialog.override.ide.tip"));
+        ideIconOverrideTip.setToolTipText(i18n.getString("model.dialog.override.ide.tip.tooltip"));
         ideIconOverrideTip.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ideIconOverrideTip.addMouseListener(new MouseAdapter() {
             @Override
@@ -134,11 +138,11 @@ public class ModelDialog extends DialogWrapper {
                     iconLabel.setIcon(IconUtil.createImageIcon(customIconImage.getImage()));
                 }
             } catch (IllegalArgumentException ex) {
-                Messages.showErrorDialog(ex.getMessage(), "Could Not Load Icon.");
+                Messages.showErrorDialog(ex.getMessage(), i18n.getString("model.dialog.choose.icon.failed.to.load.icon"));
             }
         }));
 
-        conditionsCheckboxList.getEmptyText().setText("No conditions added.");
+        conditionsCheckboxList.getEmptyText().setText(i18n.getString("model.dialog.choose.icon.no.conditions.added"));
         conditionsCheckboxList.addPropertyChangeListener(evt -> testModel(getModelFromInput(), testTextField));
 
         toolbarPanel = createConditionsListToolbar();
@@ -152,17 +156,18 @@ public class ModelDialog extends DialogWrapper {
 
         typeComboBox.addActionListener(e -> updateUIOnTypeChange());
 
-        chooseIconSelector.addItem("choose custom or bundled icon");
+        chooseIconSelector.addItem(i18n.getString("model.dialog.choose.icon.first.item"));
         ExtraIconProvider.allModels().stream()
             .map(Model::getIcon)
             .sorted()
             .distinct()
             .forEach(iconPath -> chooseIconSelector.addItem(new BundledIcon(
-                iconPath, "bundled: " + iconPath.replace("extra-icons/", ""))));
+                iconPath, MessageFormat.format(i18n.getString("model.dialog.choose.icon.bundled.icon"),
+                iconPath.replace("extra-icons/", ""))))); //NON-NLS
         ComboBoxRenderer renderer = new ComboBoxRenderer();
         // customIconImage
         chooseIconSelector.setRenderer(renderer);
-        chooseIconSelector.setToolTipText("<html>Choose a custom icon with the button on the right,<br>otherwise select a bundled icon in the list.</html>");
+        chooseIconSelector.setToolTipText(i18n.getString("model.dialog.choose.icon.tooltip"));
         chooseIconSelector.addItemListener(event -> {
             if (event.getStateChange() == ItemEvent.SELECTED) {
                 Object item = event.getItem();
@@ -176,9 +181,9 @@ public class ModelDialog extends DialogWrapper {
             }
         });
 
-        testLabel.setText("Test your model:");
+        testLabel.setText(i18n.getString("model.dialog.model.tester"));
         testTextField.setText("");
-        testTextField.setToolTipText("Enter a file of folder name or absolute path in order to verify your Model.");
+        testTextField.setToolTipText(i18n.getString("model.dialog.model.tester.tooltip"));
         testTextField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -288,7 +293,7 @@ public class ModelDialog extends DialogWrapper {
      */
     public void setModelToEdit(Model model) {
         modelToEdit = model;
-        setTitle("Edit Model");
+        setTitle(i18n.getString("model.dialog.model.editor"));
         boolean hasModelId = model.getId() != null;
         setIdComponentsVisible(hasModelId);
         if (hasModelId) {
@@ -343,7 +348,11 @@ public class ModelDialog extends DialogWrapper {
                 ListUtil.removeSelectedItems(conditionsCheckboxList);
                 testModel(getModelFromInput(), testTextField);
             }
-        ).setButtonComparator("Add", "Edit", "Remove").createPanel();
+        ).setButtonComparator(
+            i18n.getString("model.dialog.creator.condition.col.add"),
+            i18n.getString("model.dialog.creator.condition.col.edit"),
+            i18n.getString("model.dialog.creator.condition.col.remove")
+        ).createPanel();
     }
 
     /**
@@ -370,25 +379,25 @@ public class ModelDialog extends DialogWrapper {
     @Override
     protected ValidationInfo doValidate() {
         if (modelIDField.isVisible() && modelIDField.getText().isEmpty()) {
-            return new ValidationInfo("ID cannot be empty!", modelIDField);
+            return new ValidationInfo(i18n.getString("model.dialog.validation.id.missing"), modelIDField);
         }
         if (descriptionField.getText().isEmpty()) {
-            return new ValidationInfo("Description cannot be empty!", descriptionField);
+            return new ValidationInfo(i18n.getString("model.dialog.validation.desc.missing"), descriptionField);
         }
         if (customIconImage == null && modelToEdit == null) {
-            return new ValidationInfo("Please add an icon!", chooseIconButton);
+            return new ValidationInfo(i18n.getString("model.dialog.validation.icon.missing"), chooseIconButton);
         }
 
         Object selectedItem = typeComboBox.getSelectedItem();
         if (selectedItem != null && selectedItem.equals(ModelType.ICON.getFriendlyName())) {
             if (ideIconOverrideTextField.getText().trim().isEmpty()) {
-                return new ValidationInfo("IDE icon's name cannot be empty!", ideIconOverrideTextField);
+                return new ValidationInfo(i18n.getString("model.dialog.validation.ide.icon.name.missing"), ideIconOverrideTextField);
             } else if (!ideIconOverrideTextField.getText().endsWith(".svg")) {
-                return new ValidationInfo("IDE icon's name must end with .svg!", ideIconOverrideTextField);
+                return new ValidationInfo(i18n.getString("model.dialog.validation.ide.icon.must.end.svg"), ideIconOverrideTextField);
             }
         } else {
             if (conditionsCheckboxList.isEmpty()) {
-                return new ValidationInfo("Please add a condition to your model!", toolbarPanel);
+                return new ValidationInfo(i18n.getString("model.dialog.validation.condition.missing"), toolbarPanel);
             }
         }
 

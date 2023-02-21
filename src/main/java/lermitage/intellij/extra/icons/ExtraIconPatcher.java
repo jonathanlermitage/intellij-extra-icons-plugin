@@ -9,6 +9,7 @@ import com.intellij.openapi.util.IconPathPatcher;
 import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.utils.OS;
 import org.apache.commons.io.FileUtils;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,7 +28,7 @@ import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_DECODER;
 
 public class ExtraIconPatcher extends IconPathPatcher {
 
-    private static final Logger LOGGER = Logger.getInstance(ExtraIconPatcher.class);
+    private static final @NonNls Logger LOGGER = Logger.getInstance(ExtraIconPatcher.class);
     private static final OS detectedOS = OS.detectOS();
 
     private Map<String, String> icons;
@@ -115,7 +116,7 @@ public class ExtraIconPatcher extends IconPathPatcher {
         Map<String, String> morphedIcons = new LinkedHashMap<>();
         for (String iconKey : icons.keySet()) {
             String iconStr = icons.get(iconKey);
-            if (iconStr.startsWith("extra-icons/")) {
+            if (iconStr.startsWith("extra-icons/")) { //NON-NLS
                 // bundled icon, no icon transformation needed
                 if (useOldResourceLoaderBehavior) {
                     morphedIcons.put(iconKey, "/" + iconStr);
@@ -124,14 +125,14 @@ public class ExtraIconPatcher extends IconPathPatcher {
                 }
             } else {
                 // base64 icon provided by user: store as local file
-                Path iconFile = Files.createTempFile("extra-icons-ide-user-icon", ".svg");
+                Path iconFile = Files.createTempFile("extra-icons-ide-user-icon", ".svg"); //NON-NLS
                 FileUtils.forceDeleteOnExit(iconFile.toFile());
                 Files.write(iconFile, B64_DECODER.decode(iconStr));
                 String decodedIconPath = iconFile.toAbsolutePath().toString();
                 if (detectedOS == OS.WIN) {
-                    morphedIcons.put(iconKey, "file:/" + decodedIconPath);
+                    morphedIcons.put(iconKey, "file:/" + decodedIconPath); //NON-NLS
                 } else {
-                    morphedIcons.put(iconKey, "file://" + decodedIconPath);
+                    morphedIcons.put(iconKey, "file://" + decodedIconPath); //NON-NLS
                 }
             }
         }

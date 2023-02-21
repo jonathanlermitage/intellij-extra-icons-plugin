@@ -2,9 +2,12 @@
 
 package lermitage.intellij.extra.icons.cfg.models;
 
+import lermitage.intellij.extra.icons.utils.I18nUtils;
+
 import javax.swing.Icon;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class PluginIconsSettingsTableModel extends DefaultTableModel {
 
@@ -15,6 +18,8 @@ public class PluginIconsSettingsTableModel extends DefaultTableModel {
     public static int ICON_REQUIRE_IDE_RESTART = 4;
     public static int ICON_TAGS_ENUM_LIST_COL_NUMBER = 5;
     public static int ICON_ID_COL_NUMBER = 6;
+
+    private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 
     /**
      * Table columns type.
@@ -28,7 +33,11 @@ public class PluginIconsSettingsTableModel extends DefaultTableModel {
     private final boolean[] canEdit = new boolean[]{false, true, false, false, false, false, false};
 
     public PluginIconsSettingsTableModel() {
-        super(new Object[][]{}, new String[]{"", "", "Description", "Tags", "Restart", "", ""});
+        super(new Object[][]{}, new String[]{"", "",
+            i18n.getString("plugin.icons.table.col.description"),
+            i18n.getString("plugin.icons.table.col.tags"),
+            i18n.getString("plugin.icons.table.col.need.restart"),
+            "", ""});
     }
 
     @Override

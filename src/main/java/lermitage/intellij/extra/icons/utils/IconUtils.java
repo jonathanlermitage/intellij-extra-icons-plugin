@@ -11,6 +11,7 @@ import com.intellij.util.RetinaImage;
 import com.intellij.util.SVGLoader;
 import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.Model;
+import org.jetbrains.annotations.NonNls;
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -23,7 +24,7 @@ import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_ENCODER;
 
 public class IconUtils {
 
-    private static final Logger LOGGER = Logger.getInstance(IconUtils.class);
+    private static final @NonNls Logger LOGGER = Logger.getInstance(IconUtils.class);
 
     private static final ThreadLocal<Boolean> contextUpdated = ThreadLocal.withInitial(() -> false);
 

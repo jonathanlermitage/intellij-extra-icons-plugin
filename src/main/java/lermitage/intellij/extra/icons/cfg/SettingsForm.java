@@ -26,11 +26,13 @@ import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.enablers.EnablerUtils;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageItem;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageRenderer;
+import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.intellij.lang.regexp.RegExpFileType;
 import org.jetbrains.annotations.Nls;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -51,11 +53,13 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.table.TableStringConverter;
 import java.awt.event.ItemEvent;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -63,7 +67,7 @@ import java.util.stream.Stream;
 
 public class SettingsForm implements Configurable, Configurable.NoScroll {
 
-    private static final Logger LOGGER = Logger.getInstance(SettingsForm.class);
+    private static final @NonNls Logger LOGGER = Logger.getInstance(SettingsForm.class);
 
     private JPanel pane;
     private JButton buttonEnableAll;
@@ -97,6 +101,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private boolean forceUpdate = false;
 
+    private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
+
     public SettingsForm() {
         buttonEnableAll.addActionListener(e -> enableAll(true));
         buttonDisableAll.addActionListener(e -> enableAll(false));
@@ -113,12 +119,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 EnablerUtils.forceInitAllEnablers();
                 ProjectUtils.refreshAllOpenedProjects();
                 JOptionPane.showMessageDialog(null,
-                    "All icons in project views should have been reloaded.", "Icons reloaded",
+                    i18n.getString("icons.reloaded"), i18n.getString("icons.reloaded.title"),
                     JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception e) {
                 LOGGER.warn("Config updated, but failed to reload icons for project " + project.getName(), e);
                 JOptionPane.showMessageDialog(null,
-                    "Failed to reload icons, please try again later.", "Icons not reloaded",
+                    i18n.getString("icons.failed.to.reload"), i18n.getString("icons.failed.to.reload.title"),
                     JOptionPane.ERROR_MESSAGE);
             }
         });
@@ -137,7 +143,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     @Nls(capitalization = Nls.Capitalization.Title)
     @Override
     public String getDisplayName() {
-        return "Extra Icons";
+        return "Extra Icons"; //NON-NLS
     }
 
     @Nullable
@@ -218,9 +224,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             service.setAdditionalUIScale(Double.valueOf(additionalUIScaleTextField.getText()));
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null,
-                "Ignoring invalid value '" + additionalUIScaleTextField.getText() + "' for Additional UI Scale Factor.\n" +
-                    "Please use a valid Float value next time, like 1 or 1.25.",
-                "Invalid Additional UI Scale Factor",
+                MessageFormat.format(i18n.getString("invalid.ui.scalefactor"), additionalUIScaleTextField.getText()),
+                i18n.getString("invalid.ui.scalefactor.title"),
                 JOptionPane.WARNING_MESSAGE);
         }
         service.setIgnoreWarnings(ignoreWarningsCheckBox.isSelected());
@@ -252,29 +257,19 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void initComponents() {
-        buttonEnableAll.setText("Enable all...");
-        buttonDisableAll.setText("Disable all...");
-        ignoredPatternTitle.setText("Regex to ignore relative paths:");
-        ignoredPatternTextField.setToolTipText("<html>Regex is a <b>Java regex</b>, and file path is <b>lowercased</b> before check.</html>");
-        additionalUIScaleTitle.setText("Additional UI Scale Factor to adjust user icons size:");
-        additionalUIScaleTextField.setToolTipText(
-            "<html>Useful if you run IDE with <b>-Dsun.java2d.uiScale.enabled=false</b> " +
-                "flag and <b>user icons are too small</b>.<br>Float value. Defaults to <b>1.0</b>.</html>");
-        ignoreWarningsCheckBox.setText("Ignore plugin's warnings");
-        ignoreWarningsCheckBox.setToolTipText(
-            "You may see notifications saying that some features have been disabled<br>" +
-                "due to plugin or IDE errors, like IDE filename index issues.<br>" +
-                "Use this checkbox to silent these notifications.");
-        filterLabel.setText("Regex to filter Plugin icons table by:");
+        buttonEnableAll.setText(i18n.getString("btn.enable.all"));
+        buttonDisableAll.setText(i18n.getString("btn.disable.all"));
+        ignoredPatternTitle.setText(i18n.getString("label.regex.ignore.relative.paths"));
+        ignoredPatternTextField.setToolTipText(i18n.getString("field.regex.ignore.relative.paths"));
+        additionalUIScaleTitle.setText(i18n.getString("label.ui.scalefactor"));
+        additionalUIScaleTextField.setToolTipText(i18n.getString("field.ui.scalefactor"));
+        ignoreWarningsCheckBox.setText(i18n.getString("checkbox.ignore.warnings"));
+        ignoreWarningsCheckBox.setToolTipText(i18n.getString("checkbox.ignore.warnings.tooltip"));
+        filterLabel.setText(i18n.getString("plugin.icons.table.filter"));
         filterTextField.setText("");
-        filterTextField.setToolTipText(
-            "<html>Regex is a <b>Java regex</b> and <b>is not case-sensitive</b><br>" +
-                "You can also type <b>yes</b> or <b>no</b> to find the icons that are enabled or disabled.</html>");
-        filterResetBtn.setText("Reset filter");
-        bottomTip.setText(
-            "<html><b>Icons are ordered by priority</b>. To use an <b>alternative</b> icon (as for Markdown files), " +
-                "deactivate the icon(s) with higher priority.<br/>The <b>Restart</b> column indicates if you need to restart " +
-                "the IDE to see changes.</html>");
+        filterTextField.setToolTipText(i18n.getString("plugin.icons.table.filter.tooltip"));
+        filterResetBtn.setText(i18n.getString("btn.plugin.icons.table.filter.reset"));
+        bottomTip.setText(i18n.getString("plugin.icons.table.bottom.tip"));
         initCheckbox();
         loadPluginIconsTable();
         userIconsTable.setShowHorizontalLines(false);
@@ -292,12 +287,13 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             ignoreWarningsCheckBox.setVisible(false);
             buttonReloadProjectsIcons.setVisible(false);
         }
-        buttonReloadProjectsIcons.setText("Reload projects icons");
-        buttonReloadProjectsIcons.setToolTipText("<b>Reload icons in all project views.</b><br>" +
-            "Use it if some icons were not loaded due to errors like IDE filename index issues.");
+        buttonReloadProjectsIcons.setText(i18n.getString("btn.reload.project.icons"));
+        buttonReloadProjectsIcons.setToolTipText(i18n.getString("btn.reload.project.icons.tooltip"));
         comboBoxIconsGroupSelector.setRenderer(new ComboBoxWithImageRenderer());
-        comboBoxIconsGroupSelector.addItem(new ComboBoxWithImageItem("icons"));
-        Arrays.stream(ModelTag.values()).forEach(modelTag -> comboBoxIconsGroupSelector.addItem(new ComboBoxWithImageItem(modelTag, " icons")));
+        comboBoxIconsGroupSelector.addItem(new ComboBoxWithImageItem(i18n.getString("icons")));
+        Arrays.stream(ModelTag.values()).forEach(modelTag -> comboBoxIconsGroupSelector.addItem(
+            new ComboBoxWithImageItem(modelTag, MessageFormat.format(i18n.getString("icons.tag.name"), modelTag.getName()))
+        ));
     }
 
     private void createUIComponents() {
@@ -314,17 +310,17 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             overrideSettingsPanel.setVisible(false);
             return;
         }
-        overrideSettingsCheckbox.setText("Override IDE settings");
+        overrideSettingsCheckbox.setText(i18n.getString("checkbox.override.ide.settings"));
         boolean shouldOverride = SettingsProjectService.getInstance(project).isOverrideIDESettings();
         overrideSettingsCheckbox.setSelected(shouldOverride);
         setComponentState(shouldOverride);
-        overrideSettingsCheckbox.setToolTipText("Set icons on a project-level basis");
+        overrideSettingsCheckbox.setToolTipText(i18n.getString("checkbox.override.ide.settings.tooltip"));
         overrideSettingsCheckbox.addItemListener(item -> {
             boolean enabled = item.getStateChange() == ItemEvent.SELECTED;
             setComponentState(enabled);
         });
-        addToIDEUserIconsCheckbox.setText("Don't overwrite IDE user icons");
-        addToIDEUserIconsCheckbox.setToolTipText("If unchecked, project user icons will overwrite IDE user icons");
+        addToIDEUserIconsCheckbox.setText(i18n.getString("checkbox.dont.overwrite.ide.user.icons"));
+        addToIDEUserIconsCheckbox.setToolTipText(i18n.getString("checkbox.dont.overwrite.ide.user.icons.tooltip"));
         boolean shouldAdd = SettingsProjectService.getInstance(project).isAddToIDEUserIcons();
         addToIDEUserIconsCheckbox.setSelected(shouldAdd);
     }
@@ -458,7 +454,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         foldersFirst(allRegisteredModels);
         List<String> disabledModelIds = SettingsService.getInstance(project).getDisabledModelIds();
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
-        Icon restartIcon = IconLoader.getIcon("extra-icons/plugin-internals/reboot.svg", SettingsForm.class);
+        Icon restartIcon = IconLoader.getIcon("extra-icons/plugin-internals/reboot.svg", SettingsForm.class); //NON-NLS
         allRegisteredModels.forEach(m -> pluginIconsSettingsTableModel.addRow(new Object[]{
                 IconUtils.getIcon(m, additionalUIScale),
                 !disabledModelIds.contains(m.getId()),
@@ -531,7 +527,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 setUserIconsTableModel();
             })
 
-            .setButtonComparator("Add", "Edit", "Remove")
+            .setButtonComparator(i18n.getString("btn.add"), i18n.getString("btn.edit"), i18n.getString("btn.remove"))
 
             .setMoveUpAction(anActionButton -> reorderUserIcons(MoveDirection.UP, userIconsTable.getSelectedRow()))
 
