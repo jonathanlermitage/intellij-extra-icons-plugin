@@ -13,7 +13,7 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Regex:"/>
+          <text resource-bundle="ExtraIconsI18n" key="model.condition.dialog.regex.checkbox"/>
         </properties>
       </component>
       <component id="32064" class="com.intellij.ui.EditorTextField" binding="regexTextField" custom-create="true">
@@ -27,7 +27,7 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Parents:"/>
+          <text resource-bundle="ExtraIconsI18n" key="model.condition.dialog.parents.checkbox"/>
         </properties>
       </component>
       <component id="36c15" class="javax.swing.JTextField" binding="parentsTextField">
@@ -44,7 +44,7 @@
         </constraints>
         <properties>
           <selected value="false"/>
-          <text value="Names:"/>
+          <text resource-bundle="ExtraIconsI18n" key="model.condition.dialog.names.checkbox"/>
         </properties>
       </component>
       <component id="baee4" class="javax.swing.JTextField" binding="namesTextField">
@@ -60,7 +60,7 @@
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Extensions:"/>
+          <text resource-bundle="ExtraIconsI18n" key="model.condition.dialog.extensions.checkbox"/>
         </properties>
       </component>
       <component id="a9461" class="javax.swing.JTextField" binding="extensionsTextField">
@@ -84,7 +84,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Starts with"/>
+              <text resource-bundle="ExtraIconsI18n" key="model.condition.dialog.startswith.checkbox"/>
             </properties>
           </component>
           <component id="49101" class="javax.swing.JRadioButton" binding="equalsRadioButton">
@@ -94,7 +94,7 @@
             <properties>
               <label value="Equals"/>
               <selected value="false"/>
-              <text value="Equals"/>
+              <text resource-bundle="ExtraIconsI18n" key="model.condition.dialog.equals.checkbox"/>
             </properties>
           </component>
         </children>
@@ -112,7 +112,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Ends with"/>
+              <text resource-bundle="ExtraIconsI18n" key="model.condition.dialog.endswith.checkbox"/>
             </properties>
           </component>
           <component id="b4ef" class="javax.swing.JRadioButton" binding="mayEndWithRadioButton">
@@ -120,7 +120,7 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="May end with"/>
+              <text resource-bundle="ExtraIconsI18n" key="model.condition.dialog.mayendwith.checkbox"/>
             </properties>
           </component>
         </children>
@@ -132,7 +132,7 @@
         <properties>
           <horizontalAlignment value="11"/>
           <horizontalTextPosition value="4"/>
-          <text value="No dot"/>
+          <text resource-bundle="ExtraIconsI18n" key="model.condition.dialog.nodot.checkbox"/>
           <toolTipText value="Checks if file name does not contain a dot."/>
         </properties>
       </component>
@@ -141,7 +141,7 @@
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Facets:"/>
+          <text resource-bundle="ExtraIconsI18n" key="model.condition.dialog.facets.checkbox"/>
         </properties>
       </component>
       <component id="c1def" class="com.intellij.ui.components.JBLabel" binding="tipsLabel">
