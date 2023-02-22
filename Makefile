@@ -42,11 +42,6 @@ run: intro ## run plugin in latest stable IntelliJ Community
 	${gradlew_cmd} buildPlugin runIde --warning-mode all
 
 
-.PHONY: runFR
-runFR: intro ## run plugin in latest stable IntelliJ Community with French locale (fr_FR)
-	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginLanguage=fr -PpluginCountry=FR
-
-
 .PHONY: runCN
 runCN: intro ## run plugin in latest stable IntelliJ Community with Chinese locale (cn_CN)
 	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginLanguage=cn -PpluginCountry=CN
