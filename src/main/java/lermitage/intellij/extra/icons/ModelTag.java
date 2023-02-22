@@ -11,7 +11,7 @@ public enum ModelTag {
     HELM("Helm", "extra-icons/helm.svg"),
     HTML("HTML", "extra-icons/html5.svg"),
     KUBERNETES("Kubernetes", "extra-icons/kubernetes.svg"),
-    LIBRE_OFFICE("LibreOffice", "extra-icons/officedocs/lowriter.png"),
+    LIBRE_OFFICE("LibreOffice", "extra-icons/officedocs/lowriter.svg"),
     LIQUIBASE("Liquibase", "extra-icons/liquibase.svg"),
     MS_OFFICE("MS Office", "extra-icons/officedocs/msword-2019.svg"),
     NESTJS("NestJS", "extra-icons/nestjs.svg"),
