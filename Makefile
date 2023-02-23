@@ -43,8 +43,8 @@ run: intro ## run plugin in latest stable IntelliJ Community
 
 
 .PHONY: runCN
-runCN: intro ## run plugin in latest stable IntelliJ Community with Chinese locale (cn_CN)
-	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginLanguage=cn -PpluginCountry=CN
+runCN: intro ## run plugin in latest stable IntelliJ Community with Chinese locale (zh_CN)
+	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginLanguage=zh -PpluginCountry=CN
 
 
 .PHONY: runeap
