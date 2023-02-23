@@ -71,11 +71,11 @@
             serviceImplementation="lermitage.intellij.extra.icons.cfg.services.SettingsProjectService"/>
 
         <applicationConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.IDEConfigurableProvider"
-                                 id="LermitageExtraIcons"
-                                 displayName="Extra Icons" parentId="appearance"/>
+                                 id="LermitageExtraIcons" parentId="appearance"
+                                 key="settings.idelevel.menu" bundle="ExtraIconsI18n"/>
         <projectConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.ProjectConfigurableProvider"
-                             id="LermitageExtraIcons-Project"
-                             displayName="Project" parentId="LermitageExtraIcons"/>
+                             id="LermitageExtraIcons-Project" parentId="LermitageExtraIcons"
+                             key="settings.projectlevel.menu" bundle="ExtraIconsI18n"/>
         <notificationGroup id="ExtraIcons" displayType="BALLOON"/>
     </extensions>
 
