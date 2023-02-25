@@ -3,6 +3,7 @@
 package lermitage.intellij.extra.icons.cfg.dialogs;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTextBorder;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.ui.DialogWrapper;
@@ -17,6 +18,7 @@ import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.IconUtil;
+import lermitage.intellij.extra.icons.BaseIconProvider;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.Model;
@@ -27,6 +29,7 @@ import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.utils.AsyncUtils;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
@@ -64,6 +67,8 @@ import java.util.stream.IntStream;
 import static lermitage.intellij.extra.icons.cfg.dialogs.ModelConditionDialog.FIELD_SEPARATOR;
 
 public class ModelDialog extends DialogWrapper {
+
+    private static final @NonNls Logger LOGGER = Logger.getInstance(BaseIconProvider.class);
 
     // Icons can be SVG or PNG only. Never allow user to pick GIF, JPEG, etc., otherwise
     // we should convert these files to PNG in IconUtils:toBase64 method.
@@ -430,13 +435,22 @@ public class ModelDialog extends DialogWrapper {
             Icon icon = null;
             if (value instanceof BundledIcon) {
                 text = ((BundledIcon) value).getDescription();
-                icon = IconLoader.getIcon(((BundledIcon) value).getIconPath(), IconUtils.class);
+                try {
+                    icon = IconLoader.getIcon(((BundledIcon) value).getIconPath(), IconUtils.class);
+                } catch (Exception e) {
+                    LOGGER.warn("failed to load icon " + text, e);
+                }
             } else if (value instanceof String) {
                 text = (String) value;
                 icon = new ImageIcon();
             }
             setText(text);
-            setIcon(icon);
+            try {
+                setIcon(icon);
+            } catch (Exception e) {
+                setIcon(null);
+                LOGGER.warn("failed to load icon " + text + ": " + icon, e);
+            }
 
             if (isSelected) {
                 setBackground(list.getSelectionBackground());
