@@ -78,7 +78,7 @@
         <children>
           <grid id="8fc9a" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
-              <tabbedpane title-resource-bundle="ExtraIconsI18n" title-key="plugin.icons.table.tab.name"/>
+              <tabbedpane title="Plugin icons"/>
             </constraints>
             <properties/>
             <border type="none"/>
@@ -102,7 +102,7 @@
           </grid>
           <grid id="b1b61" binding="userIconsTablePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
-              <tabbedpane title-resource-bundle="ExtraIconsI18n" title-key="user.icons.table.tab.name"/>
+              <tabbedpane title="User icons"/>
             </constraints>
             <properties/>
             <border type="none"/>

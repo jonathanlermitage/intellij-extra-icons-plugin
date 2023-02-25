@@ -86,6 +86,9 @@ public class ModelDialog extends DialogWrapper {
     private JBLabel ideIconOverrideTip;
     private JTextField testTextField;
     private JLabel testLabel;
+    private JLabel descriptionLabel;
+    private JLabel typeLabel;
+    private JLabel iconLeftLabel;
 
     private IconUtils.ImageWrapper customIconImage;
     private JPanel toolbarPanel;
@@ -200,6 +203,14 @@ public class ModelDialog extends DialogWrapper {
                 testModel(getModelFromInput(), testTextField);
             }
         });
+
+        idLabel.setText(i18n.getString("model.dialog.id.label"));
+        descriptionLabel.setText(i18n.getString("model.dialog.description.label"));
+        typeLabel.setText(i18n.getString("model.dialog.type.label"));
+        ideIconOverrideLabel.setText(i18n.getString("model.dialog.icons.name.label"));
+        iconLeftLabel.setText(i18n.getString("model.dialog.icon.type.selector.label"));
+        chooseIconButton.setText(i18n.getString("model.dialog.icon.chooser.btn"));
+        testLabel.setText(i18n.getString("model.dialog.tester.label"));
 
         updateUIOnTypeChange();
     }

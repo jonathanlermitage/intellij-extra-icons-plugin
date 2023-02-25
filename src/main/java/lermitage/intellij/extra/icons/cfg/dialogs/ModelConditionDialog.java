@@ -123,6 +123,17 @@ public class ModelConditionDialog extends DialogWrapper {
         facetsTextField.setEnabled(false);
 
         tipsLabel.setText(MessageFormat.format(i18n.getString("model.condition.dialog.tips"), FIELD_SEPARATOR_NAME));
+
+        regexCheckBox.setText(i18n.getString("model.condition.dialog.regex.checkbox"));
+        parentsCheckBox.setText(i18n.getString("model.condition.dialog.parents.checkbox"));
+        namesCheckBox.setText(i18n.getString("model.condition.dialog.names.checkbox"));
+        startsWithRadioButton.setText(i18n.getString("model.condition.dialog.startswith.checkbox"));
+        equalsRadioButton.setText(i18n.getString("model.condition.dialog.equals.checkbox"));
+        noDotCheckBox.setText(i18n.getString("model.condition.dialog.nodot.checkbox"));
+        extensionsCheckBox.setText(i18n.getString("model.condition.dialog.extensions.checkbox"));
+        endsWithRadioButton.setText(i18n.getString("model.condition.dialog.endswith.checkbox"));
+        mayEndWithRadioButton.setText(i18n.getString("model.condition.dialog.mayendwith.checkbox"));
+        facetsCheckBox.setText(i18n.getString("model.condition.dialog.facets.checkbox"));
     }
 
     private void createUIComponents() {

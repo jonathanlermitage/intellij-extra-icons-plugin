@@ -294,6 +294,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         Arrays.stream(ModelTag.values()).forEach(modelTag -> comboBoxIconsGroupSelector.addItem(
             new ComboBoxWithImageItem(modelTag, MessageFormat.format(i18n.getString("icons.tag.name"), modelTag.getName()))
         ));
+        iconsTabbedPane.setTitleAt(0, i18n.getString("plugin.icons.table.tab.name"));
+        iconsTabbedPane.setTitleAt(1, i18n.getString("user.icons.table.tab.name"));
     }
 
     private void createUIComponents() {
