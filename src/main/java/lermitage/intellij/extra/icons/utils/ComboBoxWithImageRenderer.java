@@ -6,6 +6,8 @@ import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NonNls;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -33,27 +35,41 @@ public class ComboBoxWithImageRenderer extends JLabel implements ListCellRendere
 
     @Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+        String text = null;
+        Icon icon = null;
+        if (value == null) {
+            return this;
+        }
+        try {
+            if (value instanceof BundledIcon) {
+                text = ((BundledIcon) value).getDescription();
+                icon = IconLoader.getIcon(((BundledIcon) value).getIconPath(), IconUtils.class);
+            } else if (value instanceof ComboBoxWithImageItem) {
+                text = ((ComboBoxWithImageItem) value).getTitle();
+                String imagePath = ((ComboBoxWithImageItem) value).getImagePath();
+                if (imagePath == null) {
+                    icon = new ImageIcon();
+                } else {
+                    icon = IconLoader.getIcon(imagePath, ComboBoxWithImageRenderer.class);
+                }
+            } else if (value instanceof String) {
+                text = (String) value;
+                icon = new ImageIcon();
+            }
+            setText(text);
+            setIcon(icon);
+        } catch (Exception e) {
+            setText("(error, failed to display icon)"); //NON-NLS
+            setIcon(null);
+            LOGGER.warn("failed to display icon " + text + ": " + icon, e);
+        }
+
         if (isSelected) {
             setBackground(list.getSelectionBackground());
             setForeground(list.getSelectionForeground());
         } else {
             setBackground(list.getBackground());
             setForeground(list.getForeground());
-        }
-        ComboBoxWithImageItem item = (ComboBoxWithImageItem) value;
-        if (item == null) {
-            return this;
-        }
-        setText(item.getTitle());
-        try {
-            if (item.getImagePath() == null) {
-                setIcon(null);
-            } else {
-                setIcon(IconLoader.getIcon(item.getImagePath(), ComboBoxWithImageRenderer.class));
-            }
-        } catch (Exception e) {
-            setIcon(null);
-            LOGGER.warn("Failed to load Tool icon '" + item + "'", e);
         }
         setIconTextGap(6);
         return this;

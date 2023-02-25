@@ -5,6 +5,7 @@
 * plugin's internationalization: provide English and Chinese UI translations. Nota: Chinese translation is automatically applied only if the official IDE [Chinese Language Pack](https://plugins.jetbrains.com/plugin/13710-chinese-simplified-language-pack----) plugin is enabled.
 * minor aesthetic bugfix in config panel.
 * remove support of Caddy (Caddyfile). IDE 2023.1 EAP crashed loading this icon (invalid SVG file).
+* internal: some code rework.
 
 ## 2023.1.1 (2023/02/11)
 * minor UI improvement in settings panel: add icons to _Enable all... / Disable all..._ combobox items.

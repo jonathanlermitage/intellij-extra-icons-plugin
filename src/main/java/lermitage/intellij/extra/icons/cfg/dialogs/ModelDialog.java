@@ -3,7 +3,6 @@
 package lermitage.intellij.extra.icons.cfg.dialogs;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTextBorder;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.ui.DialogWrapper;
@@ -18,7 +17,6 @@ import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.IconUtil;
-import lermitage.intellij.extra.icons.BaseIconProvider;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.Model;
@@ -27,27 +25,24 @@ import lermitage.intellij.extra.icons.ModelType;
 import lermitage.intellij.extra.icons.cfg.SettingsForm;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.utils.AsyncUtils;
+import lermitage.intellij.extra.icons.utils.BundledIcon;
+import lermitage.intellij.extra.icons.utils.ComboBoxWithImageRenderer;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.ListCellRenderer;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.event.ComponentAdapter;
@@ -67,8 +62,6 @@ import java.util.stream.IntStream;
 import static lermitage.intellij.extra.icons.cfg.dialogs.ModelConditionDialog.FIELD_SEPARATOR;
 
 public class ModelDialog extends DialogWrapper {
-
-    private static final @NonNls Logger LOGGER = Logger.getInstance(BaseIconProvider.class);
 
     // Icons can be SVG or PNG only. Never allow user to pick GIF, JPEG, etc., otherwise
     // we should convert these files to PNG in IconUtils:toBase64 method.
@@ -172,7 +165,7 @@ public class ModelDialog extends DialogWrapper {
             .forEach(iconPath -> chooseIconSelector.addItem(new BundledIcon(
                 iconPath, MessageFormat.format(i18n.getString("model.dialog.choose.icon.bundled.icon"),
                 iconPath.replace("extra-icons/", ""))))); //NON-NLS
-        ComboBoxRenderer renderer = new ComboBoxRenderer();
+        ComboBoxWithImageRenderer renderer = new ComboBoxWithImageRenderer();
         // customIconImage
         chooseIconSelector.setRenderer(renderer);
         chooseIconSelector.setToolTipText(i18n.getString("model.dialog.choose.icon.tooltip"));
@@ -324,7 +317,7 @@ public class ModelDialog extends DialogWrapper {
         if (model.getIconType() == IconType.PATH) {
             for (int itemIdx = 0; itemIdx < chooseIconSelector.getItemCount(); itemIdx++) {
                 Object item = chooseIconSelector.getItemAt(itemIdx);
-                if (item instanceof BundledIcon && ((BundledIcon) item).iconPath.equals(model.getIcon())) {
+                if (item instanceof BundledIcon && ((BundledIcon) item).getIconPath().equals(model.getIcon())) {
                     chooseIconSelector.setSelectedIndex(itemIdx);
                     break;
                 }
@@ -418,66 +411,5 @@ public class ModelDialog extends DialogWrapper {
         }
 
         return super.doValidate();
-    }
-
-    private static class ComboBoxRenderer extends JLabel implements ListCellRenderer<Object> {
-
-        @SuppressWarnings("OverridableMethodCallInConstructor")
-        ComboBoxRenderer() {
-            setOpaque(true);
-            setHorizontalAlignment(LEFT);
-            setVerticalAlignment(CENTER);
-        }
-
-        @Override
-        public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-            String text = null;
-            Icon icon = null;
-            if (value instanceof BundledIcon) {
-                text = ((BundledIcon) value).getDescription();
-                try {
-                    icon = IconLoader.getIcon(((BundledIcon) value).getIconPath(), IconUtils.class);
-                } catch (Exception e) {
-                    LOGGER.warn("failed to load icon " + text, e);
-                }
-            } else if (value instanceof String) {
-                text = (String) value;
-                icon = new ImageIcon();
-            }
-            setText(text);
-            try {
-                setIcon(icon);
-            } catch (Exception e) {
-                setIcon(null);
-                LOGGER.warn("failed to load icon " + text + ": " + icon, e);
-            }
-
-            if (isSelected) {
-                setBackground(list.getSelectionBackground());
-                setForeground(list.getSelectionForeground());
-            } else {
-                setBackground(list.getBackground());
-                setForeground(list.getForeground());
-            }
-            return this;
-        }
-    }
-
-    private static class BundledIcon {
-        private final String iconPath;
-        private final String description;
-
-        public BundledIcon(String iconPath, String description) {
-            this.iconPath = iconPath;
-            this.description = description;
-        }
-
-        public String getIconPath() {
-            return iconPath;
-        }
-
-        public String getDescription() {
-            return description;
-        }
     }
 }
