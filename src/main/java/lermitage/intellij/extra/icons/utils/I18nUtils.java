@@ -19,12 +19,16 @@ public class I18nUtils {
     public static synchronized ResourceBundle getResourceBundle() {
         if (pluginLocale == null) {
             pluginLocale = Locale.ROOT;
-            for (IdeaPluginDescriptor plugin : PluginManager.getLoadedPlugins()) {
-                if (plugin.getPluginId().getIdString().equals("com.intellij.zh")) {
-                    LOGGER.info("Found Chinese Language Pack - Enabling Chinese translation of Extra Icons plugin");
-                    pluginLocale = Locale.CHINA;
-                    break;
+            try {
+                for (IdeaPluginDescriptor plugin : PluginManager.getLoadedPlugins()) {
+                    if (plugin.getPluginId().getIdString().equals("com.intellij.zh")) {
+                        LOGGER.info("Found Chinese Language Pack - Enabling Chinese translation of Extra Icons plugin");
+                        pluginLocale = Locale.CHINA;
+                        break;
+                    }
                 }
+            } catch (Exception e) {
+                LOGGER.warn(e);
             }
         }
         return ResourceBundle.getBundle("ExtraIconsI18n", pluginLocale);
