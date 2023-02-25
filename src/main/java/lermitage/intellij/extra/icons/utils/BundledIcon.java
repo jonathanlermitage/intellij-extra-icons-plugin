@@ -2,6 +2,7 @@
 
 package lermitage.intellij.extra.icons.utils;
 
+/** An icon that comes with Extra Icons plugin. */
 public class BundledIcon {
 
     private final String iconPath;
