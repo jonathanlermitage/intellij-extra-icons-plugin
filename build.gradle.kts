@@ -66,6 +66,14 @@ dependencies {
     implementation("com.twelvemonkeys.imageio:imageio-core:$twelvemonkeysVersion") // https://github.com/haraldk/TwelveMonkeys/releases
     implementation("com.twelvemonkeys.imageio:imageio-batik:$twelvemonkeysVersion") // SVG support
 
+    // fix missing/bad libs starting from IDE 2023 EAP leading to java.lang.NoSuchMethodError:
+    // 'org.apache.batik.bridge.BridgeContext com.twelvemonkeys.imageio.plugins.svg.SVGImageReader$Rasterizer.createBridgeContext()'
+    // on ImageIO.read(byteArrayInputStream)
+    implementation("org.apache.xmlgraphics:batik-all:1.16")
+    implementation("org.apache.xmlgraphics:xmlgraphics-commons:2.8")
+    implementation("org.bluestemsoftware.open.maven.tparty:xerces-impl:2.9.0")
+    implementation("xerces:xmlParserAPIs:2.6.2")
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:$junitPlatformLauncher")
