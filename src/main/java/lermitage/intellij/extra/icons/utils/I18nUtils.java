@@ -28,7 +28,9 @@ public class I18nUtils {
                     }
                 }
             } catch (Exception e) {
-                LOGGER.warn(e);
+                if (LOGGER.isDebugEnabled()) {
+                    LOGGER.debug(e);
+                }
             }
         }
         return ResourceBundle.getBundle("ExtraIconsI18n", pluginLocale);
