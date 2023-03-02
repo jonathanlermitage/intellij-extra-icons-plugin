@@ -104,6 +104,7 @@ public class IconUtils {
         }
         Image scaledImage = scaleImage(image, iconType == IconType.SVG);
         if (additionalUIScale != 1f) {
+            // TODO see if we can replace ImageLoader.scaleImage by IconUtil.resizeSquared
             scaledImage = ImageLoader.scaleImage(scaledImage, additionalUIScale);
         }
         return new ImageWrapper(iconType, scaledImage, decodedBase64);
