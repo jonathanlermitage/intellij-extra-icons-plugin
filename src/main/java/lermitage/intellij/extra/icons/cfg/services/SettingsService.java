@@ -81,7 +81,7 @@ public abstract class SettingsService {
 
     public Double getAdditionalUIScale() {
         if (additionalUIScale == null) {
-            additionalUIScale = (double) 1.0f;
+            additionalUIScale = 1.0d;
         }
         return additionalUIScale;
     }
