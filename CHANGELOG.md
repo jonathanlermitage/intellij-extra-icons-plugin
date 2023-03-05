@@ -6,6 +6,7 @@
 * minor aesthetic bugfix in config panel.
 * remove support of Caddy (Caddyfile). IDE 2023.1 EAP crashed loading this icon (invalid SVG file).
 * internal: some code rework.
+* [bug #119 is **not** resolved yet](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/119): can't display SVG user icons with IDE 2023 EAP. I think I have a fix for Windows, but it doesn't work on Linux for now. I'm still investigating. Expect a fix for Extra Icons 2023.1.3, which will probably require IDE 2023 as new minimal version. New IDE seems to introduce too many breaking changes, and I can't provide fixes without breaking older IDEs.
 
 ## 2023.1.1 (2023/02/11)
 * minor UI improvement in settings panel: add icons to _Enable all... / Disable all..._ combobox items.
