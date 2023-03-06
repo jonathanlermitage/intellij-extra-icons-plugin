@@ -14,7 +14,7 @@ fun properties(key: String) = project.findProperty(key).toString()
 plugins {
     id("java")
     id("jacoco")
-    id("org.jetbrains.intellij") version "1.13.0" // https://github.com/JetBrains/gradle-intellij-plugin
+    id("org.jetbrains.intellij") version "1.13.1" // https://github.com/JetBrains/gradle-intellij-plugin
     id("org.jetbrains.changelog") version "2.0.0" // https://github.com/JetBrains/gradle-changelog-plugin
     id("com.github.ben-manes.versions") version "0.46.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
@@ -65,14 +65,6 @@ val junitPlatformLauncher = "1.9.2"
 dependencies {
     implementation("com.twelvemonkeys.imageio:imageio-core:$twelvemonkeysVersion") // https://github.com/haraldk/TwelveMonkeys/releases
     implementation("com.twelvemonkeys.imageio:imageio-batik:$twelvemonkeysVersion") // SVG support
-
-    // fix missing/bad libs starting from IDE 2023 EAP leading to java.lang.NoSuchMethodError:
-    // 'org.apache.batik.bridge.BridgeContext com.twelvemonkeys.imageio.plugins.svg.SVGImageReader$Rasterizer.createBridgeContext()'
-    // on ImageIO.read(byteArrayInputStream)
-    //implementation("org.apache.xmlgraphics:batik-all:1.16")
-    //implementation("org.apache.xmlgraphics:xmlgraphics-commons:2.8")
-    //implementation("org.bluestemsoftware.open.maven.tparty:xerces-impl:2.9.0")
-    //implementation("xerces:xmlParserAPIs:2.6.2")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")

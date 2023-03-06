@@ -134,6 +134,26 @@ public class ResourcesTest {
     }
 
     @Test
+    public void svg_icons_should_not_contain_unsupported_style_attributes() {
+        List<String> errors = new ArrayList<>();
+
+        svgIcons.forEach(file -> {
+            try {
+                String fileContent = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+                boolean hasEnableBackgroundProperty = fileContent.contains("enable-background");
+                if (hasEnableBackgroundProperty) {
+                    errors.add(file.getName() + ": property is 'enable-background'. You can safely remove this attribute from file");
+                }
+            } catch (IOException e) {
+                fail(e);
+            }
+        });
+        if (!errors.isEmpty()) {
+            fail("some SVG icons have unsupported style attributes: " + errors);
+        }
+    }
+
+    @Test
     public void extra_icons_provider_icons_should_exist() {
         List<String> errors = new ArrayList<>();
 
