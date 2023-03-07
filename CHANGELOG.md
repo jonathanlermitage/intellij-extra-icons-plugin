@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2023.1.2 (planned for 2023/03/11)
+## 2023.1.2 (2023/03/07)
 * support C, C++ and H files.
 * plugin's internationalization: provide English and Chinese UI translations. Nota: Chinese translation is automatically applied only if the official IDE [Chinese Language Pack](https://plugins.jetbrains.com/plugin/13710-chinese-simplified-language-pack----) plugin is enabled.
 * minor aesthetic bugfix in config panel.

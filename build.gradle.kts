@@ -20,7 +20,7 @@ plugins {
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("com.jaredsburrows.license") version "0.9.0" // https://github.com/jaredsburrows/gradle-license-plugin
     id("com.osacky.doctor") version "0.8.1" // https://github.com/runningcode/gradle-doctor/
-    id("com.palantir.git-version") version "1.0.0" // https://github.com/palantir/gradle-git-version
+    id("com.palantir.git-version") version "2.0.0" // https://github.com/palantir/gradle-git-version
     id("biz.lermitage.oga") version "1.1.1"
 }
 
