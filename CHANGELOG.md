@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2023.1.3 (WIP)
+* implement [#118](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/118): add a custom error reporter which prefills an issue on Extra Icons' GitHub repository.
+
 ## 2023.1.2 (2023/03/07)
 * support C, C++ and H files.
 * plugin's internationalization: provide English and Chinese UI translations. Nota: Chinese translation is automatically applied only if the official IDE [Chinese Language Pack](https://plugins.jetbrains.com/plugin/13710-chinese-simplified-language-pack----) plugin is enabled.

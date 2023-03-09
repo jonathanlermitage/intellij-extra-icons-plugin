@@ -81,6 +81,7 @@
                              id="LermitageExtraIcons-Project" parentId="LermitageExtraIcons"
                              key="settings.projectlevel.menu" bundle="ExtraIconsI18n"/>
         <notificationGroup id="ExtraIcons" displayType="BALLOON"/>
+        <errorHandler implementation="lermitage.intellij.extra.icons.utils.ExtraIconsErrorReportSubmitter"/>
     </extensions>
 
 </idea-plugin>
