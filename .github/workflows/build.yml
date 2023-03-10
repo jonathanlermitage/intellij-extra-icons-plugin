@@ -16,4 +16,4 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
       - name: Build and verify
-        run: ./gradlew clean buildPlugin test verifyPlugin -PpluginIdeaVersion=IC-${{ matrix.ij }} --warning-mode all
+        run: ./gradlew clean buildPlugin test verifyPlugin verifypluginconfiguration -PpluginVerifyProductDescriptor=true -PpluginIdeaVersion=IC-${{ matrix.ij }} --warning-mode all

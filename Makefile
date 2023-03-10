@@ -10,7 +10,7 @@ else
     gradlew_cmd := ./gradlew
 endif
 
-ij_min_version := 2022.1.4 # must reflect settings.xml -> idea-version.since-build
+ij_min_version := 2022.1.4 # IMPORTANT must reflect settings.xml -> idea-version.since-build
 
 
 default: help

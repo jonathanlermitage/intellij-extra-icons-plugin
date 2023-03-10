@@ -6,19 +6,15 @@ import com.palantir.gradle.gitversion.VersionDetails
 import groovy.lang.Closure
 import org.apache.commons.io.FileUtils
 import org.jetbrains.changelog.Changelog
-import org.jetbrains.intellij.tasks.RunPluginVerifierTask
-import java.util.EnumSet
 
 fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
     id("java")
-    id("jacoco")
     id("org.jetbrains.intellij") version "1.13.1" // https://github.com/JetBrains/gradle-intellij-plugin
     id("org.jetbrains.changelog") version "2.0.0" // https://github.com/JetBrains/gradle-changelog-plugin
     id("com.github.ben-manes.versions") version "0.46.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
-    id("com.jaredsburrows.license") version "0.9.0" // https://github.com/jaredsburrows/gradle-license-plugin
     id("com.osacky.doctor") version "0.8.1" // https://github.com/runningcode/gradle-doctor/
     id("com.palantir.git-version") version "2.0.0" // https://github.com/palantir/gradle-git-version
     id("biz.lermitage.oga") version "1.1.1"
@@ -148,14 +144,6 @@ tasks {
     withType<Test> {
         useJUnitPlatform()
     }
-    jacocoTestReport {
-        reports {
-            dependsOn(test)
-            xml.required.set(false)
-            csv.required.set(false)
-            html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
-        }
-    }
     withType<DependencyUpdatesTask> {
         checkForGradleUpdate = true
         gradleReleaseChannel = "current"
@@ -186,21 +174,6 @@ tasks {
         // with https://raw.githubusercontent.com/JetBrains/intellij-community/master/plugins/devkit/devkit-core/src/run/OpenedPackages.txt
         // or do it manually
     }
-    runPluginVerifier {
-        // https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html#runpluginverifier-task
-        ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map(String::trim).filter(String::isNotEmpty))
-        failureLevel.set(
-            EnumSet.complementOf(
-                EnumSet.of(
-                    RunPluginVerifierTask.FailureLevel.COMPATIBILITY_PROBLEMS,
-                    RunPluginVerifierTask.FailureLevel.OVERRIDE_ONLY_API_USAGES,
-                    RunPluginVerifierTask.FailureLevel.NON_EXTENDABLE_API_USAGES,
-                    RunPluginVerifierTask.FailureLevel.PLUGIN_STRUCTURE_WARNINGS,
-                    RunPluginVerifierTask.FailureLevel.INVALID_PLUGIN
-                )
-            )
-        )
-    }
     buildSearchableOptions {
         enabled = false
     }
@@ -222,33 +195,6 @@ tasks {
         if (!pluginNeedsLicense.toBoolean()) {
             finalizedBy("restorePluginXml", "renameDistributionNoLicense")
         }
-    }
-}
-
-// Nota: I know dependency locking is totally useless in this project since there is no transitive
-// dependencies, but I wanted to experiment this feature :-)
-dependencyLocking { // https://docs.gradle.org/current/userguide/dependency_locking.html
-    lockMode.set(LockMode.LENIENT)
-    // allow build with multiple IDE versions
-    ignoredDependencies.add("com.jetbrains:ideaIU")
-    ignoredDependencies.add("unzipped.com.jetbrains.plugins:*")
-}
-
-configurations {
-    compileClasspath {
-        resolutionStrategy.activateDependencyLocking()
-    }
-    runtimeClasspath {
-        resolutionStrategy.activateDependencyLocking()
-    }
-    annotationProcessor {
-        resolutionStrategy.activateDependencyLocking()
-    }
-    testCompileClasspath {
-        resolutionStrategy.disableDependencyVerification()
-    }
-    testRuntimeClasspath {
-        resolutionStrategy.disableDependencyVerification()
     }
 }
 
