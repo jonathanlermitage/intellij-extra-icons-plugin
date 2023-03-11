@@ -11,7 +11,7 @@ fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
     id("java")
-    id("org.jetbrains.intellij") version "1.13.1" // https://github.com/JetBrains/gradle-intellij-plugin
+    id("org.jetbrains.intellij") version "1.13.2" // https://github.com/JetBrains/gradle-intellij-plugin
     id("org.jetbrains.changelog") version "2.0.0" // https://github.com/JetBrains/gradle-changelog-plugin
     id("com.github.ben-manes.versions") version "0.46.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
@@ -206,7 +206,7 @@ doctor {
 }
 
 fun isNonStable(version: String): Boolean {
-    if (listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().endsWith(it) }) {
+    if (listOf("RELEASE", "FINAL", "GA").any { version.uppercase().endsWith(it) }) {
         return false
     }
     return listOf("alpha", "Alpha", "ALPHA", "b", "beta", "Beta", "BETA", "rc", "RC", "M", "EA", "pr", "atlassian").any {
