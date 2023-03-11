@@ -112,6 +112,11 @@ dt: intro ## show dependencies graph
 	${gradlew_cmd} dependencies
 
 
+.PHONY: publish
+publish: intro ## publish package to the JetBrains marketplace
+	${gradlew_cmd} clean buildPlugin test verifyPlugin publishPlugin --warning-mode all -PpluginVerifyProductDescriptor=true
+
+
 .PHONY: help
 help: intro
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":[^:]*?## "}; {printf "\033[1;38;5;69m%-15s\033[0;38;5;38m %s\033[0m\n", $$1, $$2}'

@@ -196,6 +196,9 @@ tasks {
             finalizedBy("restorePluginXml", "renameDistributionNoLicense")
         }
     }
+    publishPlugin {
+        token.set(System.getenv("JLE_IJ_PLUGINS_PUBLISH_TOKEN"))
+    }
 }
 
 doctor {
