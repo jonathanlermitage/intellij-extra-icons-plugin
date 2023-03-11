@@ -2,6 +2,7 @@
 
 ## 2023.1.3 (WIP)
 * implement [#118](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/118): add a custom error reporter which prefills an issue on Extra Icons' GitHub repository.
+* fix [#120](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/120): minor UI improvement.
 
 ## 2023.1.2 (2023/03/07)
 * support C, C++ and H files.
