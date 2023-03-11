@@ -11,10 +11,16 @@ public class IDEUtils {
 
     private static final @NonNls Logger LOGGER = Logger.getInstance(IDEUtils.class);
 
-    public static boolean isChineseUIEnabled() {
+    private static Boolean isChineseUIEnabled;
+
+    public static synchronized boolean isChineseUIEnabled() {
+        if (isChineseUIEnabled != null) {
+            return isChineseUIEnabled;
+        }
         try {
             for (IdeaPluginDescriptor plugin : PluginManager.getLoadedPlugins()) {
                 if (plugin.getPluginId().getIdString().equals("com.intellij.zh")) {
+                    isChineseUIEnabled = true;
                     return true;
                 }
             }
@@ -23,6 +29,7 @@ public class IDEUtils {
                 LOGGER.debug(e);
             }
         }
+        isChineseUIEnabled = false;
         return false;
     }
 }

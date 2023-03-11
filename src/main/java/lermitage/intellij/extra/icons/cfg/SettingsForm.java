@@ -258,6 +258,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void initComponents() {
+        disableOrEnableLabel.setText(i18n.getString("quick.action.label"));
         buttonEnableAll.setText(i18n.getString("btn.enable.all"));
         buttonDisableAll.setText(i18n.getString("btn.disable.all"));
         ignoredPatternTitle.setText(i18n.getString("label.regex.ignore.relative.paths"));
