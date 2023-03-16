@@ -19,7 +19,7 @@ public class IconPackUtils {
     private static final Gson gson = new GsonBuilder()
         .disableHtmlEscaping()
         //.setPrettyPrinting()
-        .serializeNulls()
+        //.serializeNulls()
         .create();
 
     /**
