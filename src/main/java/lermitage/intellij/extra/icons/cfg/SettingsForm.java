@@ -6,11 +6,14 @@ import com.google.common.base.Strings;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.event.DocumentEvent;
 import com.intellij.openapi.editor.event.DocumentListener;
+import com.intellij.openapi.fileChooser.FileChooser;
+import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.EditorTextField;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
@@ -28,6 +31,7 @@ import lermitage.intellij.extra.icons.utils.ComboBoxWithImageItem;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageRenderer;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IDEUtils;
+import lermitage.intellij.extra.icons.utils.IconPackUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.apache.commons.collections.CollectionUtils;
@@ -54,6 +58,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.table.TableStringConverter;
 import java.awt.event.ItemEvent;
+import java.io.File;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -93,6 +98,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JLabel disableOrEnableLabel;
     private JCheckBox ignoreWarningsCheckBox;
     private JButton buttonReloadProjectsIcons;
+    private JLabel iconPackLabel;
+    private JButton buttonImportIconPackFromFile;
+    private JButton buttonExportUserIconsAsIconPack;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -127,6 +135,58 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 JOptionPane.showMessageDialog(null,
                     i18n.getString("icons.failed.to.reload"), i18n.getString("icons.failed.to.reload.title"),
                     JOptionPane.ERROR_MESSAGE);
+            }
+        });
+        buttonImportIconPackFromFile.addActionListener(al -> {
+            try {
+                FileChooserDescriptor fileChooserDescriptor = new FileChooserDescriptor(
+                    true, false, false,
+                    false, false, false);
+                fileChooserDescriptor.setTitle(i18n.getString("dialog.import.icon.pack.title"));
+                fileChooserDescriptor.setHideIgnored(false);
+                fileChooserDescriptor.setShowFileSystemRoots(true);
+
+                VirtualFile virtualFile = FileChooser.chooseFile(fileChooserDescriptor, null, null);
+                if (virtualFile != null) {
+                    IconPack iconPack = IconPackUtils.fromJsonFile(new File(virtualFile.getPath()));
+                    for (Model model : iconPack.getModels()) {
+                        if (model.getIconPack() == null) {
+                            model.setIconPack(iconPack.getName());
+                        }
+                        customModels.add(model);
+                    }
+                    foldersFirst(customModels);
+                    setUserIconsTableModel();
+                    JOptionPane.showMessageDialog(null,
+                        i18n.getString("dialog.import.icon.pack.success"), i18n.getString("dialog.import.icon.pack.success.title"),
+                        JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception e) {
+                LOGGER.error("Failed to import Icon Pack", e); // TODO replace by error dialog
+            }
+        });
+        buttonExportUserIconsAsIconPack.addActionListener(al -> {
+            try {
+                String packName = System.currentTimeMillis() + "-icon-pack"; //NON-NLS
+                String filename = "extra-icons-" + packName + ".json"; //NON-NLS
+                FileChooserDescriptor fileChooserDescriptor = new FileChooserDescriptor(
+                    false, true, false,
+                    false, false, false);
+                fileChooserDescriptor.setTitle(i18n.getString("dialog.export.icon.pack.title"));
+                fileChooserDescriptor.setHideIgnored(false);
+                fileChooserDescriptor.setShowFileSystemRoots(true);
+
+                VirtualFile virtualFile = FileChooser.chooseFile(fileChooserDescriptor, null, null);
+                if (virtualFile != null) {
+                    IconPackUtils.writeToJsonFile(
+                        new File(virtualFile.getPath() + "/" + filename),
+                        new IconPack(packName, SettingsService.getInstance(project).getCustomModels()));
+                    JOptionPane.showMessageDialog(null,
+                        i18n.getString("dialog.export.icon.pack.success"), i18n.getString("dialog.export.icon.pack.success.title"),
+                        JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception e) {
+                LOGGER.error("Failed to export user icons", e); // TODO replace by error dialog
             }
         });
     }
@@ -296,6 +356,11 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         Arrays.stream(ModelTag.values()).forEach(modelTag -> comboBoxIconsGroupSelector.addItem(
             new ComboBoxWithImageItem(modelTag, MessageFormat.format(i18n.getString("icons.tag.name"), modelTag.getName()))
         ));
+
+        iconPackLabel.setText(i18n.getString("icon.pack.label"));
+        buttonImportIconPackFromFile.setText(i18n.getString("btn.import.icon.pack.file"));
+        buttonExportUserIconsAsIconPack.setText(i18n.getString("btn.export.icon.pack"));
+
         iconsTabbedPane.setTitleAt(0, i18n.getString("plugin.icons.table.tab.name"));
         iconsTabbedPane.setTitleAt(1, i18n.getString("user.icons.table.tab.name"));
     }
@@ -360,7 +425,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         customModels.forEach(m -> userIconsSettingsTableModel.addRow(new Object[]{
                 IconUtils.getIcon(m, additionalUIScale),
                 m.isEnabled(),
-                m.getDescription()
+                m.getDescription(),
+                m.getIconPack()
             })
         );
         userIconsTable.setModel(userIconsSettingsTableModel);
@@ -372,12 +438,16 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         columnModel.getColumn(UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setWidth(28);
         columnModel.getColumn(UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setMaxWidth(28);
         columnModel.getColumn(UserIconsSettingsTableModel.ICON_LABEL_COL_NUMBER).sizeWidthToFit();
+        columnModel.getColumn(UserIconsSettingsTableModel.ICON_PACK_COL_NUMBER).setMinWidth(250);
+        columnModel.getColumn(UserIconsSettingsTableModel.ICON_PACK_COL_NUMBER).setMaxWidth(300);
         if (currentSelected != -1 && currentSelected < userIconsTable.getRowCount()) {
             userIconsTable.setRowSelectionInterval(currentSelected, currentSelected);
         }
     }
 
-    /** Get the selected tag for quick action. Empty if "all icons" is selected, otherwise returns selected tag. */
+    /**
+     * Get the selected tag for quick action. Empty if "all icons" is selected, otherwise returns selected tag.
+     */
     private Optional<ModelTag> getSelectedTag() {
         int selectedItemIdx = comboBoxIconsGroupSelector.getSelectedIndex();
         if (selectedItemIdx == 0) {
@@ -478,6 +548,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         columnModel.getColumn(PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setWidth(28);
         columnModel.getColumn(PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setMaxWidth(28);
         columnModel.getColumn(PluginIconsSettingsTableModel.ICON_LABEL_COL_NUMBER).sizeWidthToFit();
+        columnModel.getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMaxWidth(120);
+        columnModel.getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMinWidth(120);
         columnModel.getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMaxWidth(120);
         columnModel.getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMinWidth(120);
         int requireRestartColWidth = IDEUtils.isChineseUIEnabled() ? 95 : 65;

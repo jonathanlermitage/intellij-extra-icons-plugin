@@ -59,8 +59,11 @@ public class ModelCondition {
     private String regex;
     @OptionTag
     private String[] facets = new String[0];
-    private Pattern pattern;
-    private IconEnablerType iconEnablerType;
+
+    // transient fields are excluded from IconPack items
+
+    private transient Pattern pattern; // transient because computed dynamically
+    private transient IconEnablerType iconEnablerType; // transient because not exposed to user models
 
     private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 

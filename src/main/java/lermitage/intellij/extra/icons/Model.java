@@ -32,6 +32,8 @@ public class Model {
     @OptionTag
     private String description;
     @OptionTag
+    private String iconPack;
+    @OptionTag
     private ModelType modelType;
     @OptionTag
     private IconType iconType;
@@ -42,14 +44,16 @@ public class Model {
     @XCollection
     private List<ModelCondition> conditions = new ArrayList<>(Collections.singletonList(new ModelCondition()));
 
+    // transient fields are excluded from IconPack items
+
     /** Alternative icons. Extra Icons will automatically generate alt icons (and ids, names, etc.) based on on this list. */
-    private String[] altIcons;
+    private transient String[] altIcons; // transient because computed dynamically
 
     /** Tags associated to this model. Used to easily (de)activate models linked to specific tags. */
-    private List<ModelTag> tags;
+    private transient List<ModelTag> tags; // transient because not exposed to user models
 
     /** For a model representing an alternative icon, the ID of the base model, otherwise null. */
-    private Object parentId = null;
+    private transient Object parentId = null; // transient because computed dynamically
 
     // For XML deserializer (IntelliJ internals)
     @SuppressWarnings("unused")
@@ -181,6 +185,11 @@ public class Model {
     @Nullable
     public Object getParentId() {
         return parentId;
+    }
+
+    @Nullable
+    public String getIconPack() {
+        return iconPack;
     }
 
     /**
@@ -325,6 +334,10 @@ public class Model {
         return tags == null ? Collections.emptyList() : tags;
     }
 
+    public void setIconPack(String iconPack) {
+        this.iconPack = iconPack;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -334,6 +347,7 @@ public class Model {
             Objects.equals(id, model.id) &&
             Objects.equals(ideIcon, model.ideIcon) &&
             Objects.equals(icon, model.icon) &&
+            Objects.equals(iconPack, model.iconPack) &&
             description.equals(model.description) &&
             modelType == model.modelType &&
             iconType == model.iconType &&
@@ -342,6 +356,6 @@ public class Model {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, ideIcon, icon, description, modelType, iconType, enabled, conditions);
+        return Objects.hash(id, ideIcon, icon, iconPack, description, modelType, iconType, enabled, conditions);
     }
 }

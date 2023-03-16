@@ -13,6 +13,7 @@
         <li>Shows an icon for Git sub-module folders.</li>
         <li>Configurable: see <i>File &gt; Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. This is configurable at IDE and project level.</li>
         <li>You can also register your own icons in order to override file icons and all <a href="https://jetbrains.design/intellij/resources/icons_list/">IDE icons</a> (including toolbars, menus, etc.).</li>
+        <li>You can import and export icons from external files. This also means you can easily share icon themes with friends.</li>
         <li>For more information, please see this <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">guide</a>.</li>
         <li>For questions about the plugin licensing model, how to get a license for free (students and teachers), and how to get a perpetual license, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md">license FAQ</a>.</li>
       </ul>
