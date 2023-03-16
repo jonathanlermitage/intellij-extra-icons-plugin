@@ -167,8 +167,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         });
         buttonExportUserIconsAsIconPack.addActionListener(al -> {
             try {
-                String packName = System.currentTimeMillis() + "-icon-pack"; //NON-NLS
-                String filename = "extra-icons-" + packName + ".json"; //NON-NLS
+                String filename = "extra-icons-" + System.currentTimeMillis() + "-icon-pack.json"; //NON-NLS
                 FileChooserDescriptor fileChooserDescriptor = new FileChooserDescriptor(
                     false, true, false,
                     false, false, false);
@@ -180,7 +179,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 if (virtualFile != null) {
                     IconPackUtils.writeToJsonFile(
                         new File(virtualFile.getPath() + "/" + filename),
-                        new IconPack(packName, SettingsService.getInstance(project).getCustomModels()));
+                        new IconPack("", SettingsService.getInstance(project).getCustomModels()));
                     JOptionPane.showMessageDialog(null,
                         i18n.getString("dialog.export.icon.pack.success"), i18n.getString("dialog.export.icon.pack.success.title"),
                         JOptionPane.INFORMATION_MESSAGE);

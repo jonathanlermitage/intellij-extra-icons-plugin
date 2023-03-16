@@ -30,7 +30,7 @@ public class UserIconsSettingsTableModel extends DefaultTableModel {
 
     public UserIconsSettingsTableModel() {
         super(new Object[][]{}, new String[]{"", "",
-            i18n.getString("user.icons.table.col.description"), "Icon Pack"});
+            i18n.getString("user.icons.table.col.description"), i18n.getString("user.icons.table.col.iconpack")});
     }
 
     @Override
