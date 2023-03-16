@@ -1,7 +1,7 @@
 # Extra Icons Change Log
 
 ## 2023.1.3 (WIP)
-* you can now import and export user icons. See **Icon Pack** in Extra icons settings. This also means you can easily share icon themes with friends.
+* you can now import and export user icons. See **Icon Pack** in Extra Icons settings. This also means you can easily share icon themes with friends.
 * implement [#118](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/118): add a custom error reporter which prefills an issue on Extra Icons' GitHub repository.
 * fix [#120](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/120): minor UI improvement.
 
