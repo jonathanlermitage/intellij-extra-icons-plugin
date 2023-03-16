@@ -169,6 +169,7 @@ tasks {
         if (pluginCountry.isNotBlank()) {
             jvmArgs("-Duser.country=$pluginCountry")
         }
+        jvmArgs("-Dextra-icons.enable.chinese.ui=" + System.getProperty("extra-icons.enable.chinese.ui", "false"))
         autoReloadPlugins.set(false)
         // If any warning or error with missing --add-opens, wait for the next gradle-intellij-plugin's update that should sync
         // with https://raw.githubusercontent.com/JetBrains/intellij-community/master/plugins/devkit/devkit-core/src/run/OpenedPackages.txt
