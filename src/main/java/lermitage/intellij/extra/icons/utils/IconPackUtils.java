@@ -14,12 +14,10 @@ import java.nio.charset.StandardCharsets;
 
 public class IconPackUtils {
 
-    public static final Charset CHARSET = StandardCharsets.UTF_8;
+    private static final Charset CHARSET = StandardCharsets.UTF_8;
 
     private static final Gson gson = new GsonBuilder()
         .disableHtmlEscaping()
-        //.setPrettyPrinting()
-        //.serializeNulls()
         .create();
 
     /**
@@ -31,17 +29,13 @@ public class IconPackUtils {
      */
     public static IconPack fromJsonFile(File file) throws IOException {
         String modelsAsJson = FileUtils.readFileToString(file, CHARSET);
-        return toIconPack(modelsAsJson);
-    }
-
-    private static IconPack toIconPack(String modelsAsJson) {
         return gson.fromJson(modelsAsJson, IconPack.class);
     }
 
     /**
      * Export an icon pack to a JSON file.
      *
-     * @param file icon pack file.
+     * @param file     icon pack file.
      * @param iconPack icon pack.
      * @throws IOException if any error occurs writing the local file.
      */
