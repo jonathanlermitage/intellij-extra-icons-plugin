@@ -70,7 +70,7 @@ public class Model {
     @NotNull
     @Contract("_, _, _ -> new")
     public static Model ofFile(String id, String icon, String description) {
-        return createFileOrFolderModel(id, icon, description, ModelType.FILE, IconType.PATH);
+        return createFileOrFolderModel(id, icon, description, ModelType.FILE, IconType.PATH, null);
     }
 
     /**
@@ -83,7 +83,7 @@ public class Model {
     @NotNull
     @Contract("_, _, _ -> new")
     public static Model ofDir(String id, String icon, String description) {
-        return createFileOrFolderModel(id, icon, description, ModelType.DIR, IconType.PATH);
+        return createFileOrFolderModel(id, icon, description, ModelType.DIR, IconType.PATH, null);
     }
 
     /**
@@ -100,36 +100,37 @@ public class Model {
     @NotNull
     @Contract("_, _, _, _ -> new")
     public static Model ofIcon(String id, String ideIcon, String icon, String description) {
-        return createIdeIconModel(id, ideIcon, icon, description, ModelType.ICON, IconType.PATH);
+        return createIdeIconModel(id, ideIcon, icon, description, ModelType.ICON, IconType.PATH, null);
     }
 
     @NotNull
-    @Contract("_, _, _, _, _ -> new")
+    @Contract("_, _, _, _, _, _ -> new")
     public static Model createFileOrFolderModel(String id, String icon, String description,
-                                                ModelType modelType, IconType iconType) {
+                                                ModelType modelType, IconType iconType, String iconPack) {
         Model model = new Model();
         model.id = id;
         model.icon = icon;
         model.description = description;
         model.modelType = modelType;
         model.iconType = iconType;
+        model.iconPack = iconPack;
         return model;
     }
 
     @NotNull
-    @Contract("_, _, _, _, _, _ -> new")
+    @Contract("_, _, _, _, _, _, _ -> new")
     public static Model createFileOrFolderModel(String id, String icon, String description,
-                                                ModelType modelType, IconType iconType,
+                                                ModelType modelType, IconType iconType, String iconPack,
                                                 List<ModelCondition> conditions) {
-        Model model = createFileOrFolderModel(id, icon, description, modelType, iconType);
+        Model model = createFileOrFolderModel(id, icon, description, modelType, iconType, iconPack);
         model.conditions = conditions;
         return model;
     }
 
     @NotNull
-    @Contract("_, _, _, _, _, _ -> new")
+    @Contract("_, _, _, _, _, _, _ -> new")
     public static Model createIdeIconModel(String id, String ideIcon, String icon, String description,
-                                           ModelType modelType, IconType iconType) {
+                                           ModelType modelType, IconType iconType, String iconPack) {
         Model model = new Model();
         model.id = id;
         model.ideIcon = ideIcon;
@@ -137,6 +138,7 @@ public class Model {
         model.description = description;
         model.modelType = modelType;
         model.iconType = iconType;
+        model.iconPack = iconPack;
         return model;
     }
 

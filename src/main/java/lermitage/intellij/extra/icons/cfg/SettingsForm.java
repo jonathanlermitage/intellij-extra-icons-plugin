@@ -157,6 +157,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                     }
                     foldersFirst(customModels);
                     setUserIconsTableModel();
+                    apply();
                     JOptionPane.showMessageDialog(null,
                         i18n.getString("dialog.import.icon.pack.success"), i18n.getString("dialog.import.icon.pack.success.title"),
                         JOptionPane.INFORMATION_MESSAGE);

@@ -87,6 +87,8 @@ public class ModelDialog extends DialogWrapper {
     private JLabel descriptionLabel;
     private JLabel typeLabel;
     private JLabel iconLeftLabel;
+    private JBTextField iconPackField;
+    private JLabel iconPackLabel;
 
     private IconUtils.ImageWrapper customIconImage;
     private JPanel toolbarPanel;
@@ -205,6 +207,7 @@ public class ModelDialog extends DialogWrapper {
         idLabel.setText(i18n.getString("model.dialog.id.label"));
         descriptionLabel.setText(i18n.getString("model.dialog.description.label"));
         typeLabel.setText(i18n.getString("model.dialog.type.label"));
+        iconPackLabel.setText(i18n.getString("model.dialog.iconpack.label"));
         ideIconOverrideLabel.setText(i18n.getString("model.dialog.icons.name.label"));
         iconLeftLabel.setText(i18n.getString("model.dialog.icon.type.selector.label"));
         chooseIconButton.setText(i18n.getString("model.dialog.icon.chooser.btn"));
@@ -275,7 +278,8 @@ public class ModelDialog extends DialogWrapper {
                     icon,
                     descriptionField.getText(),
                     ModelType.getByFriendlyName(selectedItem.toString()),
-                    iconType
+                    iconType,
+                    iconPackField.getText()
                 );
             } else {
                 newModel = Model.createFileOrFolderModel(
@@ -284,6 +288,7 @@ public class ModelDialog extends DialogWrapper {
                     descriptionField.getText(),
                     ModelType.getByFriendlyName(selectedItem.toString()),
                     iconType,
+                    iconPackField.getText(),
                     IntStream.range(0, conditionsCheckboxList.getItemsCount())
                         .mapToObj(index -> conditionsCheckboxList.getItemAt(index))
                         .collect(Collectors.toList())
@@ -312,6 +317,7 @@ public class ModelDialog extends DialogWrapper {
         ideIconOverrideTextField.setText(model.getIdeIcon());
         typeComboBox.setSelectedItem(model.getModelType().getFriendlyName());
         typeComboBox.updateUI();
+        iconPackField.setText(model.getIconPack());
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
         SwingUtilities.invokeLater(() -> iconLabel.setIcon(IconUtils.getIcon(model, additionalUIScale)));
         if (model.getIconType() == IconType.PATH) {
