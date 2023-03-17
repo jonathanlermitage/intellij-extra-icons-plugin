@@ -180,11 +180,11 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
                 VirtualFile virtualFile = FileChooser.chooseFile(fileChooserDescriptor, null, null);
                 if (virtualFile != null) {
-                    IconPackUtils.writeToJsonFile(
-                        new File(virtualFile.getPath() + "/" + filename),
-                        new IconPack("", SettingsService.getInstance(project).getCustomModels()));
+                    File exportFile = new File(virtualFile.getPath() + "/" + filename);
+                    IconPackUtils.writeToJsonFile(exportFile, new IconPack("", SettingsService.getInstance(project).getCustomModels()));
                     JOptionPane.showMessageDialog(null,
-                        i18n.getString("dialog.export.icon.pack.success"), i18n.getString("dialog.export.icon.pack.success.title"),
+                        i18n.getString("dialog.export.icon.pack.success") + "\n" + exportFile.getAbsolutePath(),
+                        i18n.getString("dialog.export.icon.pack.success.title"),
                         JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch (Exception e) {
