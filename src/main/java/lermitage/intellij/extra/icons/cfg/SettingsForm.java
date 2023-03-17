@@ -153,7 +153,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 if (virtualFile != null) {
                     IconPack iconPack = IconPackUtils.fromJsonFile(new File(virtualFile.getPath()));
                     for (Model model : iconPack.getModels()) {
-                        if (model.getIconPack() == null) {
+                        if (iconPack.getName() != null && !iconPack.getName().isBlank()) {
                             model.setIconPack(iconPack.getName());
                         }
                         customModels.add(model);
