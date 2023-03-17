@@ -21,6 +21,7 @@ import com.intellij.ui.table.JBTable;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelTag;
 import lermitage.intellij.extra.icons.ModelType;
+import lermitage.intellij.extra.icons.cfg.dialogs.IconPackUninstallerDialog;
 import lermitage.intellij.extra.icons.cfg.dialogs.ModelDialog;
 import lermitage.intellij.extra.icons.cfg.models.PluginIconsSettingsTableModel;
 import lermitage.intellij.extra.icons.cfg.models.UserIconsSettingsTableModel;
@@ -101,6 +102,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JLabel iconPackLabel;
     private JButton buttonImportIconPackFromFile;
     private JButton buttonExportUserIconsAsIconPack;
+    private JButton buttonUninstallIconPack;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -187,6 +189,25 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 }
             } catch (Exception e) {
                 LOGGER.error("Failed to export user icons", e); // TODO replace by error dialog
+            }
+        });
+        buttonUninstallIconPack.addActionListener(al -> {
+            try {
+                apply();
+                IconPackUninstallerDialog iconPackUninstallerDialog = new IconPackUninstallerDialog(customModels);
+                if (iconPackUninstallerDialog.showAndGet()) {
+                    String iconPackToUninstall = iconPackUninstallerDialog.getIconPackNameFromInput();
+                    if (!iconPackToUninstall.isBlank()) {
+                        customModels = customModels.stream()
+                            .filter(model -> !iconPackToUninstall.equals(model.getIconPack()))
+                            .collect(Collectors.toList());
+                        foldersFirst(customModels);
+                        setUserIconsTableModel();
+                        apply();
+                    }
+                }
+            } catch (Exception e) {
+                LOGGER.error("Failed to uninstall Icon Pack", e); // TODO replace by error dialog
             }
         });
     }
@@ -360,6 +381,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         iconPackLabel.setText(i18n.getString("icon.pack.label"));
         buttonImportIconPackFromFile.setText(i18n.getString("btn.import.icon.pack.file"));
         buttonExportUserIconsAsIconPack.setText(i18n.getString("btn.export.icon.pack"));
+        buttonUninstallIconPack.setText(i18n.getString("btn.uninstall.icon.pack"));
 
         iconsTabbedPane.setTitleAt(0, i18n.getString("plugin.icons.table.tab.name"));
         iconsTabbedPane.setTitleAt(1, i18n.getString("user.icons.table.tab.name"));
