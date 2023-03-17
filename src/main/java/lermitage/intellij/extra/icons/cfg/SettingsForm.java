@@ -340,8 +340,13 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private void initComponents() {
         disableOrEnableLabel.setText(i18n.getString("quick.action.label"));
+
         buttonEnableAll.setText(i18n.getString("btn.enable.all"));
+        buttonEnableAll.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/gutterCheckBoxSelected.svg", SettingsForm.class)); //NON-NLS
+
         buttonDisableAll.setText(i18n.getString("btn.disable.all"));
+        buttonDisableAll.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/gutterCheckBox.svg", SettingsForm.class)); //NON-NLS
+
         ignoredPatternTitle.setText(i18n.getString("label.regex.ignore.relative.paths"));
         ignoredPatternTextField.setToolTipText(i18n.getString("field.regex.ignore.relative.paths"));
         additionalUIScaleTitle.setText(i18n.getString("label.ui.scalefactor"));
@@ -372,6 +377,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         }
         buttonReloadProjectsIcons.setText(i18n.getString("btn.reload.project.icons"));
         buttonReloadProjectsIcons.setToolTipText(i18n.getString("btn.reload.project.icons.tooltip"));
+        buttonReloadProjectsIcons.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/refresh.svg", SettingsForm.class)); //NON-NLS
+
         comboBoxIconsGroupSelector.setRenderer(new ComboBoxWithImageRenderer());
         comboBoxIconsGroupSelector.addItem(new ComboBoxWithImageItem(i18n.getString("icons")));
         Arrays.stream(ModelTag.values()).forEach(modelTag -> comboBoxIconsGroupSelector.addItem(
@@ -379,9 +386,15 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         ));
 
         iconPackLabel.setText(i18n.getString("icon.pack.label"));
+
         buttonImportIconPackFromFile.setText(i18n.getString("btn.import.icon.pack.file"));
+        buttonImportIconPackFromFile.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/import.svg", SettingsForm.class)); //NON-NLS
+
         buttonExportUserIconsAsIconPack.setText(i18n.getString("btn.export.icon.pack"));
+        buttonExportUserIconsAsIconPack.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/export.svg", SettingsForm.class)); //NON-NLS
+
         buttonUninstallIconPack.setText(i18n.getString("btn.uninstall.icon.pack"));
+        buttonUninstallIconPack.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/remove.svg", SettingsForm.class)); //NON-NLS
 
         iconsTabbedPane.setTitleAt(0, i18n.getString("plugin.icons.table.tab.name"));
         iconsTabbedPane.setTitleAt(1, i18n.getString("user.icons.table.tab.name"));
