@@ -21,6 +21,7 @@ import com.intellij.ui.table.JBTable;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelTag;
 import lermitage.intellij.extra.icons.ModelType;
+import lermitage.intellij.extra.icons.cfg.dialogs.AskSingleTextDialog;
 import lermitage.intellij.extra.icons.cfg.dialogs.IconPackUninstallerDialog;
 import lermitage.intellij.extra.icons.cfg.dialogs.ModelDialog;
 import lermitage.intellij.extra.icons.cfg.models.PluginIconsSettingsTableModel;
@@ -181,8 +182,15 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
                 VirtualFile virtualFile = FileChooser.chooseFile(fileChooserDescriptor, null, null);
                 if (virtualFile != null) {
+                    AskSingleTextDialog askSingleTextDialog = new AskSingleTextDialog(
+                        i18n.getString("dialog.export.ask.icon.pack.name.window.title"),
+                        i18n.getString("dialog.export.ask.icon.pack.name.title"));
+                    String iconPackName = "";
+                    if (askSingleTextDialog.showAndGet()) {
+                        iconPackName = askSingleTextDialog.getTextFromInput();
+                    }
                     File exportFile = new File(virtualFile.getPath() + "/" + filename);
-                    IconPackUtils.writeToJsonFile(exportFile, new IconPack("", SettingsService.getInstance(project).getCustomModels()));
+                    IconPackUtils.writeToJsonFile(exportFile, new IconPack(iconPackName, SettingsService.getInstance(project).getCustomModels()));
                     JOptionPane.showMessageDialog(null,
                         i18n.getString("dialog.export.icon.pack.success") + "\n" + exportFile.getAbsolutePath(),
                         i18n.getString("dialog.export.icon.pack.success.title"),

@@ -16,6 +16,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 
+/**
+ * A dialog which asks to choose an icon pack name, or nothing.
+ */
 public class IconPackUninstallerDialog extends DialogWrapper {
 
     private final List<Model> models;
