@@ -105,6 +105,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JButton buttonImportIconPackFromFile;
     private JButton buttonExportUserIconsAsIconPack;
     private JButton buttonUninstallIconPack;
+    private JLabel iconPackContextHelpLabel;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -401,6 +402,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
         buttonExportUserIconsAsIconPack.setText(i18n.getString("btn.export.icon.pack"));
         buttonExportUserIconsAsIconPack.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/export.svg", SettingsForm.class)); //NON-NLS
+
+        iconPackContextHelpLabel.setText("");
+        iconPackContextHelpLabel.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/contextHelp.svg", SettingsForm.class)); //NON-NLS
+        iconPackContextHelpLabel.setToolTipText(i18n.getString("icon.pack.context.help"));
 
         buttonUninstallIconPack.setText(i18n.getString("btn.uninstall.icon.pack"));
         buttonUninstallIconPack.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/remove.svg", SettingsForm.class)); //NON-NLS
