@@ -161,8 +161,7 @@ tasks {
         }
     }
     runIde {
-        jvmArgs("-Xms128m")
-        jvmArgs("-Xmx1024m")
+        maxHeapSize = "1g" // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html
         if (pluginLanguage.isNotBlank()) {
             jvmArgs("-Duser.language=$pluginLanguage")
         }
