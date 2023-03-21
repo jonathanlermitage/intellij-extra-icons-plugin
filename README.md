@@ -85,3 +85,5 @@ You only have to pay a subscription if you want to support my work by using the 
 ![Screenshot](docs/screenshots/intellijidea-ce.png)
 
 ![Config Panel Screenshot](docs/screenshots/config-panel.png)
+
+![User Config Panel Screenshot](docs/screenshots/config-panel-user-tab.png)
