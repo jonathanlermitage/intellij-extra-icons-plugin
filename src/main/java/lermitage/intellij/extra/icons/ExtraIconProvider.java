@@ -1027,6 +1027,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/mdx_alt.svg", "extra-icons/mdx_alt2.svg"),
                 ofFile("ext_mmd", "extra-icons/mindmap.svg", "IDEA MindMap plugin: *.mmd")
                     .end(".mmd"),
+                ofFile("ext_mermaid", "extra-icons/mermaid.svg", "Mermaid: *.mermaid")
+                    .end(".mermaid"),
+                ofFile("ext_mermaid_mmd", "extra-icons/mermaid.svg", "Mermaid: *.mmd")
+                    .end(".mmd"),
                 ofFile("ext_mpeg", "extra-icons/mpeg.svg", "MPEG-1/2 Audio: *.mp3, *.mp1, *.m1a, *.mp2, *.m2a, *.mpa")
                     .end(".mp3", ".mp1", ".m1a", ".mp2", ".m2a", ".mpa"),
                 ofFile("ext_mwb", "extra-icons/mysqlworkbench.png", "MySQL Workbench: *.mwb")

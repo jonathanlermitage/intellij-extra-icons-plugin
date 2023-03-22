@@ -17,7 +17,8 @@
         <li>For more information, please see this <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">guide</a>.</li>
         <li>For questions about the plugin licensing model, how to get a license for free (students and teachers), and how to get a perpetual license, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md">license FAQ</a>.</li>
       </ul>
-      Extra Icons <b>Chinese UI</b> is automatically applied if you enable the official IDE <a href="https://plugins.jetbrains.com/plugin/13710-chinese-simplified-language-pack----">Chinese Language Pack</a> plugin.
+      Extra Icons <b>Chinese UI</b> is automatically applied if you enable the official IDE <a href="https://plugins.jetbrains.com/plugin/13710-chinese-simplified-language-pack----">Chinese Language Pack</a> plugin.<br>
+      如果你启用官方IDE中文语言包插件, Extra Icons中文用户界面将自动应用.
       <br>
       <br>
       📢 Please don't trust the plugin's low rating. It had ~5 stars until I decided to ask for modest financial support starting from March 2022.
@@ -58,17 +59,17 @@
         <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <fileIconProvider
             id="genericFileIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <iconProvider
             id="extraIconsIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <openapi.vcs.changes.ui.filePathIconProvider
             id="extraIconsFilePathIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
         <applicationService
             serviceImplementation="lermitage.intellij.extra.icons.cfg.services.SettingsIDEService"/>
