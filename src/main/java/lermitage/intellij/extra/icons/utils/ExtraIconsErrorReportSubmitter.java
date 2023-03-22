@@ -158,7 +158,7 @@ public class ExtraIconsErrorReportSubmitter extends ErrorReportSubmitter {
 
     @SuppressWarnings("HardCodedStringLiteral")
     private String getBugTemplate() {
-        return "## Running environment\n" +
+        return "## Running environment\n" + // TODO use text blocks once migrated to Java17
             "- Extra Icons plugin version - %macheteVersion%\n" +
             "- IDE - %ide%\n" +
             "- OS - %os%\n" +
