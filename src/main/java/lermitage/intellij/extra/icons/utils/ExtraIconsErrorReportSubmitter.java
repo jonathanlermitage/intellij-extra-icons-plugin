@@ -108,7 +108,7 @@ public class ExtraIconsErrorReportSubmitter extends ErrorReportSubmitter {
 
         IdeaPluginDescriptor pluginDescriptor = PluginManagerCore.getPlugin(PluginId.getId("lermitage.intellij.extra.icons"));
         String pluginVersion = pluginDescriptor == null ? "<unknown>" : pluginDescriptor.getVersion();
-        templateVariables.put("macheteVersion", pluginVersion);
+        templateVariables.put("pluginVersion", pluginVersion);
 
         String osName = SystemUtils.OS_NAME;
         String osVersion = SystemUtils.OS_VERSION;
@@ -159,7 +159,7 @@ public class ExtraIconsErrorReportSubmitter extends ErrorReportSubmitter {
     @SuppressWarnings("HardCodedStringLiteral")
     private String getBugTemplate() {
         return "## Running environment\n" + // TODO use text blocks once migrated to Java17
-            "- Extra Icons plugin version - %macheteVersion%\n" +
+            "- Extra Icons plugin version - %pluginVersion%\n" +
             "- IDE - %ide%\n" +
             "- OS - %os%\n" +
             "\n" +
