@@ -3,6 +3,7 @@
 package lermitage.intellij.extra.icons.cfg;
 
 import com.google.common.base.Strings;
+import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.event.DocumentEvent;
 import com.intellij.openapi.editor.event.DocumentListener;
@@ -106,6 +107,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JButton buttonExportUserIconsAsIconPack;
     private JButton buttonUninstallIconPack;
     private JLabel iconPackContextHelpLabel;
+    private JButton buttonShowIconPacksFromWeb;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -170,6 +172,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             } catch (Exception e) {
                 LOGGER.error("Failed to import Icon Pack", e); // TODO replace by error dialog
             }
+        });
+        buttonShowIconPacksFromWeb.addActionListener(al -> {
+            BrowserUtil.browse("https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/themes/THEMES.md#downloadable-icon-packs");
         });
         buttonExportUserIconsAsIconPack.addActionListener(al -> {
             try {
@@ -399,6 +404,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
         buttonImportIconPackFromFile.setText(i18n.getString("btn.import.icon.pack.file"));
         buttonImportIconPackFromFile.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/import.svg", SettingsForm.class)); //NON-NLS
+
+        buttonShowIconPacksFromWeb.setText(i18n.getString("btn.import.icon.pack.web"));
+        buttonShowIconPacksFromWeb.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/web.svg", SettingsForm.class)); //NON-NLS
 
         buttonExportUserIconsAsIconPack.setText(i18n.getString("btn.export.icon.pack"));
         buttonExportUserIconsAsIconPack.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/export.svg", SettingsForm.class)); //NON-NLS

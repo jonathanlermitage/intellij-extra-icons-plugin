@@ -1,7 +1,11 @@
 ## Downloadable Icon Packs
 
-Warning, if you use the new UI: the new UI is a bit buggy. You may have to restart the IDE several times in order to see the new icons. This is totally random. At least, when it fails, it simply doesn't replace icons: the Icon Pack doesn't work, but it won't break your IDE and you will continue to see the regular icons.  
-Unfortunately, this is a problem on the JetBrains side, and I can do nothing for now. Sorry for that.
+:warning: *Warning, if you use the new UI: the new UI is a bit buggy. You may have to restart the IDE several times in order to see the new icons. This is totally random. At least, when it fails, it simply doesn't replace icons: the Icon Pack doesn't work, but it won't break your IDE and you will continue to see the regular icons.*  
+:warning: *Unfortunately, this is a problem on the JetBrains side, and I can do nothing for now. Sorry for that.*
+
+### How-To
+
+Download a JSON Icon Pack, then go to Extra Icons settings, and hit <kbd>Import from file</kbd> button.
 
 ---
 
