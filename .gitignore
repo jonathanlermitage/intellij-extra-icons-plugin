@@ -38,3 +38,5 @@ fabric.properties
 !/.idea/copyright/SPDX_License_Identifier__MIT.xml
 !/.idea/scopes/sources.xml
 !/.idea/icon.svg
+
+themes/*.iml
