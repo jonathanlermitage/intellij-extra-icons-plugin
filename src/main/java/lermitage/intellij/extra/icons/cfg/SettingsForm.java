@@ -407,6 +407,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
         buttonShowIconPacksFromWeb.setText(i18n.getString("btn.import.icon.pack.web"));
         buttonShowIconPacksFromWeb.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/web.svg", SettingsForm.class)); //NON-NLS
+        buttonShowIconPacksFromWeb.setToolTipText(i18n.getString("btn.import.icon.pack.web.tooltip"));
 
         buttonExportUserIconsAsIconPack.setText(i18n.getString("btn.export.icon.pack"));
         buttonExportUserIconsAsIconPack.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/export.svg", SettingsForm.class)); //NON-NLS
