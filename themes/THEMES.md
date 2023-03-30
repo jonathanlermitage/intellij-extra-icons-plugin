@@ -5,7 +5,7 @@
 
 ### How-To
 
-Download a JSON Icon Pack, then go to Extra Icons settings, and hit <kbd>Import from file</kbd> button.
+Download a JSON Icon Pack (see Themes below), then go to Extra Icons settings, and hit <kbd>Import from file</kbd> button.
 
 ---
 

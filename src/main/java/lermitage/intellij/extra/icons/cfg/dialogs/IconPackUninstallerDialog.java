@@ -44,7 +44,6 @@ public class IconPackUninstallerDialog extends DialogWrapper {
 
     private void initComponents() {
         iconPackChooserTitleLabel.setText(i18n.getString("model.dialog.uninstall.icon.pack.title"));
-        iconPackComboBox.addItem("");
         Set<String> iconPacks = new HashSet<>();
         models.forEach(model -> {
             if (model.getIconPack() != null && !model.getIconPack().isBlank()) {

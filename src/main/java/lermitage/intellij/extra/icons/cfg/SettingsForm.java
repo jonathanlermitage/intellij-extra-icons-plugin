@@ -497,7 +497,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         columnModel.getColumn(UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER).setMaxWidth(28);
         columnModel.getColumn(UserIconsSettingsTableModel.ICON_LABEL_COL_NUMBER).sizeWidthToFit();
         columnModel.getColumn(UserIconsSettingsTableModel.ICON_PACK_COL_NUMBER).setMinWidth(250);
-        columnModel.getColumn(UserIconsSettingsTableModel.ICON_PACK_COL_NUMBER).setMaxWidth(300);
+        columnModel.getColumn(UserIconsSettingsTableModel.ICON_PACK_COL_NUMBER).setMaxWidth(450);
+        columnModel.getColumn(UserIconsSettingsTableModel.ICON_PACK_COL_NUMBER).setPreferredWidth(280);
         if (currentSelected != -1 && currentSelected < userIconsTable.getRowCount()) {
             userIconsTable.setRowSelectionInterval(currentSelected, currentSelected);
         }
