@@ -17,31 +17,34 @@ def convert_icons_to_b64(icons: dict) -> dict:
     return converted_icons  # icon paths with base64 pictures
 
 
-def icon_pack_ij(icon_pack_items: list[str]) -> str:
-    template = """
-{
-  "name":"NewUIFilesToOldUITheme",
-  "models":[{icon_pack_items_str}]
-}
+def icon_pack_ij(icon_pack_items: list[str], icon_pack_version: str) -> str:
+    template = """{"name": "NewUIFilesToOldUITheme_v{icon_pack_version}","models": [
+{icon_pack_items_str}
+]}
 """
-    icon_pack_items_str = ",".join(icon_pack_items)
-    return template.replace("{icon_pack_items_str}", icon_pack_items_str)
+    icon_pack_items_str = ",\n".join(icon_pack_items)
+    return template.replace("{icon_pack_items_str}", icon_pack_items_str) \
+        .replace("{icon_pack_version}", icon_pack_version) \
+        .replace(", ", ",") \
+        .replace(": ", ":")
 
 
 def icon_pack_ij_item(icon_path, icon_b64) -> str:
-    template = """
-{"ideIcon": "{icon_path}", "icon": "{icon_b64}", "description": "{icon_path}", "iconPack": "", "modelType": "ICON", "iconType": "SVG", "enabled": true, "conditions": [{"start": false, "eq": false, "mayEnd": false, "end": false, "noDot": false, "checkParent": false, "hasRegex": false, "enabled": true, "checkFacets": false, "hasIconEnabler": false, "names": [], "parentNames": [], "extensions": [], "facets": []}]}
-"""  # NOPEP8
+    template = """{"ideIcon": "{icon_path}", "icon": "{icon_b64}", "description": "{icon_path}", "iconPack": "", "modelType": "ICON", "iconType": "SVG", "enabled": true, "conditions": [{"start": false, "eq": false, "mayEnd": false, "end": false, "noDot": false, "checkParent": false, "hasRegex": false, "enabled": true, "checkFacets": false, "hasIconEnabler": false, "names": [], "parentNames": [], "extensions": [], "facets": []}]}"""  # NOPEP8
     return template.replace("{icon_path}", icon_path).replace("{icon_b64}", icon_b64)
 
 
 if __name__ == '__main__':
     ij_sources_folder_input = sys.argv[1]
+    icon_pack_version = sys.argv[2]
 
     if not ij_sources_folder_input:
         raise ValueError("❌  IntelliJ sources folder required")
     if not exists(ij_sources_folder_input):
         raise ValueError(f"❌  IntelliJ sources folder '{ij_sources_folder_input}' not found")
+
+    if not icon_pack_version:
+        icon_pack_version = "1"
 
     ij_sources_folder_input = ij_sources_folder_input.replace("\\", "/")
 
@@ -91,7 +94,7 @@ if __name__ == '__main__':
                 break
         icon_pack_items.append(icon_pack_ij_item(short_icon_name, icon_pack[icon_name]))
 
-    json_icon_pack = icon_pack_ij(icon_pack_items)
+    json_icon_pack = icon_pack_ij(icon_pack_items, icon_pack_version)
 
     if exists("NewUIFilesToOldUITheme.json"):
         os.remove("NewUIFilesToOldUITheme.json")
