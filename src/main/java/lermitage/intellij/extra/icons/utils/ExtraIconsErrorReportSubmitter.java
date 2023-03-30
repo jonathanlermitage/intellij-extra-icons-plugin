@@ -51,7 +51,7 @@ public class ExtraIconsErrorReportSubmitter extends ErrorReportSubmitter {
     public boolean submit(IdeaLoggingEvent @NotNull [] events,
                           @Nullable String additionalInfo,
                           @NotNull Component parentComponent,
-                          @NotNull Consumer<? super SubmittedReportInfo> consumer) {
+                          @NotNull Consumer<? super SubmittedReportInfo> consumer) { // TODO replace com.intellij.util.Consumer by java.util.function.Consumer once IJ API has been updated. Can do nothing for now, and fix will break compatibility with previous IDEs :-(
         try {
             URI uri = constructNewGitHubIssueUri(events, additionalInfo);
             ModalityUiUtil.invokeLaterIfNeeded(ModalityState.NON_MODAL, () -> BrowserUtil.browse(uri));
