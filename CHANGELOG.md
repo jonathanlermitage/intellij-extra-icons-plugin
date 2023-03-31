@@ -6,6 +6,7 @@
 * implement [#118](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/118): add a custom error reporter which prefills an issue on Extra Icons' GitHub repository.
 * fix [#120](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/120): minor UI improvement.
 * support Mermaid files: use the official Mermaid logo instead of the icon displayed by the JetBrains Mermaid plugin.
+* support some [Poetry](https://python-poetry.org) files.
 
 ## 2023.1.2 (2023/03/07)
 * support C, C++ and H files.
