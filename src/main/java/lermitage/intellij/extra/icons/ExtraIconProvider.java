@@ -834,6 +834,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("puppet").mayEnd(".conf"),
                 ofFile("puppet1", "extra-icons/puppet.svg", "Puppet: start by 'puppet' and end by '.conf'")
                     .start("puppet").end(".conf"),
+                ofFile("pytest", "extra-icons/pytest.svg", "Pytest: pytest.ini")
+                    .eq("pytest.ini"),
                 ofFile("readme", "extra-icons/readme.svg", "Readme: readme(.md,.txt,.adoc,.rst), lisezmoi")
                     .eq("readme", "lisezmoi").mayEnd(TXT)
                     .altIcons("extra-icons/readme_alt.svg", "extra-icons/readme_alt2.svg"),
@@ -869,9 +871,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("stacksmith", "extra-icons/stacksmith.svg", "Bitnami Stacksmith: stackerfile.yml")
                     .eq("stackerfile.yml"),
                 ofFile("svgo", "extra-icons/svgo.svg", "SVGO: svgo(.yml,.yaml)")
-                    .eq("svgo").end(YML),
+                    .eq("svgo").end(YML)
+                    .altIcons("extra-icons/svgo_alt.svg"),
                 ofFile("svgo2", "extra-icons/svgo.svg", "SVGO: svgo.config.js")
-                    .eq("svgo.config.js"),
+                    .eq("svgo.config.js")
+                    .altIcons("extra-icons/svgo_alt.svg"),
                 ofFile("swaggerconfig", "extra-icons/swagger.svg", "Swagger: swagger-config.yaml")
                     .eq("swagger-config.yaml")
                     .altIcons("extra-icons/swagger_alt.svg"),
