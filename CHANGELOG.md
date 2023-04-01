@@ -9,6 +9,7 @@
 * support some [Poetry](https://python-poetry.org) files.
 * support `pytest.ini` files.
 * add an alternative icon for SVGO files.
+* rework ArchUnit icon (PNG icon to SVG).
 
 ## 2023.1.2 (2023/03/07)
 * support C, C++ and H files.

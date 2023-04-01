@@ -506,7 +506,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("appveyor.yml", ".appveyor.yml"),
                 ofFile("allcontributors", "extra-icons/allcontributors.svg", "All Contributors: .all-contributorsrc")
                     .eq(".all-contributorsrc"),
-                ofFile("archunit", "extra-icons/archunit.png", "ArchUnit: archunit.properties")
+                ofFile("archunit", "extra-icons/archunit.svg", "ArchUnit: archunit.properties")
                     .eq("archunit.properties"),
                 ofFile("author", "extra-icons/authors.png", "Author: author(.md,.txt,.adoc,.rst), authors")
                     .eq("author", "authors").mayEnd(TXT)
