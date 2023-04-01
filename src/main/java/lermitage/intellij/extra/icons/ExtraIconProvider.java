@@ -964,7 +964,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".h"),
                 ofFile("ext_cert", "extra-icons/certificate.svg", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, ...")
                     .end(".jks", ".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".jceks", ".p12", ".p7b", ".p7s", ".pfx", ".pubkey")
-                    .altIcons("extra-icons/certificate_alt.png"),
+                    .altIcons("extra-icons/certificate_alt.svg"),
                 ofFile("ext_cmd", "extra-icons/cmd.svg", "Windows script: *.cmd, *.bat, *.ps1")
                     .end(".cmd", ".bat", ".ps1"),
                 ofFile("ext_csv", "extra-icons/csv.png", "CSV: *.csv")
