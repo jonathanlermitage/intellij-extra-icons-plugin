@@ -11,6 +11,7 @@
 * add an alternative icon for SVGO files.
 * rework ArchUnit icon (PNG icon to SVG).
 * rework Cirrus icon (PNG icon to SVG).
+* rework Gatling icon (based on new logo).
 * rework a certificate icon (PNG icon to SVG).
 
 ## 2023.1.2 (2023/03/07)
