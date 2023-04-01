@@ -667,7 +667,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .iconEnabler(IconEnablerType.IS_IN_GRAPHQL_FOLDER),
                 ofFile("graphqlschema", "extra-icons/graphql_schema.svg", "GraphQL: graphql.schema.json")
                     .eq("graphql.schema.json"),
-                ofFile("gocd", "extra-icons/gocd.png", "Gocd: .gocd(.xml,.yml,...)")
+                ofFile("gocd", "extra-icons/gocd.svg", "Gocd: .gocd(.xml,.yml,...)")
                     .eq(".gocd").mayEnd(CFG),
                 ofFile("gomod", "extra-icons/gomod.svg", "Go: go.mod")
                     .eq("go.mod")
