@@ -561,7 +561,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("circle.yml"),
                 ofFile("circle1", "extra-icons/circleci.svg", "Circle CI: .circleci/config.yml")
                     .eq("config.yml").parents(".circleci"),
-                ofFile("cirrus", "extra-icons/cirrus.png", "Cirrus CI: .cirrus.yml")
+                ofFile("cirrus", "extra-icons/cirrus.svg", "Cirrus CI: .cirrus.yml")
                     .eq(".cirrus.yml"),
                 ofFile("composer", "extra-icons/composer.svg", "Composer: composer.json, composer.lock")
                     .eq("composer.json", "composer.lock"),
