@@ -11,13 +11,13 @@ import java.util.ResourceBundle;
 
 public class PluginIconsSettingsTableModel extends DefaultTableModel {
 
-    public static int ICON_COL_NUMBER = 0;
-    public static int ICON_ENABLED_COL_NUMBER = 1;
-    public static int ICON_LABEL_COL_NUMBER = 2;
-    public static int ICON_TAGS_LABEL_COL_NUMBER = 3;
-    public static int ICON_REQUIRE_IDE_RESTART = 4;
-    public static int ICON_TAGS_ENUM_LIST_COL_NUMBER = 5;
-    public static int ICON_ID_COL_NUMBER = 6;
+    public static final int ICON_COL_NUMBER = 0;
+    public static final int ICON_ENABLED_COL_NUMBER = 1;
+    public static final int ICON_LABEL_COL_NUMBER = 2;
+    public static final int ICON_TAGS_LABEL_COL_NUMBER = 3;
+    public static final int ICON_REQUIRE_IDE_RESTART = 4;
+    public static final int ICON_TAGS_ENUM_LIST_COL_NUMBER = 5;
+    public static final int ICON_ID_COL_NUMBER = 6;
 
     private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 

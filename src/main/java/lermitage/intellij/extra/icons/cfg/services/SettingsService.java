@@ -38,7 +38,7 @@ public abstract class SettingsService {
 
     private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 
-    public static double DEFAULT_ADDITIONAL_UI_SCALE = 1.0d;
+    public static final double DEFAULT_ADDITIONAL_UI_SCALE = 1.0d;
 
     public List<String> getDisabledModelIds() {
         if (disabledModelIds == null) { // a malformed xml file could make it null

@@ -17,14 +17,14 @@ def convert_icons_to_b64(icons: dict) -> dict:
     return converted_icons  # icon paths with base64 pictures
 
 
-def icon_pack_ij(icon_pack_items: list[str], icon_pack_version: str) -> str:
+def icon_pack_ij(items: list[str], version: str) -> str:
     template = """{"name": "NewUIFilesToOldUITheme_v{icon_pack_version}","models": [
 {icon_pack_items_str}
 ]}
 """
-    icon_pack_items_str = ",\n".join(icon_pack_items)
+    icon_pack_items_str = ",\n".join(items)
     return template.replace("{icon_pack_items_str}", icon_pack_items_str) \
-        .replace("{icon_pack_version}", icon_pack_version) \
+        .replace("{icon_pack_version}", version) \
         .replace(", ", ",") \
         .replace(": ", ":")
 

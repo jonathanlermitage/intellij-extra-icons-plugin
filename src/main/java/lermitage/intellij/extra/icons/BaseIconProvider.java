@@ -102,6 +102,7 @@ public abstract class BaseIconProvider
      * Check whether this icon provider supports the input file.
      * If not overridden, returns {@code true}.
      */
+    @SuppressWarnings("SameReturnValue")
     protected boolean isSupported(@SuppressWarnings("unused") @NotNull final PsiFile psiFile) {
         return true;
     }

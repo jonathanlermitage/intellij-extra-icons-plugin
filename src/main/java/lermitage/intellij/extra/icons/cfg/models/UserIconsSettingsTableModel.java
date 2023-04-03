@@ -10,10 +10,10 @@ import java.util.ResourceBundle;
 
 public class UserIconsSettingsTableModel extends DefaultTableModel {
 
-    public static int ICON_COL_NUMBER = 0;
-    public static int ICON_ENABLED_COL_NUMBER = 1;
-    public static int ICON_LABEL_COL_NUMBER = 2;
-    public static int ICON_PACK_COL_NUMBER = 3;
+    public static final int ICON_COL_NUMBER = 0;
+    public static final int ICON_ENABLED_COL_NUMBER = 1;
+    public static final int ICON_LABEL_COL_NUMBER = 2;
+    public static final int ICON_PACK_COL_NUMBER = 3;
 
     private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 

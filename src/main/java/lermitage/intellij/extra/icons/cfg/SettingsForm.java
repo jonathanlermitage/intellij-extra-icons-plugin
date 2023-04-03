@@ -173,9 +173,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 LOGGER.error("Failed to import Icon Pack", e); // TODO replace by error dialog
             }
         });
-        buttonShowIconPacksFromWeb.addActionListener(al -> {
-            BrowserUtil.browse("https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/themes/THEMES.md#downloadable-icon-packs");
-        });
+        buttonShowIconPacksFromWeb.addActionListener(al ->
+            BrowserUtil.browse("https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/themes/THEMES.md#downloadable-icon-packs"));
         buttonExportUserIconsAsIconPack.addActionListener(al -> {
             try {
                 String filename = "extra-icons-" + System.currentTimeMillis() + "-icon-pack.json"; //NON-NLS

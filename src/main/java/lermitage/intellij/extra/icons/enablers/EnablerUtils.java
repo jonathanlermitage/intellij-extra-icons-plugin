@@ -10,20 +10,18 @@ import java.util.Optional;
 
 public class EnablerUtils {
 
-    public static void forceInitAllEnablers() throws Exception {
+    public static void forceInitAllEnablers() {
         Project[] projects = ProjectManager.getInstance().getOpenProjects();
         for (Project project : projects) {
             forceInitAllEnablers(project);
         }
     }
 
-    public static void forceInitAllEnablers(Project project) throws Exception {
+    public static void forceInitAllEnablers(Project project) {
         for (IconEnablerType iconEnablerType : IconEnablerType.values()) {
             if (ProjectUtils.isProjectAlive(project)) {
                 Optional<IconEnabler> iconEnabler = IconEnablerProvider.getIconEnabler(project, iconEnablerType);
-                if (iconEnabler.isPresent()) {
-                    iconEnabler.get().init(project);
-                }
+                iconEnabler.ifPresent(enabler -> enabler.init(project));
             }
         }
     }
