@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 
+// noinspection JSUnresolvedVariable
 module.exports = {
     multipass: true,
     plugins: [
