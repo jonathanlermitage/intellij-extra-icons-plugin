@@ -14,6 +14,7 @@
 * rework Gatling icon (based on new logo).
 * rework GoCD icon (PNG icon to SVG).
 * rework a certificate icon (PNG icon to SVG).
+* internal: some code rework, and improved code quality.
 
 ## 2023.1.2 (2023/03/07)
 * support C, C++ and H files.
