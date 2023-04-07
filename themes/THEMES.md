@@ -11,11 +11,14 @@ Download a JSON Icon Pack (see Themes below), then go to Extra Icons settings, a
 
 ### NewUIFilesToOldUITheme
 
-Version: 1 (2023/03/28)  
 Download link: [NewUIFilesToOldUITheme.json](https://raw.githubusercontent.com/jonathanlermitage/intellij-extra-icons-plugin/master/themes/NewUIFilesToOldUITheme.json)  
 Nb of icons: 62.    
 Designed for: the new UI.  
 Description: it replaces some new UI icons (files and folders) by old UI icons, like Class and Interface files, Package and Source Root folders...  
+Changelog:
+- v2 (2023/04/07): 69 icons (7 new icons, the 62 base icons did not change), based on IJ Community icons
+- v1 (2023/03/28): initial version, 62 icons, based on IJ Community icons
+
 Screenshot:  
 ![NewUIFilesToOldUITheme Screenshot](media/NewUIFilesToOldUITheme.png)
 

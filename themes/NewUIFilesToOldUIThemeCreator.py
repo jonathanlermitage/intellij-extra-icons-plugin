@@ -59,7 +59,7 @@ if __name__ == '__main__':
         "/nodes/": ""
     }
 
-    sub_folders_whitelist = ["fileTypes", "nodes"]  # todo exclude UI items
+    sub_folders_whitelist = ["fileTypes", "nodes"]
 
     print(f"✅  Loading all IJ SVG icons (old and new UI) from {ij_sources_folder_input}/platform/icons/")
     icon_pack = {}
