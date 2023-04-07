@@ -115,7 +115,9 @@ tasks {
             pluginXmlFileBackup.delete()
             FileUtils.moveFile(pluginXmlFile, pluginXmlFileBackup)
             FileUtils.write(pluginXmlFile, pluginXmlStr, "UTF-8")
-            logger.debug("Saved a copy of $pluginXmlFile to $pluginXmlFileBackup")
+            if (logger.isDebugEnabled) {
+                logger.debug("Saved a copy of {} to {}", pluginXmlFile, pluginXmlFileBackup)
+            }
         }
     }
     register("restorePluginXml") {
@@ -123,7 +125,9 @@ tasks {
         doLast {
             FileUtils.copyFile(pluginXmlFileBackup, pluginXmlFile)
             pluginXmlFileBackup.delete()
-            logger.debug("Restored original $pluginXmlFile from $pluginXmlFileBackup")
+            if (logger.isDebugEnabled) {
+                logger.debug("Restored original {} from {}", pluginXmlFile, pluginXmlFileBackup)
+            }
         }
     }
     register("renameDistributionNoLicense") {
