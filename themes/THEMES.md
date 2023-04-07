@@ -5,14 +5,15 @@
 
 ### How-To
 
-Download a JSON Icon Pack (see Themes below), then go to Extra Icons settings, and hit <kbd>Import from file</kbd> button.
+Download a JSON Icon Pack (see Themes below), then go to Extra Icons settings, and hit <kbd>Import from file</kbd> button.  
+![Import from file Screenshot](media/import-user-icon-pack.png)
 
 ---
 
 ### NewUIFilesToOldUITheme
 
 Download link: [NewUIFilesToOldUITheme.json](https://raw.githubusercontent.com/jonathanlermitage/intellij-extra-icons-plugin/master/themes/NewUIFilesToOldUITheme.json)  
-Nb of icons: 62.    
+Nb of icons: 69.    
 Designed for: the new UI.  
 Description: it replaces some new UI icons (files and folders) by old UI icons, like Class and Interface files, Package and Source Root folders...  
 Changelog:
