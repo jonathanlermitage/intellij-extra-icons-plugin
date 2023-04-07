@@ -14,7 +14,7 @@ import static lermitage.intellij.extra.icons.Model.ofDir;
 import static lermitage.intellij.extra.icons.Model.ofFile;
 import static lermitage.intellij.extra.icons.Model.ofIcon;
 
-@SuppressWarnings({"SpellCheckingInspection", "GrazieInspection", "HardCodedStringLiteral"})
+@SuppressWarnings({"SpellCheckingInspection", "HardCodedStringLiteral"})
 public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
 
     private static final String[] TXT = new String[]{".md", ".txt", ".adoc", ".rst"};
@@ -1031,7 +1031,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".mkv", ".mka"),
                 ofFile("ext_md", "extra-icons/markdown.svg", "Markdown: *.md")
                     .end(".md")
-                    .altIcons("extra-icons/markdown_alt.svg", "extra-icons/markdown_alt2.svg"),
+                    .altIcons("extra-icons/markdown_alt.svg", "extra-icons/markdown_alt2.svg",
+                        "extra-icons/markdown_alt3.svg"),
                 ofFile("ext_mdx", "extra-icons/mdx.svg", "MDX: *.mdx")
                     .end(".mdx")
                     .altIcons("extra-icons/mdx_alt.svg", "extra-icons/mdx_alt2.svg"),

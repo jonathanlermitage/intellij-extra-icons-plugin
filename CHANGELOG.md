@@ -9,6 +9,7 @@
 * support some [Poetry](https://python-poetry.org) files.
 * support `pytest.ini` files.
 * add an alternative icon for SVGO files.
+* add an alternative icon for Markdown files.
 * rework ArchUnit icon (PNG icon to SVG).
 * rework Cirrus icon (PNG icon to SVG).
 * rework Gatling icon (based on new logo).
