@@ -99,6 +99,6 @@ if __name__ == '__main__':
     if exists("NewUIFilesToOldUITheme.json"):
         os.remove("NewUIFilesToOldUITheme.json")
         print(f"✅  Removed existing NewUIFilesToOldUITheme.json Icon Pack")
-    with open("NewUIFilesToOldUITheme.json", "w") as json_icon_pack_file:
+    with open("NewUIFilesToOldUITheme.json", "w", newline="\n") as json_icon_pack_file:
         json_icon_pack_file.write(json_icon_pack)
     print(f"✅  (★‿★) Created NewUIFilesToOldUITheme.json Icon Pack (★‿★)")
