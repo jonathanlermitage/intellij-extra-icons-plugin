@@ -972,7 +972,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/officedocs/msexcel-papirus.svg"),
                 ofFile("ext_dar", "extra-icons/jar.png", "Diffusion Archive / XL Deploy Archive: *.dar")
                     .end(".dar"),
-                ofFile("ext_deb", "extra-icons/deb.png", "Debian package: *.deb")
+                ofFile("ext_deb", "extra-icons/deb.svg", "Debian package: *.deb")
                     .end(".deb"),
                 ofFile("ext_dll", "extra-icons/binary.svg", "Windows DLL: *.dll")
                     .end(".dll")

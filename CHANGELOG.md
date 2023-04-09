@@ -12,6 +12,7 @@
 * add an alternative icon for Markdown files.
 * rework ArchUnit icon (PNG icon to SVG).
 * rework Cirrus icon (PNG icon to SVG).
+* rework Debian (deb files) icon (PNG icon to SVG).
 * rework Gatling icon (based on new logo).
 * rework GoCD icon (PNG icon to SVG).
 * rework a certificate icon (PNG icon to SVG).
