@@ -614,9 +614,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("editorconfig", "extra-icons/editorconfig.png", "EditorConfig: .editorconfig")
                     .eq(".editorconfig").mayEnd(CFG)
                     .altIcons("extra-icons/editorconfig_alt.svg", "extra-icons/editorconfig_alt2.svg"),
-                ofFile("elastic", "extra-icons/elasticsearch.png", "Elasticsearch: elastic(.yml,.yaml)")
+                ofFile("elastic", "extra-icons/elasticsearch.svg", "Elasticsearch: elastic(.yml,.yaml)")
                     .eq("elastic").mayEnd(YML),
-                ofFile("elastic1", "extra-icons/elasticsearch.png", "Elasticsearch: start by 'elastic' and end by '.yml,.yaml'")
+                ofFile("elastic1", "extra-icons/elasticsearch.svg", "Elasticsearch: start by 'elastic' and end by '.yml,.yaml'")
                     .start("elastic").end(YML),
                 ofFile("expo_eas", "extra-icons/expo.svg", "Expo EAS: eas.json")
                     .eq("eas.json"),
@@ -958,10 +958,14 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".sh"),
                 ofFile("ext_c", "extra-icons/c.svg", "C: *.c")
                     .end(".c"),
+                ofFile("ext_cc", "extra-icons/cpp.svg", "C++: *.cc")
+                    .end(".cc"),
                 ofFile("ext_cpp", "extra-icons/cpp.svg", "C++: *.cpp")
                     .end(".cpp"),
                 ofFile("ext_h", "extra-icons/h.svg", "C/C++: *.h")
                     .end(".h"),
+                ofFile("ext_hpp", "extra-icons/h.svg", "C/C++: *.hpp")
+                    .end(".hpp"),
                 ofFile("ext_cert", "extra-icons/certificate.svg", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, ...")
                     .end(".jks", ".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".jceks", ".p12", ".p7b", ".p7s", ".pfx", ".pubkey")
                     .altIcons("extra-icons/certificate_alt.svg"),
