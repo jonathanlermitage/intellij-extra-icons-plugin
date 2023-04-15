@@ -108,6 +108,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JButton buttonUninstallIconPack;
     private JLabel iconPackContextHelpLabel;
     private JButton buttonShowIconPacksFromWeb;
+    private JPanel iconPackPanel;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -388,6 +389,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             additionalUIScaleTextField.setVisible(false);
             ignoreWarningsCheckBox.setVisible(false);
             buttonReloadProjectsIcons.setVisible(false);
+            iconPackPanel.setVisible(false);
         }
         buttonReloadProjectsIcons.setText(i18n.getString("btn.reload.project.icons"));
         buttonReloadProjectsIcons.setToolTipText(i18n.getString("btn.reload.project.icons.tooltip"));
