@@ -165,14 +165,22 @@ tasks {
     }
     runIde {
         maxHeapSize = "1g" // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html
+
         if (pluginLanguage.isNotBlank()) {
             jvmArgs("-Duser.language=$pluginLanguage")
         }
         if (pluginCountry.isNotBlank()) {
             jvmArgs("-Duser.country=$pluginCountry")
         }
-        jvmArgs("-Dextra-icons.enable.chinese.ui=" + System.getProperty("extra-icons.enable.chinese.ui", "false"))
+        if (System.getProperty("extra-icons.enable.chinese.ui", "false") == "true") {
+            jvmArgs("-Dextra-icons.enable.chinese.ui=true")
+        }
+
+        // force detection of slow operations in EDT when testing (SlowOperations.assertSlowOperationsAreAllowed)
+        jvmArgs("-Dide.slow.operations.assertion=true")
+
         autoReloadPlugins.set(false)
+
         // If any warning or error with missing --add-opens, wait for the next gradle-intellij-plugin's update that should sync
         // with https://raw.githubusercontent.com/JetBrains/intellij-community/master/plugins/devkit/devkit-core/src/run/OpenedPackages.txt
         // or do it manually
