@@ -42,7 +42,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     }
 
     @Override
-    public synchronized void init(@NotNull Project project) {
+    public synchronized void init(@NotNull Project project) { // TODO this is a 'slow operation' in EDT, use a progress bar or run in background
         initialized = true;
         DumbService.getInstance(project).runWhenSmart(() -> { // run when smart = run once indexing tasks completed
             try {
