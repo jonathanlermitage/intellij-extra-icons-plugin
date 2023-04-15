@@ -55,6 +55,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -151,10 +152,10 @@ public class ModelDialog extends DialogWrapper {
         toolbarPanel = createConditionsListToolbar();
         conditionsPanel.add(toolbarPanel, BorderLayout.CENTER);
 
-        typeComboBox.addItem(ModelType.FILE.getFriendlyName());
-        typeComboBox.addItem(ModelType.DIR.getFriendlyName());
+        typeComboBox.addItem(ModelType.FILE.getI18nFriendlyName());
+        typeComboBox.addItem(ModelType.DIR.getI18nFriendlyName());
         if (!settingsForm.isProjectForm()) {
-            typeComboBox.addItem(ModelType.ICON.getFriendlyName());
+            typeComboBox.addItem(ModelType.ICON.getI18nFriendlyName());
         }
 
         typeComboBox.addActionListener(e -> updateUIOnTypeChange());
@@ -238,7 +239,8 @@ public class ModelDialog extends DialogWrapper {
         testLabel.setVisible(true);
         testTextField.setVisible(true);
         if (selectedItem != null) {
-            boolean ideIconOverrideSelected = selectedItem.equals(ModelType.ICON.getFriendlyName());
+            Optional<ModelType> selectedModelType = getSelectedModelType();
+            boolean ideIconOverrideSelected = selectedModelType.isPresent() && selectedModelType.get() == ModelType.ICON;
             ideIconOverrideLabel.setVisible(ideIconOverrideSelected);
             ideIconOverrideTextField.setVisible(ideIconOverrideSelected);
             ideIconOverrideTip.setVisible(ideIconOverrideSelected);
@@ -268,16 +270,16 @@ public class ModelDialog extends DialogWrapper {
             iconType = modelToEdit.getIconType();
         }
 
-        Object selectedItem = typeComboBox.getSelectedItem();
+        Optional<ModelType> selectedModlType = getSelectedModelType();
         Model newModel = null;
-        if (selectedItem != null) {
-            if (selectedItem.equals(ModelType.ICON.getFriendlyName())) {
+        if (selectedModlType.isPresent()) {
+            if (selectedModlType.get() == ModelType.ICON) {
                 newModel = Model.createIdeIconModel(
                     modelIDField.isVisible() ? modelIDField.getText() : null,
                     ideIconOverrideTextField.getText(),
                     icon,
                     descriptionField.getText(),
-                    ModelType.getByFriendlyName(selectedItem.toString()),
+                    selectedModlType.get(),
                     iconType,
                     iconPackField.getText()
                 );
@@ -286,7 +288,7 @@ public class ModelDialog extends DialogWrapper {
                     modelIDField.isVisible() ? modelIDField.getText() : null,
                     icon,
                     descriptionField.getText(),
-                    ModelType.getByFriendlyName(selectedItem.toString()),
+                    selectedModlType.get(),
                     iconType,
                     iconPackField.getText(),
                     IntStream.range(0, conditionsCheckboxList.getItemsCount())
@@ -302,6 +304,27 @@ public class ModelDialog extends DialogWrapper {
         return newModel;
     }
 
+    private Optional<ModelType> getSelectedModelType() {
+        int selectedIndex = typeComboBox.getSelectedIndex();
+        if (selectedIndex < 0) {
+            return Optional.empty();
+        }
+        return Optional.of(ModelType.values()[typeComboBox.getSelectedIndex()]);
+    }
+
+    private int getModelTypeIdx(ModelType modelType) {
+        switch (modelType) {
+            case FILE:
+                return 0;
+            case DIR:
+                return 1;
+            case ICON:
+                return 2;
+            default:
+                return -1;
+        }
+    }
+
     /**
      * Sets a model that will be edited using this dialog.
      */
@@ -315,7 +338,7 @@ public class ModelDialog extends DialogWrapper {
         }
         descriptionField.setText(model.getDescription());
         ideIconOverrideTextField.setText(model.getIdeIcon());
-        typeComboBox.setSelectedItem(model.getModelType().getFriendlyName());
+        typeComboBox.setSelectedIndex(getModelTypeIdx(model.getModelType()));
         typeComboBox.updateUI();
         iconPackField.setText(model.getIconPack());
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
@@ -403,8 +426,8 @@ public class ModelDialog extends DialogWrapper {
             return new ValidationInfo(i18n.getString("model.dialog.validation.icon.missing"), chooseIconButton);
         }
 
-        Object selectedItem = typeComboBox.getSelectedItem();
-        if (selectedItem != null && selectedItem.equals(ModelType.ICON.getFriendlyName())) {
+        int selectedItemIdx = typeComboBox.getSelectedIndex();
+        if (selectedItemIdx != -1 && selectedItemIdx == getModelTypeIdx(ModelType.ICON)) {
             if (ideIconOverrideTextField.getText().trim().isEmpty()) {
                 return new ValidationInfo(i18n.getString("model.dialog.validation.ide.icon.name.missing"), ideIconOverrideTextField);
             } else if (!ideIconOverrideTextField.getText().endsWith(".svg")) {

@@ -8,17 +8,11 @@ import org.jetbrains.annotations.Contract;
 import java.util.ResourceBundle;
 
 public enum ModelType {
-    FILE("File"), //NON-NLS
-    DIR("Directory"), //NON-NLS
-    ICON("Icon (IDE restart is required to see changes)"); //NON-NLS
-
-    private final String friendlyName;
+    FILE,
+    DIR,
+    ICON;
 
     private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
-
-    ModelType(String friendlyName) {
-        this.friendlyName = friendlyName;
-    }
 
     /**
      * {@link ModelType} comparator: {@link ModelType#DIR} &gt; {@link ModelType#FILE} > {@link ModelType#ICON}.
@@ -43,23 +37,16 @@ public enum ModelType {
         return 1;
     }
 
-    public String getFriendlyName() {
-        if (friendlyName.equals(FILE.friendlyName)) {
-            return i18n.getString("model.type.file");
+    public String getI18nFriendlyName() {
+        switch (this) {
+            case FILE:
+                return i18n.getString("model.type.file");
+            case DIR:
+                return i18n.getString("model.type.directory");
+            case ICON:
+                return i18n.getString("model.type.icon");
+            default:
+                throw new IllegalStateException("Unexpected value: " + this);
         }
-        if (friendlyName.equals(DIR.friendlyName)) {
-            return i18n.getString("model.type.directory");
-        }
-        if (friendlyName.equals(ICON.friendlyName)) {
-            return i18n.getString("model.type.icon");
-        }
-        return friendlyName;
-    }
-
-    public static ModelType getByFriendlyName(String friendlyName) {
-        for (ModelType modelType : ModelType.values()) {
-            if (modelType.friendlyName.equals(friendlyName)) return modelType;
-        }
-        return null;
     }
 }
