@@ -4,19 +4,25 @@
 * you can now import and export user icons. See **Icon Pack** in Extra Icons settings. This also means you can easily share icon themes with friends.
 * created a downloadable [Icon Pack](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/themes/THEMES.md#downloadable-icon-packs) which restores some old file and folder icons in the new UI.
 * implement [#118](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/118): add a custom error reporter which prefills an issue on Extra Icons' GitHub repository.
+* fix [#125](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/125): custom icon type errors after enabling Chinese UI. Thanks **Elziy** for helping!  
 * fix [#120](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/120): minor UI improvement.
+* improve Chinese UI translation. Thanks **Gerry** for helping!
 * support Mermaid files: use the official Mermaid logo instead of the icon displayed by the JetBrains Mermaid plugin.
 * support some [Poetry](https://python-poetry.org) files.
 * support `pytest.ini` files.
+* add an alternative icon for Composer files.
 * add an alternative icon for SVGO files.
 * add an alternative icon for Markdown files.
 * rework ArchUnit icon (PNG icon to SVG).
 * rework Cirrus icon (PNG icon to SVG).
 * rework Debian (deb files) icon (PNG icon to SVG).
+* rework Elasticsearch icon (PNG icon to SVG).
 * rework Gatling icon (based on new logo).
 * rework GoCD icon (PNG icon to SVG).
+* rework Redis icon.
 * rework a certificate icon (PNG icon to SVG).
 * internal: some code rework, and improved code quality.
+* support `*.cc` and `*.hpp` files.
 
 ## 2023.1.2 (2023/03/07)
 * support C, C++ and H files.
