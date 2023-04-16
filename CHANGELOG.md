@@ -6,6 +6,7 @@
 * implement [#118](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/118): add a custom error reporter which prefills an issue on Extra Icons' GitHub repository.
 * fix [#125](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/125): custom icon type errors after enabling Chinese UI. Thanks **Elziy** for helping!  
 * fix [#120](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/120): minor UI improvement.
+* nota: issue [#121](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/121) "Slow operations are prohibited on EDT" fix will be shipped with 2023.2.2 plugin release, as it requires IDE 2023.1. I wanted to support old IDEs in 2023.2.1 plugin release. This issue occurs mainly in EAP and RC IDE builds, and you will find a safe workaround [here](https://plugins.jetbrains.com/plugin/11058-extra-icons/errors-workarounds).
 * improve Chinese UI translation. Thanks **Gerry** for helping!
 * support Mermaid files: use the official Mermaid logo instead of the icon displayed by the JetBrains Mermaid plugin.
 * support some [Poetry](https://python-poetry.org) files.
