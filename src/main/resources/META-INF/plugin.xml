@@ -39,7 +39,7 @@
     -->
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
-    <idea-version since-build="221.6008.13"/> <!-- 2022.1.4 -->
+    <idea-version since-build="231"/> <!-- 2023.1, required by com.intellij.openapi.startup.ProjectActivity -->
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html#modules-available-in-all-products
          on how to target different products -->
@@ -84,6 +84,8 @@
                              key="settings.projectlevel.menu" bundle="ExtraIconsI18n"/>
         <notificationGroup id="ExtraIcons" displayType="BALLOON"/>
         <errorHandler implementation="lermitage.intellij.extra.icons.utils.ExtraIconsErrorReportSubmitter"/>
+        <backgroundPostStartupActivity implementation="lermitage.intellij.extra.icons.activity.EnablerServicesBackgroundPostStartupActivity"
+                                       id="ExtraIcons_EnablerServicesActivity" order="last"/>
     </extensions>
 
 </idea-plugin>

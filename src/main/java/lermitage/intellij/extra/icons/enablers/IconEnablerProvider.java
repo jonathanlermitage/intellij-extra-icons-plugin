@@ -6,9 +6,10 @@ import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import lermitage.intellij.extra.icons.enablers.services.GitSubmoduleFolderEnablerService;
 import lermitage.intellij.extra.icons.enablers.services.HelmFolderEnablerService;
-import lermitage.intellij.extra.icons.enablers.services.InAngularFolderEnblerService;
+import lermitage.intellij.extra.icons.enablers.services.InAngularFolderEnablerService;
 import lermitage.intellij.extra.icons.enablers.services.InGraphQLFolderEnablerService;
 import lermitage.intellij.extra.icons.enablers.services.InHelmFolderEnablerService;
+import lermitage.intellij.extra.icons.utils.LogUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -27,7 +28,7 @@ public class IconEnablerProvider {
             case IS_HELM_FOLDER:
                 return Optional.of(HelmFolderEnablerService.getInstance(project));
             case IS_IN_ANGULAR_FOLDER:
-                return Optional.of(InAngularFolderEnblerService.getInstance(project));
+                return Optional.of(InAngularFolderEnablerService.getInstance(project));
             case IS_IN_GRAPHQL_FOLDER:
                 return Optional.of(InGraphQLFolderEnablerService.getInstance(project));
             case IS_IN_HELM_FOLDER:

@@ -2,12 +2,13 @@
 
 package lermitage.intellij.extra.icons.enablers;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
+import com.intellij.util.ui.EDT;
 import lermitage.intellij.extra.icons.utils.LogUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
@@ -19,6 +20,7 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("HardCodedStringLiteral")
 public abstract class AbstractInFolderEnabler implements IconEnabler {
 
     private static final Logger LOGGER = Logger.getInstance(AbstractInFolderEnabler.class);
@@ -42,28 +44,23 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     }
 
     @Override
-    public synchronized void init(@NotNull Project project) { // TODO this is a 'slow operation' in EDT, run in background or schedule a startup task
+    public synchronized void init(@NotNull Project project) {
         initialized = true;
-        DumbService.getInstance(project).runWhenSmart(() -> { // run when smart = run once indexing tasks completed
+        ApplicationManager.getApplication().executeOnPooledThread(() -> ApplicationManager.getApplication().runReadAction(() -> {
             try {
-                long t1 = System.currentTimeMillis();
                 initWithIdeFileIndex(project, getFilenamesToSearch());
-                long execDuration = System.currentTimeMillis() - t1;
-                String logMsg = getName() + " Enabler searched for " + Arrays.toString(getFilenamesToSearch()) + " files in project " + project.getName() + " in " + execDuration + " ms." + " Found folders: " + folders;
-                if (execDuration > 4000) {
-                    LOGGER.warn(logMsg + ". Operation should complete faster. " + ProjectUtils.PLEASE_OPEN_ISSUE_MSG);
-                } else {
-                    LOGGER.info(logMsg);
-                }
-                LOGGER.info(getName() + " Enabler init done. Refreshing project " + project.getName());
                 ProjectUtils.refreshProject(project);
             } catch (Throwable e) {
-                LogUtils.showErrorIfAllowedByUser(LOGGER, "Canceled init of" + getName() + " Enabler", e);
+                LogUtils.showErrorIfAllowedByUser(LOGGER, "Canceled init of " + getName() + " Enabler", e);
             }
-        });
+        }));
     }
 
     private void initWithIdeFileIndex(@NotNull Project project, String[] filenamesToSearch) throws Throwable {
+        if (EDT.isCurrentThreadEdt()) { // we can no longer read index in EDT. See com.intellij.util.SlowOperations documentation
+            LOGGER.info(getName() + " Enabler's init has been called while in EDT thread; task postponed");
+            return;
+        }
         if (!project.isInitialized()) {
             String msg = getName() + " Enabler can't query IDE filename index: project " + project.getName() + " is not initialized. " +
                 "Some icons override won't work.";

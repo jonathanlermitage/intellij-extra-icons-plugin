@@ -9,14 +9,14 @@ import lermitage.intellij.extra.icons.enablers.IconEnabler;
 import org.jetbrains.annotations.NotNull;
 
 @Service
-public final class InAngularFolderEnblerService extends AbstractInFolderEnabler implements IconEnabler {
+public final class InAngularFolderEnablerService extends AbstractInFolderEnabler implements IconEnabler {
 
-    public InAngularFolderEnblerService(@NotNull Project project) {
+    public InAngularFolderEnablerService(@NotNull Project project) {
         init(project);
     }
 
-    public static InAngularFolderEnblerService getInstance(@NotNull Project project) {
-        return project.getService(InAngularFolderEnblerService.class);
+    public static InAngularFolderEnablerService getInstance(@NotNull Project project) {
+        return project.getService(InAngularFolderEnablerService.class);
     }
 
     @NotNull
