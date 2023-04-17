@@ -33,7 +33,6 @@ import lermitage.intellij.extra.icons.enablers.EnablerUtils;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageItem;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageRenderer;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
-import lermitage.intellij.extra.icons.utils.IDEUtils;
 import lermitage.intellij.extra.icons.utils.IconPackUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.OS;
@@ -612,7 +611,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         columnModel.getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMinWidth(120);
         columnModel.getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMaxWidth(120);
         columnModel.getColumn(PluginIconsSettingsTableModel.ICON_TAGS_LABEL_COL_NUMBER).setMinWidth(120);
-        int requireRestartColWidth = IDEUtils.isChineseUIEnabled() ? 100 : 80;
+        int requireRestartColWidth = I18nUtils.isChineseUIEnabled() ? 100 : 80;
         if (OS.detectOS() == OS.WIN) {
             requireRestartColWidth -= 5;
         }
