@@ -4,12 +4,17 @@ package lermitage.intellij.extra.icons.utils;
 
 import com.intellij.ide.projectView.ProjectView;
 import com.intellij.ide.projectView.impl.AbstractProjectViewPane;
+import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
+import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 public class ProjectUtils {
+
+    private static final Logger LOGGER = Logger.getInstance(ProjectUtils.class);
 
     public static final @NonNls String PLEASE_OPEN_ISSUE_MSG = "You could open an issue: " +
         "https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues. Thank you!";
@@ -25,6 +30,14 @@ public class ProjectUtils {
                 AbstractProjectViewPane currentProjectViewPane = view.getCurrentProjectViewPane();
                 if (currentProjectViewPane != null) {
                     currentProjectViewPane.updateFromRoot(true);
+                }
+                try {
+                    EditorWindow[] editorWindows = FileEditorManagerEx.getInstanceEx(project).getWindows();
+                    for (EditorWindow editorWindow : editorWindows) {
+                        editorWindow.getManager().refreshIcons();
+                    }
+                } catch (Exception e) {
+                    LogUtils.showErrorIfAllowedByUser(LOGGER, "Failed to refresh editor tabs icon", e); //NON-NLS
                 }
             }
         }
