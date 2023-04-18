@@ -12,6 +12,7 @@
 * support Mermaid files: use the official Mermaid logo instead of the icon displayed by the JetBrains Mermaid plugin.
 * support some [Poetry](https://python-poetry.org) files.
 * support `pytest.ini` files.
+* support `*.cc` and `*.hpp` files.
 * add an alternative icon for Composer files.
 * add an alternative icon for SVGO files.
 * add an alternative icon for Markdown files.
@@ -21,10 +22,11 @@
 * rework Elasticsearch icon (PNG icon to SVG).
 * rework Gatling icon (based on new logo).
 * rework GoCD icon (PNG icon to SVG).
+* rework Readme icon.
 * rework Redis icon.
+* rework Version icon.
 * rework a certificate icon (PNG icon to SVG).
 * internal: some code rework, and improved code quality.
-* support `*.cc` and `*.hpp` files.
 
 ## 2023.1.2 (2023/03/07)
 * support C, C++ and H files.
