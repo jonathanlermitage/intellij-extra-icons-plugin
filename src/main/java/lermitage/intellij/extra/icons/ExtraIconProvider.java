@@ -903,15 +903,15 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .tags(ModelTag.TRAVIS),
                 ofFile("vagrant", "extra-icons/vagrant.svg", "Vagrant: vagrantfile")
                     .eq("vagrantfile"),
-                ofFile("version", "extra-icons/version.png", "Version: (.)version(s)(.md,.txt,.adoc,.rst)")
+                ofFile("version", "extra-icons/version.svg", "Version: (.)version(s)(.md,.txt,.adoc,.rst)")
                     .eq("version", ".version", "versions", ".versions").mayEnd(TXT),
-                ofFile("version_json", "extra-icons/version.png", "Version: (.)version(s).json")
+                ofFile("version_json", "extra-icons/version.svg", "Version: (.)version(s).json")
                     .eq("version", ".version", "versions", ".versions").end(".json"),
-                ofFile("version_properties", "extra-icons/version.png", "Version: (.)version(s).properties")
+                ofFile("version_properties", "extra-icons/version.svg", "Version: (.)version(s).properties")
                     .eq("version", ".version", "versions", ".versions").end(".properties"),
-                ofFile("version_yml", "extra-icons/version.png", "Version: (.)version(s).y(a)ml")
+                ofFile("version_yml", "extra-icons/version.svg", "Version: (.)version(s).y(a)ml")
                     .eq("version", ".version", "versions", ".versions").end(YML),
-                ofFile("version_xml", "extra-icons/version.png", "Version: (.)version(s).xml")
+                ofFile("version_xml", "extra-icons/version.svg", "Version: (.)version(s).xml")
                     .eq("version", ".version", "versions", ".versions").end(".xml"),
                 ofFile("vite", "extra-icons/vite.svg", "Vite: ^vite\\.config\\.[jt]s$")
                     .start("vite.config.").end(".js", ".ts")
