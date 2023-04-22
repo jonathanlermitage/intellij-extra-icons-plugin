@@ -1,7 +1,7 @@
 # Extra Icons Change Log
 
 ## 2023.2.2 (WIP)
-* fix [#121](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/121): slow operations are prohibited on EDT.
+* set minimal IDE version to 2023.1 and fix [#121](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/121): slow operations are prohibited on EDT.
 
 ## 2023.2.1 (2023/04/21)
 * you can now import and export user icons. See **Icon Pack** in Extra Icons settings. This also means you can easily share icon themes with friends.
