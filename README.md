@@ -32,7 +32,7 @@ Download plugin from the [JetBrains marketplace](https://plugins.jetbrains.com/p
 
 ## Build
 
-Install JDK11+. You should be able to start Gradle Wrapper (`gradlew`). See Gradle commands below.  
+Install JDK17+. You should be able to start Gradle Wrapper (`gradlew`). See Gradle commands below.  
 You may also want to see the [development FAQ](./docs/DEV_FAQ.md) if you faced an issue.
 
 ### Gradle commands
