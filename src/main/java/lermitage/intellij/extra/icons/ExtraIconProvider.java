@@ -789,8 +789,6 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("poetry.lock"),
                 ofFile("poetry-poetry-toml", "extra-icons/poetry.svg", "Poetry: poetry.toml")
                     .eq("poetry.toml"),
-                ofFile("poetry-pyproject-toml", "extra-icons/poetry.svg", "Poetry: pyproject.toml")
-                    .eq("pyproject.toml"),
                 ofFile("pdd", "extra-icons/pdd.svg", "Puzzle Driven Development: .pdd")
                     .eq(".pdd"),
                 ofFile("pdd_yml", "extra-icons/pdd.svg", "Puzzle Driven Development: .0pdd.yml")
