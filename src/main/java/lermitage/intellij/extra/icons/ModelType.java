@@ -38,15 +38,10 @@ public enum ModelType {
     }
 
     public String getI18nFriendlyName() {
-        switch (this) {
-            case FILE:
-                return i18n.getString("model.type.file");
-            case DIR:
-                return i18n.getString("model.type.directory");
-            case ICON:
-                return i18n.getString("model.type.icon");
-            default:
-                throw new IllegalStateException("Unexpected value: " + this);
-        }
+        return switch (this) {
+            case FILE -> i18n.getString("model.type.file");
+            case DIR -> i18n.getString("model.type.directory");
+            case ICON -> i18n.getString("model.type.icon");
+        };
     }
 }

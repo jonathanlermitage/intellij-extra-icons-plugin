@@ -42,8 +42,8 @@ public class ComboBoxWithImageRenderer extends JLabel implements ListCellRendere
         }
         try {
             if (value instanceof BundledIcon) {
-                text = ((BundledIcon) value).getDescription();
-                icon = IconLoader.getIcon(((BundledIcon) value).getIconPath(), IconUtils.class);
+                text = ((BundledIcon) value).description();
+                icon = IconLoader.getIcon(((BundledIcon) value).iconPath(), IconUtils.class);
             } else if (value instanceof ComboBoxWithImageItem) {
                 text = ((ComboBoxWithImageItem) value).getTitle();
                 String imagePath = ((ComboBoxWithImageItem) value).getImagePath();

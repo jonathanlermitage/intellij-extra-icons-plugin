@@ -21,7 +21,6 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_DECODER;
@@ -41,7 +40,7 @@ public class ExtraIconPatcher extends IconPathPatcher {
         Map<String, String> enabledIcons = new LinkedHashMap<>();
         List<String> disabledModelIds = SettingsIDEService.getIDEInstance().getDisabledModelIds();
         Stream.of(ExtraIconProvider.allModels(), SettingsIDEService.getInstance().getCustomModels()).flatMap(Collection::stream)
-            .collect(Collectors.toList()).stream()
+            .toList().stream()
             .filter(model -> model.getModelType() == ModelType.ICON)
             .forEach(model -> {
                 if (model.isEnabled() && !enabledIcons.containsKey(model.getIdeIcon()) && !disabledModelIds.contains(model.getId())) {

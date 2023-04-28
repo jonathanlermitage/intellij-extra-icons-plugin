@@ -20,6 +20,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("HardCodedStringLiteral")
 @Service
 public final class GitSubmoduleFolderEnablerService implements IconEnabler {
 
@@ -37,7 +38,7 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
 
     /**
      * Initialization ({@link #init(Project)}) is done once at project opening and at least every {@value}ms (if needed) to avoid
-     * parsing {@code .gitmodule} files for every folder in the project.
+     * parsing {@code .gitmodules} files for every folder in the project.
      * Useful if you add a new git submodule: user will wait up to {@value}ms to see the corresponding git submodule icon.
      */
     private static final long INIT_TTL_MS = 300_000L; // 5min
@@ -70,7 +71,7 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
     /** Find .gitmodules at root, then find every nested .gitmodules for every module (don't have to explore the whole project files). */
     private Set<String> findAllGitModulesFilesRecursively(@NotNull Project project) {
         Set<String> submoduleFoldersFound = new HashSet<>();
-        String basePath = project.getBasePath();
+        String basePath = project.getBasePath(); // TODO project.getBasePath is not recommended, see getBaseDir alternatives
         if (basePath == null) {
             return submoduleFoldersFound;
         }

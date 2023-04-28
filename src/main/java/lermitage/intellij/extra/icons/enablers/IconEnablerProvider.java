@@ -9,7 +9,6 @@ import lermitage.intellij.extra.icons.enablers.services.HelmFolderEnablerService
 import lermitage.intellij.extra.icons.enablers.services.InAngularFolderEnablerService;
 import lermitage.intellij.extra.icons.enablers.services.InGraphQLFolderEnablerService;
 import lermitage.intellij.extra.icons.enablers.services.InHelmFolderEnablerService;
-import lermitage.intellij.extra.icons.utils.LogUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;

@@ -21,9 +21,9 @@ public class EnablerServicesBackgroundPostStartupActivity implements ProjectActi
     @Nullable
     @Override
     public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
-        DumbService.getInstance(project).runWhenSmart(() -> {
-            ApplicationManager.getApplication().runReadAction(() -> EnablerUtils.forceInitAllEnablers(project));
-        });
+        DumbService.getInstance(project).runWhenSmart(() ->
+            ApplicationManager.getApplication().runReadAction(() ->
+                EnablerUtils.forceInitAllEnablers(project)));
         return null;
     }
 }

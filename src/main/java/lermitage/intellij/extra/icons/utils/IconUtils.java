@@ -178,10 +178,7 @@ public class IconUtils {
         String base64 = null;
         IconType iconType = imageWrapper.getIconType();
         switch (iconType) {
-            case SVG:
-            case IMG:
-                base64 = B64_ENCODER.encodeToString(imageWrapper.getImageAsByteArray());
-                break;
+            case SVG, IMG -> base64 = B64_ENCODER.encodeToString(imageWrapper.getImageAsByteArray());
         }
         return base64;
     }

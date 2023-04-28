@@ -185,7 +185,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 fileChooserDescriptor.setHideIgnored(false);
                 fileChooserDescriptor.setShowFileSystemRoots(true);
 
-                VirtualFile virtualFile = FileChooser.chooseFile(fileChooserDescriptor, null, null);
+                VirtualFile virtualFile = FileChooser.chooseFile(fileChooserDescriptor, null, null); // FIXME Slow operations are prohibited on EDT
                 if (virtualFile != null) {
                     AskSingleTextDialog askSingleTextDialog = new AskSingleTextDialog(
                         i18n.getString("dialog.export.ask.icon.pack.name.window.title"),

@@ -54,8 +54,8 @@ repositories {
 }
 
 val twelvemonkeysVersion = "3.9.4"
-val junitVersion = "5.9.2"
-val junitPlatformLauncher = "1.9.2"
+val junitVersion = "5.9.3"
+val junitPlatformLauncher = "1.9.3"
 
 dependencies {
     implementation("com.twelvemonkeys.imageio:imageio-core:$twelvemonkeysVersion") // https://github.com/haraldk/TwelveMonkeys/releases

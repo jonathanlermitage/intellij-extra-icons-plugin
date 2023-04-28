@@ -175,10 +175,9 @@ public class ModelDialog extends DialogWrapper {
         chooseIconSelector.addItemListener(event -> {
             if (event.getStateChange() == ItemEvent.SELECTED) {
                 Object item = event.getItem();
-                if (item instanceof BundledIcon) {
-                    BundledIcon bundledIcon = (BundledIcon) item;
-                    iconLabel.setIcon(IconLoader.getIcon((bundledIcon).getIconPath(), IconUtils.class));
-                    customIconImage = new IconUtils.ImageWrapper(bundledIcon.getIconPath());
+                if (item instanceof BundledIcon bundledIcon) {
+                    iconLabel.setIcon(IconLoader.getIcon((bundledIcon).iconPath(), IconUtils.class));
+                    customIconImage = new IconUtils.ImageWrapper(bundledIcon.iconPath());
                 } else if (item instanceof String) {
                     iconLabel.setIcon(new ImageIcon());
                 }
@@ -313,16 +312,11 @@ public class ModelDialog extends DialogWrapper {
     }
 
     private int getModelTypeIdx(ModelType modelType) {
-        switch (modelType) {
-            case FILE:
-                return 0;
-            case DIR:
-                return 1;
-            case ICON:
-                return 2;
-            default:
-                return -1;
-        }
+        return switch (modelType) {
+            case FILE -> 0;
+            case DIR -> 1;
+            case ICON -> 2;
+        };
     }
 
     /**
@@ -346,7 +340,7 @@ public class ModelDialog extends DialogWrapper {
         if (model.getIconType() == IconType.PATH) {
             for (int itemIdx = 0; itemIdx < chooseIconSelector.getItemCount(); itemIdx++) {
                 Object item = chooseIconSelector.getItemAt(itemIdx);
-                if (item instanceof BundledIcon && ((BundledIcon) item).getIconPath().equals(model.getIcon())) {
+                if (item instanceof BundledIcon && ((BundledIcon) item).iconPath().equals(model.getIcon())) {
                     chooseIconSelector.setSelectedIndex(itemIdx);
                     break;
                 }
