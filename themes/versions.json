@@ -2,8 +2,8 @@
     "themes": [
         {
             "name": "NewUIFilesToOldUITheme",
-            "version": 3,
-            "changelog": "1 new icon (Image file type)"
+            "version": 4,
+            "changelog": "1 new icon (webFolder.svg)"
         }
     ]
 }
