@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2023.2.2 (WIP, planned for 2023/04/28)
+## 2023.2.2 (WIP)
 * set minimal IDE version to 2023.1 and fix [#121](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/121): slow operations are prohibited on EDT.
 * fix support of [Poetry](https://python-poetry.org) files.
 * internal: some code rework, and improved code quality.
