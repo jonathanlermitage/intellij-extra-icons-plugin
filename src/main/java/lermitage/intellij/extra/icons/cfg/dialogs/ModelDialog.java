@@ -391,13 +391,13 @@ public class ModelDialog extends DialogWrapper {
      * Opens a file chooser dialog and loads the icon.
      */
     private IconUtils.ImageWrapper loadCustomIcon() {
-        VirtualFile[] virtualFiles = FileChooser.chooseFiles( // FIXME Slow operations are prohibited on EDT
+        VirtualFile virtualFile = FileChooser.chooseFile( // FIXME Slow operations are prohibited on EDT
             new FileChooserDescriptor(true, false, false, false, false, false)
                 .withFileFilter(file -> extensions.contains(file.getExtension())),
             settingsForm.getProject(),
             null);
-        if (virtualFiles.length > 0) {
-            return IconUtils.loadFromVirtualFile(virtualFiles[0]);
+        if (virtualFile != null) {
+            return IconUtils.loadFromVirtualFile(virtualFile);
         }
         return null;
     }
