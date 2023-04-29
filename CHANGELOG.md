@@ -3,6 +3,7 @@
 ## 2023.2.2 (WIP)
 * set minimal IDE version to 2023.1 and fix [#121](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/121): slow operations are prohibited on EDT.
 * fix support of [Poetry](https://python-poetry.org) files.
+* fix model creation/update dialog: user should be allowed to select one icon, not many.
 * internal: some code rework, and improved code quality.
 
 ## 2023.2.1 (2023/04/21)
