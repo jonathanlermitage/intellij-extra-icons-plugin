@@ -153,7 +153,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 fileChooserDescriptor.setHideIgnored(false);
                 fileChooserDescriptor.setShowFileSystemRoots(true);
 
-                VirtualFile virtualFile = FileChooser.chooseFile(fileChooserDescriptor, null, null);
+                VirtualFile virtualFile = FileChooser.chooseFile(fileChooserDescriptor, null, null); // FIXME Slow operations are prohibited on EDT
                 if (virtualFile != null) {
                     IconPack iconPack = IconPackUtils.fromJsonFile(new File(virtualFile.getPath()));
                     for (Model model : iconPack.getModels()) {
