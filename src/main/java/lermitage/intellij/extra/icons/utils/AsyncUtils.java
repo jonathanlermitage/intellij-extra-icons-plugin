@@ -14,6 +14,6 @@ public class AsyncUtils {
      */
     public static void invokeReadActionAndWait(Runnable runnable) {
         final Application application = ApplicationManager.getApplication();
-        application.invokeAndWait(() -> application.runReadAction(runnable), ModalityState.NON_MODAL);
+        application.invokeAndWait(() -> application.runReadAction(runnable), ModalityState.defaultModalityState());
     }
 }
