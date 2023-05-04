@@ -158,19 +158,21 @@ public class ExtraIconsErrorReportSubmitter extends ErrorReportSubmitter {
 
     @SuppressWarnings("HardCodedStringLiteral")
     private String getBugTemplate() {
-        return "## Running environment\n" + // TODO use text blocks once migrated to Java17
-            "- Extra Icons plugin version - %pluginVersion%\n" +
-            "- IDE - %ide%\n" +
-            "- OS - %os%\n" +
-            "\n" +
-            "## Bug description\n" +
-            "Please include steps to reproduce (like `go to...`/`click on...` etc.) + expected and actual behaviour.  \n" +
-            "Please attach **IDE logs**. Open your IDE and go to <kbd>Help</kbd>, <kbd>Collect Logs and Diagnostic Data</kbd>.\n" +
-            "\n" +
-            "## IDE - additional info\n" +
-            "%additionalInfo%\n" +
-            "\n" +
-            "## IDE - stack trace\n" +
-            "```%stacktraces%\n";
+        return """
+            ## Running environment
+            - Extra Icons plugin version - %pluginVersion%
+            - IDE - %ide%
+            - OS - %os%
+
+            ## Bug description
+            Please include steps to reproduce (like `go to...`/`click on...` etc.) + expected and actual behaviour. \s
+            Please attach **IDE logs**. Open your IDE and go to <kbd>Help</kbd>, <kbd>Collect Logs and Diagnostic Data</kbd>.
+
+            ## IDE - additional info
+            %additionalInfo%
+
+            ## IDE - stack trace
+            ```%stacktraces%
+            """;
     }
 }
