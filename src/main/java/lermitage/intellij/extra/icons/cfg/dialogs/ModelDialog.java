@@ -3,13 +3,14 @@
 package lermitage.intellij.extra.icons.cfg.dialogs;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTextBorder;
-import com.intellij.openapi.fileChooser.FileChooser;
-import com.intellij.openapi.fileChooser.FileChooserDescriptor;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.ValidationInfo;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.ui.CheckBoxList;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.ListUtil;
@@ -18,17 +19,19 @@ import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.IconUtil;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
+import lermitage.intellij.extra.icons.Globals;
 import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelCondition;
 import lermitage.intellij.extra.icons.ModelType;
 import lermitage.intellij.extra.icons.cfg.SettingsForm;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
-import lermitage.intellij.extra.icons.utils.AsyncUtils;
 import lermitage.intellij.extra.icons.utils.BundledIcon;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageRenderer;
+import lermitage.intellij.extra.icons.utils.FileChooserUtils;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
+import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.ImageIcon;
@@ -50,10 +53,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URI;
+import java.nio.file.Path;
 import java.text.MessageFormat;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -64,11 +66,8 @@ import static lermitage.intellij.extra.icons.cfg.dialogs.ModelConditionDialog.FI
 
 public class ModelDialog extends DialogWrapper {
 
-    // Icons can be SVG or PNG only. Never allow user to pick GIF, JPEG, etc., otherwise
-    // we should convert these files to PNG in IconUtils:toBase64 method.
-    private final List<String> extensions = Arrays.asList("svg", "png"); //NON-NLS
-
     private final SettingsForm settingsForm;
+    private final Project project;
 
     private CheckBoxList<ModelCondition> conditionsCheckboxList;
     private JPanel pane;
@@ -98,9 +97,10 @@ public class ModelDialog extends DialogWrapper {
 
     private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 
-    public ModelDialog(SettingsForm settingsForm) {
+    public ModelDialog(SettingsForm settingsForm, Project project) {
         super(true);
         this.settingsForm = settingsForm;
+        this.project = project;
         init();
         setTitle(i18n.getString("model.dialog.title"));
         initComponents();
@@ -134,7 +134,7 @@ public class ModelDialog extends DialogWrapper {
             conditionsCheckboxList.getItemAt(index).setEnabled(value);
         });
 
-        chooseIconButton.addActionListener(e -> AsyncUtils.invokeReadActionAndWait(() -> {
+        chooseIconButton.addActionListener(al -> {
             try {
                 customIconImage = loadCustomIcon();
                 if (customIconImage != null) {
@@ -144,7 +144,7 @@ public class ModelDialog extends DialogWrapper {
             } catch (IllegalArgumentException ex) {
                 Messages.showErrorDialog(ex.getMessage(), i18n.getString("model.dialog.choose.icon.failed.to.load.icon"));
             }
-        }));
+        });
 
         conditionsCheckboxList.getEmptyText().setText(i18n.getString("model.dialog.choose.icon.no.conditions.added"));
         conditionsCheckboxList.addPropertyChangeListener(evt -> testModel(getModelFromInput(), testTextField));
@@ -391,13 +391,38 @@ public class ModelDialog extends DialogWrapper {
      * Opens a file chooser dialog and loads the icon.
      */
     private IconUtils.ImageWrapper loadCustomIcon() {
-        VirtualFile virtualFile = FileChooser.chooseFile( // FIXME Slow operations are prohibited on EDT
-            new FileChooserDescriptor(true, false, false, false, false, false)
-                .withFileFilter(file -> extensions.contains(file.getExtension())),
-            settingsForm.getProject(),
-            null);
-        if (virtualFile != null) {
-            return IconUtils.loadFromVirtualFile(virtualFile);
+        Optional<String> iconPath = FileChooserUtils.chooseFile("", this.pane,
+            Globals.ALLOWED_ICON_FILE_EXTENSIONS_FILE_SELECTOR_LABEL,
+            Globals.ALLOWED_ICON_FILE_EXTENSIONS);
+        Project projectToLinkToModalProgress = project;
+        if (projectToLinkToModalProgress == null) {
+            projectToLinkToModalProgress = ProjectUtils.getFirstOpenedProject();
+        }
+        if (projectToLinkToModalProgress == null) {
+            if (iconPath.isPresent()) {
+                // TODO User wants to edit a User Icon when no project is opened. We have no workaround to
+                //  avoid "Slow operations are prohibited on EDT" error log in this situation, but, this is only
+                //  a log message, nothing is broken. I think we can leave it as is, and remove this code once
+                //  issue #126 has a better fixed.
+                VirtualFile fileByUrl = VirtualFileManager.getInstance().findFileByNioPath(Path.of(iconPath.get()));
+                if (fileByUrl != null) {
+                    return IconUtils.loadFromVirtualFile(fileByUrl);
+                }
+            }
+        } else {
+            if (iconPath.isPresent()) {
+                // FIXME temporary workaround for "Slow operations are prohibited on EDT" issue
+                //  https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/126
+                //  We should be able to use VirtualFileManager.getInstance().findFileByNioPath directly
+                return ActionUtil.underModalProgress(projectToLinkToModalProgress, "Loading selected icon", //NON-NLS
+                    () -> {
+                        VirtualFile fileByUrl = VirtualFileManager.getInstance().findFileByNioPath(Path.of(iconPath.get()));
+                        if (fileByUrl != null) {
+                            return IconUtils.loadFromVirtualFile(fileByUrl);
+                        }
+                        return null;
+                    });
+            }
         }
         return null;
     }

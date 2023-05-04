@@ -60,4 +60,9 @@ public class ProjectUtils {
     public static boolean isProjectAlive(@Nullable Project project) {
         return project != null && !project.isDisposed();
     }
+
+    public static @Nullable Project getFirstOpenedProject() {
+        Project[] projects = ProjectManager.getInstance().getOpenProjects();
+        return projects.length == 0 ? null : projects[0];
+    }
 }

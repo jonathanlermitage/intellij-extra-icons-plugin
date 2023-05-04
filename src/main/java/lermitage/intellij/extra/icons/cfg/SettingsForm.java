@@ -7,14 +7,11 @@ import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.event.DocumentEvent;
 import com.intellij.openapi.editor.event.DocumentListener;
-import com.intellij.openapi.fileChooser.FileChooser;
-import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.EditorTextField;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
@@ -32,6 +29,7 @@ import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.enablers.EnablerUtils;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageItem;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageRenderer;
+import lermitage.intellij.extra.icons.utils.FileChooserUtils;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IconPackUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
@@ -111,8 +109,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
-    private Project project;
-    private boolean isProjectForm = false;
+    private @Nullable Project project;
     private List<Model> customModels = new ArrayList<>();
 
     private boolean forceUpdate = false;
@@ -138,7 +135,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                     i18n.getString("icons.reloaded"), i18n.getString("icons.reloaded.title"),
                     JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception e) {
-                LOGGER.warn("Config updated, but failed to reload icons for project " + project.getName(), e);
+                LOGGER.warn("Config updated, but failed to reload icons for project", e);
                 JOptionPane.showMessageDialog(null,
                     i18n.getString("icons.failed.to.reload"), i18n.getString("icons.failed.to.reload.title"),
                     JOptionPane.ERROR_MESSAGE);
@@ -146,16 +143,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         });
         buttonImportIconPackFromFile.addActionListener(al -> {
             try {
-                FileChooserDescriptor fileChooserDescriptor = new FileChooserDescriptor(
-                    true, false, false,
-                    false, false, false);
-                fileChooserDescriptor.setTitle(i18n.getString("dialog.import.icon.pack.title"));
-                fileChooserDescriptor.setHideIgnored(false);
-                fileChooserDescriptor.setShowFileSystemRoots(true);
-
-                VirtualFile virtualFile = FileChooser.chooseFile(fileChooserDescriptor, null, null); // FIXME Slow operations are prohibited on EDT
-                if (virtualFile != null) {
-                    IconPack iconPack = IconPackUtils.fromJsonFile(new File(virtualFile.getPath()));
+                Optional<String> iconPackPath = FileChooserUtils.chooseFile(i18n.getString("dialog.import.icon.pack.title"),
+                    this.pane, "*.json", "json"); //NON-NLS
+                if (iconPackPath.isPresent()) {
+                    IconPack iconPack = IconPackUtils.fromJsonFile(new File(iconPackPath.get()));
                     for (Model model : iconPack.getModels()) {
                         if (iconPack.getName() != null && !iconPack.getName().isBlank()) {
                             model.setIconPack(iconPack.getName());
@@ -177,16 +168,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             BrowserUtil.browse("https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/themes/THEMES.md#downloadable-icon-packs"));
         buttonExportUserIconsAsIconPack.addActionListener(al -> {
             try {
-                String filename = "extra-icons-" + System.currentTimeMillis() + "-icon-pack.json"; //NON-NLS
-                FileChooserDescriptor fileChooserDescriptor = new FileChooserDescriptor(
-                    false, true, false,
-                    false, false, false);
-                fileChooserDescriptor.setTitle(i18n.getString("dialog.export.icon.pack.title"));
-                fileChooserDescriptor.setHideIgnored(false);
-                fileChooserDescriptor.setShowFileSystemRoots(true);
-
-                VirtualFile virtualFile = FileChooser.chooseFile(fileChooserDescriptor, null, null); // FIXME Slow operations are prohibited on EDT
-                if (virtualFile != null) {
+                Optional<String> folderPath = FileChooserUtils.chooseFolder(i18n.getString("dialog.export.icon.pack.title"), this.pane);
+                if (folderPath.isPresent()) {
+                    String filename = "extra-icons-" + System.currentTimeMillis() + "-icon-pack.json"; //NON-NLS
                     AskSingleTextDialog askSingleTextDialog = new AskSingleTextDialog(
                         i18n.getString("dialog.export.ask.icon.pack.name.window.title"),
                         i18n.getString("dialog.export.ask.icon.pack.name.title"));
@@ -194,7 +178,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                     if (askSingleTextDialog.showAndGet()) {
                         iconPackName = askSingleTextDialog.getTextFromInput();
                     }
-                    File exportFile = new File(virtualFile.getPath() + "/" + filename);
+                    File exportFile = new File(folderPath.get() + "/" + filename);
                     IconPackUtils.writeToJsonFile(exportFile, new IconPack(iconPackName, SettingsService.getInstance(project).getCustomModels()));
                     JOptionPane.showMessageDialog(null,
                         i18n.getString("dialog.export.icon.pack.success") + "\n" + exportFile.getAbsolutePath(),
@@ -226,14 +210,13 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         });
     }
 
-    public SettingsForm(Project project) {
+    public SettingsForm(@NotNull Project project) {
         this();
         this.project = project;
-        this.isProjectForm = true;
     }
 
     public boolean isProjectForm() {
-        return isProjectForm;
+        return project != null;
     }
 
     @Nls(capitalization = Nls.Capitalization.Title)
@@ -261,7 +244,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             return true;
         }
         SettingsService service = SettingsService.getInstance(project);
-        if (isProjectForm) {
+        if (isProjectForm()) {
             SettingsProjectService projectService = (SettingsProjectService) service;
             if (projectService.isOverrideIDESettings() != overrideSettingsCheckbox.isSelected()) {
                 return true;
@@ -309,7 +292,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     @Override
     public void apply() {
         SettingsService service = SettingsService.getInstance(project);
-        if (isProjectForm) {
+        if (isProjectForm()) {
             SettingsProjectService projectService = (SettingsProjectService) service;
             projectService.setOverrideIDESettings(overrideSettingsCheckbox.isSelected());
             projectService.setAddToIDEUserIcons(addToIDEUserIconsCheckbox.isSelected());
@@ -333,7 +316,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         service.setCustomModels(customModels);
 
         try {
-            if (isProjectForm) {
+            if (isProjectForm()) {
                 EnablerUtils.forceInitAllEnablers(project);
                 ProjectUtils.refreshProject(project);
             } else {
@@ -341,7 +324,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 ProjectUtils.refreshAllOpenedProjects();
             }
         } catch (Exception e) {
-            LOGGER.warn("Config updated, but failed to reload icons for project " + project.getName(), e);
+            LOGGER.warn("Config updated, but failed to reload icons", e);
         }
 
         forceUpdate = false;
@@ -383,7 +366,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         loadIgnoredPattern();
         loadAdditionalUIScale();
         loadIgnoreWarnings();
-        if (isProjectForm) {
+        if (isProjectForm()) {
             additionalUIScaleTitle.setVisible(false);
             additionalUIScaleTextField.setVisible(false);
             ignoreWarningsCheckBox.setVisible(false);
@@ -433,7 +416,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void initCheckbox() {
-        if (!isProjectForm) {
+        if (!isProjectForm()) {
             overrideSettingsPanel.setVisible(false);
             return;
         }
@@ -577,7 +560,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         int currentSelected = pluginIconsSettingsTableModel != null ? pluginIconsTable.getSelectedRow() : -1;
         pluginIconsSettingsTableModel = new PluginIconsSettingsTableModel();
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
-        if (isProjectForm) {
+        if (isProjectForm()) {
             // IDE icon overrides work at IDE level only, not a project level, that's why
             // the project-level icons list won't show IDE icons.
             allRegisteredModels = allRegisteredModels.stream()
@@ -642,7 +625,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         ToolbarDecorator decorator = ToolbarDecorator.createDecorator(userIconsTable)
 
             .setAddAction(anActionButton -> {
-                ModelDialog modelDialog = new ModelDialog(this);
+                ModelDialog modelDialog = new ModelDialog(this, this.project);
                 if (modelDialog.showAndGet()) {
                     Model newModel = modelDialog.getModelFromInput();
                     customModels.add(newModel);
@@ -653,7 +636,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
             .setEditAction(anActionButton -> {
                 int currentSelected = userIconsTable.getSelectedRow();
-                ModelDialog modelDialog = new ModelDialog(this);
+                ModelDialog modelDialog = new ModelDialog(this, this.project);
                 modelDialog.setModelToEdit(customModels.get(currentSelected));
                 if (modelDialog.showAndGet()) {
                     Model newModel = modelDialog.getModelFromInput();
