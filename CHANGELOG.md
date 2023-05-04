@@ -1,7 +1,9 @@
 # Extra Icons Change Log
 
 ## 2023.2.2 (WIP)
-* set minimal IDE version to 2023.1 and fix [#121](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/121): slow operations are prohibited on EDT. It occurred while querying the IDE filename index in order to detect some specific files (like Angular and Helm related files).
+* set minimal IDE version to 2023.1 and fix [#121](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/121): "slow operations are prohibited on EDT". It occurred while querying the IDE filename index in order to detect some specific files (like Angular and Helm related files).
+* fix for [#126](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/126): "slow operations are prohibited on EDT" when invoking a file selector.
+* various minor fixes in settings panels.
 * fix support of [Poetry](https://python-poetry.org) files.
 * fix model creation/update dialog: user should be allowed to select one icon, not many.
 * internal: some code rework, and improved code quality.
