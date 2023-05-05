@@ -10,6 +10,7 @@ import com.intellij.openapi.editor.event.DocumentListener;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.ui.EditorTextField;
@@ -48,7 +49,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.ListSelectionModel;
@@ -131,14 +131,16 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             try {
                 EnablerUtils.forceInitAllEnablers();
                 ProjectUtils.refreshAllOpenedProjects();
-                JOptionPane.showMessageDialog(null,
-                    i18n.getString("icons.reloaded"), i18n.getString("icons.reloaded.title"),
-                    JOptionPane.INFORMATION_MESSAGE);
+                Messages.showInfoMessage(
+                    i18n.getString("icons.reloaded"),
+                    i18n.getString("icons.reloaded.title")
+                );
             } catch (Exception e) {
                 LOGGER.warn("Config updated, but failed to reload icons for project", e);
-                JOptionPane.showMessageDialog(null,
-                    i18n.getString("icons.failed.to.reload"), i18n.getString("icons.failed.to.reload.title"),
-                    JOptionPane.ERROR_MESSAGE);
+                Messages.showErrorDialog(
+                    i18n.getString("icons.failed.to.reload"),
+                    i18n.getString("icons.failed.to.reload.title")
+                );
             }
         });
         buttonImportIconPackFromFile.addActionListener(al -> {
@@ -156,9 +158,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                     foldersFirst(customModels);
                     setUserIconsTableModel();
                     apply();
-                    JOptionPane.showMessageDialog(null,
-                        i18n.getString("dialog.import.icon.pack.success"), i18n.getString("dialog.import.icon.pack.success.title"),
-                        JOptionPane.INFORMATION_MESSAGE);
+                    Messages.showInfoMessage(
+                        i18n.getString("dialog.import.icon.pack.success"),
+                        i18n.getString("dialog.import.icon.pack.success.title")
+                    );
                 }
             } catch (Exception e) {
                 LOGGER.error("Failed to import Icon Pack", e); // TODO replace by error dialog
@@ -171,7 +174,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 Optional<String> folderPath = FileChooserUtils.chooseFolder(i18n.getString("dialog.export.icon.pack.title"), this.pane);
                 if (folderPath.isPresent()) {
                     String filename = "extra-icons-" + System.currentTimeMillis() + "-icon-pack.json"; //NON-NLS
-                    AskSingleTextDialog askSingleTextDialog = new AskSingleTextDialog(
+                    AskSingleTextDialog askSingleTextDialog = new AskSingleTextDialog( // TODO replace by Messages.showInputDialog
                         i18n.getString("dialog.export.ask.icon.pack.name.window.title"),
                         i18n.getString("dialog.export.ask.icon.pack.name.title"));
                     String iconPackName = "";
@@ -180,10 +183,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                     }
                     File exportFile = new File(folderPath.get() + "/" + filename);
                     IconPackUtils.writeToJsonFile(exportFile, new IconPack(iconPackName, SettingsService.getInstance(project).getCustomModels()));
-                    JOptionPane.showMessageDialog(null,
+                    Messages.showInfoMessage(
                         i18n.getString("dialog.export.icon.pack.success") + "\n" + exportFile.getAbsolutePath(),
-                        i18n.getString("dialog.export.icon.pack.success.title"),
-                        JOptionPane.INFORMATION_MESSAGE);
+                        i18n.getString("dialog.export.icon.pack.success.title")
+                    );
                 }
             } catch (Exception e) {
                 LOGGER.error("Failed to export user icons", e); // TODO replace by error dialog
@@ -302,10 +305,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         try {
             service.setAdditionalUIScale(Double.valueOf(additionalUIScaleTextField.getText()));
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null,
+            Messages.showErrorDialog(
                 MessageFormat.format(i18n.getString("invalid.ui.scalefactor"), additionalUIScaleTextField.getText()),
-                i18n.getString("invalid.ui.scalefactor.title"),
-                JOptionPane.WARNING_MESSAGE);
+                i18n.getString("invalid.ui.scalefactor.title")
+            );
         }
         service.setIgnoreWarnings(ignoreWarningsCheckBox.isSelected());
         List<Boolean> enabledStates = collectUserIconEnabledStates();
@@ -421,6 +424,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             return;
         }
         overrideSettingsCheckbox.setText(i18n.getString("checkbox.override.ide.settings"));
+        //noinspection DataFlowIssue  project is not null here
         boolean shouldOverride = SettingsProjectService.getInstance(project).isOverrideIDESettings();
         overrideSettingsCheckbox.setSelected(shouldOverride);
         setComponentState(shouldOverride);
