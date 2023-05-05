@@ -2,10 +2,10 @@
 
 ## 2023.2.2 (WIP)
 * set minimal IDE version to 2023.1 and fix [#121](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/121): "slow operations are prohibited on EDT". It occurred while querying the IDE filename index in order to detect some specific files (like Angular and Helm related files).
-* fix for [#126](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/126): "slow operations are prohibited on EDT" when invoking a file selector.
+* fix [#126](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/126): "slow operations are prohibited on EDT" when invoking a file selector.
 * various minor fixes in settings panels.
 * fix support of [Poetry](https://python-poetry.org) files.
-* fix model creation/update dialog: user should be allowed to select one icon, not many.
+* fix model creation/update dialog: user should be allowed to select a single icon, not many.
 * internal: some code rework, and improved code quality.
 * nota: some *"slow operations are prohibited on EDT"* errors may still be logged (it breaks nothing, these are only warning messages) on EAP IDE builds, when you open a file chooser, while creating a new icon model, or when importing and exporting Icon Packs. You can disable these warnings by following [these instructions](https://plugins.jetbrains.com/plugin/11058-extra-icons/errors-workarounds). A fix will be provided later.
 
