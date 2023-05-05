@@ -5,12 +5,12 @@ package lermitage.intellij.extra.icons.utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lermitage.intellij.extra.icons.cfg.IconPack;
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 public class IconPackUtils {
 
@@ -28,7 +28,7 @@ public class IconPackUtils {
      * @throws IOException if any error occurs reading the local file.
      */
     public static IconPack fromJsonFile(File file) throws IOException {
-        String modelsAsJson = FileUtils.readFileToString(file, CHARSET);
+        String modelsAsJson = Files.readString(file.toPath(), CHARSET);
         return gson.fromJson(modelsAsJson, IconPack.class);
     }
 
@@ -41,6 +41,6 @@ public class IconPackUtils {
      */
     public static void writeToJsonFile(File file, IconPack iconPack) throws IOException {
         String json = gson.toJson(iconPack, IconPack.class);
-        FileUtils.writeStringToFile(file, json, IconPackUtils.CHARSET);
+        Files.writeString(file.toPath(), json, IconPackUtils.CHARSET);
     }
 }

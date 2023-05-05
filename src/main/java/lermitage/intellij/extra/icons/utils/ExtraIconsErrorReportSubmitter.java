@@ -13,9 +13,9 @@ import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.diagnostic.SubmittedReportInfo;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.util.NlsActions;
+import com.intellij.openapi.util.SystemInfo;
 import com.intellij.util.Consumer;
 import com.intellij.util.ModalityUiUtil;
-import org.apache.commons.lang3.SystemUtils;
 import org.apache.http.client.utils.URIBuilder;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -110,9 +110,7 @@ public class ExtraIconsErrorReportSubmitter extends ErrorReportSubmitter {
         String pluginVersion = pluginDescriptor == null ? "<unknown>" : pluginDescriptor.getVersion();
         templateVariables.put("pluginVersion", pluginVersion);
 
-        String osName = SystemUtils.OS_NAME;
-        String osVersion = SystemUtils.OS_VERSION;
-        templateVariables.put("os", osName + " " + osVersion);
+        templateVariables.put("os", SystemInfo.getOsNameAndVersion()); //ApplicationInfo.getInstance().
 
         templateVariables.put("additionalInfo", additionalInfo == null ? "N/A" : additionalInfo);
 

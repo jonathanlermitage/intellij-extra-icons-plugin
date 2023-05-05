@@ -8,7 +8,6 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
 import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.utils.OS;
-import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -125,7 +124,7 @@ public class ExtraIconPatcher extends IconPathPatcher {
             } else {
                 // base64 icon provided by user: store as local file
                 Path iconFile = Files.createTempFile("extra-icons-ide-user-icon", ".svg"); //NON-NLS
-                FileUtils.forceDeleteOnExit(iconFile.toFile());
+                iconFile.toFile().deleteOnExit();
                 Files.write(iconFile, B64_DECODER.decode(iconStr));
                 String decodedIconPath = iconFile.toAbsolutePath().toString();
                 if (detectedOS == OS.WIN) {

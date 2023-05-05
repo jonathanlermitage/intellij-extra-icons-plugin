@@ -3,13 +3,13 @@
 package lermitage.intellij.extra.icons.cfg;
 
 import lermitage.intellij.extra.icons.ExtraIconProvider;
-import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -118,7 +118,7 @@ public class ResourcesTest {
 
         svgIcons.forEach(file -> {
             try {
-                String fileContent = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+                String fileContent = Files.readString(file.toPath(), StandardCharsets.UTF_8);
                 boolean goodWidth = fileContent.contains("width=\"16\"") || fileContent.contains("width=\"16px\"");
                 boolean goodHeight = fileContent.contains("height=\"16\"") || fileContent.contains("height=\"16px\"");
                 if (!goodWidth || !goodHeight) {
@@ -139,7 +139,7 @@ public class ResourcesTest {
 
         svgIcons.forEach(file -> {
             try {
-                String fileContent = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+                String fileContent = Files.readString(file.toPath(), StandardCharsets.UTF_8);
                 boolean hasEnableBackgroundProperty = fileContent.contains("enable-background");
                 if (hasEnableBackgroundProperty) {
                     errors.add(file.getName() + ": property is 'enable-background'. You can safely remove this attribute from file");
