@@ -176,7 +176,7 @@ tasks {
             jvmArgs("-Dextra-icons.enable.chinese.ui=true")
         }
 
-        // force detection of slow operations in EDT when testing (SlowOperations.assertSlowOperationsAreAllowed)
+        // force detection of slow operations in EDT when playing with sandboxed IDE (SlowOperations.assertSlowOperationsAreAllowed)
         jvmArgs("-Dide.slow.operations.assertion=true")
 
         autoReloadPlugins.set(false)
