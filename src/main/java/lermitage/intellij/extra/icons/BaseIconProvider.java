@@ -80,7 +80,7 @@ public abstract class BaseIconProvider
             }
             altId = model.getId() + "_alt"; //NON-NLS
         } else {
-            altDescription = MessageFormat.format(i18n.getString("model.desc.alternative.other"), model.getDescription(),altIconIdx + 1);
+            altDescription = MessageFormat.format(i18n.getString("model.desc.alternative.other"), model.getDescription(), altIconIdx + 1);
             altId = model.getId() + "_alt" + (altIconIdx + 1); //NON-NLS
         }
         return Model.createAltModel(model, altId, model.getIdeIcon(), model.getAltIcons()[altIconIdx], altDescription);

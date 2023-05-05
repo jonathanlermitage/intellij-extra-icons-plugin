@@ -22,7 +22,6 @@ public class IconPackUtils {
 
     /**
      * Read an icon pack from a JSON file.
-     *
      * @param file icon pack file.
      * @return icon pack.
      * @throws IOException if any error occurs reading the local file.
@@ -34,8 +33,7 @@ public class IconPackUtils {
 
     /**
      * Export an icon pack to a JSON file.
-     *
-     * @param file     icon pack file.
+     * @param file icon pack file.
      * @param iconPack icon pack.
      * @throws IOException if any error occurs writing the local file.
      */

@@ -37,8 +37,10 @@ public class Model {
     private ModelType modelType;
     @OptionTag
     private IconType iconType;
-    /** Indicates if a <b>user</b> model is enabled. To know if a built-in model
-     * is enabled, see {@link SettingsService#getDisabledModelIds()}. */
+    /**
+     * Indicates if a <b>user</b> model is enabled. To know if a built-in model
+     * is enabled, see {@link SettingsService#getDisabledModelIds()}.
+     */
     @OptionTag
     private boolean enabled = true;
     @XCollection
@@ -92,8 +94,8 @@ public class Model {
      * they will be ignored.
      * @param id a unique id.
      * @param ideIcon the name of the icon to override. You can find icon
-     *                names <a href="https://jetbrains.design/intellij/resources/icons_list/">here</a>: pick
-     *                an icon and open the ZIP file; you can use the non-dark SVG file name.
+     *     names <a href="https://jetbrains.design/intellij/resources/icons_list/">here</a>: pick
+     *     an icon and open the ZIP file; you can use the non-dark SVG file name.
      * @param icon the path of the icon to apply, located in plugin resources folder.
      * @param description human readable description.
      */

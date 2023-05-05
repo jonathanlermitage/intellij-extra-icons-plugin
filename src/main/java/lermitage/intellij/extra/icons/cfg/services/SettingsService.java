@@ -130,7 +130,7 @@ public abstract class SettingsService {
                 isIgnoredPatternValid = true;
             } catch (PatternSyntaxException e) {
                 NotificationGroupManager.getInstance().getNotificationGroup(Globals.PLUGIN_GROUP_DISPLAY_ID)
-                    .createNotification(MessageFormat.format(i18n.getString("notification.content.cant.compile.regex"), regex,e.getMessage()),
+                    .createNotification(MessageFormat.format(i18n.getString("notification.content.cant.compile.regex"), regex, e.getMessage()),
                         NotificationType.WARNING)
                     .setTitle(MessageFormat.format(i18n.getString("notification.content.cant.compile.regex.title"), Globals.PLUGIN_NAME))
                     .setSubtitle(i18n.getString("notification.content.cant.compile.regex.subtitle"))
