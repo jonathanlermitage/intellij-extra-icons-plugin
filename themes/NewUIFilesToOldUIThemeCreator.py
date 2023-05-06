@@ -8,7 +8,9 @@ import re
 import subprocess
 import sys
 from os.path import exists
+from typing import Tuple
 
+NEUTRAL = " ⚪ "
 OK = " 🟢 "
 NEW = " 🔵 "
 ERR = " 🔴 "
@@ -84,10 +86,10 @@ def icon_pack_ij_item(icon_path, icon_b64) -> str:
     return template.replace("{icon_path}", icon_path).replace("{icon_b64}", icon_b64)
 
 
-def get_icon_pack_version_from_file(icon_pack_path) -> int:
+def get_icon_pack_version_and_nb_icons_from_file(icon_pack_path) -> Tuple[int, int]:
     with open(icon_pack_path, "r") as f:
         json_data = json.loads(f.read())
-        return int(json_data["name"].replace("NewUIFilesToOldUITheme_v", ""))
+        return int(json_data["name"].replace("NewUIFilesToOldUITheme_v", "")), len(json_data["models"])
 
 
 if __name__ == '__main__':
@@ -100,6 +102,13 @@ if __name__ == '__main__':
     if not exists("NewUIFilesToOldUITheme.json"):
         raise FileNotFoundError(f"{ERR}Can't find NewUIFilesToOldUITheme.json")
 
+    print(f"{NEUTRAL}Run git pull on IJ sources {ij_sources_folder_input}:", end=" ")
+    ij_sources_pull_call = subprocess.run(f"git -C {ij_sources_folder_input} pull", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    git_pull_result = ij_sources_pull_call.stdout.decode("utf-8")
+    if git_pull_result.endswith("\n"):
+        git_pull_result = git_pull_result[:-1]
+    print(f"\x1b[0;34m{git_pull_result}\x1b[0m")
+
     # we reset the theme's file because we want to be able to compute all the changes since last commit, even
     # if we run this Python program multiple times
     restore_theme_call = subprocess.run("git restore NewUIFilesToOldUITheme.json", shell=True)
@@ -110,7 +119,7 @@ if __name__ == '__main__':
             f"{ERR}Failed to restore NewUIFilesToOldUITheme.json file ; "
             f"command returned code {restore_theme_call.returncode}")
 
-    icon_pack_version = get_icon_pack_version_from_file("NewUIFilesToOldUITheme.json")
+    icon_pack_version, nb_icons = get_icon_pack_version_and_nb_icons_from_file("NewUIFilesToOldUITheme.json")
 
     ij_sources_folder_input = ij_sources_folder_input.replace("\\", "/")
 
@@ -194,4 +203,18 @@ if __name__ == '__main__':
 
         with open("THEMES.md", "w", newline="\n") as theme_md_file:
             theme_md_file.write(themes_md_str)
-            print(f"{NEW}つ ◕_◕ ༽つ Updated THEMES.md with the new number of icons ({len(icon_pack)})")
+            print(f"{NEW}つ ◕_◕ ༽つ Updated THEMES.md with the new number of icons "
+                  f"({len(icon_pack)}, \x1b[1;34m{len(icon_pack) - nb_icons} new\x1b[0m)")
+            print(f"{NEUTRAL}Git diff on NewUIFilesToOldUITheme.json:")
+            git_diff_call = subprocess.run("git diff NewUIFilesToOldUITheme.json", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            git_result = git_diff_call.stdout.decode("utf-8")
+            git_result = re.sub("icon\":\".+\",", "icon:\"(base64 content)\",", git_result)
+            for line in git_result.split("\n"):
+                if line.startswith("---") or line.startswith("+++"):
+                    continue
+                if len(line) > 120:
+                    line = line[:119] + "…"
+                if line.startswith("-"):
+                    print(f"\x1b[31m{line}\x1b[0m")
+                if line.startswith("+"):
+                    print(f"\x1b[32m{line}\x1b[0m")
