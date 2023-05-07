@@ -27,18 +27,26 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
 
     private final String className = this.getClass().getSimpleName();
 
-    /** Indicates if the Enabler has been initialized, even with error. */
+    /**
+     * Indicates if the Enabler has been initialized, even with error.
+     */
     private boolean initialized = false;
 
-    /** Parent folder(s) where files or folders should be located in order to activate Enabler. */
+    /**
+     * Parent folder(s) where files or folders should be located in order to activate Enabler.
+     */
     protected Set<String> folders = Collections.emptySet();
 
     protected abstract String[] getFilenamesToSearch();
 
-    /** The name of this icon enabler. Used to identify disabled icon enabler if an error occurred. */
+    /**
+     * The name of this icon enabler. Used to identify disabled icon enabler if an error occurred.
+     */
     public abstract String getName();
 
-    /** A boolean flag used to obtain a match if any of the specified files exists in the project. */
+    /**
+     * A boolean flag used to obtain a match if any of the specified files exists in the project.
+     */
     public boolean getRequiredSearchedFiles() {
         return true;
     }
@@ -62,9 +70,9 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
             return;
         }
         if (!project.isInitialized()) {
-            String msg = getName() + " Enabler can't query IDE filename index: project " + project.getName() + " is not initialized. " +
-                "Some icons override won't work.";
-            throw new Exception(msg);
+            LOGGER.warn(getName() + " Enabler can't query IDE filename index: project " + project.getName() + " is not initialized. " +
+                "Some icons override won't work.");
+            return;
         }
 
         final boolean allRequired = getRequiredSearchedFiles();
