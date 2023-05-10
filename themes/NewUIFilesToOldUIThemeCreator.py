@@ -107,7 +107,14 @@ if __name__ == '__main__':
     git_pull_result = ij_sources_pull_call.stdout.decode("utf-8")
     if git_pull_result.endswith("\n"):
         git_pull_result = git_pull_result[:-1]
-    print(f"\x1b[0;34m{git_pull_result}\x1b[0m")
+    if "Updating" in git_pull_result and "Fast-forward" in git_pull_result:
+        for line in git_pull_result.split("\n"):
+            if "|" in line and ".svg" in line:
+                print(f"\x1b[32m{line}\x1b[0m")
+            else:
+                print(f"\x1b[34m{line}\x1b[0m")
+    else:
+        print(f"\x1b[34m{git_pull_result}\x1b[0m")
 
     # we reset the theme's file because we want to be able to compute all the changes since last commit, even
     # if we run this Python program multiple times
