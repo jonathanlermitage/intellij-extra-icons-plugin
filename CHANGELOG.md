@@ -1,7 +1,9 @@
 # Extra Icons Change Log
 
-## 2023.2.3 (WIP)
+## 2023.2.3 (2023/05/09)
 * avoid unnecessary error when failed to query IDE filename index. Plugin will try again later.
+* support [Vitest](https://vitest.dev/config/) config files.
+* support Python Wheel files.
 
 ## 2023.2.2 (2023/05/05)
 * set minimal IDE version to 2023.1 and fix [#121](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/121): "slow operations are prohibited on EDT". It occurred while querying the IDE filename index in order to detect some specific files (like Angular and Helm related files).

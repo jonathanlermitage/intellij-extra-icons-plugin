@@ -914,6 +914,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("vite", "extra-icons/vite.svg", "Vite: ^vite\\.config\\.[jt]s$")
                     .start("vite.config.").end(".js", ".ts")
                     .altIcons("extra-icons/vite_alt.svg"),
+                ofFile("vitest", "extra-icons/vitest.svg", "Vitest: vitest.config.ts")
+                    .eq("vitest.config.ts"),
                 ofFile("weblate", "extra-icons/weblate.svg", "Weblate: .weblate")
                     .eq(".weblate"),
                 ofFile("webpack", "extra-icons/webpack.svg", "Webpack: webpack.conf.js")
@@ -1104,6 +1106,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".code-workspace"),
                 ofFile("ext_war", "extra-icons/tomcat.svg", "Java WAR: *.war")
                     .end(".war"),
+                ofFile("ext_wheel", "extra-icons/wheel.svg", "Python Wheel: *.whl")
+                    .end(".whl"),
                 ofFile("ext_wma", "extra-icons/wma.svg", "Windows Media Audio: *.wma")
                     .end(".wma")
                     .altIcons("extra-icons/video_alt3.svg"),
