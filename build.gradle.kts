@@ -61,6 +61,11 @@ dependencies {
     implementation("com.twelvemonkeys.imageio:imageio-core:$twelvemonkeysVersion") // https://github.com/haraldk/TwelveMonkeys/releases
     implementation("com.twelvemonkeys.imageio:imageio-batik:$twelvemonkeysVersion") // SVG support
 
+    // no longer offered by IDE to plugins, so we have to add them as dependencies
+    implementation("org.apache.xmlgraphics:batik-anim:1.16")
+    implementation("org.apache.xmlgraphics:batik-transcoder:1.16")
+    implementation("xerces:xercesImpl:2.12.2")
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:$junitPlatformLauncher")
