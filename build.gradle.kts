@@ -16,6 +16,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.46.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("com.palantir.git-version") version "3.0.0" // https://github.com/palantir/gradle-git-version
+    id("com.github.andygoossens.modernizer") version "1.8.0" // https://github.com/andygoossens/gradle-modernizer-plugin
     id("biz.lermitage.oga") version "1.1.1"
 }
 
@@ -83,6 +84,12 @@ intellij {
 changelog {
     headerParserRegex.set("(.*)".toRegex())
     itemPrefix.set("*")
+}
+
+modernizer {
+    includeTestClasses = true
+    // Find exclusion names at https://github.com/gaul/modernizer-maven-plugin/blob/master/modernizer-maven-plugin/src/main/resources/modernizer.xml
+    exclusions = setOf("java/util/Optional.get:()Ljava/lang/Object;")
 }
 
 testlogger {
