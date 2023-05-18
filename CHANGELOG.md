@@ -2,6 +2,7 @@
 
 ## 2023.2.4 (WIP)
 * fix support of IDE 2023.2 EAP.
+* important code rework.
 
 ## 2023.2.3 (2023/05/09)
 * avoid unnecessary error when failed to query IDE filename index. Plugin will try again later.
