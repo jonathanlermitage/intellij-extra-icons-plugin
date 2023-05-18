@@ -2,7 +2,6 @@
 
 package lermitage.intellij.extra.icons.enablers;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -25,48 +24,32 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
 
     private static final Logger LOGGER = Logger.getInstance(AbstractInFolderEnabler.class);
 
-    private final String className = this.getClass().getSimpleName();
-
-    /**
-     * Indicates if the Enabler has been initialized, even with error.
-     */
-    private boolean initialized = false;
-
-    /**
-     * Parent folder(s) where files or folders should be located in order to activate Enabler.
-     */
+    /** Parent folder(s) where files or folders should be located in order to activate Enabler. */
     protected Set<String> folders = Collections.emptySet();
 
     protected abstract String[] getFilenamesToSearch();
 
-    /**
-     * The name of this icon enabler. Used to identify disabled icon enabler if an error occurred.
-     */
+    /** The name of this icon enabler. Used to identify disabled icon enabler if an error occurred. */
     public abstract String getName();
 
-    /**
-     * A boolean flag used to obtain a match if any of the specified files exists in the project.
-     */
+    /** A boolean flag used to obtain a match if any of the specified files exists in the project. */
     public boolean getRequiredSearchedFiles() {
         return true;
     }
 
     @Override
     public synchronized void init(@NotNull Project project) {
-        initialized = true;
-        ApplicationManager.getApplication().executeOnPooledThread(() -> ApplicationManager.getApplication().runReadAction(() -> {
-            try {
-                initWithIdeFileIndex(project, getFilenamesToSearch());
-                ProjectUtils.refreshProject(project);
-            } catch (Throwable e) {
-                LogUtils.showErrorIfAllowedByUser(LOGGER, "Canceled init of " + getName() + " Enabler", e);
-            }
-        }));
+        try {
+            initWithIdeFileIndex(project, getFilenamesToSearch());
+            ProjectUtils.refreshProject(project);
+        } catch (Throwable e) {
+            LOGGER.warn("Canceled init of " + getName() + " Enabler", e);
+        }
     }
 
     private void initWithIdeFileIndex(@NotNull Project project, String[] filenamesToSearch) throws Throwable {
         if (EDT.isCurrentThreadEdt()) { // we can no longer read index in EDT. See com.intellij.util.SlowOperations documentation
-            LOGGER.info(getName() + " Enabler's init has been called while in EDT thread; task postponed");
+            LOGGER.warn(getName() + " Enabler's init has been called while in EDT thread. Some icons override won't work.");
             return;
         }
         if (!project.isInitialized()) {
@@ -87,7 +70,6 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                     break;
                 }
             } catch (Exception e) {
-                initialized = true;
                 LogUtils.throwErrorIfAllowedByUser(LOGGER,
                     getName() + " Enabler failed to query IDE filename index. Some icons override won't work.",
                     e);
@@ -114,7 +96,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                             return false;
                         }
                     } catch (Exception e) {
-                        LOGGER.warn(className + " failed to check " + folder + "/" + additionalFilenameToSearch + " existence", e);
+                        LOGGER.warn(getName() + " Enabler failed to check " + folder + "/" + additionalFilenameToSearch + " existence", e);
                     }
                 }
                 return true;
@@ -124,29 +106,13 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
 
     @Override
     public boolean verify(@NotNull Project project, @NotNull String absolutePathToVerify) {
-        if (shouldInit()) {
-            try {
-                init(project);
-            } catch (Exception e) {
-                LOGGER.warn(e);
-            }
-        }
-
         String normalizedPathToVerify = normalizePath(absolutePathToVerify);
-
         for (String folder : folders) {
             if (normalizedPathToVerify.startsWith(folder)) {
                 return true;
             }
         }
         return false;
-    }
-
-    /**
-     * Should (Re)Init if initialization never occurred.
-     */
-    protected boolean shouldInit() {
-        return !initialized;
     }
 
     protected String normalizePath(@NotNull String path) {

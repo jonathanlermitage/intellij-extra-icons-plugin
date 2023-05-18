@@ -11,10 +11,6 @@ import org.jetbrains.annotations.NotNull;
 @Service
 public final class InAngularFolderEnablerService extends AbstractInFolderEnabler implements IconEnabler {
 
-    public InAngularFolderEnablerService(@NotNull Project project) {
-        init(project);
-    }
-
     public static InAngularFolderEnablerService getInstance(@NotNull Project project) {
         return project.getService(InAngularFolderEnablerService.class);
     }
@@ -27,6 +23,6 @@ public final class InAngularFolderEnablerService extends AbstractInFolderEnabler
 
     @Override
     public String getName() {
-        return "Angular icons";
+        return "Angular icons"; //NON-NLS
     }
 }

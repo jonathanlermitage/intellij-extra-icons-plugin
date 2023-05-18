@@ -11,10 +11,6 @@ import org.jetbrains.annotations.NotNull;
 @Service
 public final class HelmFolderEnablerService extends AbstractFolderEnabler implements IconEnabler {
 
-    public HelmFolderEnablerService(@NotNull Project project) {
-        init(project);
-    }
-
     public static HelmFolderEnablerService getInstance(@NotNull Project project) {
         return project.getService(HelmFolderEnablerService.class);
     }
@@ -27,6 +23,6 @@ public final class HelmFolderEnablerService extends AbstractFolderEnabler implem
 
     @Override
     public String getName() {
-        return "Helm folder icon";
+        return "Helm folder icon"; //NON-NLS
     }
 }

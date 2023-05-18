@@ -11,10 +11,6 @@ import org.jetbrains.annotations.NotNull;
 @Service
 public final class InGraphQLFolderEnablerService extends AbstractInFolderEnabler implements IconEnabler {
 
-    public InGraphQLFolderEnablerService(@NotNull Project project) {
-        init(project);
-    }
-
     public static InGraphQLFolderEnablerService getInstance(@NotNull Project project) {
         return project.getService(InGraphQLFolderEnablerService.class);
     }
@@ -27,7 +23,7 @@ public final class InGraphQLFolderEnablerService extends AbstractInFolderEnabler
 
     @Override
     public String getName() {
-        return "GraphQL icons";
+        return "GraphQL icons"; //NON-NLS
     }
 
     @Override

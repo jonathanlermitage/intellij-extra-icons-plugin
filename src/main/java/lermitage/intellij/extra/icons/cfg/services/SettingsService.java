@@ -32,6 +32,8 @@ public abstract class SettingsService {
     public Double additionalUIScale;
     @SuppressWarnings("WeakerAccess")
     public Boolean ignoreWarnings;
+    @SuppressWarnings("WeakerAccess")
+    public Boolean pluginIsConfigurableHintNotifDisplayed;
 
     private Pattern ignoredPatternObj;
     private Boolean isIgnoredPatternValid;
@@ -103,12 +105,25 @@ public abstract class SettingsService {
         this.ignoreWarnings = ignoreWarnings;
     }
 
+    public Boolean getPluginIsConfigurableHintNotifDisplayed() {
+        if (pluginIsConfigurableHintNotifDisplayed == null) {
+            pluginIsConfigurableHintNotifDisplayed = false;
+        }
+        return pluginIsConfigurableHintNotifDisplayed;
+    }
+
+    public void setPluginIsConfigurableHintNotifDisplayed(Boolean pluginIsConfigurableHintNotifDisplayed) {
+        this.pluginIsConfigurableHintNotifDisplayed = pluginIsConfigurableHintNotifDisplayed;
+    }
+
     @NotNull
     public static List<Model> getAllRegisteredModels() {
         return ExtraIconProvider.allModels();
     }
 
-    /** Get project-level settings service, or global-level settings service if project is null. */
+    /**
+     * Get project-level settings service, or global-level settings service if project is null.
+     */
     @NotNull
     public static SettingsService getInstance(@Nullable Project project) {
         if (project == null) {
@@ -117,7 +132,9 @@ public abstract class SettingsService {
         return SettingsProjectService.getInstance(project);
     }
 
-    /** Get global-level settings service. */
+    /**
+     * Get global-level settings service.
+     */
     @NotNull
     public static SettingsService getIDEInstance() {
         return SettingsIDEService.getInstance();
@@ -130,9 +147,16 @@ public abstract class SettingsService {
                 isIgnoredPatternValid = true;
             } catch (PatternSyntaxException e) {
                 NotificationGroupManager.getInstance().getNotificationGroup(Globals.PLUGIN_GROUP_DISPLAY_ID)
-                    .createNotification(MessageFormat.format(i18n.getString("notification.content.cant.compile.regex"), regex, e.getMessage()),
+                    .createNotification(
+                        MessageFormat.format(
+                            i18n.getString("notification.content.cant.compile.regex"),
+                            regex,
+                            e.getMessage()),
                         NotificationType.WARNING)
-                    .setTitle(MessageFormat.format(i18n.getString("notification.content.cant.compile.regex.title"), Globals.PLUGIN_NAME))
+                    .setTitle(
+                        MessageFormat.format(
+                            i18n.getString("notification.content.cant.compile.regex.title"),
+                            i18n.getString("extra.icons.plugin")))
                     .setSubtitle(i18n.getString("notification.content.cant.compile.regex.subtitle"))
                     .setImportant(true)
                     .notify(null);

@@ -24,10 +24,6 @@ import java.util.stream.Collectors;
 @Service
 public final class GitSubmoduleFolderEnablerService implements IconEnabler {
 
-    public GitSubmoduleFolderEnablerService(@NotNull Project project) {
-        init(project);
-    }
-
     public static GitSubmoduleFolderEnablerService getInstance(@NotNull Project project) {
         return project.getService(GitSubmoduleFolderEnablerService.class);
     }
@@ -36,14 +32,6 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
     private static final String GIT_MODULES_FILENAME = ".gitmodules";
     private static final Pattern GIT_MODULES_PATH_PATTERN = Pattern.compile("\\s*path\\s*=\\s*([^\\s]+)\\s*");
 
-    /**
-     * Initialization ({@link #init(Project)}) is done once at project opening and at least every {@value}ms (if needed) to avoid
-     * parsing {@code .gitmodules} files for every folder in the project.
-     * Useful if you add a new git submodule: user will wait up to {@value}ms to see the corresponding git submodule icon.
-     */
-    private static final long INIT_TTL_MS = 300_000L; // 5min
-    private boolean initialized = false;
-    private long lastInit = -1;
     private Set<String> submoduleFolders = Collections.emptySet();
 
     @Override
@@ -55,9 +43,7 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
             LogUtils.showErrorIfAllowedByUser(LOGGER, "Failed to init Git submodule Enabler", e);
         }
 
-        initialized = true;
         long t2 = System.currentTimeMillis();
-        lastInit = t2;
         long execDuration = t2 - t1;
         String logMsg = "Searched for git submodules in project " + project.getName() + " in " + execDuration + " ms." +
             " Found git submodule folders: " + submoduleFolders;
@@ -68,7 +54,9 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
         }
     }
 
-    /** Find .gitmodules at root, then find every nested .gitmodules for every module (don't have to explore the whole project files). */
+    /**
+     * Find .gitmodules at root, then find every nested .gitmodules for every module (don't have to explore the whole project files).
+     */
     private Set<String> findAllGitModulesFilesRecursively(@NotNull Project project) {
         Set<String> submoduleFoldersFound = new HashSet<>();
         String basePath = project.getBasePath(); // TODO project.getBasePath is not recommended, see getBaseDir alternatives
@@ -115,6 +103,7 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
 
     /**
      * Find Git submodules in given folder.
+     *
      * @param folderPath folder's path.
      * @return submodule paths relative to folderPath.
      * @throws FileNotFoundException if folderPath doesn't exist.
@@ -137,16 +126,8 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
         return submodules;
     }
 
-    /** Should (Re)Init if initialization never occurred or if latest initialization is too old. */
-    private boolean shouldInit() {
-        return !initialized || (System.currentTimeMillis() - lastInit) > INIT_TTL_MS;
-    }
-
     @Override
     public boolean verify(@NotNull Project project, @NotNull String absolutePathToVerify) {
-        if (shouldInit()) {
-            init(project);
-        }
         return submoduleFolders.contains(absolutePathToVerify.toLowerCase());
     }
 

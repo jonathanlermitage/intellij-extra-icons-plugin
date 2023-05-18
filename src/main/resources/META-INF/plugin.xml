@@ -71,21 +71,32 @@
             id="extraIconsFilePathIconProvider"
             order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
+
+        <!-- Settings services -->
         <applicationService
             serviceImplementation="lermitage.intellij.extra.icons.cfg.services.SettingsIDEService"/>
         <projectService
             serviceImplementation="lermitage.intellij.extra.icons.cfg.services.SettingsProjectService"/>
 
+        <!-- Config panels GUI -->
         <applicationConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.IDEConfigurableProvider"
                                  id="LermitageExtraIcons" parentId="appearance"
                                  key="settings.idelevel.menu" bundle="ExtraIconsI18n"/>
         <projectConfigurable provider="lermitage.intellij.extra.icons.cfg.providers.ProjectConfigurableProvider"
                              id="LermitageExtraIcons-Project" parentId="LermitageExtraIcons"
                              key="settings.projectlevel.menu" bundle="ExtraIconsI18n"/>
+
         <notificationGroup id="ExtraIcons" displayType="BALLOON"/>
+
         <errorHandler implementation="lermitage.intellij.extra.icons.utils.ExtraIconsErrorReportSubmitter"/>
-        <backgroundPostStartupActivity implementation="lermitage.intellij.extra.icons.activity.EnablerServicesBackgroundPostStartupActivity"
-                                       id="ExtraIcons_EnablerServicesActivity" order="last"/>
+
+        <!-- Startup tasks https://plugins.jetbrains.com/docs/intellij/plugin-components.html#project-open -->
+        <!-- Init all Icon Enablers once indexing is done then reload projects icons -->
+        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.EnablerServicesPostStartupActivity"
+                             id="ExtraIcons_EnablerServicesPostStartupActivity" order="last"/>
+        <!-- Show some reminders about Extra Icons, because some users ignore important features -->
+        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.HintNotificationsStartupActivity"
+                             id="ExtraIcons_HintNotificationsStartupActivity" order="last"/>
     </extensions>
 
 </idea-plugin>

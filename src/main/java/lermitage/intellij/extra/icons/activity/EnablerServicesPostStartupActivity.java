@@ -2,7 +2,6 @@
 
 package lermitage.intellij.extra.icons.activity;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.ProjectActivity;
@@ -16,14 +15,14 @@ import org.jetbrains.annotations.Nullable;
  * Re-init icon enablers on project init, once indexing tasks are done. May fix init issues when querying IDE filename index while indexing.
  * At least, it fixes icons reloading (Enablers) after long indexing tasks (example: after you asked to invalidate caches).
  */
-public class EnablerServicesBackgroundPostStartupActivity implements ProjectActivity {
+public class EnablerServicesPostStartupActivity implements ProjectActivity {
 
     @Nullable
     @Override
     public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
-        DumbService.getInstance(project).runWhenSmart(() ->
-            ApplicationManager.getApplication().runReadAction(() ->
-                EnablerUtils.forceInitAllEnablers(project)));
+        DumbService.getInstance(project).runReadActionInSmartMode(() -> {
+            EnablerUtils.forceInitAllEnablers(project);
+        });
         return null;
     }
 }

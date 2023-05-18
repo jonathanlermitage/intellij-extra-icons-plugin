@@ -186,6 +186,7 @@ public abstract class BaseIconProvider
     @Nullable
     @Override
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
+        // TODO performance is already good (a few nanos only), but see if some caching could be useful
         try {
             Project project = psiElement.getProject();
             if (!ProjectUtils.isProjectAlive(project)) {
