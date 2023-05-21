@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2023.2.4-231 (WIP)
+## 2023.2.4-231 (2023/05/09)
 * fix support of IDE 2023.2 EAP: replaced Apache Batik by JSVG for SVG rendering + some code rework. Batik were interfering with Grazie Lite, leading to its deactivation.
 * rework ImgBot, Liquibase, Haxe, Cookie, JavaScript and LGTM SVG icons. IDE 2023.2 EAP raised an error when displaying these icons, or misunderstood some SVG attributes, leading to black&white or blank rendering. JetBrains changed their SVG renderer (replaced Apache Batik by JSVG), which is a bit less functional for now, but lighter.
 * important code rework, which will hopefully prevent some weird IDE errors. Additional improvements will come soon.
