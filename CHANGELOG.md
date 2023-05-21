@@ -1,8 +1,11 @@
 # Extra Icons Change Log
 
-## 2023.2.4 (WIP)
-* fix support of IDE 2023.2 EAP.
-* important code rework.
+## 2023.2.4-231 (WIP)
+* fix support of IDE 2023.2 EAP: replaced Apache Batik by JSVG for SVG rendering.
+* fix ImgBot SVG icon. IDE 2023.2 EAP raised an error when displaying this icon.
+* fix Liquibase icons rendering in IDE 2023.2 EAP. They were coloured in black&white. IDE 2023.2 EAP seems to misunderstand some SVG attributes, so I have reworked affected icons.
+* important code rework, which will hopefully prevent some weird IDE errors. Additional improvements will come soon.
+* I think some annoying bugs have been solved since 2023.2.2 plugin release, which requires a 2023.1+ IDE (due to breaking changes in JetBrains APIs). I will maintain a branch for 2022 IDEs for a few months in order to backport fixes. I will definitively abandon 2022 IDEs once all critical issues have been solved or mitigated. Sorry for not having done it earlier.
 
 ## 2023.2.3 (2023/05/09)
 * avoid unnecessary error when failed to query IDE filename index. Plugin will try again later.

@@ -2,6 +2,9 @@
 
 package lermitage.intellij.extra.icons.utils;
 
+import com.github.weisj.jsvg.SVGDocument;
+import com.github.weisj.jsvg.geometry.size.FloatSize;
+import com.github.weisj.jsvg.parser.SVGLoader;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -12,17 +15,11 @@ import com.intellij.util.ui.JBImageIcon;
 import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
-import org.apache.batik.anim.dom.SVGDOMImplementation;
-import org.apache.batik.transcoder.TranscoderInput;
-import org.apache.batik.transcoder.TranscoderOutput;
-import org.apache.batik.transcoder.TranscodingHints;
-import org.apache.batik.transcoder.image.ImageTranscoder;
-import org.apache.batik.util.SVGConstants;
 import org.jetbrains.annotations.NonNls;
-import org.w3c.dom.DOMImplementation;
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -38,12 +35,7 @@ public class IconUtils {
 
     private static final @NonNls Logger LOGGER = Logger.getInstance(IconUtils.class);
 
-    private static final ThreadLocal<TranscodingHints> localTranscoderHints = ThreadLocal.withInitial(() -> null);
-    private static final ThreadLocal<DOMImplementation> localSVGDOMImplementation = ThreadLocal.withInitial(() -> null);
-    private static final ThreadLocal<Boolean> localContextUpdated = ThreadLocal.withInitial(() -> false);
-
     private static final int SCALING_SIZE = 16;
-    private static final float SVG_SIZE_BEFORE_RESCALING = 128f;
     private static final Pattern cssVarRe = Pattern.compile("var\\([-\\w]+\\)");
 
     public static Icon getIcon(Model model, double additionalUIScale) {
@@ -55,18 +47,6 @@ public class IconUtils {
             return null;
         }
         return IconUtil.createImageIcon(fromBase64.getImage());
-    }
-
-    /**
-     * Load graphics libraries (TwelveMonkeys) in order to make the JVM able to manipulate SVG files.
-     */
-    private synchronized static void enhanceImageIOCapabilities() {
-        if (!localContextUpdated.get()) {
-            Thread.currentThread().setContextClassLoader(IconUtils.class.getClassLoader());
-            ImageIO.scanForPlugins();
-            localContextUpdated.set(true);
-            LOGGER.info("ImageIO plugins updated with TwelveMonkeys capabilities");
-        }
     }
 
     public static ImageWrapper loadFromVirtualFile(VirtualFile virtualFile) throws IllegalArgumentException {
@@ -101,48 +81,18 @@ public class IconUtils {
     }
 
     private static ImageWrapper loadImage(byte[] imageBytes, IconType iconType, double additionalUIScale) {
-        enhanceImageIOCapabilities();
-
         if (iconType == IconType.SVG) {
-            // backport from Image Viewer 2: no longer rely on ImageIO plugins for SVG rendering
             try {
-                TranscodingHints transcoderHints = localTranscoderHints.get();
-                if (transcoderHints == null) {
-                    transcoderHints = new TranscodingHints();
-                    transcoderHints.put(ImageTranscoder.KEY_HEIGHT, SVG_SIZE_BEFORE_RESCALING);
-                    transcoderHints.put(ImageTranscoder.KEY_WIDTH, SVG_SIZE_BEFORE_RESCALING);
-                    transcoderHints.put(ImageTranscoder.KEY_XML_PARSER_VALIDATING, false);
-                    transcoderHints.put(ImageTranscoder.KEY_DOCUMENT_ELEMENT_NAMESPACE_URI, SVGConstants.SVG_NAMESPACE_URI);
-                    transcoderHints.put(ImageTranscoder.KEY_DOCUMENT_ELEMENT, "svg"); //NON-NLS
-
-                    DOMImplementation domImplementation = localSVGDOMImplementation.get();
-                    if (domImplementation == null) {
-                        domImplementation = SVGDOMImplementation.getDOMImplementation();
-                        localSVGDOMImplementation.set(domImplementation);
-                    }
-                    transcoderHints.put(ImageTranscoder.KEY_DOM_IMPLEMENTATION, domImplementation);
-
-                    localTranscoderHints.set(transcoderHints);
+                SVGLoader svgLoader = new SVGLoader();
+                SVGDocument svgDocument = svgLoader.load(sanitizeSVGImageBytes(imageBytes));
+                if (svgDocument == null) {
+                    return null;
                 }
-                ByteArrayInputStream inputStream = sanitizeSVGImageBytes(imageBytes);
-                TranscoderInput transcoderInput = new TranscoderInput(inputStream);
-                BufferedImage[] imagePointer = new BufferedImage[1];
-                ImageTranscoder t = new ImageTranscoder() {
-
-                    @Override
-                    public BufferedImage createImage(int w, int h) {
-                        return ImageUtil.createImage(w, h, BufferedImage.TYPE_INT_ARGB);
-                    }
-
-                    @Override
-                    public void writeImage(BufferedImage bufferedImage, TranscoderOutput transcoderOutput) {
-                        imagePointer[0] = bufferedImage;
-                    }
-                };
-                t.setTranscodingHints(transcoderHints);
-                t.transcode(transcoderInput, null);
-                BufferedImage bufferedImage = imagePointer[0];
-                Image thumbnail = scaleImage(bufferedImage);
+                FloatSize size = svgDocument.size();
+                BufferedImage image = ImageUtil.createImage((int) size.width, (int) size.height, BufferedImage.TYPE_INT_ARGB);
+                Graphics2D graphics = image.createGraphics();
+                svgDocument.render(null, graphics);
+                Image thumbnail = scaleImage(image);
                 if (thumbnail != null) {
                     JBImageIcon scaledJBImageWhichNeedsRescale;
                     Image scaledImage;
@@ -158,6 +108,7 @@ public class IconUtils {
                 LOGGER.info("Can't load " + iconType + " icon: " + ex.getMessage(), ex);
                 return null;
             }
+            return null;
         }
 
         Image image;

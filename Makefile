@@ -59,12 +59,17 @@ runold: intro ## run plugin in oldest supported IntelliJ Community version
 
 .PHONY: build
 build: intro ## build and package a plugin to build/distribution/ (see generated ZIP file)
-	${gradlew_cmd} clean buildPlugin test verifyPlugin --warning-mode all -PpluginVerifyProductDescriptor=true
+	${gradlew_cmd} clean buildPlugin test modernizer biz-lermitage-oga-gradle-check verifyPlugin --warning-mode all -PpluginVerifyProductDescriptor=true
 
 
 .PHONY: buildfree
 buildfree: intro ## build and package a plugin which doesn't ask for a paid license to build/distribution/ (see generated ZIP file)
-	${gradlew_cmd} clean buildPlugin test verifyPlugin --warning-mode all -PpluginNeedsLicense=false
+	${gradlew_cmd} clean buildPlugin test modernizer biz-lermitage-oga-gradle-check verifyPlugin --warning-mode all -PpluginNeedsLicense=false
+
+
+.PHONY: lint
+lint: intro ## run linter(s), for now Modernizer
+	${gradlew_cmd} modernizer --warning-mode all
 
 
 .PHONY: test
