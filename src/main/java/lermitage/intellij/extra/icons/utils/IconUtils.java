@@ -18,15 +18,12 @@ import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import org.jetbrains.annotations.NonNls;
 
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import java.awt.Graphics2D;
-import java.awt.Image;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_DECODER;
 import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_ENCODER;
@@ -36,7 +33,7 @@ public class IconUtils {
     private static final @NonNls Logger LOGGER = Logger.getInstance(IconUtils.class);
 
     private static final int SCALING_SIZE = 16;
-    private static final Pattern cssVarRe = Pattern.compile("var\\([-\\w]+\\)");
+    //private static final Pattern cssVarRe = Pattern.compile("var\\([-\\w]+\\)");
 
     public static Icon getIcon(Model model, double additionalUIScale) {
         if (model.getIconType() == IconType.PATH) {
@@ -71,9 +68,9 @@ public class IconUtils {
     // backport from Icon Viewer 2: remove unwanted SVG attributes
     private static ByteArrayInputStream sanitizeSVGImageBytes(byte[] imageBytes) {
         String contents = new String(imageBytes, Charset.defaultCharset());
-        Matcher matcher = cssVarRe.matcher(contents);
-        String replaced = matcher.replaceAll("currentColor");
-        return new ByteArrayInputStream(replaced.getBytes());
+        //Matcher matcher = cssVarRe.matcher(contents);
+        //String replaced = matcher.replaceAll("currentColor");
+        return new ByteArrayInputStream(contents.getBytes());
     }
 
     public static ImageWrapper fromBase64(String base64, IconType iconType, double additionalUIScale) {
