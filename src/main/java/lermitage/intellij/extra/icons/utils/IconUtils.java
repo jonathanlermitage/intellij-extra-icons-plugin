@@ -68,7 +68,7 @@ public class IconUtils {
         return null;
     }
 
-    // backport from Image Viewer 2: remove unwanted SVG attributes
+    // backport from Icon Viewer 2: remove unwanted SVG attributes
     private static ByteArrayInputStream sanitizeSVGImageBytes(byte[] imageBytes) {
         String contents = new String(imageBytes, Charset.defaultCharset());
         Matcher matcher = cssVarRe.matcher(contents);
