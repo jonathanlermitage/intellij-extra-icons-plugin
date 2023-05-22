@@ -35,13 +35,10 @@ public class HintNotificationsStartupActivity implements ProjectActivity {
         try {
             if (!ideSettings.getPluginIsConfigurableHintNotifDisplayed()) {
                 Notification notif = new Notification(Globals.PLUGIN_GROUP_DISPLAY_ID,
-                    "Extra Icons Tips",
-                    "Did you know that Extra Icons plugin is configurable? You can:<ul>" +
-                        "<li>enable and disable every icon, at IDE and project levels</li>" +
-                        "<li>register your own icons</li>" +
-                        "<li>download and share icon packs</li>",
+                    i18n.getString("notif.tips.plugin.config.title"),
+                    i18n.getString("notif.tips.plugin.config.content"),
                     NotificationType.INFORMATION);
-                notif.addAction(new NotificationAction("Go to Extra Icons settings") {
+                notif.addAction(new NotificationAction(i18n.getString("notif.tips.plugin.config.btn")) {
                     @Override
                     public void actionPerformed(@NotNull AnActionEvent e, @NotNull Notification notification) {
                         ShowSettingsUtil.getInstance().showSettingsDialog(project, SettingsForm.class);
