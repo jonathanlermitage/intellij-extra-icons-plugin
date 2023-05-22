@@ -6,7 +6,6 @@ import com.intellij.openapi.components.Service;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import lermitage.intellij.extra.icons.enablers.IconEnabler;
-import lermitage.intellij.extra.icons.utils.LogUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,7 +39,7 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
         try {
             submoduleFolders = findAllGitModulesFilesRecursively(project);
         } catch (Exception e) {
-            LogUtils.showErrorIfAllowedByUser(LOGGER, "Failed to init Git submodule Enabler", e);
+            LOGGER.warn("Failed to init Git submodule Enabler", e);
         }
 
         long t2 = System.currentTimeMillis();
@@ -70,7 +69,7 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
                 .collect(Collectors.toSet());
             submoduleFoldersFound.addAll(findNestedGitModulesFilesRecursively(submoduleFoldersFound));
         } catch (FileNotFoundException e) {
-            LogUtils.showErrorIfAllowedByUser(LOGGER, "Error while looking for git submodules", e);
+            LOGGER.warn("Error while looking for git submodules", e);
         }
         return submoduleFoldersFound;
     }
@@ -88,14 +87,10 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
                     nestedModules.addAll(findNestedGitModulesFilesRecursively(submoduleFoldersFound));
                 }
             } catch (FileNotFoundException e) {
-                LogUtils.showErrorIfAllowedByUser(LOGGER,
-                    "Error while looking for nested git submodules (parent git module: '" + parentModule + "')",
-                    e);
+                LOGGER.warn("Error while looking for nested git submodules (parent git module: '" + parentModule + "')", e);
             } catch (StackOverflowError e) {
-                LogUtils.showErrorIfAllowedByUser(LOGGER,
-                    "Error while looking for nested git submodules (parent git module: '" + parentModule + "')" +
-                        ", the git submodules tree is too deep",
-                    e);
+                LOGGER.warn("Error while looking for nested git submodules (parent git module: '" + parentModule + "')" +
+                    ", the git submodules tree is too deep", e);
             }
         }
         return nestedModules;

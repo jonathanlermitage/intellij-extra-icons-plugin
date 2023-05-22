@@ -37,7 +37,7 @@ public class ProjectUtils {
                         editorWindow.getManager().refreshIcons();
                     }
                 } catch (Exception e) {
-                    LogUtils.showErrorIfAllowedByUser(LOGGER, "Failed to refresh editor tabs icon", e); //NON-NLS
+                    LOGGER.warn("Failed to refresh editor tabs icon", e); //NON-NLS
                 }
             }
         }

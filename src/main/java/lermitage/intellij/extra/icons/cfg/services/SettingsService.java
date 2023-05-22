@@ -31,8 +31,6 @@ public abstract class SettingsService {
     @SuppressWarnings("WeakerAccess")
     public Double additionalUIScale;
     @SuppressWarnings("WeakerAccess")
-    public Boolean ignoreWarnings;
-    @SuppressWarnings("WeakerAccess")
     public Boolean pluginIsConfigurableHintNotifDisplayed;
 
     private Pattern ignoredPatternObj;
@@ -92,17 +90,6 @@ public abstract class SettingsService {
 
     public void setAdditionalUIScale(Double additionalUIScale) {
         this.additionalUIScale = additionalUIScale;
-    }
-
-    public Boolean getIgnoreWarnings() {
-        if (ignoreWarnings == null) {
-            ignoreWarnings = false;
-        }
-        return ignoreWarnings;
-    }
-
-    public void setIgnoreWarnings(Boolean ignoreWarnings) {
-        this.ignoreWarnings = ignoreWarnings;
     }
 
     public Boolean getPluginIsConfigurableHintNotifDisplayed() {

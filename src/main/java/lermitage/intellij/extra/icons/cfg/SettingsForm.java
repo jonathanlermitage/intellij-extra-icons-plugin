@@ -28,14 +28,7 @@ import lermitage.intellij.extra.icons.cfg.models.UserIconsSettingsTableModel;
 import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.enablers.EnablerUtils;
-import lermitage.intellij.extra.icons.utils.ComboBoxWithImageItem;
-import lermitage.intellij.extra.icons.utils.ComboBoxWithImageRenderer;
-import lermitage.intellij.extra.icons.utils.FileChooserUtils;
-import lermitage.intellij.extra.icons.utils.I18nUtils;
-import lermitage.intellij.extra.icons.utils.IconPackUtils;
-import lermitage.intellij.extra.icons.utils.IconUtils;
-import lermitage.intellij.extra.icons.utils.OS;
-import lermitage.intellij.extra.icons.utils.ProjectUtils;
+import lermitage.intellij.extra.icons.utils.*;
 import org.apache.commons.collections.CollectionUtils;
 import org.intellij.lang.regexp.RegExpFileType;
 import org.jetbrains.annotations.Nls;
@@ -43,30 +36,12 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.Icon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.RowFilter;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
-import javax.swing.table.TableStringConverter;
+import javax.swing.*;
+import javax.swing.table.*;
 import java.awt.event.ItemEvent;
 import java.io.File;
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -97,7 +72,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JComboBox<ComboBoxWithImageItem> comboBoxIconsGroupSelector;
     private JLabel disableOrEnableOrLabel;
     private JLabel disableOrEnableLabel;
-    private JCheckBox ignoreWarningsCheckBox;
     private JButton buttonReloadProjectsIcons;
     private JLabel iconPackLabel;
     private JButton buttonImportIconPackFromFile;
@@ -265,9 +239,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         if (!CollectionUtils.isEqualCollection(customModels.stream().map(Model::isEnabled).collect(Collectors.toList()), collectUserIconEnabledStates())) {
             return true;
         }
-        if (service.getIgnoreWarnings() != ignoreWarningsCheckBox.isSelected()) {
-            return true;
-        }
         if (service.getIgnoredPattern() == null && ignoredPatternTextField.getText().isEmpty()) {
             return false;
         }
@@ -310,7 +281,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 i18n.getString("invalid.ui.scalefactor.title")
             );
         }
-        service.setIgnoreWarnings(ignoreWarningsCheckBox.isSelected());
         List<Boolean> enabledStates = collectUserIconEnabledStates();
         for (int i = 0; i < customModels.size(); i++) {
             Model model = customModels.get(i);
@@ -351,8 +321,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         ignoredPatternTextField.setToolTipText(i18n.getString("field.regex.ignore.relative.paths"));
         additionalUIScaleTitle.setText(i18n.getString("label.ui.scalefactor"));
         additionalUIScaleTextField.setToolTipText(i18n.getString("field.ui.scalefactor"));
-        ignoreWarningsCheckBox.setText(i18n.getString("checkbox.ignore.warnings"));
-        ignoreWarningsCheckBox.setToolTipText(i18n.getString("checkbox.ignore.warnings.tooltip"));
         filterLabel.setText(i18n.getString("plugin.icons.table.filter"));
         filterTextField.setText("");
         filterTextField.setToolTipText(i18n.getString("plugin.icons.table.filter.tooltip"));
@@ -368,11 +336,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         loadUserIconsTable();
         loadIgnoredPattern();
         loadAdditionalUIScale();
-        loadIgnoreWarnings();
         if (isProjectForm()) {
             additionalUIScaleTitle.setVisible(false);
             additionalUIScaleTextField.setVisible(false);
-            ignoreWarningsCheckBox.setVisible(false);
             buttonReloadProjectsIcons.setVisible(false);
             iconPackPanel.setVisible(false);
         }
@@ -454,7 +420,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         loadUserIconsTable();
         loadIgnoredPattern();
         loadAdditionalUIScale();
-        loadIgnoreWarnings();
     }
 
     private void loadUserIconsTable() {
@@ -619,10 +584,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private void loadAdditionalUIScale() {
         additionalUIScaleTextField.setText(Double.toString(SettingsService.getIDEInstance().getAdditionalUIScale()));
-    }
-
-    private void loadIgnoreWarnings() {
-        ignoreWarningsCheckBox.setSelected(SettingsService.getIDEInstance().getIgnoreWarnings());
     }
 
     private JComponent createToolbarDecorator() {

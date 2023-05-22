@@ -8,7 +8,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.ui.EDT;
-import lermitage.intellij.extra.icons.utils.LogUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -70,9 +69,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                     break;
                 }
             } catch (Exception e) {
-                LogUtils.throwErrorIfAllowedByUser(LOGGER,
-                    getName() + " Enabler failed to query IDE filename index. Some icons override won't work.",
-                    e);
+                LOGGER.warn(getName() + " Enabler failed to query IDE filename index. Some icons override won't work.", e);
                 if (allRequired) {
                     return;
                 }
