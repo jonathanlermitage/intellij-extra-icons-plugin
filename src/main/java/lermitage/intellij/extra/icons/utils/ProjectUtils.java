@@ -34,10 +34,14 @@ public class ProjectUtils {
                 try {
                     EditorWindow[] editorWindows = FileEditorManagerEx.getInstanceEx(project).getWindows();
                     for (EditorWindow editorWindow : editorWindows) {
-                        editorWindow.getManager().refreshIcons();
+                        try {
+                            editorWindow.getManager().refreshIcons();
+                        } catch (Exception e) {
+                            LOGGER.warn("Failed to refresh editor tabs icon (EditorWindow manager failed to refresh icons)", e); //NON-NLS
+                        }
                     }
                 } catch (Exception e) {
-                    LOGGER.warn("Failed to refresh editor tabs icon", e); //NON-NLS
+                    LOGGER.warn("Failed to refresh editor tabs icon (can't get FileEditorManagerEx instance or project's windows)", e); //NON-NLS
                 }
             }
         }
