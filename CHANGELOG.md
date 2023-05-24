@@ -1,9 +1,9 @@
 # Extra Icons Change Log
 
-## 2023.2.5-231 (WIP)
+## 2023.2.5-231 (2023/05/24)
 * rework some SVG icons. File and tab icons were rendered correctly, but icons preview in config panel was a bit altered.
 * fix some missing Chinese i18n.
-* hide some useless warning messages about IDE filename index issues. They're still logged, but you will no longer see alerts in your IDE.
+* hide some useless warning messages about IDE filename index issues and icons refreshing. They're still logged, but you will no longer see alerts in your IDE.
 
 ## 2023.2.4-231 (2023/05/21)
 * fix support of IDE 2023.2 EAP: replaced Apache Batik by JSVG for SVG rendering + some code rework. Batik were interfering with Grazie Lite, leading to its deactivation.
