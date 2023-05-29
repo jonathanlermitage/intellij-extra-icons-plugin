@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2023.2.6-231 (WIP)
+* fix [137](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/137). Silent `MissingResourceException` errors when trying to find the PSI object for a file. It should not impact user experience.
+
 ## 2023.2.5-231 (2023/05/24)
 * rework some SVG icons. File and tab icons were rendered correctly, but icons preview in config panel was a bit altered.
 * fix some missing Chinese i18n.
