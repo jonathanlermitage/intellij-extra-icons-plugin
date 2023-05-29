@@ -110,10 +110,12 @@ public abstract class BaseIconProvider
     private void logError(@NotNull Throwable e) {
         if (e instanceof ControlFlowException) {
             // Control-flow exceptions should never be logged.
+            LOGGER.info(e);
             return;
         }
         if (e instanceof MissingResourceException) {
             // TODO investigate https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/137
+            LOGGER.info(e);
             return;
         }
         // Workaround for https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39
