@@ -114,7 +114,7 @@ public abstract class BaseIconProvider
             return;
         }
         if (e instanceof MissingResourceException) {
-            // TODO investigate https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/137
+            // TODO should never happen, but investigate https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/137
             LOGGER.info(e);
             return;
         }
