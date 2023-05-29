@@ -114,7 +114,9 @@ public abstract class BaseIconProvider
             return;
         }
         if (e instanceof MissingResourceException) {
-            // TODO should never happen, but investigate https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/137
+            // TODO investigate https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/137
+            //  For now, silent errors when trying to find the PSI object for a file: PsiManager.getInstance(project).findFile(file).
+            //  It should not impact user experience.
             LOGGER.info(e);
             return;
         }
