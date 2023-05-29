@@ -31,11 +31,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -114,6 +110,10 @@ public abstract class BaseIconProvider
     private void logError(@NotNull Throwable e) {
         if (e instanceof ControlFlowException) {
             // Control-flow exceptions should never be logged.
+            return;
+        }
+        if (e instanceof MissingResourceException) {
+            // TODO investigate https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/137
             return;
         }
         // Workaround for https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39
