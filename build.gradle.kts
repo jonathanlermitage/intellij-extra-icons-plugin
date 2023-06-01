@@ -2,10 +2,17 @@ import com.adarshr.gradle.testlogger.theme.ThemeType
 import com.github.benmanes.gradle.versions.reporter.PlainTextReporter
 import com.github.benmanes.gradle.versions.reporter.result.Result
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import com.google.gson.GsonBuilder
+import com.google.gson.annotations.SerializedName
 import com.palantir.gradle.gitversion.VersionDetails
 import groovy.lang.Closure
 import org.apache.commons.io.FileUtils
 import org.jetbrains.changelog.Changelog
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.HttpURLConnection
+import java.net.URL
+import java.nio.file.Files
 
 fun properties(key: String) = project.findProperty(key).toString()
 
@@ -24,7 +31,6 @@ val pluginXmlFile = projectDir.resolve("src/main/resources/META-INF/plugin.xml")
 val pluginXmlFileBackup = projectDir.resolve("src/main/resources/META-INF/plugin.original.xml")
 
 // Import variables from gradle.properties file
-val pluginIdeaVersion: String by project
 val pluginDownloadIdeaSources: String by project
 val pluginVersion: String by project
 val pluginJavaVersion: String by project
@@ -33,6 +39,8 @@ val testLoggerStyle: String by project
 val pluginNeedsLicense: String by project
 val pluginLanguage: String by project
 val pluginCountry: String by project
+
+val pluginIdeaVersion = "IC-${findLatestStableIdeVersion()}"
 
 version = if (pluginVersion == "auto") {
     val versionDetails: Closure<VersionDetails> by extra
@@ -46,7 +54,7 @@ version = if (pluginVersion == "auto") {
     pluginVersion
 }
 
-logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion. Plugin version set to $version.")
+logger.quiet("Will use IDEA $pluginIdeaVersion and Java $pluginJavaVersion. Plugin version set to $version")
 
 group = "lermitage.intellij.extra.icons"
 
@@ -240,4 +248,46 @@ fun shortenIdeVersion(version: String): String {
         logger.warn("Failed to shorten IDE version $version: ${e.message}")
         version
     }
+}
+
+/** Find latest IntelliJ stable version from a remote definition file hosted on one of
+ * my GitHub repositories. Result is cached locally for 24h. */
+fun findLatestStableIdeVersion(): String {
+    val definitionsUrl = URL("https://raw.githubusercontent.com/jonathanlermitage/ij-values/master/values.json")
+    var definitionsStr: String
+    try {
+        val cachedDefinitionsFile = File(System.getProperty("java.io.tmpdir") + "/jle-ij-values.cache.json")
+        if (cachedDefinitionsFile.exists() && cachedDefinitionsFile.lastModified() < (System.currentTimeMillis() - 24 * 60 * 60_000)) {
+            logger.quiet("Delete cached file: $cachedDefinitionsFile")
+            cachedDefinitionsFile.delete()
+        }
+        if (cachedDefinitionsFile.exists()) {
+            logger.quiet("Find latest stable IDE version from cached file: $cachedDefinitionsFile")
+            definitionsStr = Files.readString(cachedDefinitionsFile.toPath())
+        } else {
+            logger.quiet("Find latest stable IDE version from: $definitionsUrl")
+            definitionsStr = readRemoteContent(definitionsUrl)
+            Files.writeString(cachedDefinitionsFile.toPath(), definitionsStr, Charsets.UTF_8)
+        }
+    } catch (e: Exception) {
+        logger.warn("Ignore cache and find latest stable IDE version from: $definitionsUrl", e)
+        definitionsStr = readRemoteContent(definitionsUrl)
+    }
+    data class Definitions (@SerializedName("IJ-latest-stable-ide-version") val ijLatestStableIdeVersion: String)
+    return GsonBuilder().create().fromJson(definitionsStr, Definitions::class.java).ijLatestStableIdeVersion
+}
+
+/** Read a remote file as String. */
+fun readRemoteContent(url: URL): String {
+    val content = StringBuilder()
+    val conn = url.openConnection() as HttpURLConnection
+    conn.requestMethod = "GET"
+    BufferedReader(InputStreamReader(conn.inputStream)).use { rd ->
+        var line: String? = rd.readLine()
+        while (line != null) {
+            content.append(line)
+            line = rd.readLine()
+        }
+    }
+    return content.toString()
 }
