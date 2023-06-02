@@ -39,8 +39,11 @@ val testLoggerStyle: String by project
 val pluginNeedsLicense: String by project
 val pluginLanguage: String by project
 val pluginCountry: String by project
+var pluginIdeaVersion= project.findProperty("pluginIdeaVersion")
 
-val pluginIdeaVersion = "IC-${findLatestStableIdeVersion()}"
+if (pluginIdeaVersion.toString().isBlank()) {
+    pluginIdeaVersion = "IC-${findLatestStableIdeVersion()}"
+}
 
 version = if (pluginVersion == "auto") {
     val versionDetails: Closure<VersionDetails> by extra
@@ -78,9 +81,9 @@ intellij {
     downloadSources.set(pluginDownloadIdeaSources.toBoolean() && !System.getenv().containsKey("CI"))
     instrumentCode.set(true)
     pluginName.set("Extra Icons")
-    sandboxDir.set("${rootProject.projectDir}/.idea-sandbox/${shortenIdeVersion(pluginIdeaVersion)}")
+    sandboxDir.set("${rootProject.projectDir}/.idea-sandbox/${shortenIdeVersion(pluginIdeaVersion.toString())}")
     updateSinceUntilBuild.set(false)
-    version.set(pluginIdeaVersion)
+    version.set(pluginIdeaVersion.toString())
 }
 
 changelog {
