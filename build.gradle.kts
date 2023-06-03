@@ -285,7 +285,7 @@ fun findLatestStableIdeVersion(): String {
     val xmlDocument: Document = builder.parse(ByteArrayInputStream(definitionsStr.toByteArray()))
     val xPath: XPath = XPathFactory.newInstance().newXPath()
     val expression = "/products/product[@name='IntelliJ IDEA']/channel[@id='IC-IU-RELEASE-licensing-RELEASE']/build[1]/@version"
-    return xPath.compile(expression).evaluate(xmlDocument, XPathConstants.STRING).toString()
+    return xPath.compile(expression).evaluate(xmlDocument, XPathConstants.STRING) as String
 }
 
 /** Read a remote file as String. */
