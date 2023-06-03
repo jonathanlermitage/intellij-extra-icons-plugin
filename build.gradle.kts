@@ -14,7 +14,6 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.nio.file.Files
 import javax.xml.parsers.DocumentBuilderFactory
-import javax.xml.xpath.XPath
 import javax.xml.xpath.XPathConstants
 import javax.xml.xpath.XPathFactory
 
@@ -284,7 +283,7 @@ fun findLatestStableIdeVersion(): String {
     val builderFactory = DocumentBuilderFactory.newInstance()
     val builder = builderFactory.newDocumentBuilder()
     val xmlDocument: Document = builder.parse(ByteArrayInputStream(definitionsStr.toByteArray()))
-    val xPath: XPath = XPathFactory.newInstance().newXPath()
+    val xPath = XPathFactory.newInstance().newXPath()
     val expression = "/products/product[@name='IntelliJ IDEA']/channel[@id='IC-IU-RELEASE-licensing-RELEASE']/build[1]/@version"
     return xPath.compile(expression).evaluate(xmlDocument, XPathConstants.STRING) as String
 }
