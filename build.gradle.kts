@@ -2,17 +2,22 @@ import com.adarshr.gradle.testlogger.theme.ThemeType
 import com.github.benmanes.gradle.versions.reporter.PlainTextReporter
 import com.github.benmanes.gradle.versions.reporter.result.Result
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import com.google.gson.GsonBuilder
-import com.google.gson.annotations.SerializedName
 import com.palantir.gradle.gitversion.VersionDetails
 import groovy.lang.Closure
 import org.apache.commons.io.FileUtils
 import org.jetbrains.changelog.Changelog
+import org.w3c.dom.Document
 import java.io.BufferedReader
+import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 import java.nio.file.Files
+import javax.xml.parsers.DocumentBuilderFactory
+import javax.xml.xpath.XPath
+import javax.xml.xpath.XPathConstants
+import javax.xml.xpath.XPathFactory
+
 
 fun properties(key: String) = project.findProperty(key).toString()
 
@@ -256,10 +261,10 @@ fun shortenIdeVersion(version: String): String {
 /** Find latest IntelliJ stable version from a remote definition file hosted on one of
  * my GitHub repositories. Result is cached locally for 24h. */
 fun findLatestStableIdeVersion(): String {
-    val definitionsUrl = URL("https://raw.githubusercontent.com/jonathanlermitage/ij-values/master/values.json")
+    val definitionsUrl = URL("https://www.jetbrains.com/updates/updates.xml")
     var definitionsStr: String
     try {
-        val cachedDefinitionsFile = File(System.getProperty("java.io.tmpdir") + "/jle-ij-values.cache.json")
+        val cachedDefinitionsFile = File(System.getProperty("java.io.tmpdir") + "/jle-ij-updates.cache.xml")
         if (cachedDefinitionsFile.exists() && cachedDefinitionsFile.lastModified() < (System.currentTimeMillis() - 24 * 60 * 60_000)) {
             logger.quiet("Delete cached file: $cachedDefinitionsFile")
             cachedDefinitionsFile.delete()
@@ -276,8 +281,12 @@ fun findLatestStableIdeVersion(): String {
         logger.warn("Ignore cache and find latest stable IDE version from: $definitionsUrl", e)
         definitionsStr = readRemoteContent(definitionsUrl)
     }
-    data class Definitions (@SerializedName("IJ-latest-stable-ide-version") val ijLatestStableIdeVersion: String)
-    return GsonBuilder().create().fromJson(definitionsStr, Definitions::class.java).ijLatestStableIdeVersion
+    val builderFactory = DocumentBuilderFactory.newInstance()
+    val builder = builderFactory.newDocumentBuilder()
+    val xmlDocument: Document = builder.parse(ByteArrayInputStream(definitionsStr.toByteArray()))
+    val xPath: XPath = XPathFactory.newInstance().newXPath()
+    val expression = "/products/product[@name='IntelliJ IDEA']/channel[@id='IC-IU-RELEASE-licensing-RELEASE']/build[1]/@version"
+    return xPath.compile(expression).evaluate(xmlDocument, XPathConstants.STRING).toString()
 }
 
 /** Read a remote file as String. */
