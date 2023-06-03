@@ -263,8 +263,9 @@ fun findLatestStableIdeVersion(): String {
     val definitionsUrl = URL("https://www.jetbrains.com/updates/updates.xml")
     var definitionsStr: String
     try {
+        val cacheDurationMs = Integer.parseInt(project.findProperty("pluginIdeaVersionCacheDurationInHours") as String) * 60 * 60_000
         val cachedDefinitionsFile = File(System.getProperty("java.io.tmpdir") + "/jle-ij-updates.cache.xml")
-        if (cachedDefinitionsFile.exists() && cachedDefinitionsFile.lastModified() < (System.currentTimeMillis() - 24 * 60 * 60_000)) {
+        if (cachedDefinitionsFile.exists() && cachedDefinitionsFile.lastModified() < (System.currentTimeMillis() - cacheDurationMs)) {
             logger.quiet("Delete cached file: $cachedDefinitionsFile")
             cachedDefinitionsFile.delete()
         }
