@@ -258,8 +258,7 @@ fun shortenIdeVersion(version: String): String {
     }
 }
 
-/** Find latest IntelliJ stable version from a remote definition file hosted on one of
- * my GitHub repositories. Result is cached locally for 24h. */
+/** Find latest IntelliJ stable version from JetBrains website. Result is cached locally for 24h. */
 fun findLatestStableIdeVersion(): String {
     val definitionsUrl = URL("https://www.jetbrains.com/updates/updates.xml")
     var definitionsStr: String
