@@ -46,7 +46,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
         }
     }
 
-    private void initWithIdeFileIndex(@NotNull Project project, String[] filenamesToSearch) throws Throwable {
+    private void initWithIdeFileIndex(@NotNull Project project, String[] filenamesToSearch) {
         if (EDT.isCurrentThreadEdt()) { // we can no longer read index in EDT. See com.intellij.util.SlowOperations documentation
             LOGGER.warn(getName() + " Enabler's init has been called while in EDT thread. Some icons override won't work.");
             return;
