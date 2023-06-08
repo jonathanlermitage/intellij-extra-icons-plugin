@@ -7,16 +7,13 @@ import com.intellij.ide.IconProvider;
 import com.intellij.openapi.diagnostic.ControlFlowException;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.vcs.FilePath;
 import com.intellij.openapi.vcs.changes.FilePathIconProvider;
-import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileSystemItem;
-import com.intellij.psi.PsiManager;
 import com.intellij.testFramework.LightVirtualFile;
 import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
@@ -30,8 +27,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
+import java.io.File;
 import java.text.MessageFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.MissingResourceException;
+import java.util.Optional;
+import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -94,30 +97,21 @@ public abstract class BaseIconProvider
         return models.stream();
     }
 
-    /**
-     * Check whether this icon provider supports the input file.
-     * If not overridden, returns {@code true}.
-     */
-    @SuppressWarnings("SameReturnValue")
-    protected boolean isSupported(@SuppressWarnings("unused") @NotNull final PsiFile psiFile) {
-        return true;
-    }
-
-    private String parent(@NotNull PsiFileSystemItem fileSystemItem) {
-        return fileSystemItem.getParent() == null ? null : fileSystemItem.getParent().getName().toLowerCase();
+    private String parent(@NotNull File file) {
+        return file.getParent() == null ? null : file.getParentFile().getName().toLowerCase();
     }
 
     private void logError(@NotNull Throwable e) {
         if (e instanceof ControlFlowException) {
             // Control-flow exceptions should never be logged.
-            LOGGER.info(e);
+            LOGGER.info("ControlFlowException errors can be safely ignored as the impact on user experience should be very limited", e);
             return;
         }
         if (e instanceof MissingResourceException) {
             // TODO investigate https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/137
             //  For now, silent errors when trying to find the PSI object for a file: PsiManager.getInstance(project).findFile(file).
             //  It should not impact user experience.
-            LOGGER.info(e);
+            LOGGER.info("MissingResourceException errors can be safely ignored as the impact on user experience should be very limited", e);
             return;
         }
         // Workaround for https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39
@@ -128,7 +122,8 @@ public abstract class BaseIconProvider
                 .toUpperCase();
             if (errMsg.contains("DISPOSEINPROGRESS") || errMsg.contains("PROJECTISALREADYDISPOSED")) {
                 if (LOGGER.isDebugEnabled()) {
-                    LOGGER.debug(e);
+                    LOGGER.debug("Tried to show an icon but the project is disposed or being disposed. " +
+                        "We can safely ignore this error with no impact on user experience", e);
                 }
             } else {
                 LOGGER.warn(e);
@@ -140,23 +135,23 @@ public abstract class BaseIconProvider
     @Override
     public Icon getIcon(@NotNull FilePath filePath, @Nullable Project project) {
         try {
-            if (ProjectUtils.isProjectAlive(project)) {
-                VirtualFile file = filePath.getVirtualFile();
-                if (file == null) {
-                    return null;
-                }
-                PsiFileSystemItem psiFileSystemItem;
-                if (file.isDirectory()) {
-                    psiFileSystemItem = PsiManager.getInstance(project).findDirectory(file);
-                } else {
-                    psiFileSystemItem = PsiManager.getInstance(project).findFile(file);
-                }
-                if (psiFileSystemItem != null) {
-                    return getIcon(psiFileSystemItem, 0 /* flags are ignored (could be com.intellij.ui.icons.ImageDescriptor.HAS_2x or HAS_DARK_2x) */);
-                }
+            if (!ProjectUtils.isProjectAlive(project)) {
+                return null;
             }
+            VirtualFile virtualFile = filePath.getVirtualFile();
+            if (virtualFile == null) {
+                return null;
+            }
+            return getIcon(filePath.getIOFile(),
+                virtualFile.isDirectory() ? FileType.FOLDER : FileType.FILE,
+                project);
         } catch (Throwable e) {
             logError(e);
+        } finally {
+            if (LOGGER.isDebugEnabled()) {
+                // activate with Help > Diagnostic Tools > Debug Log Settings > #lermitage.intellij.extra.icons.BaseIconProvider
+                LOGGER.debug(className + " did " + checks_done + " model checks and saved " + checks_saved + " model checks");
+            }
         }
         return null;
     }
@@ -165,24 +160,25 @@ public abstract class BaseIconProvider
     @Override
     public Icon getIcon(@NotNull VirtualFile file, int flags, @Nullable Project project) {
         try {
-            if (ProjectUtils.isProjectAlive(project)) {
-                PsiFileSystemItem psiFileSystemItem;
-                if (file instanceof LightVirtualFile) {
-                    // TODO need to reproduce and understand what happens in
-                    //  https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/86
-                    //  (error: Light files should have PSI only in one project)
-                    return null;
-                } else if (file.isDirectory()) {
-                    psiFileSystemItem = PsiManager.getInstance(project).findDirectory(file);
-                } else {
-                    psiFileSystemItem = PsiManager.getInstance(project).findFile(file);
-                }
-                if (psiFileSystemItem != null) {
-                    return getIcon(psiFileSystemItem, flags);
-                }
+            if (!ProjectUtils.isProjectAlive(project)) {
+                return null;
             }
+            if (file instanceof LightVirtualFile) {
+                // TODO need to reproduce and understand what happens in
+                //  https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/86
+                //  (error: Light files should have PSI only in one project)
+                return null;
+            }
+            return getIcon(new File(file.getPath()),
+                file.isDirectory() ? FileType.FOLDER : FileType.FILE,
+                project);
         } catch (Throwable e) {
             logError(e);
+        } finally {
+            if (LOGGER.isDebugEnabled()) {
+                // activate with Help > Diagnostic Tools > Debug Log Settings > #lermitage.intellij.extra.icons.BaseIconProvider
+                LOGGER.debug(className + " did " + checks_done + " model checks and saved " + checks_saved + " model checks");
+            }
         }
         return null;
     }
@@ -190,36 +186,57 @@ public abstract class BaseIconProvider
     @Nullable
     @Override
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
-        // TODO performance is already good (a few nanos only), but see if some caching could be useful
         try {
-            Project project = psiElement.getProject();
+            PsiFileSystemItem currentPsiFileItem;
+            if (psiElement instanceof PsiDirectory) {
+                currentPsiFileItem = (PsiFileSystemItem) psiElement;
+            } else {
+                final Optional<PsiFile> optFile = Optional.ofNullable(psiElement.getContainingFile());
+                currentPsiFileItem = optFile.orElse(null);
+            }
+            if (currentPsiFileItem == null) {
+                return null;
+            }
+            String fullPath = getFullPath(currentPsiFileItem);
+            if (fullPath == null) {
+                return null;
+            }
+            File file = new File(fullPath);
+            return getIcon(file,
+                psiElement instanceof PsiDirectory ? FileType.FOLDER : FileType.FILE,
+                psiElement.getProject());
+        } catch (Throwable e) {
+            logError(e);
+        } finally {
+            if (LOGGER.isDebugEnabled()) {
+                // activate with Help > Diagnostic Tools > Debug Log Settings > #lermitage.intellij.extra.icons.BaseIconProvider
+                LOGGER.debug(className + " did " + checks_done + " model checks and saved " + checks_saved + " model checks");
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    private Icon getIcon(@NotNull File file, @NotNull FileType fileType, @Nullable Project project) {
+        try {
             if (!ProjectUtils.isProjectAlive(project)) {
                 return null;
             }
             ModelType currentModelType;
-            PsiFileSystemItem currentPsiFileItem;
-            if (psiElement instanceof PsiDirectory) {
-                currentPsiFileItem = (PsiFileSystemItem) psiElement;
-                if (isPatternIgnored(project, currentPsiFileItem.getVirtualFile())) {
+            if (fileType == FileType.FOLDER) {
+                if (isPatternIgnored(project, file)) {
                     return null;
                 }
                 currentModelType = ModelType.DIR;
             } else {
-                final PsiFile file;
-                final Optional<PsiFile> optFile = Optional.ofNullable(psiElement.getContainingFile());
-                if (optFile.isPresent() && isSupported(file = optFile.get())) {
-                    if (isPatternIgnored(project, file.getVirtualFile())) {
-                        return null;
-                    }
-                    currentPsiFileItem = file;
-                    currentModelType = ModelType.FILE;
-                } else {
+                if (isPatternIgnored(project, file)) {
                     return null;
                 }
+                currentModelType = ModelType.FILE;
             }
-            String parentName = parent(currentPsiFileItem);
-            String currentFileName = currentPsiFileItem.getName().toLowerCase();
-            String fullPath = getFullPath(currentPsiFileItem);
+            String parentName = parent(file);
+            String normalizedFileName = getSanitizeFilePath(file.getName());
+            String normalizedFileAbsPath = getSanitizeFilePath(file.getAbsolutePath());
             Set<String> facets = FacetsFinderService.getInstance(project).getFacets();
             Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
             SettingsService service = getSettingsService(project);
@@ -232,7 +249,7 @@ public abstract class BaseIconProvider
                         continue;
                     }
                     checks_done++;
-                    if (model.check(parentName, currentFileName, fullPath, facets, project)) {
+                    if (model.check(parentName, normalizedFileName, normalizedFileAbsPath, facets, project)) {
                         return IconUtils.getIcon(model, additionalUIScale);
                     } else {
                         parentModelIdWhoseCheckFailed = model.getParentId() == null ? model.getId() : model.getParentId();
@@ -248,6 +265,18 @@ public abstract class BaseIconProvider
             }
         }
         return null;
+    }
+
+    @Nullable
+    private String getFullPath(@NotNull PsiFileSystemItem file) {
+        if (file.getVirtualFile() != null) {
+            return file.getVirtualFile().getPath().toLowerCase();
+        }
+        return null;
+    }
+
+    private String getSanitizeFilePath(String path) {
+        return path.toLowerCase().replaceAll("\\\\", "/");
     }
 
     /**
@@ -273,14 +302,6 @@ public abstract class BaseIconProvider
         return Stream.concat(customModelsStream, models.stream()).collect(Collectors.toList());//
     }
 
-    @Nullable
-    private String getFullPath(@NotNull PsiFileSystemItem file) {
-        if (file.getVirtualFile() != null) {
-            return file.getVirtualFile().getPath().toLowerCase();
-        }
-        return null;
-    }
-
     /**
      * Returns the project service if the checkbox in the project settings was checked,
      * otherwise returns the IDE settings service.
@@ -298,19 +319,35 @@ public abstract class BaseIconProvider
      * @param project project.
      * @param file current file or folder.
      */
-    private boolean isPatternIgnored(Project project, VirtualFile file) {
-        SettingsService service = getSettingsService(project);
-        if (service.getIgnoredPatternObj() == null || service.getIgnoredPattern() == null || service.getIgnoredPattern().isEmpty()) {
+    private boolean isPatternIgnored(Project project, File file) {
+        try {
+            SettingsService service = getSettingsService(project);
+            if (service.getIgnoredPatternObj() == null || service.getIgnoredPattern() == null || service.getIgnoredPattern().isEmpty()) {
+                return false;
+            }
+            String projectBasePath;
+            if (ProjectUtils.isProjectAlive(project)) {
+                projectBasePath = project.getBasePath();
+                if (projectBasePath == null) {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+            String normalizedFileAbsPath = file.getAbsolutePath().toLowerCase().replaceAll("\\\\", "/");
+            String normalizedProjectPath = projectBasePath.toLowerCase().replaceAll("\\\\", "/");
+            if (!normalizedFileAbsPath.startsWith(normalizedProjectPath) || normalizedFileAbsPath.length() <= normalizedProjectPath.length()) {
+                return false;
+            }
+            return service.getIgnoredPatternObj().matcher(normalizedFileAbsPath.substring(normalizedProjectPath.length() + 1)).matches();
+        } catch (Exception e) {
+            LOGGER.warn(file.getAbsolutePath() + ", " + project.getBasePath());
+            logError(e);
             return false;
         }
-        VirtualFile contentRoot = ProjectFileIndex.getInstance(project).getContentRootForFile(file);
-        if (contentRoot == null) {
-            return false;
-        }
-        String relativePath = VfsUtilCore.getRelativePath(file, contentRoot);
-        if (relativePath == null) {
-            return false;
-        }
-        return service.getIgnoredPatternObj().matcher(relativePath).matches();
+    }
+
+    private enum FileType {
+        FILE, FOLDER
     }
 }
