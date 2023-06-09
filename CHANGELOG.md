@@ -1,7 +1,9 @@
 # Extra Icons Change Log
 
 ## 2023.2.6-231 (WIP)
-* fix [137](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/137). Silent `MissingResourceException` errors when trying to find the PSI object for a file. It should not impact user experience.
+* fix [137](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/137). Silent `MissingResourceException` errors when trying to find the PSI object for a file. This should have no impact on user experience, as it seemed to happen when displaying files in folders such as `node_modules` only. Files in these folders will show their original icons.
+* fix [140](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/140). Important code rework, which should fix some "slow operations are prohibited on EDT" error messages with EAP IDEs.
+* internal: add the ability to create icons for the Old or New UI only. This way, I will be able to provide icons that fit better with the New UI
 
 ## 2023.2.5-231 (2023/05/24)
 * rework some SVG icons. File and tab icons were rendered correctly, but icons preview in config panel was a bit altered.
