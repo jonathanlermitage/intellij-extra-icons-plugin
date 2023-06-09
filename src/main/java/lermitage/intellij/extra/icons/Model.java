@@ -37,6 +37,9 @@ public class Model {
     private ModelType modelType;
     @OptionTag
     private IconType iconType;
+    /** Indicates if this model is offered for the old or the new UI. If null, both UIs are supported. */
+    @OptionTag
+    private UIType uiType;
     /**
      * Indicates if a <b>user</b> model is enabled. To know if a built-in model
      * is enabled, see {@link SettingsService#getDisabledModelIds()}.
@@ -159,6 +162,7 @@ public class Model {
         altModel.conditions = baseModel.conditions;
         altModel.tags = baseModel.tags;
         altModel.parentId = baseModel.id;
+        altModel.uiType = baseModel.uiType;
         return altModel;
     }
 
@@ -289,6 +293,22 @@ public class Model {
     }
 
     /**
+     * This model is offered for the old UI only.
+     */
+    public Model oldUIOnly() {
+        this.uiType = UIType.OLD_UI;
+        return this;
+    }
+
+    /**
+     * This model is offered for the new UI only.
+     */
+    public Model newUIOnly() {
+        this.uiType = UIType.NEW_UI;
+        return this;
+    }
+
+    /**
      * Associate this model to one or multiple tags. User will be able to enable and disable multiple models by tag.
      * @param tags an array of tags.
      */
@@ -320,6 +340,10 @@ public class Model {
 
     public IconType getIconType() {
         return iconType;
+    }
+
+    public UIType getUiType() {
+        return uiType;
     }
 
     public List<ModelCondition> getConditions() {
@@ -354,12 +378,13 @@ public class Model {
             Objects.equals(iconPack, model.iconPack) &&
             description.equals(model.description) &&
             modelType == model.modelType &&
+            uiType == model.uiType &&
             iconType == model.iconType &&
             conditions.equals(model.conditions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, ideIcon, icon, iconPack, description, modelType, iconType, enabled, conditions);
+        return Objects.hash(id, ideIcon, icon, iconPack, description, modelType, uiType, iconType, enabled, conditions);
     }
 }

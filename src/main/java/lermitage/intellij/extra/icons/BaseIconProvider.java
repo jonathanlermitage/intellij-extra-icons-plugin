@@ -7,6 +7,7 @@ import com.intellij.ide.IconProvider;
 import com.intellij.openapi.diagnostic.ControlFlowException;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.registry.RegistryManager;
 import com.intellij.openapi.vcs.FilePath;
 import com.intellij.openapi.vcs.changes.FilePathIconProvider;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -59,7 +60,20 @@ public abstract class BaseIconProvider
 
     public BaseIconProvider() {
         super();
-        this.models = getAllModels();
+        boolean newUIEnabled;
+        try {
+            newUIEnabled = RegistryManager.getInstance().get("ide.experimental.ui").asBoolean();
+        } catch (Exception e) {
+            // This registry key is experimental, so we can assume it will disappear once the old UI is
+            // definitively removed. This is why the default value is NEW_UI.
+            newUIEnabled = true;
+            LOGGER.warn("Failed to detect IDE's UI type (Old or New), will consider using the New UI");
+        }
+        final UIType uiType = newUIEnabled ? UIType.NEW_UI : UIType.OLD_UI;
+        LOGGER.info("Detected UI Type: " + uiType);
+        this.models = getAllModels().stream()
+            .filter(model -> model.getUiType() == null || model.getUiType() == uiType)
+            .toList();
     }
 
     /**
