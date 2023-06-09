@@ -60,7 +60,7 @@ public abstract class BaseIconProvider
 
     public BaseIconProvider() {
         super();
-        boolean newUIEnabled;
+        boolean newUIEnabled; // TODO use NewUI.isEnabled() when 231.8109.90 becomes the new minimal IDE version (currently 231.6890.12)
         try {
             newUIEnabled = RegistryManager.getInstance().get("ide.experimental.ui").asBoolean();
         } catch (Exception e) {
