@@ -28,7 +28,14 @@ import lermitage.intellij.extra.icons.cfg.models.UserIconsSettingsTableModel;
 import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.enablers.EnablerUtils;
-import lermitage.intellij.extra.icons.utils.*;
+import lermitage.intellij.extra.icons.utils.ComboBoxWithImageItem;
+import lermitage.intellij.extra.icons.utils.ComboBoxWithImageRenderer;
+import lermitage.intellij.extra.icons.utils.FileChooserUtils;
+import lermitage.intellij.extra.icons.utils.I18nUtils;
+import lermitage.intellij.extra.icons.utils.IconPackUtils;
+import lermitage.intellij.extra.icons.utils.IconUtils;
+import lermitage.intellij.extra.icons.utils.OS;
+import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.intellij.lang.regexp.RegExpFileType;
 import org.jetbrains.annotations.Nls;
@@ -37,11 +44,20 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.table.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import javax.swing.table.TableStringConverter;
 import java.awt.event.ItemEvent;
 import java.io.File;
 import java.text.MessageFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -432,12 +448,18 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         int currentSelected = userIconsSettingsTableModel != null ? userIconsTable.getSelectedRow() : -1;
         userIconsSettingsTableModel = new UserIconsSettingsTableModel();
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
-        customModels.forEach(m -> userIconsSettingsTableModel.addRow(new Object[]{
-                IconUtils.getIcon(m, additionalUIScale),
-                m.isEnabled(),
-                m.getDescription(),
-                m.getIconPack()
-            })
+        customModels.forEach(m -> {
+                try {
+                    userIconsSettingsTableModel.addRow(new Object[]{
+                        IconUtils.getIcon(m, additionalUIScale),
+                        m.isEnabled(),
+                        m.getDescription(),
+                        m.getIconPack()
+                    });
+                } catch (Throwable e) {
+                    LOGGER.warn(e);
+                }
+            }
         );
         userIconsTable.setModel(userIconsSettingsTableModel);
         userIconsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
