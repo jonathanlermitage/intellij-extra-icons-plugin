@@ -5,7 +5,7 @@
 * fix [140](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/140). Important code rework, which should fix some "slow operations are prohibited on EDT" error messages with EAP IDEs.
 * fix [141](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/141). Enable antialiasing when displaying SVG user icons.
 * fix: don't freeze settings UI when displaying invalid SVG user icons.
-* internal: add the ability to create icons for the Old or New UI only. This way, I will be able to provide icons that fit better with the New UI
+* internal: add the ability to create icons for the Old or New UI only. This way, I will be able to provide icons that fit better with the New UI.
 
 ## 2023.2.5-231 (2023/05/24)
 * rework some SVG icons. File and tab icons were rendered correctly, but icons preview in config panel was a bit altered.
