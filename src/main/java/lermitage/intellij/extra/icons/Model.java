@@ -156,13 +156,13 @@ public class Model {
         altModel.ideIcon = altIdeIcon;
         altModel.icon = altIcon;
         altModel.description = altDescription;
-        altModel.modelType = baseModel.modelType;
-        altModel.iconType = baseModel.iconType;
-        altModel.enabled = baseModel.enabled;
-        altModel.conditions = baseModel.conditions;
-        altModel.tags = baseModel.tags;
-        altModel.parentId = baseModel.id;
-        altModel.uiType = baseModel.uiType;
+        altModel.modelType = baseModel.getModelType();
+        altModel.iconType = baseModel.getIconType();
+        altModel.enabled = baseModel.isEnabled();
+        altModel.conditions = baseModel.getConditions();
+        altModel.tags = baseModel.getTags();
+        altModel.parentId = baseModel.getId();
+        altModel.uiType = baseModel.getUiType();
         return altModel;
     }
 
@@ -292,17 +292,13 @@ public class Model {
         return this;
     }
 
-    /**
-     * This model is offered for the old UI only.
-     */
+    /** This model is offered for the old UI only. */
     public Model oldUIOnly() {
         this.uiType = UIType.OLD_UI;
         return this;
     }
 
-    /**
-     * This model is offered for the new UI only.
-     */
+    /** This model is offered for the new UI only. */
     public Model newUIOnly() {
         this.uiType = UIType.NEW_UI;
         return this;
@@ -317,9 +313,7 @@ public class Model {
         return this;
     }
 
-    /**
-     * Add a possible condition to current model: file/folder will have to satisfy one of configured conditions.
-     */
+    /** Add a possible condition to current model: file/folder will have to satisfy one of configured conditions. */
     public Model or() {
         this.conditions.add(new ModelCondition());
         return this;

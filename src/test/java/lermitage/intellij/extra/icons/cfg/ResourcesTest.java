@@ -3,6 +3,8 @@
 package lermitage.intellij.extra.icons.cfg;
 
 import lermitage.intellij.extra.icons.ExtraIconProvider;
+import lermitage.intellij.extra.icons.IconType;
+import lermitage.intellij.extra.icons.utils.IconUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +36,8 @@ public class ResourcesTest {
         List<File> iconsFolders = Arrays.asList(
             new File("src/main/resources/extra-icons/"),
             new File("src/main/resources/extra-icons/ide/"),
-            new File("src/main/resources/extra-icons/officedocs/"));
+            new File("src/main/resources/extra-icons/officedocs/"),
+            new File("src/test/resources/issue141/"));
         iconsFolders.forEach(iconsFolder -> icons.addAll(Arrays.asList(Objects.requireNonNull(
             iconsFolder.listFiles((dir, name) -> name.endsWith(".png") || name.endsWith(".svg"))
         ))));
@@ -153,6 +156,30 @@ public class ResourcesTest {
         }
     }
 
+    /**
+     * SVG icons loaded by "IconLoader.getIcon" are loaded with IDE's bundled JSVG, so
+     * we want to check if everything goes well (even if IDE adds some magic... ^_^).
+     */
+    @Test
+    public void svg_icons_should_load_with_jsvg() {
+        List<String> errors = new ArrayList<>();
+
+        svgIcons.forEach(file -> {
+            try {
+                byte[] fileContent = Files.readAllBytes(file.toPath());
+                IconUtils.ImageWrapper imageWrapper = IconUtils.loadImage(fileContent, IconType.SVG, 1f);
+                if (imageWrapper == null) {
+                    errors.add(file.getName() + ": can't be rendered by JSVG");
+                }
+            } catch (IOException e) {
+                errors.add(file.getName() + ": can't be loaded by JSVG. I/O error is: " + e.getMessage());
+            }
+        });
+        if (!errors.isEmpty()) {
+            fail("some SVG icons did not load: " + errors);
+        }
+    }
+
     @Test
     public void extra_icons_provider_icons_should_exist() {
         List<String> errors = new ArrayList<>();
@@ -161,7 +188,7 @@ public class ResourcesTest {
             String relativePath = file.getAbsolutePath().replaceAll("\\\\", "/");
             relativePath = relativePath.substring(relativePath.lastIndexOf("/extra-icons/") + "/extra-icons/".length());
             return relativePath;
-        }).collect(Collectors.toList());
+        }).toList();
 
         ExtraIconProvider.allModels().forEach(model -> {
             String extraIconName = model.getIcon().replace("extra-icons/", "");

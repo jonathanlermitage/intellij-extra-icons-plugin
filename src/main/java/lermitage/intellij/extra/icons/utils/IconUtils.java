@@ -18,8 +18,10 @@ import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import org.jetbrains.annotations.NonNls;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.Icon;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -77,7 +79,7 @@ public class IconUtils {
         return loadImage(B64_DECODER.decode(base64), iconType, additionalUIScale);
     }
 
-    private static ImageWrapper loadImage(byte[] imageBytes, IconType iconType, double additionalUIScale) {
+    public static ImageWrapper loadImage(byte[] imageBytes, IconType iconType, double additionalUIScale) {
         if (iconType == IconType.SVG) {
             try {
                 SVGLoader svgLoader = new SVGLoader();
@@ -88,6 +90,7 @@ public class IconUtils {
                 FloatSize size = svgDocument.size();
                 BufferedImage image = ImageUtil.createImage((int) size.width, (int) size.height, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics = image.createGraphics();
+                graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 svgDocument.render(null, graphics);
                 Image thumbnail = scaleImage(image);
                 if (thumbnail != null) {
