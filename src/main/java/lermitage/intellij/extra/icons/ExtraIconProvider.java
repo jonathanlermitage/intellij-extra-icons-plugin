@@ -493,7 +493,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("settings.json").parents(".vscode"),
 
                 //
-                // file plus extension, after programmable items
+                // file plus extension (of just a file name, with no extension), after programmable items
                 //
                 ofFile("vcskeep", "extra-icons/keep.svg", "Various VCS: .keep, .gitkeep, .hgkeep, .svnkeep")
                     .eq(".keep", ".gitkeep", ".hgkeep", ".svnkeep"),
@@ -700,6 +700,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("junit", "extra-icons/junit5_transparent.svg", "JUnit: junit-platform.properties")
                     .eq("junit-platform.properties")
                     .altIcons("extra-icons/junit5_white.svg", "extra-icons/junit5.png"),
+                ofFile("just", "extra-icons/just.svg", "Just: justfile")
+                    .eq("justfile")
+                    .altIcons("extra-icons/just_alt.svg"),
                 ofFile("karate", "extra-icons/karate.svg", "Karate: karate-config.js")
                     .eq("karate-config.js"),
                 ofFile("karma_js", "extra-icons/karma.svg", "Karma: karma.conf.js")
