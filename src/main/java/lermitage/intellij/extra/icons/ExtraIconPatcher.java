@@ -39,7 +39,6 @@ public class ExtraIconPatcher extends IconPathPatcher {
         Map<String, String> enabledIcons = new LinkedHashMap<>();
         List<String> disabledModelIds = SettingsIDEService.getIDEInstance().getDisabledModelIds();
         Stream.of(ExtraIconProvider.allModels(), SettingsIDEService.getInstance().getCustomModels()).flatMap(Collection::stream)
-            .toList().stream()
             .filter(model -> model.getModelType() == ModelType.ICON)
             .forEach(model -> {
                 if (model.isEnabled() && !enabledIcons.containsKey(model.getIdeIcon()) && !disabledModelIds.contains(model.getId())) {
