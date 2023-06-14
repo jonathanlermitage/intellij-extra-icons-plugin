@@ -9,7 +9,7 @@
 
     <description><![CDATA[
       <ul>
-        <li>Adds <b>500+ icons</b> for files like Travis YML, GitLab YML, Angular files, etc.</li>
+        <li>Adds <b>500+ icons</b> for files like Travis YML, GitLab YML, Angular files, etc. Many icons have <b>variants</b>, so if you are not happy with the default icon, you can choose another.</li>
         <li>Shows an icon for <b>Git sub-module folders</b>.</li>
         <li><b>Highly configurable</b>: see <i>File &gt; Settings &gt; Appearance &amp; Behavior &gt; Extra Icons</i> to select extra icons to (de)activate. This is configurable at IDE and project level.</li>
         <li>You can also register <b>your own icons</b> in order to override file icons and all <a href="https://jetbrains.design/intellij/resources/icons_list/">IDE icons</a> (including toolbars, menus, etc.).</li>
