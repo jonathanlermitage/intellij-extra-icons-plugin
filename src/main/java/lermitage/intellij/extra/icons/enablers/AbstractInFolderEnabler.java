@@ -48,12 +48,13 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
 
     private void initWithIdeFileIndex(@NotNull Project project, String[] filenamesToSearch) {
         if (EDT.isCurrentThreadEdt()) { // we can no longer read index in EDT. See com.intellij.util.SlowOperations documentation
-            LOGGER.warn(getName() + " Enabler's init has been called while in EDT thread. Some icons override won't work.");
+            LOGGER.warn(getName() + " Enabler's init has been called while in EDT thread. " +
+                "Will try again later. Some icons override may not work.");
             return;
         }
         if (!project.isInitialized()) {
             LOGGER.warn(getName() + " Enabler can't query IDE filename index: project " + project.getName() + " is not initialized. " +
-                "Some icons override won't work.");
+                "Will try again later. Some icons override may not work.");
             return;
         }
 
@@ -69,7 +70,8 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                     break;
                 }
             } catch (Exception e) {
-                LOGGER.warn(getName() + " Enabler failed to query IDE filename index. Some icons override won't work.", e);
+                LOGGER.warn(getName() + " Enabler failed to query IDE filename index. " +
+                    "Will try again later. Some icons override may not work.", e);
                 if (allRequired) {
                     return;
                 }
