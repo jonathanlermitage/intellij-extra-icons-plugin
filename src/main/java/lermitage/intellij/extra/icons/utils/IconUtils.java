@@ -72,7 +72,8 @@ public class IconUtils {
         String contents = new String(imageBytes, Charset.defaultCharset());
         //Matcher matcher = cssVarRe.matcher(contents);
         //String replaced = matcher.replaceAll("currentColor");
-        return new ByteArrayInputStream(contents.getBytes());
+        //return new ByteArrayInputStream(replaced.getBytes());
+        return new ByteArrayInputStream(imageBytes);
     }
 
     public static ImageWrapper fromBase64(String base64, IconType iconType, double additionalUIScale) {

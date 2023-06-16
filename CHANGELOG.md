@@ -2,6 +2,7 @@
 
 ## 2023.2.7-231 (WIP)
 * support [Just](https://github.com/casey/just) `justfile` files.
+* minor performance optimizations.
 
 ## 2023.2.6-231 (2023/06/11)
 * fix [137](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/137). Silent `MissingResourceException` errors when trying to find the PSI object for a file. This should have no impact on user experience, as it seemed to happen when displaying files in folders such as `node_modules` only. Files in these folders will show their original icons.
