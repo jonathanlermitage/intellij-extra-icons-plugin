@@ -38,6 +38,10 @@ public class IconUtils {
 
     public static Icon getIcon(Model model, double additionalUIScale) {
         if (model.getIconType() == IconType.PATH) {
+            if (UIUtils.isNewUIEnabled() && model.isAutoLoadNewUIIconVariant()) {
+                String newUIIconPath = "/" + model.getIcon().replace("extra-icons/", "extra-icons/newui/"); //NON-NLS
+                return IconLoader.getIcon(newUIIconPath, IconUtils.class); //NON-NLS
+            }
             return IconLoader.getIcon(model.getIcon(), IconUtils.class);
         }
         ImageWrapper fromBase64 = fromBase64(model.getIcon(), model.getIconType(), additionalUIScale);

@@ -110,7 +110,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofDir("dir_jpabuddy", "extra-icons/folder_jpabuddy.svg", "JPA Buddy: .jpb folder")
                     .eq(".jpb")
                     .altIcons("extra-icons/folder_jpabuddy_alt.svg", "extra-icons/folder_jpabuddy_alt2.svg",
-                        "extra-icons/folder_jpabuddy_alt3.svg"),
+                        "extra-icons/folder_jpabuddy_alt3.svg")
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_mergify", "extra-icons/folder_mergify.svg", "Mergify: .mergify folder")
                     .eq(".mergify"),
                 ofDir("dir_mps", "extra-icons/folder_idea.svg", "JetBrains MPS: .mps folder")
@@ -136,7 +137,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofDir("dir_python_dottox", "extra-icons/folder_tmp.svg", "Python: .tox folder")
                     .eq(".tox"),
                 ofDir("dir_teamcity", "extra-icons/folder_teamcity.svg", "TeamCity: .teamcity folder")
-                    .eq(".teamcity"),
+                    .eq(".teamcity")
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_vscode_settings", "extra-icons/folder_vscode.svg", "Visual Studio Code: .vscode folder")
                     .eq(".vscode"),
                 ofDir("dir_semaphoreci", "extra-icons/folder_semaphoreci.svg", "Semaphore: .semaphore folder")
@@ -149,71 +151,93 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 // - Flyway databases
                 ofDir("dir_flyway", "extra-icons/folder_flyway.svg", "Flyway (regex): '.*/db/migration/?'")
                     .regex(".*/db/migration/?")
-                    .tags(ModelTag.FLYWAY),
+                    .tags(ModelTag.FLYWAY)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_flyway_db2", "extra-icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/migration/db2[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.FLYWAY),
+                    .tags(ModelTag.FLYWAY)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_flyway_h2", "extra-icons/folder_h2.svg", "Flyway, H2 database folder (regex): '.*/db/migration/h2[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/migration/h2[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.FLYWAY),
+                    .tags(ModelTag.FLYWAY)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_flyway_hsqldb", "extra-icons/folder_hsqldb.svg", "Flyway, HSQLDB database folder (regex): '.*/db/migration/hsqldb[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/migration/hsqldb[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.FLYWAY),
+                    .tags(ModelTag.FLYWAY)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_flyway_mariadb", "extra-icons/folder_mariadb.svg", "Flyway, MariaDB database folder (regex): '.*/db/migration/maria[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/migration/maria[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.FLYWAY),
+                    .tags(ModelTag.FLYWAY)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_flyway_mysql", "extra-icons/folder_mysql.svg", "Flyway, MySQL database folder (regex): '.*/db/migration/mysql[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/migration/mysql[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.FLYWAY),
+                    .tags(ModelTag.FLYWAY)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_flyway_postgresql", "extra-icons/folder_postgresql.svg", "Flyway, PostgreSQL database folder (regex): '.*/db/migration/postgre[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/migration/postgre[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.FLYWAY),
+                    .tags(ModelTag.FLYWAY)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_flyway_sqlite", "extra-icons/folder_sqlite.svg", "Flyway, Sqlite database folder (regex): '.*/db/migration/sqlite[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/migration/sqlite[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.FLYWAY),
+                    .tags(ModelTag.FLYWAY)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_flyway_oracle", "extra-icons/folder_oracle.svg", "Flyway, Oracle database folder (regex): '.*/db/migration/oracle[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/migration/oracle[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.FLYWAY),
+                    .tags(ModelTag.FLYWAY)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_flyway_sqlserver", "extra-icons/folder_sqlserver.svg", "Flyway, MS SQL Server database folder (regex): '.*/db/migration/sqlserver[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/migration/sqlserver[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.FLYWAY),
+                    .tags(ModelTag.FLYWAY)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_flyway_mssql", "extra-icons/folder_sqlserver.svg", "Flyway, MS SQL Server database folder (regex): '.*/db/migration/mssql[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/migration/mssql[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.FLYWAY),
+                    .tags(ModelTag.FLYWAY)
+                    .autoLoadNewUIIconVariant(),
                 // - Liquibase databases
                 ofDir("dir_liquibase", "extra-icons/folder_liquibase.svg", "Liquibase (regex): '.*/db/changelog/?'")
                     .regex(".*/db/changelog/?")
-                    .tags(ModelTag.LIQUIBASE),
+                    .tags(ModelTag.LIQUIBASE)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_liquibase_db2", "extra-icons/folder_db2.svg", "Liquibase, IBM DB2 database folder (regex): '.*/db/changelog/db2[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/changelog/db2[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.LIQUIBASE),
+                    .tags(ModelTag.LIQUIBASE)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_liquibase_h2", "extra-icons/folder_h2.svg", "Liquibase, H2 database folder (regex): '.*/db/changelog/h2[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/changelog/h2[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.LIQUIBASE),
+                    .tags(ModelTag.LIQUIBASE)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_liquibase_hsqldb", "extra-icons/folder_hsqldb.svg", "Liquibase, HSQLDB database folder (regex): '.*/db/changelog/hsqldb[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/changelog/hsqldb[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.LIQUIBASE),
+                    .tags(ModelTag.LIQUIBASE)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_liquibase_mariadb", "extra-icons/folder_mariadb.svg", "Liquibase, MariaDB database folder (regex): '.*/db/changelog/maria[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/changelog/maria[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.LIQUIBASE),
+                    .tags(ModelTag.LIQUIBASE)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_liquibase_mysql", "extra-icons/folder_mysql.svg", "Liquibase, MySQL database folder (regex): '.*/db/changelog/mysql[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/changelog/mysql[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.LIQUIBASE),
+                    .tags(ModelTag.LIQUIBASE)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_liquibase_postgresql", "extra-icons/folder_postgresql.svg", "Liquibase, PostgreSQL database folder (regex): '.*/db/changelog/postgre[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/changelog/postgre[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.LIQUIBASE),
+                    .tags(ModelTag.LIQUIBASE)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_liquibase_sqlite", "extra-icons/folder_sqlite.svg", "Liquibase, Sqlite database folder (regex): '.*/db/changelog/sqlite[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/changelog/sqlite[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.LIQUIBASE),
+                    .tags(ModelTag.LIQUIBASE)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_liquibase_oracle", "extra-icons/folder_oracle.svg", "Liquibase, Oracle database folder (regex): '.*/db/changelog/oracle[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/changelog/oracle[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.LIQUIBASE),
+                    .tags(ModelTag.LIQUIBASE)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_liquibase_sqlserver", "extra-icons/folder_sqlserver.svg", "Liquibase, MS SQL Server database folder (regex): '.*/db/changelog/sqlserver[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/changelog/sqlserver[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.LIQUIBASE),
+                    .tags(ModelTag.LIQUIBASE)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("dir_liquibase_mssql", "extra-icons/folder_sqlserver.svg", "Liquibase, MS SQL Server database folder (regex): '.*/db/changelog/mssql[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/changelog/mssql[a-zA-Z\\d._\\-]*")
-                    .tags(ModelTag.LIQUIBASE),
+                    .tags(ModelTag.LIQUIBASE)
+                    .autoLoadNewUIIconVariant(),
 
                 //
                 // file plus extension, before programmable items, otherwise scroll down to "file plus extension, after programmable items"

@@ -7,7 +7,6 @@ import com.intellij.ide.IconProvider;
 import com.intellij.openapi.diagnostic.ControlFlowException;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.registry.RegistryManager;
 import com.intellij.openapi.vcs.FilePath;
 import com.intellij.openapi.vcs.changes.FilePathIconProvider;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -23,6 +22,7 @@ import lermitage.intellij.extra.icons.services.FacetsFinderService;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
+import lermitage.intellij.extra.icons.utils.UIUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -60,16 +60,7 @@ public abstract class BaseIconProvider
 
     public BaseIconProvider() {
         super();
-        boolean newUIEnabled; // TODO use NewUI.isEnabled() when 231.8109.90 becomes the new minimal IDE version (currently 231.6890.12)
-        try {
-            newUIEnabled = RegistryManager.getInstance().get("ide.experimental.ui").asBoolean();
-        } catch (Exception e) {
-            // This registry key is experimental, so we can assume it will disappear once the old UI is
-            // definitively removed. This is why the default value is NEW_UI.
-            newUIEnabled = true;
-            LOGGER.warn("Failed to detect IDE's UI type (Old or New), will consider using the New UI");
-        }
-        final UIType uiType = newUIEnabled ? UIType.NEW_UI : UIType.OLD_UI;
+        final UIType uiType = UIUtils.isNewUIEnabled() ? UIType.NEW_UI : UIType.OLD_UI;
         LOGGER.info("Detected UI Type: " + uiType);
         this.models = getAllModels().stream()
             .filter(model -> model.getUiType() == null || model.getUiType() == uiType)

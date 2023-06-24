@@ -60,6 +60,8 @@ public class Model {
     /** For a model representing an alternative icon, the ID of the base model, otherwise null. */
     private transient Object parentId = null; // transient because computed dynamically
 
+    private boolean autoLoadNewUIIconVariant = false;
+
     // For XML deserializer (IntelliJ internals)
     @SuppressWarnings("unused")
     private Model() {
@@ -163,6 +165,7 @@ public class Model {
         altModel.tags = baseModel.getTags();
         altModel.parentId = baseModel.getId();
         altModel.uiType = baseModel.getUiType();
+        altModel.autoLoadNewUIIconVariant = baseModel.isAutoLoadNewUIIconVariant();
         return altModel;
     }
 
@@ -302,6 +305,17 @@ public class Model {
     public Model newUIOnly() {
         this.uiType = UIType.NEW_UI;
         return this;
+    }
+
+    /** Model has a new UI icon in "./newui/": plugin will use it if the new UI is active. */
+    public Model autoLoadNewUIIconVariant() {
+        this.autoLoadNewUIIconVariant = true;
+        return this;
+    }
+
+    /** Indicates if model has a new UI icon in "./newui/". */
+    public boolean isAutoLoadNewUIIconVariant() {
+        return autoLoadNewUIIconVariant;
     }
 
     /**
