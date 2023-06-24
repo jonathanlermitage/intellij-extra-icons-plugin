@@ -25,7 +25,6 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
 
 import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_DECODER;
 import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_ENCODER;
@@ -69,7 +68,7 @@ public class IconUtils {
 
     // backport from Icon Viewer 2: remove unwanted SVG attributes
     private static ByteArrayInputStream sanitizeSVGImageBytes(byte[] imageBytes) {
-        String contents = new String(imageBytes, Charset.defaultCharset());
+        //String contents = new String(imageBytes, Charset.defaultCharset());
         //Matcher matcher = cssVarRe.matcher(contents);
         //String replaced = matcher.replaceAll("currentColor");
         //return new ByteArrayInputStream(replaced.getBytes());
