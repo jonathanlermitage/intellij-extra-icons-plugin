@@ -151,8 +151,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 // - Flyway databases
                 ofDir("dir_flyway", "extra-icons/folder_flyway.svg", "Flyway (regex): '.*/db/migration/?'")
                     .regex(".*/db/migration/?")
-                    .tags(ModelTag.FLYWAY)
-                    .autoLoadNewUIIconVariant(),
+                    .tags(ModelTag.FLYWAY),
                 ofDir("dir_flyway_db2", "extra-icons/folder_db2.svg", "Flyway, IBM DB2 database folder (regex): '.*/db/migration/db2[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/migration/db2[a-zA-Z\\d._\\-]*")
                     .tags(ModelTag.FLYWAY)
@@ -196,8 +195,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 // - Liquibase databases
                 ofDir("dir_liquibase", "extra-icons/folder_liquibase.svg", "Liquibase (regex): '.*/db/changelog/?'")
                     .regex(".*/db/changelog/?")
-                    .tags(ModelTag.LIQUIBASE)
-                    .autoLoadNewUIIconVariant(),
+                    .tags(ModelTag.LIQUIBASE),
                 ofDir("dir_liquibase_db2", "extra-icons/folder_db2.svg", "Liquibase, IBM DB2 database folder (regex): '.*/db/changelog/db2[a-zA-Z0-9._\\-]*'")
                     .regex(".*/db/changelog/db2[a-zA-Z\\d._\\-]*")
                     .tags(ModelTag.LIQUIBASE)

@@ -36,11 +36,16 @@ public class ResourcesTest {
         List<File> iconsFolders = Arrays.asList(
             new File("src/main/resources/extra-icons/"),
             new File("src/main/resources/extra-icons/ide/"),
+            new File("src/main/resources/extra-icons/newui/"),
             new File("src/main/resources/extra-icons/officedocs/"),
             new File("src/test/resources/issue141/"));
-        iconsFolders.forEach(iconsFolder -> icons.addAll(Arrays.asList(Objects.requireNonNull(
-            iconsFolder.listFiles((dir, name) -> name.endsWith(".png") || name.endsWith(".svg"))
-        ))));
+        iconsFolders.forEach(iconsFolder -> {
+            assertTrue(iconsFolder.exists());
+            assertTrue(iconsFolder.isDirectory());
+            icons.addAll(Arrays.asList(Objects.requireNonNull(
+                iconsFolder.listFiles((dir, name) -> name.endsWith(".png") || name.endsWith(".svg"))
+            )));
+        });
         pngIcons = icons.stream().filter(file -> file.getName().endsWith(".png")).collect(Collectors.toList());
         svgIcons = icons.stream().filter(file -> file.getName().endsWith(".svg")).collect(Collectors.toList());
         assertTrue(svgIcons.size() > 0);
@@ -184,12 +189,12 @@ public class ResourcesTest {
     public void extra_icons_provider_icons_should_exist() {
         List<String> errors = new ArrayList<>();
 
-        List<String> iconNames = icons.stream().map(file -> {
-            String relativePath = file.getAbsolutePath().replaceAll("\\\\", "/");
-            relativePath = relativePath.substring(relativePath.lastIndexOf("/extra-icons/") + "/extra-icons/".length());
-            return relativePath;
-        }).toList();
-
+        List<String> iconNames = icons.stream()
+            .map(file -> {
+                String relativePath = file.getAbsolutePath().replaceAll("\\\\", "/");
+                relativePath = relativePath.substring(relativePath.lastIndexOf("/extra-icons/") + "/extra-icons/".length());
+                return relativePath;
+            }).toList();
         ExtraIconProvider.allModels().forEach(model -> {
             String extraIconName = model.getIcon().replace("extra-icons/", "");
             if (!iconNames.contains(extraIconName)) {
@@ -199,6 +204,31 @@ public class ResourcesTest {
 
         if (!errors.isEmpty()) {
             fail("some ExtraIconProvider model icons not found: " + errors);
+        }
+    }
+
+    @Test
+    public void extra_icons_provider_newUI_icons_should_exist_when_needed() {
+        List<String> errors = new ArrayList<>();
+
+        List<String> newUIIconNamesWithParentDir = icons.stream()
+            .filter(file -> file.getAbsolutePath().contains("newui"))
+            .map(file -> {
+                String relativePath = file.getAbsolutePath().replaceAll("\\\\", "/");
+                relativePath = relativePath.substring(relativePath.lastIndexOf("/extra-icons/") + "/extra-icons/".length());
+                return relativePath;
+            }).toList();
+        ExtraIconProvider.allModels().forEach(model -> {
+            String newUIIconName = "newui/" + model.getIcon().replace("extra-icons/", "");
+            if (model.isAutoLoadNewUIIconVariant()) {
+                if (!newUIIconNamesWithParentDir.contains(newUIIconName)) {
+                    errors.add(model.getId() + " model's new UI icon " + newUIIconName + " not found");
+                }
+            }
+        });
+
+        if (!errors.isEmpty()) {
+            fail("some ExtraIconProvider model new UI icons not found: " + errors);
         }
     }
 }
