@@ -17,7 +17,6 @@ import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.xpath.XPathConstants
 import javax.xml.xpath.XPathFactory
 
-
 fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
