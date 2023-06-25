@@ -4,6 +4,7 @@
 * support [Just](https://github.com/casey/just) `justfile` files.
 * add *new UI* icons for JPA Buddy, Flyway, Liquibase and TeamCity folders. New UI icons are automatically loaded when needed.
 * add *new UI* icons for various Helm files and folders.
+* add *new UI* icons for various archive files.
 * restore missing Helm templates test folder icon.
 * minor performance optimizations.
 
