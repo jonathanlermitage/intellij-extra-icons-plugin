@@ -256,42 +256,57 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofDir("helm_dir", "extra-icons/helmDirectory.svg", "Helm chart containing folder")
                     .iconEnabler(IconEnablerType.IS_HELM_FOLDER)
                     .altIcons("extra-icons/helmlogo.svg", "extra-icons/helmlogo_alt.svg")
-                    .tags(ModelTag.HELM),
+                    .tags(ModelTag.HELM)
+                    .autoLoadNewUIIconVariant(),
                 ofFile("helm_chart_yaml", "extra-icons/helmChart.svg", "Helm: Chart.yaml")
                     .eq("chart.yaml")
                     .iconEnabler(IconEnablerType.IS_IN_HELM_FOLDER)
-                    .tags(ModelTag.HELM),
+                    .tags(ModelTag.HELM)
+                    .autoLoadNewUIIconVariant(),
                 ofFile("helm_requirements_yaml", "extra-icons/helmRequirementsYaml.svg", "Helm: requirements.yaml")
                     .eq("requirements.yaml")
                     .iconEnabler(IconEnablerType.IS_IN_HELM_FOLDER)
-                    .tags(ModelTag.HELM),
+                    .tags(ModelTag.HELM)
+                    .autoLoadNewUIIconVariant(),
                 ofFile("helm_values_yaml", "extra-icons/helmValues.svg", "Helm: values.yaml")
                     .eq("values.yaml")
                     .iconEnabler(IconEnablerType.IS_IN_HELM_FOLDER)
-                    .tags(ModelTag.HELM),
+                    .tags(ModelTag.HELM)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("helm_charts_dir", "extra-icons/helmChartsDirectory.svg", "Helm: charts folder")
                     .eq("charts")
                     .iconEnabler(IconEnablerType.IS_IN_HELM_FOLDER)
-                    .tags(ModelTag.HELM),
+                    .tags(ModelTag.HELM)
+                    .autoLoadNewUIIconVariant(),
                 ofDir("helm_templates_dir", "extra-icons/helmTemplatesDirectory.svg", "Helm: templates folder")
                     .eq("templates")
                     .iconEnabler(IconEnablerType.IS_IN_HELM_FOLDER)
-                    .tags(ModelTag.HELM),
+                    .tags(ModelTag.HELM)
+                    .autoLoadNewUIIconVariant(),
+                ofDir("helm_templates_test_dir", "extra-icons/helmTemplatesTestDirectory.svg", "Helm: templates tests folder")
+                    .eq("tests")
+                    .parents("templates")
+                    .iconEnabler(IconEnablerType.IS_IN_HELM_FOLDER)
+                    .tags(ModelTag.HELM)
+                    .autoLoadNewUIIconVariant(),
                 ofFile("helm_helpers.tpl", "extra-icons/helmUndeployable.svg", "Helm: templates/_helpers.tpl")
                     .eq("_helpers.tpl")
                     .parents("templates")
                     .iconEnabler(IconEnablerType.IS_IN_HELM_FOLDER)
-                    .tags(ModelTag.HELM),
+                    .tags(ModelTag.HELM)
+                    .autoLoadNewUIIconVariant(),
                 ofFile("helm_notes_txt", "extra-icons/helmNotes.svg", "Helm: templates/NOTES.txt")
                     .eq("notes.txt")
                     .parents("templates")
                     .iconEnabler(IconEnablerType.IS_IN_HELM_FOLDER)
-                    .tags(ModelTag.HELM),
+                    .tags(ModelTag.HELM)
+                    .autoLoadNewUIIconVariant(),
                 ofFile("helm_all_yaml", "extra-icons/helm.svg", "Helm: *.yaml")
                     .end(".yaml")
                     .iconEnabler(IconEnablerType.IS_IN_HELM_FOLDER)
                     .altIcons("extra-icons/helmlogo.svg", "extra-icons/helmlogo_alt.svg")
-                    .tags(ModelTag.HELM),
+                    .tags(ModelTag.HELM)
+                    .autoLoadNewUIIconVariant(),
 
                 // angular
                 ofFile("angular_json", "extra-icons/angular2.svg", "Angular: angular.json")

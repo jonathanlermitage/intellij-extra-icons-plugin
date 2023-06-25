@@ -3,6 +3,8 @@
 ## 2023.2.7-231 (WIP)
 * support [Just](https://github.com/casey/just) `justfile` files.
 * add *new UI* icons for JPA Buddy, Flyway, Liquibase and TeamCity folders. New UI icons are automatically loaded when needed.
+* add *new UI* icons for various Helm files and folders.
+* restore missing Helm templates test folder icon.
 * minor performance optimizations.
 
 ## 2023.2.6-231 (2023/06/11)
