@@ -391,6 +391,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .iconEnabler(IconEnablerType.IS_IN_ANGULAR_FOLDER)
                     .tags(ModelTag.ANGULAR2, ModelTag.HTML),
 
+                // elixir
+                ofFile("elixir", "extra-icons/elixir.svg", "Elixir: *.ex, *.exs")
+                    .end(".ex", ".exs", "mix.lock"),
+
                 // nestjs
                 ofFile("nestjs", "extra-icons/nestjs.svg", "NestJS: .nest-cli.json, nest-cli.json, nestconfig.json, .nestconfig.json")
                     .eq(".nest-cli.json", "nest-cli.json", "nestconfig.json", ".nestconfig.json")
@@ -557,6 +561,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".commitlintrc", ".commitlintrc.json", ".commitlintrc.yaml", ".commitlintrc.yml",
                         ".commitlintrc.js", ".commitlintrc.cjs", ".commitlintrc.ts", "commitlint.config.js",
                         "commitlint.config.cjs", "commitlint.config.ts"),
+                ofFile("coveralls", "extra-icons/coveralls.svg", "Coveralls: coveralls.json")
+                    .eq("coveralls.json"),
                 ofFile("gradle_main", "extra-icons/gradle.svg", "Gradle: build.gradle, gradle.properties, settings.gradle")
                     .eq("build.gradle", "gradle.properties", "settings.gradle"),
                 ofFile("gradle_kotlin", "extra-icons/gradle_kotlin_colored.svg", "Gradle (Kotlin DSL): build.gradle.kts, settings.gradle.kts")
@@ -908,6 +914,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("screwdriver.yaml"),
                 ofFile("stacksmith", "extra-icons/bitnami.svg", "Bitnami Stacksmith: stackerfile.yml")
                     .eq("stackerfile.yml"),
+                ofFile("sonar", "extra-icons/sonar.svg", "Sonar: sonar-project.properties")
+                    .eq("sonar-project.properties"),
                 ofFile("svgo", "extra-icons/svgo.svg", "SVGO: svgo(.yml,.yaml)")
                     .eq("svgo").end(YML)
                     .altIcons("extra-icons/svgo_alt.svg"),
