@@ -34,8 +34,6 @@ public class IconUtils {
 
     private static final @NonNls Logger LOGGER = Logger.getInstance(IconUtils.class);
 
-    private static final UITypeIconsPreference UI_TYPE_ICONS_PREFERENCE = SettingsService.getIDEInstance().getUiTypeIconsPreference();
-
     private static final int SCALING_SIZE = 16;
 
     //private static final Pattern cssVarRe = Pattern.compile("var\\([-\\w]+\\)");
@@ -44,7 +42,7 @@ public class IconUtils {
         if (model.getIconType() == IconType.PATH) {
             // use the new UI icon if exists + asked by user + new UI enabled, otherwise use the old UI icon
             String iconPathToLoad = model.getIcon(); // defaults to old UI icon
-            switch (UI_TYPE_ICONS_PREFERENCE) {
+            switch (SettingsService.getIDEInstance().getUiTypeIconsPreference()) {
                 case BASED_ON_ACTIVE_UI_TYPE -> {
                     if (UIUtils.isNewUIEnabled() && model.isAutoLoadNewUIIconVariant()) {
                         iconPathToLoad = "/" + model.getIcon().replace("extra-icons/", "extra-icons/newui/"); //NON-NLS
