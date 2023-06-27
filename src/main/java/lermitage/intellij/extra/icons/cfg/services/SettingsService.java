@@ -8,6 +8,7 @@ import com.intellij.openapi.project.Project;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.Globals;
 import lermitage.intellij.extra.icons.Model;
+import lermitage.intellij.extra.icons.UITypeIconsPreference;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,6 +33,8 @@ public abstract class SettingsService {
     public Double additionalUIScale;
     @SuppressWarnings("WeakerAccess")
     public Boolean pluginIsConfigurableHintNotifDisplayed;
+    @SuppressWarnings("WeakerAccess")
+    public UITypeIconsPreference uiTypeIconsPreference;
 
     private Pattern ignoredPatternObj;
     private Boolean isIgnoredPatternValid;
@@ -48,7 +51,7 @@ public abstract class SettingsService {
     }
 
     public String getIgnoredPattern() {
-        return ignoredPattern;
+        return ignoredPattern == null ? "" : ignoredPattern;
     }
 
     public Pattern getIgnoredPatternObj() {
@@ -101,6 +104,17 @@ public abstract class SettingsService {
 
     public void setPluginIsConfigurableHintNotifDisplayed(Boolean pluginIsConfigurableHintNotifDisplayed) {
         this.pluginIsConfigurableHintNotifDisplayed = pluginIsConfigurableHintNotifDisplayed;
+    }
+
+    public UITypeIconsPreference getUiTypeIconsPreference() {
+        if (uiTypeIconsPreference == null) {
+            uiTypeIconsPreference = UITypeIconsPreference.BASED_ON_ACTIVE_UI_TYPE;
+        }
+        return uiTypeIconsPreference;
+    }
+
+    public void setUiTypeIconsPreference(UITypeIconsPreference uiTypeIconsPreference) {
+        this.uiTypeIconsPreference = uiTypeIconsPreference;
     }
 
     @NotNull

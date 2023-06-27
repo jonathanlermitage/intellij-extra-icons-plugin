@@ -20,6 +20,7 @@ import com.intellij.ui.table.JBTable;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelTag;
 import lermitage.intellij.extra.icons.ModelType;
+import lermitage.intellij.extra.icons.UITypeIconsPreference;
 import lermitage.intellij.extra.icons.cfg.dialogs.AskSingleTextDialog;
 import lermitage.intellij.extra.icons.cfg.dialogs.IconPackUninstallerDialog;
 import lermitage.intellij.extra.icons.cfg.dialogs.ModelDialog;
@@ -96,6 +97,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JLabel iconPackContextHelpLabel;
     private JButton buttonShowIconPacksFromWeb;
     private JPanel iconPackPanel;
+    private JComboBox<String> uiTypeSelector;
+    private JLabel uiTypeSelectorHelpLabel;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -255,8 +258,11 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         if (!CollectionUtils.isEqualCollection(customModels.stream().map(Model::isEnabled).collect(Collectors.toList()), collectUserIconEnabledStates())) {
             return true;
         }
-        if (service.getIgnoredPattern() == null && ignoredPatternTextField.getText().isEmpty()) {
-            return false;
+        if (service.getUiTypeIconsPreference() != getSelectedUITypeIconsPreference()) {
+            return true;
+        }
+        if (!service.getIgnoredPattern().equals(ignoredPatternTextField.getText())) {
+            return true;
         }
         return !ignoredPatternTextField.getText().equals(service.getIgnoredPattern())
             || !additionalUIScaleTextField.getText().equals(Double.toString(service.additionalUIScale));
@@ -279,6 +285,25 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         ).collect(Collectors.toList());
     }
 
+    private UITypeIconsPreference getSelectedUITypeIconsPreference() {
+        int selectedIndex = uiTypeSelector.getSelectedIndex();
+        if (selectedIndex == 0) {
+            return UITypeIconsPreference.BASED_ON_ACTIVE_UI_TYPE;
+        } else if (selectedIndex == 1) {
+            return UITypeIconsPreference.PREFER_OLD_UI_ICONS;
+        } else {
+            return UITypeIconsPreference.PREFER_NEW_UI_ICONS;
+        }
+    }
+
+    private void setSelectedUITypeIconsPreference(UITypeIconsPreference uiTypeIconsPreference) {
+        switch (uiTypeIconsPreference) {
+            case BASED_ON_ACTIVE_UI_TYPE -> uiTypeSelector.setSelectedIndex(0);
+            case PREFER_OLD_UI_ICONS -> uiTypeSelector.setSelectedIndex(1);
+            case PREFER_NEW_UI_ICONS -> uiTypeSelector.setSelectedIndex(2);
+        }
+    }
+
     @Override
     public void apply() {
         SettingsService service = SettingsService.getInstance(project);
@@ -287,6 +312,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             projectService.setOverrideIDESettings(overrideSettingsCheckbox.isSelected());
             projectService.setAddToIDEUserIcons(addToIDEUserIconsCheckbox.isSelected());
         }
+        service.setUiTypeIconsPreference(getSelectedUITypeIconsPreference());
         service.setDisabledModelIds(collectDisabledModelIds());
         service.setIgnoredPattern(ignoredPatternTextField.getText());
         try {
@@ -325,6 +351,11 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void initComponents() {
+        uiTypeSelector.addItem(i18n.getString("uitype.selector.auto.select"));
+        uiTypeSelector.addItem(i18n.getString("uitype.selector.prefer.old"));
+        uiTypeSelector.addItem(i18n.getString("uitype.selector.prefer.new"));
+        setSelectedUITypeIconsPreference(SettingsService.getIDEInstance().getUiTypeIconsPreference());
+
         disableOrEnableLabel.setText(i18n.getString("quick.action.label"));
 
         buttonEnableAll.setText(i18n.getString("btn.enable.all"));
@@ -357,6 +388,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             additionalUIScaleTextField.setVisible(false);
             buttonReloadProjectsIcons.setVisible(false);
             iconPackPanel.setVisible(false);
+            uiTypeSelector.setVisible(false);
+            uiTypeSelectorHelpLabel.setVisible(false);
         }
         buttonReloadProjectsIcons.setText(i18n.getString("btn.reload.project.icons"));
         buttonReloadProjectsIcons.setToolTipText(i18n.getString("btn.reload.project.icons.tooltip"));
@@ -383,6 +416,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         iconPackContextHelpLabel.setText("");
         iconPackContextHelpLabel.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/contextHelp.svg", SettingsForm.class)); //NON-NLS
         iconPackContextHelpLabel.setToolTipText(i18n.getString("icon.pack.context.help"));
+
+        uiTypeSelectorHelpLabel.setText("");
+        uiTypeSelectorHelpLabel.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/contextHelp.svg", SettingsForm.class)); //NON-NLS
+        uiTypeSelectorHelpLabel.setToolTipText(i18n.getString("uitype.selector.context.help"));
 
         buttonUninstallIconPack.setText(i18n.getString("btn.uninstall.icon.pack"));
         buttonUninstallIconPack.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/remove.svg", SettingsForm.class)); //NON-NLS

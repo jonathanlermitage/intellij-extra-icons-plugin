@@ -36,8 +36,9 @@ public class ResourcesTest {
         List<File> iconsFolders = Arrays.asList(
             new File("src/main/resources/extra-icons/"),
             new File("src/main/resources/extra-icons/ide/"),
-            new File("src/main/resources/extra-icons/newui/"),
             new File("src/main/resources/extra-icons/officedocs/"),
+            new File("src/main/resources/extra-icons/newui/"),
+            new File("src/main/resources/extra-icons/newui/ide/"),
             new File("src/test/resources/issue141/"));
         iconsFolders.forEach(iconsFolder -> {
             assertTrue(iconsFolder.exists());
