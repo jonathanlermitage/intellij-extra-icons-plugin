@@ -915,7 +915,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("stacksmith", "extra-icons/bitnami.svg", "Bitnami Stacksmith: stackerfile.yml")
                     .eq("stackerfile.yml"),
                 ofFile("sonar", "extra-icons/sonar.svg", "Sonar: sonar-project.properties")
-                    .eq("sonar-project.properties"),
+                    .eq("sonar-project.properties", ".sonarcloud.properties"),
                 ofFile("svgo", "extra-icons/svgo.svg", "SVGO: svgo(.yml,.yaml)")
                     .eq("svgo").end(YML)
                     .altIcons("extra-icons/svgo_alt.svg"),
