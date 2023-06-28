@@ -41,8 +41,7 @@ public class IconUtils {
 
     public static Icon getIcon(Model model, double additionalUIScale, @NotNull UITypeIconsPreference uiTypeIconsPreference) {
         if (model.getIconType() == IconType.PATH) {
-            // use the new UI icon if exists + asked by user + new UI enabled, otherwise use the old UI icon
-            String iconPathToLoad = model.getIcon(); // defaults to old UI icon
+            String iconPathToLoad = model.getIcon();
             switch (uiTypeIconsPreference) {
                 case BASED_ON_ACTIVE_UI_TYPE -> {
                     if (UIUtils.isNewUIEnabled() && model.isAutoLoadNewUIIconVariant()) {
