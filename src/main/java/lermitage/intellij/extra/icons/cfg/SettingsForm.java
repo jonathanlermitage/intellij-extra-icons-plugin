@@ -97,7 +97,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JLabel iconPackContextHelpLabel;
     private JButton buttonShowIconPacksFromWeb;
     private JPanel iconPackPanel;
-    private JComboBox<String> uiTypeSelector;
+    private JComboBox<ComboBoxWithImageItem> uiTypeSelector;
     private JLabel uiTypeSelectorHelpLabel;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
@@ -351,9 +351,16 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void initComponents() {
-        uiTypeSelector.addItem(i18n.getString("uitype.selector.auto.select"));
-        uiTypeSelector.addItem(i18n.getString("uitype.selector.prefer.old"));
-        uiTypeSelector.addItem(i18n.getString("uitype.selector.prefer.new"));
+        uiTypeSelector.setRenderer(new ComboBoxWithImageRenderer());
+        uiTypeSelector.addItem(new ComboBoxWithImageItem(
+            "extra-icons/plugin-internals/auto.svg", //NON-NLS
+            i18n.getString("uitype.selector.auto.select")));
+        uiTypeSelector.addItem(new ComboBoxWithImageItem(
+            "extra-icons/plugin-internals/folder_oldui.svg",//NON-NLS
+            i18n.getString("uitype.selector.prefer.old")));
+        uiTypeSelector.addItem(new ComboBoxWithImageItem(
+            "extra-icons/plugin-internals/folder_newui.svg", //NON-NLS
+            i18n.getString("uitype.selector.prefer.new")));
         setSelectedUITypeIconsPreference(SettingsService.getIDEInstance().getUiTypeIconsPreference());
 
         disableOrEnableLabel.setText(i18n.getString("quick.action.label"));

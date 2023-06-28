@@ -24,6 +24,11 @@ public class ComboBoxWithImageItem {
         this.imagePath = modelTag.getIcon();
     }
 
+    public ComboBoxWithImageItem(@NotNull String imagePath, String title) {
+        this.title = title;
+        this.imagePath = imagePath;
+    }
+
     /** item's text */
     public String getTitle() {
         return title;
