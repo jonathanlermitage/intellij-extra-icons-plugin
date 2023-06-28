@@ -336,7 +336,7 @@ public class ModelDialog extends DialogWrapper {
         typeComboBox.updateUI();
         iconPackField.setText(model.getIconPack());
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
-        SwingUtilities.invokeLater(() -> iconLabel.setIcon(IconUtils.getIcon(model, additionalUIScale)));
+        SwingUtilities.invokeLater(() -> iconLabel.setIcon(IconUtils.getIcon(model, additionalUIScale, SettingsService.getIDEInstance().getUiTypeIconsPreference())));
         if (model.getIconType() == IconType.PATH) {
             for (int itemIdx = 0; itemIdx < chooseIconSelector.getItemCount(); itemIdx++) {
                 Object item = chooseIconSelector.getItemAt(itemIdx);

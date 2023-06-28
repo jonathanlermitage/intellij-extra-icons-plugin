@@ -55,6 +55,7 @@ public abstract class BaseIconProvider
 
     private long checks_done = 0;
     private long checks_saved = 0;
+    private final UITypeIconsPreference uiTypeIconsPreference;
 
     private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 
@@ -65,6 +66,7 @@ public abstract class BaseIconProvider
         this.models = getAllModels().stream()
             .filter(model -> model.getUiType() == null || model.getUiType() == uiType)
             .toList();
+        uiTypeIconsPreference = SettingsService.getIDEInstance().getUiTypeIconsPreference();
     }
 
     /**
@@ -255,7 +257,7 @@ public abstract class BaseIconProvider
                     }
                     checks_done++;
                     if (model.check(parentName, normalizedFileName, normalizedFileAbsPath, facets, project)) {
-                        return IconUtils.getIcon(model, additionalUIScale);
+                        return IconUtils.getIcon(model, additionalUIScale, uiTypeIconsPreference);
                     } else {
                         parentModelIdWhoseCheckFailed = model.getParentId() == null ? model.getId() : model.getParentId();
                     }

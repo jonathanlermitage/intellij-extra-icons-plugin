@@ -17,6 +17,7 @@ import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.UITypeIconsPreference;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -38,11 +39,11 @@ public class IconUtils {
 
     //private static final Pattern cssVarRe = Pattern.compile("var\\([-\\w]+\\)");
 
-    public static Icon getIcon(Model model, double additionalUIScale) {
+    public static Icon getIcon(Model model, double additionalUIScale, @NotNull UITypeIconsPreference uiTypeIconsPreference) {
         if (model.getIconType() == IconType.PATH) {
             // use the new UI icon if exists + asked by user + new UI enabled, otherwise use the old UI icon
             String iconPathToLoad = model.getIcon(); // defaults to old UI icon
-            switch (SettingsService.getIDEInstance().getUiTypeIconsPreference()) {
+            switch (uiTypeIconsPreference) {
                 case BASED_ON_ACTIVE_UI_TYPE -> {
                     if (UIUtils.isNewUIEnabled() && model.isAutoLoadNewUIIconVariant()) {
                         iconPathToLoad = "/" + model.getIcon().replace("extra-icons/", "extra-icons/newui/"); //NON-NLS

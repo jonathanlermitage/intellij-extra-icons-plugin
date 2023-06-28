@@ -488,7 +488,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         customModels.forEach(m -> {
                 try {
                     userIconsSettingsTableModel.addRow(new Object[]{
-                        IconUtils.getIcon(m, additionalUIScale),
+                        IconUtils.getIcon(m, additionalUIScale, SettingsService.getIDEInstance().getUiTypeIconsPreference()),
                         m.isEnabled(),
                         m.getDescription(),
                         m.getIconPack()
@@ -600,7 +600,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
         Icon restartIcon = IconLoader.getIcon("extra-icons/plugin-internals/reboot.svg", SettingsForm.class); //NON-NLS
         allRegisteredModels.forEach(m -> pluginIconsSettingsTableModel.addRow(new Object[]{
-                IconUtils.getIcon(m, additionalUIScale),
+                IconUtils.getIcon(m, additionalUIScale, SettingsService.getIDEInstance().getUiTypeIconsPreference()),
                 !disabledModelIds.contains(m.getId()),
                 m.getDescription(),
                 Arrays.toString(m.getTags().stream().map(ModelTag::getName).toArray()).replaceAll("\\[|]*", "").trim(),
