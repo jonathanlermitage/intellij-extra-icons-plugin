@@ -8,7 +8,7 @@
 * add *new UI* icons for JPA Buddy, Flyway, Liquibase and TeamCity folders. New UI icons are automatically loaded when needed.
 * add *new UI* icons for various Helm files and folders.
 * add *new UI* icons for various archive files.
-* restore missing Helm templates test folder icon.
+* fix: restore missing Helm templates test folder icon.
 * minor performance optimizations.
 
 ## 2023.2.6-231 (2023/06/11)
