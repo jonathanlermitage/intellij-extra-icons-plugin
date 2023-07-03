@@ -28,7 +28,9 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
     }
 
     private static final Logger LOGGER = Logger.getInstance(GitSubmoduleFolderEnablerService.class);
-    private static final String GIT_MODULES_FILENAME = ".gitmodules";
+
+    public static final String GIT_MODULES_FILENAME = ".gitmodules";
+    
     private static final Pattern GIT_MODULES_PATH_PATTERN = Pattern.compile("\\s*path\\s*=\\s*([^\\s]+)\\s*");
 
     private Set<String> submoduleFolders = Collections.emptySet();

@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 2023.2.7-231 (WIP)
+* improve Git Submodules support. Git Submodules are now automatically re-detected on every `.gitmodules` file update.
 * support Coveralls, Elixir and Sonarqube files. Thanks **JuanDGiraldoM** for his contribution!
 * support [Just](https://github.com/casey/just) `justfile` files.
 * you can now choose to use icons *new UI* variants based on current active UI, or force the use of *old* or *new UI* variants, when they exist. See Extra Icons settings.

@@ -25,7 +25,7 @@
       Some narrow-minded people organized a review-bombing against my plugin (and sent me very aggressive emails, sometimes death threats;
       seriously... they're crazy), which is why you see many 1-star ratings. JetBrains support accepted to remove most of the toxic reviews,
       but unfortunately, they refused to remove the 1-star ratings...<br>
-      If you want to help plugin developers, please consider <a href="https://youtrack.jetbrains.com/issue/MP-4248">up-voting YouTrack issue MP-4248</a>. Thank you!
+      📢 If you want to <b>help plugin developers</b>, please consider up-voting YouTrack issues <a href="https://youtrack.jetbrains.com/issue/MP-4248"><b>MP-4248</b></a> and <a href="https://youtrack.jetbrains.com/issue/MP-5648/Allow-reviewing-payed-plugins-only-by-users-actually-owning-its-license"><b>MP-5648</b></a>. Thank you!
       <br>
       <br>
       <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin">GitHub</a> | <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues">Issues</a> | <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/CHANGELOG.md#extra-icons-change-log">Changelog</a> | <a href="https://www.linkedin.com/in/jonathan-lermitage/">LinkedIn</a> | <a href="https://vshymanskyy.github.io/StandWithUkraine/">💙 Help Ukraine 💛</a>
@@ -93,10 +93,16 @@
         <!-- Startup tasks https://plugins.jetbrains.com/docs/intellij/plugin-components.html#project-open -->
         <!-- Init all Icon Enablers once indexing is done then reload projects icons -->
         <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.EnablerServicesPostStartupActivity"
-                             id="ExtraIcons_EnablerServicesPostStartupActivity" order="last"/>
+                             id="ExtraIcons_EnablerServicesPostStartupActivity"
+                             order="last"/>
         <!-- Show some reminders about Extra Icons, because some users ignore important features -->
         <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.HintNotificationsStartupActivity"
-                             id="ExtraIcons_HintNotificationsStartupActivity" order="last"/>
+                             id="ExtraIcons_HintNotificationsStartupActivity"
+                             order="last"/>
+        <!-- Various events on file update -->
+        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.VFSChangesListenersPostStartupActivity"
+                             id="ExtraIcons_VFSChangesListenersPostStartupActivity"
+                             order="last, after ExtraIcons_EnablerServicesPostStartupActivity"/>
     </extensions>
 
 </idea-plugin>
