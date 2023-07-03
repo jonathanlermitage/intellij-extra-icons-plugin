@@ -3,6 +3,7 @@
 package lermitage.intellij.extra.icons.activity;
 
 import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.roots.ProjectRootManager;
@@ -39,19 +40,21 @@ public class VFSChangesListenersPostStartupActivity implements ProjectActivity {
 
     private void refreshGitSubmodules(@NotNull List<? extends VFileEvent> events, @NotNull Project project) {
         try {
-            final ProjectFileIndex fileIndex = ProjectRootManager.getInstance(project).getFileIndex();
-            boolean gitmodulesUpdated = events.stream()
-                .anyMatch(vFileEvent -> vFileEvent.getFile() != null
-                    && vFileEvent.isFromSave()
-                    && fileIndex.isInProject(vFileEvent.getFile())
-                    && vFileEvent.getPath().endsWith(GitSubmoduleFolderEnablerService.GIT_MODULES_FILENAME)
-                );
-            if (gitmodulesUpdated) {
-                IconEnablerProvider.getIconEnabler(project, IconEnablerType.IS_GIT_SUBMODULE_FOLDER).ifPresent(iconEnabler ->
-                    iconEnabler.init(project)
-                );
-                ProjectUtils.refreshProject(project);
-            }
+            DumbService.getInstance(project).runReadActionInSmartMode(() -> {
+                final ProjectFileIndex fileIndex = ProjectRootManager.getInstance(project).getFileIndex();
+                boolean gitmodulesUpdated = events.stream()
+                    .anyMatch(vFileEvent -> vFileEvent.getFile() != null
+                        && vFileEvent.isFromSave()
+                        && fileIndex.isInProject(vFileEvent.getFile())
+                        && vFileEvent.getPath().endsWith(GitSubmoduleFolderEnablerService.GIT_MODULES_FILENAME)
+                    );
+                if (gitmodulesUpdated) {
+                    IconEnablerProvider.getIconEnabler(project, IconEnablerType.IS_GIT_SUBMODULE_FOLDER).ifPresent(iconEnabler ->
+                        iconEnabler.init(project)
+                    );
+                    ProjectUtils.refreshProject(project);
+                }
+            });
         } catch (Exception e) {
             LOGGER.warn(e);
         }
