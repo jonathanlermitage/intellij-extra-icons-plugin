@@ -99,7 +99,7 @@ public class ResourcesTest {
             }
         }
         if (!errors.isEmpty()) {
-            fail("some PNG icons don't have 2x definition : " + errors);
+            fail("some PNG icons don't have 2x definition : " + arrayToString(errors));
         }
     }
 
@@ -116,7 +116,7 @@ public class ResourcesTest {
             }
         }
         if (!errors.isEmpty()) {
-            fail("some dark icons are not coupled with non-dark icons: " + errors);
+            fail("some dark icons are not coupled with non-dark icons: " + arrayToString(errors));
         }
     }
 
@@ -137,7 +137,7 @@ public class ResourcesTest {
             }
         });
         if (!errors.isEmpty()) {
-            fail("some SVG icons are not 16x16: " + errors);
+            fail("some SVG icons are not 16x16: " + arrayToString(errors));
         }
     }
 
@@ -157,7 +157,7 @@ public class ResourcesTest {
             }
         });
         if (!errors.isEmpty()) {
-            fail("some SVG icons have unsupported style attributes: " + errors);
+            fail("some SVG icons have unsupported style attributes: " + arrayToString(errors));
         }
     }
 
@@ -181,7 +181,7 @@ public class ResourcesTest {
             }
         });
         if (!errors.isEmpty()) {
-            fail("some SVG icons did not load: " + errors);
+            fail("some SVG icons did not load: " + arrayToString(errors));
         }
     }
 
@@ -203,7 +203,7 @@ public class ResourcesTest {
         });
 
         if (!errors.isEmpty()) {
-            fail("some ExtraIconProvider model icons not found: " + errors);
+            fail("some ExtraIconProvider model icons not found: " + arrayToString(errors));
         }
     }
 
@@ -228,7 +228,38 @@ public class ResourcesTest {
         });
 
         if (!errors.isEmpty()) {
-            fail("some ExtraIconProvider model new UI icons not found: " + errors);
+            fail("some ExtraIconProvider model new UI icons not found: " + arrayToString(errors));
         }
+    }
+
+    /**
+     * If an IDE icon named "foo.svg" is overridden by a custom IDE icon with the same name, the icon displayed in
+     * the icons list in settings will also be replaced by current active icon override. This is why their name
+     * should be different. In practice, we consider that IDE's icon "foo.svg" should be overridden by "foo_.svg".
+     * Alt icons are not affected, because they already have different name.
+     */
+    @Test
+    public void ide_icons_name_should_differ_from_actual_icon_file_name() {
+        List<String> errors = new ArrayList<>();
+
+        ExtraIconProvider.allModels().forEach(model -> {
+            if (model.getIdeIcon() != null) {
+                if (model.getIcon().endsWith(model.getIdeIcon())) {
+                    errors.add(model.getId() + " IDE model's icon " + model.getIdeIcon() + " and custom icon "
+                        + model.getIcon() + " should be different");
+                }
+            }
+        });
+
+        if (!errors.isEmpty()) {
+            fail("some ExtraIconProvider model IDE icons have bad name: " + arrayToString(errors));
+        }
+    }
+
+    private String arrayToString(List<String> items) {
+        StringBuilder sb = new StringBuilder();
+        items.forEach(s -> sb.append("\n - ").append(s));
+        sb.append("\n");
+        return sb.toString();
     }
 }

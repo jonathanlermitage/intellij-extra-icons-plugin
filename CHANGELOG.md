@@ -9,6 +9,7 @@
 * add *new UI* icons for various Helm files and folders.
 * add *new UI* icons for various archive files.
 * fix: restore missing Helm templates test folder icon.
+* fix IDE icons display in settings panel.
 * minor performance optimizations.
 
 ## 2023.2.6-231 (2023/06/11)

@@ -32,13 +32,13 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 //
                 // docker
                 ofIcon("ide_docker",
-                    "Docker.svg", "extra-icons/docker.svg",
+                    "Docker.svg", "extra-icons/docker_.svg",
                     "IDE icon: Docker")
                     .altIcons("extra-icons/docker_alt.svg", "extra-icons/docker_alt2.svg")
                     .tags(ModelTag.DOCKER),
                 // docker compose
                 ofIcon("ide_docker_compose",
-                    "DockerCompose.svg", "extra-icons/dockercompose.svg",
+                    "DockerCompose.svg", "extra-icons/dockercompose_.svg",
                     "IDE icon: Docker Compose")
                     .altIcons("extra-icons/dockercompose_alt.svg", "extra-icons/dockercompose_alt2.svg")
                     .tags(ModelTag.DOCKER),
@@ -55,18 +55,18 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .tags(ModelTag.HTML),
                 // java
                 ofIcon("ide_java_enum_class",
-                    "enum.svg", "extra-icons/ide/enum.svg",
+                    "enum.svg", "extra-icons/ide/enum_.svg",
                     "IDE icon: Java enum")
                     .altIcons("extra-icons/ide/enum_alt.svg", "extra-icons/ide/enum_alt2.svg"),
                 ofIcon("ide_java_abstract_exception",
-                    "abstractException.svg", "extra-icons/ide/abstractException.svg",
+                    "abstractException.svg", "extra-icons/ide/abstractException_.svg",
                     "IDE icon: Java abstract exception class"),
                 ofIcon("ide_java_exception_class",
-                    "exceptionClass.svg", "extra-icons/ide/exceptionClass.svg",
+                    "exceptionClass.svg", "extra-icons/ide/exceptionClass_.svg",
                     "IDE icon: Java exception class"),
                 // kotlin
                 ofIcon("ide_kotlin_enum_class",
-                    "enumKotlin.svg", "extra-icons/ide/enumKotlin.svg",
+                    "enumKotlin.svg", "extra-icons/ide/enumKotlin_.svg",
                     "IDE icon: Kotlin enum")
                     .altIcons("extra-icons/ide/enumKotlin_alt.svg", "extra-icons/ide/enumKotlin_alt2.svg"),
                 // kotlin gradle script
@@ -80,7 +80,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     "IDE icon: Bash file"),
                 // yaml
                 ofIcon("ide_yaml",
-                    "yaml.svg", "extra-icons/ide/yaml.svg",
+                    "yaml.svg", "extra-icons/ide/yaml_.svg",
                     "IDE icon: YAML")
                     .altIcons("extra-icons/ide/yaml_alt.svg", "extra-icons/ide/yaml_alt2.svg"),
 
@@ -634,19 +634,19 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("deno.json", "deno.jsonc"),
                 ofFile("deptective", "extra-icons/deptective.png", "Deptective: deptective.json")
                     .eq("deptective.json"),
-                ofFile("docker", "extra-icons/docker.svg", "Docker: dockerfile(.xml,.yml,...)")
+                ofFile("docker", "extra-icons/docker_.svg", "Docker: dockerfile(.xml,.yml,...)")
                     .eq("dockerfile").mayEnd(CFG)
                     .altIcons("extra-icons/docker_alt.svg", "extra-icons/docker_alt2.svg")
                     .tags(ModelTag.DOCKER),
-                ofFile("dockercompose", "extra-icons/dockercompose.svg", "Docker: docker-compose")
+                ofFile("dockercompose", "extra-icons/dockercompose_.svg", "Docker: docker-compose")
                     .eq("docker-compose").mayEnd(CFG)
                     .altIcons("extra-icons/dockercompose_alt.svg", "extra-icons/dockercompose_alt2.svg")
                     .tags(ModelTag.DOCKER),
-                ofFile("docker1", "extra-icons/docker.svg", "Docker: start by 'dockerfile' and end by '.xml,.yml,...'")
+                ofFile("docker1", "extra-icons/docker_.svg", "Docker: start by 'dockerfile' and end by '.xml,.yml,...'")
                     .start("dockerfile").end(CFG)
                     .altIcons("extra-icons/docker_alt.svg", "extra-icons/docker_alt2.svg")
                     .tags(ModelTag.DOCKER),
-                ofFile("dockercompose1", "extra-icons/dockercompose.svg", "Docker: start by 'docker-compose' and end by '.xml,.yml,...'")
+                ofFile("dockercompose1", "extra-icons/dockercompose_.svg", "Docker: start by 'docker-compose' and end by '.xml,.yml,...'")
                     .start("docker-compose").end(CFG)
                     .altIcons("extra-icons/dockercompose_alt.svg", "extra-icons/dockercompose_alt2.svg")
                     .tags(ModelTag.DOCKER),
@@ -1215,11 +1215,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 //
                 // generic
                 //
-                ofFile("docker_generic", "extra-icons/docker.svg", "Docker (generic): start by 'dockerfile'")
+                ofFile("docker_generic", "extra-icons/docker_.svg", "Docker (generic): start by 'dockerfile'")
                     .start("dockerfile")
                     .altIcons("extra-icons/docker_alt.svg", "extra-icons/docker_alt2.svg")
                     .tags(ModelTag.DOCKER),
-                ofFile("docker_generic_2", "extra-icons/docker.svg", "Docker (generic): end with 'dockerfile'")
+                ofFile("docker_generic_2", "extra-icons/docker_.svg", "Docker (generic): end with 'dockerfile'")
                     .end("dockerfile")
                     .altIcons("extra-icons/docker_alt.svg", "extra-icons/docker_alt2.svg")
                     .tags(ModelTag.DOCKER)

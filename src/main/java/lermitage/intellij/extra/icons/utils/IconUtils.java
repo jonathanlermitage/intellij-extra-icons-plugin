@@ -45,12 +45,12 @@ public class IconUtils {
             switch (uiTypeIconsPreference) {
                 case BASED_ON_ACTIVE_UI_TYPE -> {
                     if (UIUtils.isNewUIEnabled() && model.isAutoLoadNewUIIconVariant()) {
-                        iconPathToLoad = "/" + model.getIcon().replace("extra-icons/", "extra-icons/newui/"); //NON-NLS
+                        iconPathToLoad = model.getIcon().replace("extra-icons/", "extra-icons/newui/"); //NON-NLS
                     }
                 }
                 case PREFER_NEW_UI_ICONS -> {
                     if (model.isAutoLoadNewUIIconVariant()) {
-                        iconPathToLoad = "/" + model.getIcon().replace("extra-icons/", "extra-icons/newui/"); //NON-NLS
+                        iconPathToLoad = model.getIcon().replace("extra-icons/", "extra-icons/newui/"); //NON-NLS
                     }
                 }
             }
