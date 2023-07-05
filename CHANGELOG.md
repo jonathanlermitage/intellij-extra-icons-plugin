@@ -5,6 +5,10 @@
 * support Coveralls, Elixir and Sonarqube files. Thanks **JuanDGiraldoM** for his contribution!
 * support [Just](https://github.com/casey/just) `justfile` files.
 * **you can now choose to use icons *new UI* variants** based on current active UI, or force the use of *old* or *new UI* variants, when they exist. See Extra Icons settings.
+* add *new UI* icons for Java Enums.
+* add *new UI* icons for Kotlin Enums.
+* add *new UI* icons for Exceptions.
+* add *new UI* icons for Abstract Exceptions.
 * add *new UI* icons for JPA Buddy, Flyway, Liquibase and TeamCity folders.
 * add *new UI* icons for various Helm files and folders.
 * add *new UI* icons for various archive files.

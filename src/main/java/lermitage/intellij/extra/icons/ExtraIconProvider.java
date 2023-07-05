@@ -57,18 +57,22 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofIcon("ide_java_enum_class",
                     "enum.svg", "extra-icons/ide/enum_.svg",
                     "IDE icon: Java enum")
-                    .altIcons("extra-icons/ide/enum_alt.svg", "extra-icons/ide/enum_alt2.svg"),
+                    .altIcons("extra-icons/ide/enum_alt.svg", "extra-icons/ide/enum_alt2.svg")
+                    .autoLoadNewUIIconVariant(),
                 ofIcon("ide_java_abstract_exception",
                     "abstractException.svg", "extra-icons/ide/abstractException_.svg",
-                    "IDE icon: Java abstract exception class"),
+                    "IDE icon: Java abstract exception class")
+                    .autoLoadNewUIIconVariant(),
                 ofIcon("ide_java_exception_class",
                     "exceptionClass.svg", "extra-icons/ide/exceptionClass_.svg",
-                    "IDE icon: Java exception class"),
+                    "IDE icon: Java exception class")
+                    .autoLoadNewUIIconVariant(),
                 // kotlin
                 ofIcon("ide_kotlin_enum_class",
                     "enumKotlin.svg", "extra-icons/ide/enumKotlin_.svg",
                     "IDE icon: Kotlin enum")
-                    .altIcons("extra-icons/ide/enumKotlin_alt.svg", "extra-icons/ide/enumKotlin_alt2.svg"),
+                    .altIcons("extra-icons/ide/enumKotlin_alt.svg", "extra-icons/ide/enumKotlin_alt2.svg")
+                    .autoLoadNewUIIconVariant(),
                 // kotlin gradle script
                 ofIcon("ide_kotlin_gradle_script",
                     "kotlin_gradle_script.svg", "extra-icons/gradle_kotlin_colored.svg",
