@@ -527,9 +527,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("nuget", "extra-icons/nuget.svg", "Nuget: .nuget/packages.config")
                     .eq("packages.config").parents(".nuget"),
                 ofFile("onap_cba_blueprint", "extra-icons/onap-cba-blueprint.svg", "ONAP CBA: Definitions/*blueprint.json")
-                    .end("blueprint.json").parents("definitions"),
+                    .end("blueprint.json").parents("definitions")
+                    .autoLoadNewUIIconVariant(),
                 ofFile("onap_cba_definitions", "extra-icons/onap-cba-definitions.svg", "ONAP CBA: Definitions/*(artifact_types, data_types, node_types, relationship_types, resources_definition_types).json")
-                    .end("artifact_types.json", "data_types.json", "node_types.json", "relationship_types.json", "resources_definition_types.json").parents("definitions"),
+                    .end("artifact_types.json", "data_types.json", "node_types.json", "relationship_types.json", "resources_definition_types.json").parents("definitions")
+                    .autoLoadNewUIIconVariant(),
                 ofFile("onap_cba_tosca", "extra-icons/onap-cba-tosca.svg", "ONAP CBA: TOSCA-Metadata/*TOSCA.meta")
                     .end("tosca.meta").parents("tosca-metadata"),
                 ofFile("semaphoreci", "extra-icons/semaphoreci.svg", "Semaphore: .semaphore/semaphore.yml")
@@ -1002,7 +1004,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_apple-video", "extra-icons/apple.svg", "Apple Video: *.mov, *.qt")
                     .end(".mov", ".qt"),
                 ofFile("ext_avro_avsc", "extra-icons/avro.svg", "Avro: *.avsc")
-                    .end(".avsc"),
+                    .end(".avsc")
+                    .autoLoadNewUIIconVariant(),
                 ofFile("ext_bin", "extra-icons/binary.svg", "Binary: *.bin")
                     .end(".bin")
                     .altIcons("extra-icons/binary_alt.svg", "extra-icons/binary_alt2.svg"),

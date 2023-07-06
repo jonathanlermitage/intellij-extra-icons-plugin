@@ -9,6 +9,8 @@
 * add *new UI* icons for Kotlin Enums.
 * add *new UI* icons for Exceptions.
 * add *new UI* icons for Abstract Exceptions.
+* add *new UI* icons for Avro files.
+* add *new UI* icons for various ONAP files.
 * add *new UI* icons for JPA Buddy, Flyway, Liquibase and TeamCity folders.
 * add *new UI* icons for various Helm files and folders.
 * add *new UI* icons for various archive files.
