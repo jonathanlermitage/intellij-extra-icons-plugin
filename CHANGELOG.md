@@ -17,6 +17,7 @@
 * fix: restore missing Helm templates test folder icon.
 * fix IDE icons display in settings panel.
 * minor performance optimizations.
+* just a reminder: *IDE icons* override (which targets a specific IDE icon like Java Enums, not a file path) may work randomly with the new UI. [An issue has been accepted](https://youtrack.jetbrains.com/issue/IDEA-321006) by JetBrains and, I guess, a future IDE update will fix this issue. Unfortunately, I can do nothing at the plugin level. We have to wait for a fix at the IDE level.
 
 ## 2023.2.6-231 (2023/06/11)
 * fix [137](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/137). Silent `MissingResourceException` errors when trying to find the PSI object for a file. This should have no impact on user experience, as it seemed to happen when displaying files in folders such as `node_modules` only. Files in these folders will show their original icons.
