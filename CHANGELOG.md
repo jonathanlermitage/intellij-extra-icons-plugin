@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2023.2.7-231 (WIP)
+## 2023.2.7-231 (2023/07/07)
 * **improve Git Submodules support**. Git Submodules are now automatically re-detected on every `.gitmodules` file update.
 * support Coveralls, Elixir and Sonarqube files. Thanks **JuanDGiraldoM** for his contribution!
 * support [Just](https://github.com/casey/just) `justfile` files.
