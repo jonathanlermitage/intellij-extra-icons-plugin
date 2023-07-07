@@ -42,7 +42,9 @@ val testLoggerStyle: String by project
 val pluginNeedsLicense: String by project
 val pluginLanguage: String by project
 val pluginCountry: String by project
-var pluginIdeaVersion= project.findProperty("pluginIdeaVersion")
+val pluginEnableDebugLogs: String by project
+val pluginClearSandboxedIDESystemLogsBeforeRun: String by project
+var pluginIdeaVersion = project.findProperty("pluginIdeaVersion")
 
 if (pluginIdeaVersion.toString().isBlank()) {
     pluginIdeaVersion = "IC-${findLatestStableIdeVersion()}"
@@ -157,6 +159,17 @@ tasks {
             FileUtils.moveFile(projectDir.resolve("${baseName}.zip"), noLicFile)
         }
     }
+    register("clearSandboxedIDESystemLogs") {
+        doFirst {
+            if (pluginClearSandboxedIDESystemLogsBeforeRun.toBoolean()) {
+                val sandboxLogDir = File("${rootProject.projectDir}/.idea-sandbox/${shortenIdeVersion(pluginIdeaVersion.toString())}/system/log/")
+                if (sandboxLogDir.exists() && sandboxLogDir.isDirectory) {
+                    FileUtils.deleteDirectory(sandboxLogDir)
+                    logger.quiet("Deleted sandboxed IDE's log folder $sandboxLogDir")
+                }
+            }
+        }
+    }
     withType<JavaCompile> {
         sourceCompatibility = pluginJavaVersion
         targetCompatibility = pluginJavaVersion
@@ -183,6 +196,8 @@ tasks {
         }
     }
     runIde {
+        dependsOn("clearSandboxedIDESystemLogs")
+
         maxHeapSize = "1g" // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html
 
         if (pluginLanguage.isNotBlank()) {
@@ -197,6 +212,12 @@ tasks {
 
         // force detection of slow operations in EDT when playing with sandboxed IDE (SlowOperations.assertSlowOperationsAreAllowed)
         jvmArgs("-Dide.slow.operations.assertion=true")
+
+        if (pluginEnableDebugLogs.toBoolean()) {
+            systemProperties(
+                "idea.log.debug.categories" to "#lermitage.intellij.extra.icons"
+            )
+        }
 
         autoReloadPlugins.set(false)
 
