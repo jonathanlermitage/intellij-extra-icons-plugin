@@ -21,8 +21,8 @@ fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
     id("java")
-    id("org.jetbrains.intellij") version "1.14.2" // https://github.com/JetBrains/gradle-intellij-plugin
-    id("org.jetbrains.changelog") version "2.1.0" // https://github.com/JetBrains/gradle-changelog-plugin
+    id("org.jetbrains.intellij") version "1.15.0" // https://github.com/JetBrains/gradle-intellij-plugin
+    id("org.jetbrains.changelog") version "2.1.1" // https://github.com/JetBrains/gradle-changelog-plugin
     id("com.github.ben-manes.versions") version "0.47.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("com.palantir.git-version") version "3.0.0" // https://github.com/palantir/gradle-git-version
@@ -44,11 +44,7 @@ val pluginLanguage: String by project
 val pluginCountry: String by project
 val pluginEnableDebugLogs: String by project
 val pluginClearSandboxedIDESystemLogsBeforeRun: String by project
-var pluginIdeaVersion = project.findProperty("pluginIdeaVersion")
-
-if (pluginIdeaVersion.toString().isBlank()) {
-    pluginIdeaVersion = "IC-${findLatestStableIdeVersion()}"
-}
+val pluginIdeaVersion = detectBestIdeVersion()
 
 version = if (pluginVersion == "auto") {
     val versionDetails: Closure<VersionDetails> by extra
@@ -85,9 +81,9 @@ intellij {
     downloadSources.set(pluginDownloadIdeaSources.toBoolean() && !System.getenv().containsKey("CI"))
     instrumentCode.set(true)
     pluginName.set("Extra Icons")
-    sandboxDir.set("${rootProject.projectDir}/.idea-sandbox/${shortenIdeVersion(pluginIdeaVersion.toString())}")
+    sandboxDir.set("${rootProject.projectDir}/.idea-sandbox/${shortenIdeVersion(pluginIdeaVersion)}")
     updateSinceUntilBuild.set(false)
-    version.set(pluginIdeaVersion.toString())
+    version.set(pluginIdeaVersion)
 }
 
 changelog {
@@ -162,7 +158,7 @@ tasks {
     register("clearSandboxedIDESystemLogs") {
         doFirst {
             if (pluginClearSandboxedIDESystemLogsBeforeRun.toBoolean()) {
-                val sandboxLogDir = File("${rootProject.projectDir}/.idea-sandbox/${shortenIdeVersion(pluginIdeaVersion.toString())}/system/log/")
+                val sandboxLogDir = File("${rootProject.projectDir}/.idea-sandbox/${shortenIdeVersion(pluginIdeaVersion)}/system/log/")
                 if (sandboxLogDir.exists() && sandboxLogDir.isDirectory) {
                     FileUtils.deleteDirectory(sandboxLogDir)
                     logger.quiet("Deleted sandboxed IDE's log folder $sandboxLogDir")
@@ -320,4 +316,13 @@ fun readRemoteContent(url: URL): String {
         }
     }
     return content.toString()
+}
+
+/** Get IDE version from gradle.properties or, of wanted, find latest stable IDE version from JetBrains website. */
+fun detectBestIdeVersion(): String {
+    val pluginIdeaVersionFromProps = project.findProperty("pluginIdeaVersion")
+    if (pluginIdeaVersionFromProps.toString().isBlank()) {
+        return "IC-${findLatestStableIdeVersion()}"
+    }
+    return pluginIdeaVersionFromProps.toString()
 }
