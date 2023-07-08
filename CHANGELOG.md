@@ -1,5 +1,9 @@
 # Extra Icons Change Log
 
+## 2023.2.8-231 (WIP)
+* fix usage of a deprecated API in order to improve compatibility with future IDEs.
+* internal: fix unit tests for IDE 2023.2 EAP7.
+
 ## 2023.2.7-231 (2023/07/07)
 * **improve Git Submodules support**. Git Submodules are now automatically re-detected on every `.gitmodules` file update.
 * support Coveralls, Elixir and Sonarqube files. Thanks **JuanDGiraldoM** for his contribution!
