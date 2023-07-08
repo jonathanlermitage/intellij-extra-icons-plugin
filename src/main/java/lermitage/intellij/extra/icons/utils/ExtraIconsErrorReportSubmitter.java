@@ -54,7 +54,7 @@ public class ExtraIconsErrorReportSubmitter extends ErrorReportSubmitter {
                           @NotNull Consumer<? super SubmittedReportInfo> consumer) { // TODO replace com.intellij.util.Consumer by java.util.function.Consumer once IJ API has been updated. Can do nothing for now, and fix will break compatibility with previous IDEs :-(
         try {
             URI uri = constructNewGitHubIssueUri(events, additionalInfo);
-            ModalityUiUtil.invokeLaterIfNeeded(ModalityState.NON_MODAL, () -> BrowserUtil.browse(uri));
+            ModalityUiUtil.invokeLaterIfNeeded(ModalityState.any(), () -> BrowserUtil.browse(uri));
         } catch (Exception e) {
             LOGGER.error("Failed to prepare Extra Icons error reporter", e);
             return false;
