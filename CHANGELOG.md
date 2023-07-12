@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 2023.2.8-231 (WIP)
+* fix [146](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/146). NullPointerException in settings form.
 * fix usage of a deprecated API in order to improve compatibility with future IDEs.
 * internal: fix unit tests for IDE 2023.2 EAP7.
 
