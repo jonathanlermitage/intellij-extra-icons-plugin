@@ -265,7 +265,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             return true;
         }
         return !ignoredPatternTextField.getText().equals(service.getIgnoredPattern())
-            || !additionalUIScaleTextField.getText().equals(Double.toString(service.additionalUIScale));
+            || !additionalUIScaleTextField.getText().equals(Double.toString(service.getAdditionalUIScale()));
     }
 
     private List<String> collectDisabledModelIds() {
