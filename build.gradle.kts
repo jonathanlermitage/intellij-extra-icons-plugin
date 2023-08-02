@@ -211,9 +211,7 @@ tasks {
 
         // force detection of slow operations in EDT when playing with sandboxed IDE (SlowOperations.assertSlowOperationsAreAllowed)
         jvmArgs("-Dide.slow.operations.assertion=true")
-
-        //jvmArgs("-Dextra-icons.use-ide-filename-index=false") // uncomment to use alternate AbstractInFolderEnabler init method
-
+        
         if (pluginEnableDebugLogs.toBoolean()) {
             systemProperties(
                 "idea.log.debug.categories" to "#lermitage.intellij.extra.icons"
