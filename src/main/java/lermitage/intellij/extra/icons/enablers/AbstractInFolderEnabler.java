@@ -3,11 +3,14 @@
 package lermitage.intellij.extra.icons.enablers;
 
 import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.ui.EDT;
+import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,8 +18,10 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @SuppressWarnings("HardCodedStringLiteral")
 public abstract class AbstractInFolderEnabler implements IconEnabler {
@@ -24,7 +29,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     private static final Logger LOGGER = Logger.getInstance(AbstractInFolderEnabler.class);
 
     /** Parent folder(s) where files or folders should be located in order to activate Enabler. */
-    protected Set<String> folders = Collections.emptySet();
+    protected Set<String> enabledFolders = Collections.emptySet();
 
     protected abstract String[] getFilenamesToSearch();
 
@@ -39,23 +44,79 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     @Override
     public synchronized void init(@NotNull Project project) {
         try {
-            initWithIdeFileIndex(project, getFilenamesToSearch());
+            if (SettingsService.getIDEInstance().getUseIDEFilenameIndex()) {
+                enabledFolders = initWithIDEFileIndex(project, getFilenamesToSearch());
+            } else {
+                enabledFolders = initWithRegularFS(project, getFilenamesToSearch());
+            }
             ProjectUtils.refreshProject(project);
         } catch (Throwable e) {
             LOGGER.warn("Canceled init of " + getName() + " Enabler", e);
         }
     }
 
-    private void initWithIdeFileIndex(@NotNull Project project, String[] filenamesToSearch) {
+    /**
+     * Look for given files in modules base path and level-1 sub-folders (by querying
+     * regular FS, not IDE filename index), then return folders containing at least one
+     * of these files.
+     */
+    private Set<String> initWithRegularFS(@NotNull Project project, String[] filenamesToSearch) {
+        ModuleManager moduleManager = ModuleManager.getInstance(project);
+        Set<String> modulePaths = new HashSet<>();
+        Stream.of(moduleManager.getModules()).forEach(module -> {
+            VirtualFile moduleVirtualFile = ProjectUtil.guessModuleDir(module);
+            if (moduleVirtualFile != null) {
+                modulePaths.add(moduleVirtualFile.getPath());
+            }
+        });
+        Set<String> foldersToEnable = new HashSet<>();
+        modulePaths.forEach(modulePath -> {
+
+            // look in modules root
+            for (String filenameToSearch : filenamesToSearch) {
+                try {
+                    if (new File(modulePath, filenameToSearch).exists()) {
+                        foldersToEnable.add(normalizePath(modulePath + "/"));
+                    }
+                } catch (Exception e) {
+                    LOGGER.warn("Failed to check '" + modulePath + "/" + filenameToSearch + "' existence", e);
+                }
+            }
+
+            // look in modules level-1 sub-folders
+            File[] moduleSubFiles = new File(modulePath).listFiles();
+            if (moduleSubFiles != null) {
+                Stream.of(moduleSubFiles).filter(File::isDirectory).forEach(dir -> {
+                    for (String filenameToSearch : filenamesToSearch) {
+                        try {
+                            if (new File(dir, filenameToSearch).exists()) {
+                                foldersToEnable.add(normalizePath(dir.getAbsolutePath() + "/"));
+                            }
+                        } catch (Exception e) {
+                            LOGGER.warn("Failed to check '" + modulePath + "/" + filenameToSearch + "' existence", e);
+                        }
+                    }
+                });
+            }
+        });
+
+        return foldersToEnable;
+    }
+
+    /**
+     * Look for given files in project (by querying IDE filename index), then return
+     * folders containing at least one of these files.
+     */
+    private Set<String> initWithIDEFileIndex(@NotNull Project project, String[] filenamesToSearch) {
         if (EDT.isCurrentThreadEdt()) { // we can no longer read index in EDT. See com.intellij.util.SlowOperations documentation
             LOGGER.warn(getName() + " Enabler's init has been called while in EDT thread. " +
                 "Will try again later. Some icons override may not work.");
-            return;
+            return Collections.emptySet();
         }
         if (!project.isInitialized()) {
             LOGGER.warn(getName() + " Enabler can't query IDE filename index: project " + project.getName() + " is not initialized. " +
                 "Will try again later. Some icons override may not work.");
-            return;
+            return Collections.emptySet();
         }
 
         final boolean allRequired = getRequiredSearchedFiles();
@@ -73,7 +134,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
                 LOGGER.warn(getName() + " Enabler failed to query IDE filename index. " +
                     "Will try again later. Some icons override may not work.", e);
                 if (allRequired) {
-                    return;
+                    return Collections.emptySet();
                 }
             }
         }
@@ -84,7 +145,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
 
         final String matchedFilename = matchedFile;
 
-        folders = virtualFilesByName.stream()
+        return virtualFilesByName.stream()
             .map(virtualFile ->
                 normalizePath(virtualFile.getPath())
                     .replace(normalizePath("/" + matchedFilename), "/"))
@@ -106,7 +167,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     @Override
     public boolean verify(@NotNull Project project, @NotNull String absolutePathToVerify) {
         String normalizedPathToVerify = normalizePath(absolutePathToVerify);
-        for (String folder : folders) {
+        for (String folder : enabledFolders) {
             if (normalizedPathToVerify.startsWith(folder)) {
                 return true;
             }

@@ -35,6 +35,8 @@ public abstract class SettingsService {
     public Boolean pluginIsConfigurableHintNotifDisplayed;
     @SuppressWarnings("WeakerAccess")
     public UITypeIconsPreference uiTypeIconsPreference;
+    @SuppressWarnings("WeakerAccess")
+    public Boolean useIDEFilenameIndex;
 
     private Pattern ignoredPatternObj;
     private Boolean isIgnoredPatternValid;
@@ -115,6 +117,17 @@ public abstract class SettingsService {
 
     public void setUiTypeIconsPreference(UITypeIconsPreference uiTypeIconsPreference) {
         this.uiTypeIconsPreference = uiTypeIconsPreference;
+    }
+
+    public Boolean getUseIDEFilenameIndex() {
+        if (useIDEFilenameIndex == null) {
+            useIDEFilenameIndex = true;
+        }
+        return useIDEFilenameIndex;
+    }
+
+    public void setUseIDEFilenameIndex(Boolean useIDEFilenameIndex) {
+        this.useIDEFilenameIndex = useIDEFilenameIndex;
     }
 
     @NotNull
