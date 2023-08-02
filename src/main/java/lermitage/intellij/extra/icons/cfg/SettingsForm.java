@@ -390,7 +390,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         filterTextField.setToolTipText(i18n.getString("plugin.icons.table.filter.tooltip"));
         filterResetBtn.setText(i18n.getString("btn.plugin.icons.table.filter.reset"));
         bottomTip.setText(i18n.getString("plugin.icons.table.bottom.tip"));
+
         initCheckbox();
+
         loadPluginIconsTable();
         userIconsTable.setShowHorizontalLines(false);
         userIconsTable.setShowVerticalLines(false);
@@ -400,6 +402,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         loadUserIconsTable();
         loadIgnoredPattern();
         loadAdditionalUIScale();
+
         if (isProjectForm()) {
             additionalUIScaleTitle.setVisible(false);
             additionalUIScaleTextField.setVisible(false);
@@ -410,6 +413,17 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             uiTypeSelectorHelpLabel.setVisible(false);
             experimentalPanel.setVisible(false);
         }
+
+        overrideSettingsCheckbox.setText(i18n.getString("checkbox.override.ide.settings"));
+        overrideSettingsCheckbox.setToolTipText(i18n.getString("checkbox.override.ide.settings.tooltip"));
+        overrideSettingsCheckbox.addItemListener(item -> {
+            boolean enabled = item.getStateChange() == ItemEvent.SELECTED;
+            setComponentState(enabled);
+        });
+
+        addToIDEUserIconsCheckbox.setText(i18n.getString("checkbox.dont.overwrite.ide.user.icons"));
+        addToIDEUserIconsCheckbox.setToolTipText(i18n.getString("checkbox.dont.overwrite.ide.user.icons.tooltip"));
+
         buttonReloadProjectsIcons.setText(i18n.getString("btn.reload.project.icons"));
         buttonReloadProjectsIcons.setToolTipText(i18n.getString("btn.reload.project.icons.tooltip"));
         buttonReloadProjectsIcons.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/refresh.svg", SettingsForm.class)); //NON-NLS
@@ -475,17 +489,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         }
         //noinspection DataFlowIssue  project is not null here
         SettingsProjectService settingsService = SettingsProjectService.getInstance(project);
-        overrideSettingsCheckbox.setText(i18n.getString("checkbox.override.ide.settings"));
         boolean shouldOverride = settingsService.isOverrideIDESettings();
         overrideSettingsCheckbox.setSelected(shouldOverride);
         setComponentState(shouldOverride);
-        overrideSettingsCheckbox.setToolTipText(i18n.getString("checkbox.override.ide.settings.tooltip"));
-        overrideSettingsCheckbox.addItemListener(item -> {
-            boolean enabled = item.getStateChange() == ItemEvent.SELECTED;
-            setComponentState(enabled);
-        });
-        addToIDEUserIconsCheckbox.setText(i18n.getString("checkbox.dont.overwrite.ide.user.icons"));
-        addToIDEUserIconsCheckbox.setToolTipText(i18n.getString("checkbox.dont.overwrite.ide.user.icons.tooltip"));
         boolean shouldAdd = settingsService.isAddToIDEUserIcons();
         addToIDEUserIconsCheckbox.setSelected(shouldAdd);
     }
