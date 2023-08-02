@@ -46,17 +46,19 @@ def json_icon_pack_ij(items: list[str], version: int) -> str:
 ]}
 """
     icon_pack_items_str = ",\n".join(items)
-    return template.replace("{icon_pack_items_str}", icon_pack_items_str) \
-        .replace("{icon_pack_version}", str(version)) \
-        .replace(", ", ",") \
+    return (
+        template.replace("{icon_pack_items_str}", icon_pack_items_str)
+        .replace("{icon_pack_version}", str(version))
+        .replace(", ", ",")
         .replace(": ", ":")
+    )
 
 
 def md5_sum_from_file(file_path: str) -> str:
     """
     Compute MD5 string for given file.
     """
-    if exists:
+    if exists(file_path):
         file_hash = hashlib.md5()
         with open(file_path, "rb") as f:
             for chunk in iter(lambda: f.read(128 * file_hash.block_size), b""):
@@ -103,7 +105,8 @@ if __name__ == '__main__':
         raise FileNotFoundError(f"{ERR}Can't find NewUIFilesToOldUITheme.json")
 
     print(f"{NEUTRAL}Run git pull on IJ sources {ij_sources_folder_input}:", end=" ")
-    ij_sources_pull_call = subprocess.run(f"git -C {ij_sources_folder_input} pull", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    ij_sources_pull_call = subprocess.run(f"git -C {ij_sources_folder_input} pull --progress",
+                                          shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     git_pull_result = ij_sources_pull_call.stdout.decode("utf-8")
     if git_pull_result.endswith("\n"):
         git_pull_result = git_pull_result[:-1]
@@ -189,7 +192,8 @@ if __name__ == '__main__':
             f"NewUIFilesToOldUITheme_v{new_icon_pack_version}")
 
     # write the new IconPack
-    os.remove("NewUIFilesToOldUITheme.json")
+    if exists("NewUIFilesToOldUITheme.json"):
+        os.remove("NewUIFilesToOldUITheme.json")
     with open("NewUIFilesToOldUITheme.json", "w", newline="\n") as json_icon_pack_file:
         json_icon_pack_file.write(json_icon_pack)
     print(f"{OK}つ ◕_◕ ༽つ Created NewUIFilesToOldUITheme.json Icon Pack")
