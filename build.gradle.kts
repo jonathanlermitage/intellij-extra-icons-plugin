@@ -66,8 +66,8 @@ repositories {
     mavenCentral()
 }
 
-val junitVersion = "5.9.3"
-val junitPlatformLauncher = "1.9.3"
+val junitVersion = "5.10.0"
+val junitPlatformLauncher = "1.10.0"
 
 dependencies {
     implementation("com.github.weisj:jsvg:1.0.0") // https://github.com/weisJ/jsvg
