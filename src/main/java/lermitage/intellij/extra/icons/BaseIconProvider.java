@@ -195,8 +195,8 @@ public abstract class BaseIconProvider
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
         try {
             PsiFileSystemItem currentPsiFileItem;
-            if (psiElement instanceof PsiDirectory) {
-                currentPsiFileItem = (PsiFileSystemItem) psiElement;
+            if (psiElement instanceof PsiDirectory psiDirectoryElt) {
+                currentPsiFileItem = psiDirectoryElt;
             } else {
                 final Optional<PsiFile> optFile = Optional.ofNullable(psiElement.getContainingFile());
                 currentPsiFileItem = optFile.orElse(null);

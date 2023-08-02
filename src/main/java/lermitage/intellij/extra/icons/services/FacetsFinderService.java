@@ -16,7 +16,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Service
+@Service(Service.Level.PROJECT)
 public final class FacetsFinderService {
 
     private static final @NonNls Logger LOGGER = Logger.getInstance(FacetsFinderService.class);

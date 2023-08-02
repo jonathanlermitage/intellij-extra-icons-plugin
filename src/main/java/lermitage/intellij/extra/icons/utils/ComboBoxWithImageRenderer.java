@@ -41,19 +41,19 @@ public class ComboBoxWithImageRenderer extends JLabel implements ListCellRendere
             return this;
         }
         try {
-            if (value instanceof BundledIcon) {
-                text = ((BundledIcon) value).description();
+            if (value instanceof BundledIcon bundledIconValue) {
+                text = bundledIconValue.description();
                 icon = IconLoader.getIcon(((BundledIcon) value).iconPath(), IconUtils.class);
-            } else if (value instanceof ComboBoxWithImageItem) {
-                text = ((ComboBoxWithImageItem) value).getTitle();
+            } else if (value instanceof ComboBoxWithImageItem comboBoxWithImageItemValue) {
+                text = comboBoxWithImageItemValue.getTitle();
                 String imagePath = ((ComboBoxWithImageItem) value).getImagePath();
                 if (imagePath == null) {
                     icon = new ImageIcon();
                 } else {
                     icon = IconLoader.getIcon(imagePath, ComboBoxWithImageRenderer.class);
                 }
-            } else if (value instanceof String) {
-                text = (String) value;
+            } else if (value instanceof String strValue) {
+                text = strValue;
                 icon = new ImageIcon();
             }
             setText(text);

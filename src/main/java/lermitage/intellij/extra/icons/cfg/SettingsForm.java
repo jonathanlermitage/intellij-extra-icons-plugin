@@ -14,6 +14,7 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.ui.EditorTextField;
+import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.table.JBTable;
@@ -98,7 +99,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JButton buttonShowIconPacksFromWeb;
     private JPanel iconPackPanel;
     private JComboBox<ComboBoxWithImageItem> uiTypeSelector;
+    private JLabel uiTypeSelectorTitle;
     private JLabel uiTypeSelectorHelpLabel;
+    private JTabbedPane mainTabbedPane;
+    private JPanel experimentalPanel;
+    private JCheckBox useIDEFilenameIndexCheckbox;
+    private JBLabel useIDEFilenameIndexTip;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -264,6 +270,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         if (!service.getIgnoredPattern().equals(ignoredPatternTextField.getText())) {
             return true;
         }
+        if (service.getUseIDEFilenameIndex() != useIDEFilenameIndexCheckbox.isSelected()) {
+            return true;
+        }
         return !ignoredPatternTextField.getText().equals(service.getIgnoredPattern())
             || !additionalUIScaleTextField.getText().equals(Double.toString(service.getAdditionalUIScale()));
     }
@@ -312,6 +321,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             projectService.setOverrideIDESettings(overrideSettingsCheckbox.isSelected());
             projectService.setAddToIDEUserIcons(addToIDEUserIconsCheckbox.isSelected());
         }
+        service.setUseIDEFilenameIndex(useIDEFilenameIndexCheckbox.isSelected());
         service.setUiTypeIconsPreference(getSelectedUITypeIconsPreference());
         service.setDisabledModelIds(collectDisabledModelIds());
         service.setIgnoredPattern(ignoredPatternTextField.getText());
@@ -396,7 +406,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             buttonReloadProjectsIcons.setVisible(false);
             iconPackPanel.setVisible(false);
             uiTypeSelector.setVisible(false);
+            uiTypeSelectorTitle.setVisible(false);
             uiTypeSelectorHelpLabel.setVisible(false);
+            experimentalPanel.setVisible(false);
         }
         buttonReloadProjectsIcons.setText(i18n.getString("btn.reload.project.icons"));
         buttonReloadProjectsIcons.setToolTipText(i18n.getString("btn.reload.project.icons.tooltip"));
@@ -424,6 +436,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         iconPackContextHelpLabel.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/contextHelp.svg", SettingsForm.class)); //NON-NLS
         iconPackContextHelpLabel.setToolTipText(i18n.getString("icon.pack.context.help"));
 
+        uiTypeSelectorTitle.setText(i18n.getString("uitype.selector.context.title"));
         uiTypeSelectorHelpLabel.setText("");
         uiTypeSelectorHelpLabel.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/contextHelp.svg", SettingsForm.class)); //NON-NLS
         uiTypeSelectorHelpLabel.setToolTipText(i18n.getString("uitype.selector.context.help"));
@@ -431,8 +444,18 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         buttonUninstallIconPack.setText(i18n.getString("btn.uninstall.icon.pack"));
         buttonUninstallIconPack.setIcon(IconLoader.getIcon("extra-icons/plugin-internals/remove.svg", SettingsForm.class)); //NON-NLS
 
-        iconsTabbedPane.setTitleAt(0, i18n.getString("plugin.icons.table.tab.name"));
-        iconsTabbedPane.setTitleAt(1, i18n.getString("user.icons.table.tab.name"));
+        mainTabbedPane.setTitleAt(0, "  " + i18n.getString("main.pane.main.config.title") + "  ");
+        mainTabbedPane.setTitleAt(1, "  " + i18n.getString("main.pane.advanced.config.title") + "  ");
+
+        iconsTabbedPane.setTitleAt(0, "  " + i18n.getString("plugin.icons.table.tab.name") + "  ");
+        iconsTabbedPane.setTitleAt(1, "  " + i18n.getString("user.icons.table.tab.name")+ "  ");
+
+        experimentalPanel.setBorder(IdeBorderFactory.createTitledBorder(i18n.getString("experimental.panel.title")));
+
+        useIDEFilenameIndexCheckbox.setText(i18n.getString("checkbox.use.ide.filename.index.label"));
+        useIDEFilenameIndexTip.setText(i18n.getString("checkbox.use.ide.filename.index.tip"));
+
+        initCheckbox();
     }
 
     private void createUIComponents() {
@@ -446,12 +469,14 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private void initCheckbox() {
         if (!isProjectForm()) {
+            useIDEFilenameIndexCheckbox.setSelected(SettingsService.getIDEInstance().getUseIDEFilenameIndex());
             overrideSettingsPanel.setVisible(false);
             return;
         }
-        overrideSettingsCheckbox.setText(i18n.getString("checkbox.override.ide.settings"));
         //noinspection DataFlowIssue  project is not null here
-        boolean shouldOverride = SettingsProjectService.getInstance(project).isOverrideIDESettings();
+        SettingsProjectService settingsService = SettingsProjectService.getInstance(project);
+        overrideSettingsCheckbox.setText(i18n.getString("checkbox.override.ide.settings"));
+        boolean shouldOverride = settingsService.isOverrideIDESettings();
         overrideSettingsCheckbox.setSelected(shouldOverride);
         setComponentState(shouldOverride);
         overrideSettingsCheckbox.setToolTipText(i18n.getString("checkbox.override.ide.settings.tooltip"));
@@ -461,7 +486,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         });
         addToIDEUserIconsCheckbox.setText(i18n.getString("checkbox.dont.overwrite.ide.user.icons"));
         addToIDEUserIconsCheckbox.setToolTipText(i18n.getString("checkbox.dont.overwrite.ide.user.icons.tooltip"));
-        boolean shouldAdd = SettingsProjectService.getInstance(project).isAddToIDEUserIcons();
+        boolean shouldAdd = settingsService.isAddToIDEUserIcons();
         addToIDEUserIconsCheckbox.setSelected(shouldAdd);
     }
 
@@ -470,7 +495,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             iconsTabbedPane, addToIDEUserIconsCheckbox, filterLabel,
             filterTextField, filterResetBtn, buttonEnableAll,
             disableOrEnableOrLabel, buttonDisableAll, disableOrEnableLabel,
-            comboBoxIconsGroupSelector).forEach(jComponent -> jComponent.setEnabled(enabled));
+            comboBoxIconsGroupSelector, mainTabbedPane).forEach(jComponent -> jComponent.setEnabled(enabled));
     }
 
     @Override

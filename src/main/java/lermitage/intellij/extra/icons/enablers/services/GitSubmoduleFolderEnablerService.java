@@ -5,6 +5,8 @@ package lermitage.intellij.extra.icons.enablers.services;
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectUtil;
+import com.intellij.openapi.vfs.VirtualFile;
 import lermitage.intellij.extra.icons.enablers.IconEnabler;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
@@ -20,7 +22,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("HardCodedStringLiteral")
-@Service
+@Service(Service.Level.PROJECT)
 public final class GitSubmoduleFolderEnablerService implements IconEnabler {
 
     public static GitSubmoduleFolderEnablerService getInstance(@NotNull Project project) {
@@ -30,7 +32,7 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
     private static final Logger LOGGER = Logger.getInstance(GitSubmoduleFolderEnablerService.class);
 
     public static final String GIT_MODULES_FILENAME = ".gitmodules";
-    
+
     private static final Pattern GIT_MODULES_PATH_PATTERN = Pattern.compile("\\s*path\\s*=\\s*([^\\s]+)\\s*");
 
     private Set<String> submoduleFolders = Collections.emptySet();
@@ -60,12 +62,12 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
      */
     private Set<String> findAllGitModulesFilesRecursively(@NotNull Project project) {
         Set<String> submoduleFoldersFound = new HashSet<>();
-        String basePath = project.getBasePath(); // TODO project.getBasePath is not recommended, see getBaseDir alternatives
-        if (basePath == null) {
+        VirtualFile projectVirtualDir = ProjectUtil.guessProjectDir(project);
+        if (projectVirtualDir == null) {
             return submoduleFoldersFound;
         }
         try {
-            submoduleFoldersFound = findGitModulesFilesInFolder(basePath)
+            submoduleFoldersFound = findGitModulesFilesInFolder(projectVirtualDir.getPath())
                 .stream()
                 .map(String::toLowerCase)
                 .collect(Collectors.toSet());

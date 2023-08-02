@@ -6,7 +6,7 @@ package lermitage.intellij.extra.icons;
 public enum ModelTag {
 
     ANGULAR2("Angular", "extra-icons/angular2.svg"),
-    DOCKER("Docker", "extra-icons/docker.svg"),
+    DOCKER("Docker", "extra-icons/docker_.svg"),
     FLYWAY("Flyway", "extra-icons/flyway.svg"),
     HELM("Helm", "extra-icons/helm.svg"),
     HTML("HTML", "extra-icons/html5.svg"),
@@ -34,5 +34,4 @@ public enum ModelTag {
     public String getIcon() {
         return icon;
     }
-
 }

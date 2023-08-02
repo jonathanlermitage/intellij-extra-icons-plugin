@@ -8,7 +8,7 @@ import lermitage.intellij.extra.icons.enablers.AbstractInFolderEnabler;
 import lermitage.intellij.extra.icons.enablers.IconEnabler;
 import org.jetbrains.annotations.NotNull;
 
-@Service
+@Service(Service.Level.PROJECT)
 public final class InHelmFolderEnablerService extends AbstractInFolderEnabler implements IconEnabler {
 
     public static InHelmFolderEnablerService getInstance(@NotNull Project project) {
