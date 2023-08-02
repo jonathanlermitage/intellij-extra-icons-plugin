@@ -1,5 +1,10 @@
 # Extra Icons Change Log
 
+## 2023.2.9-231 (WIP)
+* rework settings panel.
+* experimental: add an option to avoid usage of IDE filename index. Without IDE filename index, Angular, GraphQL and Helm support may be limited, but it may hopefully avoid some errors and warnings when using slow operations in EDT, things like that.
+* internal: code rework, avoid potential future issues.
+
 ## 2023.2.8-231 (2023/07/12)
 * fix [146](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/146). NullPointerException in settings form.
 * fix usage of a deprecated API in order to improve compatibility with future IDEs.
