@@ -1,0 +1,11 @@
+name: Clear Actions Cache
+on: [ push, pull_request ]
+jobs:
+  clear:
+    name: Clear github actions cache
+    runs-on: ubuntu-latest
+    steps:
+      - uses: MyAlbum/purge-cache@v2
+        with:
+          max-age: 604800 # a week
+          debug: true
