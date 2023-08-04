@@ -4,7 +4,7 @@ Please describe the issue:
 
 * the **plugin version**
 * the **OS and IDE version**. Open your IDE and go to <kbd>Help</kbd>, <kbd>About</kbd>, then <kbd>Copy</kbd>
-* the **IDE logs**. Open your IDE and go to <kbd>Help</kbd>, <kbd>Collect Logs and Diagnostic Data</kbd>, then attach files
+* the **IDE logs**. Open your IDE and go to <kbd>Help</kbd>, <kbd>Show Log in Explorer</kbd>, then attach `idea.log` 
 * the **stacktrace**, if any
 * any useful information: what did you do just before the issue, etc.
 

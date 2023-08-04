@@ -164,7 +164,7 @@ public class ExtraIconsErrorReportSubmitter extends ErrorReportSubmitter {
 
             ## Bug description
             Please include steps to reproduce (like `go to...`/`click on...` etc.) + expected and actual behaviour. \s
-            Please attach **IDE logs**. Open your IDE and go to <kbd>Help</kbd>, <kbd>Collect Logs and Diagnostic Data</kbd>.
+            Please attach **IDE logs**. Open your IDE and go to <kbd>Help</kbd>, <kbd>Show Log in Explorer</kbd>, then pick `idea.log`.
 
             ## IDE - additional info
             %additionalInfo%
