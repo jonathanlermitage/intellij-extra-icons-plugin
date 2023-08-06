@@ -17,8 +17,6 @@ import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.xpath.XPathConstants
 import javax.xml.xpath.XPathFactory
 
-fun properties(key: String) = project.findProperty(key).toString()
-
 plugins {
     id("java")
     id("org.jetbrains.intellij") version "1.15.0" // https://github.com/JetBrains/gradle-intellij-plugin
