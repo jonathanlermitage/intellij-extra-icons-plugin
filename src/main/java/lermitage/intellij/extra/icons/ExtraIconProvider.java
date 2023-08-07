@@ -99,6 +99,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofDir("dir_docker", "extra-icons/folder_docker.svg", "Docker: docker folder")
                     .eq("docker")
                     .tags(ModelTag.DOCKER),
+                ofDir("dir_fleet", "extra-icons/folder_fleet.svg", "JetBrains Fleet: .fleet folder")
+                    .eq(".fleet"),
                 ofDir("dir_github", "extra-icons/folder_github.svg", "Github: .github folder")
                     .eq(".github"),
                 ofDir("dir_gitlab", "extra-icons/folder_gitlab.svg", "Gitlab: .gitlab folder")
