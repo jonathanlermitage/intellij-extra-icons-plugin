@@ -6,6 +6,7 @@
 * internal: code rework, avoid potential future issues.
 * improve Codacy support.
 * support Codeception `codeception.dist.yml` files.
+* fix Lighttpd icon rendering on latest IDEs (JetBrains changed their SVG renderer for JSVG, which breaks some SVG files).
 
 ## 2023.2.8-231 (2023/07/12)
 * fix [146](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/146). NullPointerException in settings form.

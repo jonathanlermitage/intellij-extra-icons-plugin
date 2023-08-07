@@ -49,8 +49,8 @@ public class ResourcesTest {
         });
         pngIcons = icons.stream().filter(file -> file.getName().endsWith(".png")).collect(Collectors.toList());
         svgIcons = icons.stream().filter(file -> file.getName().endsWith(".svg")).collect(Collectors.toList());
-        assertTrue(svgIcons.size() > 0);
-        assertTrue(pngIcons.size() > 0);
+        assertFalse(svgIcons.isEmpty());
+        assertFalse(pngIcons.isEmpty());
         icons.forEach(file -> assertTrue(file.getName().endsWith(".png") || file.getName().endsWith(".svg")));
     }
 
@@ -149,10 +149,13 @@ public class ResourcesTest {
         svgIcons.forEach(file -> {
             try {
                 String fileContent = Files.readString(file.toPath(), StandardCharsets.UTF_8);
-                boolean hasEnableBackgroundProperty = fileContent.contains("enable-background");
-                if (hasEnableBackgroundProperty) {
-                    errors.add(file.getName() + ": property is 'enable-background'. You can safely remove this attribute from file");
-                }
+                List<String> removableAttributes = List.of("<switch>", "enable-background");
+                removableAttributes.forEach(removableAttribute -> {
+                    if (fileContent.contains(removableAttribute)) {
+                        errors.add(file.getName() + ": removable element or attribute is '" + removableAttribute + "'. " +
+                            "You can safely remove this attribute from file");
+                    }
+                });
             } catch (IOException e) {
                 fail(e);
             }
