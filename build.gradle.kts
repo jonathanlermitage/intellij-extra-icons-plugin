@@ -322,8 +322,11 @@ fun readRemoteContent(url: URL): String {
 /** Get IDE version from gradle.properties or, of wanted, find latest stable IDE version from JetBrains website. */
 fun detectBestIdeVersion(): String {
     val pluginIdeaVersionFromProps = project.findProperty("pluginIdeaVersion")
-    if (pluginIdeaVersionFromProps.toString().isBlank()) {
+    if (pluginIdeaVersionFromProps.toString() == "IC-LATEST-STABLE") {
         return "IC-${findLatestStableIdeVersion()}"
+    }
+    if (pluginIdeaVersionFromProps.toString() == "IU-LATEST-STABLE") {
+        return "IU-${findLatestStableIdeVersion()}"
     }
     return pluginIdeaVersionFromProps.toString()
 }

@@ -30,7 +30,7 @@ jobs:
         with:
           ide-versions: |
             ideaIC:2023.1
-            ideaIU:2023.1
+            ideaIC:LATEST-EAP-SNAPSHOT
           failure-levels: | # see https://github.com/ChrisCarini/intellij-platform-plugin-verifier-action#failure-levels
             OVERRIDE_ONLY_API_USAGES
             NON_EXTENDABLE_API_USAGES
