@@ -6,7 +6,7 @@ Please describe the issue:
 * the **OS and IDE version**. Open your IDE and go to <kbd>Help</kbd>, <kbd>About</kbd>, then <kbd>Copy</kbd>
 * the **IDE logs**. Open your IDE and go to <kbd>Help</kbd>, <kbd>Show Log in Explorer</kbd>, then attach `idea.log` 
 * the **stacktrace**, if any
-* any useful information: what did you do just before the issue, etc.
+* any useful information: **what did you do just before or during the issue**, etc.
 
 :warning: This information is needed in order to determine if this is an IDE bug or a plugin bug, and to find a solution or a workaround.
 
