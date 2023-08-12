@@ -522,11 +522,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private void setUserIconsTableModel() {
         int currentSelected = userIconsSettingsTableModel != null ? userIconsTable.getSelectedRow() : -1;
         userIconsSettingsTableModel = new UserIconsSettingsTableModel();
-        Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
+        final Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
+        final UITypeIconsPreference uiTypeIconsPreference = SettingsService.getIDEInstance().getUiTypeIconsPreference();
         customModels.forEach(m -> {
                 try {
                     userIconsSettingsTableModel.addRow(new Object[]{
-                        IconUtils.getIcon(m, additionalUIScale, SettingsService.getIDEInstance().getUiTypeIconsPreference()),
+                        IconUtils.getIcon(m, additionalUIScale, uiTypeIconsPreference),
                         m.isEnabled(),
                         m.getDescription(),
                         m.getIconPack()
@@ -635,10 +636,11 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         }
         foldersFirst(allRegisteredModels);
         List<String> disabledModelIds = SettingsService.getInstance(project).getDisabledModelIds();
-        Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
-        Icon restartIcon = IconLoader.getIcon("extra-icons/plugin-internals/reboot.svg", SettingsForm.class); //NON-NLS
+        final Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
+        final UITypeIconsPreference uiTypeIconsPreference = SettingsService.getIDEInstance().getUiTypeIconsPreference();
+        final Icon restartIcon = IconLoader.getIcon("extra-icons/plugin-internals/reboot.svg", SettingsForm.class); //NON-NLS
         allRegisteredModels.forEach(m -> pluginIconsSettingsTableModel.addRow(new Object[]{
-                IconUtils.getIcon(m, additionalUIScale, SettingsService.getIDEInstance().getUiTypeIconsPreference()),
+                IconUtils.getIcon(m, additionalUIScale, uiTypeIconsPreference),
                 !disabledModelIds.contains(m.getId()),
                 m.getDescription(),
                 Arrays.toString(m.getTags().stream().map(ModelTag::getName).toArray()).replaceAll("\\[|]*", "").trim(),
