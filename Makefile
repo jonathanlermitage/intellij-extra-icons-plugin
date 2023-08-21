@@ -97,16 +97,6 @@ svgo: intro ## optimize SVG icons with SVGO (SVGO must be present, type "npm ins
 	svgo --folder=src/main/resources/extra-icons/ --recursive
 
 
-.PHONY: lock
-lock: intro ## write gradle dependency versions lock file
-	${gradlew_cmd} dependencies --write-locks
-
-
-.PHONY: unlock
-unlock: intro ## remove gradle dependency versions lock file
-	@[ -f gradle.lockfile ] && rm gradle.lockfile && echo -e '\e[1;32mlock file deleted\e[0m' || echo -e '\e[1;33mdid nothing: lock file does not exist\e[0m'
-
-
 .PHONY: lic
 lic: intro ## generate license report to build/reports/licenses/ (licenses used by dependencies)
 	${gradlew_cmd} licenseReport
