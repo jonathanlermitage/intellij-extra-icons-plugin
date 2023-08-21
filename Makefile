@@ -94,7 +94,7 @@ oga: intro ## check for deprecated groupId and artifactId coordinates
 
 .PHONY: svgo
 svgo: intro ## optimize SVG icons with SVGO (SVGO must be present, type "npm install -g svgo" if needed)
-	svgo --folder=src/main/resources/extra-icons/ --recursive
+	svgo --folder=src/main/resources/ --recursive
 
 
 .PHONY: lic
