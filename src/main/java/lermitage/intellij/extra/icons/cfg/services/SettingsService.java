@@ -8,10 +8,8 @@ import com.intellij.openapi.project.Project;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.Globals;
 import lermitage.intellij.extra.icons.Model;
-import lermitage.intellij.extra.icons.UITypeIconsPreference;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -29,14 +27,6 @@ public abstract class SettingsService {
     public String ignoredPattern;
     @SuppressWarnings("WeakerAccess")
     public List<Model> customModels = new ArrayList<>();
-    @SuppressWarnings("WeakerAccess")
-    public Double additionalUIScale;
-    @SuppressWarnings("WeakerAccess")
-    public Boolean pluginIsConfigurableHintNotifDisplayed;
-    @SuppressWarnings("WeakerAccess")
-    public UITypeIconsPreference uiTypeIconsPreference;
-    @SuppressWarnings("WeakerAccess")
-    public Boolean useIDEFilenameIndex;
 
     private Pattern ignoredPatternObj;
     private Boolean isIgnoredPatternValid;
@@ -86,71 +76,23 @@ public abstract class SettingsService {
         this.customModels = customModels;
     }
 
-    public Double getAdditionalUIScale() {
-        if (additionalUIScale == null) {
-            additionalUIScale = DEFAULT_ADDITIONAL_UI_SCALE;
-        }
-        return additionalUIScale;
-    }
-
-    public void setAdditionalUIScale(Double additionalUIScale) {
-        this.additionalUIScale = additionalUIScale;
-    }
-
-    public Boolean getPluginIsConfigurableHintNotifDisplayed() {
-        if (pluginIsConfigurableHintNotifDisplayed == null) {
-            pluginIsConfigurableHintNotifDisplayed = false;
-        }
-        return pluginIsConfigurableHintNotifDisplayed;
-    }
-
-    public void setPluginIsConfigurableHintNotifDisplayed(Boolean pluginIsConfigurableHintNotifDisplayed) {
-        this.pluginIsConfigurableHintNotifDisplayed = pluginIsConfigurableHintNotifDisplayed;
-    }
-
-    public UITypeIconsPreference getUiTypeIconsPreference() {
-        if (uiTypeIconsPreference == null) {
-            uiTypeIconsPreference = UITypeIconsPreference.BASED_ON_ACTIVE_UI_TYPE;
-        }
-        return uiTypeIconsPreference;
-    }
-
-    public void setUiTypeIconsPreference(UITypeIconsPreference uiTypeIconsPreference) {
-        this.uiTypeIconsPreference = uiTypeIconsPreference;
-    }
-
-    public Boolean getUseIDEFilenameIndex() {
-        if (useIDEFilenameIndex == null) {
-            useIDEFilenameIndex = true;
-        }
-        return useIDEFilenameIndex;
-    }
-
-    public void setUseIDEFilenameIndex(Boolean useIDEFilenameIndex) {
-        this.useIDEFilenameIndex = useIDEFilenameIndex;
-    }
-
     @NotNull
     public static List<Model> getAllRegisteredModels() {
         return ExtraIconProvider.allModels();
     }
 
     /**
-     * Get project-level settings service, or global-level settings service if project is null.
+     * Returns the Project settings service if the project is not null and, optionally, if the checkbox in the project settings was checked,
+     * otherwise returns the IDE settings service.
      */
     @NotNull
-    public static SettingsService getInstance(@Nullable Project project) {
-        if (project == null) {
-            return getIDEInstance();
+    public static SettingsService getBestSettingsService(Project project, boolean isOverrideIDESettings) {
+        if (project != null) {
+            SettingsProjectService settingsProjectService = SettingsProjectService.getInstance(project);
+            if (settingsProjectService.isOverrideIDESettings() || !isOverrideIDESettings) {
+                return settingsProjectService;
+            }
         }
-        return SettingsProjectService.getInstance(project);
-    }
-
-    /**
-     * Get global-level settings service.
-     */
-    @NotNull
-    public static SettingsService getIDEInstance() {
         return SettingsIDEService.getInstance();
     }
 

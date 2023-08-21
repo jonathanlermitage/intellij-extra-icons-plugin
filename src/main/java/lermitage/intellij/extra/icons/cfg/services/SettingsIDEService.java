@@ -7,6 +7,7 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.util.xmlb.XmlSerializerUtil;
+import lermitage.intellij.extra.icons.UITypeIconsPreference;
 import org.jetbrains.annotations.NotNull;
 
 // see http://www.jetbrains.org/intellij/sdk/docs/basics/persisting_state_of_components.html
@@ -15,6 +16,15 @@ import org.jetbrains.annotations.NotNull;
     storages = @Storage("lermitage-extra-icons.xml")
 )
 public class SettingsIDEService extends SettingsService implements PersistentStateComponent<SettingsIDEService> {
+
+    @SuppressWarnings("WeakerAccess")
+    public Double additionalUIScale;
+    @SuppressWarnings("WeakerAccess")
+    public UITypeIconsPreference uiTypeIconsPreference;
+    @SuppressWarnings("WeakerAccess")
+    public Boolean useIDEFilenameIndex;
+    @SuppressWarnings("WeakerAccess")
+    public Boolean pluginIsConfigurableHintNotifDisplayed;
 
     public static SettingsIDEService getInstance() {
         return ApplicationManager.getApplication().getService(SettingsIDEService.class);
@@ -28,5 +38,49 @@ public class SettingsIDEService extends SettingsService implements PersistentSta
     @Override
     public void loadState(@NotNull SettingsIDEService state) {
         XmlSerializerUtil.copyBean(state, this);
+    }
+
+    public Double getAdditionalUIScale() {
+        if (additionalUIScale == null) {
+            additionalUIScale = DEFAULT_ADDITIONAL_UI_SCALE;
+        }
+        return additionalUIScale;
+    }
+
+    public void setAdditionalUIScale(Double additionalUIScale) {
+        this.additionalUIScale = additionalUIScale;
+    }
+
+    public UITypeIconsPreference getUiTypeIconsPreference() {
+        if (uiTypeIconsPreference == null) {
+            uiTypeIconsPreference = UITypeIconsPreference.BASED_ON_ACTIVE_UI_TYPE;
+        }
+        return uiTypeIconsPreference;
+    }
+
+    public void setUiTypeIconsPreference(UITypeIconsPreference uiTypeIconsPreference) {
+        this.uiTypeIconsPreference = uiTypeIconsPreference;
+    }
+
+    public Boolean getUseIDEFilenameIndex() {
+        if (useIDEFilenameIndex == null) {
+            useIDEFilenameIndex = true;
+        }
+        return useIDEFilenameIndex;
+    }
+
+    public void setUseIDEFilenameIndex(Boolean useIDEFilenameIndex) {
+        this.useIDEFilenameIndex = useIDEFilenameIndex;
+    }
+
+    public Boolean getPluginIsConfigurableHintNotifDisplayed() {
+        if (pluginIsConfigurableHintNotifDisplayed == null) {
+            pluginIsConfigurableHintNotifDisplayed = false;
+        }
+        return pluginIsConfigurableHintNotifDisplayed;
+    }
+
+    public void setPluginIsConfigurableHintNotifDisplayed(Boolean pluginIsConfigurableHintNotifDisplayed) {
+        this.pluginIsConfigurableHintNotifDisplayed = pluginIsConfigurableHintNotifDisplayed;
     }
 }

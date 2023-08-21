@@ -27,6 +27,7 @@ import lermitage.intellij.extra.icons.cfg.dialogs.IconPackUninstallerDialog;
 import lermitage.intellij.extra.icons.cfg.dialogs.ModelDialog;
 import lermitage.intellij.extra.icons.cfg.models.PluginIconsSettingsTableModel;
 import lermitage.intellij.extra.icons.cfg.models.UserIconsSettingsTableModel;
+import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.enablers.EnablerUtils;
@@ -45,7 +46,16 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
@@ -181,7 +191,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                         iconPackName = askSingleTextDialog.getTextFromInput();
                     }
                     File exportFile = new File(folderPath.get() + "/" + filename);
-                    IconPackUtils.writeToJsonFile(exportFile, new IconPack(iconPackName, SettingsService.getInstance(project).getCustomModels()));
+                    IconPackUtils.writeToJsonFile(exportFile, new IconPack(iconPackName, SettingsService.getBestSettingsService(project, false).getCustomModels()));
                     Messages.showInfoMessage(
                         i18n.getString("dialog.export.icon.pack.success") + "\n" + exportFile.getAbsolutePath(),
                         i18n.getString("dialog.export.icon.pack.success.title")
@@ -245,9 +255,13 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         if (forceUpdate) {
             return true;
         }
-        SettingsService service = SettingsService.getInstance(project);
+
+        SettingsService bestSettingsService = SettingsService.getBestSettingsService(project, false);
+        SettingsIDEService settingsIDEService = SettingsIDEService.getInstance();
+
         if (isProjectForm()) {
-            SettingsProjectService projectService = (SettingsProjectService) service;
+            //noinspection DataFlowIssue
+            SettingsProjectService projectService = SettingsProjectService.getInstance(project);
             if (projectService.isOverrideIDESettings() != overrideSettingsCheckbox.isSelected()) {
                 return true;
             }
@@ -255,26 +269,26 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 return true;
             }
         }
-        if (!CollectionUtils.isEqualCollection(collectDisabledModelIds(), service.getDisabledModelIds())) {
+        if (!CollectionUtils.isEqualCollection(collectDisabledModelIds(), bestSettingsService.getDisabledModelIds())) {
             return true;
         }
-        if (!CollectionUtils.isEqualCollection(customModels, service.getCustomModels())) {
+        if (!CollectionUtils.isEqualCollection(customModels, bestSettingsService.getCustomModels())) {
             return true;
         }
         if (!CollectionUtils.isEqualCollection(customModels.stream().map(Model::isEnabled).collect(Collectors.toList()), collectUserIconEnabledStates())) {
             return true;
         }
-        if (service.getUiTypeIconsPreference() != getSelectedUITypeIconsPreference()) {
+        if (settingsIDEService.getUiTypeIconsPreference() != getSelectedUITypeIconsPreference()) {
             return true;
         }
-        if (!service.getIgnoredPattern().equals(ignoredPatternTextField.getText())) {
+        if (!bestSettingsService.getIgnoredPattern().equals(ignoredPatternTextField.getText())) {
             return true;
         }
-        if (service.getUseIDEFilenameIndex() != useIDEFilenameIndexCheckbox.isSelected()) {
+        if (settingsIDEService.getUseIDEFilenameIndex() != useIDEFilenameIndexCheckbox.isSelected()) {
             return true;
         }
-        return !ignoredPatternTextField.getText().equals(service.getIgnoredPattern())
-            || !additionalUIScaleTextField.getText().equals(Double.toString(service.getAdditionalUIScale()));
+        return !ignoredPatternTextField.getText().equals(bestSettingsService.getIgnoredPattern())
+            || !additionalUIScaleTextField.getText().equals(Double.toString(settingsIDEService.getAdditionalUIScale()));
     }
 
     private List<String> collectDisabledModelIds() {
@@ -315,18 +329,21 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     @Override
     public void apply() {
-        SettingsService service = SettingsService.getInstance(project);
+        SettingsService bestSettingsService = SettingsService.getBestSettingsService(project, false);
+        SettingsIDEService settingsIDEService = SettingsIDEService.getInstance();
+
         if (isProjectForm()) {
-            SettingsProjectService projectService = (SettingsProjectService) service;
+            //noinspection DataFlowIssue
+            SettingsProjectService projectService = SettingsProjectService.getInstance(project);
             projectService.setOverrideIDESettings(overrideSettingsCheckbox.isSelected());
             projectService.setAddToIDEUserIcons(addToIDEUserIconsCheckbox.isSelected());
         }
-        service.setUseIDEFilenameIndex(useIDEFilenameIndexCheckbox.isSelected());
-        service.setUiTypeIconsPreference(getSelectedUITypeIconsPreference());
-        service.setDisabledModelIds(collectDisabledModelIds());
-        service.setIgnoredPattern(ignoredPatternTextField.getText());
+        settingsIDEService.setUseIDEFilenameIndex(useIDEFilenameIndexCheckbox.isSelected());
+        settingsIDEService.setUiTypeIconsPreference(getSelectedUITypeIconsPreference());
+        bestSettingsService.setDisabledModelIds(collectDisabledModelIds());
+        bestSettingsService.setIgnoredPattern(ignoredPatternTextField.getText());
         try {
-            service.setAdditionalUIScale(Double.valueOf(additionalUIScaleTextField.getText()));
+            settingsIDEService.setAdditionalUIScale(Double.valueOf(additionalUIScaleTextField.getText()));
         } catch (NumberFormatException e) {
             Messages.showErrorDialog(
                 MessageFormat.format(i18n.getString("invalid.ui.scalefactor"), additionalUIScaleTextField.getText()),
@@ -338,7 +355,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             Model model = customModels.get(i);
             model.setEnabled(enabledStates.get(i));
         }
-        service.setCustomModels(customModels);
+        bestSettingsService.setCustomModels(customModels);
 
         try {
             if (isProjectForm()) {
@@ -371,7 +388,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         uiTypeSelector.addItem(new ComboBoxWithImageItem(
             "extra-icons/plugin-internals/folder_newui.svg", //NON-NLS
             i18n.getString("uitype.selector.prefer.new")));
-        setSelectedUITypeIconsPreference(SettingsService.getIDEInstance().getUiTypeIconsPreference());
+        setSelectedUITypeIconsPreference(SettingsIDEService.getInstance().getUiTypeIconsPreference());
 
         disableOrEnableLabel.setText(i18n.getString("quick.action.label"));
 
@@ -462,7 +479,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         mainTabbedPane.setTitleAt(1, "  " + i18n.getString("main.pane.advanced.config.title") + "  ");
 
         iconsTabbedPane.setTitleAt(0, "  " + i18n.getString("plugin.icons.table.tab.name") + "  ");
-        iconsTabbedPane.setTitleAt(1, "  " + i18n.getString("user.icons.table.tab.name")+ "  ");
+        iconsTabbedPane.setTitleAt(1, "  " + i18n.getString("user.icons.table.tab.name") + "  ");
 
         experimentalPanel.setBorder(IdeBorderFactory.createTitledBorder(i18n.getString("experimental.panel.title")));
 
@@ -483,7 +500,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private void initCheckbox() {
         if (!isProjectForm()) {
-            useIDEFilenameIndexCheckbox.setSelected(SettingsService.getIDEInstance().getUseIDEFilenameIndex());
+            useIDEFilenameIndexCheckbox.setSelected(SettingsIDEService.getInstance().getUseIDEFilenameIndex());
             overrideSettingsPanel.setVisible(false);
             return;
         }
@@ -514,16 +531,18 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void loadUserIconsTable() {
-        customModels = new ArrayList<>(SettingsService.getInstance(project).getCustomModels());
+        customModels = new ArrayList<>(SettingsService.getBestSettingsService(project, false).getCustomModels());
         foldersFirst(customModels);
         setUserIconsTableModel();
     }
 
     private void setUserIconsTableModel() {
+        SettingsIDEService settingsIDEService = SettingsIDEService.getInstance();
+
         int currentSelected = userIconsSettingsTableModel != null ? userIconsTable.getSelectedRow() : -1;
         userIconsSettingsTableModel = new UserIconsSettingsTableModel();
-        final Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
-        final UITypeIconsPreference uiTypeIconsPreference = SettingsService.getIDEInstance().getUiTypeIconsPreference();
+        final Double additionalUIScale = settingsIDEService.getAdditionalUIScale();
+        final UITypeIconsPreference uiTypeIconsPreference = settingsIDEService.getUiTypeIconsPreference();
         customModels.forEach(m -> {
                 try {
                     userIconsSettingsTableModel.addRow(new Object[]{
@@ -624,6 +643,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void loadPluginIconsTable() {
+        SettingsIDEService settingsIDEService = SettingsIDEService.getInstance();
+
         int currentSelected = pluginIconsSettingsTableModel != null ? pluginIconsTable.getSelectedRow() : -1;
         pluginIconsSettingsTableModel = new PluginIconsSettingsTableModel();
         List<Model> allRegisteredModels = SettingsService.getAllRegisteredModels();
@@ -635,9 +656,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 .collect(Collectors.toList());
         }
         foldersFirst(allRegisteredModels);
-        List<String> disabledModelIds = SettingsService.getInstance(project).getDisabledModelIds();
-        final Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
-        final UITypeIconsPreference uiTypeIconsPreference = SettingsService.getIDEInstance().getUiTypeIconsPreference();
+        List<String> disabledModelIds = SettingsService.getBestSettingsService(project, false).getDisabledModelIds();
+        final Double additionalUIScale = settingsIDEService.getAdditionalUIScale();
+        final UITypeIconsPreference uiTypeIconsPreference = settingsIDEService.getUiTypeIconsPreference();
         final Icon restartIcon = IconLoader.getIcon("extra-icons/plugin-internals/reboot.svg", SettingsForm.class); //NON-NLS
         allRegisteredModels.forEach(m -> pluginIconsSettingsTableModel.addRow(new Object[]{
                 IconUtils.getIcon(m, additionalUIScale, uiTypeIconsPreference),
@@ -678,11 +699,11 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void loadIgnoredPattern() {
-        ignoredPatternTextField.setText(SettingsService.getInstance(project).getIgnoredPattern());
+        ignoredPatternTextField.setText(SettingsService.getBestSettingsService(project, false).getIgnoredPattern());
     }
 
     private void loadAdditionalUIScale() {
-        additionalUIScaleTextField.setText(Double.toString(SettingsService.getIDEInstance().getAdditionalUIScale()));
+        additionalUIScaleTextField.setText(Double.toString(SettingsIDEService.getInstance().getAdditionalUIScale()));
     }
 
     private JComponent createToolbarDecorator() {

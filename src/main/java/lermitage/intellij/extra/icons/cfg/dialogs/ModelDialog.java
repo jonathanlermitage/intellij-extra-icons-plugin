@@ -25,7 +25,7 @@ import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.ModelCondition;
 import lermitage.intellij.extra.icons.ModelType;
 import lermitage.intellij.extra.icons.cfg.SettingsForm;
-import lermitage.intellij.extra.icons.cfg.services.SettingsService;
+import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.utils.BundledIcon;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageRenderer;
 import lermitage.intellij.extra.icons.utils.FileChooserUtils;
@@ -335,8 +335,10 @@ public class ModelDialog extends DialogWrapper {
         typeComboBox.setSelectedIndex(getModelTypeIdx(model.getModelType()));
         typeComboBox.updateUI();
         iconPackField.setText(model.getIconPack());
-        Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
-        SwingUtilities.invokeLater(() -> iconLabel.setIcon(IconUtils.getIcon(model, additionalUIScale, SettingsService.getIDEInstance().getUiTypeIconsPreference())));
+
+        SettingsIDEService settingsIDEService = SettingsIDEService.getInstance();
+        Double additionalUIScale = settingsIDEService.getAdditionalUIScale();
+        SwingUtilities.invokeLater(() -> iconLabel.setIcon(IconUtils.getIcon(model, additionalUIScale, settingsIDEService.getUiTypeIconsPreference())));
         if (model.getIconType() == IconType.PATH) {
             for (int itemIdx = 0; itemIdx < chooseIconSelector.getItemCount(); itemIdx++) {
                 Object item = chooseIconSelector.getItemAt(itemIdx);

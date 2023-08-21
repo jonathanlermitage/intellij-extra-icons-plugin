@@ -10,7 +10,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.ui.EDT;
-import lermitage.intellij.extra.icons.cfg.services.SettingsService;
+import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,7 +44,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     @Override
     public synchronized void init(@NotNull Project project) {
         try {
-            if (SettingsService.getIDEInstance().getUseIDEFilenameIndex()) {
+            if (SettingsIDEService.getInstance().getUseIDEFilenameIndex()) {
                 enabledFolders = initWithIDEFileIndex(project, getFilenamesToSearch());
             } else {
                 enabledFolders = initWithRegularFS(project, getFilenamesToSearch());

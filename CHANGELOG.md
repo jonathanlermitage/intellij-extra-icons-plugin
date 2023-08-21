@@ -2,6 +2,8 @@
 
 ## 2023.2.10-231 (WIP)
 * add new UI icon for JetBrains Fleet `.fleet` folders.
+* rework the way IDE and project level settings are persisted. A limited set of IDE level settings may have been saved at project level (and vice-versa) in the past. This should be fixed now.
+* use the new GitLab icon by default instead of the old one.
 
 ## 2023.2.9-231 (2023/08/12)
 * rework settings panel.

@@ -14,7 +14,9 @@ import org.jetbrains.annotations.NotNull;
 )
 public class SettingsProjectService extends SettingsService implements PersistentStateComponent<SettingsProjectService> {
 
+    @SuppressWarnings("WeakerAccess")
     public boolean overrideIDESettings = false;
+    @SuppressWarnings("WeakerAccess")
     public boolean addToIDEUserIcons = true;
 
     @NotNull

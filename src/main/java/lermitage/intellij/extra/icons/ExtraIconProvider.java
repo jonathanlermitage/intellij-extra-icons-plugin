@@ -1237,6 +1237,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .tags(ModelTag.DOCKER)
             )
             .flatMap(ExtraIconProvider::modelList)
+            //.filter(Model::isInFreemium) // TODO prepare a potential freemium mode. Free mode may include a limited set of bundled icons, allow user to define personal icons, and download icon packs
             .collect(Collectors.toList());
     }
 

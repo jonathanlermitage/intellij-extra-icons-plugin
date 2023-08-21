@@ -14,7 +14,7 @@ import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import lermitage.intellij.extra.icons.Globals;
 import lermitage.intellij.extra.icons.cfg.SettingsForm;
-import lermitage.intellij.extra.icons.cfg.services.SettingsService;
+import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -31,9 +31,9 @@ public class HintNotificationsStartupActivity implements ProjectActivity {
     @Nullable
     @Override
     public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
-        SettingsService ideSettings = SettingsService.getIDEInstance();
+        SettingsIDEService settingsIDEService = SettingsIDEService.getInstance();
         try {
-            if (!ideSettings.getPluginIsConfigurableHintNotifDisplayed()) {
+            if (!settingsIDEService.getPluginIsConfigurableHintNotifDisplayed()) {
                 Notification notif = new Notification(Globals.PLUGIN_GROUP_DISPLAY_ID,
                     i18n.getString("notif.tips.plugin.config.title"),
                     i18n.getString("notif.tips.plugin.config.content"),
@@ -47,7 +47,7 @@ public class HintNotificationsStartupActivity implements ProjectActivity {
                 Notifications.Bus.notify(notif);
             }
         } finally {
-            ideSettings.setPluginIsConfigurableHintNotifDisplayed(true);
+            settingsIDEService.setPluginIsConfigurableHintNotifDisplayed(true);
         }
         return null;
     }

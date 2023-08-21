@@ -66,7 +66,7 @@ public abstract class BaseIconProvider
         this.models = getAllModels().stream()
             .filter(model -> model.getUiType() == null || model.getUiType() == uiType)
             .toList();
-        uiTypeIconsPreference = SettingsService.getIDEInstance().getUiTypeIconsPreference();
+        uiTypeIconsPreference = SettingsIDEService.getInstance().getUiTypeIconsPreference();
     }
 
     /**
@@ -245,11 +245,11 @@ public abstract class BaseIconProvider
             String normalizedFileName = getSanitizeFilePath(file.getName());
             String normalizedFileAbsPath = getSanitizeFilePath(file.getAbsolutePath());
             Set<String> facets = FacetsFinderService.getInstance(project).getFacets();
-            Double additionalUIScale = SettingsService.getIDEInstance().getAdditionalUIScale();
-            SettingsService service = getSettingsService(project);
+            Double additionalUIScale = SettingsIDEService.getInstance().getAdditionalUIScale();
+            SettingsService settingsService = SettingsService.getBestSettingsService(project, true);
             Object parentModelIdWhoseCheckFailed = null;
             for (final Model model : getModelsIncludingUserModels(project)) {
-                if (model.getModelType() == currentModelType && model.isEnabled() && !service.getDisabledModelIds().contains(model.getId())) {
+                if (model.getModelType() == currentModelType && model.isEnabled() && !settingsService.getDisabledModelIds().contains(model.getId())) {
                     if (model.getParentId() != null && parentModelIdWhoseCheckFailed == model.getParentId()) {
                         // check already returned false for this model (parent or alt), don't need to check again
                         checks_saved++;
@@ -291,34 +291,24 @@ public abstract class BaseIconProvider
      * the user added models to the model list.
      */
     private List<Model> getModelsIncludingUserModels(@Nullable Project project) {
-        SettingsService service = SettingsService.getInstance(project);
-        SettingsProjectService projectService = (SettingsProjectService) service;
-        Stream<Model> customModelsStream;
+        Stream<Model> customModelsStream = null;
 
-        if (projectService.isOverrideIDESettings()) {
-            if (projectService.isAddToIDEUserIcons()) {
-                customModelsStream = Stream.concat(SettingsIDEService.getInstance().getCustomModels().stream(),
-                    projectService.getCustomModels().stream());
-            } else {
-                customModelsStream = projectService.getCustomModels().stream();
+        if (project != null) {
+            SettingsProjectService settingsProjectService = SettingsProjectService.getInstance(project);
+            if (settingsProjectService.isOverrideIDESettings()) {
+                if (settingsProjectService.isAddToIDEUserIcons()) {
+                    customModelsStream = Stream.concat(SettingsIDEService.getInstance().getCustomModels().stream(),
+                        settingsProjectService.getCustomModels().stream());
+                } else {
+                    customModelsStream = settingsProjectService.getCustomModels().stream();
+                }
             }
-        } else {
+        }
+        if (customModelsStream == null) {
             customModelsStream = SettingsIDEService.getInstance().getCustomModels().stream();
         }
 
         return Stream.concat(customModelsStream, models.stream()).collect(Collectors.toList());//
-    }
-
-    /**
-     * Returns the project service if the checkbox in the project settings was checked,
-     * otherwise returns the IDE settings service.
-     */
-    private SettingsService getSettingsService(Project project) {
-        SettingsService service = SettingsService.getInstance(project);
-        if (!((SettingsProjectService) service).isOverrideIDESettings()) {
-            service = SettingsIDEService.getInstance();
-        }
-        return service;
     }
 
     /**
@@ -328,7 +318,7 @@ public abstract class BaseIconProvider
      */
     private boolean isPatternIgnored(Project project, File file) {
         try {
-            SettingsService service = getSettingsService(project);
+            SettingsService service = SettingsService.getBestSettingsService(project, true);
             if (service.getIgnoredPatternObj() == null || service.getIgnoredPattern() == null || service.getIgnoredPattern().isEmpty()) {
                 return false;
             }

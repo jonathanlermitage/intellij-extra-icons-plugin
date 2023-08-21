@@ -62,6 +62,8 @@ public class Model {
 
     private boolean autoLoadNewUIIconVariant = false;
 
+    private boolean inFreemium = false;
+
     // For XML deserializer (IntelliJ internals)
     @SuppressWarnings("unused")
     private Model() {
@@ -166,6 +168,7 @@ public class Model {
         altModel.parentId = baseModel.getId();
         altModel.uiType = baseModel.getUiType();
         altModel.autoLoadNewUIIconVariant = baseModel.isAutoLoadNewUIIconVariant();
+        altModel.inFreemium = baseModel.isInFreemium();
         return altModel;
     }
 
@@ -316,6 +319,16 @@ public class Model {
     /** Indicates if model has a new UI icon in "./newui/". */
     public boolean isAutoLoadNewUIIconVariant() {
         return autoLoadNewUIIconVariant;
+    }
+
+    /** This model is available in freemium (free) mode. If not, it requires a paid licence. */
+    public Model inFreemium() {
+        this.inFreemium = true;
+        return this;
+    }
+
+    public boolean isInFreemium() {
+        return inFreemium;
     }
 
     /**
