@@ -5,11 +5,8 @@ package lermitage.intellij.extra.icons.cfg;
 import com.google.common.base.Strings;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.editor.event.DocumentEvent;
-import com.intellij.openapi.editor.event.DocumentListener;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
@@ -40,7 +37,6 @@ import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.OS;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.apache.commons.collections.CollectionUtils;
-import org.intellij.lang.regexp.RegExpFileType;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -54,8 +50,11 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
@@ -66,6 +65,7 @@ import java.io.File;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -83,7 +83,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JButton buttonEnableAll;
     private JButton buttonDisableAll;
     private JCheckBox overrideSettingsCheckbox;
-    private EditorTextField ignoredPatternTextField;
+    private JTextField ignoredPatternTextField;
     private JBLabel ignoredPatternTitle;
     private JTabbedPane iconsTabbedPane;
     private JBTable pluginIconsTable;
@@ -92,7 +92,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JPanel overrideSettingsPanel;
     private JCheckBox addToIDEUserIconsCheckbox;
     private JLabel filterLabel;
-    private EditorTextField filterTextField;
+    private JTextField filterTextField;
     private JButton filterResetBtn;
     private JBLabel bottomTip;
     private JLabel additionalUIScaleTitle;
@@ -129,10 +129,19 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         buttonEnableAll.addActionListener(e -> enableAll(true));
         buttonDisableAll.addActionListener(e -> enableAll(false));
         filterResetBtn.addActionListener(e -> resetFilter());
-        filterTextField.addDocumentListener(new DocumentListener() {
+        filterTextField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
-            public void documentChanged(@NotNull DocumentEvent event) {
-                DocumentListener.super.documentChanged(event);
+            public void insertUpdate(DocumentEvent e) {
+                applyFilter();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                applyFilter();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
                 applyFilter();
             }
         });
@@ -292,6 +301,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private List<String> collectDisabledModelIds() {
+        if (pluginIconsSettingsTableModel == null) {
+            return Collections.emptyList();
+        }
+
         List<String> disabledModelIds = new ArrayList<>();
         for (int settingsTableRow = 0; settingsTableRow < pluginIconsSettingsTableModel.getRowCount(); settingsTableRow++) {
             boolean iconEnabled = (boolean) pluginIconsSettingsTableModel.getValueAt(settingsTableRow, PluginIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER);
@@ -303,6 +316,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private List<Boolean> collectUserIconEnabledStates() {
+        if (userIconsSettingsTableModel == null) {
+            return Collections.emptyList();
+        }
+
         return IntStream.range(0, userIconsSettingsTableModel.getRowCount()).mapToObj(
             index -> ((boolean) userIconsSettingsTableModel.getValueAt(index, UserIconsSettingsTableModel.ICON_ENABLED_COL_NUMBER))
         ).collect(Collectors.toList());
@@ -491,11 +508,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private void createUIComponents() {
         // Use default project here because project is not available yet
-        Project defaultProject = ProjectManager.getInstance().getDefaultProject();
-        ignoredPatternTextField = new EditorTextField("", defaultProject, RegExpFileType.INSTANCE);
-        ignoredPatternTextField.setFontInheritedFromLAF(false);
-        filterTextField = new EditorTextField("", defaultProject, RegExpFileType.INSTANCE);
-        filterTextField.setFontInheritedFromLAF(false);
     }
 
     private void initCheckbox() {
@@ -615,8 +627,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 }
             });
             // "yes"/"no" to filter by icons enabled/disabled, otherwise regex filter
-            boolean isYesFilter = "yes".equalsIgnoreCase(filter);
-            if (isYesFilter || "no".equalsIgnoreCase(filter)) {
+            boolean isYesFilter = "yes".equalsIgnoreCase(filter); //NON-NLS
+            if (isYesFilter || "no".equalsIgnoreCase(filter)) { //NON-NLS
                 sorter.setRowFilter(new RowFilter<>() {
                     @Override
                     public boolean include(Entry<? extends PluginIconsSettingsTableModel, ? extends Integer> entry) {

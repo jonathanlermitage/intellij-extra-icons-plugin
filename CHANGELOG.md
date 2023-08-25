@@ -1,9 +1,16 @@
 # Extra Icons Change Log
 
-## 2023.2.10-231 (WIP)
+## 2023.2.10-231 (2023/08/26)
+* fix [151](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/151). NullPointerException in settings form (`pluginIconsSettingsTableModel` is null).
+* fix [152](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/152) plugin not compatible with JetBrains Gateway.
 * add new UI icon for JetBrains Fleet `.fleet` folders.
 * rework the way IDE and project level settings are persisted. A limited set of IDE level settings may have been saved at project level (and vice-versa) in the past. This should be fixed now.
 * use the new GitLab icon by default instead of the old one.
+* settings: try to auto-detect default window scale (`Additional UI Scale Factor` in advanced settings) on new setups. This is useful only if you added user icons or downloaded icon packs. On existing setups, default value is still 1.
+* internal: code cleanup, remove compatibility code for unsupported old IDEs. Minor performance improvement.
+* info: JetBrains [**Gateway support is in progress**](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/milestone/27). Icons rendering works when plugin is installed in Host, or in both Host and Client, but not in Client only. Also, for now, plugin's settings panels are broken and some icons are too big, but icons override works. I have [plans](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/milestone/27) to fix these issues.
+* reworked Codacy icon in order to make it compatible with Gateway.
+* reworked Editorconfig icon in order to make it compatible with Gateway.
 
 ## 2023.2.9-231 (2023/08/12)
 * rework settings panel.
@@ -16,7 +23,7 @@
 * internal: minor performance improvement.
 
 ## 2023.2.8-231 (2023/07/12)
-* fix [146](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/146). NullPointerException in settings form.
+* fix [146](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/146). NullPointerException in settings form (`additionalUIScale` is null).
 * fix usage of a deprecated API in order to improve compatibility with future IDEs.
 * internal: fix unit tests for IDE 2023.2 EAP7.
 

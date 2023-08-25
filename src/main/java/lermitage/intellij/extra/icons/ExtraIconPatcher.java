@@ -2,7 +2,6 @@
 
 package lermitage.intellij.extra.icons;
 
-import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
@@ -31,9 +30,6 @@ public class ExtraIconPatcher extends IconPathPatcher {
 
     private Map<String, String> icons;
 
-    /** ClassLoader#getResource needs a leading "/" in old IDEs, and it should be absent in modern IDEs (2022+). */
-    private final boolean useOldResourceLoaderBehavior;
-
     @NotNull
     public static Map<String, String> getEnabledIcons() {
         Map<String, String> enabledIcons = new LinkedHashMap<>();
@@ -50,17 +46,6 @@ public class ExtraIconPatcher extends IconPathPatcher {
 
     public ExtraIconPatcher() {
         super();
-
-        // Starting with IJ 2022 (build 221+), resource path must not start with a leading "/". On older IJ versions, resource
-        // path has to start with a leading "/". A solution would be to support IJ 2022+ only, but we can easily
-        // detect IDE build version and adapt icons path when needed.
-        String buildVersion = ApplicationInfo.getInstance().getBuild().asStringWithoutProductCode();
-        useOldResourceLoaderBehavior = buildVersion.startsWith("21");
-        if (useOldResourceLoaderBehavior) {
-            LOGGER.info("Detected IDE build version " + buildVersion + ". This is an old build (<221). " +
-                "Will adapt code in order to customize IDE icons correctly.");
-        }
-
         loadConfig();
         IconLoader.installPathPatcher(this);
     }
@@ -115,11 +100,7 @@ public class ExtraIconPatcher extends IconPathPatcher {
             String iconStr = icons.get(iconKey);
             if (iconStr.startsWith("extra-icons/")) { //NON-NLS
                 // bundled icon, no icon transformation needed
-                if (useOldResourceLoaderBehavior) {
-                    morphedIcons.put(iconKey, "/" + iconStr);
-                } else {
-                    morphedIcons.put(iconKey, iconStr);
-                }
+                morphedIcons.put(iconKey, iconStr);
             } else {
                 // base64 icon provided by user: store as local file
                 Path iconFile = Files.createTempFile("extra-icons-ide-user-icon", ".svg"); //NON-NLS

@@ -625,7 +625,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".codecov.yml", "codecov.yml"),
                 ofFile("codefresh", "extra-icons/codefresh.png", "Codefresh: codefresh.yml")
                     .eq("codefresh.yml"),
-                ofFile("codacy", "extra-icons/codacy.png", "Codacy: .codacy(.yml,.yaml), codacy(.yml,.yaml)")
+                ofFile("codacy", "extra-icons/codacy.svg", "Codacy: .codacy(.yml,.yaml), codacy(.yml,.yaml)")
                     .eq(".codacy", "codacy").mayEnd(YML),
                 ofFile("codeception", "extra-icons/codeception.svg", "Codeception: codeception.dist(.yml,.yaml)")
                     .eq("codeception.dist.yml").mayEnd(YML),
@@ -665,7 +665,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".dockerignore")
                     .altIcons("extra-icons/dockerignore_alt.svg", "extra-icons/dockerignore_alt2.svg")
                     .tags(ModelTag.DOCKER),
-                ofFile("editorconfig", "extra-icons/editorconfig.png", "EditorConfig: .editorconfig")
+                ofFile("editorconfig", "extra-icons/editorconfig.svg", "EditorConfig: .editorconfig")
                     .eq(".editorconfig").mayEnd(CFG)
                     .altIcons("extra-icons/editorconfig_alt.svg", "extra-icons/editorconfig_alt2.svg"),
                 ofFile("elastic", "extra-icons/elasticsearch.svg", "Elasticsearch: elastic(.yml,.yaml)")

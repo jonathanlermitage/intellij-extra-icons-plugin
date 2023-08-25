@@ -2,14 +2,11 @@
 
 package lermitage.intellij.extra.icons.cfg.dialogs;
 
-import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.ValidationInfo;
-import com.intellij.ui.EditorTextField;
 import com.intellij.ui.components.JBLabel;
 import lermitage.intellij.extra.icons.ModelCondition;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
-import org.intellij.lang.regexp.RegExpFileType;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.ButtonGroup;
@@ -27,11 +24,11 @@ import java.util.regex.PatternSyntaxException;
 public class ModelConditionDialog extends DialogWrapper {
 
     public static final String FIELD_SEPARATOR = ";";
-    public static final String FIELD_SEPARATOR_NAME = "semicolon";
+    public static final String FIELD_SEPARATOR_NAME = "semicolon"; //NON-NLS
 
     private JPanel dialogPanel;
     private JCheckBox regexCheckBox;
-    private EditorTextField regexTextField;
+    private JTextField regexTextField;
     private JCheckBox parentsCheckBox;
     private JTextField parentsTextField;
     private JCheckBox namesCheckBox;
@@ -137,8 +134,6 @@ public class ModelConditionDialog extends DialogWrapper {
     }
 
     private void createUIComponents() {
-        regexTextField = new EditorTextField("", ProjectManager.getInstance().getDefaultProject(), RegExpFileType.INSTANCE);
-        regexTextField.setFontInheritedFromLAF(false);
     }
 
     @Nullable

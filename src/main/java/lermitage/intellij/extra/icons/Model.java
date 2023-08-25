@@ -8,7 +8,6 @@ import com.intellij.util.xmlb.annotations.XCollection;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
 import lermitage.intellij.extra.icons.enablers.IconEnablerType;
 import lermitage.intellij.extra.icons.enablers.services.GitSubmoduleFolderEnablerService;
-import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -264,7 +263,7 @@ public class Model {
      * Condition: file/folder <b>absolute path</b> satisfies given regular expression.
      * @param regex regular expression.
      */
-    public Model regex(@NotNull @Language("RegExp") String regex) {
+    public Model regex(@NotNull String regex) {
         getCurrentCondition().setRegex(regex);
         return this;
     }

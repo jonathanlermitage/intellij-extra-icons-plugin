@@ -112,7 +112,10 @@ public class IconUtils {
                 if (thumbnail != null) {
                     JBImageIcon scaledJBImageWhichNeedsRescale;
                     Image scaledImage;
-                    if (additionalUIScale == SettingsService.DEFAULT_ADDITIONAL_UI_SCALE) { // TODO test 1.25 scale on linux
+                    // TODO test 1.25 scale on linux. Also, see if we can check some environment variables:
+                    //  https://intellij-support.jetbrains.com/hc/en-us/articles/360007994999-HiDPI-configuration
+                    //  https://unix.stackexchange.com/questions/596887/how-to-scale-the-resolution-display-of-the-desktop-and-or-applications
+                    if (additionalUIScale == 1.0d) { // no scaling needed
                         scaledImage = IconUtil.createImageIcon(thumbnail).getImage();
                     } else {
                         scaledJBImageWhichNeedsRescale = IconUtil.createImageIcon(thumbnail);

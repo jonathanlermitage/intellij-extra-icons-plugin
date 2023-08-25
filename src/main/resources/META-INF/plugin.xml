@@ -16,15 +16,15 @@
         <li>You can import and export icons from external files. This also means you can easily share icon themes with friends. You can also download online <b>icon packs</b> (example: <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/themes/THEMES.md#newuifilestoolduitheme">restore the old file icons when using the new UI</a>).</li>
         <li>For more information, please see this <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">guide</a>.</li>
         <li>For questions about the plugin licensing model, how to get a license for free (students and teachers), and how to get a perpetual license, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md">license FAQ</a>.</li>
+        <li>JetBrains <b>Gateway</b> support: please install plugin in <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/152#issuecomment-1691873681">Host</a>, or in both Host and Client, but not in Client only. Also, for now, plugin's settings panels are broken and some icons are too big, but icons override works. I have <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/milestone/27">plans</a> to fix these issues.</li>
       </ul>
       Extra Icons <b>Chinese UI</b> is automatically applied if you enable the official IDE <a href="https://plugins.jetbrains.com/plugin/13710-chinese-simplified-language-pack----">Chinese Language Pack</a> plugin.<br>
       如果你启用官方IDE中文语言包插件, Extra Icons中文用户界面将自动应用.
       <br>
       <br>
       📢 Please don't trust the plugin's low rating. It had ~5 stars until I decided to ask for modest financial support starting from March 2022.
-      Some narrow-minded people organized a review-bombing against my plugin (and sent me very aggressive emails, sometimes death threats;
-      seriously... they're crazy), which is why you see many 1-star ratings. JetBrains support accepted to remove most of the toxic reviews,
-      but unfortunately, they refused to remove the 1-star ratings...<br>
+      Some narrow-minded people organized a review-bombing against my plugin, which explains why you see many 1-star ratings. JetBrains support
+      accepted to remove most of the toxic reviews, but unfortunately, they refused to remove the 1-star ratings...<br>
       📢 Want to customize <b>Python</b> or <b>Go</b> file icons? Up-voting <a href="https://youtrack.jetbrains.com/issue/PY-44417/IconProvider-doesnt-replace-Python-Icons"><b>PY-44417</b></a> would greatly help. Thank you!
       <br>
       <br>
@@ -47,8 +47,6 @@
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html#modules-available-in-all-products
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
-    <depends>com.intellij.modules.lang</depends>
-    <depends>com.intellij.modules.vcs</depends>
 
     <!-- Icon Patchers override file icon by icon name -->
     <application-components>
@@ -67,11 +65,6 @@
         <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <iconProvider
             id="extraIconsIconProvider"
-            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid"
-            implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
-        <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
-        <openapi.vcs.changes.ui.filePathIconProvider
-            id="extraIconsFilePathIconProvider"
             order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
 

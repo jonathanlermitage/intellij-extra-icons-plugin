@@ -10,7 +10,6 @@ import lermitage.intellij.extra.icons.enablers.IconEnabler;
 import lermitage.intellij.extra.icons.enablers.IconEnablerProvider;
 import lermitage.intellij.extra.icons.enablers.IconEnablerType;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
-import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.Nullable;
 
 import java.text.MessageFormat;
@@ -96,7 +95,7 @@ public class ModelCondition {
         this.noDot = true;
     }
 
-    public void setRegex(@Language("RegExp") String regex) {
+    public void setRegex(String regex) {
         this.hasRegex = true;
         this.regex = regex;
         this.pattern = Pattern.compile(regex);

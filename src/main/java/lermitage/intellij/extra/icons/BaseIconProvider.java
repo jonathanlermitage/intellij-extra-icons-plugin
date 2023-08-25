@@ -7,8 +7,6 @@ import com.intellij.ide.IconProvider;
 import com.intellij.openapi.diagnostic.ControlFlowException;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vcs.FilePath;
-import com.intellij.openapi.vcs.changes.FilePathIconProvider;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
@@ -44,9 +42,8 @@ import java.util.stream.Stream;
  * @author Jonathan Lermitage
  */
 public abstract class BaseIconProvider
-    extends IconProvider /* to override icons in Project view */
-    implements FilePathIconProvider, /* to override icons in VCS (Git, etc.) views */
-    FileIconProvider /* to override icons in Project view */ {
+    extends IconProvider
+    implements FileIconProvider {
 
     private static final @NonNls Logger LOGGER = Logger.getInstance(BaseIconProvider.class);
     private final String className = this.getClass().getSimpleName();
@@ -136,31 +133,6 @@ public abstract class BaseIconProvider
                 LOGGER.warn(e);
             }
         }
-    }
-
-    @Nullable
-    @Override
-    public Icon getIcon(@NotNull FilePath filePath, @Nullable Project project) {
-        try {
-            if (!ProjectUtils.isProjectAlive(project)) {
-                return null;
-            }
-            VirtualFile virtualFile = filePath.getVirtualFile();
-            if (virtualFile == null) {
-                return null;
-            }
-            return getIcon(filePath.getIOFile(),
-                virtualFile.isDirectory() ? FileType.FOLDER : FileType.FILE,
-                project);
-        } catch (Throwable e) {
-            logError(e);
-        } finally {
-            if (LOGGER.isDebugEnabled()) {
-                // activate with Help > Diagnostic Tools > Debug Log Settings > #lermitage.intellij.extra.icons.BaseIconProvider
-                LOGGER.debug(className + " did " + checks_done + " model checks and saved " + checks_saved + " model checks");
-            }
-        }
-        return null;
     }
 
     @Nullable
