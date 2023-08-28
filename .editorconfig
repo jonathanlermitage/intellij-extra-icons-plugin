@@ -17,3 +17,8 @@ indent_size = 2
 
 [*.py]
 max_line_length = 150
+
+[*.java]
+# IntelliJ specific settings
+ij_java_class_count_to_use_import_on_demand = 1000 # Do not group imports with an asterisk
+ij_java_names_count_to_use_import_on_demand = 1000 # Do not group imports with an asterisk

@@ -41,19 +41,7 @@ public class IconUtils {
 
     public static Icon getIcon(Model model, double additionalUIScale, @NotNull UITypeIconsPreference uiTypeIconsPreference) {
         if (model.getIconType() == IconType.PATH) {
-            String iconPathToLoad = model.getIcon();
-            switch (uiTypeIconsPreference) {
-                case BASED_ON_ACTIVE_UI_TYPE -> {
-                    if (UIUtils.isNewUIEnabled() && model.isAutoLoadNewUIIconVariant()) {
-                        iconPathToLoad = model.getIcon().replace("extra-icons/", "extra-icons/newui/"); //NON-NLS
-                    }
-                }
-                case PREFER_NEW_UI_ICONS -> {
-                    if (model.isAutoLoadNewUIIconVariant()) {
-                        iconPathToLoad = model.getIcon().replace("extra-icons/", "extra-icons/newui/"); //NON-NLS
-                    }
-                }
-            }
+            String iconPathToLoad = getIconPathToLoad(model, uiTypeIconsPreference);
             return IconLoader.getIcon(iconPathToLoad, IconUtils.class);
         }
         ImageWrapper fromBase64 = fromBase64(model.getIcon(), model.getIconType(), additionalUIScale);
@@ -61,6 +49,21 @@ public class IconUtils {
             return null;
         }
         return IconUtil.createImageIcon(fromBase64.getImage());
+    }
+
+    private static String getIconPathToLoad(Model model, @NotNull UITypeIconsPreference uiTypeIconsPreference) {
+        boolean preferNewUI = switch (uiTypeIconsPreference) {
+            case BASED_ON_ACTIVE_UI_TYPE -> UIUtils.isNewUIEnabled();
+            case PREFER_NEW_UI_ICONS -> true;
+            case PREFER_OLD_UI_ICONS -> false;
+        };
+        String iconPathToLoad;
+        if (preferNewUI && model.isAutoLoadNewUIIconVariant()) {
+            iconPathToLoad = model.getIcon().replace("extra-icons/", "extra-icons/newui/"); //NON-NLS
+        } else {
+            iconPathToLoad = model.getIcon();
+        }
+        return iconPathToLoad;
     }
 
     public static ImageWrapper loadFromVirtualFile(VirtualFile virtualFile) throws IllegalArgumentException {

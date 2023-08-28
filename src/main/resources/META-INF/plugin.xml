@@ -4,7 +4,7 @@
     <version>REPLACED_BY_GRADLE</version>
     <vendor email="jonathan@lermitage.biz" url="https://github.com/jonathanlermitage">JONATHAN_LERMITAGE</vendor>
     <!-- required parameters for paid plugins: https://plugins.jetbrains.com/docs/marketplace/add-required-parameters.html -->
-    <!-- IMPORTANT reminder: update the pluginVersion on new release, but change the release-date and release-version on major version changes only -->
+    <!-- IMPORTANT reminder: change the release-date and release-version on major version changes only -->
     <product-descriptor code="PEXTRAICONS" release-date="20230421" release-version="20232"/>
 
     <description><![CDATA[
@@ -22,9 +22,6 @@
       如果你启用官方IDE中文语言包插件, Extra Icons中文用户界面将自动应用.
       <br>
       <br>
-      📢 Please don't trust the plugin's low rating. It had ~5 stars until I decided to ask for modest financial support starting from March 2022.
-      Some narrow-minded people organized a review-bombing against my plugin, which explains why you see many 1-star ratings. JetBrains support
-      accepted to remove most of the toxic reviews, but unfortunately, they refused to remove the 1-star ratings...<br>
       📢 Want to customize <b>Python</b> or <b>Go</b> file icons? Up-voting <a href="https://youtrack.jetbrains.com/issue/PY-44417/IconProvider-doesnt-replace-Python-Icons"><b>PY-44417</b></a> would greatly help. Thank you!
       <br>
       <br>
@@ -95,7 +92,7 @@
         <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.HintNotificationsStartupActivity"
                              id="ExtraIcons_HintNotificationsStartupActivity"
                              order="last"/>
-        <!-- Various events on file update -->
+        <!-- Various events on file update (for now, refresh Git sub-module folders on '.gitmodules' update) -->
         <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.VFSChangesListenersPostStartupActivity"
                              id="ExtraIcons_VFSChangesListenersPostStartupActivity"
                              order="last, after ExtraIcons_EnablerServicesPostStartupActivity"/>

@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2023.2.10-231 (2023/08/26)
+## 2023.2.10-231 (WIP)
 * fix [151](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/151). NullPointerException in settings form (`pluginIconsSettingsTableModel` is null).
 * fix [152](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/152). Plugin not compatible with JetBrains Gateway.
 * add new UI icon for JetBrains Fleet `.fleet` folders.

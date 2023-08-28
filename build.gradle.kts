@@ -23,7 +23,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.47.0" // https://github.com/ben-manes/gradle-versions-plugin
     id("com.palantir.git-version") version "3.0.0" // https://github.com/palantir/gradle-git-version
     id("com.github.andygoossens.modernizer") version "1.8.0" // https://github.com/andygoossens/gradle-modernizer-plugin
-    id("biz.lermitage.oga") version "1.1.1"
+    id("biz.lermitage.oga") version "1.1.1" // https://github.com/jonathanlermitage/oga-gradle-plugin
 }
 
 val pluginXmlFile = projectDir.resolve("src/main/resources/META-INF/plugin.xml")
