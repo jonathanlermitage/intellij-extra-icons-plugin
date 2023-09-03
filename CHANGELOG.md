@@ -3,6 +3,7 @@
 ## 2023.2.10-231 (2023/09/03)
 * fix [151](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/151): NullPointerException in settings form (`pluginIconsSettingsTableModel` is null).
 * fix [152](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/152): plugin not compatible with JetBrains Gateway.
+* fix support of Caddy (Caddyfile) files.
 * add new UI icon for JetBrains Fleet `.fleet` folders.
 * rework the way IDE and project level settings are persisted. A limited set of IDE level settings may have been saved at project level (and vice-versa) in the past. This should be fixed now.
 * use the new GitLab icon by default instead of the old one.

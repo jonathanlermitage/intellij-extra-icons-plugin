@@ -564,6 +564,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                         "extra-icons/authors_alt3.svg", "extra-icons/authors_alt4.svg"),
                 ofFile("bamboo", "extra-icons/bamboo.png", "Bamboo: bamboo.yml")
                     .eq("bamboo.yml"),
+                ofFile("caddyfile", "extra-icons/caddy.svg", "Caddy: Caddyfile")
+                    .eq("caddyfile"),
                 ofFile("cargo", "extra-icons/cargo.png", "Cargo: cargo.toml")
                     .eq("cargo.toml"),
                 ofFile("commitlint", "extra-icons/commitlint.svg", "Commitlint: .commitlintrc, .commitlintrc.json, .commitlintrc.yaml, etc.")
