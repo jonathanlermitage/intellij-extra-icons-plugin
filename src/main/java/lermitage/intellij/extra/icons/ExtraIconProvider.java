@@ -1001,7 +1001,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .autoLoadNewUIIconVariant(),
                 ofFile("ext_adoc", "extra-icons/asciidoc.svg", "Asciidoc: *.adoc, *.asciidoc")
                     .end(".adoc", ".asciidoc")
-                    .altIcons("extra-icons/asciidoc_alt.png"),
+                    .altIcons("extra-icons/asciidoc_alt.svg"),
                 ofFile("ext_monkeys-audio", "extra-icons/monkey's_audio.svg", "Monkey's Audio: *.ape")
                     .end(".ape"),
                 ofFile("ext_apk", "extra-icons/apk.svg", "Android application package (APK): *.apk, *.xapk")

@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 2023.2.11-231 (2023/09/03)
+* rework Asciidoc icon in order to make it compatible with Gateway.
 * rework Bamboo icon in order to make it compatible with Gateway.
 * rework Berkshelf icon in order to make it compatible with Gateway.
 
