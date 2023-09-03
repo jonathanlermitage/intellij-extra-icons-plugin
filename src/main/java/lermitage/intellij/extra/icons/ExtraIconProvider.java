@@ -558,7 +558,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".all-contributorsrc"),
                 ofFile("archunit", "extra-icons/archunit.svg", "ArchUnit: archunit.properties")
                     .eq("archunit.properties"),
-                ofFile("author", "extra-icons/authors.png", "Author: author(.md,.txt,.adoc,.rst), authors")
+                ofFile("author", "extra-icons/authors.svg", "Author: author(.md,.txt,.adoc,.rst), authors")
                     .eq("author", "authors").mayEnd(TXT)
                     .altIcons("extra-icons/authors_alt.svg", "extra-icons/authors_alt2.svg",
                         "extra-icons/authors_alt3.svg", "extra-icons/authors_alt4.svg"),
