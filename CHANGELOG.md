@@ -2,6 +2,7 @@
 
 ## 2023.2.11-231 (2023/09/03)
 * rework Bamboo icon in order to make it compatible with Gateway.
+* rework Berkshelf icon in order to make it compatible with Gateway.
 
 ## 2023.2.10-231 (2023/09/03)
 * fix [151](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/151): NullPointerException in settings form (`pluginIconsSettingsTableModel` is null).
