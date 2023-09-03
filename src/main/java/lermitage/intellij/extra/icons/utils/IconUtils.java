@@ -98,39 +98,44 @@ public class IconUtils {
         return loadImage(B64_DECODER.decode(base64), iconType, additionalUIScale);
     }
 
+    // FIXME IDE freezes when rendering many SVG files in parallel. Workaround: use a synchronized method
+    private static synchronized ImageWrapper loadSVGAsImageWrapper(byte[] imageBytes, double additionalUIScale) {
+        SVGLoader svgLoader = new SVGLoader();
+        SVGDocument svgDocument = svgLoader.load(sanitizeSVGImageBytes(imageBytes));
+        if (svgDocument == null) {
+            return null;
+        }
+        FloatSize size = svgDocument.size();
+        BufferedImage image = ImageUtil.createImage((int) size.width, (int) size.height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D graphics = image.createGraphics();
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        svgDocument.render(null, graphics);
+        Image thumbnail = scaleImage(image);
+        if (thumbnail != null) {
+            JBImageIcon scaledJBImageWhichNeedsRescale;
+            Image scaledImage;
+            // TODO test 1.25 scale on linux. Also, see if we can check some environment variables:
+            //  https://intellij-support.jetbrains.com/hc/en-us/articles/360007994999-HiDPI-configuration
+            //  https://unix.stackexchange.com/questions/596887/how-to-scale-the-resolution-display-of-the-desktop-and-or-applications
+            if (additionalUIScale == 1.0d) { // no scaling needed
+                scaledImage = IconUtil.createImageIcon(thumbnail).getImage();
+            } else {
+                scaledJBImageWhichNeedsRescale = IconUtil.createImageIcon(thumbnail);
+                scaledImage = ImageLoader.scaleImage(scaledJBImageWhichNeedsRescale.getImage(), additionalUIScale);
+            }
+            return new ImageWrapper(IconType.SVG, scaledImage, imageBytes);
+        }
+        return null;
+    }
+
     public static ImageWrapper loadImage(byte[] imageBytes, IconType iconType, double additionalUIScale) {
         if (iconType == IconType.SVG) {
             try {
-                SVGLoader svgLoader = new SVGLoader();
-                SVGDocument svgDocument = svgLoader.load(sanitizeSVGImageBytes(imageBytes));
-                if (svgDocument == null) {
-                    return null;
-                }
-                FloatSize size = svgDocument.size();
-                BufferedImage image = ImageUtil.createImage((int) size.width, (int) size.height, BufferedImage.TYPE_INT_ARGB);
-                Graphics2D graphics = image.createGraphics();
-                graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                svgDocument.render(null, graphics);
-                Image thumbnail = scaleImage(image);
-                if (thumbnail != null) {
-                    JBImageIcon scaledJBImageWhichNeedsRescale;
-                    Image scaledImage;
-                    // TODO test 1.25 scale on linux. Also, see if we can check some environment variables:
-                    //  https://intellij-support.jetbrains.com/hc/en-us/articles/360007994999-HiDPI-configuration
-                    //  https://unix.stackexchange.com/questions/596887/how-to-scale-the-resolution-display-of-the-desktop-and-or-applications
-                    if (additionalUIScale == 1.0d) { // no scaling needed
-                        scaledImage = IconUtil.createImageIcon(thumbnail).getImage();
-                    } else {
-                        scaledJBImageWhichNeedsRescale = IconUtil.createImageIcon(thumbnail);
-                        scaledImage = ImageLoader.scaleImage(scaledJBImageWhichNeedsRescale.getImage(), additionalUIScale);
-                    }
-                    return new ImageWrapper(iconType, scaledImage, imageBytes);
-                }
+                return loadSVGAsImageWrapper(imageBytes, additionalUIScale);
             } catch (Exception ex) {
                 LOGGER.info("Can't load " + iconType + " icon: " + ex.getMessage(), ex);
                 return null;
             }
-            return null;
         }
 
         Image image;
