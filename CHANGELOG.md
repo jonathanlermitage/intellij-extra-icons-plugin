@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2023.2.11-231 (2023/09/03)
+* rework Bamboo icon in order to make it compatible with Gateway.
+
 ## 2023.2.10-231 (2023/09/03)
 * fix [151](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/151): NullPointerException in settings form (`pluginIconsSettingsTableModel` is null).
 * fix [152](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/152): plugin not compatible with JetBrains Gateway.
@@ -10,8 +13,8 @@
 * settings: try to auto-detect default window scale (`Additional UI Scale Factor` in advanced settings) on new setups. This is useful only if you added user icons or downloaded icon packs. On existing setups, default value is still 1.
 * internal: code cleanup, remove compatibility code for unsupported old IDEs. Minor performance improvement.
 * info: JetBrains [**Gateway support is in progress**](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/milestone/27). Icons rendering works when plugin is installed in Host, or in both Host and Client, but not in Client only. Also, for now, plugin's settings panels are broken and some icons are too big, but icons override works. I have [plans](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/milestone/27) to fix these issues.
-* reworked Codacy icon in order to make it compatible with Gateway.
-* reworked Editorconfig icon in order to make it compatible with Gateway.
+* rework Codacy icon in order to make it compatible with Gateway.
+* rework Editorconfig icon in order to make it compatible with Gateway.
 
 ## 2023.2.9-231 (2023/08/12)
 * rework settings panel.
@@ -779,7 +782,7 @@ Thx [Florian Böhm](https://github.com/jonathanlermitage/intellij-extra-icons-pl
 * improved Jenkins file detection accuracy.
 
 ## 0.21 and 0.22 (2019/01/10)
-* reworked Haxe `*.hxml` files (new icons).
+* rework Haxe `*.hxml` files (new icons).
 * support `package-info.java` files.
 * support NSIS `*.nsi` files.
 * improved file detection accuracy.
@@ -822,9 +825,9 @@ This way, you simply have to download the latest version offered by the plugin m
 * support `.dockerignore` files.
 
 ## 0.12 (2018/10/10)
-* reworked Gitlab files (reduced margin by 1px).
-* reworked Maven and Gradle wrapper files (new icons).
-* reworked `package.json`, `package-lock.json` files (new icons).
+* rework Gitlab files (reduced margin by 1px).
+* rework Maven and Gradle wrapper files (new icons).
+* rework `package.json`, `package-lock.json` files (new icons).
 * support [Terraform](https://www.terraform.io) `*.hcl`, `*.tf`, `*.tf.json` files.
 * support [Cirrus](https://cirrus-ci.org) `.cirrus.yml` files.
 * support `*.rpm`, `*.deb`, `*.zip`, `*.7z`, `*.tar`, `*.gz`, `*.bz2` files.
@@ -834,22 +837,22 @@ This way, you simply have to download the latest version offered by the plugin m
 * support `*.jks`, `BUILD`, `BUILDING`, `PRIVACY`, `ROADMAP`, `CONTRIBUTE`, `CONTRIBUTION`, `TODO`, `TEST`, `TESTING`, `LICENSE_INFO`, `ADDITIONAL_LICENSE_INFO` files.
 
 ## 0.10 (2018/09/22)
-* reworked `*.iml`, `*.war` files.
+* rework `*.iml`, `*.war` files.
 * support `nginx.conf`, `.htaccess`, `puppet.conf`, `my.ini`, `*.ini`, `*.cfg`, `*.conf`, `*.toml`, `*.asciidoc`, `*.versionsbackup` files.
 
 ## 0.9 (2018/09/15)
-* reworked `LICENSE`, `berksfile.lock` files.
+* rework `LICENSE`, `berksfile.lock` files.
 * support `log4j`, `log4j-test`, `logback`, `logback-test` files with `.xml`, `.yml`, `yaml`, `.properties`, `.json` extensions.
 * support `*.csv`, `*.md`, `*.adoc`, `*.cert`, `*.war`, `*.form` extensions.
 * support backup `*.versionBackup`, `*.back`, `*.backup`, `*.old`, `*.prev`, `*.revert` files.
 
 ## 0.8.1 (2018/09/10)
-* reworked Microsoft Word, Excel, PowerPoint, OneNote, Visio, Project files (added dark theme).
-* reworked `LICENSE`, `appveyor.yml`, `*.kdbx` files.
+* rework Microsoft Word, Excel, PowerPoint, OneNote, Visio, Project files (added dark theme).
+* rework `LICENSE`, `appveyor.yml`, `*.kdbx` files.
 
 ## 0.8 (2018/09/09)
 * some code refactoring.
-* reworked `*.iml`, `.travis.yml`, `jenkins`, `jenkinsfile`, `NOTICE` files.
+* rework `*.iml`, `.travis.yml`, `jenkins`, `jenkinsfile`, `NOTICE` files.
 * support `.gitmodules`, `*.pdf`, `.mailmap`, `*.kdbx` (KeePass), `version` (with `.md`, `.adoc`, `.txt` or no extension) files.
 * support `*.pem`, `*.crt`, `*.ca-bundle`, `*.cer`, `*.p7b`, `*.p7s`, `*.pfx` certificate files.
 * support `*.doc`, `*.docx`, `*.xls`, `*.xlsx`, `*.ppt`, `*.pptx`, `*.one`, `*.onetoc2`, `*.vsd`, `*.vsdx`, `*.vss`, `*.vssx`, `*.vst`, `*.vstx`, `*.mpd`, `*.mpp`, `*.mpt` Microsoft Word, Excel, PowerPoint, OneNote, Visio, Project files.
@@ -860,7 +863,7 @@ This way, you simply have to download the latest version offered by the plugin m
 * support `vagrantfile`, `*.iml`, `.gitattributes`, `.gitignore`, `.editorconfig`, `berksfile`, `berksfile.lock`, `dockerfile`, `docker-compose.yml` files.
 
 ## 0.6 (2018/09/02)
-* reworked `.gitlab-ci.yml`, `appveyor.yml`, `NOTICE` files.
+* rework `.gitlab-ci.yml`, `appveyor.yml`, `NOTICE` files.
 * support `*.jar` files.
 
 ## 0.5 (2018/09/01)
@@ -870,7 +873,7 @@ This way, you simply have to download the latest version offered by the plugin m
 
 ## 0.4 (2018/08/26)
 * enabled compatibility with all products (WebStorm, etc).
-* reworked Maven wrapper `mvnw`, Gradle wrapper `gradlew` files.
+* rework Maven wrapper `mvnw`, Gradle wrapper `gradlew` files.
 * support `README`, `CHANGELOG`, `CHANGES`, `LICENSE`, `COPYING`, `CONTRIBUTING`, `AUTHORS` files (with `.md`, `.adoc`, `.txt` or no extension).
 
 ## 0.3 (2018/08/25)

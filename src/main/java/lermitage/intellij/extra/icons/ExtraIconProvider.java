@@ -562,7 +562,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("author", "authors").mayEnd(TXT)
                     .altIcons("extra-icons/authors_alt.svg", "extra-icons/authors_alt2.svg",
                         "extra-icons/authors_alt3.svg", "extra-icons/authors_alt4.svg"),
-                ofFile("bamboo", "extra-icons/bamboo.png", "Bamboo: bamboo.yml")
+                ofFile("bamboo", "extra-icons/bamboo.svg", "Bamboo: bamboo.yml")
                     .eq("bamboo.yml"),
                 ofFile("caddyfile", "extra-icons/caddy.svg", "Caddy: Caddyfile")
                     .eq("caddyfile"),
