@@ -634,7 +634,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("codeship", "extra-icons/codeship.svg", "Codeship steps: codeship-steps(.xml,.yml,...)")
                     .eq("codeship-steps").mayEnd(CFG)
                     .altIcons("extra-icons/codeship_alt.png"),
-                ofFile("contact", "extra-icons/contact.png", "Contact: contact(.md,.txt,.adoc,.rst), contacts")
+                ofFile("contact", "extra-icons/contact.svg", "Contact: contact(.md,.txt,.adoc,.rst), contacts")
                     .eq("contact", "contacts").mayEnd(TXT),
                 ofFile("contribute", "extra-icons/contributing.svg", "Contribution: contribute(.md,.txt,.adoc,.rst), contributing, contribution")
                     .eq("contribute", "contributing", "contribution").mayEnd(TXT)
