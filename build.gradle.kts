@@ -68,7 +68,7 @@ val junitVersion = "5.10.0"
 val junitPlatformLauncher = "1.10.0"
 
 dependencies {
-    implementation("com.github.weisj:jsvg:1.0.0") // https://github.com/weisJ/jsvg
+    implementation("com.github.weisj:jsvg:1.1.0") // https://github.com/weisJ/jsvg
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
