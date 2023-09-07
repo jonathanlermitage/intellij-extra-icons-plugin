@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 2023.2.11-231 (WIP)
+* improve Markdown icon.
 * rework Authors, Asciidoc, Bamboo, Berkshelf, Contact icons in order to make them compatible with Gateway.
 
 ## 2023.2.10-231 (2023/09/03)
