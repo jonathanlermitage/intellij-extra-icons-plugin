@@ -79,7 +79,7 @@ public class IconUtils {
                 }
                 return loadImage(imageBytes, iconType, SettingsService.DEFAULT_ADDITIONAL_UI_SCALE);
             } catch (IOException ex) {
-                throw new IllegalArgumentException("IOException while trying to load image.");
+                throw new IllegalArgumentException("IOException while trying to load image.", ex);
             }
         }
         return null;
