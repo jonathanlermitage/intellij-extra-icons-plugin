@@ -98,7 +98,7 @@ public class IconUtils {
         return loadImage(B64_DECODER.decode(base64), iconType, additionalUIScale);
     }
 
-    // FIXME IDE freezes when rendering many SVG files in parallel. Workaround: use a synchronized method
+    // FIXME IDE freezes when rendering many SVG files in parallel. Workaround currently in use: a synchronized method
     private static synchronized ImageWrapper loadSVGAsImageWrapper(byte[] imageBytes, double additionalUIScale) {
         SVGLoader svgLoader = new SVGLoader();
         SVGDocument svgDocument = svgLoader.load(sanitizeSVGImageBytes(imageBytes));
@@ -112,7 +112,6 @@ public class IconUtils {
         svgDocument.render(null, graphics);
         Image thumbnail = scaleImage(image);
         if (thumbnail != null) {
-            JBImageIcon scaledJBImageWhichNeedsRescale;
             Image scaledImage;
             // TODO test 1.25 scale on linux. Also, see if we can check some environment variables:
             //  https://intellij-support.jetbrains.com/hc/en-us/articles/360007994999-HiDPI-configuration
@@ -120,7 +119,7 @@ public class IconUtils {
             if (additionalUIScale == 1.0d) { // no scaling needed
                 scaledImage = IconUtil.createImageIcon(thumbnail).getImage();
             } else {
-                scaledJBImageWhichNeedsRescale = IconUtil.createImageIcon(thumbnail);
+                JBImageIcon scaledJBImageWhichNeedsRescale = IconUtil.createImageIcon(thumbnail);
                 scaledImage = ImageLoader.scaleImage(scaledJBImageWhichNeedsRescale.getImage(), additionalUIScale);
             }
             return new ImageWrapper(IconType.SVG, scaledImage, imageBytes);
