@@ -2,30 +2,24 @@
 
 package lermitage.intellij.extra.icons.utils;
 
-import com.github.weisj.jsvg.SVGDocument;
-import com.github.weisj.jsvg.geometry.size.FloatSize;
-import com.github.weisj.jsvg.parser.SVGLoader;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.IconUtil;
-import com.intellij.util.ImageLoader;
 import com.intellij.util.ui.ImageUtil;
-import com.intellij.util.ui.JBImageIcon;
 import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.UITypeIconsPreference;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
+import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 
 import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_DECODER;
@@ -37,7 +31,7 @@ public class IconUtils {
 
     private static final int SCALING_SIZE = 16;
 
-    //private static final Pattern cssVarRe = Pattern.compile("var\\([-\\w]+\\)");
+    private static final OS detectedOS = OS.detectOS();
 
     public static Icon getIcon(Model model, double additionalUIScale, @NotNull UITypeIconsPreference uiTypeIconsPreference) {
         if (model.getIconType() == IconType.PATH) {
@@ -85,46 +79,33 @@ public class IconUtils {
         return null;
     }
 
-    // backport from Icon Viewer 2: remove unwanted SVG attributes
-    private static ByteArrayInputStream sanitizeSVGImageBytes(byte[] imageBytes) {
-        //String contents = new String(imageBytes, Charset.defaultCharset());
-        //Matcher matcher = cssVarRe.matcher(contents);
-        //String replaced = matcher.replaceAll("currentColor");
-        //return new ByteArrayInputStream(replaced.getBytes());
-        return new ByteArrayInputStream(imageBytes);
-    }
-
     public static ImageWrapper fromBase64(String base64, IconType iconType, double additionalUIScale) {
         return loadImage(B64_DECODER.decode(base64), iconType, additionalUIScale);
     }
 
-    // FIXME IDE freezes when rendering many SVG files in parallel. Workaround currently in use: a synchronized method
-    private static synchronized ImageWrapper loadSVGAsImageWrapper(byte[] imageBytes, double additionalUIScale) {
-        SVGLoader svgLoader = new SVGLoader();
-        SVGDocument svgDocument = svgLoader.load(sanitizeSVGImageBytes(imageBytes));
-        if (svgDocument == null) {
+    private static ImageWrapper loadSVGAsImageWrapper(byte[] imageBytes, double additionalUIScale) {
+        try {
+            File svfFile = File.createTempFile("extra-icons-user-icon-", ".svg");
+            svfFile.deleteOnExit();
+            FileUtils.writeByteArrayToFile(svfFile, imageBytes);
+            String prefix = detectedOS == OS.WIN ? "file:/" : "file://"; //NON-NLS
+            Icon icon = IconLoader.getIcon(prefix + svfFile.getAbsolutePath().replaceAll("\\\\", "/"), IconUtils.class);
+            if (icon.getIconWidth() == 16) {
+                return new ImageWrapper(IconType.SVG, IconUtil.toImage(icon), imageBytes);
+            } else if (additionalUIScale == 1 || additionalUIScale == 2) {
+                Image image = IconUtil.toImage(icon);
+                image = ImageUtil.scaleImage(image, (int) (SCALING_SIZE * additionalUIScale), (int) (SCALING_SIZE * additionalUIScale));
+                image = scaleImage(image, SCALING_SIZE);
+                return new ImageWrapper(IconType.SVG, image, imageBytes);
+            } else {
+                Image image = IconUtil.toImage(icon);
+                image = ImageUtil.scaleImage(image, (int) (SCALING_SIZE * additionalUIScale), (int) (SCALING_SIZE * additionalUIScale));
+                return new ImageWrapper(IconType.SVG, image, imageBytes);
+            }
+        } catch (Exception e) {
+            LOGGER.error(e);
             return null;
         }
-        FloatSize size = svgDocument.size();
-        BufferedImage image = ImageUtil.createImage((int) size.width, (int) size.height, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D graphics = image.createGraphics();
-        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        svgDocument.render(null, graphics);
-        Image thumbnail = scaleImage(image);
-        if (thumbnail != null) {
-            Image scaledImage;
-            // TODO test 1.25 scale on linux. Also, see if we can check some environment variables:
-            //  https://intellij-support.jetbrains.com/hc/en-us/articles/360007994999-HiDPI-configuration
-            //  https://unix.stackexchange.com/questions/596887/how-to-scale-the-resolution-display-of-the-desktop-and-or-applications
-            if (additionalUIScale == 1.0d) { // no scaling needed
-                scaledImage = IconUtil.createImageIcon(thumbnail).getImage();
-            } else {
-                JBImageIcon scaledJBImageWhichNeedsRescale = IconUtil.createImageIcon(thumbnail);
-                scaledImage = ImageLoader.scaleImage(scaledJBImageWhichNeedsRescale.getImage(), additionalUIScale);
-            }
-            return new ImageWrapper(IconType.SVG, scaledImage, imageBytes);
-        }
-        return null;
     }
 
     public static ImageWrapper loadImage(byte[] imageBytes, IconType iconType, double additionalUIScale) {
@@ -147,7 +128,7 @@ public class IconUtils {
         if (image == null) {
             return null;
         }
-        Image scaledImage = scaleImage(image);
+        Image scaledImage = scaleImage(image, (int) (SCALING_SIZE * additionalUIScale));
         return new ImageWrapper(iconType, scaledImage, imageBytes);
     }
 
@@ -160,8 +141,8 @@ public class IconUtils {
         return base64;
     }
 
-    private static Image scaleImage(Image image) {
-        return ImageUtil.scaleImage(image, SCALING_SIZE, SCALING_SIZE);
+    private static Image scaleImage(Image image, int scaling_size) {
+        return ImageUtil.scaleImage(image, scaling_size, scaling_size);
     }
 
     public static class ImageWrapper {

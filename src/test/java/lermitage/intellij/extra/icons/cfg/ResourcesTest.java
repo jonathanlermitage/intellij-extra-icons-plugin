@@ -5,6 +5,7 @@ package lermitage.intellij.extra.icons.cfg;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.utils.IconUtils;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -169,6 +170,7 @@ public class ResourcesTest {
      * SVG icons loaded by "IconLoader.getIcon" are loaded with IDE's bundled JSVG, so
      * we want to check if everything goes well (even if IDE adds some magic... ^_^).
      */
+    @Disabled("SVG loading is now handled by IDE - Should run IDE integration tests")
     @Test
     public void svg_icons_should_load_with_jsvg() {
         List<String> errors = new ArrayList<>();
