@@ -6,8 +6,6 @@ import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.registry.RegistryManager;
 import org.jetbrains.annotations.NonNls;
 
-import java.awt.GraphicsEnvironment;
-
 public class UIUtils {
 
     private static final @NonNls Logger LOGGER = Logger.getInstance(UIUtils.class);
@@ -26,27 +24,5 @@ public class UIUtils {
             }
         }
         return newUIEnabled;
-    }
-
-    public static double findWindowScale() { // TODO works on Windows only for now. It always returns 1 with KDE :-(
-        try {
-            if (System.getProperty("java.awt.headless", "false").equals("true")) {
-                LOGGER.info("Running in headless mode (java.awt.headless system property = true). Skipping screen scaling calculation. Set it to 1");
-                return 1.0d;
-            }
-            double windowScale = GraphicsEnvironment
-                .getLocalGraphicsEnvironment()
-                .getDefaultScreenDevice()
-                .getDefaultConfiguration()
-                .getDefaultTransform()
-                .getScaleX();
-            if (LOGGER.isDebugEnabled()) {
-                LOGGER.debug("Found screen scaling = " + windowScale);
-            }
-            return windowScale;
-        } catch (Exception e) {
-            LOGGER.warn("Failed to find screen scaling. Will assume screen scaling is set to 1", e);
-            return 1.0d;
-        }
     }
 }

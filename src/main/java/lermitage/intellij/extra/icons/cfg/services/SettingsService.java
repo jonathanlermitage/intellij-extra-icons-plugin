@@ -5,11 +5,11 @@ package lermitage.intellij.extra.icons.cfg.services;
 import com.intellij.notification.NotificationGroupManager;
 import com.intellij.notification.NotificationType;
 import com.intellij.openapi.project.Project;
+import com.intellij.ui.scale.JBUIScale;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.Globals;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
-import lermitage.intellij.extra.icons.utils.UIUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.MessageFormat;
@@ -34,7 +34,7 @@ public abstract class SettingsService {
 
     private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 
-    public static final double DEFAULT_ADDITIONAL_UI_SCALE = UIUtils.findWindowScale();
+    public static final double DEFAULT_ADDITIONAL_UI_SCALE = JBUIScale.sysScale();
 
     public List<String> getDisabledModelIds() {
         if (disabledModelIds == null) { // a malformed xml file could make it null
