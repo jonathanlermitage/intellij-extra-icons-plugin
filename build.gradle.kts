@@ -134,10 +134,7 @@ tasks {
         // Restore paid license requirement
         doLast {
             var pluginXmlStr = pluginXmlFile.readText()
-            val freeLicenceBlockRegex = "<!--//FREE_LIC//.*//FREE_LIC//-->".toRegex()
-            val freeLicenceBlockStr = freeLicenceBlockRegex.find(pluginXmlStr)!!.value
-            val paidLicenceBlockStr = freeLicenceBlockStr.replace("<!--//FREE_LIC//", "").replace("//FREE_LIC//-->", "")
-            pluginXmlStr = pluginXmlStr.replace(freeLicenceBlockStr, paidLicenceBlockStr)
+            pluginXmlStr = pluginXmlStr.replace("<!--//FREE_LIC//", "").replace("//FREE_LIC//-->", "")
             FileUtils.delete(pluginXmlFile)
             FileUtils.write(pluginXmlFile, pluginXmlStr, "UTF-8")
         }
