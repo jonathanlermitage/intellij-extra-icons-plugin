@@ -39,22 +39,22 @@ fixgit: intro ## fix executable permission flag on git index for required files
 
 .PHONY: run
 run: intro ## run plugin in latest stable IntelliJ Community
-	${gradlew_cmd} buildPlugin runIde --warning-mode all
+	${gradlew_cmd} clean buildPlugin runIde -PpluginNeedsLicense=false
 
 
 .PHONY: runCN
 runCN: intro ## run plugin in latest stable IntelliJ Community with Extra Icons' Chinese UI
-	${gradlew_cmd} buildPlugin runIde --warning-mode all -Dextra-icons.enable.chinese.ui=true
+	${gradlew_cmd} clean buildPlugin runIde --warning-mode all -Dextra-icons.enable.chinese.ui=true -PpluginNeedsLicense=false
 
 
 .PHONY: runeap
 runeap: intro ## run plugin in latest IntelliJ Community EAP Snapshot
-	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false
+	${gradlew_cmd} clean buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-LATEST-EAP-SNAPSHOT -PpluginDownloadIdeaSources=false -PpluginNeedsLicense=false
 
 
 .PHONY: runold
 runold: intro ## run plugin in oldest supported IntelliJ Community version
-	${gradlew_cmd} buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-${ij_min_version} -PpluginDownloadIdeaSources=false
+	${gradlew_cmd} clean buildPlugin runIde --warning-mode all -PpluginIdeaVersion=IC-${ij_min_version} -PpluginDownloadIdeaSources=false -PpluginNeedsLicense=false
 
 
 .PHONY: build
