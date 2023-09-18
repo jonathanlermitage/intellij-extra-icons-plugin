@@ -217,7 +217,7 @@ public abstract class BaseIconProvider
             String normalizedFileName = getSanitizeFilePath(file.getName());
             String normalizedFileAbsPath = getSanitizeFilePath(file.getAbsolutePath());
             Set<String> facets = FacetsFinderService.getInstance(project).getFacets();
-            Double additionalUIScale = SettingsIDEService.getInstance().getAdditionalUIScale();
+            Double additionalUIScale = SettingsIDEService.getInstance().getAdditionalUIScale2();
             SettingsService settingsService = SettingsService.getBestSettingsService(project, true);
             Object parentModelIdWhoseCheckFailed = null;
             for (final Model model : getModelsIncludingUserModels(project)) {

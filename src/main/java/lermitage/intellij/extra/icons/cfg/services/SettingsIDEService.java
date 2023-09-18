@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 public class SettingsIDEService extends SettingsService implements PersistentStateComponent<SettingsIDEService> {
 
     @SuppressWarnings("WeakerAccess")
-    public Double additionalUIScale;
+    public Double additionalUIScale2; // renamed to 2 because fixed default user interface scale calculation, so a reset is needed
     @SuppressWarnings("WeakerAccess")
     public UITypeIconsPreference uiTypeIconsPreference;
     @SuppressWarnings("WeakerAccess")
@@ -40,15 +40,15 @@ public class SettingsIDEService extends SettingsService implements PersistentSta
         XmlSerializerUtil.copyBean(state, this);
     }
 
-    public Double getAdditionalUIScale() {
-        if (additionalUIScale == null) {
-            additionalUIScale = DEFAULT_ADDITIONAL_UI_SCALE;
+    public Double getAdditionalUIScale2() {
+        if (additionalUIScale2 == null) {
+            additionalUIScale2 = DEFAULT_ADDITIONAL_UI_SCALE;
         }
-        return additionalUIScale;
+        return additionalUIScale2;
     }
 
-    public void setAdditionalUIScale(Double additionalUIScale) {
-        this.additionalUIScale = additionalUIScale;
+    public void setAdditionalUIScale2(Double additionalUIScale2) {
+        this.additionalUIScale2 = additionalUIScale2;
     }
 
     public UITypeIconsPreference getUiTypeIconsPreference() {

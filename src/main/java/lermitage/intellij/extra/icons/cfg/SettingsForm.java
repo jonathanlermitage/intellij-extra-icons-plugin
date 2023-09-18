@@ -297,7 +297,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             return true;
         }
         return !ignoredPatternTextField.getText().equals(bestSettingsService.getIgnoredPattern())
-            || !additionalUIScaleTextField.getText().equals(Double.toString(settingsIDEService.getAdditionalUIScale()));
+            || !additionalUIScaleTextField.getText().equals(Double.toString(settingsIDEService.getAdditionalUIScale2()));
     }
 
     private List<String> collectDisabledModelIds() {
@@ -360,7 +360,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         bestSettingsService.setDisabledModelIds(collectDisabledModelIds());
         bestSettingsService.setIgnoredPattern(ignoredPatternTextField.getText());
         try {
-            settingsIDEService.setAdditionalUIScale(Double.valueOf(additionalUIScaleTextField.getText()));
+            settingsIDEService.setAdditionalUIScale2(Double.valueOf(additionalUIScaleTextField.getText()));
         } catch (NumberFormatException e) {
             Messages.showErrorDialog(
                 MessageFormat.format(i18n.getString("invalid.ui.scalefactor"), additionalUIScaleTextField.getText()),
@@ -553,7 +553,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
         int currentSelected = userIconsSettingsTableModel != null ? userIconsTable.getSelectedRow() : -1;
         userIconsSettingsTableModel = new UserIconsSettingsTableModel();
-        final Double additionalUIScale = settingsIDEService.getAdditionalUIScale();
+        final Double additionalUIScale = settingsIDEService.getAdditionalUIScale2();
         final UITypeIconsPreference uiTypeIconsPreference = settingsIDEService.getUiTypeIconsPreference();
         customModels.forEach(m -> {
                 try {
@@ -669,7 +669,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         }
         foldersFirst(allRegisteredModels);
         List<String> disabledModelIds = SettingsService.getBestSettingsService(project, false).getDisabledModelIds();
-        final Double additionalUIScale = settingsIDEService.getAdditionalUIScale();
+        final Double additionalUIScale = settingsIDEService.getAdditionalUIScale2();
         final UITypeIconsPreference uiTypeIconsPreference = settingsIDEService.getUiTypeIconsPreference();
         final Icon restartIcon = IconLoader.getIcon("extra-icons/plugin-internals/reboot.svg", SettingsForm.class); //NON-NLS
         allRegisteredModels.forEach(m -> pluginIconsSettingsTableModel.addRow(new Object[]{
@@ -715,7 +715,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void loadAdditionalUIScale() {
-        additionalUIScaleTextField.setText(Double.toString(SettingsIDEService.getInstance().getAdditionalUIScale()));
+        additionalUIScaleTextField.setText(Double.toString(SettingsIDEService.getInstance().getAdditionalUIScale2()));
     }
 
     private JComponent createToolbarDecorator() {

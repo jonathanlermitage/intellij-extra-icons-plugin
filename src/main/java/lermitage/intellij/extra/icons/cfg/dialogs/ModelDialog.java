@@ -337,7 +337,7 @@ public class ModelDialog extends DialogWrapper {
         iconPackField.setText(model.getIconPack());
 
         SettingsIDEService settingsIDEService = SettingsIDEService.getInstance();
-        Double additionalUIScale = settingsIDEService.getAdditionalUIScale();
+        Double additionalUIScale = settingsIDEService.getAdditionalUIScale2();
         SwingUtilities.invokeLater(() -> iconLabel.setIcon(IconUtils.getIcon(model, additionalUIScale, settingsIDEService.getUiTypeIconsPreference())));
         if (model.getIconType() == IconType.PATH) {
             for (int itemIdx = 0; itemIdx < chooseIconSelector.getItemCount(); itemIdx++) {
