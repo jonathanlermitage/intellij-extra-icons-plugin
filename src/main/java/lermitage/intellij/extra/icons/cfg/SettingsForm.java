@@ -96,7 +96,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JButton filterResetBtn;
     private JBLabel bottomTip;
     private JLabel additionalUIScaleTitle;
-    private EditorTextField additionalUIScaleTextField;
+    private JTextField additionalUIScaleTextField;
     private JComboBox<ComboBoxWithImageItem> comboBoxIconsGroupSelector;
     private JLabel disableOrEnableOrLabel;
     private JLabel disableOrEnableLabel;
@@ -115,6 +115,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JPanel experimentalPanel;
     private JCheckBox useIDEFilenameIndexCheckbox;
     private JBLabel useIDEFilenameIndexTip;
+    private JButton detectAdditionalUIScaleButton;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -228,6 +229,9 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             } catch (Exception e) {
                 LOGGER.error("Failed to uninstall Icon Pack", e); // TODO replace by error dialog
             }
+        });
+        detectAdditionalUIScaleButton.addActionListener(al -> {
+            additionalUIScaleTextField.setText(Double.toString(SettingsService.DEFAULT_ADDITIONAL_UI_SCALE));
         });
     }
 
@@ -419,6 +423,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         ignoredPatternTextField.setToolTipText(i18n.getString("field.regex.ignore.relative.paths"));
         additionalUIScaleTitle.setText(i18n.getString("label.ui.scalefactor"));
         additionalUIScaleTextField.setToolTipText(i18n.getString("field.ui.scalefactor"));
+        detectAdditionalUIScaleButton.setText(i18n.getString("btn.scalefactor.detect"));
+        additionalUIScaleTextField.setColumns(4);
         filterLabel.setText(i18n.getString("plugin.icons.table.filter"));
         filterTextField.setText("");
         filterTextField.setToolTipText(i18n.getString("plugin.icons.table.filter.tooltip"));
