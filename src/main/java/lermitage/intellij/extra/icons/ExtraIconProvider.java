@@ -1021,15 +1021,20 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_sh", "extra-icons/bash.svg", "Bash: *.sh")
                     .end(".sh"),
                 ofFile("ext_c", "extra-icons/c.svg", "C: *.c")
-                    .end(".c"),
+                    .end(".c")
+                    .autoLoadNewUIIconVariant(),
                 ofFile("ext_cc", "extra-icons/cpp.svg", "C++: *.cc")
-                    .end(".cc"),
+                    .end(".cc")
+                    .autoLoadNewUIIconVariant(),
                 ofFile("ext_cpp", "extra-icons/cpp.svg", "C++: *.cpp")
-                    .end(".cpp"),
+                    .end(".cpp")
+                    .autoLoadNewUIIconVariant(),
                 ofFile("ext_h", "extra-icons/h.svg", "C/C++: *.h")
-                    .end(".h"),
+                    .end(".h")
+                    .autoLoadNewUIIconVariant(),
                 ofFile("ext_hpp", "extra-icons/h.svg", "C/C++: *.hpp")
-                    .end(".hpp"),
+                    .end(".hpp")
+                    .autoLoadNewUIIconVariant(),
                 ofFile("ext_cert", "extra-icons/certificate.svg", "Certificate: *.jks, *.pem, *.crt, *.cert, *.ca-bundle, *.cer, ...")
                     .end(".jks", ".pem", ".crt", ".cert", ".ca-bundle", ".cer", ".jceks", ".p12", ".p7b", ".p7s", ".pfx", ".pubkey")
                     .altIcons("extra-icons/certificate_alt.svg"),
