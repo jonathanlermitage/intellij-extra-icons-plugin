@@ -10,7 +10,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.ui.EditorTextField;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
@@ -231,7 +230,12 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             }
         });
         detectAdditionalUIScaleButton.addActionListener(al -> {
-            additionalUIScaleTextField.setText(Double.toString(SettingsService.DEFAULT_ADDITIONAL_UI_SCALE));
+            String uiScale = Double.toString(SettingsService.DEFAULT_ADDITIONAL_UI_SCALE);
+            additionalUIScaleTextField.setText(uiScale);
+            additionalUIScaleTextField.grabFocus();
+            Messages.showInfoMessage(
+                MessageFormat.format(i18n.getString("btn.scalefactor.detect.infomessage.message"), uiScale),
+                i18n.getString("btn.scalefactor.detect.infomessage.title"));
         });
     }
 
