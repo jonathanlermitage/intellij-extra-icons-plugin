@@ -22,7 +22,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     private static final String[] YML = new String[]{".yaml", ".yml"};
 
     @NotNull
-    public static List<Model> allModels() {
+    public static List<Model> allModels() { // TODO move to SequencedCollection once migrated to jdk21?
         return Stream.of(
 
                 //
@@ -676,9 +676,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .start("elastic").end(YML),
                 ofFile("expo_eas", "extra-icons/expo.svg", "Expo EAS: eas.json")
                     .eq("eas.json"),
-                ofFile("cerebro", "extra-icons/elastic-cerebro.png", "Cerebro: cerebro(.conf)")
+                ofFile("cerebro", "extra-icons/elastic-cerebro.svg", "Cerebro: cerebro(.conf)")
                     .eq("cerebro").mayEnd(".conf"),
-                ofFile("cerebro1", "extra-icons/elastic-cerebro.png", "Cerebro: start by 'cerebro' and end by '.conf'")
+                ofFile("cerebro1", "extra-icons/elastic-cerebro.svg", "Cerebro: start by 'cerebro' and end by '.conf'")
                     .start("cerebro").end(".conf"),
                 ofFile("faq", "extra-icons/faq.svg", "FAQ: faq(.md,.txt,.adoc,.rst)")
                     .eq("faq").mayEnd(TXT)
