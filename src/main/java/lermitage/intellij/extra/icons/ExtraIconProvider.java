@@ -789,11 +789,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/license_alt.png"),
                 ofFile("lighttpd", "extra-icons/lighttpd.svg", "Lighttpd: lighttpd.conf")
                     .eq("lighttpd.conf"),
-                ofFile("log4j", "extra-icons/log4j.png", "Log4j: log4j(.xml,.yml,...), log4j-test")
+                ofFile("log4j", "extra-icons/log4j.svg", "Log4j: log4j(.xml,.yml,...), log4j-test")
                     .eq("log4j", "log4j-test").mayEnd(CFG),
-                ofFile("logback", "extra-icons/logback.png", "Logback: logback(.xml,.yml,...)")
+                ofFile("logback", "extra-icons/logback.svg", "Logback: logback(.xml,.yml,...)")
                     .eq("logback").mayEnd(CFG),
-                ofFile("logback1", "extra-icons/logback.png", "Logback: start by 'logback-' and end by '.xml,.yml,...'")
+                ofFile("logback1", "extra-icons/logback.svg", "Logback: start by 'logback-' and end by '.xml,.yml,...'")
                     .start("logback-").mayEnd(CFG),
                 ofFile("logstash", "extra-icons/logstash.png", "Logstash: logstash(.cfg,.conf,.yml,.yaml)")
                     .eq("logstash").mayEnd(".cfg", ".conf", ".yml", ".yaml"),
