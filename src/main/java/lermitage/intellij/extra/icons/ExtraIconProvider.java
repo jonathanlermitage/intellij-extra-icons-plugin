@@ -1075,13 +1075,17 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_jinja", "extra-icons/jinja.svg", "Jinja: *.jinja, *.jinja2")
                     .end(".jinja", ".jinja2"),
                 ofFile("ext_cfg_ini", "extra-icons/config.svg", "Configuration: *.ini")
-                    .end(".ini"),
+                    .end(".ini")
+                    .autoLoadNewUIIconVariant(),
                 ofFile("ext_cfg_cfg", "extra-icons/config.svg", "Configuration: *.cfg")
-                    .end(".cfg"),
+                    .end(".cfg")
+                    .autoLoadNewUIIconVariant(),
                 ofFile("ext_cfg_conf", "extra-icons/config.svg", "Configuration: *.conf")
-                    .end(".conf"),
+                    .end(".conf")
+                    .autoLoadNewUIIconVariant(),
                 ofFile("ext_cfg_config", "extra-icons/config.svg", "Configuration: *.config")
-                    .end(".config"),
+                    .end(".config")
+                    .autoLoadNewUIIconVariant(),
                 ofFile("ext_jar", "extra-icons/jar.png", "Java archive: *.jar")
                     .end(".jar"),
                 ofFile("ext_jaroriginal", "extra-icons/jar.png", "Java archive (copy): *.jar.original")

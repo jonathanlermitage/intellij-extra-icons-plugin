@@ -3,8 +3,9 @@
 ## 2023.2.12-231 (WIP)
 * fix calculation of global scale factor. Now, it's accurate on Windows/Linux/macOS. As a consequence, in plugin's settings, *Advanced* tab, the *Additional UI Scale Factor* parameter will be reset a single time with the correct value.
 * add a button to detect the correct *Additional UI Scale Factor*.
-* add *new UI* icons for C, C++ and H files.
+* add *new UI* icons for Ini, Cfg, Conf, Config, C, C++ and H files.
 * rework Cerebro, Log4j and Logback icons in order to make them compatible with Gateway.
+* cleanup: remove unused icons.
 
 ## 2023.2.11-231 (2023/09/18)
 * fix [156](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/156): important rework of SVG user icons scaling. Most icons should no longer be blurry. Only small SVG icons (with `width` or `height` attributes < 16) will be blurry. For these icons, you are invited to rework them and set higher `width` and `height` values (ideally 16). **Reminder**: if the operating system's **fractional scaling** is activated, please go to plugin's settings, *Advanced* tab, then adjust the *Additional UI Scale Factor* value (ex: for a 125% global scale factor, set it to 1.25). [See details here](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/156#issuecomment-1722545407).
