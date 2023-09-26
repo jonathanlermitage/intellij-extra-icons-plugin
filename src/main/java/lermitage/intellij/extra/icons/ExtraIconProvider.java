@@ -737,12 +737,15 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/java_alt.svg"),
                 ofFile("imgbot", "extra-icons/imgbot.svg", "ImgBot: .imgbotconfig")
                     .eq(".imgbotconfig"),
-                ofFile("jenkins", "extra-icons/jenkins.png", "Jenkins: jenkinsfile(.xml,.yml,...), jenkins")
-                    .eq("jenkinsfile", "jenkins").mayEnd(CFG),
-                ofFile("jenkins1", "extra-icons/jenkins.png", "Jenkins: start by 'jenkins and end by '.xml,.yml,...'")
-                    .start("jenkins").end(CFG),
-                ofFile("jenkins2", "extra-icons/jenkins.png", "Jenkins: start by 'jenkins' and contain no dot")
-                    .start("jenkins").noDot(),
+                ofFile("jenkins", "extra-icons/jenkins.svg", "Jenkins: jenkinsfile(.xml,.yml,...), jenkins")
+                    .eq("jenkinsfile", "jenkins").mayEnd(CFG)
+                    .altIcons("extra-icons/jenkins_alt.png"),
+                ofFile("jenkins1", "extra-icons/jenkins.svg", "Jenkins: start by 'jenkins and end by '.xml,.yml,...'")
+                    .start("jenkins").end(CFG)
+                    .altIcons("extra-icons/jenkins_alt.png"),
+                ofFile("jenkins2", "extra-icons/jenkins.svg", "Jenkins: start by 'jenkins' and contain no dot")
+                    .start("jenkins").noDot()
+                    .altIcons("extra-icons/jenkins_alt.png"),
                 ofFile("jest_js", "extra-icons/jest.svg", "Jest: jest.config.js")
                     .eq("jest.config.js"),
                 ofFile("jest_ts", "extra-icons/jest.svg", "Jest: jest.config.ts")
