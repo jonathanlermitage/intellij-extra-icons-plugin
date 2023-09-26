@@ -4,7 +4,7 @@
 * fix calculation of global scale factor. Now, it's accurate on Windows/Linux/macOS. As a consequence, in plugin's settings, *Advanced* tab, the *Additional UI Scale Factor* parameter will be reset a single time with the correct value.
 * add a button to detect the correct *Additional UI Scale Factor*.
 * add *new UI* icons for Ini, Cfg, Conf, Config, C, C++ and H files.
-* rework Cerebro, Jenkins, Log4j and Logback icons in order to make them compatible with Gateway.
+* rework Cerebro, Jenkins, Log4j, Logback and `package-lock.json` icons in order to make them compatible with Gateway.
 * cleanup: remove unused icons.
 
 ## 2023.2.11-231 (2023/09/18)
