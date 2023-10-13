@@ -26,7 +26,6 @@ import lermitage.intellij.extra.icons.cfg.models.UserIconsSettingsTableModel;
 import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
-import lermitage.intellij.extra.icons.enablers.EnablerUtils;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageItem;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageRenderer;
 import lermitage.intellij.extra.icons.utils.FileChooserUtils;
@@ -115,6 +114,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     private JCheckBox useIDEFilenameIndexCheckbox;
     private JBLabel useIDEFilenameIndexTip;
     private JButton detectAdditionalUIScaleButton;
+    private JLabel resetHintsTitle;
+    private JButton resetHintsButton;
 
     private PluginIconsSettingsTableModel pluginIconsSettingsTableModel;
     private UserIconsSettingsTableModel userIconsSettingsTableModel;
@@ -147,7 +148,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         });
         buttonReloadProjectsIcons.addActionListener(al -> {
             try {
-                EnablerUtils.forceInitAllEnablers();
+                //EnablerUtils.forceInitAllEnablers(); // FIXME reinit enablers leads to slow operation in EDT
                 ProjectUtils.refreshAllOpenedProjects();
                 Messages.showInfoMessage(
                     i18n.getString("icons.reloaded"),
@@ -236,6 +237,16 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             Messages.showInfoMessage(
                 MessageFormat.format(i18n.getString("btn.scalefactor.detect.infomessage.message"), uiScale),
                 i18n.getString("btn.scalefactor.detect.infomessage.title"));
+        });
+        resetHintsButton.addActionListener(al -> {
+            SettingsIDEService settingsIDEService = SettingsIDEService.getInstance();
+            settingsIDEService.setIconviewerShouldRenderSVGHintNotifDisplayed(false);
+            settingsIDEService.setPluginIsConfigurableHintNotifDisplayed(false);
+            resetHintsButton.setEnabled(false);
+            Messages.showInfoMessage(
+                i18n.getString("reset.hints.success.subtitle"),
+                i18n.getString("reset.hints.success.title")
+            );
         });
     }
 
@@ -384,10 +395,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
         try {
             if (isProjectForm()) {
-                EnablerUtils.forceInitAllEnablers(project);
+                //EnablerUtils.forceInitAllEnablers(project); // FIXME reinit enablers leads to slow operation in EDT
                 ProjectUtils.refreshProject(project);
             } else {
-                EnablerUtils.forceInitAllEnablers();
+                //EnablerUtils.forceInitAllEnablers(); // FIXME reinit enablers leads to slow operation in EDT
                 ProjectUtils.refreshAllOpenedProjects();
             }
         } catch (Exception e) {
@@ -434,10 +445,14 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         filterTextField.setToolTipText(i18n.getString("plugin.icons.table.filter.tooltip"));
         filterResetBtn.setText(i18n.getString("btn.plugin.icons.table.filter.reset"));
         bottomTip.setText(i18n.getString("plugin.icons.table.bottom.tip"));
+        resetHintsTitle.setText(i18n.getString("reset.hints.title"));
+        resetHintsButton.setText(i18n.getString("reset.hints.btn"));
 
         initCheckbox();
 
         loadPluginIconsTable();
+        //TableSpeedSearch.installOn(pluginIconsTable); // TODO install a SpeedSearch on icons table once 232 is the new IDE min version
+
         userIconsTable.setShowHorizontalLines(false);
         userIconsTable.setShowVerticalLines(false);
         userIconsTable.setFocusable(false);

@@ -26,16 +26,16 @@ public class ProjectUtils {
         if (ProjectUtils.isProjectAlive(project)) {
             ProjectView view = ProjectView.getInstance(project);
             if (view != null) {
-                view.refresh();
+                IJUtils.runInEDT("refresh ProjectView", view::refresh); //NON-NLS
                 AbstractProjectViewPane currentProjectViewPane = view.getCurrentProjectViewPane();
                 if (currentProjectViewPane != null) {
-                    currentProjectViewPane.updateFromRoot(true);
+                    IJUtils.runInEDT("update AbstractProjectViewPane", () -> currentProjectViewPane.updateFromRoot((true))); //NON-NLS
                 }
                 try {
                     EditorWindow[] editorWindows = FileEditorManagerEx.getInstanceEx(project).getWindows();
                     for (EditorWindow editorWindow : editorWindows) {
                         try {
-                            editorWindow.getManager().refreshIcons();
+                            IJUtils.runInEDT("refresh EditorWindow icons", () -> editorWindow.getManager().refreshIcons()); //NON-NLS
                         } catch (Exception e) {
                             LOGGER.warn("Failed to refresh editor tabs icon (EditorWindow manager failed to refresh icons)", e); //NON-NLS
                         }
