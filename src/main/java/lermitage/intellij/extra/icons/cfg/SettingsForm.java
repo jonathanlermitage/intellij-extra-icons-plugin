@@ -471,6 +471,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             uiTypeSelectorTitle.setVisible(false);
             uiTypeSelectorHelpLabel.setVisible(false);
             experimentalPanel.setVisible(false);
+            resetHintsTitle.setVisible(false);
+            resetHintsButton.setVisible(false);
         }
 
         overrideSettingsCheckbox.setText(i18n.getString("checkbox.override.ide.settings"));
