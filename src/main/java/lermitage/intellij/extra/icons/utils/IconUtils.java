@@ -85,9 +85,11 @@ public class IconUtils {
     }
 
     private static ImageWrapper loadSVGAsImageWrapper(byte[] imageBytes, double additionalUIScale) {
+        String svgFilePath = null;
         try {
             File svfFile = File.createTempFile("extra-icons-user-icon-", ".svg"); // TODO avoid creating new tmp file every time an SVG is displayed. Cache it or create a unique file (name it with sha1?)
             svfFile.deleteOnExit();
+            svgFilePath = svfFile.getAbsolutePath();
             FileUtils.writeByteArrayToFile(svfFile, imageBytes);
             String prefix = detectedOS == OS.WIN ? "file:/" : "file://"; //NON-NLS
             Icon icon = IconLoader.getIcon(prefix + svfFile.getAbsolutePath().replaceAll("\\\\", "/"), IconUtils.class);
@@ -104,6 +106,14 @@ public class IconUtils {
                 return new ImageWrapper(IconType.SVG, image, imageBytes);
             }
         } catch (Exception e) {
+            // avoid error report: com.intellij.openapi.application.rw.ReadCancellationException
+            // java.lang.Throwable: Control-flow exceptions (e.g. this class com.intellij.openapi.progress.CeProcessCanceledException) should
+            // never be logged. Instead, these should have been rethrown if caught.
+            String errorName = e.getClass().getName();
+            if (errorName.contains("ReadCancellationException") || errorName.contains("ProcessCanceledException")) {
+                LOGGER.warn("Can't load an SVG user icon (path: " + svgFilePath + "): " + e.getMessage());
+                return null;
+            }
             LOGGER.error(e);
             return null;
         }
