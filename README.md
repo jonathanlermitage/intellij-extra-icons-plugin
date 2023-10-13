@@ -69,14 +69,7 @@ You only have to pay a subscription if you want to support my work by using the 
 
 ## Contributors
 
-* (author) Jonathan Lermitage (<jonathan.lermitage@gmail.com>)
-* Edoardo Luppi (<lp.edoardo@gmail.com>)
-* Matthias Kunnen ([github.com/MatthiasKunnen](https://github.com/MatthiasKunnen))
-* Florian Böhm ([github.com/Sheigutn](https://github.com/Sheigutn))
-* Mateusz Bajorek (<mateusz.bajorek@gmail.com>)
-* Bouteiller Alan ([github.com/bouteillerAlan](https://github.com/bouteillerAlan))
-* Gaëtan Maisse ([github.com/gaetanmaisse](https://github.com/gaetanmaisse))
-* please see the [contributors list](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/graphs/contributors)
+* Please see the [contributors list](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/graphs/contributors)
 
 ## Screenshots
 
