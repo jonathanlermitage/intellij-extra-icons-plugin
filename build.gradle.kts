@@ -19,12 +19,12 @@ import javax.xml.xpath.XPathFactory
 
 plugins {
     id("java")
-    id("org.jetbrains.intellij") version "1.15.0" // https://github.com/JetBrains/gradle-intellij-plugin
+    id("org.jetbrains.intellij") version "1.16.0" // https://github.com/JetBrains/gradle-intellij-plugin
     id("org.jetbrains.changelog") version "2.2.0" // https://github.com/JetBrains/gradle-changelog-plugin
-    id("com.github.ben-manes.versions") version "0.48.0" // https://github.com/ben-manes/gradle-versions-plugin
-    id("com.adarshr.test-logger") version "3.2.0" // https://github.com/radarsh/gradle-test-logger-plugin
+    id("com.github.ben-manes.versions") version "0.49.0" // https://github.com/ben-manes/gradle-versions-plugin
+    id("com.adarshr.test-logger") version "4.0.0" // https://github.com/radarsh/gradle-test-logger-plugin
     id("com.palantir.git-version") version "3.0.0" // https://github.com/palantir/gradle-git-version
-    id("com.github.andygoossens.modernizer") version "1.8.0" // https://github.com/andygoossens/gradle-modernizer-plugin
+    id("com.github.andygoossens.modernizer") version "1.9.0" // https://github.com/andygoossens/gradle-modernizer-plugin
     id("biz.lermitage.oga") version "1.1.1" // https://github.com/jonathanlermitage/oga-gradle-plugin
 }
 
@@ -123,7 +123,7 @@ tasks {
             logger.warn("/!\\ Will build a plugin which doesn't ask for a paid license /!\\")
             logger.warn("----------------------------------------------------------------")
             var pluginXmlStr = pluginXmlFile.readText()
-            val paidLicenceBlockRegex = "<product-descriptor code=\"PEXTRAICONS\" release-date=\"\\d+\" release-version=\"\\d+\"/>".toRegex()
+            val paidLicenceBlockRegex = "<product-descriptor code=\"\\w+\" release-date=\"\\d+\" release-version=\"\\d+\"/>".toRegex()
             val paidLicenceBlockStr = paidLicenceBlockRegex.find(pluginXmlStr)!!.value
             pluginXmlStr = pluginXmlStr.replace(paidLicenceBlockStr, "<!--//FREE_LIC//${paidLicenceBlockStr}//FREE_LIC//-->")
             FileUtils.delete(pluginXmlFile)
@@ -301,6 +301,7 @@ fun findLatestStableIdeVersion(): String {
 
 /** Read a remote file as String. */
 fun readRemoteContent(url: URL): String {
+    val t1 = System.currentTimeMillis()
     val content = StringBuilder()
     val conn = url.openConnection() as HttpURLConnection
     conn.requestMethod = "GET"
@@ -311,6 +312,8 @@ fun readRemoteContent(url: URL): String {
             line = rd.readLine()
         }
     }
+    val t2 = System.currentTimeMillis()
+    logger.quiet("Download $url, took ${t2 - t1} ms (${content.length} B)")
     return content.toString()
 }
 
