@@ -38,6 +38,7 @@ public class VFSChangesListenersPostStartupActivity implements ProjectActivity {
         return null;
     }
 
+    // TODO big refactoring: update all enablers with modified files, this way there is no need to re-init manually from the UI, which would eliminate the problem of enablers (IDE filename index queries) from EDT
     private void refreshGitSubmodules(@NotNull List<? extends VFileEvent> events, @NotNull Project project) {
         try {
             DumbService.getInstance(project).runReadActionInSmartMode(() -> {

@@ -20,7 +20,7 @@ public class EnablerServicesPostStartupActivity implements ProjectActivity {
     @Nullable
     @Override
     public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
-        DumbService.getInstance(project).runReadActionInSmartMode(() -> {
+        DumbService.getInstance(project).runReadActionInSmartMode(() -> { // TODO may no longer need runReadActionInSmartMode as code has been reworked
             EnablerUtils.forceInitAllEnablers(project);
         });
         return null;
