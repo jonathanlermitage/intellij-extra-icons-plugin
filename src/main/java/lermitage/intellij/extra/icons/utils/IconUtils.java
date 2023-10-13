@@ -86,7 +86,7 @@ public class IconUtils {
 
     private static ImageWrapper loadSVGAsImageWrapper(byte[] imageBytes, double additionalUIScale) {
         try {
-            File svfFile = File.createTempFile("extra-icons-user-icon-", ".svg");
+            File svfFile = File.createTempFile("extra-icons-user-icon-", ".svg"); // TODO avoid creating new tmp file every time an SVG is displayed. Cache it or create a unique file (name it with sha1?)
             svfFile.deleteOnExit();
             FileUtils.writeByteArrayToFile(svfFile, imageBytes);
             String prefix = detectedOS == OS.WIN ? "file:/" : "file://"; //NON-NLS
