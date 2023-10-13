@@ -1,9 +1,14 @@
 # Extra Icons Change Log
 
 ## 2023.2.12-231 (WIP)
-* fix calculation of global scale factor. Now, it's accurate on Windows/Linux/macOS. As a consequence, in plugin's settings, *Advanced* tab, the *Additional UI Scale Factor* parameter will be reset a single time with the correct value.
+* fix [157](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/157): `java.lang.Throwable: TreeUI should be accessed only from EDT` with Rider 2023.3 EAP 1.
+* important code rework, which will hopefully prevent more `Slow operations are prohibited on EDT` warnings. I will continue my effort in a next release (I think I found some promising ideas, which would improve stability and performance).
 * add a button to detect the correct *Additional UI Scale Factor*.
+* settings UI: when registering a user icon, the icon chooser now integrates the **Speed Search** functionality, [similar to Speed Search for Tool Windows](https://www.jetbrains.com/help/idea/speed-search-in-the-tool-windows.html). Select the icon chooser, type text, and the selection moves to the first item that matches the specified string. A future update will bring the same functionality to the icons table.
+* settings UI: add a button to reset Extra Icons startup hints.
 * add *new UI* icons for Ini, Cfg, Conf, Config, C, C++ and H files.
+* support `.gitlab/dependabot.yml` files. Thanks **mateusz-bajorek (Mateusz Bajorek)** for his contribution!
+* support OpenTofu `*.tf` and `*.tf.json` files.
 * rework Cerebro, Jenkins, Log4j, Logback and `package-lock.json` icons in order to make them compatible with Gateway.
 * cleanup: remove unused icons.
 
