@@ -12,6 +12,7 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.ui.CheckBoxList;
+import com.intellij.ui.ComboboxSpeedSearch;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.ListUtil;
 import com.intellij.ui.ToolbarDecorator;
@@ -183,6 +184,8 @@ public class ModelDialog extends DialogWrapper {
                 }
             }
         });
+
+        ComboboxSpeedSearch.installSpeedSearch(chooseIconSelector, Object::toString);
 
         testLabel.setText(i18n.getString("model.dialog.model.tester"));
         testTextField.setText("");
