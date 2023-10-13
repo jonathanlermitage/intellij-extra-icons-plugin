@@ -13,6 +13,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileSystemItem;
 import com.intellij.testFramework.LightVirtualFile;
+import com.intellij.ui.NewUI;
 import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
@@ -20,7 +21,6 @@ import lermitage.intellij.extra.icons.services.FacetsFinderService;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.ProjectUtils;
-import lermitage.intellij.extra.icons.utils.UIUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -58,7 +58,7 @@ public abstract class BaseIconProvider
 
     public BaseIconProvider() {
         super();
-        final UIType uiType = UIUtils.isNewUIEnabled() ? UIType.NEW_UI : UIType.OLD_UI;
+        final UIType uiType = NewUI.isEnabled() ? UIType.NEW_UI : UIType.OLD_UI;
         LOGGER.info("Detected UI Type: " + uiType);
         this.models = getAllModels().stream()
             .filter(model -> model.getUiType() == null || model.getUiType() == uiType)

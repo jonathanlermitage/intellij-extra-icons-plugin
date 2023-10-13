@@ -39,7 +39,7 @@
     -->
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
-    <idea-version since-build="231.6890.12"/> <!-- 2023.1, required by com.intellij.openapi.startup.ProjectActivity -->
+    <idea-version since-build="231.8109.175"/> <!-- 2023.1, required by com.intellij.openapi.startup.ProjectActivity and NewUI.isEnabled() -->
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html#modules-available-in-all-products
          on how to target different products -->

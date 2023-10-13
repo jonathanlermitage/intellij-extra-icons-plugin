@@ -5,6 +5,7 @@ package lermitage.intellij.extra.icons.utils;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.NewUI;
 import com.intellij.util.IconUtil;
 import com.intellij.util.ui.ImageUtil;
 import lermitage.intellij.extra.icons.IconType;
@@ -47,7 +48,7 @@ public class IconUtils {
 
     private static String getIconPathToLoad(Model model, @NotNull UITypeIconsPreference uiTypeIconsPreference) {
         boolean preferNewUI = switch (uiTypeIconsPreference) {
-            case BASED_ON_ACTIVE_UI_TYPE -> UIUtils.isNewUIEnabled();
+            case BASED_ON_ACTIVE_UI_TYPE -> NewUI.isEnabled();
             case PREFER_NEW_UI_ICONS -> true;
             case PREFER_OLD_UI_ICONS -> false;
         };
