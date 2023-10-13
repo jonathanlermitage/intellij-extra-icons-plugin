@@ -1131,6 +1131,10 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".mwb"),
                 ofFile("ext_nsi", "extra-icons/nsis.svg", "NSIS Nullsoft Scriptable Install System: *.nsi")
                     .end(".nsi"),
+                ofFile("ext_opentofu_tf", "extra-icons/opentofu.svg", "OpenTofu: *.tf")
+                    .end(".tf"),
+                ofFile("ext_opentofu_tf_json", "extra-icons/opentofu.svg", "OpenTofu: *.tf.json")
+                    .end(".tf.json"),
                 ofFile("ext_pdf", "extra-icons/pdf.png", "PDF: *.pdf")
                     .end(".pdf")
                     .altIcons("extra-icons/pdf_alt.svg", "extra-icons/pdf_alt2.svg",
