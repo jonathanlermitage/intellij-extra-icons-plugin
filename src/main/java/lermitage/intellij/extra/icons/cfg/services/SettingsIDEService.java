@@ -22,7 +22,7 @@ public class SettingsIDEService extends SettingsService implements PersistentSta
     @SuppressWarnings("WeakerAccess")
     public UITypeIconsPreference uiTypeIconsPreference;
     @SuppressWarnings("WeakerAccess")
-    public Boolean useIDEFilenameIndex;
+    public Boolean useIDEFilenameIndex2; // renamed to 2 because a previous bug had set it to false when using project level settings
     @SuppressWarnings("WeakerAccess")
     public Boolean pluginIsConfigurableHintNotifDisplayed;
     @SuppressWarnings("WeakerAccess")
@@ -64,15 +64,15 @@ public class SettingsIDEService extends SettingsService implements PersistentSta
         this.uiTypeIconsPreference = uiTypeIconsPreference;
     }
 
-    public Boolean getUseIDEFilenameIndex() {
-        if (useIDEFilenameIndex == null) {
-            useIDEFilenameIndex = true;
+    public Boolean getUseIDEFilenameIndex2() {
+        if (useIDEFilenameIndex2 == null) {
+            useIDEFilenameIndex2 = true;
         }
-        return useIDEFilenameIndex;
+        return useIDEFilenameIndex2;
     }
 
-    public void setUseIDEFilenameIndex(Boolean useIDEFilenameIndex) {
-        this.useIDEFilenameIndex = useIDEFilenameIndex;
+    public void setUseIDEFilenameIndex2(Boolean useIDEFilenameIndex2) {
+        this.useIDEFilenameIndex2 = useIDEFilenameIndex2;
     }
 
     public Boolean getPluginIsConfigurableHintNotifDisplayed() {

@@ -44,7 +44,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
     @Override
     public synchronized void init(@NotNull Project project) {
         try {
-            if (SettingsIDEService.getInstance().getUseIDEFilenameIndex()) {
+            if (SettingsIDEService.getInstance().getUseIDEFilenameIndex2()) {
                 enabledFolders = initWithIDEFileIndex(project, getFilenamesToSearch());
             } else {
                 enabledFolders = initWithRegularFS(project, getFilenamesToSearch());

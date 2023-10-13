@@ -312,7 +312,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         if (!bestSettingsService.getIgnoredPattern().equals(ignoredPatternTextField.getText())) {
             return true;
         }
-        if (settingsIDEService.getUseIDEFilenameIndex() != useIDEFilenameIndexCheckbox.isSelected()) {
+        if (settingsIDEService.getUseIDEFilenameIndex2() != useIDEFilenameIndexCheckbox.isSelected()) {
             return true;
         }
         return !ignoredPatternTextField.getText().equals(bestSettingsService.getIgnoredPattern())
@@ -374,7 +374,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             projectService.setOverrideIDESettings(overrideSettingsCheckbox.isSelected());
             projectService.setAddToIDEUserIcons(addToIDEUserIconsCheckbox.isSelected());
         }
-        settingsIDEService.setUseIDEFilenameIndex(useIDEFilenameIndexCheckbox.isSelected());
+        settingsIDEService.setUseIDEFilenameIndex2(useIDEFilenameIndexCheckbox.isSelected());
         settingsIDEService.setUiTypeIconsPreference(getSelectedUITypeIconsPreference());
         bestSettingsService.setDisabledModelIds(collectDisabledModelIds());
         bestSettingsService.setIgnoredPattern(ignoredPatternTextField.getText());
@@ -525,6 +525,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
         experimentalPanel.setBorder(IdeBorderFactory.createTitledBorder(i18n.getString("experimental.panel.title")));
 
+        useIDEFilenameIndexCheckbox.setSelected(SettingsIDEService.getInstance().getUseIDEFilenameIndex2());
         useIDEFilenameIndexCheckbox.setText(i18n.getString("checkbox.use.ide.filename.index.label"));
         useIDEFilenameIndexTip.setText(i18n.getString("checkbox.use.ide.filename.index.tip"));
 
@@ -537,7 +538,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     private void initCheckbox() {
         if (!isProjectForm()) {
-            useIDEFilenameIndexCheckbox.setSelected(SettingsIDEService.getInstance().getUseIDEFilenameIndex());
             overrideSettingsPanel.setVisible(false);
             return;
         }

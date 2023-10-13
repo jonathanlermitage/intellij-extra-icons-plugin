@@ -2,6 +2,8 @@
 
 ## 2023.2.12-231 (WIP)
 * fix [157](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/157): `java.lang.Throwable: TreeUI should be accessed only from EDT` with Rider 2023.3 EAP 1.
+* fix a bug that set `Use IDE filename index` feature to `false` when project-level settings were activated. With this release, this feature will be set to `true` just one time. Feel free to tuen it to `false` if wanted.
+* silent some unwanted `Control-flow exceptions` error reports. They appeared on project loading, if IDE failed to load some user icons (for obscure reasons I can't detect nor fix).
 * important code rework, which will hopefully prevent more `Slow operations are prohibited on EDT` warnings. I will continue my effort in a next release (I think I found some promising ideas, which would improve stability and performance).
 * add a button to detect the correct *Additional UI Scale Factor*.
 * settings UI: when registering a user icon, the icon chooser now integrates the **Speed Search** functionality, [similar to Speed Search for Tool Windows](https://www.jetbrains.com/help/idea/speed-search-in-the-tool-windows.html). Select the icon chooser, type text, and the selection moves to the first item that matches the specified string. A future update will bring the same functionality to the icons table.
