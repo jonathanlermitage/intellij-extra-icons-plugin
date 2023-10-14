@@ -65,11 +65,13 @@ repositories {
 
 val junitVersion = "5.10.0"
 val junitPlatformLauncher = "1.10.0"
+val archunitVersion = "1.1.0"
 
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:$junitPlatformLauncher")
+    testImplementation("com.tngtech.archunit:archunit:$archunitVersion")
 }
 
 intellij {
