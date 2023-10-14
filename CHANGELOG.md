@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2023.2.12-231 (WIP)
+## 2023.2.12-231 (2023/10/15)
 * fix [157](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/157): `java.lang.Throwable: TreeUI should be accessed only from EDT` with Rider 2023.3 EAP 1.
 * fix a bug that set `Use IDE filename index` feature to `false` when project-level settings were activated. With this release, this feature will be set to `true` just one time. Feel free to turn it to `false` if wanted (see Extra Icons settings, `Advanced` tab).
 * silent some unwanted `Control-flow exceptions` error reports. They appeared on project loading, if IDE failed to load some user icons (for obscure reasons I can't detect nor fix).
