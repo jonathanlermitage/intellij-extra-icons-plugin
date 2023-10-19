@@ -6,6 +6,7 @@ import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
 import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
+import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.OS;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -13,8 +14,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -103,10 +102,8 @@ public class ExtraIconPatcher extends IconPathPatcher {
                 morphedIcons.put(iconKey, iconStr);
             } else {
                 // base64 icon provided by user: store as local file
-                Path iconFile = Files.createTempFile("extra-icons-ide-user-icon", ".svg"); //NON-NLS
-                iconFile.toFile().deleteOnExit();
-                Files.write(iconFile, B64_DECODER.decode(iconStr));
-                String decodedIconPath = iconFile.toAbsolutePath().toString();
+                File svgFile = IconUtils.createOrGetTempSVGFile(B64_DECODER.decode(iconStr));
+                String decodedIconPath = svgFile.getAbsolutePath();
                 if (detectedOS == OS.WIN) {
                     morphedIcons.put(iconKey, "file:/" + decodedIconPath); //NON-NLS
                 } else {

@@ -23,6 +23,7 @@ import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_DECODER;
 import static lermitage.intellij.extra.icons.utils.Base64Utils.B64_ENCODER;
@@ -36,6 +37,8 @@ public class IconUtils {
     private static final OS DETECT_OS = OS.detectOS();
 
     private static final File TMP_FOLDER = new File(System.getProperty("java.io.tmpdir"));
+
+    private static final String IDE_INSTANCE_UNIQUE_ID = UUID.randomUUID().toString();
 
     public static Icon getIcon(Model model, double additionalUIScale, @NotNull UITypeIconsPreference uiTypeIconsPreference) {
         if (model.getIconType() == IconType.PATH) {
@@ -90,13 +93,14 @@ public class IconUtils {
     /**
      * Creates or retrieves a temporary SVG file based on the provided image bytes.
      * If the SVG file already exists, it is returned. Otherwise, a new file is created
-     * with the SHA1 of specified image bytes and returned.
+     * with the SHA1 of specified image bytes and returned. The temporary file is deleted
+     * when the virtual machine terminates.
      * @param imageBytes the bytes of the image.
      * @return the temporary SVG file.
      * @throws IOException if an I/O error occurs while creating or accessing the file.
      */
-    private static synchronized File createOrGetTempSVGFile(byte[] imageBytes) throws IOException {
-        File svgFile = new File(TMP_FOLDER, "extra-icons-user-icon-" + DigestUtils.sha1Hex(imageBytes) + ".svg");
+    public static synchronized File createOrGetTempSVGFile(byte[] imageBytes) throws IOException {
+        File svgFile = new File(TMP_FOLDER, "extra-icons-user-icon" + IDE_INSTANCE_UNIQUE_ID + "-" + DigestUtils.sha1Hex(imageBytes) + ".svg");
         if (!svgFile.exists()) {
             svgFile.deleteOnExit();
             FileUtils.writeByteArrayToFile(svgFile, imageBytes);
