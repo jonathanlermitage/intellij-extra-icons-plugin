@@ -8,6 +8,7 @@ import lermitage.intellij.extra.icons.enablers.services.HelmFolderEnablerService
 import lermitage.intellij.extra.icons.enablers.services.InAngularFolderEnablerService;
 import lermitage.intellij.extra.icons.enablers.services.InGraphQLFolderEnablerService;
 import lermitage.intellij.extra.icons.enablers.services.InHelmFolderEnablerService;
+import lermitage.intellij.extra.icons.enablers.services.InWritersideFolderEnablerService;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -24,6 +25,7 @@ public class IconEnablerProvider {
             case IS_IN_ANGULAR_FOLDER -> Optional.of(InAngularFolderEnablerService.getInstance(project));
             case IS_IN_GRAPHQL_FOLDER -> Optional.of(InGraphQLFolderEnablerService.getInstance(project));
             case IS_IN_HELM_FOLDER -> Optional.of(InHelmFolderEnablerService.getInstance(project));
+            case IS_IN_WRITERSIDE_FOLDER -> Optional.of(InWritersideFolderEnablerService.getInstance(project));
         };
     }
 }

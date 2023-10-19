@@ -17,7 +17,8 @@ public enum ModelTag {
     NESTJS("NestJS", "extra-icons/nestjs.svg"),
     PRETTIER("Prettier", "extra-icons/prettier.svg"),
     STORYBOOK("Storybook", "extra-icons/storybook.svg"),
-    TRAVIS("Travis CI", "extra-icons/travis.svg");
+    TRAVIS("Travis CI", "extra-icons/travis.svg"),
+    WRITERSIDE("Writerside", "extra-icons/writerside.svg");
 
     ModelTag(String name, String icon) {
         this.name = name;

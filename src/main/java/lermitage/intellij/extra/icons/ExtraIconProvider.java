@@ -314,6 +314,16 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/helmlogo.svg", "extra-icons/helmlogo_alt.svg")
                     .tags(ModelTag.HELM)
                     .autoLoadNewUIIconVariant(),
+                ofFile("writerside_tree", "extra-icons/writerside_tree.svg", "Writerside: *.tree")
+                    .end(".tree")
+                    .iconEnabler(IconEnablerType.IS_IN_WRITERSIDE_FOLDER)
+                    .tags(ModelTag.WRITERSIDE)
+                    .autoLoadNewUIIconVariant(),
+                ofFile("writerside_list", "extra-icons/writerside_list.svg", "Writerside: *.list")
+                    .end(".list")
+                    .iconEnabler(IconEnablerType.IS_IN_WRITERSIDE_FOLDER)
+                    .tags(ModelTag.WRITERSIDE)
+                    .autoLoadNewUIIconVariant(),
 
                 // angular
                 ofFile("angular_json", "extra-icons/angular2.svg", "Angular: angular.json")
@@ -990,6 +1000,8 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/webpack_alt.svg"),
                 ofFile("werf", "extra-icons/werf.svg", "Werf: werf.yaml")
                     .eq("werf.yaml"),
+                ofFile("writerside", "extra-icons/writerside_cfg.svg", "Witerside: writerside.cfg")
+                    .eq("writerside.cfg"),
                 ofFile("zalando", "extra-icons/zalando.png", "Zalando Zappr: .zappr.yaml")
                     .eq(".zappr.yaml"),
 

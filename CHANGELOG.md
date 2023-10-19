@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2023.2.13 (WIP)
+* support some [Writerside](https://www.jetbrains.com/writerside/) icons: `writerside.cfg`, `*.list` and `*.tree`. Please note Writerside IDE has similar [limitation](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/36) as Python and GoLand IDEs: can't override some Writerside icons in project view. There is no problem with Writerside plugin running in IntelliJ.
+
 ## 2023.2.12-231 (2023/10/15)
 * fix [157](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/157): `java.lang.Throwable: TreeUI should be accessed only from EDT` with Rider 2023.3 EAP 1.
 * fix a bug that set `Use IDE filename index` feature to `false` when project-level settings were activated. With this release, this feature will be set to `true` just one time. Feel free to turn it to `false` if wanted (see Extra Icons settings, `Advanced` tab).

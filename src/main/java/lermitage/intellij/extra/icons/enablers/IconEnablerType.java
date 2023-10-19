@@ -17,5 +17,8 @@ public enum IconEnablerType {
     IS_IN_GRAPHQL_FOLDER,
 
     /** Detect folders containing Helm files. */
-    IS_IN_HELM_FOLDER
+    IS_IN_HELM_FOLDER,
+
+    /** Detect folders containing Writerside files. */
+    IS_IN_WRITERSIDE_FOLDER
 }
