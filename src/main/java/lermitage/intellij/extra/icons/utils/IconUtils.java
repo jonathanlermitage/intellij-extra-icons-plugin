@@ -12,6 +12,7 @@ import lermitage.intellij.extra.icons.IconType;
 import lermitage.intellij.extra.icons.Model;
 import lermitage.intellij.extra.icons.UITypeIconsPreference;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +33,9 @@ public class IconUtils {
 
     private static final int SCALING_SIZE = 16;
 
-    private static final OS detectedOS = OS.detectOS();
+    private static final OS DETECT_OS = OS.detectOS();
+
+    private static final File TMP_FOLDER = new File(System.getProperty("java.io.tmpdir"));
 
     public static Icon getIcon(Model model, double additionalUIScale, @NotNull UITypeIconsPreference uiTypeIconsPreference) {
         if (model.getIconType() == IconType.PATH) {
@@ -84,15 +87,30 @@ public class IconUtils {
         return loadImage(B64_DECODER.decode(base64), iconType, additionalUIScale);
     }
 
+    /**
+     * Creates or retrieves a temporary SVG file based on the provided image bytes.
+     * If the SVG file already exists, it is returned. Otherwise, a new file is created
+     * with the SHA1 of specified image bytes and returned.
+     * @param imageBytes the bytes of the image.
+     * @return the temporary SVG file.
+     * @throws IOException if an I/O error occurs while creating or accessing the file.
+     */
+    private static synchronized File createOrGetTempSVGFile(byte[] imageBytes) throws IOException {
+        File svgFile = new File(TMP_FOLDER, "extra-icons-user-icon-" + DigestUtils.sha1Hex(imageBytes) + ".svg");
+        if (!svgFile.exists()) {
+            svgFile.deleteOnExit();
+            FileUtils.writeByteArrayToFile(svgFile, imageBytes);
+        }
+        return svgFile;
+    }
+
     private static ImageWrapper loadSVGAsImageWrapper(byte[] imageBytes, double additionalUIScale) {
         String svgFilePath = null;
         try {
-            File svfFile = File.createTempFile("extra-icons-user-icon-", ".svg"); // TODO avoid creating new tmp file every time an SVG is displayed. Cache it or create a unique file (name it with sha1?)
-            svfFile.deleteOnExit();
-            svgFilePath = svfFile.getAbsolutePath();
-            FileUtils.writeByteArrayToFile(svfFile, imageBytes);
-            String prefix = detectedOS == OS.WIN ? "file:/" : "file://"; //NON-NLS
-            Icon icon = IconLoader.getIcon(prefix + svfFile.getAbsolutePath().replaceAll("\\\\", "/"), IconUtils.class);
+            File svgFile = createOrGetTempSVGFile(imageBytes);
+            svgFilePath = svgFile.getAbsolutePath();
+            String prefix = DETECT_OS == OS.WIN ? "file:/" : "file://"; //NON-NLS
+            Icon icon = IconLoader.getIcon(prefix + svgFile.getAbsolutePath().replaceAll("\\\\", "/"), IconUtils.class);
             if (icon.getIconWidth() == 16) {
                 return new ImageWrapper(IconType.SVG, IconUtil.toImage(icon), imageBytes);
             } else if (additionalUIScale == 1 || additionalUIScale == 2) {

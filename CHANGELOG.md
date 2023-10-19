@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 2023.2.13 (WIP)
+* minor performance improvement when displaying user icons.
 * support some [Writerside](https://www.jetbrains.com/writerside/) icons: `writerside.cfg`, `*.list` and `*.tree`. Please note Writerside IDE has similar [limitation](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/36) as Python and GoLand IDEs: can't override some Writerside icons in project view. There is no problem with Writerside plugin running in IntelliJ.
 
 ## 2023.2.12-231 (2023/10/15)
