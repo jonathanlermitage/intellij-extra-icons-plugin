@@ -1000,7 +1000,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/webpack_alt.svg"),
                 ofFile("werf", "extra-icons/werf.svg", "Werf: werf.yaml")
                     .eq("werf.yaml"),
-                ofFile("writerside", "extra-icons/writerside_cfg.svg", "Witerside: writerside.cfg")
+                ofFile("writerside", "extra-icons/writerside_cfg.svg", "Writerside: writerside.cfg")
                     .eq("writerside.cfg"),
                 ofFile("zalando", "extra-icons/zalando.png", "Zalando Zappr: .zappr.yaml")
                     .eq(".zappr.yaml"),
