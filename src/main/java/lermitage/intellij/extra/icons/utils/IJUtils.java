@@ -60,20 +60,17 @@ public class IJUtils {
      * @param isReadAction is explicitly a Read Action.
      */
     public static void runInBGT(String description, Runnable r, boolean isReadAction) {
-        ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
-            @Override
-            public void run() {
-                if (isReadAction) {
-                    ApplicationManager.getApplication().runReadAction(() -> {
-                        LOGGER.info("Enter temporarily in BGT in order to run Read Action: '" + description + "', is in EDT: " + EDT.isCurrentThreadEdt());
-                        r.run();
-                    });
-                } else {
-                    ApplicationManager.getApplication().invokeLater(() -> {
-                        LOGGER.info("Enter temporarily in BGT in order to invoke later: '" + description + "', is in EDT: " + EDT.isCurrentThreadEdt());
-                        r.run();
-                    });
-                }
+        ApplicationManager.getApplication().executeOnPooledThread(() -> {
+            if (isReadAction) {
+                ApplicationManager.getApplication().runReadAction(() -> {
+                    LOGGER.info("Enter temporarily in BGT in order to run Read Action: '" + description + "', is in EDT: " + EDT.isCurrentThreadEdt());
+                    r.run();
+                });
+            } else {
+                ApplicationManager.getApplication().invokeLater(() -> {
+                    LOGGER.info("Enter temporarily in BGT in order to invoke later: '" + description + "', is in EDT: " + EDT.isCurrentThreadEdt());
+                    r.run();
+                });
             }
         });
     }
