@@ -40,6 +40,7 @@ val pluginNeedsLicense: String by project
 val pluginLanguage: String by project
 val pluginCountry: String by project
 val pluginEnableDebugLogs: String by project
+val pluginEnforceIdeSlowOperationsAssertion: String by project
 val pluginClearSandboxedIDESystemLogsBeforeRun: String by project
 val pluginIdeaVersion = detectBestIdeVersion()
 
@@ -205,7 +206,9 @@ tasks {
         }
 
         // force detection of slow operations in EDT when playing with sandboxed IDE (SlowOperations.assertSlowOperationsAreAllowed)
-        jvmArgs("-Dide.slow.operations.assertion=true")
+        if (pluginEnforceIdeSlowOperationsAssertion.toBoolean()) {
+            jvmArgs("-Dide.slow.operations.assertion=true")
+        }
 
         if (pluginEnableDebugLogs.toBoolean()) {
             systemProperties(

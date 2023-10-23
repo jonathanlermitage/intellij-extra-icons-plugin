@@ -49,4 +49,28 @@ public class IJUtils {
             ApplicationManager.getApplication().invokeLater(r, ModalityState.defaultModalityState());
         }
     }
+
+    /**
+     * Run given Runnable in BGT (i.e. outside EDT).
+     * @param description description of what to run.
+     * @param r what to run in BGT.
+     * @param isReadAction is explicitly a Read Action.
+     */
+    public static void runInBGT(String description, Runnable r, boolean isReadAction) {
+        if (EDT.isCurrentThreadEdt()) {
+            LOGGER.info("Enter temporarily in BGT in order to run: '" + description + "'");
+            ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (isReadAction) {
+                        ApplicationManager.getApplication().runReadAction(r);
+                    } else {
+                        ApplicationManager.getApplication().invokeLater(r);
+                    }
+                }
+            });
+        } else {
+            r.run();
+        }
+    }
 }
