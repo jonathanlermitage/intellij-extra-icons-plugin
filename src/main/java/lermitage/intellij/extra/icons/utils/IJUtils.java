@@ -43,10 +43,13 @@ public class IJUtils {
      */
     public static void runInEDT(String description, Runnable r) {
         if (EDT.isCurrentThreadEdt()) {
+            LOGGER.info("Already in EDT to run: '" + description + "'");
             r.run();
         } else {
-            LOGGER.info("Enter temporarily in EDT in order to run: '" + description + "'");
-            ApplicationManager.getApplication().invokeLater(r, ModalityState.defaultModalityState());
+            ApplicationManager.getApplication().invokeLater(() -> {
+                LOGGER.info("Enter in EDT in order to run: '" + description + "'");
+                r.run();
+            }, ModalityState.defaultModalityState());
         }
     }
 
@@ -57,20 +60,21 @@ public class IJUtils {
      * @param isReadAction is explicitly a Read Action.
      */
     public static void runInBGT(String description, Runnable r, boolean isReadAction) {
-        if (EDT.isCurrentThreadEdt()) {
-            LOGGER.info("Enter temporarily in BGT in order to run: '" + description + "'");
-            ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (isReadAction) {
-                        ApplicationManager.getApplication().runReadAction(r);
-                    } else {
-                        ApplicationManager.getApplication().invokeLater(r);
-                    }
+        ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
+            @Override
+            public void run() {
+                if (isReadAction) {
+                    ApplicationManager.getApplication().runReadAction(() -> {
+                        LOGGER.info("Enter temporarily in BGT in order to run Read Action: '" + description + "', is in EDT: " + EDT.isCurrentThreadEdt());
+                        r.run();
+                    });
+                } else {
+                    ApplicationManager.getApplication().invokeLater(() -> {
+                        LOGGER.info("Enter temporarily in BGT in order to invoke later: '" + description + "', is in EDT: " + EDT.isCurrentThreadEdt());
+                        r.run();
+                    });
                 }
-            });
-        } else {
-            r.run();
-        }
+            }
+        });
     }
 }
