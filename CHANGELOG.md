@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 2023.2.13 (WIP)
+* try to fix [#165](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/165): `AlreadyDisposedException: Cannot create com.intellij.ui.docking.DockManager because container is already disposed` on IDE or plugin upgrade.
 * minor performance improvement when displaying user icons.
 * support some [Writerside](https://www.jetbrains.com/writerside/) icons: `writerside.cfg`, `*.list` and `*.tree`. Please note Writerside IDE has similar [limitation](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/36) as PyCharm and GoLand IDEs: can't override some Writerside icons in project view. There is no problem with Writerside plugin running in IntelliJ.
 
