@@ -46,10 +46,10 @@ public abstract class BaseIconProvider
     implements FileIconProvider {
 
     private static final @NonNls Logger LOGGER = Logger.getInstance(BaseIconProvider.class);
-    private final String className = this.getClass().getSimpleName();
 
     private final List<Model> models;
 
+    private long nbGetIcon = 0;
     private long checks_done = 0;
     private long checks_saved = 0;
     private final UITypeIconsPreference uiTypeIconsPreference;
@@ -125,10 +125,8 @@ public abstract class BaseIconProvider
                 .replaceAll("[\\s_]", "") //NON-NLS
                 .toUpperCase();
             if (errMsg.contains("DISPOSEINPROGRESS") || errMsg.contains("PROJECTISALREADYDISPOSED")) {
-                if (LOGGER.isDebugEnabled()) {
-                    LOGGER.debug("Tried to show an icon but the project is disposed or being disposed. " +
-                        "We can safely ignore this error with no impact on user experience", e);
-                }
+                LOGGER.infoWithDebug("Tried to show an icon but the project is disposed or being disposed. " +
+                    "We can safely ignore this error with no impact on user experience", e);
             } else {
                 LOGGER.warn(e);
             }
@@ -154,10 +152,7 @@ public abstract class BaseIconProvider
         } catch (Throwable e) {
             logError(e);
         } finally {
-            if (LOGGER.isDebugEnabled()) {
-                // activate with Help > Diagnostic Tools > Debug Log Settings > #lermitage.intellij.extra.icons.BaseIconProvider
-                LOGGER.debug(className + " did " + checks_done + " model checks and saved " + checks_saved + " model checks");
-            }
+            logCacheHitStats();
         }
         return null;
     }
@@ -187,16 +182,14 @@ public abstract class BaseIconProvider
         } catch (Throwable e) {
             logError(e);
         } finally {
-            if (LOGGER.isDebugEnabled()) {
-                // activate with Help > Diagnostic Tools > Debug Log Settings > #lermitage.intellij.extra.icons.BaseIconProvider
-                LOGGER.debug(className + " did " + checks_done + " model checks and saved " + checks_saved + " model checks");
-            }
+            logCacheHitStats();
         }
         return null;
     }
 
     @Nullable
     private Icon getIcon(@NotNull File file, @NotNull FileType fileType, @Nullable Project project) {
+        nbGetIcon++;
         try {
             if (!ProjectUtils.isProjectAlive(project)) {
                 return null;
@@ -216,6 +209,7 @@ public abstract class BaseIconProvider
             String parentName = parent(file);
             String normalizedFileName = getSanitizeFilePath(file.getName());
             String normalizedFileAbsPath = getSanitizeFilePath(file.getAbsolutePath());
+            assert project != null;
             Set<String> facets = FacetsFinderService.getInstance(project).getFacets();
             Double additionalUIScale = SettingsIDEService.getInstance().getAdditionalUIScale2();
             SettingsService settingsService = SettingsService.getBestSettingsService(project, true);
@@ -238,12 +232,19 @@ public abstract class BaseIconProvider
         } catch (Throwable e) {
             logError(e);
         } finally {
-            if (LOGGER.isDebugEnabled()) {
-                // activate with Help > Diagnostic Tools > Debug Log Settings > #lermitage.intellij.extra.icons.BaseIconProvider
-                LOGGER.debug(className + " did " + checks_done + " model checks and saved " + checks_saved + " model checks");
-            }
+            logCacheHitStats();
         }
         return null;
+    }
+
+    private void logCacheHitStats() {
+        if (LOGGER.isDebugEnabled() && (nbGetIcon < 5 || nbGetIcon < 100 ? nbGetIcon % 20 == 0 : nbGetIcon % 100 == 0)) {
+            // activate with Help > Diagnostic Tools > Debug Log Settings > #lermitage.intellij.extra.icons.BaseIconProvider
+            LOGGER.debug("[" + Thread.currentThread().getId() + "] " +
+                "getIcon: " + nbGetIcon + ", " +
+                "checks_done: " + checks_done + ", " +
+                "checks_saved: " + checks_saved + " (" + (checks_saved * 100 / checks_done) + "%)");
+        }
     }
 
     @Nullable

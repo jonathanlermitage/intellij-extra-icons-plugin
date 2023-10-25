@@ -2,12 +2,11 @@
 
 package lermitage.intellij.extra.icons.activity;
 
-import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.ProjectActivity;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
-import lermitage.intellij.extra.icons.enablers.EnablerUtils;
+import lermitage.intellij.extra.icons.messaging.RefreshIconsNotifierService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,9 +19,7 @@ public class EnablerServicesProjectActivity implements ProjectActivity {
     @Nullable
     @Override
     public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
-        DumbService.getInstance(project).runReadActionInSmartMode(() -> { // TODO may no longer need runReadActionInSmartMode as code has been reworked
-            EnablerUtils.forceInitAllEnablers(project);
-        });
+        RefreshIconsNotifierService.getInstance().triggerProjectIconEnablersReinit(project);
         return null;
     }
 }

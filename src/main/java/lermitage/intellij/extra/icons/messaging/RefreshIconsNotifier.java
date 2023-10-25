@@ -22,4 +22,10 @@ public interface RefreshIconsNotifier {
      * @param project the project whose icons need to be refreshed.
      */
     void refreshProjectIcons(@Nullable Project project);
+
+    /**
+     * Re-initialize the icon enablers for the specified project.
+     * @param project the project whose icon enablers need to be initialized again.
+     */
+    void reinitProjectIconEnablers(@Nullable Project project);
 }

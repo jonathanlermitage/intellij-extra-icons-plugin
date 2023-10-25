@@ -49,9 +49,7 @@ public class I18nUtils {
                 }
             }
         } catch (Exception e) {
-            if (LOGGER.isDebugEnabled()) {
-                LOGGER.debug(e);
-            }
+            LOGGER.warnWithDebug(e);
         }
         isChineseUIEnabled = false;
         return false;

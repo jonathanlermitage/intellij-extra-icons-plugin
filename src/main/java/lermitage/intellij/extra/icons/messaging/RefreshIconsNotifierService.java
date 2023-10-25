@@ -18,11 +18,25 @@ public final class RefreshIconsNotifierService {
     public void triggerProjectIconsRefresh(@Nullable Project project) {
         ApplicationManager.getApplication().runReadAction(() -> {
             if (ProjectUtils.isProjectAlive(project)) {
+                assert project != null;
                 RefreshIconsNotifier refreshIconsNotifier = project.getMessageBus()
                     .syncPublisher(RefreshIconsNotifier.EXTRA_ICONS_REFRESH_ICONS_NOTIFIER_TOPIC);
                 refreshIconsNotifier.refreshProjectIcons(project);
             } else {
-                LOGGER.warn("Project is null, can't refresh icons"); //NON-NLS
+                LOGGER.warn("Project is not alive, can't refresh icons"); //NON-NLS
+            }
+        });
+    }
+
+    public void triggerProjectIconEnablersReinit(@Nullable Project project) {
+        ApplicationManager.getApplication().runReadAction(() -> {
+            if (ProjectUtils.isProjectAlive(project)) {
+                assert project != null;
+                RefreshIconsNotifier refreshIconsNotifier = project.getMessageBus()
+                    .syncPublisher(RefreshIconsNotifier.EXTRA_ICONS_REFRESH_ICONS_NOTIFIER_TOPIC);
+                refreshIconsNotifier.reinitProjectIconEnablers(project);
+            } else {
+                LOGGER.warn("Project is not alive, can't reinit icon enablers"); //NON-NLS
             }
         });
     }
@@ -30,6 +44,7 @@ public final class RefreshIconsNotifierService {
     public void triggerAllIconsRefresh() {
         Project[] projects = ProjectManager.getInstance().getOpenProjects();
         for (Project project : projects) {
+            triggerProjectIconEnablersReinit(project);
             triggerProjectIconsRefresh(project);
         }
     }

@@ -673,7 +673,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             }
             pluginIconsTable.setRowSorter(sorter);
         } catch (PatternSyntaxException pse) {
-            LOGGER.debug(pse);
+            LOGGER.warnWithDebug(pse);
         }
     }
 

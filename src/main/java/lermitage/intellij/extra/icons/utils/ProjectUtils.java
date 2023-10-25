@@ -2,15 +2,14 @@
 
 package lermitage.intellij.extra.icons.utils;
 
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 public class ProjectUtils {
 
-    public static final @NonNls String PLEASE_OPEN_ISSUE_MSG = "You could open an issue: " +
-        "https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues. Thank you!";
+    private static final Logger LOGGER = Logger.getInstance(ProjectUtils.class);
 
     public static @Nullable Project getFirstOpenedProject() {
         Project[] projects = ProjectManager.getInstance().getOpenProjects();
@@ -22,6 +21,15 @@ public class ProjectUtils {
      * Developed to fix <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/39">issue #39</a>.
      */
     public static boolean isProjectAlive(@Nullable Project project) {
-        return project != null && !project.isDisposed();
+        if (project != null && !project.isDisposed()) {
+            return true;
+        } else {
+            if (project == null) {
+                LOGGER.warn("Project is null"); //NON-NLS
+            } else {
+                LOGGER.warn("Project '" + project.getName() + "' is not alive - Project is disposed: " + project.isDisposed()); //NON-NLS
+            }
+            return false;
+        }
     }
 }
