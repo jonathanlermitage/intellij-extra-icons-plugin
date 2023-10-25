@@ -5,7 +5,7 @@
     <vendor email="jonathan@lermitage.biz" url="https://github.com/jonathanlermitage">JONATHAN_LERMITAGE</vendor>
     <!-- required parameters for paid plugins: https://plugins.jetbrains.com/docs/marketplace/add-required-parameters.html -->
     <!-- IMPORTANT reminder: change the release-date and release-version on major version changes only -->
-    <product-descriptor code="PEXTRAICONS" release-date="20230421" release-version="20232"/>
+    <product-descriptor code="PEXTRAICONS" release-date="20231025" release-version="20233"/>
 
     <description><![CDATA[
       <ul>
