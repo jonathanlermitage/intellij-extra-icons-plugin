@@ -11,7 +11,7 @@ import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.ui.EDT;
 import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
-import lermitage.intellij.extra.icons.utils.ProjectUtils;
+import lermitage.intellij.extra.icons.messaging.RefreshIconsNotifierService;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -49,7 +49,7 @@ public abstract class AbstractInFolderEnabler implements IconEnabler {
             } else {
                 enabledFolders = initWithRegularFS(project, getFilenamesToSearch());
             }
-            ProjectUtils.refreshProject(project);
+            RefreshIconsNotifierService.getInstance().triggerProjectIconsRefresh(project);
         } catch (Throwable e) {
             LOGGER.warn("Canceled init of " + getName() + " Enabler", e);
         }

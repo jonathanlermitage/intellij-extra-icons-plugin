@@ -16,9 +16,9 @@ import kotlin.coroutines.Continuation;
 import lermitage.intellij.extra.icons.Globals;
 import lermitage.intellij.extra.icons.cfg.SettingsForm;
 import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
+import lermitage.intellij.extra.icons.messaging.RefreshIconsNotifierService;
 import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IJUtils;
-import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -70,7 +70,7 @@ public class HintNotificationsStartupActivity implements ProjectActivity {
                                 disabledModelIds.add("ext_svg"); //NON-NLS
                                 disabledModelIds.add("ext_svg_alt"); //NON-NLS
                                 settingsIDEService.setDisabledModelIds(disabledModelIds);
-                                ProjectUtils.refreshAllOpenedProjects();
+                                RefreshIconsNotifierService.getInstance().triggerAllIconsRefresh();
                                 Messages.showInfoMessage(
                                     i18n.getString("configured.iconviewer.for.svg.rendering"),
                                     i18n.getString("configured.iconviewer.for.svg.rendering.title")

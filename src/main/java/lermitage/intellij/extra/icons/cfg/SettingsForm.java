@@ -26,6 +26,7 @@ import lermitage.intellij.extra.icons.cfg.models.UserIconsSettingsTableModel;
 import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsProjectService;
 import lermitage.intellij.extra.icons.cfg.services.SettingsService;
+import lermitage.intellij.extra.icons.messaging.RefreshIconsNotifierService;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageItem;
 import lermitage.intellij.extra.icons.utils.ComboBoxWithImageRenderer;
 import lermitage.intellij.extra.icons.utils.FileChooserUtils;
@@ -33,7 +34,6 @@ import lermitage.intellij.extra.icons.utils.I18nUtils;
 import lermitage.intellij.extra.icons.utils.IconPackUtils;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.OS;
-import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
@@ -149,7 +149,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         buttonReloadProjectsIcons.addActionListener(al -> {
             try {
                 //EnablerUtils.forceInitAllEnablers(); // FIXME reinit enablers leads to slow operation in EDT
-                ProjectUtils.refreshAllOpenedProjects();
+                RefreshIconsNotifierService.getInstance().triggerAllIconsRefresh();
                 Messages.showInfoMessage(
                     i18n.getString("icons.reloaded"),
                     i18n.getString("icons.reloaded.title")
@@ -396,10 +396,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         try {
             if (isProjectForm()) {
                 //EnablerUtils.forceInitAllEnablers(project); // FIXME reinit enablers leads to slow operation in EDT
-                ProjectUtils.refreshProject(project);
+                RefreshIconsNotifierService.getInstance().triggerProjectIconsRefresh(project);
             } else {
                 //EnablerUtils.forceInitAllEnablers(); // FIXME reinit enablers leads to slow operation in EDT
-                ProjectUtils.refreshAllOpenedProjects();
+                RefreshIconsNotifierService.getInstance().triggerAllIconsRefresh();
             }
         } catch (Exception e) {
             LOGGER.warn("Config updated, but failed to reload icons", e);

@@ -85,6 +85,10 @@
 
         <!-- Startup tasks https://plugins.jetbrains.com/docs/intellij/plugin-components.html#project-open -->
         <!-- Init all Icon Enablers once indexing is done then reload projects icons -->
+        <!-- Subscribe to a message bus in order to manage icons refreshing -->
+        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.RefreshIconsListenerActivity"
+                             id="ExtraIcons_RefreshIconsListenerActivity"
+                             order="last, before ExtraIcons_EnablerServicesPostStartupActivity, before ExtraIcons_HintNotificationsStartupActivity, before ExtraIcons_VFSChangesListenersPostStartupActivity"/>
         <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.EnablerServicesPostStartupActivity"
                              id="ExtraIcons_EnablerServicesPostStartupActivity"
                              order="last"/>
@@ -96,6 +100,7 @@
         <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.VFSChangesListenersPostStartupActivity"
                              id="ExtraIcons_VFSChangesListenersPostStartupActivity"
                              order="last, after ExtraIcons_EnablerServicesPostStartupActivity"/>
+
     </extensions>
 
 </idea-plugin>

@@ -16,7 +16,7 @@ import kotlin.coroutines.Continuation;
 import lermitage.intellij.extra.icons.enablers.IconEnablerProvider;
 import lermitage.intellij.extra.icons.enablers.IconEnablerType;
 import lermitage.intellij.extra.icons.enablers.services.GitSubmoduleFolderEnablerService;
-import lermitage.intellij.extra.icons.utils.ProjectUtils;
+import lermitage.intellij.extra.icons.messaging.RefreshIconsNotifierService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -53,7 +53,7 @@ public class VFSChangesListenersPostStartupActivity implements ProjectActivity {
                     IconEnablerProvider.getIconEnabler(project, IconEnablerType.IS_GIT_SUBMODULE_FOLDER).ifPresent(iconEnabler ->
                         iconEnabler.init(project)
                     );
-                    ProjectUtils.refreshProject(project);
+                    RefreshIconsNotifierService.getInstance().triggerProjectIconsRefresh(project);
                 }
             });
         } catch (Exception e) {
