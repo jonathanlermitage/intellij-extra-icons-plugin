@@ -51,7 +51,7 @@ public final class GitSubmoduleFolderEnablerService implements IconEnabler {
         String logMsg = "Searched for git submodules in project " + project.getName() + " in " + execDuration + " ms." +
             " Found git submodule folders: " + submoduleFolders;
         if (execDuration > 4000) {
-            LOGGER.warn(logMsg + ". Operation should complete faster.");
+            LOGGER.warn(logMsg + ". Operation should complete faster");
         } else {
             LOGGER.info(logMsg);
         }
