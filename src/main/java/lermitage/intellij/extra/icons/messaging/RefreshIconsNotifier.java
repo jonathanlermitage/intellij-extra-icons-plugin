@@ -4,7 +4,7 @@ package lermitage.intellij.extra.icons.messaging;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.util.messages.Topic;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * This notifier is used to refresh icons for projects.
@@ -21,8 +21,5 @@ public interface RefreshIconsNotifier {
      * Refresh the icons for the specified project.
      * @param project the project whose icons need to be refreshed.
      */
-    void refreshProjectIcons(@NotNull Project project);
-
-    /** Refresh the icons for all projects. */
-    void refreshAllProjectsIcons();
+    void refreshProjectIcons(@Nullable Project project);
 }

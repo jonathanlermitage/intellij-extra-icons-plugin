@@ -4,6 +4,7 @@ package lermitage.intellij.extra.icons.activity;
 
 import com.intellij.ide.projectView.ProjectView;
 import com.intellij.ide.projectView.impl.AbstractProjectViewPane;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.fileEditor.impl.EditorWindow;
@@ -32,38 +33,35 @@ public class RefreshIconsListenerActivity implements ProjectActivity {
                 public void refreshProjectIcons(@Nullable Project project) {
                     refreshProject(project);
                 }
-
-                @Override
-                public void refreshAllProjectsIcons() {
-                    refreshAllOpenedProjects();
-                }
             });
         return null;
     }
 
     private void refreshProject(Project project) {
-        if (ProjectUtils.isProjectAlive(project)) {
-            ProjectView view = ProjectView.getInstance(project);
-            if (view != null) {
-                IJUtils.runInBGT("refresh ProjectView", view::refresh, true); //NON-NLS
-                AbstractProjectViewPane currentProjectViewPane = view.getCurrentProjectViewPane();
-                if (currentProjectViewPane != null) {
-                    IJUtils.runInBGT("update AbstractProjectViewPane", () -> currentProjectViewPane.updateFromRoot((true)), true); //NON-NLS
-                }
-                try {
-                    EditorWindow[] editorWindows = FileEditorManagerEx.getInstanceEx(project).getWindows();
-                    for (EditorWindow editorWindow : editorWindows) {
-                        try {
-                            IJUtils.runInBGT("refresh EditorWindow icons", () -> editorWindow.getManager().refreshIcons(), true); //NON-NLS
-                        } catch (Exception e) {
-                            LOGGER.warn("Failed to refresh editor tabs icon (EditorWindow manager failed to refresh icons)", e); //NON-NLS
-                        }
+        ApplicationManager.getApplication().runReadAction(() -> {
+            if (ProjectUtils.isProjectAlive(project)) {
+                ProjectView view = ProjectView.getInstance(project);
+                if (view != null) {
+                    IJUtils.runInBGT("refresh ProjectView", view::refresh, true); //NON-NLS
+                    AbstractProjectViewPane currentProjectViewPane = view.getCurrentProjectViewPane();
+                    if (currentProjectViewPane != null) {
+                        IJUtils.runInBGT("update AbstractProjectViewPane", () -> currentProjectViewPane.updateFromRoot((true)), true); //NON-NLS
                     }
-                } catch (Exception e) {
-                    LOGGER.warn("Failed to refresh editor tabs icon (can't get FileEditorManagerEx instance or project's windows)", e); //NON-NLS
+                    try {
+                        EditorWindow[] editorWindows = FileEditorManagerEx.getInstanceEx(project).getWindows();
+                        for (EditorWindow editorWindow : editorWindows) {
+                            try {
+                                IJUtils.runInBGT("refresh EditorWindow icons", () -> editorWindow.getManager().refreshIcons(), true); //NON-NLS
+                            } catch (Exception e) {
+                                LOGGER.warn("Failed to refresh editor tabs icon (EditorWindow manager failed to refresh icons)", e); //NON-NLS
+                            }
+                        }
+                    } catch (Exception e) {
+                        LOGGER.warn("Failed to refresh editor tabs icon (can't get FileEditorManagerEx instance or project's windows)", e); //NON-NLS
+                    }
                 }
             }
-        }
+        });
     }
 
     private void refreshAllOpenedProjects() {

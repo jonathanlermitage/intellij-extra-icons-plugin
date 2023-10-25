@@ -408,7 +408,7 @@ public class ModelDialog extends DialogWrapper {
                 // TODO User wants to edit a User Icon when no project is opened. We have no workaround to
                 //  avoid "Slow operations are prohibited on EDT" error log in this situation, but, this is only
                 //  a log message, nothing is broken. I think we can leave it as is, and remove this code once
-                //  issue #126 has a better fixed.
+                //  issue #126 has a better fix.
                 VirtualFile fileByUrl = VirtualFileManager.getInstance().findFileByNioPath(Path.of(iconPath.get()));
                 if (fileByUrl != null) {
                     return IconUtils.loadFromVirtualFile(fileByUrl);
