@@ -67,7 +67,6 @@ public class RefreshIconsListenerProjectActivity implements ProjectActivity {
                             iconEnabler.ifPresent(enabler -> enabler.init(project));
                         }
                     }
-                    refreshIcons(project);
                 });
             }
         }, true);
