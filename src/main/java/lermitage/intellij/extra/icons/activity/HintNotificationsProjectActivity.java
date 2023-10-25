@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 /**
  * Display some useful hints in notifications on startup, a single time only.
  */
-public class HintNotificationsStartupActivity implements ProjectActivity {
+public class HintNotificationsProjectActivity implements ProjectActivity {
 
     private static final ResourceBundle i18n = I18nUtils.getResourceBundle();
 

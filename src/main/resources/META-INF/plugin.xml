@@ -86,20 +86,20 @@
         <!-- Startup tasks https://plugins.jetbrains.com/docs/intellij/plugin-components.html#project-open -->
         <!-- Init all Icon Enablers once indexing is done then reload projects icons -->
         <!-- Subscribe to a message bus in order to manage icons refreshing -->
-        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.RefreshIconsListenerActivity"
-                             id="ExtraIcons_RefreshIconsListenerActivity"
-                             order="last, before ExtraIcons_EnablerServicesPostStartupActivity, before ExtraIcons_HintNotificationsStartupActivity, before ExtraIcons_VFSChangesListenersPostStartupActivity"/>
-        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.EnablerServicesPostStartupActivity"
-                             id="ExtraIcons_EnablerServicesPostStartupActivity"
+        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.RefreshIconsListenerProjectActivity"
+                             id="ExtraIcons_RefreshIconsListenerProjectActivity"
+                             order="last, before ExtraIcons_EnablerServicesProjectActivity, before ExtraIcons_HintNotificationsProjectActivity, before ExtraIcons_VFSChangesListenersProjectActivity"/>
+        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.EnablerServicesProjectActivity"
+                             id="ExtraIcons_EnablerServicesProjectActivity"
                              order="last"/>
         <!-- Show some reminders about Extra Icons, because some users ignore important features -->
-        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.HintNotificationsStartupActivity"
-                             id="ExtraIcons_HintNotificationsStartupActivity"
+        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.HintNotificationsProjectActivity"
+                             id="ExtraIcons_HintNotificationsProjectActivity"
                              order="last"/>
         <!-- Various events on file update (for now, refresh Git sub-module folders on '.gitmodules' update) -->
-        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.VFSChangesListenersPostStartupActivity"
-                             id="ExtraIcons_VFSChangesListenersPostStartupActivity"
-                             order="last, after ExtraIcons_EnablerServicesPostStartupActivity"/>
+        <postStartupActivity implementation="lermitage.intellij.extra.icons.activity.VFSChangesListenersProjectActivity"
+                             id="ExtraIcons_VFSChangesListenersProjectActivity"
+                             order="last, after ExtraIcons_EnablerServicesProjectActivity"/>
 
     </extensions>
 

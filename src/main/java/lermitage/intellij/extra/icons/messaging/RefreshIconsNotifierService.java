@@ -21,7 +21,6 @@ public final class RefreshIconsNotifierService {
                 RefreshIconsNotifier refreshIconsNotifier = project.getMessageBus()
                     .syncPublisher(RefreshIconsNotifier.EXTRA_ICONS_REFRESH_ICONS_NOTIFIER_TOPIC);
                 refreshIconsNotifier.refreshProjectIcons(project);
-                LOGGER.warn("refreshed project " + project.getName()); //NON-NLS
             } else {
                 LOGGER.warn("Project is null, can't refresh icons"); //NON-NLS
             }

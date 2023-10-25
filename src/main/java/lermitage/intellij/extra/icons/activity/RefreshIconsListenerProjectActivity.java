@@ -19,21 +19,15 @@ import lermitage.intellij.extra.icons.utils.ProjectUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class RefreshIconsListenerActivity implements ProjectActivity {
+public class RefreshIconsListenerProjectActivity implements ProjectActivity {
 
-    private static final Logger LOGGER = Logger.getInstance(RefreshIconsListenerActivity.class);
+    private static final Logger LOGGER = Logger.getInstance(RefreshIconsListenerProjectActivity.class);
 
     @Nullable
     @Override
     public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
         project.getMessageBus().connect().subscribe(RefreshIconsNotifier.EXTRA_ICONS_REFRESH_ICONS_NOTIFIER_TOPIC,
-            new RefreshIconsNotifier() {
-
-                @Override
-                public void refreshProjectIcons(@Nullable Project project) {
-                    refreshProject(project);
-                }
-            });
+            (RefreshIconsNotifier) this::refreshProject);
         return null;
     }
 

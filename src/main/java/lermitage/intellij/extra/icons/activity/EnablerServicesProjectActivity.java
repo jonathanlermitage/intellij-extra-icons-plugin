@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
  * Re-init icon enablers on project init, once indexing tasks are done. May fix init issues when querying IDE filename index while indexing.
  * At least, it fixes icons reloading (Enablers) after long indexing tasks (example: after you asked to invalidate caches).
  */
-public class EnablerServicesPostStartupActivity implements ProjectActivity {
+public class EnablerServicesProjectActivity implements ProjectActivity {
 
     @Nullable
     @Override

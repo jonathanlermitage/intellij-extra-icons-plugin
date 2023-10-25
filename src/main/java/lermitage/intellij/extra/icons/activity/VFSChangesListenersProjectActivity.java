@@ -22,9 +22,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class VFSChangesListenersPostStartupActivity implements ProjectActivity {
+public class VFSChangesListenersProjectActivity implements ProjectActivity {
 
-    private static final Logger LOGGER = Logger.getInstance(VFSChangesListenersPostStartupActivity.class);
+    private static final Logger LOGGER = Logger.getInstance(VFSChangesListenersProjectActivity.class);
 
     @Nullable
     @Override
