@@ -70,7 +70,7 @@ public class HintNotificationsProjectActivity implements ProjectActivity {
                                 disabledModelIds.add("ext_svg"); //NON-NLS
                                 disabledModelIds.add("ext_svg_alt"); //NON-NLS
                                 settingsIDEService.setDisabledModelIds(disabledModelIds);
-                                RefreshIconsNotifierService.getInstance().triggerAllIconsRefresh();
+                                RefreshIconsNotifierService.getInstance().triggerAllIconsRefreshAndIconEnablersReinit();
                                 Messages.showInfoMessage(
                                     i18n.getString("configured.iconviewer.for.svg.rendering"),
                                     i18n.getString("configured.iconviewer.for.svg.rendering.title")

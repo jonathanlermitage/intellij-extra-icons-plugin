@@ -41,7 +41,7 @@ public final class RefreshIconsNotifierService {
         });
     }
 
-    public void triggerAllIconsRefresh() {
+    public void triggerAllIconsRefreshAndIconEnablersReinit() {
         Project[] projects = ProjectManager.getInstance().getOpenProjects();
         for (Project project : projects) {
             triggerProjectIconEnablersReinit(project);

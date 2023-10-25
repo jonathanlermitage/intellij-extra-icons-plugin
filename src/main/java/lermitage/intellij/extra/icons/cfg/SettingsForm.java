@@ -149,7 +149,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         buttonReloadProjectsIcons.addActionListener(al -> {
             try {
                 //EnablerUtils.forceInitAllEnablers(); // FIXME reinit enablers leads to slow operation in EDT
-                RefreshIconsNotifierService.getInstance().triggerAllIconsRefresh();
+                RefreshIconsNotifierService.getInstance().triggerAllIconsRefreshAndIconEnablersReinit();
                 Messages.showInfoMessage(
                     i18n.getString("icons.reloaded"),
                     i18n.getString("icons.reloaded.title")
@@ -395,9 +395,10 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
         try {
             if (isProjectForm()) {
+                RefreshIconsNotifierService.getInstance().triggerProjectIconEnablersReinit(project);
                 RefreshIconsNotifierService.getInstance().triggerProjectIconsRefresh(project);
             } else {
-                RefreshIconsNotifierService.getInstance().triggerAllIconsRefresh();
+                RefreshIconsNotifierService.getInstance().triggerAllIconsRefreshAndIconEnablersReinit();
             }
         } catch (Exception e) {
             LOGGER.warn("Config updated, but failed to reload icons", e);
