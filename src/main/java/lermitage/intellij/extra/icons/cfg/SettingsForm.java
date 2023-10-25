@@ -395,10 +395,8 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
         try {
             if (isProjectForm()) {
-                //EnablerUtils.forceInitAllEnablers(project); // FIXME reinit enablers leads to slow operation in EDT
                 RefreshIconsNotifierService.getInstance().triggerProjectIconsRefresh(project);
             } else {
-                //EnablerUtils.forceInitAllEnablers(); // FIXME reinit enablers leads to slow operation in EDT
                 RefreshIconsNotifierService.getInstance().triggerAllIconsRefresh();
             }
         } catch (Exception e) {
