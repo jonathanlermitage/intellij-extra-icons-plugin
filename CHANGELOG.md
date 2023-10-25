@@ -4,7 +4,7 @@
 * try to fix [#165](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/165): `AlreadyDisposedException: Cannot create com.intellij.ui.docking.DockManager because container is already disposed` on IDE or plugin upgrade.
 * minor performance improvement when displaying user icons.
 * support some [Writerside](https://www.jetbrains.com/writerside/) icons: `writerside.cfg`, `*.list` and `*.tree`. Please note Writerside IDE has similar [limitation](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/36) as PyCharm and GoLand IDEs: can't override some Writerside icons in project view. There is no problem with Writerside plugin running in IntelliJ.
-* Nota: I am working on a huge plugin rework and modernization which should resolve most (hopefully all) `Slow operations are prohibited on EDT` and threading related issues like `...should be accessed only from EDT`. This is planned for 2024. 
+* code rework [#166](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/166): improve the way Extra Icons plugin triggers icons refresh. You should see less `Slow operations are prohibited on EDT` and threading related issues like `...should be accessed only from EDT`.
 
 ## 2023.2.12-231 (2023/10/15)
 * fix [157](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/157): `java.lang.Throwable: TreeUI should be accessed only from EDT` with Rider 2023.3 EAP 1.
