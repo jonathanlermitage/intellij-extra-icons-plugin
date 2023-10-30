@@ -5,6 +5,7 @@ package lermitage.intellij.extra.icons;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
+import com.intellij.ui.NewUI;
 import lermitage.intellij.extra.icons.cfg.services.SettingsIDEService;
 import lermitage.intellij.extra.icons.utils.IconUtils;
 import lermitage.intellij.extra.icons.utils.OS;
@@ -31,13 +32,27 @@ public class ExtraIconPatcher extends IconPathPatcher {
 
     @NotNull
     public static Map<String, String> getEnabledIcons() {
+        final UIType uiType = NewUI.isEnabled() ? UIType.NEW_UI : UIType.OLD_UI;
+        LOGGER.info("Detected UI Type: " + uiType);
+        boolean preferNewUI = switch (SettingsIDEService.getInstance().getUiTypeIconsPreference()) {
+            case BASED_ON_ACTIVE_UI_TYPE -> NewUI.isEnabled();
+            case PREFER_NEW_UI_ICONS -> true;
+            case PREFER_OLD_UI_ICONS -> false;
+        };
+
         Map<String, String> enabledIcons = new LinkedHashMap<>();
         List<String> disabledModelIds = SettingsIDEService.getInstance().getDisabledModelIds();
         Stream.of(ExtraIconProvider.allModels(), SettingsIDEService.getInstance().getCustomModels()).flatMap(Collection::stream)
             .filter(model -> model.getModelType() == ModelType.ICON)
             .forEach(model -> {
                 if (model.isEnabled() && !enabledIcons.containsKey(model.getIdeIcon()) && !disabledModelIds.contains(model.getId())) {
-                    enabledIcons.put(model.getIdeIcon(), model.getIcon());
+                    String iconPathToLoad;
+                    if (preferNewUI && model.isAutoLoadNewUIIconVariant()) {
+                        iconPathToLoad = model.getIcon().replace("extra-icons/", "extra-icons/newui/"); //NON-NLS
+                    } else {
+                        iconPathToLoad = model.getIcon();
+                    }
+                    enabledIcons.put(model.getIdeIcon(), iconPathToLoad);
                 }
             });
         return enabledIcons;
