@@ -4,7 +4,6 @@ package lermitage.intellij.extra.icons.cfg.services;
 
 import com.intellij.notification.NotificationGroupManager;
 import com.intellij.notification.NotificationType;
-import com.intellij.openapi.project.Project;
 import com.intellij.ui.scale.JBUIScale;
 import lermitage.intellij.extra.icons.ExtraIconProvider;
 import lermitage.intellij.extra.icons.Globals;
@@ -49,7 +48,7 @@ public abstract class SettingsService {
 
     public Pattern getIgnoredPatternObj() {
         if (isIgnoredPatternValid == null) {
-            compileAndSetRegex(ignoredPattern);
+            compileAndSetIgnoredPattern(ignoredPattern);
         }
         if (isIgnoredPatternValid == Boolean.TRUE) {
             return ignoredPatternObj;
@@ -63,7 +62,7 @@ public abstract class SettingsService {
 
     public void setIgnoredPattern(String ignoredPattern) {
         this.ignoredPattern = ignoredPattern;
-        compileAndSetRegex(ignoredPattern);
+        compileAndSetIgnoredPattern(ignoredPattern);
     }
 
     public List<Model> getCustomModels() {
@@ -82,22 +81,7 @@ public abstract class SettingsService {
         return ExtraIconProvider.allModels();
     }
 
-    /**
-     * Returns the Project settings service if the project is not null and, optionally, if the checkbox in the project settings was checked,
-     * otherwise returns the IDE settings service.
-     */
-    @NotNull
-    public static SettingsService getBestSettingsService(Project project, boolean isOverrideIDESettings) {
-        if (project != null) {
-            SettingsProjectService settingsProjectService = SettingsProjectService.getInstance(project);
-            if (settingsProjectService.isOverrideIDESettings() || !isOverrideIDESettings) {
-                return settingsProjectService;
-            }
-        }
-        return SettingsIDEService.getInstance();
-    }
-
-    private void compileAndSetRegex(String regex) {
+    private void compileAndSetIgnoredPattern(String regex) {
         if (regex != null && !regex.isEmpty()) {
             try {
                 ignoredPatternObj = Pattern.compile(regex);

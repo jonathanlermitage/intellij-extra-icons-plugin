@@ -212,7 +212,7 @@ public abstract class BaseIconProvider
             assert project != null;
             Set<String> facets = FacetsFinderService.getInstance(project).getFacets();
             Double additionalUIScale = SettingsIDEService.getInstance().getAdditionalUIScale2();
-            SettingsService settingsService = SettingsService.getBestSettingsService(project, true);
+            SettingsService settingsService = getBestSettingsService(project);
             Object parentModelIdWhoseCheckFailed = null;
             for (final Model model : getModelsIncludingUserModels(project)) {
                 if (model.getModelType() == currentModelType && model.isEnabled() && !settingsService.getDisabledModelIds().contains(model.getId())) {
@@ -291,7 +291,7 @@ public abstract class BaseIconProvider
      */
     private boolean isPatternIgnored(Project project, File file) {
         try {
-            SettingsService service = SettingsService.getBestSettingsService(project, true);
+            SettingsService service = getBestSettingsService(project);
             if (service.getIgnoredPatternObj() == null || service.getIgnoredPattern() == null || service.getIgnoredPattern().isEmpty()) {
                 return false;
             }
@@ -315,6 +315,21 @@ public abstract class BaseIconProvider
             logError(e);
             return false;
         }
+    }
+
+    /**
+     * Returns the Project settings service if the project is not null and if the checkbox in the project settings was checked,
+     * otherwise returns the IDE settings service.
+     */
+    @NotNull
+    private SettingsService getBestSettingsService(@Nullable Project project) {
+        if (project != null) {
+            SettingsProjectService settingsProjectService = SettingsProjectService.getInstance(project);
+            if (settingsProjectService.isOverrideIDESettings()) {
+                return settingsProjectService;
+            }
+        }
+        return SettingsIDEService.getInstance();
     }
 
     private enum FileType {

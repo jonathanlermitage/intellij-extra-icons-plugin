@@ -76,18 +76,32 @@ public class RefreshIconsListenerProjectActivity implements ProjectActivity {
         ApplicationManager.getApplication().runReadAction(() -> {
             if (ProjectUtils.isProjectAlive(project)) {
                 assert project != null;
+
                 ProjectView view = ProjectView.getInstance(project);
                 if (view != null) {
-                    IJUtils.runInBGT("refresh ProjectView", view::refresh, true); //NON-NLS
+
+                    view.refresh();
+                    //IJUtils.runInBGT("refresh ProjectView", view::refresh, true); //NON-NLS
+
                     AbstractProjectViewPane currentProjectViewPane = view.getCurrentProjectViewPane();
                     if (currentProjectViewPane != null) {
-                        IJUtils.runInBGT("update AbstractProjectViewPane", () -> currentProjectViewPane.updateFromRoot((true)), true); //NON-NLS
+
+                        currentProjectViewPane.updateFromRoot(true);
+                        //IJUtils.runInBGT("update AbstractProjectViewPane", () -> currentProjectViewPane.updateFromRoot(true), true); //NON-NLS
+
+                    } else {
+                        if (LOGGER.isDebugEnabled()) {
+                            LOGGER.warn("Project view pane is null"); //NON-NLS
+                        }
                     }
                     try {
                         EditorWindow[] editorWindows = FileEditorManagerEx.getInstanceEx(project).getWindows();
                         for (EditorWindow editorWindow : editorWindows) {
                             try {
-                                IJUtils.runInBGT("refresh EditorWindow icons", () -> editorWindow.getManager().refreshIcons(), true); //NON-NLS
+
+                                editorWindow.getManager().refreshIcons();
+                                //IJUtils.runInBGT("refresh EditorWindow icons", () -> editorWindow.getManager().refreshIcons(), true); //NON-NLS
+
                             } catch (Exception e) {
                                 LOGGER.warn("Failed to refresh editor tabs icon (EditorWindow manager failed to refresh icons)", e); //NON-NLS
                             }
@@ -96,7 +110,9 @@ public class RefreshIconsListenerProjectActivity implements ProjectActivity {
                         LOGGER.warn("Failed to refresh editor tabs icon (can't get FileEditorManagerEx instance or project's windows)", e); //NON-NLS
                     }
                 } else {
-                    LOGGER.warn("project view is null"); //NON-NLS
+                    if (LOGGER.isDebugEnabled()) {
+                        LOGGER.warn("Project view is null"); //NON-NLS
+                    }
                 }
             }
         });

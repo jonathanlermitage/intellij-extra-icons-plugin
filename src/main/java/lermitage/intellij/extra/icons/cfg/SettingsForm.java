@@ -148,7 +148,6 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         });
         buttonReloadProjectsIcons.addActionListener(al -> {
             try {
-                //EnablerUtils.forceInitAllEnablers(); // FIXME reinit enablers leads to slow operation in EDT
                 RefreshIconsNotifierService.getInstance().triggerAllIconsRefreshAndIconEnablersReinit();
                 Messages.showInfoMessage(
                     i18n.getString("icons.reloaded"),
@@ -201,7 +200,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                         iconPackName = askSingleTextDialog.getTextFromInput();
                     }
                     File exportFile = new File(folderPath.get() + "/" + filename);
-                    IconPackUtils.writeToJsonFile(exportFile, new IconPack(iconPackName, SettingsService.getBestSettingsService(project, false).getCustomModels()));
+                    IconPackUtils.writeToJsonFile(exportFile, new IconPack(iconPackName, getBestSettingsService(project).getCustomModels()));
                     Messages.showInfoMessage(
                         i18n.getString("dialog.export.icon.pack.success") + "\n" + exportFile.getAbsolutePath(),
                         i18n.getString("dialog.export.icon.pack.success.title")
@@ -284,7 +283,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
             return true;
         }
 
-        SettingsService bestSettingsService = SettingsService.getBestSettingsService(project, false);
+        SettingsService bestSettingsService = getBestSettingsService(project);
         SettingsIDEService settingsIDEService = SettingsIDEService.getInstance();
 
         if (isProjectForm()) {
@@ -365,7 +364,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
 
     @Override
     public void apply() {
-        SettingsService bestSettingsService = SettingsService.getBestSettingsService(project, false);
+        SettingsService bestSettingsService = getBestSettingsService(project);
         SettingsIDEService settingsIDEService = SettingsIDEService.getInstance();
 
         if (isProjectForm()) {
@@ -570,7 +569,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void loadUserIconsTable() {
-        customModels = new ArrayList<>(SettingsService.getBestSettingsService(project, false).getCustomModels());
+        customModels = new ArrayList<>(getBestSettingsService(project).getCustomModels());
         foldersFirst(customModels);
         setUserIconsTableModel();
     }
@@ -695,7 +694,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
                 .collect(Collectors.toList());
         }
         foldersFirst(allRegisteredModels);
-        List<String> disabledModelIds = SettingsService.getBestSettingsService(project, false).getDisabledModelIds();
+        List<String> disabledModelIds = getBestSettingsService(project).getDisabledModelIds();
         final Double additionalUIScale = settingsIDEService.getAdditionalUIScale2();
         final UITypeIconsPreference uiTypeIconsPreference = settingsIDEService.getUiTypeIconsPreference();
         final Icon restartIcon = IconLoader.getIcon("extra-icons/plugin-internals/reboot.svg", SettingsForm.class); //NON-NLS
@@ -738,7 +737,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
     }
 
     private void loadIgnoredPattern() {
-        ignoredPatternTextField.setText(SettingsService.getBestSettingsService(project, false).getIgnoredPattern());
+        ignoredPatternTextField.setText(getBestSettingsService(project).getIgnoredPattern());
     }
 
     private void loadAdditionalUIScale() {
@@ -811,6 +810,17 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         //  to fix CollectionUtils.isEqualCollection(customModels, service.getCustomModels()).
         //  For now, the comparison returns true when customModels ordering changed. It should return false.
         forceUpdate = true;
+    }
+
+    /**
+     * Returns the Project settings service if the project is not null, otherwise returns the IDE settings service.
+     */
+    @NotNull
+    private SettingsService getBestSettingsService(@Nullable Project project) {
+        if (project != null) {
+            return SettingsProjectService.getInstance(project);
+        }
+        return SettingsIDEService.getInstance();
     }
 
     private enum MoveDirection {
