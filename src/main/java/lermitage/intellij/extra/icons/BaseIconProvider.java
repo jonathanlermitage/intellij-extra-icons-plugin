@@ -245,7 +245,7 @@ public abstract class BaseIconProvider
     }
 
     private void logCacheHitStats() {
-        if (LOGGER.isDebugEnabled() && (nbGetIcon < 5 || nbGetIcon < 100 ? nbGetIcon % 20 == 0 : nbGetIcon % 100 == 0)) {
+        if (LOGGER.isDebugEnabled() && nbGetIcon > 0 && checks_done > 0 && (nbGetIcon < 5 || nbGetIcon < 100 ? nbGetIcon % 20 == 0 : nbGetIcon % 100 == 0)) {
             // activate with Help > Diagnostic Tools > Debug Log Settings > #lermitage.intellij.extra.icons.BaseIconProvider
             LOGGER.debug("[" + Thread.currentThread().getId() + "] " +
                 "getIcon: " + nbGetIcon + ", " +
