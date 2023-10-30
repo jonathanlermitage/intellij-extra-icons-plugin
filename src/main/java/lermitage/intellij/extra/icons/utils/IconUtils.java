@@ -113,7 +113,7 @@ public class IconUtils {
         try {
             File svgFile = createOrGetTempSVGFile(imageBytes);
             svgFilePath = svgFile.getAbsolutePath();
-            String prefix = DETECT_OS == OS.WIN ? "file:/" : "file://"; //NON-NLS
+            String prefix = DETECT_OS == OS.WIN ? "file:/" : "file://"; //NON-NLS // TODO see if should use VfsUtil.fixURLforIDEA(urlStr)
             Icon icon = IconLoader.getIcon(prefix + svgFile.getAbsolutePath().replaceAll("\\\\", "/"), IconUtils.class);
             if (icon.getIconWidth() == 16) {
                 return new ImageWrapper(IconType.SVG, IconUtil.toImage(icon), imageBytes);

@@ -104,7 +104,7 @@ public class ExtraIconPatcher extends IconPathPatcher {
                 // base64 icon provided by user: store as local file
                 File svgFile = IconUtils.createOrGetTempSVGFile(B64_DECODER.decode(iconStr));
                 String decodedIconPath = svgFile.getAbsolutePath();
-                if (detectedOS == OS.WIN) {
+                if (detectedOS == OS.WIN) { // TODO see if should use VfsUtil.fixURLforIDEA(urlStr)
                     morphedIcons.put(iconKey, "file:/" + decodedIconPath); //NON-NLS
                 } else {
                     morphedIcons.put(iconKey, "file://" + decodedIconPath); //NON-NLS
