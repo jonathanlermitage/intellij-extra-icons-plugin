@@ -42,8 +42,9 @@ import java.util.stream.Stream;
  * @author Jonathan Lermitage
  */
 public abstract class BaseIconProvider
-    extends IconProvider
-    implements FileIconProvider {
+    extends IconProvider // the most important icon provider
+    implements FileIconProvider // may drop FileIconProvider as most of the work is done by the IconProvider
+{
 
     private static final @NonNls Logger LOGGER = Logger.getInstance(BaseIconProvider.class);
 
@@ -134,8 +135,11 @@ public abstract class BaseIconProvider
     }
 
     @Nullable
-    @Override
+    @Override // overrides FileIconProvider
     public Icon getIcon(@NotNull VirtualFile file, int flags, @Nullable Project project) {
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("FileIconProvider->" + file.getPath());
+        }
         try {
             if (!ProjectUtils.isProjectAlive(project)) {
                 return null;
@@ -158,8 +162,11 @@ public abstract class BaseIconProvider
     }
 
     @Nullable
-    @Override
+    @Override // overrides IconProvider
     public final Icon getIcon(@NotNull final PsiElement psiElement, final int flags) {
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("IconProvider->" + psiElement);
+        }
         try {
             PsiFileSystemItem currentPsiFileItem;
             if (psiElement instanceof PsiDirectory psiDirectoryElt) {
