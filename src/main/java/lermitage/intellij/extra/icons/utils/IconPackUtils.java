@@ -39,6 +39,6 @@ public class IconPackUtils {
      */
     public static void writeToJsonFile(File file, IconPack iconPack) throws IOException {
         String json = gson.toJson(iconPack, IconPack.class);
-        Files.writeString(file.toPath(), json, IconPackUtils.CHARSET);
+        Files.writeString(file.toPath(), json, CHARSET);
     }
 }
