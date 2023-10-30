@@ -3,7 +3,9 @@
 ## 2023.3 (WIP)
 * important code rework [#166](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/166): improve the way Extra Icons plugin triggers icons refresh. You should see less `Slow operations are prohibited on EDT` and threading related issues like `...should be accessed only from EDT`.
 * try to fix [#165](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/165): `AlreadyDisposedException: Cannot create com.intellij.ui.docking.DockManager because container is already disposed` on IDE or plugin upgrade.
-* performance improvement when displaying user icons (reduce I/O usage).
+* fix new UI icon variants rendering when overriding IDE icons.
+* performance improvement when displaying bundled icons (reduced CPU usage).
+* performance improvement when displaying user icons (reduced I/O usage).
 * performance improvement when refreshing icons (project views were refreshed 6 times, now reduced to a single refresh).
 * support some [Writerside](https://www.jetbrains.com/writerside/) icons: `writerside.cfg`, `*.list` and `*.tree`. Please note Writerside IDE has similar [limitation](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/36) as PyCharm and GoLand IDEs: can't override some Writerside icons in project view. There is no problem with Writerside plugin running in IntelliJ.
 
