@@ -1032,6 +1032,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_avro_avsc", "extra-icons/avro.svg", "Avro: *.avsc")
                     .end(".avsc")
                     .autoLoadNewUIIconVariant(),
+                ofFile("bicep", "extra-icons/bicep.svg", "Bicep: *.bicep")
+                    .altIcons("extra-icons/bicep_alt.svg", "extra-icons/bicep_alt2.svg")
+                    .end("bicep"),
                 ofFile("ext_bin", "extra-icons/binary.svg", "Binary: *.bin")
                     .end(".bin")
                     .altIcons("extra-icons/binary_alt.svg", "extra-icons/binary_alt2.svg"),
