@@ -73,48 +73,51 @@ public class RefreshIconsListenerProjectActivity implements ProjectActivity {
     }
 
     private void refreshIcons(@Nullable Project project) {
-        ApplicationManager.getApplication().runReadAction(() -> {
-            if (ProjectUtils.isProjectAlive(project)) {
-                assert project != null;
+        IJUtils.runInEDT("refresh icons", () -> { //NON-NLS
+            ApplicationManager.getApplication().runReadAction(() -> {
 
-                ProjectView view = ProjectView.getInstance(project);
-                if (view != null) {
+                if (ProjectUtils.isProjectAlive(project)) {
+                    assert project != null;
 
-                    view.refresh();
-                    //IJUtils.runInBGT("refresh ProjectView", view::refresh, true); //NON-NLS
+                    ProjectView view = ProjectView.getInstance(project);
+                    if (view != null) {
 
-                    AbstractProjectViewPane currentProjectViewPane = view.getCurrentProjectViewPane();
-                    if (currentProjectViewPane != null) {
+                        view.refresh();
+                        //IJUtils.runInBGT("refresh ProjectView", view::refresh, true); //NON-NLS
 
-                        currentProjectViewPane.updateFromRoot(true);
-                        //IJUtils.runInBGT("update AbstractProjectViewPane", () -> currentProjectViewPane.updateFromRoot(true), true); //NON-NLS
+                        AbstractProjectViewPane currentProjectViewPane = view.getCurrentProjectViewPane();
+                        if (currentProjectViewPane != null) {
 
-                    } else {
-                        if (LOGGER.isDebugEnabled()) {
-                            LOGGER.warn("Project view pane is null"); //NON-NLS
-                        }
-                    }
-                    try {
-                        EditorWindow[] editorWindows = FileEditorManagerEx.getInstanceEx(project).getWindows();
-                        for (EditorWindow editorWindow : editorWindows) {
-                            try {
+                            currentProjectViewPane.updateFromRoot(true);
+                            //IJUtils.runInBGT("update AbstractProjectViewPane", () -> currentProjectViewPane.updateFromRoot(true), true); //NON-NLS
 
-                                editorWindow.getManager().refreshIcons();
-                                //IJUtils.runInBGT("refresh EditorWindow icons", () -> editorWindow.getManager().refreshIcons(), true); //NON-NLS
-
-                            } catch (Exception e) {
-                                LOGGER.warn("Failed to refresh editor tabs icon (EditorWindow manager failed to refresh icons)", e); //NON-NLS
+                        } else {
+                            if (LOGGER.isDebugEnabled()) {
+                                LOGGER.warn("Project view pane is null"); //NON-NLS
                             }
                         }
-                    } catch (Exception e) {
-                        LOGGER.warn("Failed to refresh editor tabs icon (can't get FileEditorManagerEx instance or project's windows)", e); //NON-NLS
-                    }
-                } else {
-                    if (LOGGER.isDebugEnabled()) {
-                        LOGGER.warn("Project view is null"); //NON-NLS
+                        try {
+                            EditorWindow[] editorWindows = FileEditorManagerEx.getInstanceEx(project).getWindows();
+                            for (EditorWindow editorWindow : editorWindows) {
+                                try {
+
+                                    editorWindow.getManager().refreshIcons();
+                                    //IJUtils.runInBGT("refresh EditorWindow icons", () -> editorWindow.getManager().refreshIcons(), true); //NON-NLS
+
+                                } catch (Exception e) {
+                                    LOGGER.warn("Failed to refresh editor tabs icon (EditorWindow manager failed to refresh icons)", e); //NON-NLS
+                                }
+                            }
+                        } catch (Exception e) {
+                            LOGGER.warn("Failed to refresh editor tabs icon (can't get FileEditorManagerEx instance or project's windows)", e); //NON-NLS
+                        }
+                    } else {
+                        if (LOGGER.isDebugEnabled()) {
+                            LOGGER.warn("Project view is null"); //NON-NLS
+                        }
                     }
                 }
-            }
+            });
         });
     }
 }
