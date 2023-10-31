@@ -10,6 +10,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.ui.ComboboxSpeedSearch;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.components.JBLabel;
@@ -493,6 +494,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         Arrays.stream(ModelTag.values()).forEach(modelTag -> comboBoxIconsGroupSelector.addItem(
             new ComboBoxWithImageItem(modelTag, MessageFormat.format(i18n.getString("icons.tag.name"), modelTag.getName()))
         ));
+        ComboboxSpeedSearch.installSpeedSearch(comboBoxIconsGroupSelector, ComboBoxWithImageItem::getTitle);
 
         iconPackLabel.setText(i18n.getString("icon.pack.label"));
 
