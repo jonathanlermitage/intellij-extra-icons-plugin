@@ -450,7 +450,7 @@ public class SettingsForm implements Configurable, Configurable.NoScroll {
         initCheckbox();
 
         loadPluginIconsTable();
-        //TableSpeedSearch.installOn(pluginIconsTable); // TODO install a SpeedSearch on icons table once 232 is the new IDE min version
+        //TableSpeedSearch.installOn(pluginIconsTable); // TODO install a SpeedSearch on icons table once 232 is the new IDE min version, and make it work (for now, the settings search field steals focus)
 
         userIconsTable.setShowHorizontalLines(false);
         userIconsTable.setShowVerticalLines(false);
