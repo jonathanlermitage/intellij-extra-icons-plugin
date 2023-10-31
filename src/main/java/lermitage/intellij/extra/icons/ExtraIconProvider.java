@@ -638,7 +638,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("mvnw.bat", "mvnw.cmd"),
                 ofFile("codecov", "extra-icons/codecov.svg", "CodeCov: .codecov.yml, codecov.yml")
                     .eq(".codecov.yml", "codecov.yml"),
-                ofFile("codefresh", "extra-icons/codefresh.png", "Codefresh: codefresh.yml")
+                ofFile("codefresh", "extra-icons/codefresh.svg", "Codefresh: codefresh.yml")
                     .eq("codefresh.yml"),
                 ofFile("codacy", "extra-icons/codacy.svg", "Codacy: .codacy(.yml,.yaml), codacy(.yml,.yaml)")
                     .eq(".codacy", "codacy").mayEnd(YML),
