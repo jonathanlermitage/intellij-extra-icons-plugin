@@ -1152,7 +1152,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".tf"),
                 ofFile("ext_opentofu_tf_json", "extra-icons/opentofu.svg", "OpenTofu: *.tf.json")
                     .end(".tf.json"),
-                ofFile("ext_pdf", "extra-icons/pdf.png", "PDF: *.pdf")
+                ofFile("ext_pdf", "extra-icons/pdf.svg", "PDF: *.pdf")
                     .end(".pdf")
                     .altIcons("extra-icons/pdf_alt.svg", "extra-icons/pdf_alt2.svg",
                         "extra-icons/pdf_alt3.svg"),
