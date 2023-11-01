@@ -782,9 +782,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("karma.conf.js"),
                 ofFile("karma_ts", "extra-icons/karma.svg", "Karma: karma.conf.ts")
                     .eq("karma.conf.ts"),
-                ofFile("kibana", "extra-icons/kibana.png", "Kibana: kibana(.xml,.yml,...)")
+                ofFile("kibana", "extra-icons/kibana.svg", "Kibana: kibana(.xml,.yml,...)")
                     .eq("kibana").mayEnd(YML),
-                ofFile("kibana1", "extra-icons/kibana.png", "Kibana: start by 'kibana' and end by '.xml,.yml,...'")
+                ofFile("kibana1", "extra-icons/kibana.svg", "Kibana: start by 'kibana' and end by '.xml,.yml,...'")
                     .start("kibana").end(YML),
                 ofFile("knownissues", "extra-icons/bug.svg", "Known issues: known_issues(.md,.txt,.adoc,.rst)")
                     .start("known_issues").mayEnd(TXT),
@@ -812,11 +812,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("logback").mayEnd(CFG),
                 ofFile("logback1", "extra-icons/logback.svg", "Logback: start by 'logback-' and end by '.xml,.yml,...'")
                     .start("logback-").mayEnd(CFG),
-                ofFile("logstash", "extra-icons/logstash.png", "Logstash: logstash(.cfg,.conf,.yml,.yaml)")
+                ofFile("logstash", "extra-icons/logstash.svg", "Logstash: logstash(.cfg,.conf,.yml,.yaml)")
                     .eq("logstash").mayEnd(".cfg", ".conf", ".yml", ".yaml"),
-                ofFile("logstash1", "extra-icons/logstash.png", "Logstash: start by 'logstash' and end by '.cfg,.conf,.yml,.yaml'")
+                ofFile("logstash1", "extra-icons/logstash.svg", "Logstash: start by 'logstash' and end by '.cfg,.conf,.yml,.yaml'")
                     .start("logstash").end(".cfg", ".conf", ".yml", ".yaml"),
-                ofFile("logstash2", "extra-icons/logstash.png", "Logstash: start by 'logstash-' and end by '.cfg,.conf,.yml,.yaml,.txt'")
+                ofFile("logstash2", "extra-icons/logstash.svg", "Logstash: start by 'logstash-' and end by '.cfg,.conf,.yml,.yaml,.txt'")
                     .start("logstash-").end(".cfg", ".conf", ".yml", ".yaml", ".txt"),
                 ofFile("lombok", "extra-icons/lombok.svg", "Lombok: lombok.config")
                     .eq("lombok.config"),
