@@ -1004,7 +1004,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("writerside", "extra-icons/writerside_cfg.svg", "Writerside: writerside.cfg")
                     .eq("writerside.cfg")
                     .tags(ModelTag.WRITERSIDE),
-                ofFile("zalando", "extra-icons/zalando.png", "Zalando Zappr: .zappr.yaml")
+                ofFile("zalando", "extra-icons/zalando.svg", "Zalando Zappr: .zappr.yaml")
                     .eq(".zappr.yaml"),
 
                 //
