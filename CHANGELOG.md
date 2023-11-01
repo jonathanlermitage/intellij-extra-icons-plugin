@@ -8,6 +8,7 @@
 * performance improvement when displaying user icons (reduced I/O usage).
 * performance improvement when refreshing icons (project views were refreshed 6 times, now reduced to a single refresh).
 * support some [Writerside](https://www.jetbrains.com/writerside/) icons: `writerside.cfg`, `*.list` and `*.tree`. Please note Writerside IDE has similar [limitation](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/36) as PyCharm and GoLand IDEs: can't override some Writerside icons in project view. There is no problem with Writerside plugin running in IntelliJ.
+* settings UI, fix compatibility with Gateway: some Apache Commons libraries are used by plugin, but they may not be bundled with Gateway.
 * settings UI, *Quick action*: the icon group chooser now integrates the **Speed Search** functionality, [similar to Speed Search for Tool Windows](https://www.jetbrains.com/help/idea/speed-search-in-the-tool-windows.html). Select the icon group chooser, type text, and the selection moves to the first item that matches the specified string.
 * support Microsoft [Bicep](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview) `*.bicep` files.
 * rework Codefresh, JVM config, JSBeautify, PDF and Stylus icons in order to make them compatible with Gateway.
