@@ -10,7 +10,7 @@
 * support some [Writerside](https://www.jetbrains.com/writerside/) icons: `writerside.cfg`, `*.list` and `*.tree`. Please note Writerside IDE has similar [limitation](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/36) as PyCharm and GoLand IDEs: can't override some Writerside icons in project view. There is no problem with Writerside plugin running in IntelliJ.
 * settings UI, *Quick action*: the icon group chooser now integrates the **Speed Search** functionality, [similar to Speed Search for Tool Windows](https://www.jetbrains.com/help/idea/speed-search-in-the-tool-windows.html). Select the icon group chooser, type text, and the selection moves to the first item that matches the specified string.
 * support Microsoft [Bicep](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview) `*.bicep` files.
-* rework Codefresh, JVM config and JSBeautify icons in order to make them compatible with Gateway.
+* rework Codefresh, JVM config, JSBeautify and Stylus icons in order to make them compatible with Gateway.
 
 ## 2023.2.12-231 (2023/10/15)
 * fix [157](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/157): `java.lang.Throwable: TreeUI should be accessed only from EDT` with Rider 2023.3 EAP 1.
