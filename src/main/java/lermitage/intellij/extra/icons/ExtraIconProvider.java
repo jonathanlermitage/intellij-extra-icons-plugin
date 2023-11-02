@@ -961,12 +961,11 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("tinylog.properties"),
                 ofFile("testing", "extra-icons/testing.svg", "Test: test(.md,.txt,.adoc,.rst), testing")
                     .eq("test", "testing").mayEnd(TXT),
-                ofFile("todo", "extra-icons/todo.png", "To-Do: todo(.md,.txt,.adoc,.rst)")
+                ofFile("todo", "extra-icons/todo.svg", "To-Do: todo(.md,.txt,.adoc,.rst)")
                     .eq("todo").mayEnd(TXT)
-                    .altIcons("extra-icons/todo_alt.svg", "extra-icons/todo_alt2.svg"),
-                ofFile("tox", "extra-icons/tox.png", "Tox: tox.ini")
-                    .eq("tox.ini")
-                    .altIcons("extra-icons/tox_alt.svg"),
+                    .altIcons("extra-icons/todo_alt.svg"),
+                ofFile("tox", "extra-icons/tox.svg", "Tox: tox.ini")
+                    .eq("tox.ini"),
                 ofFile("travis", "extra-icons/travis.svg", "Travis CI: .travis.yml")
                     .eq(".travis.yml")
                     .altIcons("extra-icons/travis_alt.svg", "extra-icons/travis_alt02.svg",
