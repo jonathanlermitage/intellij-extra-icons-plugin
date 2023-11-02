@@ -530,7 +530,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("dependabot_gitlab", "extra-icons/dependabot.svg", "Dependabot: .gitlab/dependabot.yml")
                     .eq("dependabot").end(YML).parents(".gitlab")
                     .altIcons("extra-icons/dependabot_alt.svg"),
-                ofFile("golwroot", "extra-icons/glowroot.png", "Glowroot: glowroot/admin.json and glowroot/config.json")
+                ofFile("golwroot", "extra-icons/glowroot.svg", "Glowroot: glowroot/admin.json and glowroot/config.json")
                     .eq("admin.json", "config.json").parents("glowroot"),
                 ofFile("jgitver", "extra-icons/jgitver.svg", "jgitver: .mvn/jgitver.config.xml")
                     .eq("jgitver.config.xml").parents(".mvn"),
@@ -614,7 +614,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("bower.json", ".bowerrc"),
                 ofFile("browserslist", "extra-icons/browserslist.svg", "Browserslist: browserslist, .browserslistrc")
                     .eq("browserslist", ".browserslistrc"),
-                ofFile("build", "extra-icons/build.png", "Build: build(.md,.txt,.adoc,.rst), building")
+                ofFile("build", "extra-icons/build.svg", "Build: build(.md,.txt,.adoc,.rst), building")
                     .eq("build", "building").mayEnd(TXT),
                 ofFile("cache2k", "extra-icons/cache2k.svg", "cache2k: cache2k.xml")
                     .eq("cache2k.xml"),
@@ -658,7 +658,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".crowdin.yml"),
                 ofFile("deno", "extra-icons/deno.svg", "Deno: deno.json, deno.jsonc")
                     .eq("deno.json", "deno.jsonc"),
-                ofFile("deptective", "extra-icons/deptective.png", "Deptective: deptective.json")
+                ofFile("deptective", "extra-icons/deptective.svg", "Deptective: deptective.json")
                     .eq("deptective.json"),
                 ofFile("docker", "extra-icons/docker_.svg", "Docker: dockerfile(.xml,.yml,...)")
                     .eq("dockerfile").mayEnd(CFG)
@@ -832,7 +832,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/moduleinfo_alt.svg"),
                 ofFile("mongodb", "extra-icons/mongodb.svg", "MongoDB related files: *.mongo.*)")
                     .regex(".*\\.mongo\\..+"),
-                ofFile("muse", "extra-icons/muse.png", "Muse: .muse.toml")
+                ofFile("muse", "extra-icons/muse.svg", "Muse: .muse.toml")
                     .eq(".muse.toml"),
                 ofFile("mysql", "extra-icons/my.png", "MySQL: my.ini")
                     .eq("my.ini"),
@@ -848,7 +848,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq(".npmignore"),
                 ofFile("notice", "extra-icons/notice.svg", "Notice: notice(.md,.txt,.adoc,.rst)")
                     .eq("notice").mayEnd(TXT),
-                ofFile("nox", "extra-icons/nox.png", "Nox: noxfile.py")
+                ofFile("nox", "extra-icons/nox.svg", "Nox: noxfile.py")
                     .eq("noxfile.py"),
                 ofFile("nx", "extra-icons/nx.svg", "Nx: nx.json")
                     .eq("nx.json")
@@ -928,7 +928,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("restyled", "extra-icons/restyled.svg", "Restyled: .restyled.yaml")
                     .eq(".restyled.yaml")
                     .altIcons("extra-icons/restyled_alt.svg", "extra-icons/restyled_alt2.svg"),
-                ofFile("roadmap", "extra-icons/roadmap.png", "Roadmap: roadmap(.md,.txt,.adoc,.rst)")
+                ofFile("roadmap", "extra-icons/roadmap.svg", "Roadmap: roadmap(.md,.txt,.adoc,.rst)")
                     .eq("roadmap").mayEnd(TXT),
                 ofFile("rollup", "extra-icons/rollup.svg", "Rollup: rollup.config.js")
                     .eq("rollup.config.js"),
@@ -1038,7 +1038,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_bin", "extra-icons/binary.svg", "Binary: *.bin")
                     .end(".bin")
                     .altIcons("extra-icons/binary_alt.svg", "extra-icons/binary_alt2.svg"),
-                ofFile("ext_back", "extra-icons/backup.png", "Backup: *.versionbackup, *.versionsbackup, *.bak, *.back, *.backup, *.old, *.prev, *.revert, *.releaseBackup")
+                ofFile("ext_back", "extra-icons/backup.svg", "Backup: *.versionbackup, *.versionsbackup, *.bak, *.back, *.backup, *.old, *.prev, *.revert, *.releaseBackup")
                     .end(".versionbackup", ".versionsbackup", ".bak", ".back", ".backup", ".old", ".prev", ".revert", ".releasebackup"),
                 ofFile("ext_sh", "extra-icons/bash.svg", "Bash: *.sh")
                     .end(".sh"),
