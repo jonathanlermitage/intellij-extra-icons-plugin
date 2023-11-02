@@ -1065,7 +1065,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_csv", "extra-icons/csv.png", "CSV: *.csv")
                     .end(".csv")
                     .altIcons("extra-icons/officedocs/msexcel-papirus.svg"),
-                ofFile("ext_dar", "extra-icons/jar.png", "Diffusion Archive / XL Deploy Archive: *.dar")
+                ofFile("ext_dar", "extra-icons/jar.svg", "Diffusion Archive / XL Deploy Archive: *.dar")
                     .end(".dar"),
                 ofFile("ext_deb", "extra-icons/deb.svg", "Debian package: *.deb")
                     .end(".deb"),
@@ -1108,9 +1108,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("ext_cfg_config", "extra-icons/config.svg", "Configuration: *.config")
                     .end(".config")
                     .autoLoadNewUIIconVariant(),
-                ofFile("ext_jar", "extra-icons/jar.png", "Java archive: *.jar")
+                ofFile("ext_jar", "extra-icons/jar.svg", "Java archive: *.jar")
                     .end(".jar"),
-                ofFile("ext_jaroriginal", "extra-icons/jar.png", "Java archive (copy): *.jar.original")
+                ofFile("ext_jaroriginal", "extra-icons/jar.svg", "Java archive (copy): *.jar.original")
                     .end(".jar.original"),
                 ofFile("ext_jsmap", "extra-icons/javascript-map.svg", "Javascript Source Maps: *.js.map")
                     .end(".js.map"),
