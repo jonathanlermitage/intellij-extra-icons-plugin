@@ -160,9 +160,13 @@ tasks {
         doFirst {
             if (pluginClearSandboxedIDESystemLogsBeforeRun.toBoolean()) {
                 val sandboxLogDir = File("${rootProject.projectDir}/.idea-sandbox/${shortenIdeVersion(pluginIdeaVersion)}/system/log/")
-                if (sandboxLogDir.exists() && sandboxLogDir.isDirectory) {
-                    FileUtils.deleteDirectory(sandboxLogDir)
-                    logger.quiet("Deleted sandboxed IDE's log folder $sandboxLogDir")
+                try {
+                    if (sandboxLogDir.exists() && sandboxLogDir.isDirectory) {
+                        FileUtils.deleteDirectory(sandboxLogDir)
+                        logger.quiet("Deleted sandboxed IDE's log folder $sandboxLogDir")
+                    }
+                } catch (e: Exception) {
+                    logger.warn("Failed do delete sandboxed IDE's log folder $sandboxLogDir - ignoring")
                 }
             }
         }
