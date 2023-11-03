@@ -834,7 +834,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .regex(".*\\.mongo\\..+"),
                 ofFile("muse", "extra-icons/muse.svg", "Muse: .muse.toml")
                     .eq(".muse.toml"),
-                ofFile("mysql", "extra-icons/my.png", "MySQL: my.ini")
+                ofFile("mysql", "extra-icons/my.svg", "MySQL: my.ini")
                     .eq("my.ini"),
                 ofFile("netlify", "extra-icons/netlify.svg", "Netlify: netlify.toml")
                     .eq("netlify.toml"),
