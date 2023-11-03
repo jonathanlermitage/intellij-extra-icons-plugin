@@ -579,7 +579,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("bamboo.yml"),
                 ofFile("caddyfile", "extra-icons/caddy.svg", "Caddy: Caddyfile")
                     .eq("caddyfile"),
-                ofFile("cargo", "extra-icons/cargo.png", "Cargo: cargo.toml")
+                ofFile("cargo", "extra-icons/cargo.svg", "Cargo: cargo.toml")
                     .eq("cargo.toml"),
                 ofFile("commitlint", "extra-icons/commitlint.svg", "Commitlint: .commitlintrc, .commitlintrc.json, .commitlintrc.yaml, etc.")
                     .eq(".commitlintrc", ".commitlintrc.json", ".commitlintrc.yaml", ".commitlintrc.yml",
@@ -741,7 +741,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("gomod", "extra-icons/gomod.svg", "Go: go.mod")
                     .eq("go.mod")
                     .altIcons("extra-icons/gomod_alt.svg"),
-                ofFile("hadolint", "extra-icons/hadolint.png", "Hadolint: .hadolint.yaml, .hadolint.yml")
+                ofFile("hadolint", "extra-icons/hadolint.svg", "Hadolint: .hadolint.yaml, .hadolint.yml")
                     .eq(".hadolint").end(YML),
                 ofFile("hibernate", "extra-icons/hibernate.svg", "Hibernate: hibernate.properties")
                     .eq("hibernate.properties"),
