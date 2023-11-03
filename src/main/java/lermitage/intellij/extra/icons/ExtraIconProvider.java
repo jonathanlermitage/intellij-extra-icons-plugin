@@ -1077,7 +1077,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/drawio_alt.svg", "extra-icons/drawio_alt2.png"),
                 ofFile("ext_epub", "extra-icons/epub.svg", "Epub: *.epub, *.mobi, *.azw, *.azw3")
                     .end(".epub", ".mobi", ".azw", ".azw3"),
-                ofFile("ext_exe", "extra-icons/msexe.png", "Windows executable: *.exe")
+                ofFile("ext_exe", "extra-icons/msexe.svg", "Windows executable: *.exe")
                     .end(".exe"),
                 ofFile("ext_form", "extra-icons/form.svg", "Form (e.g. IntelliJ Swing xml form): *.form")
                     .end(".form"),
