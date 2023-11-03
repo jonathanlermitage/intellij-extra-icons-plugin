@@ -1062,9 +1062,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/certificate_alt.svg"),
                 ofFile("ext_cmd", "extra-icons/cmd.svg", "Windows script: *.cmd, *.bat, *.ps1")
                     .end(".cmd", ".bat", ".ps1"),
-                ofFile("ext_csv", "extra-icons/csv.png", "CSV: *.csv")
+                ofFile("ext_csv", "extra-icons/officedocs/msexcel-papirus.svg", "CSV: *.csv")
                     .end(".csv")
-                    .altIcons("extra-icons/officedocs/msexcel-papirus.svg"),
+                    .altIcons("extra-icons/csv_alt.svg"),
                 ofFile("ext_dar", "extra-icons/jar.svg", "Diffusion Archive / XL Deploy Archive: *.dar")
                     .end(".dar"),
                 ofFile("ext_deb", "extra-icons/deb.svg", "Debian package: *.deb")

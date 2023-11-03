@@ -12,7 +12,8 @@
 * settings UI, *Quick action*: the icon group chooser now integrates the **Speed Search** functionality, [similar to Speed Search for Tool Windows](https://www.jetbrains.com/help/idea/speed-search-in-the-tool-windows.html). Select the icon group chooser, type text, and the selection moves to the first item that matches the specified string.
 * support Microsoft [Bicep](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview) `*.bicep` files.
 * rework Backup, Build, Cargo, Codefresh, Deptective, Glowroot, Hadolint, Jar/Dar, JVM config, JSBeautify, JSHint, Kibana, Lerna, Logstash, Muse, MySQL `my.ini`, MySQL Workbench, Nox, PDF, Roadmap, Stylus, To-Do, Tox, Windows executable and Zalando Zappr icons in order to make them compatible with Gateway.
-* change default Video icon.
+* change default CSV and Video icons.
+* add an alternative icon for CSV files.
 
 ## 2023.2.12-231 (2023/10/15)
 * fix [157](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/157): `java.lang.Throwable: TreeUI should be accessed only from EDT` with Rider 2023.3 EAP 1.
