@@ -1,7 +1,7 @@
 # Extra Icons Change Log
 
 ## 2023.3 (WIP)
-* important code rework [#166](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/166): improve the way Extra Icons plugin triggers icons refresh. You should see less `Slow operations are prohibited on EDT` and threading related issues like `...should be accessed only from EDT`.
+* important code rework [#166](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/166): improve the way Extra Icons plugin triggers icons refresh and IDE's filename index querying. You should see less `Slow operations are prohibited on EDT` and threading related issues like `...should be accessed only from EDT`.
 * try to fix [#165](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/165): `AlreadyDisposedException: Cannot create com.intellij.ui.docking.DockManager because container is already disposed` on IDE or plugin upgrade.
 * fix new UI icon variants rendering when overriding IDE icons.
 * performance improvement when displaying bundled icons (reduced CPU usage).
