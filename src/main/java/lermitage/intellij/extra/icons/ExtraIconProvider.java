@@ -25,11 +25,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
     public static List<Model> allModels() { // TODO move to SequencedCollection once migrated to jdk21?
         return Stream.of(
 
-                //
-                // IDE icon (lowest priority)
+                //<editor-fold desc="IDE icon (lowest priority)">
                 // Tip: to find IDE icon names, visit https://jetbrains.design/intellij/resources/icons_list/, pick
                 // an icon and open the ZIP file: you can use the non-dark SVG file name.
-                //
                 // docker
                 ofIcon("ide_docker",
                     "Docker.svg", "extra-icons/docker_.svg",
@@ -87,10 +85,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     "yaml.svg", "extra-icons/ide/yaml_.svg",
                     "IDE icon: YAML")
                     .altIcons("extra-icons/ide/yaml_alt.svg", "extra-icons/ide/yaml_alt2.svg"),
+                //</editor-fold>
 
-                //
-                // folder
-                //
+                //<editor-fold desc="folder">
                 ofDir("dir_circleci", "extra-icons/folder_circleci.svg", "Circle CI: .circleci folder")
                     .eq(".circleci"),
                 ofDir("dir_dependabot", "extra-icons/folder_dependabot.svg", "Dependabot: .dependabot folder")
@@ -243,18 +240,16 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .regex(".*/db/changelog/mssql[a-zA-Z\\d._\\-]*")
                     .tags(ModelTag.LIQUIBASE)
                     .autoLoadNewUIIconVariant(),
+                //</editor-fold>
 
-                //
-                // file plus extension, before programmable items, otherwise scroll down to "file plus extension, after programmable items"
-                //
+                //<editor-fold desc="file plus extension, before programmable items, otherwise scroll down to 'file plus extension, after programmable items'">
                 ofFile("kustomize", "extra-icons/kustomize.svg", "Kustomize: kustomization.yaml")
                     .eq("kustomization.yaml")
                     .altIcons("extra-icons/kustomize_alt.svg")
                     .tags(ModelTag.KUBERNETES),
+                //</editor-fold>
 
-                //
-                // programmable
-                //
+                //<editor-fold desc="programmable">
                 // git
                 ofDir("gitsubmodule", "extra-icons/git_submodule.svg", "Git sub-module containing folder")
                     .iconEnabler(IconEnablerType.IS_GIT_SUBMODULE_FOLDER)
@@ -314,6 +309,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .altIcons("extra-icons/helmlogo.svg", "extra-icons/helmlogo_alt.svg")
                     .tags(ModelTag.HELM)
                     .autoLoadNewUIIconVariant(),
+                // writerside
                 ofFile("writerside_tree", "extra-icons/writerside_tree.svg", "Writerside: *.tree")
                     .end(".tree")
                     .iconEnabler(IconEnablerType.IS_IN_WRITERSIDE_FOLDER)
@@ -324,8 +320,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .iconEnabler(IconEnablerType.IS_IN_WRITERSIDE_FOLDER)
                     .tags(ModelTag.WRITERSIDE)
                     .autoLoadNewUIIconVariant(),
+                //</editor-fold>
 
-                // angular
+                //<editor-fold desc="angular">
                 ofFile("angular_json", "extra-icons/angular2.svg", "Angular: angular.json")
                     .eq("angular.json")
                     .tags(ModelTag.ANGULAR2),
@@ -407,12 +404,14 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".html")
                     .iconEnabler(IconEnablerType.IS_IN_ANGULAR_FOLDER)
                     .tags(ModelTag.ANGULAR2, ModelTag.HTML),
+                //</editor-fold>
 
-                // elixir
+                //<editor-fold desc="elixir">
                 ofFile("elixir", "extra-icons/elixir.svg", "Elixir: *.ex, *.exs")
                     .end(".ex", ".exs", "mix.lock"),
+                //</editor-fold>
 
-                // nestjs
+                //<editor-fold desc="nestjs">
                 ofFile("nestjs", "extra-icons/nestjs.svg", "NestJS: .nest-cli.json, nest-cli.json, nestconfig.json, .nestconfig.json")
                     .eq(".nest-cli.json", "nest-cli.json", "nestconfig.json", ".nestconfig.json")
                     .tags(ModelTag.NESTJS),
@@ -464,10 +463,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("nestjs_service_test", "extra-icons/nestjs_service_test.svg", "NestJS: *.service.spec.(js|ts)")
                     .regex(".*[^a-zA-Z\\d]service\\.spec\\.(js|ts)")
                     .tags(ModelTag.NESTJS),
+                //</editor-fold>
 
-                //
-                // regex (file)
-                //
+                //<editor-fold desc="regex (file)">
                 ofFile("babel", "extra-icons/babel.svg", "Babel: babel.config.[json|js|cjs|mjs]|.babelrc.[json|js|cjs|mjs]|.babelrc")
                     .regex(".*/babel\\.config\\.(?:js(?:on)?|[cm]js)|\\.babelrc(?:\\.(?:js(?:on)?|[cm]js))?")
                     .altIcons("extra-icons/babel_alt.svg"),
@@ -517,10 +515,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("storybook", "extra-icons/storybook.svg", "Storybook: *.stor(y|ies).(js|jsx|ts|tsx|mdx)")
                     .regex(".*\\.stor(y|ies)\\.(js|jsx|ts|tsx|mdx)$")
                     .tags(ModelTag.STORYBOOK),
+                //</editor-fold>
 
-                //
-                // file plus its containing folder
-                //
+                //<editor-fold desc="file plus its containing folder">
                 ofFile("dependabot_config", "extra-icons/dependabot.svg", "Dependabot: .dependabot/config.yml")
                     .eq("config.yml").parents(".dependabot")
                     .altIcons("extra-icons/dependabot_alt.svg"),
@@ -554,10 +551,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .eq("semaphore.yml").parents(".semaphore"),
                 ofFile("vscode_settings", "extra-icons/vscode.svg", "Visual Studio Code: .vscode/settings.json")
                     .eq("settings.json").parents(".vscode"),
+                //</editor-fold>
 
-                //
-                // file plus extension (of just a file name, with no extension), after programmable items
-                //
+                //<editor-fold desc="file plus extension (of just a file name, with no extension), after programmable items">
                 ofFile("vcskeep", "extra-icons/keep.svg", "Various VCS: .keep, .gitkeep, .hgkeep, .svnkeep")
                     .eq(".keep", ".gitkeep", ".hgkeep", ".svnkeep"),
                 ofFile("htaccess", "extra-icons/htaccess.svg", "Apache: .htaccess")
@@ -1005,10 +1001,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .tags(ModelTag.WRITERSIDE),
                 ofFile("zalando", "extra-icons/zalando.svg", "Zalando Zappr: .zappr.yaml")
                     .eq(".zappr.yaml"),
+                //</editor-fold>
 
-                //
-                // extension only
-                //
+                //<editor-fold desc="extension only">
                 ofFile("ext_aac", "extra-icons/aac.svg", "Advanced Audio Coding: *.aac")
                     .end(".aac"),
                 ofFile("ext_archive", "extra-icons/archive.svg", "Archive: *.zip, *.tar, *.gz, *.bz2, *.xz, *.tgz")
@@ -1214,7 +1209,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".flac", ".oga", ".ogg", ".opus", ".spx"),
                 ofFile("ext_yang", "extra-icons/yang.svg", "YANG: *.yang")
                     .end(".yang"),
+                //</editor-fold>
 
+                //<editor-fold desc="Libre Office">
                 ofFile("ext_libreoffice_calc", "extra-icons/officedocs/libo-calc.svg", "LibreOffice Calc: *.ods")
                     .end(".ods")
                     .altIcons("extra-icons/officedocs/localc.svg", "extra-icons/officedocs/libo-symbol-black.svg", "extra-icons/officedocs/lomain.svg")
@@ -1235,7 +1232,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".odt")
                     .altIcons("extra-icons/officedocs/lowriter.svg", "extra-icons/officedocs/libo-symbol-black.svg", "extra-icons/officedocs/lomain.svg")
                     .tags(ModelTag.LIBRE_OFFICE),
+                //</editor-fold>
 
+                //<editor-fold desc="MS Office">
                 ofFile("ext_msoffice_excel", "extra-icons/officedocs/msexcel-2019.svg", "MSOffice Excel: *.xls, *.xlsx")
                     .end(".xls", ".xlsx")
                     .altIcons("extra-icons/officedocs/msexcel.png", "extra-icons/officedocs/msexcel-papirus.svg")
@@ -1260,10 +1259,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end(".doc", ".docx")
                     .altIcons("extra-icons/officedocs/msword.png", "extra-icons/officedocs/msword-papirus.svg")
                     .tags(ModelTag.MS_OFFICE),
+                //</editor-fold>
 
-                //
-                // generic
-                //
+                //<editor-fold desc="generic">
                 ofFile("docker_generic", "extra-icons/docker_.svg", "Docker (generic): start by 'dockerfile'")
                     .start("dockerfile")
                     .altIcons("extra-icons/docker_alt.svg", "extra-icons/docker_alt2.svg")
@@ -1272,6 +1270,7 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                     .end("dockerfile")
                     .altIcons("extra-icons/docker_alt.svg", "extra-icons/docker_alt2.svg")
                     .tags(ModelTag.DOCKER)
+                //</editor-fold>
             )
             .flatMap(ExtraIconProvider::modelList)
             //.filter(Model::isInFreemium) // TODO prepare a potential freemium mode. Free mode may include a limited set of bundled icons, allow user to define personal icons, and download icon packs
