@@ -4,6 +4,9 @@ package lermitage.intellij.extra.icons;
 
 import com.intellij.ide.FileIconProvider;
 import com.intellij.ide.IconProvider;
+import com.intellij.ide.projectView.PresentationData;
+import com.intellij.ide.projectView.ProjectViewNode;
+import com.intellij.ide.projectView.ProjectViewNodeDecorator;
 import com.intellij.openapi.diagnostic.ControlFlowException;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
@@ -43,7 +46,8 @@ import java.util.stream.Stream;
  */
 public abstract class BaseIconProvider
     extends IconProvider // the most important icon provider
-    implements FileIconProvider // may drop FileIconProvider as most of the work is done by the IconProvider
+    implements FileIconProvider, // may drop FileIconProvider as most of the work is done by the IconProvider
+    ProjectViewNodeDecorator // fix for https://youtrack.jetbrains.com/issue/PY-44417
 {
 
     private static final @NonNls Logger LOGGER = Logger.getInstance(BaseIconProvider.class);
@@ -193,6 +197,27 @@ public abstract class BaseIconProvider
             logCacheHitStats();
         }
         return null;
+    }
+
+    @Override // overrides ProjectViewNodeDecorator
+    public void decorate(ProjectViewNode<?> node, PresentationData data) {
+        try {
+            VirtualFile virtualFile = node.getVirtualFile();
+            if (virtualFile != null) {
+                File file = new File(virtualFile.getPath());
+                FileType fileType = file.isDirectory() ? FileType.FOLDER : FileType.FILE;
+                Project project = node.getProject();
+                Icon icon = getIcon(file, fileType, project);
+                if (icon != null) {
+                    node.setIcon(icon);
+                    if (data != null) {
+                        data.setIcon(icon);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            LOGGER.warn(e);
+        }
     }
 
     @Nullable

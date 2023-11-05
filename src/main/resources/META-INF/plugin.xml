@@ -22,9 +22,6 @@
       如果你启用官方IDE中文语言包插件, Extra Icons中文用户界面将自动应用.
       <br>
       <br>
-      📢 Want to customize <b>Python</b> or <b>Go</b> file icons? Up-voting <a href="https://youtrack.jetbrains.com/issue/PY-44417/IconProvider-doesnt-replace-Python-Icons"><b>PY-44417</b></a> would greatly help, as a bug on JetBrains side prevents some icons overriding. Thank you!
-      <br>
-      <br>
       📢 If you want to <b>help plugin developers</b>, please consider up-voting YouTrack issues <a href="https://youtrack.jetbrains.com/issue/MP-4248"><b>MP-4248</b></a> and <a href="https://youtrack.jetbrains.com/issue/MP-5648/Allow-reviewing-payed-plugins-only-by-users-actually-owning-its-license"><b>MP-5648</b></a>. Thank you!
       <br>
       <br>
@@ -62,6 +59,11 @@
         <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
         <iconProvider
             id="extraIconsIconProvider"
+            order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid, before com.jetbrains.writerside, before com.microsoft.tooling.msservices.intellij.azure"
+            implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
+        <!--suppress PluginXmlValidity (can't find third-party plugins, but it's OK) -->
+        <projectViewNodeDecorator
+            id="extraIconsProjectViewNodeDecorator"
             order="first, before amailp.intellij.robot, before com.vladsch.idea.multimarkdown, before com.hiberbee.intellij.hiberbee-theme, before nb-mind-map-idea, before mdx.js, before com.intellij.kubernetes, before tech.pantheon.yanginator, before com.intellij.mermaid, before com.jetbrains.writerside, before com.microsoft.tooling.msservices.intellij.azure"
             implementation="lermitage.intellij.extra.icons.ExtraIconProvider"/>
 
