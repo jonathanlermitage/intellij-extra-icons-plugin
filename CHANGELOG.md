@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2023.3-231 (WIP)
+## 2023.3-231 (2023/11/05)
 * important code rework [#166](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/166): improve the way Extra Icons plugin triggers icons refresh and IDE's filename index querying. You should see less `Slow operations are prohibited on EDT` and threading related issues like `...should be accessed only from EDT`.
 * fix [#36](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/36): can't override Python icons in PyCharm, Go icons in GoLand, and Tree and List icons in WriterSide.
 * try to fix [#165](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/165): `AlreadyDisposedException: Cannot create com.intellij.ui.docking.DockManager because container is already disposed` on IDE or plugin upgrade.
