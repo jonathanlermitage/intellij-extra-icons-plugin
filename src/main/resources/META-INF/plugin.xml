@@ -16,13 +16,13 @@
         <li>You can import and export icons from external files. This also means you can easily share icon themes with friends. You can also download online <b>icon packs</b> (example: <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/themes/THEMES.md#newuifilestoolduitheme">restore the old file icons when using the new UI</a>).</li>
         <li>For more information, please see this <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/GET_STARTED.md">guide</a>.</li>
         <li>For questions about the plugin licensing model, how to get a license for free (students and teachers), and how to get a perpetual license, please see the <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/blob/master/docs/LICENSE_FAQ.md">license FAQ</a>.</li>
-        <li>JetBrains <b>Gateway</b> support: please install plugin in <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/152#issuecomment-1691873681">Host</a>, or in both Host and Client, but not in Client only. Also, for now, plugin's settings panels are partially broken (some fields are hidden, but become visible when clicked or hovered over), but icons override works. I have <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/milestone/27">plans</a> to fix these issues.</li>
+        <li>JetBrains <b>Gateway</b> support: please install plugin in <a href="https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/152#issuecomment-1691873681">Host</a>, or in both Host and Client, but not in Client only. Also, for now, plugin's settings panels are partially broken (some fields are hidden, but become visible when clicked or hovered over), but icons override works.</li>
       </ul>
       Extra Icons <b>Chinese UI</b> is automatically applied if you enable the official IDE <a href="https://plugins.jetbrains.com/plugin/13710-chinese-simplified-language-pack----">Chinese Language Pack</a> plugin.<br>
       如果你启用官方IDE中文语言包插件, Extra Icons中文用户界面将自动应用.
       <br>
       <br>
-      📢 Want to customize <b>Python</b> or <b>Go</b> file icons? Up-voting <a href="https://youtrack.jetbrains.com/issue/PY-44417/IconProvider-doesnt-replace-Python-Icons"><b>PY-44417</b></a> would greatly help. Thank you!
+      📢 Want to customize <b>Python</b> or <b>Go</b> file icons? Up-voting <a href="https://youtrack.jetbrains.com/issue/PY-44417/IconProvider-doesnt-replace-Python-Icons"><b>PY-44417</b></a> would greatly help, as a bug on JetBrains side prevents some icons overriding. Thank you!
       <br>
       <br>
       📢 If you want to <b>help plugin developers</b>, please consider up-voting YouTrack issues <a href="https://youtrack.jetbrains.com/issue/MP-4248"><b>MP-4248</b></a> and <a href="https://youtrack.jetbrains.com/issue/MP-5648/Allow-reviewing-payed-plugins-only-by-users-actually-owning-its-license"><b>MP-5648</b></a>. Thank you!
