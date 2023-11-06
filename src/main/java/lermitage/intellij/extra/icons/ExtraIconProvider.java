@@ -755,6 +755,9 @@ public class ExtraIconProvider extends BaseIconProvider implements DumbAware {
                 ofFile("jenkins2", "extra-icons/jenkins.svg", "Jenkins: start by 'jenkins' and contain no dot")
                     .start("jenkins").noDot()
                     .altIcons("extra-icons/jenkins_alt.png"),
+                ofFile("jenkins3", "extra-icons/jenkins.svg", "Jenkins: end by '.jenkinsfile'")
+                    .end(".jenkinsfile")
+                    .altIcons("extra-icons/jenkins_alt.png"),
                 ofFile("jest_js", "extra-icons/jest.svg", "Jest: jest.config.js")
                     .eq("jest.config.js"),
                 ofFile("jest_ts", "extra-icons/jest.svg", "Jest: jest.config.ts")
