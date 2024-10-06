@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2024.8.1 (WIP)
+* support `Makefile` files.
+
 ## 2024.7.3 (2024/09/23)
 * fix usage of some JetBrains deprecated APIs, improving the compatibility with future IDEs (2024.3+).
 
