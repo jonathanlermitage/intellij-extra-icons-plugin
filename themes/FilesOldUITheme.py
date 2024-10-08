@@ -104,20 +104,20 @@ if __name__ == '__main__':
     if not exists("FilesOldUITheme.json"):
         raise FileNotFoundError(f"{ERR}Can't find FilesOldUITheme.json")
 
-    print(f"{NEUTRAL}Run git pull on IJ sources {ij_sources_folder_input}:", end=" ")
-    ij_sources_pull_call = subprocess.run(f"git -C {ij_sources_folder_input} pull --progress",
-                                          shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    git_pull_result = ij_sources_pull_call.stdout.decode("utf-8")
-    if git_pull_result.endswith("\n"):
-        git_pull_result = git_pull_result[:-1]
-    if "Updating" in git_pull_result and "Fast-forward" in git_pull_result:
-        for line in git_pull_result.split("\n"):
-            if "|" in line and ".svg" in line:
-                print(f"\x1b[32m{line}\x1b[0m")
-            else:
-                print(f"\x1b[34m{line}\x1b[0m")
-    else:
-        print(f"\x1b[34m{git_pull_result}\x1b[0m")
+#    print(f"{NEUTRAL}Run git pull on IJ sources {ij_sources_folder_input}:", end=" ")
+#    ij_sources_pull_call = subprocess.run(f"git -C {ij_sources_folder_input} pull --progress",
+#                                          shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+#    git_pull_result = ij_sources_pull_call.stdout.decode("utf-8")
+#    if git_pull_result.endswith("\n"):
+#        git_pull_result = git_pull_result[:-1]
+#    if "Updating" in git_pull_result and "Fast-forward" in git_pull_result:
+#        for line in git_pull_result.split("\n"):
+#            if "|" in line and ".svg" in line:
+#                print(f"\x1b[32m{line}\x1b[0m")
+#            else:
+#                print(f"\x1b[34m{line}\x1b[0m")
+#    else:
+#        print(f"\x1b[34m{git_pull_result}\x1b[0m")
 
     # we reset the theme's file because we want to be able to compute all the changes since last commit, even
     # if we run this Python program multiple times
