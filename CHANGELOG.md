@@ -2,6 +2,7 @@
 
 ## 2024.8.1 (WIP)
 * support `Makefile` files.
+* UI reworks in the settings panel.
 * minor code rework.
 
 ## 2024.7.3 (2024/09/23)
