@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2024.8.1 (WIP)
+## 2024.8.1 (2024/10/21)
 * support `Makefile` files.
 * UI reworks in the settings panel.
 * minor code rework.
