@@ -1,5 +1,9 @@
 # Extra Icons Change Log
 
+## 2024.8.2 (2024/10/29)
+* fix potential component ID collisions when installing this plugin alongside other obfuscated plugins.
+* code rework: replace usage of obsolete JetBrains APIs, improving compatibility with future IDEs.
+
 ## 2024.8.1 (2024/10/21)
 * support `Makefile` files.
 * UI reworks in the settings panel.
