@@ -1,7 +1,9 @@
 # Extra Icons Change Log
 
 ## 2024.9.1 (WIP)
-* support Embedded Open Type, TrueType Font and Web Open Font Format font files.
+* support Embedded Open Type, TrueType Font, and Web Open Font Format font files.
+* add more alternative icons for `*.cmd`, `*.bat`, Powershell `*.ps1`, Bash `*.sh` files.
+* rework the `*.env` file icon.
 
 ## 2024.8.2 (2024/10/29)
 * fix potential component ID collisions when installing this plugin alongside other obfuscated plugins.
