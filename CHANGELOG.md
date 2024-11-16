@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2024.9.1 (WIP)
+## 2024.9.1 (2024/11/16)
 * fix [#190](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/190): Extra Icons not configurable at project level. This was a regression from the previous plugin version. Sorry for the inconvenience.
 * support Embedded Open Type, TrueType Font, and Web Open Font Format font files.
 * add more alternative icons for `*.cmd`, `*.bat`, Powershell `*.ps1`, Bash `*.sh` files.
