@@ -1,5 +1,9 @@
 # Extra Icons Change Log
 
+## 2024.10.1 (WIP)
+* implement [#191](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/191): support `eslint.config.js` files.
+* implement [#191](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/191): support various [Stylelint](https://stylelint.io/user-guide/configure) files.
+
 ## 2024.9.1 (2024/11/16)
 * fix [#190](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/190): Extra Icons not configurable at project level. This was a regression from the previous plugin version. Sorry for the inconvenience.
 * support Embedded Open Type, TrueType Font, and Web Open Font Format font files.
