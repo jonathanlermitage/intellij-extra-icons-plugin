@@ -38,7 +38,7 @@ Screenshot (may be outdated):
 
 - description: replaces the AI Assistant Star icon with the new coloured Spiral icon
 
-2023/11/28: moved to [Extra ToolWindow Colorful Icons plugin](https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons/).
+2023/11/28: integrated into [Extra ToolWindow Colorful Icons plugin](https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons/).
 
 ---
 
@@ -46,4 +46,4 @@ Screenshot (may be outdated):
 
 - description: replaces JPA Explorer and JPA Designer gray icons by different and colorful icons
 
-2023/12/06: moved to [Extra ToolWindow Colorful Icons plugin](https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons/).
+2023/12/06: integrated into [Extra ToolWindow Colorful Icons plugin](https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons/).
