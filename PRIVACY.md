@@ -1,0 +1,1 @@
+Moved to https://plugins.jetbrains.com/plugin/11058-extra-icons/privacy-policy

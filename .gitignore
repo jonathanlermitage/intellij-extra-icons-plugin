@@ -1,0 +1,42 @@
+# IDEA project files
+.idea/
+
+# File-based project format
+*.iws
+
+# Gradle
+/build/
+/.gradle/
+.gradletasknamecache
+
+# IntelliJ
+out/
+.run/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Where 'gradle runIde' stores config
+.idea-sandbox*/
+
+### Intellij+iml Patch ###
+# Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-249601023
+
+*.ipr
+.DS_Store
+
+!/.idea/copyright/profiles_settings.xml
+!/.idea/copyright/SPDX_License_Identifier__MIT.xml
+!/.idea/scopes/sources.xml
+!/.idea/icon.svg
+
+themes/*.iml
