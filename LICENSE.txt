@@ -1,1 +1,1 @@
-Moved to https://plugins.jetbrains.com/plugin/11058-extra-icons/eula
+Moved to https://jonathanlermitage.github.io/ij-extra-tools-pack-docs/eula.html#Extra-Icons
