@@ -10,10 +10,11 @@ Download a JSON Icon Pack (see Themes below), then go to Extra Icons settings an
 ### FilesOldUITheme
 
 - download link: [FilesOldUITheme.json](https://raw.githubusercontent.com/jonathanlermitage/intellij-extra-icons-plugin/master/themes/FilesOldUITheme.json)
-- nb of icons: <!--FilesOldUITheme_nbOfIcons_start-->104<!--FilesOldUITheme_nbOfIcons_end-->
+- nb of icons: <!--FilesOldUITheme_nbOfIcons_start-->111<!--FilesOldUITheme_nbOfIcons_end-->
 - designed for: the new UI, light theme
 - description: replaces some new UI icons (files and folders) by old UI icons, like Class and Interface files, Package, and Source Root folders... Based on IJ Community icons
 - changelog:
+  - v16 - 2024/12/24: 7 new icons
   - v15 - 2024/11/29: 1 new icon (pluginJB.svg)
   - v14 - 2024/10/08: 1 new icon (sourceRootFileLayer.svg)
   - v13 - 2024/08/06: 1 new icon (related.svg)
