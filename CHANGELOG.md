@@ -2,6 +2,7 @@
 
 ## 2025.1.1 (WIP)
 * you can now add icons to Actions in menus. For example, add an icon to the `right-click > Git > Rebase...` action. You can also overwrite an action's icon if it already has one. For icons associated with intermediate menus, JetBrains does not allow that. If you're interested in this missing feature, please upvote [IDEA-364676](https://youtrack.jetbrains.com/issue/IDEA-364676).
+* [documentation](https://jonathanlermitage.github.io/ij-extra-tools-pack-docs/extra-icons.html).
 
 ## 2024.10.1 (2024/12/13)
 * fix [#192](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/192): custom icons not working in Explorer tool window in Rider for C# project.
