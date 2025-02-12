@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2025.1.2 (WIP)
+* improve the plugin's compatibility range. The minimal IDE version is now 2023.3.1 instead of 2024.1.
+
 ## 2025.1.1 (2025/01/21)
 * you can now add icons to Actions in menus. For example, add an icon to the `right-click > Git > Rebase...` action. You can also overwrite an action's icon if it already has one. For icons associated with intermediate menus, JetBrains does not allow that. If you're interested in this missing feature, please upvote [IDEA-364676](https://youtrack.jetbrains.com/issue/IDEA-364676).
 * rework how the Chinese language is detected. This should avoid rare scenarios where the Chinese localization of the plugin was loaded on non-Chinese computers.
