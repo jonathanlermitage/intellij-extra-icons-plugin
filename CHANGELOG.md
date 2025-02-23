@@ -2,8 +2,8 @@
 
 ## 2025.1.2 (WIP)
 * fix [#195](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/195): some custom icons are not working in Explorer in Rider.
-* fix [#196](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/196): using Presentation Mode does not resize user icons properly.
-* the zoom level set in the IDE's accessibility options is now applied to user icons. This will fix potential bad rendering (wrong scale) of user icons when using any zoom level.
+* partially fix [#196](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/196): using Presentation Mode does not resize user icons properly. This is a partial fix as it works for SVG files only. This issue still affects PNG files.
+* the zoom level set in the IDE's accessibility options is now applied to user SVG icons. This will fix potential bad rendering (wrong scale) of user SVG icons when using any zoom level.
 * improve the plugin's compatibility range. The minimal IDE version is now 2023.3.1 instead of 2024.1.
 
 ## 2025.1.1 (2025/01/21)
