@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 2025.1.3 (WIP)
+* settings can now be loaded and saved by the **Backup and Sync** plugin.
 * fix [#200](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/200): error `Class initialization must not depend on services. Consider using instance of the service on-demand instead.` may occur on IDE start with IntelliJ 2025.1 EAP (251.22821.72).
 
 ## 2025.1.2 (2025/02/25)
