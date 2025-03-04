@@ -6,6 +6,7 @@
 * implement [202](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/202): support `xunit.runner.json` files.
 * implement [203](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/203): support `log4net.config` files.
 * support `.sdkmanrc` files.
+* various code reworks.
 
 ## 2025.1.2 (2025/02/25)
 * fix [#195](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/195): some custom icons are not working in Explorer in Rider.
