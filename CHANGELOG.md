@@ -6,6 +6,7 @@
 * implement [202](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/202): support `xunit.runner.json` files.
 * implement [203](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/203): support `log4net.config` files.
 * support `.sdkmanrc` files.
+* settings UI: improve the User Icons table. If no user icon has yet been registered, display a message in the center of the table and a convenient way to add a first icon. Similar thing for the New Icon dialog, when no Condition has yet been registered.
 * various code reworks.
 
 ## 2025.1.2 (2025/02/25)
