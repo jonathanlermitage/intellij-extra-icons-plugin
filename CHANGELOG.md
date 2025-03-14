@@ -3,8 +3,9 @@
 ## 2025.1.3 (WIP)
 * settings can now be loaded and saved by the **Backup and Sync** plugin.
 * fix [#200](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/200): error `Class initialization must not depend on services. Consider using instance of the service on-demand instead.` may occur on IDE start with IntelliJ 2025.1 EAP (251.22821.72).
-* implement [202](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/202): support `xunit.runner.json` files.
-* implement [203](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/203): support `log4net.config` files.
+* implement [#202](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/202): support `xunit.runner.json` files.
+* implement [#203](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/203): support `log4net.config` files.
+* implement [#204](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/204): support Stryker Mutator `stryker-config.json` and `stryker-config.yaml` files.
 * support `.sdkmanrc` files.
 * settings UI: improve the User Icons table. If no user icon has yet been registered, display a message in the center of the table and a convenient way to add a first icon. Similar thing for the New Icon dialog, when no Condition has yet been registered.
 * various code reworks.
