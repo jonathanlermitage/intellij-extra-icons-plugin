@@ -1,7 +1,7 @@
 # Extra Icons Change Log
 
 ## 2025.1.4 (WIP)
-* fix [#193](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/193) support NestJS `*.resolver.(js|ts)` files.
+* fix [#193](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/193): support NestJS `*.resolver.(js|ts)` files.
 
 ## 2025.1.3 (2025/03/17)
 * settings can now be loaded and saved by the **Backup and Sync** plugin.
