@@ -1,7 +1,12 @@
 # Extra Icons Change Log
 
-## 2025.1.4 (WIP)
+## 2025.1.5 (WIP)
+* additional fix for [#200](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/200): error `Class initialization must not depend on services. Consider using instance of the service on-demand instead.`.
+* fix license management when using Android Studio. Android Studio Meerkat 2024.3.1 Patch 2 may fail to validate Extra Icons' license, even if this license is valid. A workaround is now applied to prevent this issue.
+
+## 2025.1.4 (2025/04/14)
 * fix [#193](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/193): support NestJS `*.resolver.(js|ts)` files.
+* minor code reworks.
 
 ## 2025.1.3 (2025/03/17)
 * settings can now be loaded and saved by the **Backup and Sync** plugin.
