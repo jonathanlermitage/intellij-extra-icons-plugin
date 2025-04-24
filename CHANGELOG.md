@@ -1,7 +1,7 @@
 # Extra Icons Change Log
 
 ## 2025.1.5 (WIP)
-* additional fix for [#200](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/200): error `Class initialization must not depend on services. Consider using instance of the service on-demand instead.`.
+* additional fix for [#200](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/200): error `Class initialization must not depend on services. Consider using instance of the service on-demand instead.` may occur on IDE start with IntelliJ 2025.1.
 
 ## 2025.1.4 (2025/04/14)
 * fix [#193](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/193): support NestJS `*.resolver.(js|ts)` files.
