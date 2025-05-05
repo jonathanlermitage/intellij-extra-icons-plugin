@@ -1,7 +1,7 @@
 # Extra Icons Change Log
 
-## 2025.1.5 (WIP)
-* additional fix for [#200](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/200): error `Class initialization must not depend on services. Consider using instance of the service on-demand instead.` may occur on IDE start with IntelliJ 2025.1.
+## 2025.1.5 (2025/05/06)
+* additional fix for [#200](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/200): error `Class initialization must not depend on services. Consider using instance of the service on-demand instead` may occur on IDE start with IntelliJ 2025.1.
 
 ## 2025.1.4 (2025/04/14)
 * fix [#193](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/193): support NestJS `*.resolver.(js|ts)` files.
@@ -9,7 +9,7 @@
 
 ## 2025.1.3 (2025/03/17)
 * settings can now be loaded and saved by the **Backup and Sync** plugin.
-* fix [#200](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/200): error `Class initialization must not depend on services. Consider using instance of the service on-demand instead.` may occur on IDE start with IntelliJ 2025.1 EAP (251.22821.72).
+* fix [#200](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/200): error `Class initialization must not depend on services. Consider using instance of the service on-demand instead` may occur on IDE start with IntelliJ 2025.1 EAP (251.22821.72).
 * implement [#202](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/202): support `xunit.runner.json` files.
 * implement [#203](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/203): support `log4net.config` files.
 * implement [#204](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/204): support Stryker Mutator `stryker-config.json` and `stryker-config.yaml` files.
