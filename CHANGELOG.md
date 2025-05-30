@@ -6,7 +6,7 @@
 * implement [#207](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/207): regular expressions shouldn't need to fully match. An option has been added to model conditions, which lets you choose whether a regular expression should match the entire file path or only part of a file path. The default setting is set to match the entire file path.
 * [#206](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/206): support Visual Studio `*.csproj`, `*.sln` and `*.slnx` files.
 * minor visual improvements in settings dialogs.
-* general performance improvement. Performance was already good, and a new caching mechanism makes the file-icon association ~50% faster, with a minimal memory footprint.
+* general performance improvement. Performance was already good, and a new caching mechanism makes the file-icon association ~2x faster, with a minimal memory footprint.
 
 ## 2025.1.5 (2025/05/06)
 * additional fix for [#200](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/200): error `Class initialization must not depend on services. Consider using instance of the service on-demand instead` may occur on IDE start with IntelliJ 2025.1.
