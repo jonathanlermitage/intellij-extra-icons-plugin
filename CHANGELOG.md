@@ -7,6 +7,7 @@
 * [#206](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/206): support Visual Studio `*.csproj`, `*.sln` and `*.slnx` files.
 * minor visual improvements in settings dialogs.
 * general performance improvement. Performance was already good, and a new caching mechanism makes the file-icon association ~2x faster, with a minimal memory footprint.
+* rework several bundled file-icon associations.
 
 ## 2025.1.5 (2025/05/06)
 * additional fix for [#200](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/200): error `Class initialization must not depend on services. Consider using instance of the service on-demand instead` may occur on IDE start with IntelliJ 2025.1.
