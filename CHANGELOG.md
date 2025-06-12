@@ -5,6 +5,8 @@
 * fix usage of some JetBrains deprecated APIs, improving the compatibility with future IDEs (2025.2+).
 * implement [#207](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/207): regular expressions shouldn't need to fully match. An option has been added to model conditions, which lets you choose whether a regular expression should match the entire file path or only part of a file path. The default setting is set to match the entire file path.
 * [#206](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/206): support Visual Studio `*.csproj`, `*.sln` and `*.slnx` files.
+* [#212](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/212) support Fish Shell `*.fish` files.
+* fix [#209](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/209): rework how user icon conditions are evaluated. This now respects the [documentation](https://jonathanlermitage.github.io/ij-extra-tools-pack-docs/extra-icons-user-icons.html#conditions).
 * minor visual improvements in settings dialogs.
 * general performance improvement. Performance was already good, and a new caching mechanism makes the file-icon association ~2x faster, with a minimal memory footprint.
 * rework several bundled file-icon associations.
