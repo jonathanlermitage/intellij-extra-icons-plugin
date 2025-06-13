@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2025.1.6 (WIP)
+## 2025.1.6 (2025/06/13)
 * the minimal IDE version is now 2024.3 instead of 2023.3.1. This was needed to use newer JetBrains APIs and stay compatible with future IDEs (2025.2+).
 * fix usage of some JetBrains deprecated APIs, improving the compatibility with future IDEs (2025.2+).
 * implement [#207](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/207): regular expressions shouldn't need to fully match. An option has been added to model conditions, which lets you choose whether a regular expression should match the entire file path or only part of a file path. The default setting is set to match the entire file path.
