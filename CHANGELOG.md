@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2025.1.7 (2025/06/27)
+* fix [#215](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/215): `com.intellij.diagnostic.PluginException: / by zero` errors.
+
 ## 2025.1.6 (2025/06/13)
 * the minimal IDE version is now 2024.3 instead of 2023.3.1. This was needed to use newer JetBrains APIs and stay compatible with future IDEs (2025.2+).
 * fix usage of some JetBrains deprecated APIs, improving the compatibility with future IDEs (2025.2+).
