@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2025.1.8 (WIP)
+* reintroduce the alt icon for PHP Composer files. It had been removed by mistake.
+
 ## 2025.1.7 (2025/06/27)
 * fix [#215](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/215): `com.intellij.diagnostic.PluginException: / by zero` errors.
 
