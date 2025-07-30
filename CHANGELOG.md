@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2025.1.11 (2025/07/30)
+* workaround for the [IDEA-376370](https://youtrack.jetbrains.com/issue/IDEA-376370/) issue.
+
 ## 2025.1.10 (2025/07/24)
 * better fix for [#219](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/219): the previous fix broke some icon customizations, like Docker, Helm, or Git submodules support.
 
