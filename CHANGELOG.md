@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2025.1.12 (2025/08/05)
+* new series of workarounds for the [IDEA-376370](https://youtrack.jetbrains.com/issue/IDEA-376370/) issue. Up-voting this issue would greatly help.
+
 ## 2025.1.11 (2025/07/30)
 * workaround for the [IDEA-376370](https://youtrack.jetbrains.com/issue/IDEA-376370/) issue.
 
