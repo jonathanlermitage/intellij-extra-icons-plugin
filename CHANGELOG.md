@@ -1,5 +1,9 @@
 # Extra Icons Change Log
 
+## 2025.1.13 (WIP)
+* support Firefox extension files `*.xpi`.
+* support [Forgejo](https://forgejo.org) `.forgejo` folders.
+
 ## 2025.1.12 (2025/08/05)
 * new series of workarounds for the [IDEA-376370](https://youtrack.jetbrains.com/issue/IDEA-376370/) issue. Up-voting this issue would greatly help.
 
