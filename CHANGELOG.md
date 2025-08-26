@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2025.1.13 (WIP)
+## 2025.1.13 (2025/08/27)
 * support Firefox extension files `*.xpi`.
 * support [Forgejo](https://forgejo.org) `.forgejo` folders.
 
