@@ -2,6 +2,8 @@
 
 ## 2025.1.14 (WIP)
 * support more files when choosing the `Always prefer old UI icons` option in Extra Icons' advanced settings. This is an effort to make this mode more consistent for people who prefer the classic icons (even when using the New UI), or people who are not comfortable with the wireframe icons that come the New UI.
+* fix [#214](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/214): support Razor `*.razor` and `.cshtml` files.
+* rework the dark icon variant of Contact files.
 
 ## 2025.1.13 (2025/08/27)
 * support Firefox extension files `*.xpi`.
