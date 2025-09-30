@@ -2,6 +2,7 @@
 
 ## 2025.1.15 (WIP)
 * fix usage of some JetBrains deprecated APIs, improving the compatibility with future IDEs (2025.3+).
+* update the JUnit logo: it now uses the JUnit 6 logo. You can still use the JUnit 5 logo if you want (see JUnit alternative icons).
 
 ## 2025.1.14 (2025/09/15)
 * support more files when choosing the `Always prefer old UI icons` option in Extra Icons' advanced settings. This is an effort to make this mode more consistent for people who prefer the classic icons (even when using the New UI), or people who are not comfortable with the wireframe icons that come with the New UI.
