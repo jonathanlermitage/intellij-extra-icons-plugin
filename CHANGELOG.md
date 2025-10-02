@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 2025.1.15 (WIP)
+* user icons: you can now choose to check file paths against the original paths or lowercase paths.
 * fix usage of some JetBrains deprecated APIs, improving the compatibility with future IDEs (2025.3+).
 * update the JUnit icon: it now uses the JUnit 6 logo. You can still use the JUnit 5 icon if you want (see JUnit alternative icons).
 * add a new Deno icon. The old Deno icon is still available as an alternative icon.
