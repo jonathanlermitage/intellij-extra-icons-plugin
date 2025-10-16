@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2025.1.16 (WIP)
+## 2025.1.16 (2025/10/16)
 * fix usage of some JetBrains deprecated APIs, improving the compatibility with future IDEs (2025.3+).
 
 ## 2025.1.15 (2025/10/08)
