@@ -1,7 +1,7 @@
 # Extra Icons Change Log
 
 ## 2025.1.17 (WIP)
-* implement [#223](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/223): support SQL Script files. 2025.3 EAP IDEs introduce a new icon for (some?) SQL files, but it looks like the icon for generic Script files. A new icon association has therefore been added in Extra Icons to restore the old SQL icon (see "SQL Script" in the  Plugin icons list, New UI only).
+* implement [#223](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/223): support SQL Script files. 2025.3 EAP IDEs introduce a new icon for (some?) SQL files, but it looks like the icon for generic Script files. A new icon association has therefore been added in Extra Icons to restore the previous SQL icon (see "SQL Script" in the  Plugin icons list, New UI only).
 
 ## 2025.1.16 (2025/10/16)
 * fix usage of some JetBrains deprecated APIs, improving the compatibility with future IDEs (2025.3+).
