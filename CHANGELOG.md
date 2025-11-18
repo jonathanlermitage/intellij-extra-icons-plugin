@@ -6,6 +6,7 @@
 * implement [#223](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/223): support SQL Script files. 2025.3 EAP IDEs introduce a new icon for (some?) SQL files, but it looks like the icon for generic Script files. A new icon association has therefore been added in Extra Icons to restore the previous SQL icon (see "SQL Script" in the  Plugin icons list, New UI only).
 * implement [#224](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/224): support Rebar3 `rebar.config` and `rebar.lock` files.
 * fix [#226](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/226): NPE when registering a user icon.
+* support Extended Typescript files (DevEco Studio only).
 
 ## 2025.1.16 (2025/10/16)
 * fix usage of some JetBrains deprecated APIs, improving the compatibility with future IDEs (2025.3+).
