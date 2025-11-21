@@ -1,5 +1,11 @@
 # Extra Icons Change Log
 
+## 2025.1.18 (2025/11/22)
+* fix [#228](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/228): previous plugin release broke C# support. This is now fixed.
+* fix [#229](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/229): NPE when creating a User icon.
+* fix [#230](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/230): changes to the "Lowercase file path before check" property were not persisted on User icon modification (User icon creation was OK).
+* fix [#231](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/231): when creating a User icon with a Regex condition, setting "Lowercase file path before check" did not lowercase file paths.
+
 ## 2025.1.17 (2025/11/21)
 * this release adds compatibility with Huawei DevEco Studio and has been tested with DevEco Studio 5.1.1 (I don't have access to DevEco Studio 6 yet, but it should work). [See how to install plugin and activate your license in DevEco Studio](https://jonathanlermitage.github.io/ij-extra-tools-pack-docs/deveco-studio.html).
 * support more older IDEs. The minimal IDE version is now 2023.3 (previously 2024.3).
