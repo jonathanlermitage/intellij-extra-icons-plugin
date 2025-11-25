@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2025.1.19 (WIP)
+* UI reworks in the plugin's settings panel.
+
 ## 2025.1.18 (2025/11/22)
 * fix [#228](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/228): previous plugin release broke C# support. This is now fixed.
 * fix [#229](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/229): NPE when creating a User icon.
