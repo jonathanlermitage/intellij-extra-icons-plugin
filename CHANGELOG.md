@@ -1,7 +1,7 @@
 # Extra Icons Change Log
 
 ## 2025.1.19 (WIP)
-* the minimal IDE version is now 2024.3.
+* the minimal IDE version is now 2025.1.
 * UI reworks in the plugin's settings panel.
 
 ## 2025.1.18 (2025/11/22)
