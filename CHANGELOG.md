@@ -3,7 +3,7 @@
 ## 2025.1.19 (WIP)
 * the minimal IDE version is now 2025.1.
 * UI reworks in the plugin's settings panel.
-* minor code rework, preventing some rare case where plugin or user icons were not loading.
+* minor code rework, preventing some rare cases where plugin or user icons were not loading.
 
 ## 2025.1.18 (2025/11/22)
 * fix [#228](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/228): previous plugin release broke C# support. This is now fixed.
