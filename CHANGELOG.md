@@ -1,7 +1,8 @@
 # Extra Icons Change Log
 
 ## 2025.1.19 (WIP)
-* the minimal IDE version is now 2025.1.
+* the minimal IDE version is now 2025.1.4.1.
+* fix usage of some JetBrains deprecated APIs, improving the compatibility with future IDEs (2026.1+).
 * UI reworks in the plugin's settings panel.
 * minor code rework, preventing some rare cases where plugin or user icons were not loading.
 
