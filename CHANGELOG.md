@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2025.1.19 (WIP)
+## 2026.1 (WIP)
 * the minimal IDE version is now 2025.1.4.1.
 * fix usage of some JetBrains deprecated APIs, improving the compatibility with future IDEs (2026.1+).
 * implement [#233](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/233): improve experimental C# support. Plugin now detects C# classes, abstract classes, partial classes, sealed classes, enums, interfaces, records, abstract records, structures. Also support `*.csx`, `*.resx` and `*.xaml` files.
