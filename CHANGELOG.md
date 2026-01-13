@@ -2,6 +2,7 @@
 
 ## 2026.1.2 (WIP)
 * internal: reworked logging.
+* general performance improvements.
 
 ## 2026.1.1 (2026/01/06)
 * the minimal IDE version is now 2025.1.4.1.
