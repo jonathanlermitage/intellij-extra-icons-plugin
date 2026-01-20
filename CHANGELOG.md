@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2026.1.2 (WIP)
+## 2026.1.2 (2026/01/20)
 * internal: reworked logging.
 * general performance improvements.
 
