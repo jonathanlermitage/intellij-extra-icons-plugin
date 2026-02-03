@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 2026.1.3 (WIP)
+* support `.aiignore` files.
 * code and i18n reworks.
 
 ## 2026.1.2 (2026/01/20)
