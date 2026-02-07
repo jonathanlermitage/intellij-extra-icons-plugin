@@ -1,6 +1,8 @@
 # Extra Icons Change Log
 
 ## 2026.1.3 (WIP)
+* implement [#237](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/237): create user icon via right-click on file.
+* user icons: the `Lowercase file path before check` option now applies whenever you select a `Regex`, `Parents`, `Names`, or `Extensions` conditions. In previous plugin versions, it only applied to the `Regex` condition, and the path was automatically converted to lowercase for the other conditions.
 * support `.aiignore` files.
 * code and i18n reworks.
 
