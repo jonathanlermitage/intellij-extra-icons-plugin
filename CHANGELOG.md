@@ -1,7 +1,7 @@
 # Extra Icons Change Log
 
-## 2026.1.3 (WIP)
-* implement [#237](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/237): create user icon via right-click on file. See `File > Settings > Appearance & Behavior > Extra Icons > Advanced` for options. Not yet available in Rider, but I'm working on it.
+## 2026.1.3 (2026/02/20)
+* implement [#237](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/237): create user icon via right-click on file. See `File > Settings > Appearance & Behavior > Extra Icons > Advanced` for options. Rider users: this action is available from the Edit main menu. Please check the [documentation](https://jonathanlermitage.github.io/ij-extra-tools-pack-docs/extra-icons-user-icons.html#register-icon-from-context).
 * fix [#239](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/239): can't change some icons for Java and Kotlin classes in project view and in editor's tabs.
 * user icons: the `Lowercase file path before check` option now applies whenever you select a `Regex`, `Parents`, `Names`, or `Extensions` conditions. In previous plugin versions, it only applied to the `Regex` condition, and the path was automatically converted to lowercase for the other conditions.
 * support `.aiignore` files.
