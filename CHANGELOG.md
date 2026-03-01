@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2026.1.4 (WIP)
+* fix usage of JetBrains deprecated APIs, improving the compatibility with future IDEs (2026.1+).
+
 ## 2026.1.3 (2026/02/20)
 * implement [#237](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/237): create user icon via right-click on file. See `File > Settings > Appearance & Behavior > Extra Icons > Advanced` for options. Rider users: this action is available from the Edit main menu. Please check the [documentation](https://jonathanlermitage.github.io/ij-extra-tools-pack-docs/extra-icons-user-icons.html#register-icon-from-context).
 * fix [#239](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/239): can't change some icons for Java and Kotlin classes in project view and in editor's tabs.
