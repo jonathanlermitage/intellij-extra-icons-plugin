@@ -3,6 +3,7 @@
 ## 2026.1.4 (WIP)
 * fix usage of JetBrains deprecated APIs, improving the compatibility with future IDEs (2026.1+).
 * improve [#237](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/237): create user icon via right-click on file now also works in Rider. Thanks to the JetBrains team for their help.
+* rework TypeScript support: let the IDE show the default TypeScript icons for `*.ts` files when using the New UI, and show the New UI's TypeScript icons when using the Classic UI. Other TypeScript icons (for `*.spec.ts`, etc.) are not affected.
 
 ## 2026.1.3 (2026/02/20)
 * implement [#237](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/237): create user icon via right-click on file. See `File > Settings > Appearance & Behavior > Extra Icons > Advanced` for options. Rider users: this action is available from the Edit main menu. Please check the [documentation](https://jonathanlermitage.github.io/ij-extra-tools-pack-docs/extra-icons-user-icons.html#register-icon-from-context).
