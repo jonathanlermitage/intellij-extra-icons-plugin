@@ -1,6 +1,10 @@
 # Extra Icons Change Log
 
-## 2026.1.4 (WIP)
+## 2026.1.5 (WIP)
+* adapt the plugin to support Lifetime licenses. See the new Extra Icons Lifetime plugin.
+* internal: code reworks.
+
+## 2026.1.4 (2026/03/11)
 * fix usage of JetBrains deprecated APIs, improving the compatibility with future IDEs (2026.1+).
 * improve [#237](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/237): create user icon via right-click on file now also works in Rider. Thanks to the JetBrains team for their help.
 * rework TypeScript support: let the IDE show the default TypeScript icons for `*.ts` files when using the New UI, and show the New UI's TypeScript icons when using the Classic UI. Other TypeScript icons (for `*.spec.ts`, etc.) are still enabled. This should offer a better experience when working with TypeScript files.
