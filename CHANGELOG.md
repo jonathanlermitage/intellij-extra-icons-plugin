@@ -1,7 +1,8 @@
 # Extra Icons Change Log
 
 ## 2026.1.5 (WIP)
-* adapt the plugin to support Lifetime licenses. See the new Extra Icons Lifetime plugin.
+* adapt the plugin to support Lifetime licenses. See the new Extra Icons Lifetime plugin. You might also be interested in the new Extra Tools Pack Lifetime plugin.
+* rework the generic YAML icon. Now displays the JetBrains' icon, but you can still use alternative icons: the icon from the Classic UI, and some custom icons.
 * internal: code reworks.
 
 ## 2026.1.4 (2026/03/11)
