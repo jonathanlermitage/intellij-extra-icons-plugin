@@ -2,6 +2,7 @@
 
 ## 2026.1.6 (2026/04/08)
 * internal: code reworks.
+* update the Privacy Policy. A minimal set of anonymous data is now collected and is retained for a maximum of 31 days. This data is used to determine which versions of the IDEs are in use and to assess whether it is worthwhile to continue supporting older IDE versions. The data is never shared with anyone else. [Click here](https://jonathanlermitage.github.io/ij-extra-tools-pack-docs/privacy-policy.html) to view the full description and learn how to disable data collection.
 
 ## 2026.1.5 (2026/03/30)
 * adapt the plugin to support Lifetime licenses. See the new Extra Icons Lifetime plugin. You might also be interested in the new Extra Tools Pack Lifetime plugin.
