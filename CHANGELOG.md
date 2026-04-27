@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2026.1.8 (WIP)
+* support `SKILL.md` files.
+
 ## 2026.1.7 (2026/04/24)
 * minor performance optimization when overriding a file or a folder icon with a user icon.
 * fix [#241](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/241): the license check did not work on some installations. The JetBrains license facade (provided by the bundled/ or integrated Marketplace plugin), which is responsible for the license checks, may take too much time to start, preventing license checks. I've delayed the license check by four minutes, which should give the license facade plenty of time to load.
