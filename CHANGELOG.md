@@ -2,6 +2,8 @@
 
 ## 2026.1.8 (WIP)
 * support `SKILL.md` files.
+* support `idea.properties` files.
+* support `idea64(.exe).vmoptions`, `phpstorm64(.exe).vmoptions`, `pycharm64(.exe).vmoptions`, `rider64(.exe).vmoptions`, `rubymine64(.exe).vmoptions`, `studio64(.exe).vmoptions`, and `webstorm64(.exe).vmoptions` files.
 
 ## 2026.1.7 (2026/04/24)
 * minor performance optimization when overriding a file or a folder icon with a user icon.
