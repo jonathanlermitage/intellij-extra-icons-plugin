@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 2026.1.8 (WIP)
+* support Patch files.
 * support `SKILL.md` files.
 * support `idea.properties` files.
 * support `idea64(.exe).vmoptions`, `clion64(.exe).vmoptions`, `datagrip64(.exe).vmoptions`, `dataspell64(.exe).vmoptions`, `goland64(.exe).vmoptions`, `phpstorm64(.exe).vmoptions`, `pycharm64(.exe).vmoptions`, `rider64(.exe).vmoptions`, `rubymine64(.exe).vmoptions`, `studio64(.exe).vmoptions`, and `webstorm64(.exe).vmoptions` files.
