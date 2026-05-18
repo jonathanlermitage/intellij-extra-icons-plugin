@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 2026.1.8 (WIP)
+* fix usage of JetBrains deprecated APIs, improving the compatibility with future IDEs (2026.2+).
 * fix [#242](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/242): unwanted `NullPointerException` error notification. It seems to happen only with the third party "Rebased" IDE, which doesn't handle project facets correctly. When no facets are available, the IDE should return an empty list of facets. Unfortunately, the Rebased IDE returns `null`, which doesn't respect the official API. I adapted my code to handle this specific case.
 * support Patch files.
 * support `SKILL.md` files.
