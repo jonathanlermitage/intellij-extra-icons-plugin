@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2026.1.10 (WIP)
+## 2026.1.10 (2026/06/15)
 * fix usage of JetBrains removed APIs, fixing the compatibility with future IDEs (2026.2+).
 * generate fewer logs.
 
