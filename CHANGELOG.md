@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2026.1.11 (WIP)
+## 2026.1.11 (2026/06/25)
 * fix [#243](https://github.com/jonathanlermitage/intellij-extra-icons-plugin/issues/243): can't apply custom icons to binary files (like PDF), at least in Rider.
 
 ## 2026.1.10 (2026/06/15)
