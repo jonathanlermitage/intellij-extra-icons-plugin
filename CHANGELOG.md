@@ -1,7 +1,6 @@
 # Extra Icons Change Log
 
 ## 2026.1.12 (WIP)
-* implement a cache for user icons. This should greatly improve loading times when user icons are too big (by their dimensions or weight) and need time-consuming resizing. For now this is an in-memory cache, which means initial loads can still take time. I will implement a file-based cache in a future release.
 * internal: various code reworks.
 
 ## 2026.1.11 (2026/06/25)
