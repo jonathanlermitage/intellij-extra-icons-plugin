@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2026.1.12 (WIP)
+## 2026.1.12 (2026/07/17)
 * improve the caching of user icons. This should greatly improve loading times when user icons are too big (by their dimensions or weight) and need time-consuming resizing. For now this is an in-memory cache, which means initial loads can still take time. I will use a file-based cache in a future release.
 * performance improvements, especially on IDE start.
 * internal: various code reworks.
