@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2026.1.13 (WIP)
+## 2026.1.13 (2026/07/22)
 * enable compatibility with future 2026.3 IDEs.
 
 ## 2026.1.12 (2026/07/17)
