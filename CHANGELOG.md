@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2026.1.14 (WIP)
+* support `AGENTS.md`, `CLAUDE.md`, and `GEMINI.md` files.
+
 ## 2026.1.13 (2026/07/22)
 * enable compatibility with future 2026.3 IDEs.
 
