@@ -2,6 +2,8 @@
 
 ## 2026.1.14 (WIP)
 * support `AGENTS.md`, `CLAUDE.md`, and `GEMINI.md` files.
+* fix `SKILL.md` support. It was case-sensitive and worked only with `skill.md` files.
+* add more alternative icons for `SKILL.md` files.
 * internal: avoid `ControlFlowException` errors. These errors were already silenced and had no impact on the user experience, but their root cause is now better understood, which should result in a slight performance improvement when rendering custom icons.
 
 ## 2026.1.13 (2026/07/22)
