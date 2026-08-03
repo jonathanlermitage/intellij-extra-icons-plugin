@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2026.1.14 (WIP)
+## 2026.1.14 (2026/08/04)
 * support `AGENTS.md`, `CLAUDE.md`, and `GEMINI.md` files.
 * fix `SKILL.md` support. It was case-sensitive and worked only with `skill.md` files.
 * add more alternative icons for `SKILL.md` files.
