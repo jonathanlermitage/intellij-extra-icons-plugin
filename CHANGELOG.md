@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2026.1.15 (WIP)
+* minor i18n reworks.
+
 ## 2026.1.14 (2026/08/04)
 * support `AGENTS.md`, `CLAUDE.md`, and `GEMINI.md` files.
 * fix `SKILL.md` support. It was case-sensitive and worked only with `skill.md` files.
