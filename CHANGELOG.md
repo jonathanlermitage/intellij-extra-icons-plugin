@@ -1,5 +1,8 @@
 # Extra Icons Change Log
 
+## 2026.1.16 (WIP)
+* support `PLANS.md` and `PLAN.md` files.
+
 ## 2026.1.15 (2026/08/28)
 * minor i18n reworks.
 
