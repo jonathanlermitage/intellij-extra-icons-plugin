@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2026.1.16 (WIP)
+## 2026.1.16 (2026/10/20)
 * support `PLANS.md` and `PLAN.md` files.
 
 ## 2026.1.15 (2026/08/28)
