@@ -1,5 +1,10 @@
 # Extra Icons Change Log
 
+## 2026.1.17 (WIP)
+* support `.junie` folders.
+* support `.junie/plans` folders.
+* support `.*plans.md` and `.*plan.md` files located in `.junie/plans/`.
+
 ## 2026.1.16 (2026/10/20)
 * support `PLANS.md` and `PLAN.md` files.
 
