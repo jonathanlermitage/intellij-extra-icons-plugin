@@ -9,6 +9,7 @@
 * remove the generic association `*.toml`, as it masks several existing and useful TOML icons.
 * rework and add more alternative Rust `cargo.toml` file icons.
 * support Rust `cargo.lock` files.
+* update the JUnit icon: it now uses the latest official JUnit logo. You can still use the JUnit 6 and JUnit 5 icons if you want (see JUnit alternative icons).
 
 ## 2026.1.16 (2026/10/20)
 * support `PLANS.md` and `PLAN.md` files.
