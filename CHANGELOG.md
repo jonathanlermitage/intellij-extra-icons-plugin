@@ -7,7 +7,7 @@
 * support Zelix KlassMaster `defaultExclude.txt` and `defaultTrimExclude.txt` files. Their content is loaded to detect terms like `exclude`, `trimExclude` or `Zelix KlassMaster` (case-sensitive).
 * support Zelix KlassMaster `ZKM_log.txt` and `ZKM_TrimLog.txt` files.
 * remove the generic association `*.toml`, as it masks several existing and useful TOML icons.
-* rework the Rust `cargo.toml` file icons.
+* rework and add more alternative Rust `cargo.toml` file icons.
 * support Rust `cargo.lock` files.
 
 ## 2026.1.16 (2026/10/20)
