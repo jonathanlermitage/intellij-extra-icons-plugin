@@ -1,6 +1,7 @@
 # Extra Icons Change Log
 
 ## 2026.1.17 (WIP)
+* support `.claude` folders.
 * support `.junie` folders.
 * support `.junie/plans` folders.
 * support Markdown files located in `.junie/plans/`.
