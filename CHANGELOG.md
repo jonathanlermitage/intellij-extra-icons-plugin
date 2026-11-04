@@ -13,7 +13,7 @@
 * update the JUnit icon: it now uses the latest official JUnit logo. You can still use the JUnit 6 and JUnit 5 icons if you want (see JUnit alternative icons).
 * support `*.spritefont` files, used in frameworks like MonoGame.
 * support `*.xnb` files, used in frameworks like MonoGame.
-* support Pixelorama `.pxo` files.
+* support Pixelorama `*.pxo` files.
 
 ## 2026.1.16 (2026/10/20)
 * support `PLANS.md` and `PLAN.md` files.
