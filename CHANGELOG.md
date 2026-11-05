@@ -5,6 +5,7 @@
 * support `.junie` folders.
 * support `.junie/plans` folders.
 * support Markdown files located in `.junie/plans/`.
+* rework and add more alternative `PLANS.md` and `PLAN.md` file icons.
 * support Zelix KlassMaster `defaultExclude.txt` and `defaultTrimExclude.txt` files. Their content is loaded to detect terms like `exclude`, `trimExclude` or `Zelix KlassMaster` (case-sensitive).
 * support Zelix KlassMaster `ZKM_log.txt` and `ZKM_TrimLog.txt` files.
 * remove the generic association `*.toml`, as it masks several existing and useful TOML icons.
