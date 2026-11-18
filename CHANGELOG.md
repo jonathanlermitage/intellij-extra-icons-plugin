@@ -1,6 +1,6 @@
 # Extra Icons Change Log
 
-## 2026.1.17 (WIP)
+## 2026.1.17 (2026/11/18)
 * support `.claude` folders.
 * support `.junie` folders.
 * support `.junie/plans` folders.
